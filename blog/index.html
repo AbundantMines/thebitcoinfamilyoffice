@@ -11,105 +11,369 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/">
 <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Research & Analysis — The Bitcoin Family Office",
+  "url": "https://thebitcoinfamilyoffice.com/blog/",
+  "description": "Original research and analysis for families building generational Bitcoin wealth.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Bitcoin Family Office",
+    "url": "https://thebitcoinfamilyoffice.com"
+  }
+}
+</script>
+
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#0a0a0a;--fg:#e8e6e3;--fg-muted:#9a9a9a;--accent:#f7931a;--surface:#141414;--border:#222;--serif:'Georgia','Times New Roman',serif;--sans:'Inter','Helvetica Neue',Arial,sans-serif;--max-w:720px}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:18px;-webkit-font-smoothing:antialiased}
-body{background:var(--bg);color:var(--fg);font-family:var(--serif);line-height:1.8}
-a{color:var(--accent);text-decoration:none;transition:opacity .2s}a:hover{opacity:.8}
-.container{max-width:var(--max-w);margin:0 auto;padding:0 1.5rem}
-header{padding:3rem 0 1rem;border-bottom:1px solid var(--border)}
-header nav{display:flex;justify-content:space-between;align-items:center}
-header .logo{font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:.02em;color:var(--fg)}
-header .logo span{color:var(--accent)}
-header .home-link{font-family:var(--sans);font-size:.8rem;color:var(--fg-muted);letter-spacing:.05em;text-transform:uppercase}
-.hero{padding:4rem 0 3rem;border-bottom:1px solid var(--border)}
-.hero h1{font-size:2.4rem;line-height:1.2;font-weight:400;margin-bottom:1.5rem;letter-spacing:-.02em}
-.hero p{color:var(--fg-muted);font-size:1.05rem;line-height:1.8;max-width:600px}
-.posts{padding:3rem 0}
-.post-card{padding:2.5rem 0;border-bottom:1px solid var(--border)}
-.post-card:last-child{border-bottom:none}
-.post-card .meta{font-family:var(--sans);font-size:.75rem;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
-.post-card h2{font-size:1.5rem;font-weight:400;line-height:1.3;margin-bottom:1rem}
-.post-card h2 a{color:var(--fg)}
-.post-card h2 a:hover{color:var(--accent)}
-.post-card .excerpt{color:var(--fg-muted);font-size:.95rem;line-height:1.8;margin-bottom:1rem}
-.post-card .read-more{font-family:var(--sans);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
-footer{border-top:1px solid var(--border);padding:3rem 0;margin-top:2rem}
-footer .inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-footer p{font-family:var(--sans);font-size:.75rem;color:var(--fg-muted)}
-footer a{color:var(--fg-muted)}footer a:hover{color:var(--accent)}
-@media(max-width:600px){html{font-size:16px}.hero h1{font-size:1.8rem}.hero{padding:3rem 0 2rem}}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0a;
+  --bg-elevated: #111111;
+  --bg-card: #0f0f0f;
+  --accent: #f7931a;
+  --accent-dim: rgba(247, 147, 26, 0.10);
+  --accent-border: rgba(247, 147, 26, 0.25);
+  --text: #e8e4de;
+  --text-secondary: #9a958d;
+  --text-muted: #6b6660;
+  --border: rgba(255, 255, 255, 0.06);
+  --serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --display: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --max-w: 720px;
+  --max-w-wide: 960px;
+}
+
+html { font-size: 18px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.8; overflow-x: hidden; }
+a { color: var(--accent); text-decoration: none; transition: opacity 0.2s, color 0.2s; }
+a:hover { opacity: 0.8; }
+::selection { background: var(--accent-dim); color: var(--accent); }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.5rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.3s;
+}
+nav.scrolled { padding: 1rem 2rem; }
+
+.nav-mark {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.nav-mark span { color: var(--accent); }
+
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--text); opacity: 1; }
+.nav-links .nav-cta {
+  color: var(--accent) !important;
+  border: 1px solid var(--accent-border);
+  padding: 0.4rem 0.9rem;
+  border-radius: 2px;
+}
+.nav-links .nav-cta:hover { background: var(--accent-dim); opacity: 1; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  padding: 9rem 2rem 5rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 5rem;
+  background: linear-gradient(to bottom, transparent, var(--accent-border));
+}
+
+.container { max-width: var(--max-w); margin: 0 auto; }
+
+.hero-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+.hero-eyebrow span {
+  display: inline-block;
+  width: 20px; height: 1px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin: 0 0.65rem;
+}
+
+.hero h1 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+.hero h1 em { font-style: italic; color: var(--text-secondary); }
+
+.hero p {
+  font-family: var(--serif);
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 580px;
+}
+
+/* ============================================================
+   POSTS
+   ============================================================ */
+.posts { padding: 3.5rem 2rem; }
+
+.post-card {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 2.75rem 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.post-card:last-child { border-bottom: none; }
+
+.post-meta {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.post-meta .tag {
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+}
+
+.post-card h2 {
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 2.5vw, 1.65rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+.post-card h2 a { color: var(--text); }
+.post-card h2 a:hover { color: var(--accent); opacity: 1; }
+
+.post-excerpt {
+  font-family: var(--serif);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+  max-width: 640px;
+}
+
+.read-more {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.read-more:hover { color: var(--accent); opacity: 1; }
+.read-more::after { content: ' →'; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem;
+  margin-top: 2rem;
+}
+.footer-inner {
+  max-width: var(--max-w-wide);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.footer-mark {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.footer-mark span { color: var(--accent); }
+.footer-meta {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.footer-links a:hover { color: var(--accent); opacity: 1; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 600px) {
+  html { font-size: 16px; }
+  nav { padding: 1.1rem 1.25rem; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero { padding: 7rem 1.25rem 3.5rem; }
+  .posts { padding: 2rem 1.25rem; }
+  .hero h1 { font-size: 1.9rem; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
 </style>
 </head>
 <body>
-<header>
-<div class="container">
-<nav>
-<div class="logo">The <span>Bitcoin</span> Family Office</div>
-<a href="/" class="home-link">Home</a>
+
+<nav id="nav">
+  <a href="/" class="nav-mark">The <span>Bitcoin</span> Family Office</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/blog/" class="active">Research</a>
+    <a href="/#waitlist" class="nav-cta">Join Waitlist</a>
+  </div>
 </nav>
-</div>
-</header>
 
 <section class="hero">
-<div class="container">
-<h1>Research &amp; Analysis</h1>
-<p>Original research and analysis for families building generational Bitcoin wealth. We write from first principles — no price predictions, no tribal signaling, no hype. Just the structural thinking that serious capital allocators need.</p>
-</div>
+  <div class="container">
+    <div class="hero-eyebrow"><span></span>Research &amp; Analysis<span></span></div>
+    <h1>Writing from <em>First Principles</em></h1>
+    <p>Original analysis for families managing significant Bitcoin positions. No price predictions. No tribal signaling. Just the structural thinking that serious capital requires.</p>
+  </div>
 </section>
 
 <section class="posts">
-<div class="container">
 
-<article class="post-card">
-<div class="meta">Pillar Guide · 28 min read</div>
-<h2><a href="/blog/complete-guide-bitcoin-family-offices.html">The Complete Guide to Bitcoin Family Offices</a></h2>
-<p class="excerpt">What does it mean to hold wealth in an asset that no government controls? For most of financial history, that question was theoretical. Gold came close, but governments solved that problem in 1933 with Executive Order 6102 and again in 1971 when Nixon closed the gold window. Real estate can be seized. Equities can be frozen. Bank accounts can be restricted. Every traditional store of value ultimately depends on institutional permission. Bitcoin is the first asset in human history where that dependency is optional. This changes the calculus for family offices in ways that most wealth advisors haven't fully internalized.</p>
-<a href="/blog/complete-guide-bitcoin-family-offices.html" class="read-more">Read the full guide →</a>
-</article>
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Pillar Guide</span>
+      <span>28 min read</span>
+    </div>
+    <h2><a href="/blog/complete-guide-bitcoin-family-offices.html">The Complete Guide to Bitcoin Family Offices</a></h2>
+    <p class="post-excerpt">What does it mean to hold wealth in an asset that no government controls? For most of financial history, that question was theoretical. Gold came close, but governments solved that problem in 1933. Bitcoin is the first asset where that dependency is optional — and this changes the calculus for family offices in ways most wealth advisors haven't fully internalized.</p>
+    <a href="/blog/complete-guide-bitcoin-family-offices.html" class="read-more">Read the full guide</a>
+  </article>
 
-<article class="post-card">
-<div class="meta">Framework · 24 min read</div>
-<h2><a href="/blog/building-bitcoin-native-family-office.html">Building a Bitcoin-Native Family Office</a></h2>
-<p class="excerpt">If you've decided that Bitcoin is a meaningful part of your family's balance sheet — and if you're reading this, that decision is likely already made — the question becomes: what infrastructure does that require? Not what Bitcoin wallet to use. Not which exchange has the best fees. Those are implementation details. The structural question is deeper: how do you build the organizational, legal, and operational framework that treats Bitcoin not as a speculative position but as the foundational asset around which your family's wealth is organized?</p>
-<a href="/blog/building-bitcoin-native-family-office.html" class="read-more">Read the full framework →</a>
-</article>
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Framework</span>
+      <span>24 min read</span>
+    </div>
+    <h2><a href="/blog/building-bitcoin-native-family-office.html">Building a Bitcoin-Native Family Office</a></h2>
+    <p class="post-excerpt">If you've decided that Bitcoin is a meaningful part of your family's balance sheet, the question becomes: what infrastructure does that require? Not which wallet to use. The structural question is deeper — how do you build the organizational, legal, and operational framework that treats Bitcoin not as a speculative position but as the foundational asset.</p>
+    <a href="/blog/building-bitcoin-native-family-office.html" class="read-more">Read the full framework</a>
+  </article>
 
-<article class="post-card">
-<div class="meta">Estate Planning · 26 min read</div>
-<h2><a href="/blog/multi-generational-bitcoin-wealth-estate-planning.html">Multi-Generational Bitcoin Wealth &amp; Estate Planning</a></h2>
-<p class="excerpt">Here is the fundamental problem: your Bitcoin holdings are one forgotten passphrase away from vanishing forever. No other asset class has this property. A stock portfolio doesn't cease to exist because someone lost a password. Real estate doesn't become permanently inaccessible because a key holder died unexpectedly. But Bitcoin does. And it does so by design — the very feature that makes Bitcoin resistant to seizure and censorship is the same feature that makes succession planning existentially important.</p>
-<a href="/blog/multi-generational-bitcoin-wealth-estate-planning.html" class="read-more">Read the full analysis →</a>
-</article>
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Estate Planning</span>
+      <span>26 min read</span>
+    </div>
+    <h2><a href="/blog/multi-generational-bitcoin-wealth-estate-planning.html">Multi-Generational Bitcoin Wealth &amp; Estate Planning</a></h2>
+    <p class="post-excerpt">Your Bitcoin holdings are one forgotten passphrase away from vanishing forever. No other asset has this property. The very feature that makes Bitcoin resistant to seizure is the same feature that makes succession planning existentially important. This is the analysis every Bitcoin family needs before anything else.</p>
+    <a href="/blog/multi-generational-bitcoin-wealth-estate-planning.html" class="read-more">Read the full analysis</a>
+  </article>
 
-<article class="post-card">
-<div class="meta">Tax Strategy · 22 min read</div>
-<h2><a href="/blog/bitcoin-tax-optimization-high-net-worth.html">Bitcoin Tax Optimization for High-Net-Worth Families</a></h2>
-<p class="excerpt">The tax code was not designed for an asset like Bitcoin. It was designed for equities, real estate, and fixed income — assets that behave predictably within the existing monetary system. Bitcoin doesn't. It exhibits the volatility profile of a venture-stage technology company, the holding characteristics of a commodity, the transfer mechanics of a currency, and the scarcity attributes of precious metals. And the IRS has decided to treat it as property. This classification creates both significant challenges and extraordinary opportunities for families with meaningful Bitcoin positions.</p>
-<a href="/blog/bitcoin-tax-optimization-high-net-worth.html" class="read-more">Read the full strategy →</a>
-</article>
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Tax Strategy</span>
+      <span>22 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-tax-optimization-high-net-worth.html">Bitcoin Tax Optimization for High-Net-Worth Families</a></h2>
+    <p class="post-excerpt">The tax code was not designed for Bitcoin. It was designed for equities, real estate, and fixed income. Bitcoin exhibits the volatility of a venture-stage company, the holding characteristics of a commodity, and the scarcity of precious metals — and the IRS treats it as property. This creates both significant challenges and extraordinary opportunities.</p>
+    <a href="/blog/bitcoin-tax-optimization-high-net-worth.html" class="read-more">Read the full strategy</a>
+  </article>
 
-<article class="post-card">
-<div class="meta">Technical Deep Dive · 25 min read</div>
-<h2><a href="/blog/bitcoin-custody-solutions-family-offices.html">Bitcoin Custody Solutions for Family Offices</a></h2>
-<p class="excerpt">Custody isn't a technical detail. It's the difference between owning Bitcoin and owning a promise about Bitcoin. This distinction may sound pedantic until you consider that every major failure in Bitcoin's history — every exchange collapse, every fund implosion, every headline about billions in "lost" Bitcoin — has been a custody failure. Not a Bitcoin failure. Not a protocol failure. A custody failure. Understanding this distinction is the single most important thing a family office can do before allocating to Bitcoin.</p>
-<a href="/blog/bitcoin-custody-solutions-family-offices.html" class="read-more">Read the full deep dive →</a>
-</article>
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Technical Deep Dive</span>
+      <span>25 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-custody-solutions-family-offices.html">Bitcoin Custody Solutions for Family Offices</a></h2>
+    <p class="post-excerpt">Custody isn't a technical detail. It's the difference between owning Bitcoin and owning a promise about Bitcoin. Every major failure in Bitcoin's history — every exchange collapse, every fund implosion — has been a custody failure. Understanding this distinction is the single most important thing a family office can do before allocating.</p>
+    <a href="/blog/bitcoin-custody-solutions-family-offices.html" class="read-more">Read the full deep dive</a>
+  </article>
 
-</div>
 </section>
 
 <footer>
-<div class="container">
-<div class="inner">
-<p>&copy; 2025 The Bitcoin Family Office. All rights reserved.</p>
-<p><a href="/disclosures">Disclosures</a></p>
-</div>
-</div>
+  <div class="footer-inner">
+    <a href="/" class="footer-mark">The <span>Bitcoin</span> Family Office</a>
+    <p class="footer-meta">© 2026 The Bitcoin Family Office. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/disclosures">Disclosures</a>
+    </div>
+  </div>
 </footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+</script>
+
 </body>
 </html>

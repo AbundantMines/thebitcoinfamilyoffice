@@ -11,6 +11,63 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/building-bitcoin-native-family-office.html">
 <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/building-bitcoin-native-family-office.html">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Building a Bitcoin-Native Family Office",
+  "description": "A framework for building family office infrastructure around Bitcoin. Implementation roadmap for families who have decided Bitcoin is a foundational asset, not a speculative position.",
+  "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
+  "publisher": {"@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"},
+  "datePublished": "2026-02-23",
+  "dateModified": "2026-02-24",
+  "mainEntityOfPage": "https://thebitcoinfamilyoffice.com/blog/building-bitcoin-native-family-office.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What legal structure should house a Bitcoin family office?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most common structures are an LLC (most flexible, pass-through taxation), Family Limited Partnership (useful for intergenerational transfers), trust structures (for asset protection and estate planning), and Wyoming DUNAs for frontier digital-asset governance. For most families, an LLC as the family office entity with one or more trusts for specific Bitcoin holdings is recommended."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to build a Bitcoin-native family office?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A reasonable timeline from decision to full operational readiness is 9–12 months. Phase 1 (audit and assessment) takes 1–2 months, entity formation 2–4 months, custody architecture design 3–6 months, governance documentation 4–8 months, and operational build-out 6–12 months. These phases overlap."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should a Bitcoin family office audit document?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A comprehensive audit should document every Bitcoin holding across all wallets and exchange accounts, the cost basis for every lot (critical for tax planning), key management status for self-custodied holdings (where are the keys, who has access, is there a backup), and the legal and tax posture of the entities currently holding Bitcoin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the core principles of Bitcoin custody architecture?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The four core custody principles are: (1) Eliminate single points of failure — no single device, location, or person should be capable of accessing or losing all Bitcoin; (2) Separate authority from capability; (3) Design for the worst case — resilient to death, incapacitation, physical compromise, legal action, and adversarial family members; (4) Test before you trust — verify every signer, every recovery process, before the stakes are real."
+      }
+    }
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
 <style>
@@ -52,13 +109,28 @@ footer .inner{display:flex;justify-content:space-between;align-items:center;flex
 footer p{font-family:var(--sans);font-size:.75rem;color:var(--fg-muted)}
 footer a{color:var(--fg-muted)}footer a:hover{color:var(--accent)}
 @media(max-width:600px){html{font-size:16px}.article-header h1{font-size:1.9rem}.article-header{padding:3rem 0 1.5rem}article.content blockquote{padding:1rem 1.25rem}.waitlist-inline form{flex-direction:column}}
+
+/* Premium upgrades */
+header{position:sticky;top:0;z-index:100;padding:1rem 0;background:rgba(10,10,10,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:padding .3s}
+.logo{color:var(--fg);text-decoration:none;display:inline-block;font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase}
+.logo span{color:var(--accent)}
+nav a{transition:color .2s,opacity .2s}
+.back{padding:.3rem .7rem;border:1px solid rgba(255,255,255,.08);border-radius:2px;font-size:.65rem}
+.back:hover{border-color:rgba(247,147,26,.3);color:var(--accent);opacity:1}
+.article-header{padding:5rem 0 2rem}
+footer .inner{gap:1.5rem}
+footer a:hover{color:var(--accent);opacity:1}
+#read-progress{position:fixed;top:0;left:0;width:0%;height:2px;background:var(--accent);z-index:200;transition:width .1s linear;opacity:.8}
+footer .inner{gap:1.5rem}
+footer a:hover{color:var(--accent);opacity:1}
 </style>
 </head>
 <body>
+<div id="read-progress"></div>
 <header>
 <div class="container">
 <nav>
-<div class="logo">The <span>Bitcoin</span> Family Office</div>
+<a href="/" class="logo">The <span>Bitcoin</span> Family Office</a>
 <a href="/blog/" class="back">← Research</a>
 </nav>
 </div>
@@ -79,7 +151,7 @@ footer a{color:var(--fg-muted)}footer a:hover{color:var(--accent)}
 
 <p>This is the question we address in this piece. Not as a checklist — checklists are for simple problems, and this isn't one — but as a framework for thinking about the problem correctly. If you get the framework right, the implementation details will follow naturally. If you get the framework wrong, no amount of tactical excellence will save you.</p>
 
-<p>We should be clear about who this is for. This is not a guide for someone considering their first Bitcoin purchase. This is for families where Bitcoin already represents — or is expected to represent — a substantial portion of family wealth. Families where the question has shifted from "should we own Bitcoin?" to "how do we build around it?" If that describes your situation, what follows is the advisory letter we wish someone had written for us.</p>
+<p>We should be clear about who this is for. This is not a guide for someone considering their first Bitcoin purchase. This is for families where Bitcoin already represents — or is expected to represent — a substantial portion of family wealth. Families where the question has shifted from "should we own Bitcoin?" to "how do we build around it?" If that describes your situation, what follows is the advisory letter we wish someone had written for us. For those still forming the foundational conviction — the macro case, the monetary history, the why — we recommend starting with our <a href="/blog/complete-guide-bitcoin-family-offices.html">Complete Guide to Bitcoin Family Offices</a>, which covers those questions in depth before addressing structure.</p>
 
 <div class="section-divider">• • •</div>
 
@@ -252,7 +324,7 @@ footer a{color:var(--fg-muted)}footer a:hover{color:var(--accent)}
 <footer>
 <div class="container">
 <div class="inner">
-<p>&copy; 2025 The Bitcoin Family Office. All rights reserved.</p>
+<p>&copy; 2026 The Bitcoin Family Office. All rights reserved.</p>
 <p><a href="/disclosures">Disclosures</a></p>
 </div>
 </div>
@@ -268,6 +340,8 @@ method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-url
 body:'email='+encodeURIComponent(email)
 }).then(()=>{msg.textContent='Thank you. You\'ll hear from us quarterly.';f.email.value='';}).catch(()=>{msg.textContent='Something went wrong. Please try again.';});
 }
+const rp=document.getElementById('read-progress');
+window.addEventListener('scroll',()=>{const s=document.documentElement,b=document.body;const st=s.scrollTop||b.scrollTop;const sh=(s.scrollHeight||b.scrollHeight)-s.clientHeight;rp.style.width=(sh>0?Math.round(st/sh*100):0)+'%';},{passive:true});
 </script>
 </body>
 </html>

@@ -11,6 +11,71 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-custody-solutions-family-offices.html">
 <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-custody-solutions-family-offices.html">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bitcoin Custody Solutions for Family Offices",
+  "description": "A technical deep dive into Bitcoin custody for family offices. From self-custody to collaborative multisig, understanding the tradeoffs between security, control, and operational complexity.",
+  "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
+  "publisher": {"@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"},
+  "datePublished": "2026-02-23",
+  "dateModified": "2026-02-24",
+  "mainEntityOfPage": "https://thebitcoinfamilyoffice.com/blog/bitcoin-custody-solutions-family-offices.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Bitcoin custody and why does it matter for family offices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bitcoin custody means possessing the private key that authorizes transactions from a Bitcoin address. Whoever holds the key holds the Bitcoin — there is no separate legal claim. Every major loss in Bitcoin history (Mt. Gox, FTX, QuadrigaCX) was a custody failure, not a protocol failure. For family offices, custody architecture is the single most important operational decision, as mistakes can result in permanent, unrecoverable loss."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between exchange custody and self-custody for Bitcoin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With exchange custody, the exchange holds your private keys — you have an account balance representing a claim, not actual Bitcoin ownership. If the exchange is hacked, goes bankrupt, or restricts withdrawals, you may lose access. With self-custody, you hold the private keys directly, giving you full sovereignty with no counterparty risk. For family offices, exchange custody should be minimized; self-custody in a multisignature arrangement is strongly preferred."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is multisignature Bitcoin custody and how does it work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multisignature (multisig) custody requires multiple private keys to authorize a transaction. In a 2-of-3 multisig, any two of three keys must sign — so no single key can move funds, and losing any single key doesn't result in loss of access. Keys are distributed across different devices, locations, and holders, eliminating single points of failure. This is the recommended custody model for family-office-scale Bitcoin holdings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is collaborative custody for Bitcoin and who provides it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Collaborative custody combines family self-sovereignty with institutional support. Typically structured as a 2-of-3 multisig where the family holds two keys and a professional partner holds one. The family can always move Bitcoin using their two keys without the partner's involvement. If the family loses one key, the partner's key enables recovery. The partner cannot move Bitcoin unilaterally. Unchained is the most prominent provider of this model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the most common Bitcoin custody mistakes made by families?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most common and costly mistakes are: (1) storing seed phrases digitally (in password managers, email, cloud) — they should only exist on physical media; (2) co-locating hardware wallets and their seed backups in the same place; (3) neglecting to back up the wallet descriptor in multisig arrangements; (4) failing to test recovery procedures; (5) relying on only one person's technical knowledge; (6) using a BIP39 passphrase without documenting it properly."
+      }
+    }
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
 <style>
@@ -52,13 +117,28 @@ footer .inner{display:flex;justify-content:space-between;align-items:center;flex
 footer p{font-family:var(--sans);font-size:.75rem;color:var(--fg-muted)}
 footer a{color:var(--fg-muted)}footer a:hover{color:var(--accent)}
 @media(max-width:600px){html{font-size:16px}.article-header h1{font-size:1.9rem}.article-header{padding:3rem 0 1.5rem}article.content blockquote{padding:1rem 1.25rem}.waitlist-inline form{flex-direction:column}}
+
+/* Premium upgrades */
+header{position:sticky;top:0;z-index:100;padding:1rem 0;background:rgba(10,10,10,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:padding .3s}
+.logo{color:var(--fg);text-decoration:none;display:inline-block;font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase}
+.logo span{color:var(--accent)}
+nav a{transition:color .2s,opacity .2s}
+.back{padding:.3rem .7rem;border:1px solid rgba(255,255,255,.08);border-radius:2px;font-size:.65rem}
+.back:hover{border-color:rgba(247,147,26,.3);color:var(--accent);opacity:1}
+.article-header{padding:5rem 0 2rem}
+footer .inner{gap:1.5rem}
+footer a:hover{color:var(--accent);opacity:1}
+#read-progress{position:fixed;top:0;left:0;width:0%;height:2px;background:var(--accent);z-index:200;transition:width .1s linear;opacity:.8}
+footer .inner{gap:1.5rem}
+footer a:hover{color:var(--accent);opacity:1}
 </style>
 </head>
 <body>
+<div id="read-progress"></div>
 <header>
 <div class="container">
 <nav>
-<div class="logo">The <span>Bitcoin</span> Family Office</div>
+<a href="/" class="logo">The <span>Bitcoin</span> Family Office</a>
 <a href="/blog/" class="back">← Research</a>
 </nav>
 </div>
@@ -326,7 +406,7 @@ The question is not "do I trust myself?" The question is "do I trust that I — 
 <footer>
 <div class="container">
 <div class="inner">
-<p>&copy; 2025 The Bitcoin Family Office. All rights reserved.</p>
+<p>&copy; 2026 The Bitcoin Family Office. All rights reserved.</p>
 <p><a href="/disclosures">Disclosures</a></p>
 </div>
 </div>
@@ -342,6 +422,8 @@ method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-url
 body:'email='+encodeURIComponent(email)
 }).then(()=>{msg.textContent='Thank you. You\'ll hear from us quarterly.';f.email.value='';}).catch(()=>{msg.textContent='Something went wrong. Please try again.';});
 }
+const rp=document.getElementById('read-progress');
+window.addEventListener('scroll',()=>{const s=document.documentElement,b=document.body;const st=s.scrollTop||b.scrollTop;const sh=(s.scrollHeight||b.scrollHeight)-s.clientHeight;rp.style.width=(sh>0?Math.round(st/sh*100):0)+'%';},{passive:true});
 </script>
 </body>
 </html>

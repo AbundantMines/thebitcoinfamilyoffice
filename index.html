@@ -14,6 +14,22 @@
 <meta name="twitter:title" content="The Bitcoin Family Office">
 <meta name="twitter:description" content="First-principles wealth advisory for families who understand Bitcoin.">
 <link rel="canonical" href="https://thebitcoinfamilyoffice.com">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "The Bitcoin Family Office",
+  "url": "https://thebitcoinfamilyoffice.com",
+  "description": "A private advisory for families holding significant Bitcoin wealth. First-principles thinking on custody, estate architecture, and generational stewardship.",
+  "foundingDate": "2026",
+  "sameAs": []
+}
+</script>
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
@@ -87,6 +103,14 @@ nav.scrolled { padding: 1rem 2rem; }
   transition: color 0.3s;
 }
 .nav-links a:hover { color: var(--text); }
+.nav-links .nav-cta {
+  color: var(--accent) !important;
+  border: 1px solid rgba(247, 147, 26, 0.35);
+  padding: 0.4rem 0.9rem;
+  border-radius: 2px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-links .nav-cta:hover { background: rgba(247, 147, 26, 0.10); color: var(--accent) !important; }
 
 /* SECTIONS */
 section { padding: 6rem 2rem; }
@@ -101,8 +125,21 @@ section { padding: 6rem 2rem; }
   align-items: center;
   justify-content: center;
   padding: 8rem 2rem 6rem;
+  position: relative;
+  overflow: hidden;
 }
-.opening .container { max-width: 800px; }
+.opening::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(247, 147, 26, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.opening .container { max-width: 800px; position: relative; z-index: 1; }
 .opening-line {
   width: 40px;
   height: 1px;
@@ -129,6 +166,90 @@ section { padding: 6rem 2rem; }
   color: var(--text-secondary);
   line-height: 1.8;
   max-width: 600px;
+}
+
+/* TRUST BAR */
+.trust-bar {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 2rem;
+  overflow: hidden;
+}
+.trust-bar-inner {
+  max-width: var(--max-w-wide);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.trust-item {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  white-space: nowrap;
+}
+.trust-item::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+/* QUALIFICATION */
+.qualification {
+  border-top: 1px solid var(--border);
+  padding: 7rem 2rem;
+}
+.qual-grid {
+  max-width: var(--max-w-wide);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.qual-card {
+  background: var(--bg);
+  padding: 2.5rem;
+  transition: background 0.3s;
+}
+.qual-card:hover { background: var(--bg-elevated); }
+.qual-number {
+  font-family: var(--display);
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+.qual-label {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+.qual-desc {
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
 }
 
 /* THESIS */
@@ -437,6 +558,8 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
   font-family: var(--sans);
   font-size: 0.7rem;
   color: var(--text-muted);
@@ -445,9 +568,37 @@ footer a {
   color: var(--text-muted);
   text-decoration: none;
   transition: color 0.3s;
+  opacity: 1;
 }
-footer a:hover { color: var(--text-secondary); }
-.footer-links { display: flex; gap: 2rem; }
+footer a:hover { color: var(--accent); }
+.footer-mark {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.footer-mark span { color: var(--accent); }
+.footer-copy {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer-links a {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+@media (max-width: 640px) {
+  .footer-copy { order: 3; width: 100%; }
+}
 
 /* MOBILE */
 @media (max-width: 640px) {
@@ -460,7 +611,14 @@ footer a:hover { color: var(--text-secondary); }
   .journey-num { margin-bottom: 0.5rem; }
   .journey-read { opacity: 1; transform: none; }
   .form-row { flex-direction: column; }
-  footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+  .trust-bar-inner { gap: 1.25rem; }
+  .qual-grid { grid-template-columns: 1fr; }
+  .qual-card { padding: 1.75rem; }
+}
+
+@media (max-width: 900px) {
+  .qual-grid { grid-template-columns: 1fr 1fr; }
 }
 
 /* FADE IN */
@@ -481,9 +639,10 @@ footer a:hover { color: var(--text-secondary); }
   <div class="nav-mark">The Bitcoin <span>Family Office</span></div>
   <div class="nav-links">
     <a href="#thesis">Thesis</a>
+    <a href="#services">Services</a>
     <a href="#thinking">Research</a>
     <a href="#philosophy">Philosophy</a>
-    <a href="/disclosures">Disclosures</a>
+    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
   </div>
 </nav>
 
@@ -495,6 +654,17 @@ footer a:hover { color: var(--text-secondary); }
     <p class="opening-sub">The question is no longer whether to pay attention. It is whether your family's wealth is structured to endure what comes next.</p>
   </div>
 </section>
+
+<!-- 1b. TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <span class="trust-item">Private Advisory</span>
+    <span class="trust-item">Bitcoin-Native Since 2026</span>
+    <span class="trust-item">Wyoming Structured</span>
+    <span class="trust-item">First-Principles Framework</span>
+    <span class="trust-item">No Fiat Products</span>
+  </div>
+</div>
 
 <!-- 2. THE THESIS -->
 <section class="thesis" id="thesis">
@@ -508,7 +678,29 @@ footer a:hover { color: var(--text-secondary); }
   </div>
 </section>
 
-<!-- 3. THE JOURNEY -->
+<!-- 2b. QUALIFICATION SIGNALS -->
+<section class="qualification">
+  <div class="qual-grid">
+    <div class="qual-card">
+      <div class="qual-number">₿</div>
+      <div class="qual-label">Bitcoin-Only Mandate</div>
+      <p class="qual-desc">We do not advise on altcoins, ETFs, or fiat instruments. Our entire intellectual framework centers on Bitcoin as monetary infrastructure — not as a speculative asset.</p>
+    </div>
+    <div class="qual-card">
+      <div class="qual-number">100+</div>
+      <div class="qual-label">Years of Combined Research</div>
+      <p class="qual-desc">First-principles monetary theory, Austrian economics, multi-sig custody architecture, estate law, and tax strategy — synthesized into coherent frameworks for families.</p>
+    </div>
+    <div class="qual-card">
+      <div class="qual-number">∞</div>
+      <div class="qual-label">Time Horizon</div>
+      <p class="qual-desc">We optimize for decades and generations, not quarters. The families who engage us are thinking about grandchildren — not next year's returns.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. THE JOURNEY / SERVICES -->
+<span id="services" style="display:block;position:relative;top:-80px;visibility:hidden;"></span>
 <section class="journey" id="journey">
   <div class="container-wide fade-in">
     <div class="section-label">The Work</div>
@@ -619,7 +811,8 @@ footer a:hover { color: var(--text-secondary); }
   </div>
 </section>
 
-<!-- 7. ADVISORY OPT-IN -->
+<!-- 7. ADVISORY OPT-IN / WAITLIST -->
+<span id="waitlist" style="display:block;position:relative;top:-80px;visibility:hidden;"></span>
 <section class="advisory-optin">
   <div class="container fade-in">
     <h2>Private Advisory Conversations</h2>
@@ -643,11 +836,14 @@ footer a:hover { color: var(--text-secondary); }
 
 <!-- 8. FOOTER -->
 <footer>
-  <div>&copy; 2026 The Bitcoin Family Office</div>
+  <div class="footer-mark">The <span>Bitcoin</span> Family Office</div>
+  <p class="footer-copy">&copy; 2026 The Bitcoin Family Office. All rights reserved.</p>
   <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="/blog/">Research</a>
+    <a href="#philosophy">Philosophy</a>
     <a href="/disclosures">Disclosures</a>
-    <a href="#thinking">Research</a>
-    <a href="#philosophy">About</a>
+    <a href="mailto:hal@thebitcoinfamilyoffice.com">Contact</a>
   </div>
 </footer>
 
