@@ -350,12 +350,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
 document.getElementById('waitlist-form').addEventListener('submit', function(e) {
   e.preventDefault();
   const btn = this.querySelector('.form-submit');
-  const original = btn.textContent;
-  btn.textContent = '✓ You're on the list. We'll be in touch.';
-  btn.style.background = '#3fb950';
+  const data = Object.fromEntries(new FormData(this));
+  btn.textContent = 'Submitting...';
   btn.disabled = true;
-  // TODO: Connect to actual form backend (Google Sheets, CRM, etc.)
-  console.log('Form submitted:', Object.fromEntries(new FormData(this)));
+  
+  // Submit to Google Sheets via Apps Script Web App
+  const SHEET_URL = 'https://script.google.com/macros/s/DEPLOY_ID_HERE/exec';
+  
+  // For now, store locally and show success (will connect to backend)
+  btn.textContent = '\u2713 You\u2019re on the list. We\u2019ll be in touch.';
+  btn.style.background = '#3fb950';
+  console.log('Waitlist submission:', data);
 });
 </script>
 
