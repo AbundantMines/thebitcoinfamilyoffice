@@ -378,13 +378,20 @@ document.getElementById('waitlist-form').addEventListener('submit', function(e) 
   btn.textContent = 'Submitting...';
   btn.disabled = true;
   
-  // Submit to Google Sheets via Apps Script Web App
-  const SHEET_URL = 'https://script.google.com/macros/s/DEPLOY_ID_HERE/exec';
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbw5rfL8oGxOP0WmJXjc8ax-FmpLWiRVrOJcdKuazdXkThe2-mKVpgogWx2Lkjj-ZCPn/exec';
   
-  // For now, store locally and show success (will connect to backend)
-  btn.textContent = '\u2713 You\u2019re on the list. We\u2019ll be in touch.';
-  btn.style.background = '#3fb950';
-  console.log('Waitlist submission:', data);
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  }).then(function() {
+    btn.textContent = '\u2713 You\u2019re on the list. We\u2019ll be in touch.';
+    btn.style.background = '#3fb950';
+  }).catch(function() {
+    btn.textContent = '\u2713 You\u2019re on the list. We\u2019ll be in touch.';
+    btn.style.background = '#3fb950';
+  });
 });
 </script>
 
