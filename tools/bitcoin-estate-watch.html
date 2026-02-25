@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitcoin Estate Watch | Real-Time Estate Tax Exposure Monitoring</title>
+  <meta name="description" content="Bitcoin Estate Watch monitors your estate tax exposure daily as BTC price moves and alerts you when you cross planning thresholds. Free snapshot. $19/month for continuous monitoring." />
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-estate-watch" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bitcoin Estate Watch | Real-Time Estate Tax Exposure Monitoring" />
+  <meta property="og:description" content="A personalized monitoring service that alerts you when your Bitcoin estate tax exposure crosses planning thresholds — so you know exactly when to act." />
+  <meta property="og:image" content="/assets/og-image.svg" />
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-estate-watch" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bitcoin Estate Watch | The Bitcoin Family Office" />
+  <meta name="twitter:description" content="Daily estate tax exposure monitoring for Bitcoin holders. Threshold alerts. State law digests. Free snapshot included." />
+  <meta name="twitter:image" content="/assets/og-image.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+
+    // Heatmap: click events
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('a,button,input,select,[data-hm]');
+      if (el) {
+        gtag('event', 'hm_click', {
+          element_tag: el.tagName.toLowerCase(),
+          element_text: (el.innerText || el.value || el.getAttribute('aria-label') || '').substring(0, 80),
+          element_id: el.id || '',
+          page_path: location.pathname
+        });
+      }
+    }, true);
+
+    // Heatmap: scroll depth
+    (function(){
+      var marks = [25,50,75,90,100], fired = {};
+      window.addEventListener('scroll', function(){
+        var pct = Math.round((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100);
+        marks.forEach(function(m){
+          if(pct >= m && !fired[m]){
+            fired[m] = true;
+            gtag('event','hm_scroll',{scroll_depth: m, page_path: location.pathname});
+          }
+        });
+      }, {passive:true});
+    })();
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://thebitcoinfamilyoffice.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://thebitcoinfamilyoffice.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Bitcoin Estate Watch",
+        "item": "https://thebitcoinfamilyoffice.com/tools/bitcoin-estate-watch"
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What data does Bitcoin Estate Watch store?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Only your BTC amount, asset total, state, and email. We never ask for private keys, wallet addresses, or account numbers. All data is encrypted at rest."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How accurate is the exposure calculation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The exposure figure is an educational estimate using simplified assumptions (flat 40% rate, current federal exemption). It does not account for state taxes, deductions, credits, or current law changes from 2025 legislation. Always verify with a qualified estate attorney."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What triggers an alert?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You set your threshold during onboarding. Examples: 'Alert me when my exposure exceeds $1M' or 'Alert me when my exposure increases by more than $250K in a week.'"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this a financial advisory service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Bitcoin Estate Watch is an educational monitoring tool — it tracks math, not advice. For personalized estate planning, consult a Bitcoin-literate estate attorney and CPA."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+      --accent-border: rgba(201,168,76,0.3);
+      --accent-bg: rgba(201,168,76,0.06);
+      --display: 'Playfair Display', Georgia, serif;
+      --serif: 'EB Garamond', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --radius: 4px;
+      --max-w: 860px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── NAVIGATION ── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent) !important;
+      border: 1px solid var(--accent-border);
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      gap: 1rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .mobile-nav a:hover { color: var(--accent); }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      padding: 1.4rem 0 0;
+      flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb .sep { opacity: 0.4; }
+    .breadcrumb .current { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 3.5rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 1rem;
+      max-width: 700px;
+    }
+
+    .hero-sub {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 640px;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .chip {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+    }
+    .chip.accent-chip {
+      color: var(--accent);
+      border-color: var(--accent-border);
+      background: var(--accent-bg);
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .hero-cta:hover { opacity: 0.88; transform: translateY(-1px); text-decoration: none; }
+    .hero-cta:active { transform: translateY(0); }
+
+    /* ── SECTIONS ── */
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(1.35rem, 3vw, 1.7rem);
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .section-body p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+    .section-body p:last-child { margin-bottom: 0; }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .steps { grid-template-columns: 1fr; }
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem 1.25rem;
+      position: relative;
+    }
+
+    .step-num {
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.35;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-title {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-desc {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ── CALCULATOR ── */
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tool-card h2 {
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .tool-card .tool-sub {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+
+    .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-field.full { grid-column: 1 / -1; }
+
+    .form-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+    .form-label .note {
+      display: block;
+      font-size: 0.67rem;
+      letter-spacing: 0.03em;
+      text-transform: none;
+      color: var(--text-secondary);
+      opacity: 0.7;
+      margin-top: 0.15rem;
+    }
+
+    .form-input, .form-select {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      padding: 0.6rem 0.85rem;
+      width: 100%;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--accent-border);
+    }
+    .form-input::placeholder { color: var(--text-secondary); opacity: 0.6; }
+
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8070' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.85rem center;
+      padding-right: 2.2rem;
+      cursor: pointer;
+    }
+
+    .calc-btn {
+      display: block;
+      width: 100%;
+      margin-top: 1.75rem;
+      padding: 0.9rem 2rem;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .calc-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .calc-btn:active { transform: translateY(0); }
+
+    /* ── RESULT ── */
+    #snapshot-result {
+      display: none;
+      animation: fadeInUp 0.35s ease;
+    }
+    #snapshot-result.visible { display: block; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .result-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-amount {
+      font-family: var(--display);
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+
+    .result-message {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .result-disclaimer {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      color: var(--text-secondary);
+      opacity: 0.6;
+      margin-top: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── WAITLIST ── */
+    .waitlist-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--accent-border);
+      border-radius: 6px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .waitlist-card h3 {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .waitlist-card p {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+
+    .waitlist-form {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .waitlist-form .form-input {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .waitlist-btn {
+      padding: 0.6rem 1.5rem;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .waitlist-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .waitlist-btn:disabled { opacity: 0.5; cursor: default; transform: none; }
+
+    .waitlist-note {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      opacity: 0.7;
+      margin-top: 0.75rem;
+      letter-spacing: 0.03em;
+    }
+
+    .waitlist-success {
+      display: none;
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--accent);
+      padding: 0.75rem 0;
+    }
+    .waitlist-success.visible { display: block; }
+
+    /* ── PRICING ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 700px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--accent);
+      position: relative;
+    }
+
+    .pricing-card.featured::before {
+      content: 'Recommended';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.75rem;
+      border-radius: 0 0 3px 3px;
+    }
+
+    .plan-name {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-price {
+      font-family: var(--display);
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .plan-price .currency {
+      font-size: 1.1rem;
+      font-weight: 400;
+      vertical-align: super;
+    }
+    .plan-price .period {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    .plan-annual {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      opacity: 0.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .plan-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1rem 0;
+    }
+
+    .plan-features {
+      list-style: none;
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .plan-features li {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      padding: 0.35rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.45;
+    }
+
+    .plan-features li::before {
+      content: '✓';
+      color: var(--accent);
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      margin-top: 0.1rem;
+    }
+
+    .plan-features li.muted::before { color: var(--text-secondary); opacity: 0.4; content: '—'; }
+    .plan-features li.muted { opacity: 0.5; }
+
+    .plan-cta {
+      display: block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      cursor: pointer;
+    }
+    .plan-cta:hover { text-decoration: none; opacity: 0.85; transform: translateY(-1px); }
+
+    .plan-cta.outline {
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      background: transparent;
+    }
+    .plan-cta.outline:hover { border-color: var(--accent-border); color: var(--accent); }
+
+    .plan-cta.filled {
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none;
+    }
+
+    .pricing-note {
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      opacity: 0.7;
+      margin-top: 1.25rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── FAQ ── */
+    .faq-list {
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.25rem 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .faq-question-text {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.15rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .faq-icon::after {
+      content: '+';
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1;
+    }
+    .faq-item.open .faq-icon {
+      border-color: var(--accent-border);
+      transform: rotate(45deg);
+    }
+    .faq-item.open .faq-icon::after { color: var(--accent); }
+
+    .faq-answer {
+      display: none;
+      padding-bottom: 1.25rem;
+    }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-answer p {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent-border);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1rem 1.25rem;
+      margin: 2.5rem 0;
+    }
+    .disclaimer p {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      opacity: 0.8;
+    }
+
+    /* ── RELATED / CTA ── */
+    .related-links {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .related-links a {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .related-links a:hover { color: var(--accent); text-decoration: none; }
+    .related-links a::before { content: '→'; color: var(--accent); }
+
+    .services-cta-box {
+      background: var(--bg-card);
+      border: 1px solid var(--accent-border);
+      border-radius: 6px;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .services-cta-box .cta-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .services-cta-box h3 {
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .services-cta-box p {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .services-cta-box .btn-outline {
+      display: inline-block;
+      border: 1px solid var(--accent-border);
+      color: var(--accent);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.65rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .services-cta-box .btn-outline:hover {
+      background: var(--accent-bg);
+      text-decoration: none;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.5rem 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 760px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 440px) {
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    .footer-brand .brand-name {
+      font-family: var(--display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .footer-brand .brand-name span { color: var(--accent); }
+
+    .footer-brand p {
+      font-family: var(--sans);
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 230px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .footer-col ul li a {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--accent); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom p {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      opacity: 0.6;
+    }
+
+    /* ── UTILITIES ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* Hero section snap */
+    @media (max-width: 500px) {
+      .hero { padding: 2.5rem 0 2rem; }
+      .hero h1 { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<header class="site-header">
+  <nav class="nav-inner" aria-label="Main navigation">
+    <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
+    <ul class="nav-links">
+      <li><a href="/about/">About</a></li>
+      <li><a href="/tools/">Tools</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/services/" class="nav-cta">Work With Us</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="/about/">About</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Insights</a>
+    <a href="/services/">Work With Us</a>
+  </nav>
+</header>
+
+<!-- ── PAGE CONTENT ── -->
+<div class="page-wrap">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span class="sep">›</span>
+    <a href="/tools/">Tools</a>
+    <span class="sep">›</span>
+    <span class="current">Bitcoin Estate Watch</span>
+  </nav>
+
+  <!-- ── SECTION 1: HERO ── -->
+  <section class="hero">
+    <span class="hero-label">Introducing Bitcoin Estate Watch</span>
+    <h1>Your Bitcoin Estate Tax Exposure Changes Every Day. Are You Watching?</h1>
+    <p class="hero-sub">A personalized monitoring service that alerts you when your Bitcoin estate tax exposure crosses planning thresholds — so you know exactly when to act, not just that you should act someday.</p>
+    <div class="hero-chips">
+      <span class="chip accent-chip">Daily exposure updates</span>
+      <span class="chip accent-chip">Threshold alerts</span>
+      <span class="chip accent-chip">State law change alerts</span>
+    </div>
+    <a href="#snapshot" class="hero-cta">Get Your Free Exposure Snapshot</a>
+  </section>
+
+  <!-- ── SECTION 2: THE PROBLEM ── -->
+  <section>
+    <span class="section-label">Why This Exists</span>
+    <h2 class="section-title">Most Bitcoin Holders Are Flying Blind on Estate Taxes</h2>
+    <div class="section-body">
+      <p>Bitcoin's price moves daily. Your estate tax exposure moves with it. A $5M position today could create $2M in estate tax liability by the time your heirs inherit it — and that number changes every time the price moves.</p>
+      <p>Most Bitcoin holders check their portfolio every day. Almost none are watching what that means for their estate tax exposure. Bitcoin Estate Watch does it for you.</p>
+    </div>
+  </section>
+
+  <!-- ── SECTION 3: HOW IT WORKS ── -->
+  <section>
+    <span class="section-label">How It Works</span>
+    <h2 class="section-title">Three Steps. Continuous Awareness.</h2>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-title">Enter your holdings once</div>
+        <p class="step-desc">Provide your BTC amount, total other assets, and state. That's all we need.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-title">We monitor daily</div>
+        <p class="step-desc">Every day, we fetch the current BTC price, recalculate your federal estate tax exposure, and compare it against your exemption threshold.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-title">You get an alert</div>
+        <p class="step-desc">The moment your exposure crosses a threshold that triggers a planning action, you get an email — not after the fact, not quarterly, the day it happens.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 4: FREE SNAPSHOT CALCULATOR ── -->
+  <section id="snapshot">
+    <span class="section-label">Free Exposure Snapshot</span>
+    <h2 class="section-title">See Your Estimated Exposure Now</h2>
+
+    <div class="tool-card">
+      <h2>Federal Estate Tax Exposure Calculator</h2>
+      <p class="tool-sub">Enter your Bitcoin holdings below for a one-time snapshot. No account required.</p>
+
+      <div class="form-grid">
+        <div class="form-field">
+          <label class="form-label" for="btcAmount">
+            BTC you hold
+            <span class="note">Total BTC amount across all wallets</span>
+          </label>
+          <input class="form-input" type="number" id="btcAmount" placeholder="e.g. 2.5" step="0.01" min="0" />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="btcPrice">
+            Current BTC price (USD)
+            <span class="note">Pre-filled with approximate current price</span>
+          </label>
+          <input class="form-input" type="number" id="btcPrice" value="95000" step="1000" min="0" />
+        </div>
+
+        <div class="form-field full">
+          <label class="form-label" for="maritalStatus">
+            Marital status
+            <span class="note">Determines applicable federal exemption amount</span>
+          </label>
+          <select class="form-select" id="maritalStatus">
+            <option value="single">Single / Unmarried</option>
+            <option value="married">Married</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="calc-btn" id="calcBtn" onclick="calculateExposure()">Calculate My Exposure</button>
+    </div>
+
+    <!-- Result -->
+    <div id="snapshot-result">
+      <div class="result-card">
+        <div class="result-label">Estimated Federal Estate Tax Exposure</div>
+        <div class="result-amount" id="resultAmount">$0</div>
+        <p class="result-message" id="resultMessage"></p>
+        <p class="result-disclaimer">Based on simplified federal-only estimate. Does not include state estate taxes, deductions, credits, or 2025 legislative changes. For informational purposes only.</p>
+      </div>
+
+      <!-- Waitlist Capture -->
+      <div class="waitlist-card" id="waitlist-card">
+        <h3>Get Daily Exposure Updates</h3>
+        <p>Enter your email to join the Bitcoin Estate Watch waitlist. Waitlist members get early access and founding pricing.</p>
+        <div class="waitlist-form">
+          <input class="form-input" type="email" id="waitlistEmail" placeholder="your@email.com" autocomplete="email" />
+          <button class="waitlist-btn" id="waitlistBtn" onclick="submitWaitlist()">Join the Waitlist</button>
+        </div>
+        <div class="waitlist-success" id="waitlistSuccess">
+          ✓ You're on the list. We'll email you when Bitcoin Estate Watch launches.
+        </div>
+        <p class="waitlist-note">Watch is launching soon. Waitlist members receive early access at the founding rate.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 5: PRICING ── -->
+  <section id="pricing">
+    <span class="section-label">Pricing</span>
+    <h2 class="section-title">Plans Built for Bitcoin Holders</h2>
+
+    <div class="pricing-grid">
+
+      <!-- Free -->
+      <div class="pricing-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-price"><span class="currency">$</span>0</div>
+        <div class="plan-annual">No credit card required</div>
+        <hr class="plan-divider" />
+        <ul class="plan-features">
+          <li>One-time exposure snapshot</li>
+          <li class="muted">No daily monitoring</li>
+          <li class="muted">No threshold alerts</li>
+          <li class="muted">No state law digest</li>
+        </ul>
+        <a href="#snapshot" class="plan-cta outline">Try it free</a>
+      </div>
+
+      <!-- Watch (Featured) -->
+      <div class="pricing-card featured">
+        <div class="plan-name">Watch</div>
+        <div class="plan-price"><span class="currency">$</span>19<span class="period">/month</span></div>
+        <div class="plan-annual">or $179/year — save 21%</div>
+        <hr class="plan-divider" />
+        <ul class="plan-features">
+          <li>Daily exposure monitoring</li>
+          <li>Threshold alerts via email</li>
+          <li>Weekly state law digest</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#snapshot" class="plan-cta filled" onclick="scrollToWaitlist(event)">Join Waitlist</a>
+      </div>
+
+      <!-- Watch Pro -->
+      <div class="pricing-card">
+        <div class="plan-name">Watch Pro</div>
+        <div class="plan-price"><span class="currency">$</span>49<span class="period">/month</span></div>
+        <div class="plan-annual">or $449/year — save 24%</div>
+        <hr class="plan-divider" />
+        <ul class="plan-features">
+          <li>Everything in Watch</li>
+          <li>Succession Scorecard (20-item)</li>
+          <li>Heir Readiness Tracker</li>
+          <li>Monthly personalized planning brief</li>
+        </ul>
+        <a href="#snapshot" class="plan-cta outline" onclick="scrollToWaitlist(event)">Join Waitlist</a>
+      </div>
+
+    </div>
+
+    <p class="pricing-note">Watch is in active development. Waitlist members receive founding pricing and early access when we launch.</p>
+  </section>
+
+  <!-- ── SECTION 6: FAQ ── -->
+  <section>
+    <span class="section-label">Questions</span>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-question-text">What data does Bitcoin Estate Watch store?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Only your BTC amount, asset total, state, and email. We never ask for private keys, wallet addresses, or account numbers. All data is encrypted at rest.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-question-text">How accurate is the exposure calculation?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>The exposure figure is an educational estimate using simplified assumptions — a flat 40% federal rate applied to the amount above the federal exemption. It does not account for state-level estate taxes, deductions, credits, or changes resulting from 2025 legislation. Always verify your situation with a qualified estate attorney.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-question-text">What triggers an alert?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>You set your threshold during onboarding. Examples: "Alert me when my exposure exceeds $1M" or "Alert me when my exposure increases by more than $250K in a week." You control the conditions — we handle the monitoring.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-question-text">Is this a financial advisory service?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>No. Bitcoin Estate Watch is an educational monitoring tool — it tracks math, not advice. The numbers it produces are estimates based on simplified inputs. For personalized estate planning guidance, consult a Bitcoin-literate estate attorney and CPA.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── DISCLAIMER ── -->
+  <div class="disclaimer">
+    <p><strong>Educational Use Only.</strong> Bitcoin Estate Watch and the free snapshot calculator on this page are educational tools. They do not constitute financial, legal, or tax advice. All figures are estimates based on simplified assumptions and may not reflect your actual estate tax liability. The federal estate tax exemption amounts shown are subject to change due to 2025 legislation or other future changes in tax law. Always consult a qualified estate planning attorney, CPA, or other licensed professional before making decisions. The Bitcoin Family Office is not a registered investment advisor, broker-dealer, or law firm.</p>
+  </div>
+
+  <!-- ── SERVICES CTA ── -->
+  <div class="services-cta-box">
+    <span class="cta-eyebrow">Need More Than a Calculator?</span>
+    <h3>Work With a Bitcoin Estate Planning Specialist</h3>
+    <p>Bitcoin Estate Watch tracks the math. Our advisory services help you act on it — with trust structures, tax strategies, and succession planning built for significant Bitcoin holdings.</p>
+    <a href="/services/" class="btn-outline">Explore Advisory Services →</a>
+  </div>
+
+  <!-- ── RELATED READING ── -->
+  <section style="margin-top: 2.5rem;">
+    <span class="section-label">Related Tools</span>
+    <h2 class="section-title" style="font-size: 1.15rem; margin-bottom: 0.75rem;">Continue Your Planning</h2>
+    <div class="related-links">
+      <a href="/tools/bitcoin-estate-tax-exposure-calculator.html">Bitcoin Estate Tax Exposure Calculator — detailed multi-scenario analysis</a>
+      <a href="/tools/bitcoin-grat-optimizer.html">Bitcoin GRAT Optimizer — model a Grantor Retained Annuity Trust</a>
+      <a href="/blog/how-to-set-up-bitcoin-trust.html">How to Set Up a Bitcoin Trust — a step-by-step guide</a>
+    </div>
+  </section>
+
+</div><!-- /page-wrap -->
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-name">The Bitcoin <span>Family Office</span></span>
+      <p>Estate planning, succession, and wealth strategy for Bitcoin holders with significant positions.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/tools/bitcoin-estate-tax-exposure-calculator.html">Estate Tax Calculator</a></li>
+        <li><a href="/tools/bitcoin-grat-optimizer.html">GRAT Optimizer</a></li>
+        <li><a href="/tools/bitcoin-trust-cost-estimator.html">Trust Cost Estimator</a></li>
+        <li><a href="/tools/bitcoin-estate-planning-checklist.html">Planning Checklist</a></li>
+        <li><a href="/tools/">All Tools</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Insights</h4>
+      <ul>
+        <li><a href="/blog/">All Articles</a></li>
+        <li><a href="/blog/bitcoin-estate-planning/">Estate Planning</a></li>
+        <li><a href="/blog/bitcoin-trusts/">Trust Strategies</a></li>
+        <li><a href="/blog/bitcoin-tax-strategy/">Tax Strategy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/privacy/">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 The Bitcoin Family Office. All rights reserved. Educational content only — not legal or financial advice.</p>
+    <p><a href="/privacy/" style="color: inherit; opacity: 0.8;">Privacy</a> · <a href="/contact/" style="color: inherit; opacity: 0.8;">Contact</a></p>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script>
+// ── HAMBURGER ──
+(function() {
+  var btn = document.getElementById('hamburger');
+  var nav = document.getElementById('mobile-nav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function() {
+    var open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+})();
+
+// ── FAQ TOGGLE ──
+function toggleFaq(btn) {
+  var item = btn.closest('.faq-item');
+  var isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item.open').forEach(function(el) {
+    el.classList.remove('open');
+    el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
+
+// ── CALCULATOR ──
+function fmt(n) {
+  if (n >= 1e6) return '$' + (n / 1e6).toFixed(2).replace(/\.?0+$/, '') + 'M';
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+function calculateExposure() {
+  var btcAmount = parseFloat(document.getElementById('btcAmount').value) || 0;
+  var btcPrice  = parseFloat(document.getElementById('btcPrice').value)  || 95000;
+  var marital   = document.getElementById('maritalStatus').value;
+
+  var exemption = marital === 'married' ? 27220000 : 13610000;
+  var btcValue  = btcAmount * btcPrice;
+  var taxableAboveExemption = Math.max(0, btcValue - exemption);
+  var exposure  = taxableAboveExemption * 0.40;
+
+  var amountEl  = document.getElementById('resultAmount');
+  var msgEl     = document.getElementById('resultMessage');
+  var resultEl  = document.getElementById('snapshot-result');
+
+  amountEl.textContent = exposure === 0 ? '$0' : fmt(exposure);
+
+  if (exposure === 0) {
+    msgEl.textContent = 'Your current estimated exposure is $0. Bitcoin appreciation may change this — monitor it with Watch.';
+  } else if (exposure < 500000) {
+    msgEl.textContent = 'Your estimated exposure is ' + fmt(exposure) + '. Starting to matter — worth watching.';
+  } else if (exposure < 2000000) {
+    msgEl.textContent = 'Your estimated exposure is ' + fmt(exposure) + '. A plan is worth exploring.';
+  } else {
+    msgEl.textContent = 'Your estimated exposure is ' + fmt(exposure) + '. This warrants immediate attention.';
+  }
+
+  resultEl.classList.add('visible');
+  setTimeout(function() {
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 80);
+
+  // GA event
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'estate_watch_snapshot', {
+      btc_amount: btcAmount,
+      btc_price: btcPrice,
+      marital_status: marital,
+      exposure: Math.round(exposure)
+    });
+  }
+}
+
+// ── WAITLIST SUBMIT ──
+function submitWaitlist() {
+  var email = document.getElementById('waitlistEmail').value.trim();
+  var btcAmount = parseFloat(document.getElementById('btcAmount').value) || 0;
+  var btn = document.getElementById('waitlistBtn');
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('waitlistEmail').focus();
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Joining…';
+
+  var endpoint = 'https://script.google.com/macros/s/AKfycbw5rfL8oGxOP0WmJXjc8ax-FmpLWiRVrOJcdKuazdXkThe2-mKVpgogWx2Lkjj-ZCPn/exec';
+
+  var params = new URLSearchParams({
+    name: 'Bitcoin Estate Watch Waitlist',
+    email: email,
+    source: 'bitcoin-estate-watch',
+    holdings: btcAmount.toString()
+  });
+
+  fetch(endpoint + '?' + params.toString(), { method: 'GET', mode: 'no-cors' })
+    .then(function() {
+      document.getElementById('waitlistSuccess').classList.add('visible');
+      document.querySelector('.waitlist-form').style.display = 'none';
+      document.querySelector('.waitlist-note').style.display = 'none';
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'waitlist_signup', {
+          source: 'bitcoin-estate-watch',
+          btc_holdings: btcAmount
+        });
+      }
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Join the Waitlist';
+    });
+}
+
+// ── SCROLL TO WAITLIST ──
+function scrollToWaitlist(e) {
+  e.preventDefault();
+  // Trigger calc if not done yet, then scroll to snapshot
+  var resultEl = document.getElementById('snapshot-result');
+  if (!resultEl.classList.contains('visible')) {
+    var snap = document.getElementById('snapshot');
+    if (snap) snap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    var wl = document.getElementById('waitlist-card');
+    if (wl) wl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inheriting Bitcoin: What to Do in the First 30 Days | The Bitcoin Family Office</title>
+  <meta name="description" content="A clear, sequential guide for heirs who have just inherited Bitcoin. Day-by-day guidance to avoid the most common and costly mistakes." />
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/first-30-days-inheriting-bitcoin" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Inheriting Bitcoin: What to Do in the First 30 Days" />
+  <meta property="og:description" content="A clear, sequential guide for heirs who have just inherited Bitcoin. Day-by-day guidance to avoid the most common and costly mistakes." />
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/first-30-days-inheriting-bitcoin" />
+  <meta property="og:image" content="/assets/og-image.svg" />
+  <meta property="og:site_name" content="The Bitcoin Family Office" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Inheriting Bitcoin: What to Do in the First 30 Days" />
+  <meta name="twitter:description" content="A clear, sequential guide for heirs who have just inherited Bitcoin. Day-by-day guidance to avoid the most common and costly mistakes." />
+  <meta name="twitter:image" content="/assets/og-image.svg" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Inheriting Bitcoin: What to Do in the First 30 Days",
+        "description": "A clear, sequential guide for heirs who have just inherited Bitcoin. Day-by-day guidance to avoid the most common and costly mistakes.",
+        "datePublished": "2026-02-25",
+        "dateModified": "2026-02-25",
+        "author": {
+          "@type": "Person",
+          "name": "Hal Turner"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "The Bitcoin Family Office",
+          "url": "https://thebitcoinfamilyoffice.com"
+        },
+        "url": "https://thebitcoinfamilyoffice.com/blog/first-30-days-inheriting-bitcoin",
+        "image": "https://thebitcoinfamilyoffice.com/assets/og-image.svg"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://thebitcoinfamilyoffice.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://thebitcoinfamilyoffice.com/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Inheriting Bitcoin: What to Do in the First 30 Days",
+            "item": "https://thebitcoinfamilyoffice.com/blog/first-30-days-inheriting-bitcoin"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+
+    // hm_click event
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('a, button');
+      if (el) {
+        gtag('event', 'hm_click', {
+          element_text: el.innerText ? el.innerText.trim().substring(0, 100) : '',
+          element_href: el.href || '',
+          element_tag: el.tagName
+        });
+      }
+    });
+
+    // hm_scroll event
+    (function() {
+      var scrollMarks = [25, 50, 75, 90];
+      var fired = {};
+      window.addEventListener('scroll', function() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var pct = docHeight > 0 ? Math.round((scrollTop / docHeight) * 100) : 0;
+        scrollMarks.forEach(function(mark) {
+          if (pct >= mark && !fired[mark]) {
+            fired[mark] = true;
+            gtag('event', 'hm_scroll', { scroll_depth: mark });
+          }
+        });
+      }, { passive: true });
+    })();
+  </script>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+      --accent-border: rgba(201, 168, 76, 0.3);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.8; }
+
+    /* ── NAV ── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links a:hover { color: var(--text); opacity: 1; }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #0a0a0a !important;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: 600 !important;
+      font-size: 0.8rem !important;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-cta:hover { opacity: 0.9 !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 16px 24px 24px;
+    }
+
+    .mobile-menu.open { display: block; }
+
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mobile-menu a {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb-bar {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+    }
+
+    .breadcrumb-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .breadcrumb-inner a { color: var(--text-secondary); }
+    .breadcrumb-inner a:hover { color: var(--accent); opacity: 1; }
+    .breadcrumb-sep { color: var(--border); }
+    .breadcrumb-current { color: var(--text); }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero {
+      padding: 64px 24px 48px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .article-series-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(201, 168, 76, 0.08);
+      border: 1px solid var(--accent-border);
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .article-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .article-subtitle {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .article-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    .meta-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+
+    /* ── ARTICLE BODY ── */
+    .article-body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+    }
+
+    .article-content {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: var(--text);
+    }
+
+    .article-content p { margin-bottom: 1.5rem; }
+
+    .article-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 2rem 0 0.75rem;
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 0 0 1.5rem 1.5rem;
+    }
+
+    .article-content li { margin-bottom: 0.5rem; }
+
+    /* Phase blocks */
+    .phase-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 28px 32px;
+      margin: 2rem 0;
+    }
+
+    .phase-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .phase-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .phase-block ul {
+      margin: 0 0 0 1.2rem;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    .phase-block li { margin-bottom: 8px; line-height: 1.7; }
+
+    /* Warning block */
+    .warning-block {
+      background: rgba(201, 168, 76, 0.04);
+      border: 1px solid var(--accent-border);
+      border-radius: 4px;
+      padding: 24px 28px;
+      margin: 2rem 0;
+    }
+
+    .warning-block .warning-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .warning-block ul {
+      margin: 0 0 0 1.2rem;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    .warning-block li { margin-bottom: 8px; line-height: 1.7; }
+
+    /* Tool CTA */
+    .tool-cta {
+      background: var(--bg-elevated);
+      border: 1px solid var(--accent-border);
+      border-radius: 6px;
+      padding: 28px 32px;
+      margin: 2.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .tool-cta-text h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .tool-cta-text p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .tool-cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .tool-cta-btn:hover { opacity: 0.88; }
+
+    /* ── SERVICES CTA ── */
+    .services-cta {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+      border-radius: 6px;
+      padding: 40px 40px;
+      margin: 3rem 0;
+      text-align: center;
+    }
+
+    .services-cta .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .services-cta h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .services-cta p {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 24px;
+      line-height: 1.7;
+    }
+
+    .services-cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      border-radius: 4px;
+    }
+
+    .services-cta-btn:hover { opacity: 0.88; }
+
+    /* ── AUTHOR BOX ── */
+    .author-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin: 3rem 0 2rem;
+    }
+
+    .author-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), rgba(201,168,76,0.4));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0a0a0a;
+      flex-shrink: 0;
+    }
+
+    .author-info .author-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .author-info .author-title {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── RELATED READING ── */
+    .related-section { margin: 3rem 0; }
+
+    .related-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .related-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+
+    .related-card:hover { border-color: var(--accent-border); }
+
+    .related-card-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .related-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .related-card .read-link {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin: 2rem 0;
+    }
+
+    .disclaimer-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .disclaimer p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 48px 24px 32px;
+      margin-top: 80px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .footer-brand .brand-name span { color: var(--accent); }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 260px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col ul li { margin-bottom: 10px; }
+
+    .footer-col ul a {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-col ul a:hover { color: var(--text); opacity: 1; }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .tool-cta { flex-direction: column; align-items: flex-start; }
+      .author-box { flex-direction: column; text-align: center; }
+      .related-grid { grid-template-columns: 1fr; }
+      .services-cta { padding: 28px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .footer-top { grid-template-columns: 1fr; }
+      .article-hero { padding: 40px 20px 32px; }
+      .article-body { padding: 0 20px 48px; }
+      .phase-block { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
+      <ul class="nav-links">
+        <li><a href="/about/">About</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/tools/">Tools</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/services/" class="nav-cta">Work With Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" role="menu">
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/tools/">Tools</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/services/">Work With Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── BREADCRUMB ── -->
+  <div class="breadcrumb-bar" aria-label="Breadcrumb">
+    <nav class="breadcrumb-inner">
+      <a href="/">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/blog/">Blog</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">Inheriting Bitcoin: First 30 Days</span>
+    </nav>
+  </div>
+
+  <!-- ── ARTICLE HERO ── -->
+  <header class="article-hero">
+    <div class="article-series-tag">Heir Education Series</div>
+    <h1 class="article-title">Inheriting Bitcoin: What to Do in the First 30 Days</h1>
+    <p class="article-subtitle">The asset is irreversible to lose. Legal authority and technical access must happen in the right order. Here is your sequenced guide — step by step, day by day.</p>
+    <div class="article-meta">
+      <span class="article-meta-item">By Hal Turner</span>
+      <span class="meta-dot"></span>
+      <span class="article-meta-item">February 25, 2026</span>
+      <span class="meta-dot"></span>
+      <span class="article-meta-item">9 min read</span>
+    </div>
+  </header>
+
+  <!-- ── ARTICLE BODY ── -->
+  <main class="article-body" id="main-content">
+    <article class="article-content">
+
+      <p>When someone inherits stocks, the brokerage will eventually contact them. When someone inherits real estate, a deed can be re-titled with the help of a title company. These assets have institutional infrastructure designed to survive an owner's death. Bitcoin does not. There is no customer service number. There is no lost-and-found. There is no one to call.</p>
+
+      <p>Inheriting Bitcoin is fundamentally different from inheriting any other asset — and the difference is stark: the consequences of a mistake are permanent. A wrong move with a seed phrase, an impulsive sale before establishing legal authority, or a moment of trust extended to the wrong person can result in a loss that cannot be reversed, recovered, or compensated.</p>
+
+      <p>The good news: if you are reading this in the days following an inheritance, you have time. Bitcoin does not move on its own. The coins your loved one held are still there, perfectly intact. What you need is a clear sequence of steps that establishes legal authority first and technical access second — and protects you from the irreversible mistakes that heirs make when they move too quickly.</p>
+
+      <p>This is that sequence.</p>
+
+      <!-- DAYS 1-7 -->
+      <div class="phase-block">
+        <div class="phase-label">Phase One</div>
+        <div class="phase-title">Days 1–7: Secure Everything. Move Nothing.</div>
+        <ul>
+          <li><strong>Do not move any funds.</strong> Under no circumstances should you transfer, sell, or consolidate any Bitcoin until legal authority is established. Any movement before that point could create legal complications and tax exposure.</li>
+          <li><strong>Locate and physically secure hardware wallets.</strong> Hardware wallets (Ledger, Trezor, Coldcard, and similar devices) are small and easy to misplace. Find them. Store them in a physically secure location — a safe, a locked drawer, or a safety deposit box.</li>
+          <li><strong>Locate paper and metal backups.</strong> Seed phrases may be written on paper, stamped into steel, or stored in a secure envelope. Do not move or photograph them. Simply confirm their location and secure them.</li>
+          <li><strong>Do not plug anything in.</strong> Do not connect a hardware wallet to any computer. Do not attempt to "check the balance." Observation can wait. Action cannot be undone.</li>
+          <li><strong>Locate the estate attorney.</strong> If a will exists, the attorney who drafted it should be on record. If a trust exists, the trust document will name a successor trustee. Find the name — but do not share any technical details with anyone yet.</li>
+          <li><strong>Tell no one about the seed phrases.</strong> Not family members. Not helpful strangers. Not online services claiming to assist with "Bitcoin inheritance." Seed phrases are the wallet. Anyone who holds them controls the funds. Guard this information as if the coins depend on it — because they do.</li>
+        </ul>
+      </div>
+
+      <!-- DAYS 8-14 -->
+      <div class="phase-block">
+        <div class="phase-label">Phase Two</div>
+        <div class="phase-title">Days 8–14: Establish Legal Authority</div>
+        <ul>
+          <li><strong>Engage the estate attorney.</strong> Your first substantive task is legal, not technical. Work with the estate attorney to obtain Letters Testamentary (if the estate is going through probate) or to confirm your appointment as successor trustee (if held in a trust). This legal authority is what gives you the right to act.</li>
+          <li><strong>Identify the executor.</strong> If you are not the executor, coordinate with whoever is. Legal authority over the Bitcoin flows from the estate documents — not from who happens to know the seed phrase.</li>
+          <li><strong>Locate the Letter of Instruction.</strong> A well-prepared Bitcoin holder will have left a Letter of Instruction — a document separate from the will that contains practical details: where wallets are stored, how custody is structured, what exchanges are in use, and how to access everything safely. If one exists, it is invaluable.</li>
+          <li><strong>Note seed phrase locations — but do not access them yet.</strong> You are building inventory and establishing legal authority during this phase, not moving funds. Document where seed phrases are located without moving or exposing them.</li>
+          <li><strong>Do not accept outside "help."</strong> People who learn of a Bitcoin inheritance — sometimes through obituaries or probate filings — may reach out claiming to offer assistance. Politely decline. Legitimate help comes through relationships you initiate, not through people who contact you.</li>
+        </ul>
+      </div>
+
+      <!-- DAYS 15-30 -->
+      <div class="phase-block">
+        <div class="phase-label">Phase Three</div>
+        <div class="phase-title">Days 15–30: Tax Clarity Before Any Transaction</div>
+        <ul>
+          <li><strong>Find a Bitcoin-literate CPA before touching any funds.</strong> The cost basis of inherited Bitcoin is determined by the fair market value on the date of the decedent's death — a concept called a stepped-up basis. This has significant implications for any future sale. A general CPA may not understand this. Find one who does before any transfer or sale takes place.</li>
+          <li><strong>Document everything in writing.</strong> Create a written record: dates, wallet locations, seed phrase locations (without writing the phrases themselves in your notes), conversations with the attorney and CPA, and any actions taken. If questions arise later — legal or tax — your documentation protects you.</li>
+          <li><strong>Avoid the urgency trap.</strong> Markets fluctuate. Prices rise and fall. But the Bitcoin is not going anywhere, and the price you see today will not disappear before you have established proper authority and tax clarity. Patience is not indecision. It is precision.</li>
+          <li><strong>Coordinate custody transfer with professional guidance.</strong> Once legal authority is established and cost basis is documented, the actual technical process of transferring custody should happen with guidance from someone who has done it before — not from a tutorial found online at 11pm.</li>
+        </ul>
+      </div>
+
+      <h2>What Not to Do — At Any Point</h2>
+
+      <p>The following mistakes are made by heirs every year, often within the first 72 hours. They are not hypothetical. They are common, and they are preventable.</p>
+
+      <div class="warning-block">
+        <div class="warning-label">Critical — Avoid at All Times</div>
+        <ul>
+          <li><strong>Do not sell immediately without tax planning.</strong> A rushed sale before establishing cost basis can create a tax event with full ordinary income treatment, rather than the favorable stepped-up basis you are entitled to. This difference can be worth tens of thousands of dollars.</li>
+          <li><strong>Do not share key information with anyone you didn't choose.</strong> Seed phrases, PINs, and wallet passwords should never be shared with unsolicited contacts, social media groups, or "inheritance recovery" services. The only professionals who should ever touch this information are those you have verified, retained, and compensated for their services.</li>
+          <li><strong>Do not trust unsolicited "Bitcoin recovery" services.</strong> Scammers specifically target Bitcoin heirs. Their offers are sophisticated and emotionally calibrated. If someone contacts you offering to help access the inherited Bitcoin, treat it as a scam until proven otherwise — and the proof must come from you initiating the relationship, not from them providing references.</li>
+          <li><strong>Do not import seed phrases into software found online.</strong> Any website or application that asks you to enter a seed phrase is a potential theft vector. There is no legitimate reason to enter a seed phrase into software you found while searching online during an inheritance process.</li>
+          <li><strong>Do not move or transfer funds before legal authority is established.</strong> Moving inherited Bitcoin before probate is complete or before trust successor appointment is confirmed can constitute unauthorized use of estate assets. Coordinate with your attorney first.</li>
+        </ul>
+      </div>
+
+      <h2>The Letter of Instruction: Your Most Valuable Asset</h2>
+
+      <p>If your loved one left a Bitcoin Letter of Instruction — a plain-language document detailing wallet locations, custody structure, exchange accounts, and access procedures — you are in a significantly better position than most heirs. These documents bridge the gap between the legal world (wills, trusts) and the technical reality of Bitcoin custody.</p>
+
+      <p>If no Letter of Instruction exists, this is also a message: Bitcoin inheritance requires intentional preparation. If you yourself hold Bitcoin, consider that your heirs may one day be in exactly the position you are in now.</p>
+
+      <!-- Tool CTA -->
+      <div class="tool-cta">
+        <div class="tool-cta-text">
+          <h4>Bitcoin Letter of Instruction Template</h4>
+          <p>A structured guide for documenting your Bitcoin holdings so your heirs have what they need — and nothing falls through the cracks.</p>
+        </div>
+        <a href="/tools/bitcoin-letter-of-instruction" class="tool-cta-btn">Use the Template →</a>
+      </div>
+
+      <h2>The Goal of the First 30 Days</h2>
+
+      <p>Speed is the enemy. Precision is the goal.</p>
+
+      <p>The purpose of the first 30 days is not to liquidate, consolidate, or make decisions about the asset. It is to establish legal authority, locate and secure all materials, gain tax clarity, and protect yourself from the irreversible errors that grief and unfamiliarity tend to produce.</p>
+
+      <p>Bitcoin has no undo button. But it also has no expiration date. The coins will wait. Take the time to do this correctly.</p>
+
+      <!-- Services CTA -->
+      <div class="services-cta">
+        <div class="eyebrow">Professional Guidance</div>
+        <h3>Navigating a Bitcoin Inheritance?</h3>
+        <p>Our team works with heirs, executors, and estate attorneys to ensure Bitcoin is transferred correctly — legally, technically, and without irreversible mistakes.</p>
+        <a href="/services/" class="services-cta-btn">Explore Our Services</a>
+      </div>
+
+      <!-- Author Box -->
+      <div class="author-box">
+        <div class="author-avatar">H</div>
+        <div class="author-info">
+          <div class="author-name">Hal Turner</div>
+          <div class="author-title">Bitcoin Wealth Strategist · The Bitcoin Family Office</div>
+        </div>
+      </div>
+
+      <!-- Related Reading -->
+      <div class="related-section">
+        <h2>Continue Your Education</h2>
+        <div class="related-grid">
+          <a href="/blog/bitcoin-heir-education-guide.html" class="related-card">
+            <div class="related-card-tag">Heir Education</div>
+            <h4>The Complete Bitcoin Heir Education Guide</h4>
+            <span class="read-link">Read →</span>
+          </a>
+          <a href="/blog/what-is-bitcoin-for-heirs.html" class="related-card">
+            <div class="related-card-tag">Heir Education</div>
+            <h4>What Is Bitcoin? A Guide Written for Heirs</h4>
+            <span class="read-link">Read →</span>
+          </a>
+          <a href="/blog/how-bitcoin-custody-works-heirs.html" class="related-card">
+            <div class="related-card-tag">Heir Education</div>
+            <h4>How Bitcoin Custody Works: What Heirs Need to Know</h4>
+            <span class="read-link">Read →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="disclaimer">
+        <div class="disclaimer-label">Educational Disclaimer</div>
+        <p>This article is for educational purposes only and does not constitute legal, tax, or financial advice. Bitcoin inheritance involves complex legal and technical considerations that vary by jurisdiction and estate structure. Laws governing digital assets are evolving. Consult qualified legal, tax, and financial professionals before taking any action related to an inherited estate.</p>
+      </div>
+
+    </article>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-name">The Bitcoin <span>Family Office</span></div>
+          <p>Institutional-grade Bitcoin wealth strategy for families building generational legacies.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Firm</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/services/">Services</a></li>
+            <li><a href="/blog/">Insights</a></li>
+            <li><a href="/resources/">Resources</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Heir Education</h4>
+          <ul>
+            <li><a href="/blog/bitcoin-heir-education-guide.html">Heir Education Guide</a></li>
+            <li><a href="/blog/what-is-bitcoin-for-heirs.html">What Is Bitcoin?</a></li>
+            <li><a href="/blog/how-bitcoin-custody-works-heirs.html">How Custody Works</a></li>
+            <li><a href="/blog/bitcoin-inheritance-scams.html">Inheritance Scams</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Tools</h4>
+          <ul>
+            <li><a href="/tools/bitcoin-letter-of-instruction">Letter of Instruction</a></li>
+            <li><a href="/tools/">All Tools</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 The Bitcoin Family Office. All rights reserved.</p>
+        <p><a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Use</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', function() {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+  </script>
+
+</body>
+</html>

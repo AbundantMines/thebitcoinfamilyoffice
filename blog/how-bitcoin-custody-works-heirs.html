@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Bitcoin Custody Works: What Every Heir Needs to Know | The Bitcoin Family Office</title>
+<meta name="description" content="Hardware wallets, seed phrases, exchange accounts, multisig — a plain-language guide to Bitcoin custody for heirs who need to understand what they're inheriting.">
+<meta property="og:title" content="How Bitcoin Custody Works: What Every Heir Needs to Know">
+<meta property="og:description" content="Hardware wallets, seed phrases, exchange accounts, multisig — a plain-language guide to Bitcoin custody for heirs who need to understand what they're inheriting.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/how-bitcoin-custody-works-heirs.html">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/how-bitcoin-custody-works-heirs.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How Bitcoin Custody Works: What Every Heir Needs to Know",
+  "description": "Hardware wallets, seed phrases, exchange accounts, multisig — a plain-language guide to Bitcoin custody for heirs who need to understand what they're inheriting.",
+  "author": {"@type": "Person", "name": "Hal Turner"},
+  "url": "https://thebitcoinfamilyoffice.com/blog/how-bitcoin-custody-works-heirs.html",
+  "datePublished": "2026-02-24",
+  "dateModified": "2026-02-24",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Bitcoin Family Office",
+    "url": "https://thebitcoinfamilyoffice.com"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebitcoinfamilyoffice.com"},
+    {"@type": "ListItem", "position": 2, "name": "Research", "item": "https://thebitcoinfamilyoffice.com/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "Heir Education Series", "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-heir-education-guide.html"},
+    {"@type": "ListItem", "position": 4, "name": "How Bitcoin Custody Works", "item": "https://thebitcoinfamilyoffice.com/blog/how-bitcoin-custody-works-heirs.html"}
+  ]
+}
+</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+<script>
+(function(){
+  if(typeof gtag!=='function') return;
+  document.addEventListener('click',function(e){
+    var el=e.target;
+    var tag=el.tagName+(el.id?'#'+el.id:el.className?' .'+String(el.className).trim().split(' ')[0]:'');
+    gtag('event','hm_click',{'page':location.pathname,'cx':Math.round(e.clientX/window.innerWidth*100),'cy':Math.round((e.clientY+window.scrollY)/Math.max(document.body.scrollHeight,1)*100),'el':tag.substring(0,40)});
+  });
+  var _sd=0;
+  window.addEventListener('scroll',function(){
+    var pct=Math.round((window.scrollY+window.innerHeight)/Math.max(document.body.scrollHeight,1)*100);
+    var milestone=Math.floor(pct/25)*25;
+    if(milestone>_sd){_sd=milestone;gtag('event','hm_scroll',{'page':location.pathname,'depth':_sd});}
+  },{passive:true});
+})();
+</script>
+
+<!-- Cloudflare Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0a; --bg-elevated: #111111; --bg-card: #141414; --border: #1e1e1e;
+  --accent: #c9a84c; --accent-dim: rgba(201,168,76,0.10); --accent-border: rgba(201,168,76,0.3);
+  --text: #e8e0d0; --text-secondary: #8a8070; --text-muted: #5a5248;
+  --serif: 'EB Garamond', Georgia, serif;
+  --display: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --max-w: 720px;
+}
+html { font-size: 18px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { opacity: 0.8; }
+::selection { background: var(--accent-dim); color: var(--accent); }
+
+nav { position: sticky; top: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-mark { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); }
+.nav-mark span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); opacity: 1; }
+.nav-links .nav-cta { color: var(--accent) !important; border: 1px solid var(--accent-border); padding: 0.35rem 0.8rem; border-radius: 2px; }
+
+.article-header { padding: 7rem 2rem 4rem; border-bottom: 1px solid var(--border); text-align: center; position: relative; }
+.article-header::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 5rem; background: linear-gradient(to bottom, transparent, var(--accent-border)); }
+.article-tag { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: block; }
+.article-header h1 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.25; color: var(--text); max-width: 800px; margin: 0 auto 1.5rem; }
+.article-meta { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+
+.article-body { max-width: var(--max-w); margin: 0 auto; padding: 4rem 2rem 6rem; }
+.article-body h2 { font-family: var(--display); font-weight: 400; font-size: 1.6rem; line-height: 1.3; color: var(--text); margin: 3rem 0 1.25rem; }
+.article-body h3 { font-family: var(--sans); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); margin: 2rem 0 0.75rem; }
+.article-body p { margin-bottom: 1.5rem; font-size: 1.05rem; color: var(--text); }
+.article-body ul, .article-body ol { margin: 0 0 1.5rem 1.5rem; }
+.article-body li { margin-bottom: 0.6rem; font-size: 1.05rem; line-height: 1.75; }
+.article-body strong { color: var(--text); font-weight: 500; }
+hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+.pull-quote { font-family: var(--display); font-style: italic; font-size: 1.25rem; line-height: 1.5; color: var(--text-secondary); border-left: 2px solid var(--accent-border); padding: 1.25rem 2rem; margin: 2.5rem 0; }
+
+.warning-box { background: rgba(201,168,76,0.06); border: 1px solid var(--accent-border); border-left: 3px solid var(--accent); border-radius: 4px; padding: 1.5rem 2rem; margin: 2rem 0; }
+.warning-box .warning-label { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+.warning-box p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.75; }
+.warning-box ul { margin: 0.5rem 0 0 1.25rem; }
+.warning-box li { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0.4rem; }
+
+.tech-box { background: var(--bg-elevated); border: 1px solid var(--border); border-left: 3px solid var(--accent-border); padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 2px; }
+.tech-box .tech-label { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+.tech-box p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.75; }
+
+.services-cta { background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 4px; padding: 2.5rem; max-width: var(--max-w); margin: 0 auto 4rem; text-align: center; }
+.services-cta h3 { font-family: var(--display); font-weight: 400; font-size: 1.4rem; color: var(--text); margin-bottom: 0.75rem; }
+.services-cta p { font-family: var(--sans); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6; }
+.services-cta a { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-border); padding: 0.6rem 1.4rem; border-radius: 2px; display: inline-block; transition: background 0.2s; }
+.services-cta a:hover { background: var(--accent-dim); opacity: 1; }
+
+footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-mark { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); }
+.footer-mark span { color: var(--accent); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); }
+.footer-links a:hover { color: var(--accent); opacity: 1; }
+.footer-copy { font-family: var(--sans); font-size: 0.63rem; color: var(--text-muted); }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 1px; background: var(--text-secondary); transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+@media (max-width: 640px) {
+  html { font-size: 16px; }
+  nav { padding: 1rem 1.25rem; }
+  .hamburger { display: flex; }
+  .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.97); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; z-index: 150; }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1rem; }
+  .article-body { padding: 3rem 1.25rem 5rem; }
+  footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+  .footer-links { justify-content: center; flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-mark">The Bitcoin <span>Family Office</span></a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="/" onclick="closeMenu()">Home</a>
+    <a href="/blog/" onclick="closeMenu()">Blog</a>
+    <a href="/services/" onclick="closeMenu()">Services</a>
+    <a href="/faq/" onclick="closeMenu()">FAQ</a>
+    <a href="/services/" class="nav-cta" onclick="closeMenu()">Get Started</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <span class="article-tag">Heir Education &mdash; Article 2</span>
+  <h1>How Bitcoin Custody Works: What Every Heir Needs to Know</h1>
+  <div class="article-meta">Hal Turner &nbsp;·&nbsp; February 2026 &nbsp;·&nbsp; 7 min read</div>
+</header>
+
+<article class="article-body">
+
+  <p style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
+    <a href="/" style="color:var(--text-muted);">Home</a> <span style="margin:0 0.5rem;">&#x203A;</span>
+    <a href="/blog/" style="color:var(--text-muted);">Research</a> <span style="margin:0 0.5rem;">&#x203A;</span>
+    <a href="/blog/bitcoin-heir-education-guide.html" style="color:var(--text-muted);">Heir Education</a> <span style="margin:0 0.5rem;">&#x203A;</span>
+    <span style="color:var(--text-secondary);">How Custody Works</span>
+    <span style="margin-left:1.5rem;padding-left:1.5rem;border-left:1px solid var(--border);">Est. 7 min read</span>
+  </p>
+
+  <p>The most common mistake heirs make with Bitcoin isn't selling at the wrong time or moving funds to the wrong place. It's misunderstanding — or underestimating — how custody works. They assume it's like a bank account. It isn't. Before you touch anything, you need to understand who is holding what, where, and why that changes everything about how you handle this inheritance.</p>
+
+  <p>This article explains the major custody arrangements you might encounter, what each one means for you as an heir, and — critically — what you must never do, regardless of how urgent it feels or how trustworthy the person asking seems.</p>
+
+  <h2>The Foundational Concept: "Not Your Keys, Not Your Coins"</h2>
+
+  <p>This phrase — repeated often in Bitcoin circles — is not a slogan. It is a factual description of how Bitcoin works. On the Bitcoin network, ownership is controlled entirely by private keys. A private key is a secret number that authorizes transactions. Whoever holds the key can move the Bitcoin. Whoever doesn't, can't.</p>
+
+  <p>When someone holds their own private keys — typically through a hardware wallet — they are in complete, direct control of their Bitcoin. No third party can freeze the account, reverse a transaction, or deny access. The Bitcoin responds only to the key.</p>
+
+  <p>When someone leaves their Bitcoin on an exchange — a platform like Coinbase, Kraken, or Gemini — they do not hold their own keys. The exchange holds the keys on their behalf. This is custodial Bitcoin, and it works more like a brokerage account: the platform controls the underlying asset, and you have a claim against them.</p>
+
+  <p>These two arrangements require completely different approaches to inheritance. Your first task as an heir is to determine which one you're dealing with — and that starts with the documentation your family member left behind.</p>
+
+  <div class="pull-quote">"The Bitcoin responds only to the key. No institution stands between you and the asset — and no institution can help you recover it if the key is lost."</div>
+
+  <h2>Hardware Wallets: What They Are and What to Do With Them</h2>
+
+  <p>A hardware wallet is a small physical device — often resembling a USB drive or a calculator — that stores private keys offline. The most common brands are Coldcard, Ledger, and Trezor. These devices are specifically designed so that the private keys never leave the hardware and are never exposed to the internet.</p>
+
+  <p>When you find a hardware wallet among a deceased person's belongings, treat it with the same care you would treat physical gold or an original deed. It is the access point to the Bitcoin. It should be:</p>
+
+  <ul>
+    <li>Stored in a secure location immediately — a safe, a lockbox, or another physically protected space</li>
+    <li>Not plugged into any computer until you have legal guidance</li>
+    <li>Not shown to or handled by anyone who isn't directly involved in the estate</li>
+    <li>Documented — note where you found it, its condition, and any visible markings</li>
+  </ul>
+
+  <p>Hardware wallets are typically protected by a PIN. Without the PIN, the device will lock after a number of failed attempts. But even if the device is locked or lost, the Bitcoin can be recovered — if and only if the seed phrase is available.</p>
+
+  <h2>Seed Phrases: The Master Key</h2>
+
+  <p>The seed phrase — sometimes called a recovery phrase or mnemonic — is a sequence of 12 or 24 common English words, usually written on paper or stamped into a metal plate. It is the most important item in any Bitcoin estate. It is the master key from which all private keys in the wallet are derived.</p>
+
+  <p>If someone has the seed phrase, they can regenerate the entire wallet on a new device and access every address that wallet ever controlled. This is both the strength and the danger of seed phrases. They make recovery possible. They also make theft devastatingly simple.</p>
+
+  <div class="tech-box">
+    <div class="tech-label">How Seed Phrases Work</div>
+    <p>Seed phrases follow an open standard (BIP-39) that any compatible hardware wallet can read. This means a seed phrase created on a Ledger device can be loaded into a Trezor or Coldcard — or any other BIP-39 compatible wallet — and will produce exactly the same addresses and balances. The seed phrase is wallet-agnostic. The Bitcoin lives on the network; the seed phrase is the key to it.</p>
+  </div>
+
+  <p>If you find a seed phrase — on paper, in a notebook, stamped in metal, stored in a safe — do not:</p>
+  <ul>
+    <li>Photograph it and store the photo in a cloud account</li>
+    <li>Type it into any website, app, or form — no matter how legitimate it appears</li>
+    <li>Read it aloud on a phone call or video call</li>
+    <li>Share it with anyone outside of a physically secure, legally supervised process</li>
+    <li>Store it digitally in any form</li>
+  </ul>
+
+  <p>Any website or person that asks you to enter a seed phrase online is attempting to steal the Bitcoin. Legitimate Bitcoin professionals — advisers, attorneys, even hardware wallet manufacturers — have no reason to ask for your seed phrase. Ever.</p>
+
+  <h2>Exchange Accounts: When the Bitcoin Is Held by a Third Party</h2>
+
+  <p>If your family member held Bitcoin on an exchange, the inheritance process looks more like inheriting a brokerage account. The Bitcoin is technically held by the exchange; your family member had a claim against it. The exchange will likely require a death certificate, letters testamentary from the probate court, and their own account verification process.</p>
+
+  <p>Exchange-held Bitcoin carries different risks in inheritance:</p>
+  <ul>
+    <li>The exchange may freeze the account upon notification of death</li>
+    <li>The exchange may have its own policies about inheritance timelines and documentation requirements</li>
+    <li>If the exchange becomes insolvent — as several major exchanges have — the assets may not be fully recoverable</li>
+    <li>Login credentials alone are rarely sufficient; exchanges typically require formal estate documentation</li>
+  </ul>
+
+  <p>If you discover exchange account credentials, secure them, and contact the exchange directly through its official website only. Do not use any login link sent to you by email or text message without verifying the sender independently.</p>
+
+  <h2>Multi-Signature Setups: When Multiple Keys Are Required</h2>
+
+  <p>Some Bitcoin holders — particularly those with significant holdings — use multi-signature custody arrangements, often called multisig. In a multisig setup, a transaction requires signatures from more than one private key before it can be executed.</p>
+
+  <p>A common arrangement is "2-of-3": three keys exist, and any two of them can authorize a transaction. The keys might be stored in different locations — one with the owner, one in a safe deposit box, one with a trusted institution or collaborator. This provides redundancy (if one key is lost, the other two can still access the funds) and security (a thief who steals one key cannot move anything).</p>
+
+  <p>If you discover that your family member used a multisig setup, do not attempt to access the funds without locating all the documentation and understanding the full structure. Multisig inheritance is more complex and almost always requires professional guidance. The <a href="/tools/bitcoin-letter-of-instruction">Letter of Instruction</a> your family member left — if they prepared one — should describe the multisig configuration in detail.</p>
+
+  <h2>What Not to Do: The Rules That Protect Everything</h2>
+
+  <p>Regardless of the custody arrangement you encounter, several rules apply absolutely.</p>
+
+  <div class="warning-box">
+    <div class="warning-label">Critical Rules for Heirs — No Exceptions</div>
+    <ul>
+      <li><strong>Never enter a seed phrase online.</strong> No legitimate service requires this. Anyone asking for it online is stealing from you.</li>
+      <li><strong>Never import a seed phrase into software you downloaded following a stranger's instructions.</strong> Malicious software can capture seed phrases the moment they are typed.</li>
+      <li><strong>Never trust unsolicited help.</strong> If someone contacts you offering to help access or recover Bitcoin after a death, assume they are a scammer. Legitimate advisers do not cold-contact grieving heirs.</li>
+      <li><strong>Never move funds without legal guidance.</strong> Premature transactions can have serious estate and tax consequences, and in some jurisdictions may constitute unauthorized access to an estate asset.</li>
+      <li><strong>Never share account credentials or device photos with anyone unvetted.</strong> Even a photo of a hardware wallet screen showing a balance can be used by sophisticated attackers to target you.</li>
+    </ul>
+  </div>
+
+  <p>The Bitcoin your family member held is protected as long as the keys are not compromised. The primary threat is human error — yours or someone else's. Go slowly. Verify everything. Trust no one you haven't independently confirmed through official channels.</p>
+
+  <p>Continue with <a href="/blog/first-30-days-inheriting-bitcoin.html">Article 3: What to Do in the First 30 Days</a>, or return to the <a href="/blog/bitcoin-heir-education-guide.html">Heir Education series overview</a> for a full picture of the series.</p>
+
+</article>
+
+<div style="max-width:var(--max-w);margin:0 auto 2rem;padding:1.5rem 2rem;background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;display:flex;gap:1.5rem;align-items:flex-start;">
+  <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--accent);">HT</div>
+  <div>
+    <p style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">Hal Turner &mdash; Bitcoin Wealth Strategist</p>
+    <p style="font-family:var(--serif);font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin:0;">Hal Turner advises high-net-worth families on Bitcoin custody architecture, multi-generational estate planning, and wealth transfer strategy. He focuses exclusively on Bitcoin — not the broader cryptocurrency market. <a href="/services/" style="color:var(--accent);">Work with Hal &rarr;</a></p>
+  </div>
+</div>
+
+<div class="services-cta">
+  <h3>Need Help Navigating a Bitcoin Inheritance?</h3>
+  <p>We work alongside estate attorneys and executors to provide the Bitcoin-specific guidance that most legal professionals aren't equipped to offer. From custody assessment to secure transfer coordination, we cover the technical side so your advisers can focus on the legal.</p>
+  <a href="/services/">Explore Our Services</a>
+</div>
+
+<div style="max-width:var(--max-w);margin:0 auto 3rem;padding:0 2rem;">
+  <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem;">Related Reading</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+    <a href="/blog/bitcoin-heir-education-guide.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+      <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Series Hub</p>
+      <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Heir Education: The Complete Guide</p>
+    </a>
+    <a href="/blog/first-30-days-inheriting-bitcoin.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+      <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Article 3</p>
+      <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Inheriting Bitcoin: What to Do in the First 30 Days</p>
+    </a>
+    <a href="/blog/bitcoin-inheritance-scams.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+      <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Article 4</p>
+      <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Inheritance Scams: How to Protect Yourself</p>
+    </a>
+  </div>
+</div>
+
+<div style="max-width:var(--max-w);margin:0 auto 4rem;padding:1.5rem 1.75rem;border-top:1px solid var(--border);background:var(--bg-elevated);border-radius:4px;">
+  <p style="font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.6rem;">Important Disclosure</p>
+  <p style="font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);line-height:1.75;margin:0;">This content is for <strong style="color:var(--text-secondary);">educational purposes only</strong> and does not constitute legal, tax, financial, or investment advice. It should not be relied upon as a substitute for consultation with qualified legal, tax, financial, or other professional advisers. Laws, regulations, and tax rules referenced herein are subject to change and may differ by jurisdiction. Individual circumstances vary significantly — strategies appropriate for one person may be inappropriate for another. <strong style="color:var(--text-secondary);">Always consult with qualified legal counsel, a licensed tax professional, and a registered financial adviser before taking any action regarding an inherited asset.</strong> The Bitcoin Family Office does not provide legal, tax, or investment advisory services.</p>
+</div>
+
+<footer>
+  <div class="footer-mark">The <span>Bitcoin</span> Family Office</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/services/">Services</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/disclosures">Disclosures</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 The Bitcoin Family Office. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const btn = document.getElementById('hamburger');
+  const links = document.getElementById('navLinks');
+  btn.classList.toggle('open');
+  links.classList.toggle('open');
+  document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navLinks').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>
