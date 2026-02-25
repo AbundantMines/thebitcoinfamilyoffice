@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2   # need previous commit to diff new files
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
@@ -18,3 +20,31 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy . --project-name=thebitcoinfamilyoffice --branch=main
+
+      - name: Submit new/changed HTML pages to IndexNow
+        run: |
+          # Find HTML files added or modified in this push
+          NEW_FILES=$(git diff --name-only HEAD~1 HEAD -- '*.html' 2>/dev/null | grep -v "^\.github" | head -40)
+          if [ -z "$NEW_FILES" ]; then
+            echo "No HTML changes to submit"
+            exit 0
+          fi
+          # Build URL array
+          URL_LIST=$(echo "$NEW_FILES" | python3 -c "
+          import sys, json
+          base = 'https://thebitcoinfamilyoffice.com'
+          files = [l.strip() for l in sys.stdin if l.strip()]
+          urls = []
+          for f in files:
+              path = '/' + f
+              if path.endswith('/index.html'):
+                  path = path[:-10]
+              urls.append(base + path)
+          print(json.dumps(urls))
+          ")
+          echo "Submitting $(echo $URL_LIST | python3 -c 'import json,sys; print(len(json.load(sys.stdin)))') URLs to IndexNow"
+          echo "URLs: $URL_LIST"
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d "{\"host\":\"thebitcoinfamilyoffice.com\",\"key\":\"thebitcoinfamilyoffice\",\"keyLocation\":\"https://thebitcoinfamilyoffice.com/thebitcoinfamilyoffice.txt\",\"urlList\":$URL_LIST}" \
+            -w "\nHTTP %{http_code}\n"
