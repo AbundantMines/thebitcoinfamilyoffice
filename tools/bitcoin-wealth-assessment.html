@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Wealth Assessment | The Bitcoin Family Office</title>
+  <meta name="description" content="Find out where you stand with your Bitcoin wealth strategy. A 5-minute assessment for serious holders.">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-wealth-assessment">
+  <meta property="og:title" content="Bitcoin Wealth Assessment | The Bitcoin Family Office">
+  <meta property="og:description" content="Find out where you stand with your Bitcoin wealth strategy. A 5-minute assessment for serious holders.">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+    // Heatmap: click tracking
+    document.addEventListener('click', function(e) {
+      gtag('event', 'hm_click', {x: e.clientX, y: e.clientY, path: window.location.pathname});
+    });
+    // Heatmap: scroll depth
+    var scrollMarks = {25:false,50:false,75:false,100:false};
+    window.addEventListener('scroll', function() {
+      var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      [25,50,75,100].forEach(function(m) {
+        if (pct >= m && !scrollMarks[m]) { scrollMarks[m] = true; gtag('event','hm_scroll',{depth:m,path:window.location.pathname}); }
+      });
+    });
+  </script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+      --accent-border: rgba(201,168,76,0.3);
+      --display: 'Playfair Display', Georgia, serif;
+      --serif: 'EB Garamond', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+
+    /* NAV */
+    nav { background: var(--bg-elevated); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: var(--display); font-size: 1.1rem; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); transition: all 0.3s; }
+    .nav-mobile { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--bg-elevated); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+    @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } }
+
+    /* HERO */
+    .hero { text-align: center; padding: 4rem 2rem 2.5rem; max-width: 680px; margin: 0 auto; }
+    .hero-label { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
+    .hero h1 { font-family: var(--display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; color: var(--text); line-height: 1.2; margin-bottom: 1rem; }
+    .hero p { font-family: var(--serif); font-size: 1.15rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 1.5rem; }
+    .hero-meta { display: flex; justify-content: center; gap: 2rem; font-size: 0.75rem; color: var(--text-secondary); letter-spacing: 0.05em; }
+    .hero-meta span::before { content: '✓ '; color: var(--accent); }
+
+    /* PROGRESS */
+    .progress-wrap { max-width: 560px; margin: 0 auto 2.5rem; padding: 0 2rem; }
+    .progress-bar-bg { background: var(--border); border-radius: 2px; height: 3px; margin-bottom: 0.6rem; }
+    .progress-bar-fill { background: var(--accent); height: 3px; border-radius: 2px; transition: width 0.4s ease; width: 0%; }
+    .progress-label { font-size: 0.7rem; color: var(--text-secondary); letter-spacing: 0.05em; text-align: right; }
+
+    /* QUIZ CARD */
+    .quiz-wrap { max-width: 620px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+    .question-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 2.5rem 2.5rem 2rem; display: none; animation: fadeIn 0.35s ease; }
+    .question-card.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .q-step { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.8rem; }
+    .q-text { font-family: var(--display); font-size: 1.45rem; color: var(--text); line-height: 1.35; margin-bottom: 0.5rem; }
+    .q-sub { font-family: var(--serif); font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.8rem; line-height: 1.6; }
+    .options { display: grid; gap: 0.75rem; }
+    .option-btn { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 1rem 1.25rem; text-align: left; cursor: pointer; color: var(--text); font-family: var(--sans); font-size: 0.9rem; line-height: 1.4; transition: all 0.2s; display: flex; align-items: flex-start; gap: 0.85rem; }
+    .option-btn:hover { border-color: var(--accent-border); color: var(--accent); }
+    .option-btn.selected { border-color: var(--accent); background: rgba(201,168,76,0.07); color: var(--accent); }
+    .option-letter { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); min-width: 1.5rem; margin-top: 0.15rem; }
+    .option-btn.selected .option-letter { color: var(--accent); }
+    .option-desc { font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.25rem; line-height: 1.5; display: block; }
+    .option-btn.selected .option-desc { color: rgba(201,168,76,0.7); }
+    .btn-next { margin-top: 1.5rem; width: 100%; padding: 0.9rem; background: var(--accent); color: var(--bg); font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border: none; border-radius: 3px; cursor: pointer; transition: opacity 0.2s; }
+    .btn-next:disabled { opacity: 0.3; cursor: not-allowed; }
+    .btn-next:not(:disabled):hover { opacity: 0.88; }
+
+    /* EMAIL CAPTURE */
+    .email-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 2.5rem; display: none; }
+    .email-card.active { display: block; animation: fadeIn 0.35s ease; }
+    .email-card h2 { font-family: var(--display); font-size: 1.65rem; color: var(--text); margin-bottom: 0.6rem; }
+    .email-card p { font-family: var(--serif); font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+    .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-field label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); }
+    .form-field input, .form-field select { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 3px; padding: 0.75rem 1rem; color: var(--text); font-family: var(--sans); font-size: 0.9rem; width: 100%; }
+    .form-field input:focus, .form-field select:focus { outline: none; border-color: var(--accent-border); }
+    .form-field select option { background: var(--bg-elevated); }
+    .btn-submit { width: 100%; padding: 1rem; background: var(--accent); color: var(--bg); font-family: var(--sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border: none; border-radius: 3px; cursor: pointer; transition: opacity 0.2s; margin-top: 0.5rem; }
+    .btn-submit:hover { opacity: 0.88; }
+    .form-note { font-size: 0.72rem; color: var(--text-secondary); margin-top: 0.75rem; text-align: center; }
+
+    /* RESULTS */
+    .results-card { display: none; max-width: 620px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+    .results-card.active { display: block; animation: fadeIn 0.4s ease; }
+    .result-header { background: var(--bg-card); border: 1px solid var(--border); border-top: 3px solid var(--accent); border-radius: 6px; padding: 2.5rem; margin-bottom: 1.5rem; }
+    .result-tier { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    .result-title { font-family: var(--display); font-size: 2rem; color: var(--text); margin-bottom: 1rem; line-height: 1.2; }
+    .result-summary { font-family: var(--serif); font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; }
+    .result-score-row { display: flex; gap: 1.5rem; margin: 1.5rem 0 0; flex-wrap: wrap; }
+    .score-chip { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 3px; padding: 0.5rem 1rem; font-size: 0.75rem; color: var(--text-secondary); }
+    .score-chip strong { color: var(--accent); font-size: 0.95rem; display: block; margin-bottom: 0.15rem; }
+    .result-sections { display: grid; gap: 1rem; }
+    .result-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 1.75rem 2rem; }
+    .result-section h3 { font-family: var(--display); font-size: 1.1rem; color: var(--text); margin-bottom: 0.75rem; }
+    .result-section ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .result-section ul li { font-size: 0.88rem; color: var(--text-secondary); padding-left: 1.2rem; position: relative; line-height: 1.55; }
+    .result-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; }
+    .cta-block { background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 6px; padding: 2rem; margin-top: 1.5rem; text-align: center; }
+    .cta-block h3 { font-family: var(--display); font-size: 1.3rem; color: var(--text); margin-bottom: 0.6rem; }
+    .cta-block p { font-family: var(--serif); font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.2rem; line-height: 1.7; }
+    .cta-block a { display: inline-block; background: var(--accent); color: var(--bg); font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem 2rem; border-radius: 3px; text-decoration: none; }
+    .cta-block a:hover { opacity: 0.88; }
+    .result-links { margin-top: 1.25rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .result-links a { font-size: 0.78rem; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-border); padding-bottom: 2px; }
+    .result-links a:hover { border-color: var(--accent); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 3rem 2rem 2rem; text-align: center; }
+    .footer-logo { font-family: var(--display); font-size: 1.1rem; color: var(--text); margin-bottom: 1.5rem; }
+    .footer-logo span { color: var(--accent); }
+    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; }
+    .footer-links a { font-size: 0.75rem; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-legal { font-size: 0.72rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto; line-height: 1.7; }
+    .disclaimer-block { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem 2rem; margin: 2rem 1.5rem; max-width: 620px; margin-left: auto; margin-right: auto; }
+    .disclaimer-block p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.7; }
+    .disclaimer-block strong { color: var(--text); }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Bitcoin Wealth Assessment",
+    "description": "Interactive assessment to identify gaps in your Bitcoin wealth strategy",
+    "url": "https://thebitcoinfamilyoffice.com/tools/bitcoin-wealth-assessment",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://thebitcoinfamilyoffice.com"},
+        {"@type":"ListItem","position":2,"name":"Tools","item":"https://thebitcoinfamilyoffice.com/tools/"},
+        {"@type":"ListItem","position":3,"name":"Bitcoin Wealth Assessment","item":"https://thebitcoinfamilyoffice.com/tools/bitcoin-wealth-assessment"}
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
+  <ul class="nav-links">
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/blog/">Research</a></li>
+    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/faq/">FAQ</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="/services/">Services</a>
+  <a href="/blog/">Research</a>
+  <a href="/tools/">Tools</a>
+  <a href="/about/">About</a>
+  <a href="/faq/">FAQ</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-label">5-Minute Assessment</p>
+  <h1>Where Does Your Bitcoin Strategy Stand?</h1>
+  <p>Most serious holders have gaps they are not aware of — in structure, protection, tax efficiency, or succession. This assessment identifies yours.</p>
+  <div class="hero-meta">
+    <span>7 questions</span>
+    <span>Personalized results</span>
+    <span>No obligation</span>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap" id="progressWrap" style="display:none;">
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel"></div>
+</div>
+
+<!-- START BUTTON -->
+<div class="quiz-wrap" id="startWrap">
+  <div style="text-align:center; padding: 1rem 0 3rem;">
+    <button class="btn-next" style="max-width:280px;margin:0 auto;display:block;" onclick="startQuiz()">Begin Assessment →</button>
+    <p style="font-size:0.72rem;color:var(--text-secondary);margin-top:0.75rem;">Takes about 3–5 minutes</p>
+  </div>
+</div>
+
+<!-- QUIZ QUESTIONS -->
+<div class="quiz-wrap" id="quizWrap" style="display:none;">
+
+  <!-- Q1 -->
+  <div class="question-card" id="q1">
+    <div class="q-step">Question 1 of 7</div>
+    <div class="q-text">How long have you been accumulating Bitcoin?</div>
+    <div class="q-sub">Your accumulation timeline shapes which strategies are most relevant.</div>
+    <div class="options">
+      <button class="option-btn" data-q="q1" data-val="1" data-score="1" onclick="selectOption(this)">
+        <span class="option-letter">A</span>
+        <span>Less than 1 year<span class="option-desc">Still orienting — basic security and custody is the priority</span></span>
+      </button>
+      <button class="option-btn" data-q="q1" data-val="2" data-score="2" onclick="selectOption(this)">
+        <span class="option-letter">B</span>
+        <span>1–4 years<span class="option-desc">Building a meaningful position — structure is becoming important</span></span>
+      </button>
+      <button class="option-btn" data-q="q1" data-val="3" data-score="3" onclick="selectOption(this)">
+        <span class="option-letter">C</span>
+        <span>5–9 years<span class="option-desc">Long-term holder with embedded gains — tax and legacy planning matters</span></span>
+      </button>
+      <button class="option-btn" data-q="q1" data-val="4" data-score="4" onclick="selectOption(this)">
+        <span class="option-letter">D</span>
+        <span>10+ years (Bitcoin OG)<span class="option-desc">Early adopter — complexity and estate implications are significant</span></span>
+      </button>
+    </div>
+    <button class="btn-next" disabled onclick="nextQuestion('q1','q2')">Next →</button>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question-card" id="q2">
+    <div class="q-step">Question 2 of 7</div>
+    <div class="q-text">What is your approximate Bitcoin holding as a share of your total net worth?</div>
+    <div class="q-sub">Concentration level determines urgency of planning strategies.</div>
+    <div class="options">
+      <button class="option-btn" data-q="q2" data-val="1" data-score="1" onclick="selectOption(this)">
+        <span class="option-letter">A</span>
+        <span>Under 10%<span class="option-desc">Bitcoin is a meaningful but small allocation</span></span>
+      </button>
+      <button class="option-btn" data-q="q2" data-val="2" data-score="2" onclick="selectOption(this)">
+        <span class="option-letter">B</span>
+        <span>10–30%<span class="option-desc">Significant position — structure and protection worth addressing</span></span>
+      </button>
+      <button class="option-btn" data-q="q2" data-val="3" data-score="3" onclick="selectOption(this)">
+        <span class="option-letter">C</span>
+        <span>30–60%<span class="option-desc">Bitcoin is a core asset — planning gaps carry real consequence</span></span>
+      </button>
+      <button class="option-btn" data-q="q2" data-val="4" data-score="4" onclick="selectOption(this)">
+        <span class="option-letter">D</span>
+        <span>Over 60%<span class="option-desc">Concentrated position — comprehensive structuring is critical</span></span>
+      </button>
+    </div>
+    <button class="btn-next" disabled onclick="nextQuestion('q2','q3')">Next →</button>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question-card" id="q3">
+    <div class="q-step">Question 3 of 7</div>
+    <div class="q-text">How is your Bitcoin currently held?</div>
+    <div class="q-sub">Custody structure affects security, tax treatment, and estate outcomes.</div>
+    <div class="options">
+      <button class="option-btn" data-q="q3" data-val="1" data-score="1" onclick="selectOption(this)">
+        <span class="option-letter">A</span>
+        <span>Exchange or custodian only<span class="option-desc">Counterparty risk exists — self-custody planning is a priority</span></span>
+      </button>
+      <button class="option-btn" data-q="q3" data-val="2" data-score="2" onclick="selectOption(this)">
+        <span class="option-letter">B</span>
+        <span>Self-custody hardware wallet<span class="option-desc">Good security — inheritance and access planning still needed</span></span>
+      </button>
+      <button class="option-btn" data-q="q3" data-val="3" data-score="3" onclick="selectOption(this)">
+        <span class="option-letter">C</span>
+        <span>Multi-signature setup<span class="option-desc">Strong security — formal governance documentation helps</span></span>
+      </button>
+      <button class="option-btn" data-q="q3" data-val="4" data-score="4" onclick="selectOption(this)">
+        <span class="option-letter">D</span>
+        <span>Inside a trust or legal entity<span class="option-desc">Structured approach — review jurisdiction and successor trustee</span></span>
+      </button>
+    </div>
+    <button class="btn-next" disabled onclick="nextQuestion('q3','q4')">Next →</button>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question-card" id="q4">
+    <div class="q-step">Question 4 of 7</div>
+    <div class="q-text">Which of these best describes your estate planning situation?</div>
+    <div class="q-sub">Bitcoin complicates traditional estate plans in ways most attorneys do not anticipate.</div>
+    <div class="options">
+      <button class="option-btn" data-q="q4" data-val="1" data-score="1" onclick="selectOption(this)">
+        <span class="option-letter">A</span>
+        <span>No estate plan in place<span class="option-desc">Bitcoin could be lost permanently — urgent priority</span></span>
+      </button>
+      <button class="option-btn" data-q="q4" data-val="2" data-score="2" onclick="selectOption(this)">
+        <span class="option-letter">B</span>
+        <span>Basic will or trust, but Bitcoin not addressed<span class="option-desc">Common gap — traditional documents often fail to handle digital assets properly</span></span>
+      </button>
+      <button class="option-btn" data-q="q4" data-val="3" data-score="3" onclick="selectOption(this)">
+        <span class="option-letter">C</span>
+        <span>Bitcoin mentioned in estate documents<span class="option-desc">Good start — verify access procedures and update for current holdings</span></span>
+      </button>
+      <button class="option-btn" data-q="q4" data-val="4" data-score="4" onclick="selectOption(this)">
+        <span class="option-letter">D</span>
+        <span>Comprehensive plan with Bitcoin-specific provisions<span class="option-desc">Well-positioned — periodic review to stay current with law changes</span></span>
+      </button>
+    </div>
+    <button class="btn-next" disabled onclick="nextQuestion('q4','q5')">Next →</button>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question-card" id="q5">
+    <div class="q-step">Question 5 of 7</div>
+    <div class="q-text">How have you approached Bitcoin and tax strategy?</div>
+    <div class="q-sub">Tax treatment of Bitcoin spans income, capital gains, estate, and gift tax — each with distinct planning levers.</div>
+    <div class="options">
+      <button class="option-btn" data-q="q5" data-val="1" data-score="1" onclick="selectOption(this)">
+        <span class="option-letter">A</span>
+        <span>I report transactions but have no active strategy<span class="option-desc">Significant optimization potential — most holders leave this on the table</span></span>
+      </button>
+      <button class="option-btn" data-q="q5" data-val="2" data-score="2" onclick="selectOption(this)">
+        <span class="option-letter">B</span>
+        <span>Basic harvesting or holding for long-term rates<span class="option-desc">Good foundation — more advanced structures available at higher net worth</span></span>
+      </button>
+      <button class="option-btn" data-q="q5" data-val="3" data-score="3" onclick="selectOption(this)">
+        <span class="option-letter">C</span>
+        <span>Using trusts, charitable vehicles, or entity structures<span class="option-desc">Sophisticated approach — review for current law optimization</span></span>
+      </button>
+      <button class="option-btn" data-q="q5" data-val="4" data-score="4" onclick="selectOption(this)">
+        <span class="option-letter">D</span>
+        <span>Integrated strategy including mining, depreciation, or OpEx<span class="option-desc">Full-spectrum approach — highest-level Bitcoin tax structuring</span></span>
+      </button>
+    </div>
+    <button class="btn-next" disabled onclick="nextQuestion('q5','q6')">Next →</button>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question-card" id="q6">
+    <div class="q-step">Question 6 of 7</div>
+    <div class="q-text">Do you have family members or heirs who will inherit your Bitcoin?</div>
+    <div class="q-sub">Generational transfer of Bitcoin requires specific legal, technical, and educational structures.</div>
+    <div class="options">
+      <button class="option-btn" data-q="q6" data-val="1" data-score="1" onclick="selectOption(this)">
+        <span class="option-letter">A</span>
+        <span>Not relevant — no heirs to consider<span class="option-desc">Charitable or philanthropic structures may apply</span></span>
+      </button>
+      <button class="option-btn" data-q="q6" data-val="2" data-score="2" onclick="selectOption(this)">
+        <span class="option-letter">B</span>
+        <span>Yes, but they are not educated about Bitcoin<span class="option-desc">Education and access planning is step one</span></span>
+      </button>
+      <button class="option-btn" data-q="q6" data-val="3" data-score="3" onclick="selectOption(this)">
+        <span class="option-letter">C</span>
+        <span>Yes, and they understand Bitcoin<span class="option-desc">Readiness is good — formal structures protect against disputes and loss</span></span>
+      </button>
+      <button class="option-btn" data-q="q6" data-val="4" data-score="4" onclick="selectOption(this)">
+        <span class="option-letter">D</span>
+        <span>Actively building multi-generational Bitcoin wealth<span class="option-desc">Dynasty trust and family governance structures apply</span></span>
+      </button>
+    </div>
+    <button class="btn-next" disabled onclick="nextQuestion('q6','q7')">Next →</button>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question-card" id="q7">
+    <div class="q-step">Question 7 of 7</div>
+    <div class="q-text">What is your primary goal in taking this assessment?</div>
+    <div class="q-sub">This helps us tailor your results and recommendations.</div>
+    <div class="options">
+      <button class="option-btn" data-q="q7" data-val="protect" data-score="0" onclick="selectOption(this)">
+        <span class="option-letter">A</span>
+        <span>Protect what I have built<span class="option-desc">Custody, security, and legal structures</span></span>
+      </button>
+      <button class="option-btn" data-q="q7" data-val="tax" data-score="0" onclick="selectOption(this)">
+        <span class="option-letter">B</span>
+        <span>Reduce my tax exposure<span class="option-desc">Tax strategy, structuring, and optimization</span></span>
+      </button>
+      <button class="option-btn" data-q="q7" data-val="heirs" data-score="0" onclick="selectOption(this)">
+        <span class="option-letter">C</span>
+        <span>Pass Bitcoin to my heirs<span class="option-desc">Estate planning, trusts, and generational transfer</span></span>
+      </button>
+      <button class="option-btn" data-q="q7" data-val="all" data-score="0" onclick="selectOption(this)">
+        <span class="option-letter">D</span>
+        <span>All of the above — comprehensive strategy<span class="option-desc">Full-spectrum Bitcoin wealth architecture</span></span>
+      </button>
+    </div>
+    <button class="btn-next" disabled onclick="showEmailCapture()">See My Results →</button>
+  </div>
+
+</div>
+
+<!-- EMAIL CAPTURE -->
+<div class="quiz-wrap">
+  <div class="email-card" id="emailCard">
+    <div class="q-step">Almost Done</div>
+    <h2>Where Should We Send Your Results?</h2>
+    <p>Your personalized assessment and recommendations will be ready in seconds. Enter your details below to receive them.</p>
+    <div class="form-row">
+      <div class="form-field">
+        <label>First Name</label>
+        <input type="text" id="firstName" placeholder="Your first name">
+      </div>
+      <div class="form-field">
+        <label>Last Name</label>
+        <input type="text" id="lastName" placeholder="Your last name">
+      </div>
+    </div>
+    <div class="form-field" style="margin-bottom:1rem;">
+      <label>Email Address</label>
+      <input type="email" id="emailAddr" placeholder="your@email.com">
+    </div>
+    <div class="form-field" style="margin-bottom:1rem;">
+      <label>Approximate Bitcoin Holdings (optional)</label>
+      <select id="holdingsRange">
+        <option value="">Prefer not to say</option>
+        <option value="under1">Under 1 BTC</option>
+        <option value="1to5">1–5 BTC</option>
+        <option value="5to25">5–25 BTC</option>
+        <option value="25to100">25–100 BTC</option>
+        <option value="over100">100+ BTC</option>
+      </select>
+    </div>
+    <button class="btn-submit" onclick="submitAndShowResults()">View My Personalized Assessment →</button>
+    <p class="form-note">No spam. No sales calls. Your information is never shared.</p>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div class="results-card" id="resultsCard">
+  <div class="result-header">
+    <div class="result-tier" id="resultTier"></div>
+    <div class="result-title" id="resultTitle"></div>
+    <div class="result-summary" id="resultSummary"></div>
+    <div class="result-score-row" id="resultScoreRow"></div>
+  </div>
+  <div class="result-sections" id="resultSections"></div>
+
+  <div class="cta-block">
+    <h3>Ready to Close These Gaps?</h3>
+    <p>The Bitcoin Family Office works with serious holders who want comprehensive, professional guidance — not generic advice. Join the waitlist for a strategy consultation.</p>
+    <a href="/services/#waitlist">Request a Consultation →</a>
+    <div class="result-links">
+      <a href="/blog/">Read Our Research</a>
+      <a href="/tools/">Explore All Tools</a>
+      <a href="/faq/">Common Questions</a>
+    </div>
+  </div>
+
+  <div class="disclaimer-block">
+    <p><strong>⚠ Assessment Disclaimer.</strong> This assessment is for educational and informational purposes only. Results are illustrative and based on general patterns — they do not constitute legal, tax, financial, or investment advice. Individual circumstances vary significantly. Consult qualified legal, tax, and financial professionals before making any decisions. Laws change; information may be outdated. The Bitcoin Family Office does not manage assets or provide regulated investment advisory services.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">The Bitcoin <span>Family Office</span></div>
+  <nav class="footer-links">
+    <a href="/">Home</a>
+    <a href="/services/">Services</a>
+    <a href="/blog/">Research</a>
+    <a href="/tools/">Tools</a>
+    <a href="/about/">About</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/disclosures/">Disclosures</a>
+  </nav>
+  <p class="footer-legal">The Bitcoin Family Office provides educational content and strategic frameworks for high-net-worth Bitcoin holders. Nothing on this site constitutes legal, tax, financial, or investment advice. Consult qualified professionals before making decisions. &copy; 2026 The Bitcoin Family Office.</p>
+</footer>
+
+<script>
+  var answers = {};
+  var totalScore = 0;
+
+  function toggleNav() {
+    document.getElementById('navMobile').classList.toggle('open');
+  }
+
+  function startQuiz() {
+    document.getElementById('startWrap').style.display = 'none';
+    document.getElementById('quizWrap').style.display = 'block';
+    document.getElementById('progressWrap').style.display = 'block';
+    showCard('q1');
+    updateProgress(1, 7);
+    gtag('event', 'quiz_start', {quiz: 'bitcoin_wealth_assessment'});
+  }
+
+  function showCard(id) {
+    document.querySelectorAll('.question-card').forEach(function(c){ c.classList.remove('active'); });
+    var card = document.getElementById(id);
+    if (card) card.classList.add('active');
+  }
+
+  function selectOption(btn) {
+    var q = btn.getAttribute('data-q');
+    document.querySelectorAll('[data-q="'+q+'"]').forEach(function(b){ b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    answers[q] = { val: btn.getAttribute('data-val'), score: parseInt(btn.getAttribute('data-score') || '0') };
+    document.querySelector('#'+q+' .btn-next').disabled = false;
+  }
+
+  function nextQuestion(current, next) {
+    showCard(next);
+    var qNum = parseInt(next.replace('q',''));
+    updateProgress(qNum, 7);
+    gtag('event', 'quiz_step', {step: current, quiz: 'bitcoin_wealth_assessment'});
+  }
+
+  function updateProgress(current, total) {
+    var pct = Math.round((current / total) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = 'Question ' + current + ' of ' + total;
+  }
+
+  function showEmailCapture() {
+    if (!answers['q7']) return;
+    document.getElementById('quizWrap').style.display = 'none';
+    document.getElementById('progressWrap').style.display = 'none';
+    document.getElementById('emailCard').classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function calcScore() {
+    var s = 0;
+    ['q1','q2','q3','q4','q5','q6'].forEach(function(q){ if(answers[q]) s += answers[q].score; });
+    return s;
+  }
+
+  function getResultTier(score) {
+    if (score <= 8) return 'foundation';
+    if (score <= 14) return 'structured';
+    if (score <= 20) return 'advanced';
+    return 'institutional';
+  }
+
+  var RESULTS = {
+    foundation: {
+      tier: 'Foundation Stage',
+      title: 'Strong Upside — Several Key Gaps to Address',
+      summary: 'Your Bitcoin journey is building momentum. The fundamentals are in place or forming, but several structural and protective measures are not yet in place. The good news: the gaps are well-understood and addressable with the right guidance.',
+      sections: [
+        { title: 'Your Most Urgent Priorities', items: [
+          'Self-custody setup with hardware wallet and documented seed phrase storage',
+          'Basic estate plan that explicitly addresses Bitcoin access and inheritance',
+          'Tax record-keeping — accurate cost-basis tracking from the start',
+          'Security practices: separate devices, strong passphrases, operational security'
+        ]},
+        { title: 'What to Learn Next', items: [
+          'Bitcoin multisignature custody — how it works and when to implement it',
+          'The difference between a revocable trust and a dynasty trust for Bitcoin',
+          'Why traditional estate attorneys often miss critical Bitcoin-specific issues',
+          'Long-term capital gains treatment and how holding period affects tax rates'
+        ]}
+      ]
+    },
+    structured: {
+      tier: 'Structured Stage',
+      title: 'Solid Foundation — Optimization Opportunities Ahead',
+      summary: 'You have moved beyond basics and have meaningful Bitcoin infrastructure in place. The next stage focuses on optimizing your tax position, formalizing your estate documents, and ensuring your custody architecture scales with your holdings.',
+      sections: [
+        { title: 'Priority Improvements', items: [
+          'Review estate documents for Bitcoin-specific access procedures and successor language',
+          'Evaluate whether a trust structure (revocable or irrevocable) fits your situation',
+          'Implement a formal tax strategy — harvesting losses, long-term vs short-term optimization',
+          'Document your custody procedures for heirs or successors'
+        ]},
+        { title: 'Advanced Strategies to Explore', items: [
+          'Grantor Retained Annuity Trusts (GRATs) for transferring appreciation to heirs',
+          'Charitable Remainder Trusts (CRTs) for holders with philanthropic goals',
+          'Wyoming or South Dakota trust structures for favorable situs law',
+          'Bitcoin mining as a tax offset strategy (depreciation, bonus depreciation, OpEx)'
+        ]}
+      ]
+    },
+    advanced: {
+      tier: 'Advanced Stage',
+      title: 'Well-Positioned — Institutional-Grade Refinements Available',
+      summary: 'You have done serious work on your Bitcoin strategy. Your custody, estate planning, and tax approach are meaningfully developed. At this stage, the opportunity is in fine-tuning — optimizing jurisdiction, trust structure, governance, and multi-generational architecture.',
+      sections: [
+        { title: 'Refinement Opportunities', items: [
+          'Review trust situs — Wyoming and South Dakota offer superior protection in many cases',
+          'Evaluate dynasty trust vs. revocable trust for perpetual generational transfer',
+          'Build formal family governance: investment policy statement, distribution standards',
+          'Stress-test your custody architecture against incapacity, death, and key person risk'
+        ]},
+        { title: 'Next-Level Strategies', items: [
+          'Family Limited Partnership or LLC for operational Bitcoin holdings',
+          'Qualified Opportunity Zone structuring if applicable to your situation',
+          'Bitcoin mining entity for depreciation and OpEx offsets against income',
+          'Institutional-grade multi-signature with geographic key distribution'
+        ]}
+      ]
+    },
+    institutional: {
+      tier: 'Institutional Stage',
+      title: 'Comprehensive Strategy — Ongoing Governance Required',
+      summary: 'You are operating at the highest level of Bitcoin wealth architecture. Your structure, custody, and planning are sophisticated. The primary need at this stage is ongoing governance, legal maintenance as laws evolve, and ensuring your family is prepared to manage this wealth across generations.',
+      sections: [
+        { title: 'Ongoing Governance Priorities', items: [
+          'Annual review of trust documents as digital asset law evolves (RUFADAA, state-specific)',
+          'Family Bitcoin education program — technical literacy for successors',
+          'Formal investment policy statement with Bitcoin-specific provisions',
+          'Contingency planning for incapacity, key person loss, and technical key recovery'
+        ]},
+        { title: 'Institutional Best Practices', items: [
+          'Annual third-party custody security review',
+          'Formal documentation of all entity structures, signing authorities, and succession',
+          'Coordination between estate attorney, CPA, and Bitcoin custody specialist',
+          'Consider dedicated family office services for ongoing oversight and administration'
+        ]}
+      ]
+    }
+  };
+
+  function submitAndShowResults() {
+    var email = document.getElementById('emailAddr').value.trim();
+    var first = document.getElementById('firstName').value.trim();
+    var last = document.getElementById('lastName').value.trim();
+    var holdings = document.getElementById('holdingsRange').value;
+
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address to receive your results.');
+      return;
+    }
+
+    // Submit to waitlist
+    var goal = answers['q7'] ? answers['q7'].val : '';
+    var score = calcScore();
+    var tier = getResultTier(score);
+    var payload = {
+      name: (first + ' ' + last).trim() || 'Assessment User',
+      email: email,
+      holdings: holdings,
+      source: 'Bitcoin Wealth Assessment',
+      tier: tier,
+      goal: goal,
+      score: score
+    };
+
+    fetch('https://script.google.com/macros/s/AKfycbw5rfL8oGxOP0WmJXjc8ax-FmpLWiRVrOJcdKuazdXkThe2-mKVpgogWx2Lkjj-ZCPn/exec', {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    }).catch(function(){});
+
+    gtag('event', 'quiz_complete', {quiz: 'bitcoin_wealth_assessment', tier: tier, score: score, goal: goal});
+
+    // Show results
+    document.getElementById('emailCard').classList.remove('active');
+    showResults(score, tier, first, goal);
+  }
+
+  function showResults(score, tier, firstName, goal) {
+    var r = RESULTS[tier];
+    document.getElementById('resultTier').textContent = r.tier;
+    document.getElementById('resultTitle').textContent = r.title;
+    document.getElementById('resultSummary').textContent = r.summary;
+
+    var chipData = [
+      { label: 'Strategy Stage', value: r.tier.split(' ')[0] },
+      { label: 'Planning Score', value: score + ' / 24' },
+      { label: 'Primary Goal', value: goalLabel(goal) }
+    ];
+    var chipHTML = chipData.map(function(c){
+      return '<div class="score-chip"><strong>' + c.value + '</strong>' + c.label + '</div>';
+    }).join('');
+    document.getElementById('resultScoreRow').innerHTML = chipHTML;
+
+    var sectHTML = r.sections.map(function(s){
+      var liHTML = s.items.map(function(i){ return '<li>' + i + '</li>'; }).join('');
+      return '<div class="result-section"><h3>' + s.title + '</h3><ul>' + liHTML + '</ul></div>';
+    }).join('');
+
+    // Add goal-specific section
+    var goalSection = getGoalSection(goal, tier);
+    if (goalSection) sectHTML += goalSection;
+
+    document.getElementById('resultSections').innerHTML = sectHTML;
+    document.getElementById('resultsCard').classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function goalLabel(goal) {
+    var labels = { protect: 'Protection', tax: 'Tax Strategy', heirs: 'Legacy', all: 'Comprehensive' };
+    return labels[goal] || 'Comprehensive';
+  }
+
+  function getGoalSection(goal, tier) {
+    var sections = {
+      protect: '<div class="result-section"><h3>Recommended Reading: Protection &amp; Custody</h3><ul>' +
+        '<li><a href="/blog/bitcoin-custody-architecture" style="color:var(--accent)">Bitcoin Custody Architecture for Family Offices</a></li>' +
+        '<li><a href="/blog/how-to-protect-bitcoin-inheritance" style="color:var(--accent)">How to Protect Your Bitcoin Inheritance</a></li>' +
+        '<li><a href="/blog/bitcoin-multisig-family-office" style="color:var(--accent)">Multi-Signature Bitcoin Custody</a></li>' +
+        '</ul></div>',
+      tax: '<div class="result-section"><h3>Recommended Reading: Tax Strategy</h3><ul>' +
+        '<li><a href="/blog/bitcoin-mining-tax-strategy-family-office" style="color:var(--accent)">Bitcoin Mining Tax Strategy for Family Offices</a></li>' +
+        '<li><a href="/blog/bitcoin-grantor-retained-annuity-trust" style="color:var(--accent)">Bitcoin GRATs: Estate Tax Minimization</a></li>' +
+        '<li><a href="/blog/bitcoin-self-directed-ira-vs-etf" style="color:var(--accent)">Bitcoin IRA vs ETF — Tax Comparison</a></li>' +
+        '</ul></div>',
+      heirs: '<div class="result-section"><h3>Recommended Reading: Legacy &amp; Inheritance</h3><ul>' +
+        '<li><a href="/blog/how-to-leave-bitcoin-to-heirs" style="color:var(--accent)">How to Leave Bitcoin to Your Heirs</a></li>' +
+        '<li><a href="/blog/bitcoin-generational-wealth-transfer" style="color:var(--accent)">Bitcoin Generational Wealth Transfer</a></li>' +
+        '<li><a href="/blog/bitcoin-dynasty-trust-vs-revocable-trust" style="color:var(--accent)">Dynasty Trust vs Revocable Trust for Bitcoin</a></li>' +
+        '</ul></div>',
+      all: '<div class="result-section"><h3>Recommended Reading: Comprehensive Strategy</h3><ul>' +
+        '<li><a href="/blog/bitcoin-family-office-complete-guide" style="color:var(--accent)">The Complete Bitcoin Family Office Guide</a></li>' +
+        '<li><a href="/blog/bitcoin-family-office-report-2026" style="color:var(--accent)">Bitcoin Family Office Report 2026</a></li>' +
+        '<li><a href="/blog/bitcoin-estate-planning-all-50-states" style="color:var(--accent)">Estate Planning in All 50 States</a></li>' +
+        '</ul></div>'
+    };
+    return sections[goal] || sections['all'];
+  }
+</script>
+</body>
+</html>
