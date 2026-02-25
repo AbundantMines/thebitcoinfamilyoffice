@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heir Briefing Generator — Bitcoin Estate Watch</title>
+  <meta name="description" content="Generate a printable heir briefing your executor can actually use. A practical guide to finding and accessing your Bitcoin." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+
+    // hm_scroll event
+    let scrollFired50 = false, scrollFired90 = false;
+    window.addEventListener('scroll', function() {
+      const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      if (!scrollFired50 && pct >= 50) {
+        scrollFired50 = true;
+        gtag('event', 'hm_scroll', { depth: 50 });
+      }
+      if (!scrollFired90 && pct >= 90) {
+        scrollFired90 = true;
+        gtag('event', 'hm_scroll', { depth: 90 });
+      }
+    });
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+      --accent-border: rgba(201,168,76,0.2);
+      --radius: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 64px 24px 40px;
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 5vw, 48px);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(16px, 2.5vw, 19px);
+      color: var(--text-secondary);
+      font-style: italic;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── MAIN ── */
+    .main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── WARNING BOX ── */
+    .warning-box {
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      background: rgba(201,168,76,0.05);
+      padding: 18px 20px;
+      margin-bottom: 36px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .warning-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+      margin-top: 1px;
+    }
+
+    .warning-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .warning-text strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ── FORM SECTIONS ── */
+    .form-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 28px 24px;
+      margin-bottom: 20px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--accent-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ── FIELDS ── */
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .field-row.full { grid-template-columns: 1fr; }
+    .field-row.three { grid-template-columns: 1fr 1fr 1fr; }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .field:last-child { margin-bottom: 0; }
+
+    .field-group { margin-bottom: 0; }
+
+    label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      width: 100%;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="number"]:focus,
+    input[type="date"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent-border);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.06);
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8070' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 32px;
+      cursor: pointer;
+    }
+
+    select option { background: #1a1a1a; }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.6;
+    }
+
+    input::placeholder, textarea::placeholder { color: rgba(138,128,112,0.4); }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.5);
+      cursor: pointer;
+    }
+
+    .field-hint {
+      font-family: 'EB Garamond', serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .passphrase-note {
+      background: rgba(201,168,76,0.05);
+      border: 1px solid var(--accent-border);
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .passphrase-note strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .people-group {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .people-group-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    /* ── GENERATE BUTTON ── */
+    .btn-generate {
+      width: 100%;
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none;
+      border-radius: var(--radius);
+      padding: 16px 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+
+    .btn-generate:hover {
+      background: #d4b566;
+      transform: translateY(-1px);
+    }
+
+    /* ── OUTPUT CARD ── */
+    #output-section {
+      display: none;
+      margin-top: 40px;
+    }
+
+    #output-section.visible { display: block; }
+
+    .output-card {
+      background: var(--bg-card);
+      border: 1px solid var(--accent-border);
+      border-radius: var(--radius);
+      padding: 36px 40px;
+    }
+
+    .output-header {
+      text-align: center;
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--accent-border);
+    }
+
+    .output-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .output-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .output-subtitle {
+      font-family: 'EB Garamond', serif;
+      font-size: 15px;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .output-warning {
+      background: rgba(201,168,76,0.06);
+      border: 1px solid var(--accent-border);
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 20px 0 28px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    .output-warning strong { color: var(--accent); }
+
+    .output-section {
+      margin-bottom: 28px;
+    }
+
+    .output-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .output-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 8px 16px;
+      margin-bottom: 8px;
+      align-items: start;
+    }
+
+    .output-key {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      padding-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .output-val {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .output-val.pre {
+      white-space: pre-line;
+      font-family: 'EB Garamond', serif;
+      font-size: 14px;
+    }
+
+    .output-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .btn-print, .btn-download-txt {
+      flex: 1;
+      padding: 12px 20px;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      border: none;
+    }
+
+    .btn-print {
+      background: var(--accent);
+      color: #0a0a0a;
+    }
+    .btn-print:hover { background: #d4b566; }
+
+    .btn-download-txt {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-download-txt:hover { border-color: var(--accent-border); color: var(--accent); }
+
+    /* ── PRINT STYLES ── */
+    @media print {
+      body * { visibility: hidden; }
+      #output-section, #output-section * { visibility: visible; }
+      #output-section {
+        display: block !important;
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        padding: 40px;
+        background: white;
+        color: #111;
+      }
+      .output-card {
+        background: white;
+        border: 1px solid #ccc;
+        color: #111;
+      }
+      .output-title, .output-key, .output-val { color: #111; }
+      .output-section-title { color: #555; border-color: #ccc; }
+      .output-warning { border-color: #ccc; }
+      .output-warning strong { color: #a08030; }
+      .output-eyebrow, .output-subtitle { color: #555; }
+      .output-actions { display: none !important; }
+      .output-header { border-color: #ccc; }
+      nav, .hero, .main { display: none !important; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .field-row { grid-template-columns: 1fr; }
+      .field-row.three { grid-template-columns: 1fr; }
+      .form-section { padding: 20px 16px; }
+      .output-card { padding: 24px 20px; }
+      .output-row { grid-template-columns: 1fr; }
+      .output-actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="./index.html" class="nav-back" onclick="gtag('event','hm_click',{element:'nav_back'})">
+      ← Dashboard
+    </a>
+    <a href="./index.html" class="nav-logo">
+      Bitcoin <span>Estate</span> Watch
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Heir Briefing Generator</h1>
+    <p>A printable summary your executor can actually use. Not a legal document — a practical guide to finding and accessing your Bitcoin.</p>
+  </div>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- WARNING -->
+    <div class="warning-box">
+      <svg class="warning-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+        <line x1="12" y1="9" x2="12" y2="13"/>
+        <line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      <div class="warning-text">
+        <strong>Important:</strong> This is a planning aid, not a legal document. It should be stored with your Letter of Instruction, not separately. <strong>Never include seed phrases, private keys, or passphrases in this document.</strong>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <form id="briefingForm" onsubmit="return false;">
+
+      <!-- SECTION 1 — About You -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-number">1</div>
+          <h2 class="section-title">About You</h2>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="fullName">Your Full Legal Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="As it appears on legal documents" />
+          </div>
+          <div class="field">
+            <label for="emailAddress">Your Email Address</label>
+            <input type="email" id="emailAddress" name="emailAddress" placeholder="your@email.com" />
+          </div>
+        </div>
+
+        <div class="field-row" style="grid-template-columns: 220px 1fr;">
+          <div class="field">
+            <label for="briefingDate">Date of This Briefing</label>
+            <input type="date" id="briefingDate" name="briefingDate" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2 — Bitcoin Holdings -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <h2 class="section-title">Your Bitcoin Holdings</h2>
+        </div>
+
+        <div class="field-row three">
+          <div class="field field-group">
+            <label for="btcAmount">Approximate BTC Amount</label>
+            <input type="number" id="btcAmount" name="btcAmount" placeholder="e.g., 1.25" step="0.00000001" min="0" />
+          </div>
+          <div class="field field-group">
+            <label for="custodyType">Custody Type</label>
+            <select id="custodyType" name="custodyType">
+              <option value="">Select type…</option>
+              <option value="Self-custody hardware wallet">Self-custody hardware wallet</option>
+              <option value="Exchange account">Exchange account</option>
+              <option value="Multi-sig">Multi-sig</option>
+              <option value="Combination">Combination</option>
+            </select>
+          </div>
+          <div class="field field-group">
+            <label for="hwBrand">Hardware Wallet Brand</label>
+            <select id="hwBrand" name="hwBrand">
+              <option value="">Select brand…</option>
+              <option value="Ledger">Ledger</option>
+              <option value="Trezor">Trezor</option>
+              <option value="Coldcard">Coldcard</option>
+              <option value="BitBox">BitBox</option>
+              <option value="Other">Other</option>
+              <option value="N/A">N/A</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row" style="grid-template-columns: 160px 1fr;">
+          <div class="field field-group">
+            <label for="numWallets">Number of Wallets</label>
+            <input type="number" id="numWallets" name="numWallets" value="1" min="0" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="hwLocation">Location of Hardware Wallet(s)</label>
+          <input type="text" id="hwLocation" name="hwLocation" placeholder="e.g., home safe, safety deposit box at XYZ bank" />
+        </div>
+
+        <div class="field">
+          <label for="seedLocation">Location of Seed Phrase Backup(s)</label>
+          <input type="text" id="seedLocation" name="seedLocation" placeholder="e.g., fireproof safe at home — ask attorney for location of metal backup" />
+        </div>
+
+        <div class="passphrase-note">
+          <strong>IMPORTANT:</strong> Do NOT include the passphrase here. Note whether one exists and where instructions for it are stored.
+        </div>
+
+        <div class="field-row">
+          <div class="field field-group">
+            <label for="passphraseExists">Does a BIP39 Passphrase Exist?</label>
+            <select id="passphraseExists" name="passphraseExists">
+              <option value="">Select…</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div class="field field-group">
+            <label for="passphraseLocation">Passphrase Instructions Stored At</label>
+            <input type="text" id="passphraseLocation" name="passphraseLocation" placeholder="Location only — never the passphrase itself" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3 — Exchange Accounts -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <h2 class="section-title">Exchange Accounts (if any)</h2>
+        </div>
+
+        <div class="field-row">
+          <div class="field field-group">
+            <label for="exchangeName">Exchange Name</label>
+            <input type="text" id="exchangeName" name="exchangeName" placeholder="e.g., Coinbase, Kraken" />
+          </div>
+          <div class="field field-group">
+            <label for="exchangeBtc">Approximate BTC on Exchange</label>
+            <input type="number" id="exchangeBtc" name="exchangeBtc" placeholder="e.g., 0.5" step="0.00000001" min="0" />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field field-group">
+            <label for="exchangeEmail">Account Email Address</label>
+            <input type="email" id="exchangeEmail" name="exchangeEmail" placeholder="account@email.com" />
+          </div>
+          <div class="field field-group">
+            <label for="twoFaMethod">2FA Method</label>
+            <select id="twoFaMethod" name="twoFaMethod">
+              <option value="">Select method…</option>
+              <option value="Authenticator app">Authenticator app</option>
+              <option value="SMS">SMS</option>
+              <option value="Hardware key">Hardware key</option>
+              <option value="Email">Email</option>
+              <option value="Unknown">Unknown</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="twoFaBackup">2FA Backup Codes Location</label>
+          <input type="text" id="twoFaBackup" name="twoFaBackup" placeholder="e.g., printed and stored with estate documents" />
+        </div>
+      </div>
+
+      <!-- SECTION 4 — Key People -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <h2 class="section-title">Key People</h2>
+        </div>
+
+        <div class="people-group">
+          <div class="people-group-title">Estate Attorney</div>
+          <div class="field-row three">
+            <div class="field field-group">
+              <label for="attName">Full Name</label>
+              <input type="text" id="attName" name="attName" placeholder="Attorney name" />
+            </div>
+            <div class="field field-group">
+              <label for="attFirm">Firm</label>
+              <input type="text" id="attFirm" name="attFirm" placeholder="Law firm name" />
+            </div>
+            <div class="field field-group">
+              <label for="attPhone">Phone</label>
+              <input type="text" id="attPhone" name="attPhone" placeholder="(555) 000-0000" />
+            </div>
+          </div>
+        </div>
+
+        <div class="people-group">
+          <div class="people-group-title">CPA / Tax Advisor</div>
+          <div class="field-row three">
+            <div class="field field-group">
+              <label for="cpaName">Full Name</label>
+              <input type="text" id="cpaName" name="cpaName" placeholder="CPA name" />
+            </div>
+            <div class="field field-group">
+              <label for="cpaFirm">Firm</label>
+              <input type="text" id="cpaFirm" name="cpaFirm" placeholder="Firm name" />
+            </div>
+            <div class="field field-group">
+              <label for="cpaPhone">Phone</label>
+              <input type="text" id="cpaPhone" name="cpaPhone" placeholder="(555) 000-0000" />
+            </div>
+          </div>
+        </div>
+
+        <div class="people-group">
+          <div class="people-group-title">Bitcoin-Literate Contact (can help executor)</div>
+          <div class="field-row three">
+            <div class="field field-group">
+              <label for="btcContactName">Full Name</label>
+              <input type="text" id="btcContactName" name="btcContactName" placeholder="Contact name" />
+            </div>
+            <div class="field field-group">
+              <label for="btcContactPhone">Phone</label>
+              <input type="text" id="btcContactPhone" name="btcContactPhone" placeholder="(555) 000-0000" />
+            </div>
+            <div class="field field-group">
+              <label for="btcContactRel">Relationship</label>
+              <input type="text" id="btcContactRel" name="btcContactRel" placeholder="e.g., Financial advisor, Friend" />
+            </div>
+          </div>
+        </div>
+
+        <div class="people-group" style="margin-bottom:0;">
+          <div class="people-group-title">Trust Company or Corporate Trustee (if applicable)</div>
+          <div class="field">
+            <label for="trustee">Trustee / Trust Company Name &amp; Contact</label>
+            <input type="text" id="trustee" name="trustee" placeholder="Name, firm, and contact information" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 5 — Executor Instructions -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-number">5</div>
+          <h2 class="section-title">What Your Executor Should Do First</h2>
+        </div>
+
+        <div class="field">
+          <label for="executorInstructions">Specific Instructions</label>
+          <textarea id="executorInstructions" name="executorInstructions" rows="8">1. Contact [attorney] immediately. Do not attempt to access Bitcoin alone.
+2. Locate the Letter of Instruction stored at [location].
+3. Do not plug hardware wallet into any computer until advised by a Bitcoin professional.
+4. Do not share seed phrase with anyone until advised by attorney.
+5. Bitcoin is safe in the wallet — time is not of the essence. Correct process is.</textarea>
+          <p class="field-hint">Edit these instructions. Replace [attorney] and [location] with actual names and places.</p>
+        </div>
+      </div>
+
+      <!-- GENERATE BUTTON -->
+      <button type="button" class="btn-generate" onclick="generateBriefing(); gtag('event','hm_click',{element:'generate_briefing'})">
+        Generate Heir Briefing →
+      </button>
+
+    </form>
+
+    <!-- OUTPUT SECTION -->
+    <div id="output-section">
+      <div class="output-card" id="printTarget">
+
+        <div class="output-header">
+          <div class="output-eyebrow">Bitcoin Estate Watch — Watch Pro</div>
+          <div class="output-title" id="outTitle">HEIR BRIEFING</div>
+          <div class="output-subtitle" id="outSubtitle">Prepared by — on —</div>
+        </div>
+
+        <div class="output-warning">
+          <strong>CONFIDENTIAL</strong> — For executor use only. Do not share the Bitcoin access details in this document with anyone who is not a named executor or attorney.
+        </div>
+
+        <!-- Section 1 output -->
+        <div class="output-section" id="out-s1">
+          <div class="output-section-title">About the Preparer</div>
+          <div id="out-s1-body"></div>
+        </div>
+
+        <!-- Section 2 output -->
+        <div class="output-section" id="out-s2">
+          <div class="output-section-title">Bitcoin Holdings</div>
+          <div id="out-s2-body"></div>
+        </div>
+
+        <!-- Section 3 output -->
+        <div class="output-section" id="out-s3">
+          <div class="output-section-title">Exchange Accounts</div>
+          <div id="out-s3-body"></div>
+        </div>
+
+        <!-- Section 4 output -->
+        <div class="output-section" id="out-s4">
+          <div class="output-section-title">Key People</div>
+          <div id="out-s4-body"></div>
+        </div>
+
+        <!-- Section 5 output -->
+        <div class="output-section" id="out-s5">
+          <div class="output-section-title">What Executor Should Do First</div>
+          <div id="out-s5-body"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="output-actions">
+          <button class="btn-print" onclick="printBriefing(); gtag('event','hm_click',{element:'print_briefing'})">
+            🖨 Print Briefing
+          </button>
+          <button class="btn-download-txt" onclick="downloadText(); gtag('event','hm_click',{element:'download_briefing_txt'})">
+            ↓ Download as Text
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    const STORAGE_KEY = 'bew_heir_briefing_v1';
+
+    const FIELDS = [
+      'fullName','emailAddress','briefingDate',
+      'btcAmount','custodyType','hwBrand','numWallets','hwLocation','seedLocation','passphraseExists','passphraseLocation',
+      'exchangeName','exchangeBtc','exchangeEmail','twoFaMethod','twoFaBackup',
+      'attName','attFirm','attPhone','cpaName','cpaFirm','cpaPhone',
+      'btcContactName','btcContactPhone','btcContactRel','trustee',
+      'executorInstructions'
+    ];
+
+    // ── SET DEFAULT DATE ──
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('briefingDate').value = today;
+      loadFormState();
+
+      // Save on change
+      FIELDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', saveFormState);
+      });
+    });
+
+    // ── SAVE / LOAD ──
+    function saveFormState() {
+      const state = {};
+      FIELDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) state[id] = el.value;
+      });
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+    }
+
+    function loadFormState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) return;
+        const state = JSON.parse(saved);
+        FIELDS.forEach(id => {
+          const el = document.getElementById(id);
+          if (el && state[id] !== undefined) el.value = state[id];
+        });
+      } catch(e) {}
+    }
+
+    // ── HELPERS ──
+    function val(id) {
+      const el = document.getElementById(id);
+      return el ? (el.value || '').trim() : '';
+    }
+
+    function row(key, value, pre) {
+      if (!value) value = '—';
+      return `<div class="output-row">
+        <span class="output-key">${key}</span>
+        <span class="output-val${pre ? ' pre' : ''}">${escHtml(value)}</span>
+      </div>`;
+    }
+
+    function escHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function fmtDate(dateStr) {
+      if (!dateStr) return '—';
+      try {
+        const [y,m,d] = dateStr.split('-');
+        const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        return `${months[parseInt(m)-1]} ${parseInt(d)}, ${y}`;
+      } catch(e) { return dateStr; }
+    }
+
+    // ── GENERATE ──
+    function generateBriefing() {
+      const name = val('fullName') || 'Unknown';
+      const dateStr = val('briefingDate');
+      const fmtDateStr = fmtDate(dateStr);
+
+      // Title
+      document.getElementById('outTitle').textContent = 'HEIR BRIEFING';
+      document.getElementById('outSubtitle').textContent = `Prepared by ${name} on ${fmtDateStr}`;
+
+      // S1
+      document.getElementById('out-s1-body').innerHTML =
+        row('Full Legal Name', val('fullName')) +
+        row('Email Address', val('emailAddress')) +
+        row('Date of Briefing', fmtDateStr);
+
+      // S2
+      document.getElementById('out-s2-body').innerHTML =
+        row('Approximate BTC', val('btcAmount') ? val('btcAmount') + ' BTC' : '') +
+        row('Custody Type', val('custodyType')) +
+        row('Hardware Wallet Brand', val('hwBrand')) +
+        row('Number of Wallets', val('numWallets')) +
+        row('Hardware Wallet Location', val('hwLocation')) +
+        row('Seed Phrase Backup Location', val('seedLocation')) +
+        row('BIP39 Passphrase Exists?', val('passphraseExists')) +
+        row('Passphrase Instructions At', val('passphraseLocation'));
+
+      // S3
+      const hasExchange = val('exchangeName') || val('exchangeEmail') || val('exchangeBtc');
+      document.getElementById('out-s3-body').innerHTML = hasExchange
+        ? row('Exchange Name', val('exchangeName')) +
+          row('Approx. BTC on Exchange', val('exchangeBtc') ? val('exchangeBtc') + ' BTC' : '') +
+          row('Account Email', val('exchangeEmail')) +
+          row('2FA Method', val('twoFaMethod')) +
+          row('2FA Backup Codes At', val('twoFaBackup'))
+        : '<div class="output-row"><span class="output-val" style="color:var(--text-secondary);font-style:italic;">No exchange accounts noted.</span></div>';
+
+      // S4
+      const attLine = [val('attName'), val('attFirm'), val('attPhone')].filter(Boolean).join(' — ');
+      const cpaLine = [val('cpaName'), val('cpaFirm'), val('cpaPhone')].filter(Boolean).join(' — ');
+      const btcContactLine = [val('btcContactName'), val('btcContactPhone'), val('btcContactRel')].filter(Boolean).join(' — ');
+      document.getElementById('out-s4-body').innerHTML =
+        row('Estate Attorney', attLine) +
+        row('CPA / Tax Advisor', cpaLine) +
+        row('Bitcoin-Literate Contact', btcContactLine) +
+        row('Corporate Trustee', val('trustee'));
+
+      // S5
+      document.getElementById('out-s5-body').innerHTML =
+        row('Instructions', val('executorInstructions'), true);
+
+      // Show
+      const outSection = document.getElementById('output-section');
+      outSection.classList.add('visible');
+      outSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ── PRINT ──
+    function printBriefing() {
+      window.print();
+    }
+
+    // ── DOWNLOAD TEXT ──
+    function downloadText() {
+      const name = val('fullName') || 'Unknown';
+      const fmtDateStr = fmtDate(val('briefingDate'));
+
+      let txt = '';
+      txt += '═══════════════════════════════════════════════════════\n';
+      txt += '  HEIR BRIEFING — Bitcoin Estate Watch\n';
+      txt += `  Prepared by: ${name}\n`;
+      txt += `  Date: ${fmtDateStr}\n`;
+      txt += '═══════════════════════════════════════════════════════\n\n';
+      txt += 'CONFIDENTIAL — For executor use only. Do not share the\n';
+      txt += 'Bitcoin access details in this document with anyone who\n';
+      txt += 'is not a named executor or attorney.\n\n';
+
+      txt += '───────────────────────────────────────────────────────\n';
+      txt += 'ABOUT THE PREPARER\n';
+      txt += '───────────────────────────────────────────────────────\n';
+      txt += `Full Legal Name:       ${val('fullName') || '—'}\n`;
+      txt += `Email Address:         ${val('emailAddress') || '—'}\n`;
+      txt += `Date of Briefing:      ${fmtDateStr}\n\n`;
+
+      txt += '───────────────────────────────────────────────────────\n';
+      txt += 'BITCOIN HOLDINGS\n';
+      txt += '───────────────────────────────────────────────────────\n';
+      txt += `Approximate BTC:       ${val('btcAmount') ? val('btcAmount') + ' BTC' : '—'}\n`;
+      txt += `Custody Type:          ${val('custodyType') || '—'}\n`;
+      txt += `Hardware Wallet Brand: ${val('hwBrand') || '—'}\n`;
+      txt += `Number of Wallets:     ${val('numWallets') || '—'}\n`;
+      txt += `Hardware Wallet At:    ${val('hwLocation') || '—'}\n`;
+      txt += `Seed Phrase Backup At: ${val('seedLocation') || '—'}\n`;
+      txt += `BIP39 Passphrase:      ${val('passphraseExists') || '—'}\n`;
+      txt += `Passphrase Info At:    ${val('passphraseLocation') || '—'}\n\n`;
+
+      txt += '───────────────────────────────────────────────────────\n';
+      txt += 'EXCHANGE ACCOUNTS\n';
+      txt += '───────────────────────────────────────────────────────\n';
+      if (val('exchangeName') || val('exchangeEmail')) {
+        txt += `Exchange:              ${val('exchangeName') || '—'}\n`;
+        txt += `Approx. BTC:           ${val('exchangeBtc') ? val('exchangeBtc') + ' BTC' : '—'}\n`;
+        txt += `Account Email:         ${val('exchangeEmail') || '—'}\n`;
+        txt += `2FA Method:            ${val('twoFaMethod') || '—'}\n`;
+        txt += `2FA Backup Codes At:   ${val('twoFaBackup') || '—'}\n`;
+      } else {
+        txt += 'No exchange accounts noted.\n';
+      }
+      txt += '\n';
+
+      txt += '───────────────────────────────────────────────────────\n';
+      txt += 'KEY PEOPLE\n';
+      txt += '───────────────────────────────────────────────────────\n';
+      txt += `Estate Attorney:       ${[val('attName'),val('attFirm'),val('attPhone')].filter(Boolean).join(', ') || '—'}\n`;
+      txt += `CPA / Tax Advisor:     ${[val('cpaName'),val('cpaFirm'),val('cpaPhone')].filter(Boolean).join(', ') || '—'}\n`;
+      txt += `Bitcoin Contact:       ${[val('btcContactName'),val('btcContactPhone'),val('btcContactRel')].filter(Boolean).join(', ') || '—'}\n`;
+      txt += `Corporate Trustee:     ${val('trustee') || '—'}\n\n`;
+
+      txt += '───────────────────────────────────────────────────────\n';
+      txt += 'WHAT EXECUTOR SHOULD DO FIRST\n';
+      txt += '───────────────────────────────────────────────────────\n';
+      txt += (val('executorInstructions') || '—') + '\n\n';
+
+      txt += '═══════════════════════════════════════════════════════\n';
+      txt += 'This is a planning aid, not a legal document.\n';
+      txt += 'Generated by Bitcoin Estate Watch — bitcoinestate.watch\n';
+      txt += '═══════════════════════════════════════════════════════\n';
+
+      const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `heir-briefing-${(val('fullName') || 'unnamed').replace(/\s+/g,'-').toLowerCase()}-${val('briefingDate') || 'undated'}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
