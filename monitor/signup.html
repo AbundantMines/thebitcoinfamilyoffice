@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Start Monitoring — Bitcoin Estate Watch</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=EB+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>(function(){var g=window.dataLayer=window.dataLayer||[];function gtag(){g.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');})();
+document.addEventListener('click',function(e){window.dataLayer&&window.dataLayer.push({event:'hm_click',x:e.clientX,y:e.clientY,target:(e.target.tagName||'')});});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<style>
+:root{--bg:#0a0a0a;--bg-elevated:#111111;--bg-card:#141414;--border:#1e1e1e;--text:#e8e0d0;--text-secondary:#8a8070;--accent:#c9a84c;--accent-border:rgba(201,168,76,0.2);--display:'Playfair Display',Georgia,serif;--body:'EB Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);}
+nav{display:flex;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);}
+.back{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;}
+.back:hover{color:var(--accent);}
+.main{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 61px);}
+/* LEFT */
+.left{padding:3.5rem 3rem;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:2rem;}
+.left-logo{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+.left h2{font-family:var(--display);font-size:2rem;font-weight:400;color:var(--text);line-height:1.3;}
+.stat{font-size:.85rem;color:var(--text-secondary);line-height:1.7;}
+.tier-cards{display:flex;flex-direction:column;gap:.75rem;}
+.tier-card{background:var(--bg-card);border:1px solid var(--border);border-radius:3px;padding:1.1rem 1.25rem;}
+.tier-card.featured{border-color:var(--accent-border);}
+.tier-name{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.3rem;}
+.tier-price{font-size:1.3rem;color:var(--text);font-weight:600;}
+.tier-price span{font-size:.8rem;font-weight:400;color:var(--text-secondary);}
+.tier-features{margin-top:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.8;}
+.trust{display:flex;flex-direction:column;gap:.4rem;margin-top:auto;}
+.trust-item{font-size:.75rem;color:var(--text-secondary);display:flex;align-items:center;gap:.5rem;}
+.trust-item::before{content:'✓';color:var(--accent);font-size:.7rem;}
+/* RIGHT */
+.right{padding:3.5rem 3rem;overflow-y:auto;}
+.right h2{font-family:var(--display);font-size:1.75rem;font-weight:400;color:var(--text);margin-bottom:2rem;}
+.form-group{margin-bottom:1.4rem;}
+label{display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:.5rem;}
+input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:2px;padding:.8rem 1rem;color:var(--text);font-family:var(--sans);font-size:.9rem;outline:none;transition:border .2s;-webkit-appearance:none;}
+input:focus,select:focus{border-color:var(--accent);}
+select{cursor:pointer;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.plans{display:flex;flex-direction:column;gap:.6rem;margin-top:.5rem;}
+.plan-opt{display:flex;align-items:flex-start;gap:.75rem;background:var(--bg-card);border:1px solid var(--border);border-radius:3px;padding:1rem 1.1rem;cursor:pointer;transition:border .2s;}
+.plan-opt:hover,.plan-opt.selected{border-color:var(--accent-border);}
+.plan-opt input[type=radio]{width:auto;accent-color:var(--accent);margin-top:.15rem;flex-shrink:0;}
+.plan-label{flex:1;}
+.plan-name{font-size:.85rem;font-weight:600;color:var(--text);}
+.plan-price{font-size:.78rem;color:var(--accent);}
+.plan-desc{font-size:.75rem;color:var(--text-secondary);margin-top:.2rem;line-height:1.5;}
+/* Exposure preview */
+.exposure-preview{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:3px;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.ep-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:.6rem;}
+.ep-row{display:flex;justify-content:space-between;align-items:baseline;padding:.25rem 0;}
+.ep-key{font-size:.78rem;color:var(--text-secondary);}
+.ep-val{font-size:.9rem;color:var(--text);font-weight:500;}
+.ep-val.highlight{color:var(--accent);}
+.ep-note{font-size:.68rem;color:var(--text-secondary);margin-top:.75rem;line-height:1.6;}
+.btn-submit{width:100%;background:var(--accent);color:#0a0a0a;border:none;border-radius:2px;padding:1.1rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:opacity .2s;margin-top:.5rem;}
+.btn-submit:hover{opacity:.9;}
+.btn-submit:disabled{opacity:.5;cursor:default;}
+.err{color:#e87070;font-size:.8rem;margin-top:.75rem;display:none;}
+.disclaimer{font-size:.72rem;color:var(--text-secondary);line-height:1.6;margin-top:1rem;}
+@media(max-width:768px){.main{grid-template-columns:1fr;} .left{display:none;} .right{padding:2rem 1.5rem;}}
+</style>
+</head>
+<body>
+<nav><a href="/monitor/" class="back">← Back to Estate Watch</a></nav>
+<div class="main">
+  <div class="left">
+    <div class="left-logo">Bitcoin Estate Watch</div>
+    <h2>Daily monitoring for your Bitcoin estate.</h2>
+    <p class="stat">Your estate tax exposure changes every time Bitcoin moves. Most holders haven't recalculated since they last checked the price.</p>
+    <div class="tier-cards">
+      <div class="tier-card">
+        <div class="tier-name">Free</div>
+        <div class="tier-price">$0 <span>one-time calc</span></div>
+        <div class="tier-features">• One-time exposure snapshot<br>• No ongoing monitoring<br>• Email capture only</div>
+      </div>
+      <div class="tier-card featured">
+        <div class="tier-name">Watch — Most Popular</div>
+        <div class="tier-price">$19 <span>/month</span></div>
+        <div class="tier-features">• Daily exposure monitoring<br>• Threshold alerts<br>• State law change digest<br>• Monthly estate summary</div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-name">Watch Pro</div>
+        <div class="tier-price">$49 <span>/month</span></div>
+        <div class="tier-features">• Everything in Watch<br>• Daily BTC price brief<br>• Succession Scorecard<br>• Heir Briefing Generator<br>• Priority support</div>
+      </div>
+    </div>
+    <div class="trust">
+      <div class="trust-item">Cloudflare KV — encrypted at rest</div>
+      <div class="trust-item">Your data is never sold or shared</div>
+      <div class="trust-item">Cancel anytime — no lock-in</div>
+    </div>
+  </div>
+  <div class="right">
+    <h2>Start monitoring.</h2>
+    <form id="signupForm">
+      <div class="row2">
+        <div class="form-group"><label>Full name</label><input type="text" id="name" placeholder="Jane Smith"></div>
+        <div class="form-group"><label>Email address</label><input type="email" id="email" placeholder="you@example.com" required></div>
+      </div>
+      <div class="row2">
+        <div class="form-group"><label>Bitcoin holdings (BTC)</label><input type="number" id="btc" placeholder="e.g. 5.25" step="0.001" min="0" oninput="updatePreview()"></div>
+        <div class="form-group"><label>Other assets (USD)</label><input type="number" id="other" placeholder="e.g. 1500000" step="1000" min="0" oninput="updatePreview()"></div>
+      </div>
+      <div class="form-group">
+        <label>State of residence</label>
+        <select id="state" onchange="updatePreview()">
+          <option value="">Select your state…</option>
+          <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option>
+          <option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option>
+          <option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option>
+          <option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+          <option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option>
+          <option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option>
+          <option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option>
+          <option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+          <option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option>
+          <option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Choose your plan</label>
+        <div class="plans">
+          <label class="plan-opt">
+            <input type="radio" name="tier" value="free">
+            <div class="plan-label">
+              <div class="plan-name">Free — One-time calculation</div>
+              <div class="plan-price">$0</div>
+              <div class="plan-desc">Get your current exposure snapshot. No monitoring.</div>
+            </div>
+          </label>
+          <label class="plan-opt selected">
+            <input type="radio" name="tier" value="watch" checked>
+            <div class="plan-label">
+              <div class="plan-name">Watch</div>
+              <div class="plan-price">$19/month</div>
+              <div class="plan-desc">Daily monitoring + threshold alerts + state law digest.</div>
+            </div>
+          </label>
+          <label class="plan-opt">
+            <input type="radio" name="tier" value="pro">
+            <div class="plan-label">
+              <div class="plan-name">Watch Pro</div>
+              <div class="plan-price">$49/month</div>
+              <div class="plan-desc">Everything in Watch + succession scorecard + heir briefing + daily brief.</div>
+            </div>
+          </label>
+        </div>
+      </div>
+      <!-- Live exposure preview -->
+      <div class="exposure-preview" id="preview" style="display:none">
+        <div class="ep-label">Your exposure estimate (updates live)</div>
+        <div class="ep-row"><span class="ep-key">BTC price (current)</span><span class="ep-val" id="prevBtcPrice">$95,000</span></div>
+        <div class="ep-row"><span class="ep-key">Estimated estate</span><span class="ep-val" id="prevEstate">—</span></div>
+        <div class="ep-row"><span class="ep-key">Federal estate tax exposure</span><span class="ep-val" id="prevFederal">—</span></div>
+        <div class="ep-row"><span class="ep-key">State estate tax exposure</span><span class="ep-val" id="prevState">—</span></div>
+        <div class="ep-row"><span class="ep-key" style="font-weight:600;color:var(--text)">Total estimated tax</span><span class="ep-val highlight" id="prevTotal">—</span></div>
+        <div class="ep-note">Estimate only. Verify with a qualified estate attorney.</div>
+      </div>
+      <button type="submit" class="btn-submit" id="submitBtn">Calculate My Exposure →</button>
+      <div class="err" id="errMsg"></div>
+      <p class="disclaimer">By submitting, you agree to receive estate monitoring updates by email. Cancel anytime. This is not legal advice.</p>
+    </form>
+  </div>
+</div>
+<script>
+const STATE_TAX={OR:1e6,MA:2e6,WA:2193e3,MN:3e6,IL:4e6,RI:1733264,MD:5e6,ME:6410e3,HI:5490e3,NY:7160e3};
+const FED=13610000;
+const BTC_PRICE=95000;
+function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n);}
+function calcExposure(btc,other,state){
+  const total=btc*BTC_PRICE+(other||0);
+  const fedTaxable=Math.max(0,total-FED);
+  const fedTax=fedTaxable>0?Math.round(fedTaxable*0.40):0;
+  const stateThresh=STATE_TAX[state]||null;
+  const stateTaxable=stateThresh?Math.max(0,total-stateThresh):0;
+  const stateTax=stateTaxable>0?Math.round(stateTaxable*0.14):0;
+  return{total,fedTax,stateTax,totalTax:fedTax+stateTax};
+}
+function updatePreview(){
+  const btc=parseFloat(document.getElementById('btc').value)||0;
+  const other=parseFloat(document.getElementById('other').value)||0;
+  const state=document.getElementById('state').value;
+  if(!btc&&!other){document.getElementById('preview').style.display='none';return;}
+  const e=calcExposure(btc,other,state);
+  document.getElementById('preview').style.display='block';
+  document.getElementById('prevBtcPrice').textContent=fmt(BTC_PRICE);
+  document.getElementById('prevEstate').textContent=fmt(e.total);
+  document.getElementById('prevFederal').textContent=e.fedTax>0?fmt(e.fedTax):'Below federal threshold';
+  document.getElementById('prevState').textContent=state&&STATE_TAX[state]&&e.stateTax>0?fmt(e.stateTax):state&&!STATE_TAX[state]?'No state estate tax':'Select state';
+  document.getElementById('prevTotal').textContent=e.totalTax>0?fmt(e.totalTax):'$0 (below all thresholds)';
+  document.getElementById('submitBtn').textContent=e.totalTax>0?'Start Monitoring for '+fmt(e.totalTax)+' →':'Calculate My Exposure →';
+}
+// Plan selection styling
+document.querySelectorAll('.plan-opt').forEach(function(el){
+  el.addEventListener('click',function(){
+    document.querySelectorAll('.plan-opt').forEach(function(e){e.classList.remove('selected');});
+    el.classList.add('selected');
+  });
+});
+document.getElementById('signupForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const tier=document.querySelector('input[name=tier]:checked').value;
+  const email=document.getElementById('email').value.trim();
+  const name=document.getElementById('name').value.trim();
+  const btc=parseFloat(document.getElementById('btc').value)||0;
+  const other=parseFloat(document.getElementById('other').value)||0;
+  const state=document.getElementById('state').value;
+  if(!email){document.getElementById('errMsg').textContent='Email is required.';document.getElementById('errMsg').style.display='block';return;}
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true; btn.textContent='Processing…';
+  document.getElementById('errMsg').style.display='none';
+  try{
+    const r=await fetch('/api/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,btcAmount:btc,otherAssets:other,state,tier}),credentials:'include'});
+    const d=await r.json();
+    if(r.ok){
+      if(tier==='free'){
+        // Show result inline
+        btn.textContent='Done — check your email for your snapshot.';
+        document.getElementById('preview').style.display='block';
+      } else if(d.checkoutUrl){
+        window.location.href=d.checkoutUrl;
+      } else {
+        window.location.href='/monitor/success';
+      }
+    } else {
+      document.getElementById('errMsg').textContent=d.error||'Something went wrong. Please try again.';
+      document.getElementById('errMsg').style.display='block';
+      btn.disabled=false; btn.textContent='Calculate My Exposure →';
+    }
+  }catch(ex){
+    document.getElementById('errMsg').textContent='Network error. Please try again.';
+    document.getElementById('errMsg').style.display='block';
+    btn.disabled=false; btn.textContent='Calculate My Exposure →';
+  }
+});
+</script>
+<script defer data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}' src="https://static.cloudflareinsights.com/beacon.min.js"></script>
+</body>
+</html>
