@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Multisig Estate Planning: The Institutional Standard | The Bitcoin Family Office</title>
+<meta name="description" content="Bitcoin multisig is the institutional standard for estate planning — eliminating single-key failure, enabling proper succession, and protecting wealth across generations. A complete guide to 2-of-3, 3-of-5, and directed trust integration.">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-multisig-estate-planning">
+<meta property="og:title" content="Bitcoin Multisig Estate Planning: The Institutional Standard">
+<meta property="og:description" content="Single-key Bitcoin is a single point of failure for both security and estate succession. Multisig solves both. Here's how to structure it for your family.">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-multisig-estate-planning">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bitcoin Multisig Estate Planning: The Institutional Standard">
+<meta name="twitter:description" content="The definitive guide to multisig quorum structures, keyholder roles, and estate documentation for Bitcoin families.">
+
+<!-- Article JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bitcoin Multisig for Estate Planning: The Institutional Standard",
+  "description": "A comprehensive guide to Bitcoin multisig quorum structures, keyholder roles, geographic distribution, estate documentation, and directed trust integration for high-net-worth Bitcoin families.",
+  "datePublished": "2026-02-25",
+  "dateModified": "2026-02-25",
+  "author": {
+    "@type": "Person",
+    "name": "Hal Turner",
+    "url": "https://thebitcoinfamilyoffice.com/about/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Bitcoin Family Office",
+    "url": "https://thebitcoinfamilyoffice.com",
+    "logo": {"@type": "ImageObject", "url": "https://thebitcoinfamilyoffice.com/assets/og-image.svg"}
+  },
+  "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-multisig-estate-planning",
+  "mainEntityOfPage": "https://thebitcoinfamilyoffice.com/blog/bitcoin-multisig-estate-planning"
+}
+</script>
+
+<!-- BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://thebitcoinfamilyoffice.com/"},
+    {"@type":"ListItem","position":2,"name":"Research","item":"https://thebitcoinfamilyoffice.com/blog/"},
+    {"@type":"ListItem","position":3,"name":"Bitcoin Multisig Estate Planning","item":"https://thebitcoinfamilyoffice.com/blog/bitcoin-multisig-estate-planning"}
+  ]
+}
+</script>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-N8PP20VBTV');
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('a,button');
+    if(t) gtag('event','hm_click',{element_text:(t.innerText||'').trim().slice(0,80),element_href:t.href||''});
+  });
+  var _scrollMarks={25:false,50:false,75:false,90:false};
+  window.addEventListener('scroll',function(){
+    var pct=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);
+    Object.keys(_scrollMarks).forEach(function(m){if(!_scrollMarks[m]&&pct>=m){_scrollMarks[m]=true;gtag('event','hm_scroll',{depth:m});}});
+  });
+</script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-elevated: #111111;
+    --bg-card: #141414;
+    --border: #1e1e1e;
+    --text: #e8e0d0;
+    --text-secondary: #8a8070;
+    --accent: #c9a84c;
+    --accent-border: rgba(201,168,76,0.3);
+    --display: 'Playfair Display', serif;
+    --serif: 'EB Garamond', serif;
+    --sans: 'Inter', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 18px; scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.8; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  nav.site-nav { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-family: var(--display); font-size: 1.05rem; color: var(--text); letter-spacing: 0.02em; white-space: nowrap; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); text-decoration: none; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); }
+  .mobile-menu { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family: var(--display); font-size: 1.4rem; color: var(--text); }
+  .mobile-close { position: absolute; top: 1.5rem; right: 2rem; font-size: 1.5rem; background: none; border: none; color: var(--text); cursor: pointer; }
+  @media(max-width:768px){ .nav-links{display:none;} .hamburger{display:flex;} }
+  .breadcrumb { max-width: 780px; margin: 2rem auto 0; padding: 0 2rem; font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--text-secondary); }
+  .breadcrumb a { color: var(--text-secondary); }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb span { margin: 0 0.4rem; }
+  .article-header { max-width: 780px; margin: 2.5rem auto 0; padding: 0 2rem; }
+  .article-header .category { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .article-header h1 { font-family: var(--display); font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 500; line-height: 1.25; color: var(--text); margin-bottom: 1.25rem; }
+  .article-meta { font-family: var(--sans); font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .article-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .article-body { max-width: 780px; margin: 0 auto; padding: 0 2rem 4rem; }
+  .article-body h2 { font-family: var(--display); font-size: 1.55rem; font-weight: 500; color: var(--text); margin: 2.5rem 0 1rem; line-height: 1.3; }
+  .article-body h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 500; color: var(--text); margin: 2rem 0 0.75rem; }
+  .article-body p { margin-bottom: 1.25rem; font-size: 1.05rem; }
+  .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 1.5rem; }
+  .article-body li { margin-bottom: 0.6rem; font-size: 1.05rem; }
+  .article-body strong { color: var(--text); font-weight: 600; }
+  .callout { background: var(--bg-card); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 0 4px 4px 0; }
+  .callout p { margin: 0 0 0.5rem; font-size: 0.95rem; color: var(--text-secondary); }
+  .callout p:last-child { margin: 0; }
+  .callout strong { color: var(--accent); }
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+  .do-box, .dont-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 1.25rem; }
+  .do-box { border-top: 2px solid var(--accent); }
+  .dont-box { border-top: 2px solid #6b3a3a; }
+  .do-box h4, .dont-box h4 { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .do-box h4 { color: var(--accent); }
+  .dont-box h4 { color: #c97070; }
+  .do-box ul, .dont-box ul { margin: 0 0 0 1rem; }
+  .do-box li, .dont-box li { font-family: var(--sans); font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+  @media(max-width:600px){ .do-dont{grid-template-columns:1fr;} }
+  .author-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem 2rem; margin: 3rem 0 2rem; display: flex; gap: 1.5rem; align-items: flex-start; }
+  .author-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--bg-elevated); border: 1px solid var(--accent-border); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-size: 1.2rem; color: var(--accent); flex-shrink: 0; }
+  .author-info h4 { font-family: var(--display); font-size: 1rem; color: var(--text); margin-bottom: 0.25rem; }
+  .author-info p { font-family: var(--sans); font-size: 0.78rem; color: var(--text-secondary); margin: 0; line-height: 1.6; }
+  .services-cta { background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 4px; padding: 2rem; margin: 2.5rem 0; text-align: center; }
+  .services-cta h3 { font-family: var(--display); font-size: 1.3rem; color: var(--text); margin-bottom: 0.75rem; }
+  .services-cta p { font-family: var(--sans); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.7; }
+  .btn-primary { display: inline-block; font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); background: var(--accent); padding: 0.65rem 1.5rem; border-radius: 2px; text-decoration: none; }
+  .btn-primary:hover { opacity: 0.85; text-decoration: none; }
+  .btn-outline { display: inline-block; font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-border); padding: 0.65rem 1.5rem; border-radius: 2px; text-decoration: none; margin: 0.25rem; }
+  .btn-outline:hover { background: var(--accent-border); text-decoration: none; }
+  .tool-links { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0; }
+  footer { border-top: 1px solid var(--border); padding: 3rem 2rem; margin-top: 4rem; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+  .footer-brand p { font-family: var(--sans); font-size: 0.8rem; color: var(--text-secondary); line-height: 1.7; margin-top: 0.75rem; }
+  .footer-col h5 { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.5rem; }
+  .footer-col a { font-family: var(--sans); font-size: 0.8rem; color: var(--text-secondary); }
+  .footer-col a:hover { color: var(--accent); text-decoration: none; }
+  .footer-bottom { max-width: 1100px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-bottom p { font-family: var(--sans); font-size: 0.72rem; color: var(--text-secondary); }
+  @media(max-width:768px){ .footer-inner{grid-template-columns:1fr 1fr;gap:2rem;} }
+  @media(max-width:480px){ .footer-inner{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
+  <ul class="nav-links">
+    <li><a href="/blog/">Research</a></li>
+    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/about/">About</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close menu">✕</button>
+  <a href="/" onclick="document.getElementById('mobileMenu').classList.remove('open')">Home</a>
+  <a href="/blog/" onclick="document.getElementById('mobileMenu').classList.remove('open')">Research</a>
+  <a href="/tools/" onclick="document.getElementById('mobileMenu').classList.remove('open')">Tools</a>
+  <a href="/services/" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="/about/" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+</div>
+
+<div class="breadcrumb">
+  <a href="/">Home</a><span>›</span>
+  <a href="/blog/">Research</a><span>›</span>
+  Bitcoin Multisig Estate Planning
+</div>
+
+<header class="article-header">
+  <p class="category">Custody · Estate Planning</p>
+  <h1>Bitcoin Multisig for Estate Planning: The Institutional Standard</h1>
+  <div class="article-meta">
+    <span>February 25, 2026</span>
+    <span>By Hal Turner</span>
+    <span>~2,000 words · 9 min read</span>
+  </div>
+  <hr class="article-divider">
+</header>
+
+<article class="article-body">
+
+<p>Every serious institutional Bitcoin holder uses multisig. The reasons are well-understood in the custody world: single-key Bitcoin is a single point of failure. If that key is lost, the Bitcoin is gone forever. If the key is stolen, the Bitcoin is gone forever. For an individual holding life-changing wealth in a hardware wallet, these risks are not theoretical — they are the central operational problem of Bitcoin ownership.</p>
+
+<p>What is less often discussed is that single-key Bitcoin is also a single point of failure for <em>succession</em>. When a Bitcoin holder dies with funds secured by a single private key and that key is in a safe deposit box that heirs cannot immediately access, or in a hardware wallet that requires a PIN that no one knows, or in a passphrase-protected wallet documented only in an undiscoverable memory — the estate is in crisis. The funds may be permanently inaccessible. This outcome is more common than the industry acknowledges.</p>
+
+<p>Multisig solves both problems simultaneously. It eliminates the single point of failure for both security and succession, distributes control across multiple parties and locations, and creates a structure that estate attorneys, trustees, and heirs can work with. This guide explains how to use multisig as the foundation of an institutional-grade Bitcoin estate plan.</p>
+
+<h2>What Multisig Is: The Basic Mechanics</h2>
+
+<p>A multisignature (multisig) Bitcoin wallet requires multiple private keys to authorize a transaction, rather than a single key. A <strong>2-of-3 multisig</strong> wallet generates three keys (or "extended public keys" at the descriptor level) and requires any two of the three to sign a transaction. No single key can move the Bitcoin alone.</p>
+
+<p>This architecture achieves two things simultaneously:</p>
+
+<ul>
+  <li><strong>Redundancy against loss:</strong> If one key is destroyed, lost, or stolen, the other two keys can still access the Bitcoin. You can recover from losing one key without losing the funds.</li>
+  <li><strong>Security against theft:</strong> An attacker who obtains one key still cannot move any Bitcoin. They need two keys. Distributing keys geographically means an attacker must compromise multiple separate locations — a substantially higher barrier than compromising a single hardware wallet.</li>
+</ul>
+
+<p>For estate planning, the redundancy property is what matters most. Heirs can access the Bitcoin after the holder's death as long as they can assemble two of the three keys, even if one is held by the deceased and temporarily inaccessible.</p>
+
+<h2>Quorum Structures for Different Family Situations</h2>
+
+<h3>2-of-3: The Most Common Structure</h3>
+
+<p>The 2-of-3 quorum is the default institutional choice and appropriate for most Bitcoin families. Three keys are created and distributed across three parties or locations. Any two can sign. The holder keeps one key (on hardware, at their primary residence), a trusted family member or estate attorney holds a second key (at a different location), and a professional custodian or institutional service holds the third key.</p>
+
+<p>In estate succession: the holder dies holding Key 1. Key 2 (trusted person) and Key 3 (professional custodian) together can access the Bitcoin immediately after death, without waiting for probate, without needing to recover Key 1 from the deceased's possessions.</p>
+
+<h3>3-of-5: For Larger Families or Institutional Structures</h3>
+
+<p>A 3-of-5 quorum is appropriate for families with complex succession structures, significant holdings, or multiple trustees. Five keys are distributed across five parties or locations; any three are needed to transact. This structure provides much higher redundancy — you can lose two keys and still access the funds — but is substantially more operationally complex. Periodic key signing exercises, annual verification of key accessibility, and clear documentation of all five keyholder locations are essential if you use 3-of-5.</p>
+
+<p>For a Wyoming directed trust holding significant Bitcoin, the 3-of-5 structure is worth the operational overhead. The Investment Director might hold two keys, the Administrative Trustee might hold one in escrow, a trusted family member holds one, and a backup custodian holds one. No single party can act unilaterally; the required coalition of three prevents both theft and unauthorized distribution.</p>
+
+<h3>2-of-2: Married Couples Only, With Caution</h3>
+
+<p>A 2-of-2 requires both keys to sign. Both spouses hold a key, and any transaction requires both. This provides mutual control and prevents unilateral movement of assets, which has appeal for jointly-held Bitcoin. The severe drawback: if either spouse dies unexpectedly, the Bitcoin becomes inaccessible unless the surviving spouse can recover the deceased's key. For married couples who want mutual control, a 2-of-3 with the third key held by an estate attorney is significantly safer.</p>
+
+<h2>Geographic Distribution: The Three-Location Rule</h2>
+
+<p>The security benefit of multisig is diminished if multiple keys are kept at the same location. If your house burns down and Keys 1 and 2 are both in a home safe, you have a 2-of-3 multisig that has effectively become single-key with respect to fire risk. The institutional practice is to maintain at least three geographically distinct key locations, following what practitioners call the <strong>three-location rule</strong>:</p>
+
+<ul>
+  <li><strong>Location 1:</strong> Primary residence (one key, hardware wallet)</li>
+  <li><strong>Location 2:</strong> Secure offsite location (second key — bank safe deposit box, secure storage facility, or attorney's office)</li>
+  <li><strong>Location 3:</strong> Professional custodian (third key held by Unchained Capital, Casa, or similar institutional service)</li>
+</ul>
+
+<p>For families with multi-state or international footprint, geographic distribution should reflect actual risk geography — not just different rooms or buildings within the same city, which shares risks of regional natural disasters and infrastructure failures.</p>
+
+<h2>What Happens to Multisig in an Estate: Replacing a Deceased Keyholder's Key</h2>
+
+<p>When a keyholder dies, the quorum structure determines what happens next. In a 2-of-3 where the holder is Key 1, Keys 2 and 3 can immediately sign transactions — meaning heirs can access and transfer the Bitcoin using the surviving keys. The dead keyholder's key is not needed for transactions, only for spending. This is the feature that makes multisig so powerful for succession: death of one keyholder does not freeze the estate assets.</p>
+
+<p>After the estate is administered and Bitcoin is transferred to its ultimate owners (direct heirs or trust beneficiaries), the new custody structure should be rebuilt from scratch. The old wallet descriptor — which includes all three original extended public keys — should be retired. A new multisig wallet is created with the new keyholder set, and the Bitcoin is transferred to the new wallet. This process is called a <strong>key rotation</strong>, and it should occur whenever a keyholder dies, resigns, becomes incapacitated, or otherwise leaves the key structure.</p>
+
+<div class="callout">
+  <p><strong>Critical point:</strong> Never use a multisig wallet where one key has been compromised or is inaccessible without knowing that the remaining keys are sufficient to meet quorum. In a 2-of-3 where one key has been destroyed, you now effectively have a 1-of-2 — and loss of any remaining key means permanent fund loss. Rotate keys promptly when any keyholder situation changes.</p>
+</div>
+
+<h2>Documenting Multisig for Heirs Without Compromising Security</h2>
+
+<p>The central documentation challenge of multisig is that heirs need to know enough to access the Bitcoin after your death, but the information needed to access the Bitcoin — if provided to the wrong person or in an insecure way — could enable theft during your lifetime. The solution is a separation of information layers:</p>
+
+<ul>
+  <li><strong>The wallet descriptor (XPUB set):</strong> The wallet descriptor contains the extended public keys for all signers and the quorum policy. This information is needed to reconstruct the wallet in signing software and identify which keys are needed. The descriptor is <em>not</em> sufficient to sign transactions — it cannot move funds. It should be stored with your estate documents, accessible to your executor.</li>
+  <li><strong>The individual key material (hardware wallets + PINs + passphrases):</strong> Each keyholder secures their own key independently. Your key is documented separately and secured under your own protocols. Your heirs need to locate and access your hardware wallet; the other keyholders provide their keys when needed for estate transactions.</li>
+  <li><strong>The Letter of Instruction:</strong> A plain-language document (not a legal document, not part of the will) that tells your executor and heirs how to access the Bitcoin, where each key is located, who to contact for each key, and the step-by-step process for combining keys to transact. This document should be updated whenever the multisig structure changes.</li>
+</ul>
+
+<h2>The Letter of Instruction for Multisig: Include and Exclude</h2>
+
+<div class="do-dont">
+  <div class="do-box">
+    <h4>✓ Include in the Letter of Instruction</h4>
+    <ul>
+      <li>Wallet software and version (Sparrow, Unchained, Casa)</li>
+      <li>Quorum policy (e.g., "2-of-3 multisig")</li>
+      <li>Name and contact for each keyholder</li>
+      <li>Location of your hardware wallet device</li>
+      <li>Safe deposit box number and bank branch</li>
+      <li>Name of attorney or professional custodian holding Key 3</li>
+      <li>Wallet descriptor / XPUB set (in sealed envelope with estate documents)</li>
+      <li>Instructions for initiating a PSBT transaction</li>
+      <li>Who to call first — and in what order</li>
+    </ul>
+  </div>
+  <div class="dont-box">
+    <h4>✗ Never Include in the Letter of Instruction</h4>
+    <ul>
+      <li>Your hardware wallet PIN</li>
+      <li>Your BIP39 seed phrase (24 words)</li>
+      <li>Your passphrase (25th word), if used</li>
+      <li>Any private key material in any form</li>
+      <li>Derivation paths beyond what signing software needs</li>
+    </ul>
+  </div>
+</div>
+
+<p>The PIN, seed phrase, and passphrase are what actually control your key. These should be stored separately — typically in a sealed envelope in a safe deposit box, in a fireproof safe, or with a trusted third party under specific protocols — and never in the same document or location as the Letter of Instruction.</p>
+
+<h2>The Directed Trust + Multisig Model: Institutional Architecture</h2>
+
+<p>For families holding Bitcoin within a Wyoming directed trust, multisig and directed trust structure work together as a single institutional custody architecture. The Investment Director role — which has authority over Bitcoin custody and transactions — is typically held by a professional service that maintains one or more keys in the multisig quorum. The trust beneficiaries or a distribution advisor may hold another key. The Administrative Trustee holds no keys (appropriate, since they have no investment authority) but maintains the wallet descriptor and documentation for estate administration purposes.</p>
+
+<p>This structure means that any transaction requires coordination between the Investment Director and at least one other quorum participant, preventing unilateral action. The trust document specifies the multisig policy and the keyholder roles. The Administrative Trustee can confirm to heirs and courts that the trust holds Bitcoin, what the wallet structure is, and who the authorized keyholders are — without holding any key material themselves.</p>
+
+<h2>Multisig Vendors and Platforms</h2>
+
+<h3>Unchained Capital — 2-of-3 Collaborative Custody</h3>
+<p>Unchained Capital is the leading institutional provider of collaborative multisig custody. In a typical Unchained arrangement, the client holds two keys and Unchained holds one. Clients can transact independently with their two keys; Unchained's key is a backup and can be used (with identity verification) if the client loses one key. Unchained provides explicit estate planning support, including key recovery procedures for heirs and executor documentation. For Bitcoin families using 2-of-3, Unchained is the default institutional choice.</p>
+
+<h3>Casa — Multi-Key With Mobile Key Option</h3>
+<p>Casa offers a 3-key structure with a mobile app key, hardware wallet key, and Casa key, as well as higher-tier plans with 5-key structures. Casa is oriented toward security-conscious individuals rather than pure institutional structures, but its estate planning documentation and key recovery services are solid. Appropriate for holders who want institutional-grade security with a consumer-friendly interface.</p>
+
+<h3>Sparrow Wallet — Self-Managed Multisig</h3>
+<p>Sparrow Wallet is a desktop Bitcoin wallet with robust multisig support that does not require a third-party custodian. Sophisticated users can construct any quorum structure and manage all keys themselves, using hardware signers from Coldcard, Trezor, Ledger, or other devices. Sparrow is appropriate for technically proficient holders who want full self-custody with no third-party key dependency. The trade-off: operational discipline requirements are substantially higher, and key recovery procedures for heirs must be documented more rigorously since there is no institutional backup.</p>
+
+<div class="tool-links">
+  <a href="/tools/bitcoin-letter-of-instruction" class="btn-outline">Build Your Letter of Instruction</a>
+  <a href="/tools/bitcoin-wealth-dashboard" class="btn-outline">Bitcoin Wealth Dashboard</a>
+</div>
+
+<!-- SERVICES CTA -->
+<div class="services-cta">
+  <h3>Design Your Bitcoin Custody Architecture</h3>
+  <p>Multisig requires coordinated implementation across custody vendors, estate attorneys, and trust documents. The Bitcoin Family Office connects you with professionals who can design and document the complete structure.</p>
+  <a href="/services/" class="btn-primary">View Services</a>
+</div>
+
+<!-- AM TAX CALLOUT -->
+<div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;"><p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful Tax Strategy Available</p><p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">For high-net-worth Bitcoin holders, mining is the only strategy that simultaneously generates yield, accumulates BTC, and creates significant tax offsets through equipment depreciation and operating expense deductions.</p><a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a></div>
+
+<!-- DISCLAIMER -->
+<div style="background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.75rem;margin:2rem 0;"><p style="font-size:0.75rem;color:var(--text-secondary);line-height:1.7;"><strong>Disclaimer.</strong> This article is provided for educational and informational purposes only and does not constitute legal, tax, financial, or investment advice. Estate and tax laws are complex and subject to change. Always consult a qualified estate planning attorney and licensed CPA. The Bitcoin Family Office does not provide legal or tax advice.</p></div>
+
+<!-- AUTHOR BOX -->
+<div class="author-box">
+  <div class="author-avatar">HT</div>
+  <div class="author-info">
+    <h4>Hal Turner</h4>
+    <p>The Bitcoin Family Office — Institutional-grade estate planning resources for serious Bitcoin holders. Hal writes on the intersection of Bitcoin, estate law, and generational wealth strategy.</p>
+  </div>
+</div>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" style="font-family:var(--display);font-size:1rem;color:var(--text);">The Bitcoin <span style="color:var(--accent)">Family Office</span></a>
+      <p>Institutional-grade estate planning resources for Bitcoin holders and their families.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Research</h5>
+      <ul>
+        <li><a href="/blog/">All Articles</a></li>
+        <li><a href="/blog/bitcoin-multisig-estate-planning">Multisig Guide</a></li>
+        <li><a href="/blog/bitcoin-estate-planning-wyoming">Wyoming Trusts</a></li>
+        <li><a href="/blog/bitcoin-estate-planning-attorney-new-york">New York Planning</a></li>
+        <li><a href="/blog/bitcoin-prenuptial-agreement">Bitcoin Prenups</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Tools</h5>
+      <ul>
+        <li><a href="/tools/bitcoin-letter-of-instruction">Letter of Instruction</a></li>
+        <li><a href="/tools/bitcoin-wealth-dashboard">Wealth Dashboard</a></li>
+        <li><a href="/tools/bitcoin-estate-tax-calculator">Estate Tax Calculator</a></li>
+        <li><a href="/tools/bitcoin-grat-optimizer">GRAT Optimizer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 The Bitcoin Family Office. All rights reserved.</p>
+    <p>Not legal or financial advice. For informational purposes only.</p>
+  </div>
+</footer>
+
+</body>
+</html>
