@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitcoin Estate Planning FAQ: 30 Questions Answered | The Bitcoin Family Office</title>
+  <meta name="description" content="30 common bitcoin estate planning questions answered — from seed phrase security and trust structures to step-up in basis, state estate taxes, and getting started today." />
+  <meta name="keywords" content="bitcoin estate planning questions, bitcoin inheritance FAQ, bitcoin inheritance planning, cryptocurrency estate planning, bitcoin trust, bitcoin will, seed phrase estate planning" />
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-estate-planning-faq" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Bitcoin Estate Planning FAQ: 30 Questions Answered" />
+  <meta property="og:description" content="30 common bitcoin estate planning questions answered — from seed phrase security and trust structures to step-up in basis, state estate taxes, and getting started today." />
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-estate-planning-faq" />
+  <meta property="og:image" content="/assets/og-image.svg" />
+  <meta property="og:site_name" content="The Bitcoin Family Office" />
+  <meta property="article:published_time" content="2026-02-25" />
+  <meta property="article:author" content="Hal Turner" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bitcoin Estate Planning FAQ: 30 Questions Answered" />
+  <meta name="twitter:description" content="30 bitcoin estate planning questions answered — trusts, taxes, seed phrases, and more." />
+  <meta name="twitter:image" content="/assets/og-image.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+
+    // hm_scroll event
+    let scrollFired = {};
+    window.addEventListener('scroll', function() {
+      const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      [25, 50, 75, 90].forEach(function(threshold) {
+        if (pct >= threshold && !scrollFired[threshold]) {
+          scrollFired[threshold] = true;
+          gtag('event', 'hm_scroll', { scroll_depth: threshold });
+        }
+      });
+    });
+
+    // hm_click event
+    document.addEventListener('click', function(e) {
+      const el = e.target.closest('a[href], button');
+      if (el) {
+        gtag('event', 'hm_click', {
+          element_text: el.innerText ? el.innerText.trim().substring(0, 60) : '',
+          element_href: el.href || '',
+          element_type: el.tagName.toLowerCase()
+        });
+      }
+    });
+  </script>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebitcoinfamilyoffice.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://thebitcoinfamilyoffice.com/blog/"},
+      {"@type": "ListItem", "position": 3, "name": "Bitcoin Estate Planning FAQ: 30 Questions Answered", "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-estate-planning-faq"}
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bitcoin Estate Planning FAQ: 30 Questions Answered",
+    "description": "30 common bitcoin estate planning questions answered — from seed phrase security and trust structures to step-up in basis, state estate taxes, and getting started today.",
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "author": {
+      "@type": "Person",
+      "name": "Hal Turner",
+      "url": "https://thebitcoinfamilyoffice.com/about/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Bitcoin Family Office",
+      "url": "https://thebitcoinfamilyoffice.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://thebitcoinfamilyoffice.com/assets/logo.svg"
+      }
+    },
+    "image": "https://thebitcoinfamilyoffice.com/assets/og-image.svg",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://thebitcoinfamilyoffice.com/blog/bitcoin-estate-planning-faq"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What happens to my Bitcoin when I die?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Without a plan, your Bitcoin may be permanently lost. Heirs must first locate the wallet (exchange or self-custody), prove their legal authority through probate or a trust, and then gain technical access. For exchange accounts, heirs typically need a death certificate and letters testamentary. For self-custody wallets, heirs need the seed phrase or hardware wallet plus its PIN. If neither is documented and secured, the Bitcoin is unrecoverable — forever."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Bitcoin treated as property for estate tax purposes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The IRS classifies Bitcoin as property, not currency. For federal estate tax purposes, your Bitcoin holdings are valued at their fair market value (FMV) on the date of your death and included in your taxable estate. This means large Bitcoin positions can push your estate over the federal exemption threshold, triggering estate tax."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do my heirs need to pay taxes on inherited Bitcoin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Generally, heirs do not pay income tax on the inheritance itself — but they will owe capital gains tax if they later sell the Bitcoin for more than its stepped-up basis (the fair market value at your date of death). Whether estate tax applies depends on the total size of your estate relative to applicable federal and state exemptions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the 'step-up in basis' and how does it affect Bitcoin inheritance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The step-up in basis means your heirs inherit Bitcoin at its fair market value on the date of your death — not your original purchase price. Example: if you bought Bitcoin at $10,000 and it's worth $100,000 when you die, your heirs' cost basis is $100,000. All capital gains during your lifetime are wiped out. If they sell immediately at $100,000, they owe zero capital gains tax. This is one of the most powerful wealth-transfer benefits in the tax code."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Bitcoin pass through a will?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but with limitations. A will can name Bitcoin as an asset and designate a beneficiary, but it does not automatically give your executor technical access to the Bitcoin itself. Your will must be paired with a secure Letter of Instruction (separate from the will) that provides wallet locations and access procedures. Also, wills go through probate — a public, time-consuming court process. A revocable living trust is often a better vehicle for Bitcoin because it avoids probate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a Letter of Instruction (LOI) for Bitcoin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Letter of Instruction is a private, non-legal document that accompanies your estate plan and provides practical guidance for your executor or trustee. For Bitcoin, it should include: a list of all wallets and exchange accounts, hardware wallet locations and PINs, instructions for accessing each wallet type, and the location of seed phrases (not the seed phrases themselves, which should be stored separately and securely). The LOI is kept private — unlike a will, it does not become public record."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I put my seed phrase in my will?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely not. Never put your seed phrase in your will. After probate, wills become public record — anyone can walk into a courthouse and read them. Publishing your seed phrase in a will is the equivalent of posting your Bitcoin private keys on the internet. Your seed phrase should be stored in a separate, highly secure location (such as a fireproof safe, bank safe deposit box, or with a trusted custodian) and referenced — never transcribed — in your estate documents."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I give my executor access to my Bitcoin without creating security risks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The safest approach separates legal authority from technical access. Your will or trust gives your executor or trustee legal authority. A separate, secured Letter of Instruction provides wallet locations. The seed phrase or hardware wallet is stored in a secure location known only to trusted parties — typically a combination of a safe deposit box, a trusted attorney, or a professional Bitcoin custodian. Multi-signature wallet setups can be ideal: your executor gets one key, a trusted co-signer holds another, so no single party can act unilaterally while alive."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a multi-sig wallet and why does it matter for inheritance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A multi-signature (multi-sig) wallet requires multiple private keys to authorize a transaction. A common setup is '2-of-3': three keys exist, and any two are required to move funds. For estate planning, you might hold one key, give one to your attorney or a co-trustee, and store the third in a secure location. This eliminates single points of failure: if one key is lost or your heir can't locate it, the Bitcoin is still accessible. It also reduces the risk of theft, since a single compromised key isn't enough to steal funds."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do hardware wallets factor into estate planning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hardware wallets (Ledger, Trezor, Coldcard, etc.) are physical devices that store private keys offline. For estate planning, your heirs must have: (1) the physical device, (2) the device PIN, and (3) the seed phrase backup in case the device is lost or fails. All three components should be documented and secured in your estate plan. Consider whether your executor is technically capable of using a hardware wallet — if not, work with a Bitcoin-literate attorney or custodian to bridge the gap."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I put my Bitcoin in a trust?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For most Bitcoin holders with meaningful holdings, yes — a trust is usually superior to a will alone. Trusts avoid probate (keeping your Bitcoin holdings private), transfer seamlessly at death, allow you to set conditions for distribution, and can provide significant tax advantages depending on the trust type. Wyoming, South Dakota, and Nevada offer particularly favorable trust laws for digital assets. The right trust structure depends on your estate size, family situation, and goals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a revocable living trust and how does it help?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A revocable living trust is created during your lifetime and can be amended or revoked at any time. You typically serve as your own trustee while alive and name a successor trustee who takes over at your death or incapacity. For Bitcoin, a revocable trust means: no probate, no public record of your holdings, seamless transfer to heirs, and continued control during your lifetime. It does not reduce estate taxes, but it is an essential foundational structure for nearly every Bitcoin estate plan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a directed trust and why do Bitcoin holders prefer it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A directed trust separates investment management from administrative functions. You appoint an investment advisor (or 'trust protector') who has authority over investment decisions — including Bitcoin custody and strategy — while a corporate trustee handles administrative duties like tax filings and distributions. For Bitcoin holders, this means you can direct the trustee to hold Bitcoin long-term without a corporate trustee who might lack expertise or be unwilling to hold a volatile asset. Wyoming and South Dakota have favorable directed trust statutes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do Bitcoin holders often use Wyoming trusts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wyoming has become the leading state for Bitcoin-friendly trust law. Key advantages include: explicit legal recognition of digital assets and DAOs, no state income tax, no capital gains tax, favorable directed trust statutes, strong asset protection laws, and the ability to hold perpetual (dynasty) trusts. Wyoming also has progressive Bitcoin banking laws and is home to many crypto-native attorneys and trust companies. Even if you don't live in Wyoming, you can often establish a Wyoming trust with a Wyoming trustee."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a Dynasty Trust and does it make sense for Bitcoin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Dynasty Trust is designed to hold assets across multiple generations — potentially indefinitely — without triggering estate tax at each generational transfer. Bitcoin's fixed supply and long-term appreciation profile make it an exceptional asset for dynasty trust structures. By funding a Dynasty Trust today with appreciated Bitcoin (ideally using planning techniques like a GRAT or installment sale), you can transfer decades of future appreciation outside your taxable estate. Wyoming and South Dakota allow perpetual dynasty trusts with no rule against perpetuities."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the federal estate tax exemption for 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As of 2026, the federal estate tax exemption is approximately $13.6 million per individual (indexed for inflation). Married couples can effectively double this through portability. Estates above the exemption are taxed at rates up to 40%. Note: tax law changes frequently — the 2017 Tax Cuts and Jobs Act doubled the exemption, which was set to sunset after 2025. Consult a qualified estate planning attorney for the current, applicable exemption amount."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which states have estate tax on Bitcoin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Several states impose their own estate tax with much lower exemptions than the federal level. As of 2026: Oregon ($1M exemption), Massachusetts ($2M), Washington ($2.193M), Minnesota ($3M), Illinois ($4M), Rhode Island ($1.733M), Maryland ($5M), Maine ($6.41M), Hawaii ($5.49M), New York ($7.16M). If you own Bitcoin and live in one of these states, your estate could owe state estate tax even if you're well below the federal exemption. State-specific planning (including trust domicile strategy) can help."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which states have inheritance tax?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Inheritance tax is paid by the beneficiary (unlike estate tax, paid by the estate). States with inheritance tax include: Pennsylvania (0–15% depending on heir relationship), Kentucky (4–16% for non-immediate family), Nebraska (1–18%), New Jersey (1–16%). Iowa repealed its inheritance tax effective 2025. Immediate family members are often exempt. Bitcoin inherited in these states is subject to the same rates as other property — there is no cryptocurrency exemption."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a GRAT and how can it reduce Bitcoin estate taxes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Grantor Retained Annuity Trust (GRAT) lets you transfer appreciated assets — like Bitcoin — out of your estate while retaining an annuity payment for a fixed term. If the assets appreciate faster than the IRS hurdle rate (the Section 7520 rate), the excess appreciation passes to heirs gift-tax free. For volatile, high-growth assets like Bitcoin, GRATs can be extraordinarily powerful. If Bitcoin doubles during the GRAT term, the entire gain above the hurdle rate exits your estate at zero gift tax cost. 'Zeroed-out' GRATs are a common technique."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a Charitable Remainder Trust (CRT) and can it shelter Bitcoin gains?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Charitable Remainder Trust (CRT) allows you to donate appreciated Bitcoin to the trust, receive an immediate partial income tax deduction, avoid immediate capital gains tax on the donation, receive an income stream for life or a term of years, and ultimately pass the remainder to a charity. If you hold Bitcoin with a very low basis and don't need the full proceeds immediately, a CRT can convert a large, tax-inefficient sale into a tax-advantaged income stream while supporting your charitable goals. Not right for everyone — discuss with a tax attorney."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "I'm not married — what happens to my Bitcoin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you die without a will or trust (intestate), your Bitcoin passes to your heirs under state intestacy laws — typically parents, then siblings. Unmarried partners have no automatic inheritance rights in most states, regardless of how long you've been together. Without planning, your Bitcoin could easily end up with relatives you'd never have chosen. If you're unmarried, a will naming your intended beneficiaries is a minimum — a revocable living trust is even better, as it avoids probate and provides immediate control at your death."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "I hold Bitcoin on an exchange (Coinbase, Kraken) — what do my heirs need to do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For exchange-held Bitcoin, heirs typically need to: (1) notify the exchange of your death, (2) provide a certified death certificate, (3) provide letters testamentary or letters of administration establishing their legal authority, and (4) complete the exchange's account succession process. Each exchange has its own process — some have formal beneficiary programs (Coinbase has improved this), others require a full probate process. Important: make sure your heirs know which exchanges you use. Document login email addresses (not passwords) in your Letter of Instruction."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens to my Bitcoin if I become incapacitated (not dead)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Incapacity is often more immediately urgent than death planning. Without a Durable Power of Attorney (DPOA) for financial affairs, no one has legal authority to manage your Bitcoin holdings — including paying taxes, rebalancing, or accessing emergency funds. Your DPOA should specifically authorize digital asset management. For self-custody Bitcoin, your agent under the DPOA also needs practical access — which again points to a secure, documented Letter of Instruction. A revocable living trust with a named successor trustee handles incapacity automatically, without requiring a court-appointed guardian."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "I own Bitcoin in an LLC or company — how does this affect inheritance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you hold Bitcoin through an LLC or corporation, your estate inherits your ownership interest (shares or membership units), not the Bitcoin directly. This can simplify transfer — shares are easier to transfer than cryptocurrency wallets — but adds complexity around operating agreements, buy-sell provisions, and valuation. Ensure your operating agreement has clear succession provisions. Some Bitcoin holders use LLCs deliberately as a holding layer, which can also provide asset protection and management flexibility. Work with an attorney to ensure the entity structure is properly documented in your estate plan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Bitcoin's inheritance situation if I live abroad or hold as a non-US citizen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is highly complex and jurisdiction-specific. US citizens are subject to US estate tax on worldwide assets regardless of where they live. Non-US citizens residing in the US (resident aliens) may be subject to US estate tax on US-situs assets. Non-resident aliens are generally only taxed on US-situs property. The situs of Bitcoin for estate tax purposes is not definitively settled law. Expats and foreign nationals should work with attorneys versed in both US and local inheritance law, plus applicable tax treaties. Do not assume your home country's rules protect you from US tax exposure if you have US ties."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What documents do I absolutely need to have in place right now?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "At minimum, every Bitcoin holder needs: (1) An updated will naming Bitcoin beneficiaries and a Bitcoin-literate executor, (2) a Durable Power of Attorney for financial affairs that explicitly includes digital assets, (3) a Letter of Instruction listing all wallets, exchange accounts, and access procedures (kept separate and secure), and (4) a designated digital asset fiduciary who understands what Bitcoin is and how to access it. For larger holdings, add a revocable living trust. For significant wealth, consult an estate planning attorney about advanced tax structures."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find an attorney who understands Bitcoin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start by seeking estate planning attorneys who explicitly list digital assets or cryptocurrency in their practice area. Ask about their personal familiarity with Bitcoin — can they explain the difference between a hot wallet and cold storage? Do they know what a seed phrase is? Organizations like the Digital Asset Council of Financial Professionals (DACFP) and the Chamber of Digital Commerce have member directories. Wyoming has a growing community of Bitcoin-native attorneys. Be willing to work remotely with out-of-state counsel for specialized expertise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does Bitcoin estate planning cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Basic estate planning (will, DPOA, healthcare directive, Letter of Instruction) typically runs $1,500–$5,000 depending on attorney and complexity. A revocable living trust package commonly runs $3,000–$8,000. Advanced structures (GRATs, CRTs, dynasty trusts, directed trusts) can cost $10,000–$50,000+ in legal fees, though they're designed for estates where the tax savings dwarf the cost. View estate planning as a one-time investment — the cost of NOT planning is the potential loss of your entire Bitcoin position."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I do Bitcoin estate planning myself without an attorney?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can create basic documents yourself using online platforms (Trust & Will, LegalZoom, etc.) for simple situations. However, Bitcoin adds significant technical and legal complexity that generic templates rarely address well. Self-prepared plans often miss digital asset-specific powers in POAs, fail to properly fund trusts, and lack the coordination between legal authority and technical access that Bitcoin requires. For any meaningful Bitcoin position — especially six figures or more — professional legal counsel is strongly recommended. The cost is small relative to the risk."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How often should I update my Bitcoin estate plan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Review your Bitcoin estate plan: (1) Annually — tax law, exemption amounts, and your Bitcoin holdings change. (2) After any major life event: marriage, divorce, birth of a child, death of a beneficiary, or significant change in Bitcoin value. (3) When you change custody arrangements — new hardware wallet, new exchange account, new multi-sig setup. (4) When tax law changes significantly. At minimum, set a calendar reminder to review your Letter of Instruction every year to ensure wallet locations and access procedures are current."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+      --accent-dim: rgba(201,168,76,0.12);
+      --accent-hover: #d9b85c;
+      --radius: 6px;
+      --max-width: 800px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.125rem;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+    /* ===================== NAV ===================== */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent) !important;
+      border: 1px solid var(--accent);
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius);
+      text-decoration: none !important;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent); color: #000 !important; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 1rem 1.5rem 1.5rem;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; }
+    .mobile-menu ul li { border-bottom: 1px solid var(--border); }
+    .mobile-menu ul li:last-child { border-bottom: none; }
+    .mobile-menu ul a {
+      display: block;
+      padding: 0.85rem 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .mobile-menu ul a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ===================== BREADCRUMB ===================== */
+    .breadcrumb-bar {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1.5rem;
+    }
+    .breadcrumb-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      align-items: center;
+    }
+    .breadcrumb-inner a { color: var(--text-secondary); }
+    .breadcrumb-inner a:hover { color: var(--accent); }
+    .breadcrumb-inner .sep { opacity: 0.4; }
+    .breadcrumb-inner .current { color: var(--accent); }
+
+    /* ===================== HERO ===================== */
+    .article-hero {
+      background: linear-gradient(180deg, rgba(201,168,76,0.04) 0%, transparent 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 3.5rem 1.5rem 2.5rem;
+    }
+    .article-hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .article-tag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 3px;
+      padding: 0.25rem 0.65rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .article-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+      max-width: 680px;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+    .article-meta span { display: flex; align-items: center; gap: 0.35rem; }
+
+    /* ===================== LAYOUT ===================== */
+    .article-body {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ===================== TOC ===================== */
+    .toc-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .toc-box h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .toc-box ol {
+      list-style: none;
+      padding: 0;
+      counter-reset: toc-counter;
+      columns: 2;
+      column-gap: 1.5rem;
+    }
+    .toc-box ol li {
+      counter-increment: toc-counter;
+      padding: 0.3rem 0;
+      break-inside: avoid;
+    }
+    .toc-box ol li a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 0.5rem;
+    }
+    .toc-box ol li a::before {
+      content: counter(toc-counter, decimal-leading-zero);
+      color: var(--accent);
+      font-size: 0.75rem;
+      opacity: 0.7;
+      min-width: 2rem;
+      margin-top: 0.05rem;
+    }
+    .toc-box ol li a:hover { color: var(--accent); text-decoration: none; }
+    @media (max-width: 600px) {
+      .toc-box ol { columns: 1; }
+    }
+
+    /* ===================== INTRO ===================== */
+    .article-intro {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.8;
+    }
+
+    /* ===================== CATEGORY SECTION ===================== */
+    .faq-category {
+      margin-bottom: 3rem;
+    }
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .category-number {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 3px;
+      padding: 0.2rem 0.55rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .category-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ===================== ACCORDION ===================== */
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .faq-item:hover { border-color: rgba(201,168,76,0.3); }
+    .faq-item.open { border-color: rgba(201,168,76,0.4); }
+
+    .faq-question {
+      width: 100%;
+      background: var(--bg-card);
+      border: none;
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s;
+    }
+    .faq-question:hover { background: #181818; }
+    .faq-item.open .faq-question { background: #181818; }
+
+    .faq-q-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+    .faq-q-num {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.7;
+      min-width: 1.5rem;
+      padding-top: 0.2rem;
+      flex-shrink: 0;
+    }
+    .faq-q-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .faq-chevron {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+      color: var(--accent);
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-answer-inner {
+      padding: 1rem 1.5rem 1.4rem 4rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+    }
+    .faq-answer-inner p { margin-bottom: 0.75rem; }
+    .faq-answer-inner p:last-child { margin-bottom: 0; }
+    .faq-answer-inner strong { color: var(--text); font-weight: 600; }
+    .faq-answer-inner ul {
+      margin: 0.5rem 0 0.75rem 1.2rem;
+    }
+    .faq-answer-inner ul li { margin-bottom: 0.3rem; }
+    @media (max-width: 600px) {
+      .faq-answer-inner { padding-left: 2rem; }
+    }
+
+    /* ===================== CALLOUT BOXES ===================== */
+    .callout {
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-left: 3px solid;
+    }
+    .callout-warning {
+      background: rgba(201,168,76,0.06);
+      border-color: var(--accent);
+    }
+    .callout-warning .callout-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .callout-warning p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    .callout-warning strong { color: var(--text); }
+
+    .callout-am {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.03) 100%);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      margin: 2.5rem 0;
+    }
+    .callout-am .callout-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .callout-am h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+    .callout-am p {
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    .callout-am a.btn {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.5rem 1.2rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .callout-am a.btn:hover { background: var(--accent); color: #000; }
+
+    /* ===================== SERVICES CTA ===================== */
+    .services-cta {
+      background: var(--bg-card);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    .services-cta h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .services-cta p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 1.5rem;
+    }
+    .services-cta a.btn-primary {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: var(--accent);
+      color: #000;
+      padding: 0.75rem 2rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .services-cta a.btn-primary:hover { background: var(--accent-hover); }
+
+    /* ===================== AUTHOR BOX ===================== */
+    .author-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      margin: 3rem 0;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+    .author-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 2px solid rgba(201,168,76,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .author-info h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .author-info .author-role {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
+    .author-info p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ===================== DISCLAIMER ===================== */
+    .disclaimer {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin: 2.5rem 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .disclaimer strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===================== FOOTER ===================== */
+    .site-footer {
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.5rem 2rem;
+      margin-top: 4rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand .logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .footer-brand .logo span { color: var(--accent); }
+    .footer-brand p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .footer-col h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+    }
+    .footer-col ul a:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* ===================== UTILS ===================== */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======= NAVIGATION ======= -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/" class="nav-cta">Get Started</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" role="menu">
+      <ul>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ======= BREADCRUMB ======= -->
+  <div class="breadcrumb-bar" aria-label="Breadcrumb">
+    <div class="breadcrumb-inner">
+      <a href="/">Home</a>
+      <span class="sep">›</span>
+      <a href="/blog/">Insights</a>
+      <span class="sep">›</span>
+      <span class="current">Bitcoin Estate Planning FAQ</span>
+    </div>
+  </div>
+
+  <!-- ======= HERO ======= -->
+  <header class="article-hero">
+    <div class="article-hero-inner">
+      <span class="article-tag">Estate Planning</span>
+      <h1 class="article-title">Bitcoin Estate Planning FAQ:<br>30 Questions Answered</h1>
+      <p class="article-subtitle">From seed phrase security and trust structures to step-up in basis and state estate taxes — a definitive guide to the most common bitcoin inheritance questions.</p>
+      <div class="article-meta">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M3 21v-2a9 9 0 0118 0v2"/></svg>
+          Hal Turner
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          February 25, 2026
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          18 min read
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======= ARTICLE BODY ======= -->
+  <main class="article-body" id="main-content">
+
+    <!-- Intro -->
+    <p class="article-intro">
+      Bitcoin estate planning is one of the most misunderstood — and most consequential — areas of personal finance. Unlike a brokerage account or a bank balance, Bitcoin held in self-custody can be permanently lost if your heirs don't know where it is or how to access it. And unlike most inherited assets, Bitcoin comes with a unique combination of technical complexity, tax opportunity, and legal ambiguity that most estate planning attorneys have never encountered. This FAQ covers the 30 questions we hear most often, organized from fundamental concepts to advanced strategies. Whether you're just getting started or reviewing an existing plan, the answers here will help you protect what you've built.
+    </p>
+
+    <!-- TOC -->
+    <nav class="toc-box" aria-label="Table of contents">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#cat-1">The Basics</a></li>
+        <li><a href="#cat-2">Protecting Access</a></li>
+        <li><a href="#cat-3">Trusts &amp; Legal Structures</a></li>
+        <li><a href="#cat-4">Tax Planning</a></li>
+        <li><a href="#cat-5">Special Situations</a></li>
+        <li><a href="#cat-6">Getting Started</a></li>
+      </ol>
+    </nav>
+
+    <!-- ===== CATEGORY 1: THE BASICS ===== -->
+    <section class="faq-category" id="cat-1">
+      <div class="category-header">
+        <span class="category-number">01</span>
+        <h2 class="category-title">The Basics</h2>
+      </div>
+
+      <div class="faq-item" id="q1">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">01</span>
+            <span class="faq-q-text">What happens to my Bitcoin when I die?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Without a plan, your Bitcoin may be permanently lost. The process your heirs must navigate depends entirely on how you hold it.</p>
+            <p><strong>Exchange-held Bitcoin:</strong> Heirs must notify the exchange, provide a certified death certificate, and obtain letters testamentary or letters of administration from a probate court establishing their legal authority to act on behalf of the estate. Each exchange has its own succession process — some are straightforward; others require lengthy legal proceedings.</p>
+            <p><strong>Self-custody Bitcoin:</strong> No institution can help. Heirs must locate the hardware wallet or seed phrase backup, know how to use the device, and have the PIN or passphrase. If these are not documented and accessible, the Bitcoin is mathematically unrecoverable — forever.</p>
+            <p>Planning means ensuring your heirs can: (1) locate the Bitcoin, (2) prove their legal authority to claim it, and (3) access it technically. All three must be addressed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q2">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">02</span>
+            <span class="faq-q-text">Is Bitcoin treated as property for estate tax purposes?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes. The IRS has classified Bitcoin and other cryptocurrencies as <strong>property</strong> since 2014 (IRS Notice 2014-21). For federal estate tax purposes, your Bitcoin holdings are included in your gross estate at their <strong>fair market value on the date of your death</strong>.</p>
+            <p>This matters because large Bitcoin positions can push your estate above the federal exemption threshold — or a state exemption threshold — triggering estate tax at rates up to 40% federally. Bitcoin's appreciation over time makes proactive planning increasingly important for long-term holders.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q3">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">03</span>
+            <span class="faq-q-text">Do my heirs need to pay taxes on inherited Bitcoin?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Generally, heirs do <strong>not</strong> pay income tax on the inheritance itself — Bitcoin is not taxable income when received through an estate. However, two potential tax liabilities remain:</p>
+            <ul>
+              <li><strong>Capital gains tax:</strong> If heirs sell the inherited Bitcoin for more than its stepped-up basis (the value at your death), they owe capital gains tax on the gain. Sales at or below the stepped-up basis result in no capital gains tax.</li>
+              <li><strong>Estate tax:</strong> If your total estate exceeds applicable federal or state exemptions, the estate (not the heirs individually) owes estate tax before assets are distributed.</li>
+              <li><strong>Inheritance tax:</strong> A small number of states impose inheritance tax on beneficiaries directly — see Question 18 for details.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q4">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">04</span>
+            <span class="faq-q-text">What is the "step-up in basis" and how does it affect Bitcoin inheritance?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>The step-up in basis is one of the most powerful wealth-transfer provisions in the US tax code — and Bitcoin holders stand to benefit enormously from it.</p>
+            <p>When you die, your heirs inherit assets at their <strong>fair market value on the date of death</strong> — not your original purchase price. All appreciation during your lifetime is effectively wiped out for income tax purposes.</p>
+            <p><strong>Example:</strong> You bought 1 BTC at $10,000. It's worth $100,000 when you die. Your heir's cost basis is $100,000. If they sell immediately at $100,000, they owe <em>zero</em> capital gains tax. The $90,000 gain you accumulated over your lifetime escapes income tax entirely.</p>
+            <p>This makes holding Bitcoin through death — rather than selling — a powerful intergenerational wealth strategy. For Bitcoin holders with very low cost basis, the step-up alone can save millions in taxes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q5">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">05</span>
+            <span class="faq-q-text">Can Bitcoin pass through a will?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes — but a will alone is rarely sufficient for Bitcoin. A will can name Bitcoin as a bequeathable asset and designate a beneficiary. However, it does not automatically provide technical access to the Bitcoin itself.</p>
+            <p>Your will must be paired with:</p>
+            <ul>
+              <li>A separate, secure <strong>Letter of Instruction</strong> that provides wallet locations, exchange account details, and access procedures</li>
+              <li>An executor who is technically capable of managing digital assets — or who knows to engage a specialist</li>
+            </ul>
+            <p>Critically, wills go through <strong>probate</strong> — a public, court-supervised process that can take months or years and exposes your Bitcoin holdings to public record. For most Bitcoin holders, a <strong>revocable living trust</strong> is a superior alternative, as it bypasses probate entirely.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CATEGORY 2: PROTECTING ACCESS ===== -->
+    <section class="faq-category" id="cat-2">
+      <div class="category-header">
+        <span class="category-number">02</span>
+        <h2 class="category-title">Protecting Access</h2>
+      </div>
+
+      <div class="faq-item" id="q6">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">06</span>
+            <span class="faq-q-text">What is a Letter of Instruction (LOI) for Bitcoin?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>A Letter of Instruction is a private, non-legally-binding document that accompanies your estate plan and provides practical, actionable guidance for your executor or trustee. Think of it as the operational manual for your estate.</p>
+            <p>For Bitcoin, your LOI should include:</p>
+            <ul>
+              <li>A list of all wallets (hardware wallets, software wallets, paper wallets)</li>
+              <li>Exchange account names and login email addresses (not passwords)</li>
+              <li>The physical location of hardware devices and seed phrase backups</li>
+              <li>Step-by-step instructions or a reference to a trusted Bitcoin advisor</li>
+              <li>Location of your seed phrases — stored separately and securely</li>
+            </ul>
+            <p>The LOI is kept <strong>private</strong> — unlike your will, it never enters the public record. It should be stored securely (with your attorney, in a safe, or with your successor trustee) and updated whenever your custody arrangements change.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q7">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">07</span>
+            <span class="faq-q-text">Should I put my seed phrase in my will?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <div class="callout callout-warning" style="margin: 0 0 1rem 0; padding: 0.9rem 1.1rem;">
+              <div class="callout-label">⚠ Critical Warning</div>
+              <p><strong>Never put your seed phrase in your will.</strong> This is one of the most dangerous mistakes a Bitcoin holder can make.</p>
+            </div>
+            <p>After your estate goes through probate, your will becomes a <strong>public document</strong>. Anyone — a creditor, a disgruntled relative, a stranger with malicious intent — can walk into a courthouse and read it. Publishing your seed phrase in your will is the equivalent of posting your private keys on the internet.</p>
+            <p>Your seed phrase should be stored in a separate, highly secure location: a fireproof safe, a bank safe deposit box, with a trusted attorney under confidentiality, or via a specialized Bitcoin inheritance service. Your will or LOI should reference <em>where</em> the seed phrase is stored — never the phrase itself.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q8">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">08</span>
+            <span class="faq-q-text">How do I give my executor access to my Bitcoin without creating security risks?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>The safest approach <strong>separates legal authority from technical access</strong> and distributes each component across multiple secure channels.</p>
+            <ul>
+              <li><strong>Legal authority:</strong> Your will or trust document grants your executor or trustee the right to act on behalf of your estate</li>
+              <li><strong>Wallet locations:</strong> Your Letter of Instruction (stored privately and securely) identifies what you own and where to find it</li>
+              <li><strong>Seed phrase / hardware wallet:</strong> Stored separately in a high-security location (safe deposit box, fireproof safe, or with a trusted custodian)</li>
+              <li><strong>Technical guidance:</strong> An identified Bitcoin-literate attorney or advisor your executor can contact for help</li>
+            </ul>
+            <p>No single document or person should hold all three components simultaneously. Multi-signature wallet setups formalize this separation at the cryptographic level — see Question 9.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q9">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">09</span>
+            <span class="faq-q-text">What is a multi-sig wallet and why does it matter for inheritance?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>A multi-signature wallet requires multiple private keys to authorize any transaction. The most common inheritance setup is <strong>2-of-3 multi-sig</strong>: three keys exist, and any two are required to move funds.</p>
+            <p>For estate planning, you might structure it as:</p>
+            <ul>
+              <li><strong>Key 1:</strong> Held by you (hardware wallet at home)</li>
+              <li><strong>Key 2:</strong> Held by your attorney or co-trustee (in their safe)</li>
+              <li><strong>Key 3:</strong> Stored in a secure backup location (bank safe deposit box)</li>
+            </ul>
+            <p>Benefits for inheritance: if one key is lost, Bitcoin is still recoverable. No single person can act unilaterally (protecting against theft or coercion). Your executor doesn't need a perfect handoff — just two of three keys. It's one of the most secure and inheritance-friendly custody architectures available.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q10">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">10</span>
+            <span class="faq-q-text">How do hardware wallets factor into estate planning?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Hardware wallets (Ledger, Trezor, Coldcard, Foundation Passport, and others) store private keys offline in a secure chip. For inheritance, three things must survive you:</p>
+            <ul>
+              <li><strong>The physical device</strong> — and its location, documented in your LOI</li>
+              <li><strong>The device PIN</strong> — necessary to unlock the device (documented securely, never in your will)</li>
+              <li><strong>The seed phrase backup</strong> — 12 or 24 words that can restore the wallet to any compatible device if the hardware is lost or fails</li>
+            </ul>
+            <p>Never rely solely on the hardware device — devices fail, get lost, or become obsolete. The seed phrase is the true key. Also consider: is your executor technically capable of using a hardware wallet? If not, plan for a Bitcoin-literate advisor or custodian to assist during the estate administration process.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AM Callout -->
+    <div class="callout-am">
+      <div class="callout-label">⚡ Tax Strategy Insight</div>
+      <h3>Bitcoin Mining: The Most Powerful Tax Strategy You're Not Using</h3>
+      <p>While estate planning preserves Bitcoin wealth across generations, Bitcoin mining creates wealth with built-in tax advantages — depreciation, operating expense deductions, bonus depreciation, and more. If you're thinking seriously about tax efficiency, mining belongs in the conversation.</p>
+      <a href="https://abundantmines.com/tax-strategy/" class="btn" target="_blank" rel="noopener">Explore Mining Tax Strategy →</a>
+    </div>
+
+    <!-- ===== CATEGORY 3: TRUSTS ===== -->
+    <section class="faq-category" id="cat-3">
+      <div class="category-header">
+        <span class="category-number">03</span>
+        <h2 class="category-title">Trusts &amp; Legal Structures</h2>
+      </div>
+
+      <div class="faq-item" id="q11">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">11</span>
+            <span class="faq-q-text">Should I put my Bitcoin in a trust?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>For most Bitcoin holders with meaningful holdings, yes — a trust is usually superior to a will alone. Key advantages:</p>
+            <ul>
+              <li><strong>Avoids probate:</strong> Trust assets transfer immediately to beneficiaries without court involvement</li>
+              <li><strong>Privacy:</strong> Unlike a will, a trust never becomes public record — your Bitcoin holdings stay private</li>
+              <li><strong>Control:</strong> You can set conditions for distribution (age requirements, milestones, etc.)</li>
+              <li><strong>Incapacity planning:</strong> A successor trustee can manage your Bitcoin if you become incapacitated</li>
+              <li><strong>Tax optimization:</strong> Certain trust structures (GRATs, CRTs, dynasty trusts) can dramatically reduce estate and capital gains taxes</li>
+            </ul>
+            <p>The right trust structure depends on your estate size, family situation, and long-term goals. Start with a revocable living trust as a foundation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q12">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">12</span>
+            <span class="faq-q-text">What is a revocable living trust and how does it help?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>A revocable living trust is created during your lifetime and can be amended or revoked at any time. You typically serve as your own trustee while alive — retaining full control — and name a successor trustee who takes over automatically at your death or incapacity.</p>
+            <p>For Bitcoin holders, a revocable trust delivers:</p>
+            <ul>
+              <li><strong>No probate:</strong> Your Bitcoin transfers to heirs without court involvement — faster and cheaper</li>
+              <li><strong>Privacy:</strong> Your holdings never become public record</li>
+              <li><strong>Incapacity coverage:</strong> Your successor trustee manages your Bitcoin immediately if you're incapacitated — no court-appointed guardian needed</li>
+              <li><strong>Control during life:</strong> You remain trustee and can buy, sell, or transfer Bitcoin freely</li>
+            </ul>
+            <p>Note: a revocable trust does <em>not</em> reduce estate taxes — all trust assets are included in your taxable estate. For tax reduction, you need irrevocable structures.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q13">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">13</span>
+            <span class="faq-q-text">What is a directed trust and why do Bitcoin holders prefer it?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>A directed trust separates investment management from administrative functions. You appoint an <strong>investment advisor or trust protector</strong> with authority over investment decisions — including Bitcoin strategy and custody — while a corporate trustee handles administrative duties like tax filings and distributions.</p>
+            <p>For Bitcoin holders, this is powerful because:</p>
+            <ul>
+              <li>Corporate trustees may be unwilling or unequipped to hold Bitcoin long-term</li>
+              <li>You can direct the trust to maintain a Bitcoin-only or Bitcoin-heavy allocation through a named investment advisor</li>
+              <li>The investment advisor role can be held by you (during life), a trusted family member, or a Bitcoin-specialist RIA</li>
+            </ul>
+            <p>Wyoming and South Dakota have the most favorable directed trust statutes in the US. Directed trusts are increasingly the structure of choice for sophisticated Bitcoin family offices.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q14">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">14</span>
+            <span class="faq-q-text">Why do Bitcoin holders often use Wyoming trusts?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Wyoming has deliberately built the most Bitcoin-friendly trust and asset protection environment in the United States. Key advantages:</p>
+            <ul>
+              <li><strong>Explicit digital asset recognition:</strong> Wyoming statutes explicitly recognize digital assets and establish clear legal frameworks for their ownership and transfer</li>
+              <li><strong>No state income or capital gains tax</strong></li>
+              <li><strong>Favorable directed trust laws:</strong> Strong statutory support for separating investment and administrative roles</li>
+              <li><strong>Asset protection:</strong> Strong spendthrift and creditor protection statutes</li>
+              <li><strong>Perpetual trusts:</strong> No rule against perpetuities — trusts can run indefinitely</li>
+              <li><strong>Bitcoin banking:</strong> Wyoming SPDI (Special Purpose Depository Institution) charter enables Bitcoin-native banking</li>
+            </ul>
+            <p>Even if you live in another state, you can often establish a Wyoming trust with a Wyoming-resident trustee. Work with a Wyoming-admitted attorney or one licensed in your state with Wyoming trust experience.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q15">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">15</span>
+            <span class="faq-q-text">What is a Dynasty Trust and does it make sense for Bitcoin?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>A Dynasty Trust is designed to hold and distribute assets across multiple generations — potentially indefinitely — without triggering estate tax at each generational transfer. Assets inside the trust compound and pass to children, grandchildren, and great-grandchildren without repeated estate taxation.</p>
+            <p>Bitcoin's fixed supply, deflationary monetary properties, and long-term appreciation profile make it an extraordinary asset for a dynasty trust structure. Key considerations:</p>
+            <ul>
+              <li><strong>Fund the trust during your lifetime</strong> using gift tax exemptions or advanced techniques (GRAT, installment sale) to minimize transfer taxes</li>
+              <li><strong>Wyoming and South Dakota</strong> allow perpetual dynasty trusts — no time limit</li>
+              <li><strong>Generation-Skipping Transfer (GST) tax exemption</strong> can shelter large amounts — your attorney can help you allocate GST exemption to the trust</li>
+            </ul>
+            <p>A dynasty trust funded with Bitcoin today, structured correctly, could preserve and grow that wealth for three or four generations with minimal tax erosion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CATEGORY 4: TAX PLANNING ===== -->
+    <section class="faq-category" id="cat-4">
+      <div class="category-header">
+        <span class="category-number">04</span>
+        <h2 class="category-title">Tax Planning</h2>
+      </div>
+
+      <div class="faq-item" id="q16">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">16</span>
+            <span class="faq-q-text">What is the federal estate tax exemption for 2026?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>As of 2026, the federal estate tax exemption is approximately <strong>$13.6 million per individual</strong> (indexed for inflation). Married couples can effectively double this to approximately $27.2 million through the portability election.</p>
+            <p>Estates above the exemption are taxed at rates up to <strong>40%</strong> on the excess.</p>
+            <p><strong>Important:</strong> Tax law is subject to change. The 2017 Tax Cuts and Jobs Act substantially increased the exemption, and legislative changes can alter these thresholds. Consult a qualified estate planning attorney for the current applicable exemption and any pending legislative developments that may affect your planning.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q17">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">17</span>
+            <span class="faq-q-text">Which states have estate tax on Bitcoin?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Several states impose estate tax with exemptions far below the federal level. Bitcoin is subject to state estate tax the same as any other property. As of 2026:</p>
+            <ul>
+              <li><strong>Oregon:</strong> $1 million exemption</li>
+              <li><strong>Rhode Island:</strong> $1.733 million exemption</li>
+              <li><strong>Massachusetts:</strong> $2 million exemption</li>
+              <li><strong>Washington:</strong> $2.193 million exemption</li>
+              <li><strong>Minnesota:</strong> $3 million exemption</li>
+              <li><strong>Illinois:</strong> $4 million exemption</li>
+              <li><strong>Maryland:</strong> $5 million exemption</li>
+              <li><strong>Hawaii:</strong> $5.49 million exemption</li>
+              <li><strong>Maine:</strong> $6.41 million exemption</li>
+              <li><strong>New York:</strong> $7.16 million exemption</li>
+            </ul>
+            <p>If you own significant Bitcoin and live in one of these states, you may owe state estate tax even if you're well below the federal exemption. Trust domicile strategies and state-specific planning can mitigate this exposure.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q18">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">18</span>
+            <span class="faq-q-text">Which states have inheritance tax?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Inheritance tax is paid by the <em>beneficiary</em> — not the estate — based on who receives the assets and their relationship to the deceased. Bitcoin is treated like any other property for inheritance tax purposes. States with active inheritance taxes include:</p>
+            <ul>
+              <li><strong>Pennsylvania:</strong> 0–15% depending on relationship to decedent (spouses and charities exempt)</li>
+              <li><strong>Kentucky:</strong> 4–16% for non-immediate family members</li>
+              <li><strong>Nebraska:</strong> 1–18% depending on relationship</li>
+              <li><strong>New Jersey:</strong> 1–16% for certain beneficiaries (spouses and direct descendants generally exempt)</li>
+              <li><strong>Iowa:</strong> Repealed effective 2025 — no longer applicable</li>
+            </ul>
+            <p>Immediate family members (spouses, children, grandchildren) are often exempt or pay reduced rates. Consult your attorney for current rates and exemptions in your state.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q19">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">19</span>
+            <span class="faq-q-text">What is a GRAT and how can it reduce Bitcoin estate taxes?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>A Grantor Retained Annuity Trust (GRAT) lets you transfer appreciated assets — including Bitcoin — out of your taxable estate while retaining an annuity payment for a fixed term (typically 2–10 years).</p>
+            <p><strong>How it works:</strong> You contribute Bitcoin to the GRAT. You receive back an annual annuity over the term. If the Bitcoin appreciates faster than the IRS hurdle rate (the Section 7520 rate), the excess appreciation passes to your beneficiaries <em>gift-tax free</em> when the GRAT term ends.</p>
+            <p>For volatile, high-growth assets like Bitcoin, GRATs can be extraordinarily powerful. A "zeroed-out" GRAT is structured so the present value of the annuity equals the contributed amount — meaning you owe essentially zero gift tax regardless of future appreciation. If Bitcoin doubles during the GRAT term, the entire excess passes to heirs free of estate and gift tax.</p>
+            <p>Risk: if you die during the GRAT term, the assets return to your estate. Many planners use rolling short-term GRATs to manage this risk.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q20">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">20</span>
+            <span class="faq-q-text">What is a Charitable Remainder Trust (CRT) and can it shelter Bitcoin gains?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>A Charitable Remainder Trust (CRT) allows you to donate appreciated Bitcoin to the trust in exchange for:</p>
+            <ul>
+              <li>An immediate partial <strong>income tax deduction</strong></li>
+              <li><strong>No immediate capital gains tax</strong> on the donated Bitcoin (the trust, as a tax-exempt entity, can sell and reinvest without triggering gains)</li>
+              <li>An <strong>income stream</strong> for you (and/or a beneficiary) for life or a set term</li>
+              <li>The remainder passing to a charity of your choice</li>
+            </ul>
+            <p>If you hold Bitcoin with a very low cost basis and need income but not an immediate lump-sum sale, a CRT converts a large, tax-inefficient liquidation into a structured, tax-advantaged income stream. The charitable deduction partially offsets current income taxes.</p>
+            <p>CRTs are not right for everyone — they are irrevocable and the remainder must go to charity. Consult a tax attorney to evaluate whether your charitable goals and financial situation align.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CATEGORY 5: SPECIAL SITUATIONS ===== -->
+    <section class="faq-category" id="cat-5">
+      <div class="category-header">
+        <span class="category-number">05</span>
+        <h2 class="category-title">Special Situations</h2>
+      </div>
+
+      <div class="faq-item" id="q21">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">21</span>
+            <span class="faq-q-text">I'm not married — what happens to my Bitcoin?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>If you die without a will or trust (intestate), your Bitcoin passes under your state's intestacy laws — typically to your closest living relatives: parents first, then siblings. <strong>Unmarried partners have no automatic inheritance rights</strong> in most US states, regardless of the length or nature of your relationship.</p>
+            <p>Without planning, your Bitcoin could easily end up with relatives you'd never have chosen — or become subject to a messy probate dispute. If you're unmarried:</p>
+            <ul>
+              <li>A <strong>will naming your intended beneficiaries</strong> is the absolute minimum</li>
+              <li>A <strong>revocable living trust</strong> is better — it avoids probate and transfers immediately at death</li>
+              <li>Consider a <strong>Durable Power of Attorney</strong> so your partner can manage your Bitcoin if you're incapacitated but not yet deceased</li>
+            </ul>
+            <p>Don't assume love is a legal relationship. In the eyes of the law, it isn't.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q22">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">22</span>
+            <span class="faq-q-text">I hold Bitcoin on an exchange (Coinbase, Kraken) — what do my heirs need to do?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>For exchange-held Bitcoin, the process is more structured than self-custody — but it still requires advance preparation:</p>
+            <ul>
+              <li><strong>Step 1:</strong> Notify the exchange of your death (usually via their customer support or estates team)</li>
+              <li><strong>Step 2:</strong> Provide a certified death certificate</li>
+              <li><strong>Step 3:</strong> Provide letters testamentary or letters of administration — court documents establishing your executor's legal authority</li>
+              <li><strong>Step 4:</strong> Complete the exchange's account succession process (which varies by platform)</li>
+            </ul>
+            <p>Key preparation steps for you now: document all exchange accounts in your Letter of Instruction (exchange name, login email), make sure your beneficiaries know these accounts exist, and check whether your exchange has a formal beneficiary or succession program. Coinbase, for example, has improved its estate services.</p>
+            <p>Without knowing which exchange you use and having legal authority established, heirs may wait months for access.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q23">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">23</span>
+            <span class="faq-q-text">What happens to my Bitcoin if I become incapacitated (not dead)?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Incapacity is often more immediately urgent than death planning — and frequently overlooked. Without a Durable Power of Attorney (DPOA) for financial affairs, <strong>no one has legal authority to manage your Bitcoin</strong> if you're incapacitated. This includes paying taxes, managing exchange accounts, or accessing emergency funds.</p>
+            <p>Essential documents for incapacity planning:</p>
+            <ul>
+              <li><strong>Durable Power of Attorney (financial):</strong> Grants an agent authority to manage your financial affairs, including digital assets — must specifically include digital asset language</li>
+              <li><strong>Healthcare directive / living will:</strong> Governs medical decisions, separate from financial POA</li>
+            </ul>
+            <p>A revocable living trust is even more effective for incapacity: your successor trustee assumes management automatically when you're unable to act — no legal proceedings required. Consider both a trust and a DPOA as complementary tools.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q24">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">24</span>
+            <span class="faq-q-text">I own Bitcoin in an LLC or company — how does this affect inheritance?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>When Bitcoin is held through an LLC or corporation, your estate inherits your <strong>ownership interest</strong> (membership units or shares) — not the Bitcoin directly. This has several implications:</p>
+            <ul>
+              <li><strong>Simpler technical transfer:</strong> Transferring LLC units is often simpler than transferring cryptocurrency wallets directly</li>
+              <li><strong>Valuation complexity:</strong> LLC interests may be discounted for lack of marketability and lack of control — this can actually reduce estate tax value</li>
+              <li><strong>Operating agreement matters:</strong> Your LLC operating agreement must have clear succession provisions — what happens to membership on the owner's death, who assumes management authority</li>
+              <li><strong>Buy-sell agreements:</strong> If you have partners, buy-sell provisions govern what happens to your interest</li>
+            </ul>
+            <p>Ensure your estate plan specifically addresses the LLC interest and coordinates with the operating agreement. Your attorney should review both documents together.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q25">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">25</span>
+            <span class="faq-q-text">What is Bitcoin's inheritance situation if I live abroad or hold as a non-US citizen?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>This area is highly complex and jurisdiction-specific. Key principles:</p>
+            <ul>
+              <li><strong>US citizens abroad:</strong> Subject to US estate tax on <em>worldwide</em> assets regardless of where they live. Renouncing citizenship doesn't eliminate exposure retroactively.</li>
+              <li><strong>US resident aliens (green card holders):</strong> Generally subject to US estate tax on worldwide assets similar to citizens</li>
+              <li><strong>Non-resident aliens:</strong> Subject to US estate tax only on US-situs property. The situs of Bitcoin is not definitively settled in US law.</li>
+              <li><strong>Tax treaties:</strong> Bilateral estate tax treaties can modify these rules — check whether your home country has a treaty with the US</li>
+              <li><strong>Local succession law:</strong> Your country of domicile may impose its own inheritance or succession rules that override or conflict with a US will or trust</li>
+            </ul>
+            <p>If you have cross-border circumstances, work with attorneys admitted in both jurisdictions. Do not assume one country's plan is sufficient.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CATEGORY 6: GETTING STARTED ===== -->
+    <section class="faq-category" id="cat-6">
+      <div class="category-header">
+        <span class="category-number">06</span>
+        <h2 class="category-title">Getting Started</h2>
+      </div>
+
+      <div class="faq-item" id="q26">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">26</span>
+            <span class="faq-q-text">What documents do I absolutely need to have in place right now?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>At minimum, every Bitcoin holder needs these four things in place:</p>
+            <ul>
+              <li><strong>1. Updated will</strong> naming Bitcoin beneficiaries explicitly and designating a Bitcoin-literate executor who understands digital assets</li>
+              <li><strong>2. Durable Power of Attorney for financial affairs</strong> that explicitly includes authority over digital assets and cryptocurrency — generic POAs often miss this</li>
+              <li><strong>3. Letter of Instruction</strong> listing all wallets, exchange accounts, hardware wallet locations, and step-by-step access procedures — stored securely and separately from the will</li>
+              <li><strong>4. Designated digital asset fiduciary</strong> — a named person (executor, trustee, or advisor) who understands what Bitcoin is, how custody works, and what to do</li>
+            </ul>
+            <p>For holdings above $500K, add a revocable living trust. For holdings above $5M, consult an attorney about advanced tax structures (GRAT, dynasty trust, directed trust).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q27">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">27</span>
+            <span class="faq-q-text">How do I find an attorney who understands Bitcoin?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Finding a genuinely Bitcoin-literate estate planning attorney requires active vetting. Here's how:</p>
+            <ul>
+              <li><strong>Ask screening questions:</strong> Can they explain the difference between a hot wallet and cold storage? Do they know what a seed phrase is? What trust structures do they use for digital asset clients?</li>
+              <li><strong>Look for digital asset practice areas:</strong> Attorneys who explicitly list cryptocurrency, digital assets, or blockchain in their practice area are a starting point</li>
+              <li><strong>Wyoming specialists:</strong> Wyoming's digital asset legal community is the most sophisticated in the US — consider remote counsel from a Wyoming-admitted attorney regardless of your state of residence</li>
+              <li><strong>Professional networks:</strong> The Digital Asset Council of Financial Professionals (DACFP) and the Chamber of Digital Commerce have member directories that include legal professionals</li>
+              <li><strong>Bitcoin conferences:</strong> Bitcoin-focused legal professionals often present at events like Bitcoin Magazine's Bitcoin Conference</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q28">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">28</span>
+            <span class="faq-q-text">How much does Bitcoin estate planning cost?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Cost ranges vary widely by complexity:</p>
+            <ul>
+              <li><strong>Basic estate plan</strong> (will, DPOA, healthcare directive, LOI): $1,500–$5,000 depending on attorney and state</li>
+              <li><strong>Revocable living trust package:</strong> $3,000–$8,000 for most situations</li>
+              <li><strong>Advanced structures</strong> (GRATs, dynasty trusts, directed trusts, CRTs): $10,000–$50,000+ in legal fees, designed for estates where tax savings far exceed the cost</li>
+            </ul>
+            <p>Think of estate planning as a one-time investment. The cost of a comprehensive plan is a tiny fraction of the Bitcoin you're protecting. The cost of <em>not</em> planning can be the permanent, total loss of your holdings or 40% estate tax on amounts above the exemption. It is not a place to cut corners.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q29">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">29</span>
+            <span class="faq-q-text">Can I do Bitcoin estate planning myself without an attorney?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>For very simple situations — a small amount of Bitcoin on a major exchange, a simple family structure, no estate tax concerns — online platforms like Trust &amp; Will or LegalZoom can create basic documents at low cost.</p>
+            <p>However, Bitcoin adds layers of complexity that generic templates routinely miss:</p>
+            <ul>
+              <li>Digital asset-specific language in powers of attorney is frequently absent from templates</li>
+              <li>Self-prepared trusts often fail to properly transfer ("fund") the trust with Bitcoin — leaving assets in probate anyway</li>
+              <li>The coordination between legal authority and technical access is rarely addressed in generic estate planning tools</li>
+              <li>State-specific nuances in digital asset law are not reflected in national templates</li>
+            </ul>
+            <p>For any Bitcoin position of meaningful size — generally six figures or more — professional legal counsel is strongly recommended. The risk of an improperly drafted plan is that it fails exactly when your family needs it most.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="q30">
+        <button class="faq-question" aria-expanded="false">
+          <div class="faq-q-left">
+            <span class="faq-q-num">30</span>
+            <span class="faq-q-text">How often should I update my Bitcoin estate plan?</span>
+          </div>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Review your Bitcoin estate plan whenever any of the following occur:</p>
+            <ul>
+              <li><strong>Annually:</strong> Tax law changes, exemption amounts adjust, your Bitcoin holdings change materially, and your LOI becomes outdated. Set a recurring annual calendar reminder.</li>
+              <li><strong>Major life events:</strong> Marriage, divorce, birth or adoption of a child, death of a named beneficiary or executor, relocation to a different state</li>
+              <li><strong>Custody changes:</strong> New hardware wallet, new exchange account, new multi-sig setup, change in where your seed phrase is stored</li>
+              <li><strong>Significant legislative changes:</strong> Estate tax law changes are politically active — when major tax legislation passes, review your plan</li>
+              <li><strong>Bitcoin price milestones:</strong> If your Bitcoin position crosses an estate tax threshold, more sophisticated planning may be warranted</li>
+            </ul>
+            <p>At minimum: update your Letter of Instruction every year, confirm your designated fiduciary is still willing and able, and verify seed phrase storage is still secure and accessible.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- Services CTA -->
+    <div class="services-cta">
+      <h2>Ready to Protect Your Bitcoin Legacy?</h2>
+      <p>The Bitcoin Family Office works with Bitcoin holders to design estate plans that account for the unique technical, legal, and tax dimensions of digital asset inheritance.</p>
+      <a href="/services/" class="btn-primary">Explore Our Services</a>
+    </div>
+
+    <!-- Mining Tax Callout -->
+    <div class="callout-am">
+      <div class="callout-label">⚡ Related: Bitcoin Mining &amp; Tax Strategy</div>
+      <h3>Reduce Your Tax Burden Through Bitcoin Mining</h3>
+      <p>Bitcoin mining is one of the most tax-advantaged investment strategies available to US taxpayers — with depreciation, bonus depreciation, and operating expense deductions that can shelter significant income. If you're thinking about wealth preservation across generations, mining belongs in your strategy alongside your estate plan.</p>
+      <a href="https://abundantmines.com/tax-strategy/" class="btn" target="_blank" rel="noopener">Learn the Mining Tax Strategy →</a>
+    </div>
+
+    <!-- Author Box -->
+    <div class="author-box">
+      <div class="author-avatar">H</div>
+      <div class="author-info">
+        <h3>Hal Turner</h3>
+        <div class="author-role">The Bitcoin Family Office</div>
+        <p>Hal Turner advises Bitcoin holders on wealth preservation, estate planning coordination, and multigenerational asset strategy. The Bitcoin Family Office works at the intersection of Bitcoin custody, legal structures, and tax planning for serious long-term holders.</p>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+      <strong>Legal Disclaimer</strong>
+      The information provided in this article is for general educational purposes only and does not constitute legal, tax, or financial advice. Bitcoin estate planning involves complex and evolving legal, regulatory, and technical considerations that vary by jurisdiction and individual circumstances. Tax laws change frequently — all figures and thresholds cited should be verified with current sources. Always consult a qualified estate planning attorney and tax advisor licensed in your state before making any decisions. Nothing on this website creates an attorney-client relationship.
+    </div>
+
+  </main>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">The Bitcoin <span>Family Office</span></div>
+          <p>Wealth strategy, estate planning, and custody architecture for serious Bitcoin holders. Preserving generational wealth on a fixed monetary standard.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/services/">Overview</a></li>
+            <li><a href="/services/#estate-planning">Estate Planning</a></li>
+            <li><a href="/services/#custody">Custody Architecture</a></li>
+            <li><a href="/services/#tax-strategy">Tax Strategy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Insights</h4>
+          <ul>
+            <li><a href="/blog/">All Articles</a></li>
+            <li><a href="/blog/bitcoin-estate-planning-faq">Estate Planning FAQ</a></li>
+            <li><a href="/blog/bitcoin-trust-structures">Trust Structures</a></li>
+            <li><a href="/blog/seed-phrase-security">Seed Phrase Security</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/disclaimer/">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 The Bitcoin Family Office. All rights reserved.</span>
+        <span>Not legal or financial advice. For educational purposes only.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', function() {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen.toString());
+    });
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // Close all others
+        document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+          if (openItem !== item) {
+            openItem.classList.remove('open');
+            openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            openItem.querySelector('.faq-answer').style.maxHeight = '0';
+          }
+        });
+
+        // Toggle this one
+        if (isOpen) {
+          item.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          answer.style.maxHeight = '0';
+        } else {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Open first question by default
+    (function() {
+      const firstItem = document.querySelector('.faq-item');
+      if (firstItem) {
+        const btn = firstItem.querySelector('.faq-question');
+        const answer = firstItem.querySelector('.faq-answer');
+        firstItem.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    })();
+  </script>
+</body>
+</html>
