@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Estate Planning Tools | The Bitcoin Family Office</title>
+  <meta name="description" content="Free interactive tools for Bitcoin estate planning: estate tax calculators, GRAT optimizer, Letter of Instruction builder, IPS generator, wealth dashboard, and more.">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/">
+  <meta property="og:title" content="Bitcoin Estate Planning Tools — The Bitcoin Family Office">
+  <meta property="og:description" content="Free interactive tools: estate tax calculator, GRAT optimizer, Letter of Instruction builder, IPS generator, and succession readiness dashboard.">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=EB+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');
+    document.addEventListener('click',function(e){gtag('event','hm_click',{x:e.clientX,y:e.clientY,path:window.location.pathname});});
+    var _sm={25:0,50:0,75:0,100:0};window.addEventListener('scroll',function(){var p=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);[25,50,75,100].forEach(function(m){if(p>=m&&!_sm[m]){_sm[m]=1;gtag('event','hm_scroll',{depth:m,path:window.location.pathname});}});});
+  </script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebPage","name":"Bitcoin Estate Planning Tools","url":"https://thebitcoinfamilyoffice.com/tools/","description":"Free interactive tools for Bitcoin estate planning."},
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://thebitcoinfamilyoffice.com"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://thebitcoinfamilyoffice.com/tools/"}]}
+  ]}
+  </script>
+  <style>
+    :root{--bg:#0a0a0a;--bg-elevated:#111111;--bg-card:#141414;--border:#1e1e1e;--text:#e8e0d0;--text-secondary:#8a8070;--accent:#c9a84c;--accent-border:rgba(201,168,76,0.3);--display:'Playfair Display',Georgia,serif;--serif:'EB Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.65;}
+    nav{background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;}
+    .nav-logo{font-family:var(--display);font-size:1.05rem;color:var(--text);text-decoration:none;}.nav-logo span{color:var(--accent);}
+    .nav-links{display:flex;gap:2rem;list-style:none;}.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;}.nav-links a:hover{color:var(--accent);}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}.hamburger span{display:block;width:24px;height:2px;background:var(--text);}
+    .nav-mobile{display:none;position:fixed;top:60px;left:0;right:0;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;}.nav-mobile.open{display:flex;}.nav-mobile a{color:var(--text-secondary);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 0;border-bottom:1px solid var(--border);}
+    @media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+    .wrap{max-width:960px;margin:0 auto;padding:0 2rem;}
+    .page-header{padding:3rem 0 2rem;}
+    .page-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+    h1{font-family:var(--display);font-size:clamp(1.8rem,3vw,2.5rem);color:var(--text);line-height:1.2;margin-bottom:0.75rem;}
+    .page-sub{font-family:var(--serif);font-size:1.05rem;color:var(--text-secondary);line-height:1.75;max-width:600px;}
+    .privacy-badge{display:inline-block;font-size:0.7rem;color:var(--text-secondary);background:var(--bg-elevated);border:1px solid var(--border);padding:0.3rem 0.8rem;border-radius:2px;margin-top:0.75rem;}
+
+    .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;padding-bottom:4rem;}
+    .tool-card{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:1.75rem;display:flex;flex-direction:column;gap:0.75rem;transition:border-color 0.2s;}
+    .tool-card:hover{border-color:var(--accent-border);}
+    .tool-card.featured{border-color:var(--accent-border);}
+    .tool-badge{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);background:rgba(201,168,76,0.08);border:1px solid var(--accent-border);padding:0.2rem 0.6rem;border-radius:2px;display:inline-block;margin-bottom:0.25rem;}
+    .tool-card h2{font-family:var(--display);font-size:1.1rem;color:var(--text);line-height:1.3;}
+    .tool-card p{font-family:var(--serif);font-size:0.88rem;color:var(--text-secondary);line-height:1.65;flex:1;}
+    .tool-card a.tool-link{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--sans);font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;margin-top:auto;}.tool-card a.tool-link:hover{text-decoration:underline;}
+    .tool-meta{display:flex;gap:0.75rem;flex-wrap:wrap;}
+    .meta-tag{font-size:0.67rem;color:var(--text-secondary);background:var(--bg-elevated);padding:0.2rem 0.6rem;border-radius:2px;}
+
+    .section-header{font-family:var(--display);font-size:1.35rem;color:var(--text);margin:2.5rem 0 1.25rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border);}
+    .section-sub{font-family:var(--serif);font-size:0.92rem;color:var(--text-secondary);margin-bottom:1.5rem;line-height:1.7;}
+
+    .cta-block{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:6px;padding:2rem;text-align:center;margin:2rem 0;}
+    .cta-block h3{font-family:var(--display);font-size:1.2rem;margin-bottom:0.6rem;}
+    .cta-block p{font-family:var(--serif);font-size:0.95rem;color:var(--text-secondary);margin-bottom:1.25rem;line-height:1.7;}
+    .cta-block a{display:inline-block;background:var(--accent);color:var(--bg);font-family:var(--sans);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem 1.75rem;border-radius:2px;text-decoration:none;}
+    footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;margin-top:2rem;}
+    .footer-logo{font-family:var(--display);font-size:1rem;color:var(--text);margin-bottom:1.25rem;}.footer-logo span{color:var(--accent);}
+    .footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:1.5rem;margin-bottom:1.5rem;}.footer-links a{font-size:0.72rem;color:var(--text-secondary);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;}.footer-links a:hover{color:var(--accent);}
+    .footer-legal{font-size:0.7rem;color:var(--text-secondary);max-width:480px;margin:0 auto;line-height:1.7;}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
+  <ul class="nav-links">
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/blog/">Research</a></li>
+    <li><a href="/tools/" style="color:var(--accent)">Tools</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/faq/">FAQ</a></li>
+  </ul>
+  <div class="hamburger" onclick="document.getElementById('nm').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="nm">
+  <a href="/services/">Services</a><a href="/blog/">Research</a><a href="/tools/" style="color:var(--accent)">Tools</a><a href="/about/">About</a><a href="/faq/">FAQ</a>
+</div>
+
+<!-- Breadcrumb -->
+<div class="wrap"><div style="padding:1.25rem 0 0;font-size:0.72rem;color:var(--text-secondary);">
+  <a href="/" style="color:var(--text-secondary);text-decoration:none;">Home</a> <span style="margin:0 0.4rem;">›</span> <span style="color:var(--text);">Tools</span>
+</div></div>
+
+<div class="wrap">
+  <header class="page-header">
+    <p class="page-label">Free Planning Tools</p>
+    <h1>Bitcoin Estate Planning Tools</h1>
+    <p class="page-sub">Interactive calculators, document builders, and planning dashboards designed specifically for Bitcoin holders. Most tools run entirely in your browser — no account required, nothing transmitted.</p>
+    <span class="privacy-badge">🔒 All tools are free. Most run 100% in your browser.</span>
+  </header>
+
+  <!-- PRIORITY TOOLS -->
+  <h2 class="section-header">Start Here</h2>
+  <p class="section-sub">If you've never started Bitcoin estate planning, these two tools take under 30 minutes and cover the most critical gaps most holders have.</p>
+
+  <div class="tools-grid">
+    <div class="tool-card featured">
+      <div>
+        <span class="tool-badge">Most Important</span>
+        <h2>Bitcoin Letter of Instruction Builder</h2>
+      </div>
+      <p>Build the private document that guides your executor or successor trustee through accessing your Bitcoin after death or incapacity. Describes wallet locations, custody structure, and who to contact — without listing seed phrases. Generates a formatted, print-ready document.</p>
+      <div class="tool-meta">
+        <span class="meta-tag">Private</span><span class="meta-tag">~20 min</span><span class="meta-tag">Free</span>
+      </div>
+      <a href="/tools/bitcoin-letter-of-instruction" class="tool-link">Open the Builder →</a>
+    </div>
+
+    <div class="tool-card featured">
+      <div>
+        <span class="tool-badge">Succession Readiness</span>
+        <h2>Bitcoin Wealth Planning Dashboard</h2>
+      </div>
+      <p>Your personal estate planning command center. Estate tax exposure calculator, 20-item succession readiness scorecard, document status tracker, and heir preparedness checklist. All stored locally — nothing leaves your device.</p>
+      <div class="tool-meta">
+        <span class="meta-tag">100% Private</span><span class="meta-tag">Saves Progress</span><span class="meta-tag">Free</span>
+      </div>
+      <a href="/tools/bitcoin-wealth-dashboard" class="tool-link">Open Dashboard →</a>
+    </div>
+
+    <div class="tool-card">
+      <div>
+        <span class="tool-badge">Tax Planning</span>
+        <h2>Estate Tax Exposure Calculator</h2>
+      </div>
+      <p>Enter your BTC holdings, current price, other assets, marital status, and state — see your federal and state estate tax exposure instantly. Includes planning action thresholds and urgency tier.</p>
+      <div class="tool-meta">
+        <span class="meta-tag">Federal + 13 States</span><span class="meta-tag">Instant</span><span class="meta-tag">Free</span>
+      </div>
+      <a href="/tools/bitcoin-estate-tax-calculator" class="tool-link">Calculate Exposure →</a>
+    </div>
+  </div>
+
+  <!-- DOCUMENT BUILDERS -->
+  <h2 class="section-header">Document Builders</h2>
+  <p class="section-sub">Generate real planning documents — not just educational content. Use these as drafts to review with your estate attorney and CPA.</p>
+
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div>
+        <span class="tool-badge">IPS Generator</span>
+        <h2>Bitcoin Investment Policy Statement</h2>
+      </div>
+      <p>Build your family's formal Bitcoin IPS: allocation policy (3-tier targets), custody standards, acquisition policy, distribution thresholds, governance and amendment procedures, and fiduciary signature blocks. Generates a formatted DRAFT document you can print or save as PDF.</p>
+      <div class="tool-meta">
+        <span class="meta-tag">6 Sections</span><span class="meta-tag">PDF-ready</span><span class="meta-tag">Free</span>
+      </div>
+      <a href="/tools/bitcoin-investment-policy-statement" class="tool-link">Build Your IPS →</a>
+    </div>
+
+    <div class="tool-card">
+      <div>
+        <span class="tool-badge">GRAT Optimizer</span>
+        <h2>Bitcoin GRAT Optimizer</h2>
+      </div>
+      <p>Model Grantor Retained Annuity Trust outcomes for your Bitcoin position. Shows remainder to beneficiaries, estate tax saved vs. holding, annual annuity payment, and breakeven appreciation rate. Three appreciation scenarios: conservative, moderate, aggressive.</p>
+      <div class="tool-meta">
+        <span class="meta-tag">3 Scenarios</span><span class="meta-tag">Estate Tax Planning</span><span class="meta-tag">Free</span>
+      </div>
+      <a href="/tools/bitcoin-grat-optimizer" class="tool-link">Model Your GRAT →</a>
+    </div>
+  </div>
+
+  <!-- ASSESSMENTS & MONITORING -->
+  <h2 class="section-header">Assessments & Monitoring</h2>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div>
+        <span class="tool-badge">Lead Qualifier</span>
+        <h2>Bitcoin Wealth Assessment Quiz</h2>
+      </div>
+      <p>A 7-question assessment that determines your planning tier (Foundation / Structured / Advanced / Institutional) and identifies your primary planning goal. Personalized results with specific recommendations for your situation.</p>
+      <div class="tool-meta">
+        <span class="meta-tag">7 Questions</span><span class="meta-tag">~5 minutes</span><span class="meta-tag">Free</span>
+      </div>
+      <a href="/tools/bitcoin-wealth-assessment" class="tool-link">Take the Assessment →</a>
+    </div>
+
+    <div class="tool-card">
+      <div>
+        <span class="tool-badge">State Comparison</span>
+        <h2>Bitcoin State Tax Comparison Tool</h2>
+      </div>
+      <p>Compare estate and inheritance tax implications across states for your Bitcoin holdings. Useful for planning trust situs selection or understanding the tax implications of moving states.</p>
+      <div class="tool-meta">
+        <span class="meta-tag">All 50 States</span><span class="meta-tag">Instant</span><span class="meta-tag">Free</span>
+      </div>
+      <a href="/tools/bitcoin-state-comparison" class="tool-link">Compare States →</a>
+    </div>
+
+    <div class="tool-card">
+      <div>
+        <span class="tool-badge">Coming Soon</span>
+        <h2>Bitcoin Estate Watch</h2>
+      </div>
+      <p>Daily monitoring service: as BTC price moves, your estate tax exposure changes. Bitcoin Estate Watch sends alerts when your exposure crosses planning thresholds — so you know when to act. Join the early access waitlist.</p>
+      <div class="tool-meta">
+        <span class="meta-tag">Daily Alerts</span><span class="meta-tag">$19/month</span><span class="meta-tag">Waitlist</span>
+      </div>
+      <a href="/tools/bitcoin-estate-watch" class="tool-link">Join the Waitlist →</a>
+    </div>
+  </div>
+
+  <!-- REFERENCE TOOLS -->
+  <h2 class="section-header">Reference & Research</h2>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div>
+        <span class="tool-badge">50-State Reference</span>
+        <h2>Bitcoin Digital Asset Law Tracker</h2>
+      </div>
+      <p>RUFADAA adoption status, trust situs ratings, state estate tax, and inheritance tax for all 50 states. Filterable by state, law type, and jurisdiction quality. Last verified February 2026.</p>
+      <div class="tool-meta">
+        <span class="meta-tag">All 50 States</span><span class="meta-tag">Filterable</span><span class="meta-tag">Free</span>
+      </div>
+      <a href="/blog/bitcoin-digital-asset-law-tracker.html" class="tool-link">Open the Tracker →</a>
+    </div>
+
+    <div class="tool-card">
+      <div>
+        <span class="tool-badge">35-Step Checklist</span>
+        <h2>Bitcoin Estate Planning Checklist</h2>
+      </div>
+      <p>35 actionable items across custody, legal documents, tax planning, heir preparation, and annual review. Click to check off items as you complete them. Progress saves in your browser. Share with your estate attorney as a briefing document.</p>
+      <div class="tool-meta">
+        <span class="meta-tag">Interactive</span><span class="meta-tag">Print-ready</span><span class="meta-tag">Free</span>
+      </div>
+      <a href="/blog/bitcoin-estate-planning-checklist" class="tool-link">Open Checklist →</a>
+    </div>
+
+    <div class="tool-card">
+      <div>
+        <span class="tool-badge">60 Questions</span>
+        <h2>Bitcoin Family Office FAQ</h2>
+      </div>
+      <p>60 expert answers on every aspect of Bitcoin estate planning: trusts, estate taxes, custody, succession, heirs, and working with professionals. Organized in 8 categories with a jump navigation. The most comprehensive Bitcoin estate planning FAQ available.</p>
+      <div class="tool-meta">
+        <span class="meta-tag">8 Categories</span><span class="meta-tag">Accordion UI</span><span class="meta-tag">Free</span>
+      </div>
+      <a href="/faq/" class="tool-link">Read the FAQ →</a>
+    </div>
+  </div>
+
+  <!-- INHERITANCE TOOLS -->
+  <h2 class="section-header">For Heirs: Inheriting Bitcoin</h2>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div>
+        <span class="tool-badge">Step-by-Step</span>
+        <h2>First 30 Days Inheriting Bitcoin</h2>
+      </div>
+      <p>A phase-by-phase protocol for heirs who have just inherited Bitcoin. Days 1-7: secure hardware and contact attorney. Days 8-14: establish legal authority. Days 15-30: engage a Bitcoin CPA. What to do, and what NOT to do in each phase.</p>
+      <div class="tool-meta">
+        <span class="meta-tag">For Heirs</span><span class="meta-tag">Actionable</span><span class="meta-tag">Free</span>
+      </div>
+      <a href="/blog/first-30-days-inheriting-bitcoin.html" class="tool-link">Read the Guide →</a>
+    </div>
+
+    <div class="tool-card">
+      <div>
+        <span class="tool-badge">Heir Education</span>
+        <h2>Bitcoin Heir Education Hub</h2>
+      </div>
+      <p>A complete education curriculum for heirs who will inherit Bitcoin: what Bitcoin is, how custody works, what to do immediately after inheriting, how to protect against inheritance scams, and how to steward a Bitcoin position long-term.</p>
+      <div class="tool-meta">
+        <span class="meta-tag">5-Part Series</span><span class="meta-tag">For Heirs</span><span class="meta-tag">Free</span>
+      </div>
+      <a href="/blog/bitcoin-heir-education-guide.html" class="tool-link">Start the Series →</a>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Need More Than Tools?</h3>
+    <p>Tools provide frameworks. For personalized guidance — custody architecture review, trust structure recommendations, professional team coordination — The Bitcoin Family Office works with a selective group of families each quarter.</p>
+    <a href="/services/">Explore Our Services →</a>
+  </div>
+
+  <div style="background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.75rem;margin:1.5rem 0 2rem;">
+    <p style="font-size:0.75rem;color:var(--text-secondary);line-height:1.7;"><strong>Tool Disclaimer.</strong> All tools on this page are provided for educational and illustrative purposes only. Results are estimates based on simplified assumptions and do not constitute legal, tax, financial, or investment advice. Estate and tax laws are complex and subject to change. Always consult a qualified estate planning attorney and licensed CPA before making planning decisions. The Bitcoin Family Office does not provide legal or tax advice.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">The Bitcoin <span>Family Office</span></div>
+  <nav class="footer-links">
+    <a href="/">Home</a><a href="/services/">Services</a><a href="/blog/">Research</a>
+    <a href="/tools/">Tools</a><a href="/about/">About</a><a href="/faq/">FAQ</a><a href="/disclosures/">Disclosures</a>
+  </nav>
+  <p class="footer-legal">The Bitcoin Family Office provides educational content for high-net-worth Bitcoin holders. Nothing on this site constitutes legal, tax, financial, or investment advice. &copy; 2026 The Bitcoin Family Office.</p>
+</footer>
+</body>
+</html>
