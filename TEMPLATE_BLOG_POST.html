@@ -1,4 +1,90 @@
 <!DOCTYPE html>
+<!--
+=======================================================================
+  THE BITCOIN FAMILY OFFICE — CONTENT & TOOL SOP
+  Last updated: 2026-02-24
+=======================================================================
+
+DISCLAIMER STANDARDS (MANDATORY — DO NOT SKIP)
+──────────────────────────────────────────────
+Every page MUST include one of the following disclaimer blocks
+immediately before the </div> that closes .article-wrap (before <footer>):
+
+1. STANDARD ARTICLE DISCLAIMER
+   Use for: all blog posts, guides, how-to articles, state pages,
+   comparison pages, reports, and any non-calculator content.
+   The block must appear as:
+   <div class="disclaimer-block" style="...Important Disclosure...">
+
+2. TOOL/CALCULATOR DISCLAIMER (STRONGER — required for all calculators)
+   Use for: any page with interactive calculators, estimators,
+   comparison tools, checklists, or timeline tools.
+   The block must appear as:
+   <div class="disclaimer-block" style="...⚠ Calculator Disclaimer...">
+
+KEY DISCLAIMER REQUIREMENTS
+────────────────────────────
+• "Educational purposes only" — must appear in every disclaimer
+• "Not legal, tax, financial, or investment advice" — must appear
+• "Consult qualified legal, tax, and financial professionals" — must appear
+• For tools: "Rough estimates only" and "Do not make decisions based on
+  these results without consulting a professional" — must appear
+• "Laws may change, information may be outdated" — must appear
+• "Individual circumstances vary significantly" — must appear
+• Tools must also note: price volatility, jurisdiction differences,
+  and simplified assumptions in the calculation model
+
+CONTENT STANDARDS
+──────────────────
+• Bitcoin-only. No altcoins, no ETFs recommended as primary strategy.
+• Voice: Jeff Booth / Lynn Alden / Parker Lewis — first principles,
+  zero hype, no price predictions, no "to the moon" language.
+• Every claim that could be construed as financial advice must be
+  hedged with "may", "can", "in some circumstances", or similar.
+• State-specific legal information must note that laws change and
+  readers should verify current law with a licensed attorney in
+  their jurisdiction.
+• Mining content must note that mining economics vary by electricity
+  cost, hardware efficiency, and Bitcoin difficulty/price.
+
+REQUIRED PAGE ELEMENTS CHECKLIST
+──────────────────────────────────
+□ GA4: G-N8PP20VBTV (async script)
+□ CF Beacon: 3c8ee81a6842447bb64ffc1b8fb36b19
+□ Heatmap events: hm_click + hm_scroll (immediately after gtag config)
+□ Mobile hamburger nav (all breakpoints)
+□ Canonical URL (<link rel="canonical" href="https://thebitcoinfamilyoffice.com/...">)
+□ OG image (og:image + twitter:image → /assets/og-image.svg)
+□ Article schema (or HowTo schema for step-by-step guides)
+□ BreadcrumbList schema
+□ Visible breadcrumb nav
+□ Author box (Hal Turner, Bitcoin Wealth Strategist)
+□ Related reading (3 cards minimum)
+□ Services CTA (/services/)
+□ AM tax strategy callout (on any page mentioning tax or mining)
+□ DISCLAIMER BLOCK (mandatory — see above)
+□ Legal disclaimer in footer text
+
+TOOL-SPECIFIC ADDITIONAL REQUIREMENTS
+───────────────────────────────────────
+□ TOOL disclaimer (not article disclaimer) — see above
+□ FAQPage schema (3-5 questions relevant to the tool)
+□ "Results hidden until Calculate button clicked" (no $0 on load)
+□ Input validation with helpful error messages
+□ "How we calculated this" collapsible section showing methodology
+□ AM mining tax callout on mining/tax calculators
+□ State-comparison tools must link to individual state guides
+□ Results labeled as "Estimates" or "Illustrative" in the UI
+
+DEPLOYMENT
+──────────────
+□ git add -A
+□ git commit -m "descriptive message"
+□ git push origin main → GitHub Actions auto-deploys to CF Pages
+□ IndexNow auto-submitted for all changed HTML files by the workflow
+□ Do NOT use wrangler deploy directly (CI handles it)
+=======================================================================
+-->
 <!-- ============================================================
   BFO BLOG POST TEMPLATE — v2 (2026-02-25)
   Copy this file for every new article. Find/replace:
@@ -235,7 +321,7 @@ footer a:hover{color:var(--accent)}
     <a href="/services/" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">View Our Services →</a>
   </div>
 
-  <p><em>This article is for educational purposes only and does not constitute legal, tax, or financial advice. {{DISCLAIMER_TAIL}}</em></p>
+  
 
 </article>
 
@@ -256,6 +342,11 @@ footer a:hover{color:var(--accent)}
       <p>{{RELATED_3_DESC}}</p>
     </a>
   </div>
+</div>
+
+<div class="disclaimer-block" style="margin-top:3rem;padding:1.5rem 1.75rem;border-top:1px solid var(--border);background:var(--bg-elevated);border-radius:0 0 4px 4px;">
+  <p style="font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.6rem;">Important Disclosure</p>
+  <p style="font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);line-height:1.75;margin:0;">This content is for <strong style="color:var(--text-secondary);">educational purposes only</strong> and does not constitute legal, tax, financial, or investment advice. It should not be relied upon as a substitute for consultation with qualified legal, tax, financial, or other professional advisers. Laws, regulations, and tax rules referenced herein are subject to change and may differ by jurisdiction; information presented may be outdated or contain errors. Individual circumstances vary significantly — strategies and structures that are appropriate for one person may be inappropriate or harmful for another. <strong style="color:var(--text-secondary);">Always consult with qualified legal counsel, a licensed tax professional, and a registered financial adviser before implementing any estate planning strategy, custody structure, tax strategy, or investment decision.</strong> The Bitcoin Family Office does not provide legal, tax, or investment advisory services. Past performance and projections are not indicative of future results.</p>
 </div>
 
 <footer>
