@@ -1,264 +1,1167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bitcoin Family Governance: How Wealth-Holding Families Make Decisions | The Bitcoin Family Office</title>
-  <meta name="description" content="How do families with significant Bitcoin holdings make decisions together? Family governance frameworks, Investment Policy Statements, and the structures that keep generational wealth intact.">
-  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-family-governance">
-  <meta property="og:title" content="Bitcoin Family Governance: How Wealth-Holding Families Make Decisions">
-  <meta property="og:description" content="Family governance frameworks, Investment Policy Statements, and the structures that keep Bitcoin wealth intact across generations.">
-  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
-  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-family-governance">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=EB+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitcoin Family Governance: Managing Multi-Generational Bitcoin Wealth | The Bitcoin Family Office</title>
+  <meta name="description" content="A comprehensive guide to governance structures for Bitcoin-holding families — Investment Policy Statements, Family Constitutions, heir education, and the Family Bitcoin Council." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-family-governance" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Bitcoin Family Governance: How to Manage Multi-Generational Bitcoin Wealth" />
+  <meta property="og:description" content="A comprehensive guide to governance structures for Bitcoin-holding families — Investment Policy Statements, Family Constitutions, heir education, and the Family Bitcoin Council." />
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-family-governance" />
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png" />
+  <meta property="og:site_name" content="The Bitcoin Family Office" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bitcoin Family Governance: How to Manage Multi-Generational Bitcoin Wealth" />
+  <meta name="twitter:description" content="Formal governance structures for Bitcoin-holding families: IPS, Family Constitution, heir education, and the Family Bitcoin Council." />
+  <meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <!-- Google Analytics GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
   <script>
-    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');
-    document.addEventListener('click',function(e){gtag('event','hm_click',{x:e.clientX,y:e.clientY,path:window.location.pathname});});
-    var _sm={25:0,50:0,75:0,100:0};window.addEventListener('scroll',function(){var p=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);[25,50,75,100].forEach(function(m){if(p>=m&&!_sm[m]){_sm[m]=1;gtag('event','hm_scroll',{depth:m,path:window.location.pathname});}});});
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+
+    // hm_click event
+    document.addEventListener('click', function(e) {
+      const el = e.target.closest('a, button');
+      if (el) {
+        gtag('event', 'hm_click', {
+          element_text: el.innerText ? el.innerText.trim().substring(0, 100) : '',
+          element_href: el.href || '',
+          page_location: window.location.href
+        });
+      }
+    });
+
+    // hm_scroll event
+    let scrollMarks = {25: false, 50: false, 75: false, 90: false};
+    window.addEventListener('scroll', function() {
+      const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      Object.keys(scrollMarks).forEach(function(mark) {
+        if (!scrollMarks[mark] && pct >= mark) {
+          scrollMarks[mark] = true;
+          gtag('event', 'hm_scroll', { scroll_depth: mark + '%', page_location: window.location.href });
+        }
+      });
+    });
   </script>
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <!-- JSON-LD: Article + BreadcrumbList -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[
-    {"@type":"Article","headline":"Bitcoin Family Governance: How Wealth-Holding Families Make Decisions","author":{"@type":"Person","name":"Hal Turner","url":"https://thebitcoinfamilyoffice.com/about/"},"publisher":{"@type":"Organization","name":"The Bitcoin Family Office","url":"https://thebitcoinfamilyoffice.com"},"datePublished":"2026-02-25","dateModified":"2026-02-25","url":"https://thebitcoinfamilyoffice.com/blog/bitcoin-family-governance","description":"How families with significant Bitcoin holdings make decisions together: IPS, family constitution, governance councils, and the structures that keep multi-generational wealth intact."},
-    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://thebitcoinfamilyoffice.com"},{"@type":"ListItem","position":2,"name":"Research","item":"https://thebitcoinfamilyoffice.com/blog/"},{"@type":"ListItem","position":3,"name":"Bitcoin Family Governance","item":"https://thebitcoinfamilyoffice.com/blog/bitcoin-family-governance"}]}
-  ]}
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Bitcoin Family Governance: How to Manage Multi-Generational Bitcoin Wealth",
+      "description": "A comprehensive guide to governance structures for Bitcoin-holding families — Investment Policy Statements, Family Constitutions, heir education, and the Family Bitcoin Council.",
+      "datePublished": "2026-02-25",
+      "dateModified": "2026-02-25",
+      "author": {
+        "@type": "Person",
+        "name": "Hal Turner",
+        "affiliation": "The Bitcoin Family Office"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "The Bitcoin Family Office",
+        "url": "https://thebitcoinfamilyoffice.com"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://thebitcoinfamilyoffice.com/blog/bitcoin-family-governance"
+      },
+      "image": "https://thebitcoinfamilyoffice.com/assets/og-image.png"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://thebitcoinfamilyoffice.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://thebitcoinfamilyoffice.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Bitcoin Family Governance",
+          "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-family-governance"
+        }
+      ]
+    }
+  ]
   </script>
+
   <style>
-    :root{--bg:#0a0a0a;--bg-elevated:#111111;--bg-card:#141414;--border:#1e1e1e;--text:#e8e0d0;--text-secondary:#8a8070;--accent:#c9a84c;--accent-border:rgba(201,168,76,0.3);--display:'Playfair Display',Georgia,serif;--serif:'EB Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.65;}
-    nav{background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;}
-    .nav-logo{font-family:var(--display);font-size:1.05rem;color:var(--text);text-decoration:none;}.nav-logo span{color:var(--accent);}
-    .nav-links{display:flex;gap:2rem;list-style:none;}.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;}.nav-links a:hover{color:var(--accent);}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}.hamburger span{display:block;width:24px;height:2px;background:var(--text);}
-    .nav-mobile{display:none;position:fixed;top:60px;left:0;right:0;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;}.nav-mobile.open{display:flex;}.nav-mobile a{color:var(--text-secondary);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 0;border-bottom:1px solid var(--border);}
-    @media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
-    .wrap{max-width:760px;margin:0 auto;padding:0 2rem;}
-    .breadcrumb{padding:1.25rem 0 0;font-size:0.72rem;color:var(--text-secondary);}.breadcrumb a{color:var(--text-secondary);text-decoration:none;}.breadcrumb a:hover{color:var(--accent);}
-    .article-header{padding:2.5rem 0 2rem;}
-    .article-tag{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
-    h1{font-family:var(--display);font-size:clamp(1.8rem,3vw,2.5rem);color:var(--text);line-height:1.2;margin-bottom:0.75rem;}
-    .article-sub{font-family:var(--serif);font-size:1.1rem;color:var(--text-secondary);line-height:1.75;margin-bottom:1.25rem;}
-    .article-meta{font-size:0.72rem;color:var(--text-secondary);display:flex;gap:1.5rem;flex-wrap:wrap;}
-    .article-body{padding-bottom:3rem;}
-    .article-body p{font-family:var(--serif);font-size:1rem;color:var(--text-secondary);line-height:1.85;margin-bottom:1.5rem;}
-    .article-body h2{font-family:var(--display);font-size:1.4rem;color:var(--text);margin:2.5rem 0 1rem;}
-    .article-body h3{font-family:var(--sans);font-size:0.85rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin:1.75rem 0 0.6rem;}
-    .article-body a{color:var(--accent);text-decoration:none;}.article-body a:hover{text-decoration:underline;}
-    .article-body ul,.article-body ol{margin:0 0 1.5rem 1.5rem;}.article-body li{font-family:var(--serif);font-size:0.98rem;color:var(--text-secondary);line-height:1.75;margin-bottom:0.35rem;}
-    .callout{background:var(--bg-elevated);border-left:3px solid var(--accent);padding:1.25rem 1.5rem;margin:2rem 0;border-radius:0 4px 4px 0;}
-    .callout p{font-family:var(--serif);font-size:0.95rem;color:var(--text-secondary);line-height:1.75;margin:0;}
-    .doc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin:0 0 0.75rem;}
-    .doc-card h4{font-family:var(--sans);font-size:0.85rem;font-weight:600;color:var(--text);margin-bottom:0.4rem;}
-    .doc-card p{font-family:var(--serif);font-size:0.88rem;color:var(--text-secondary);line-height:1.65;margin:0;}
-    .author-box{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;margin:2rem 0;}
-    .author-info h4{font-family:var(--sans);font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:0.25rem;}
-    .author-info p{font-size:0.75rem;color:var(--text-secondary);line-height:1.6;margin:0;}
-    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0;}
-    .related-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.25rem;}.related-card a{color:var(--text);text-decoration:none;font-size:0.85rem;font-weight:500;font-family:var(--sans);line-height:1.4;}.related-card a:hover{color:var(--accent);}
-    .services-cta{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:6px;padding:2rem;text-align:center;margin:2.5rem 0;}
-    .services-cta h3{font-family:var(--display);font-size:1.2rem;margin-bottom:0.6rem;}
-    .services-cta p{font-family:var(--serif);font-size:0.95rem;color:var(--text-secondary);margin-bottom:1.25rem;line-height:1.7;}
-    .services-cta a{display:inline-block;background:var(--accent);color:var(--bg);font-family:var(--sans);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem 1.75rem;border-radius:2px;text-decoration:none;}
-    footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;margin-top:3rem;}
-    .footer-logo{font-family:var(--display);font-size:1rem;color:var(--text);margin-bottom:1.25rem;}.footer-logo span{color:var(--accent);}
-    .footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:1.5rem;margin-bottom:1.5rem;}.footer-links a{font-size:0.72rem;color:var(--text-secondary);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;}.footer-links a:hover{color:var(--accent);}
-    .footer-legal{font-size:0.7rem;color:var(--text-secondary);max-width:480px;margin:0 auto;line-height:1.7;}
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+      --accent-hover: #d4b86a;
+      --max-width: 1200px;
+      --content-width: 760px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.125rem;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent-hover); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem 1.5rem;
+      gap: 1rem;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+    .nav-mobile a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* ── ARTICLE HEADER ── */
+    .article-header {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 4rem 1.5rem 2.5rem;
+    }
+    .breadcrumb {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: var(--text-secondary); }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { margin: 0 0.4rem; }
+    .article-tag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+    }
+    .article-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .article-subtitle {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .article-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .article-meta .divider { opacity: 0.3; }
+
+    /* ── ARTICLE BODY ── */
+    .article-body {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    .article-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 2.5rem 0 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .article-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 2rem 0 0.75rem;
+    }
+    .article-body h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol {
+      margin: 0 0 1.25rem 1.5rem;
+    }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body strong { color: var(--text); font-weight: 600; }
+    .article-body em { font-style: italic; }
+
+    /* Callout boxes */
+    .callout {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .callout-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .callout p { margin-bottom: 0.5rem; font-size: 1rem; }
+    .callout p:last-child { margin-bottom: 0; }
+    .callout ul { margin: 0.5rem 0 0 1.25rem; font-size: 1rem; }
+    .callout li { margin-bottom: 0.3rem; }
+
+    /* Three pillars grid */
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem;
+    }
+    .pillar-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.6;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .pillar-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin: 0 0 0.5rem;
+    }
+    .pillar-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.5;
+    }
+    @media (max-width: 600px) {
+      .pillar-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Decision matrix */
+    .decision-matrix {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 1.5rem 0;
+    }
+    .decision-matrix table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .decision-matrix th {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-elevated);
+    }
+    .decision-matrix td {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--text);
+    }
+    .decision-matrix tr:last-child td { border-bottom: none; }
+    .decision-matrix .authority-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+    }
+    .badge-unanimous { background: rgba(201,168,76,0.15); color: var(--accent); }
+    .badge-majority { background: rgba(76,175,121,0.15); color: #4caf79; }
+    .badge-trustee { background: rgba(100,130,220,0.15); color: #7090e0; }
+    @media (max-width: 560px) {
+      .decision-matrix { overflow-x: auto; }
+    }
+
+    /* Education timeline */
+    .edu-timeline {
+      margin: 1.5rem 0 2rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+    .edu-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0.55rem;
+      top: 0.5rem;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    .edu-item {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .edu-item::before {
+      content: '';
+      position: absolute;
+      left: -1.57rem;
+      top: 0.4rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+    .edu-age {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+    .edu-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .edu-desc {
+      font-size: 0.97rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Sunset triggers */
+    .sunset-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      margin: 0.75rem 0;
+    }
+    .sunset-trigger {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      border-left: 2px solid var(--accent);
+      padding-left: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+    .sunset-action {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    /* IPS template block */
+    .ips-template {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+    }
+    .ips-template .ips-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+    }
+    .ips-template .ips-row:last-child { border-bottom: none; }
+    .ips-label { color: var(--text-secondary); }
+    .ips-value { color: var(--text); font-weight: 500; text-align: right; }
+    .ips-template .ips-header {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    /* CTA block */
+    .cta-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      margin: 2.5rem 0;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .cta-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+    }
+    .cta-block p { font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.25rem; }
+    .btn {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.6rem;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      border: 1px solid var(--accent);
+    }
+    .btn-primary:hover { background: var(--accent-hover); color: var(--bg); border-color: var(--accent-hover); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      margin-left: 0.75rem;
+    }
+    .btn-secondary:hover { background: var(--accent); color: var(--bg); }
+    @media (max-width: 560px) {
+      .btn-secondary { margin-left: 0; margin-top: 0.6rem; }
+      .cta-block .btn { display: block; width: 100%; text-align: center; }
+    }
+
+    /* AM callout */
+    .am-callout {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 4px;
+      padding: 1.5rem 1.75rem;
+      margin: 2.5rem 0;
+    }
+    .am-callout-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .am-callout h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .am-callout p { font-size: 0.98rem; margin-bottom: 0.75rem; }
+    .am-callout a.am-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* Author box */
+    .author-box {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 4px;
+      margin: 3rem 0 2rem;
+    }
+    .author-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #8b6b2a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--bg);
+      flex-shrink: 0;
+    }
+    .author-info { flex: 1; }
+    .author-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+    .author-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .author-bio { font-size: 0.95rem; color: var(--text-secondary); margin: 0; }
+
+    /* Disclaimer */
+    .disclaimer {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.5rem 2rem;
+      margin-top: 4rem;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: 0.75rem;
+      line-height: 1.6;
+      max-width: 280px;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-col h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.6rem; }
+    .footer-col a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-bottom {
+      max-width: var(--max-width);
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+    @media (max-width: 900px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 560px) {
+      .footer-inner { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-<nav>
-  <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
-  <ul class="nav-links">
-    <li><a href="/services/">Services</a></li>
-    <li><a href="/blog/">Research</a></li>
-    <li><a href="/tools/">Tools</a></li>
-    <li><a href="/about/">About</a></li>
-    <li><a href="/faq/">FAQ</a></li>
-  </ul>
-  <div class="hamburger" onclick="document.getElementById('nm').classList.toggle('open')"><span></span><span></span><span></span></div>
-</nav>
-<div class="nav-mobile" id="nm">
-  <a href="/services/">Services</a><a href="/blog/">Research</a><a href="/tools/">Tools</a><a href="/about/">About</a><a href="/faq/">FAQ</a>
-</div>
 
-<div class="wrap">
-  <div class="breadcrumb">
-    <a href="/">Home</a> <span style="margin:0 0.4rem;">›</span>
-    <a href="/blog/">Research</a> <span style="margin:0 0.4rem;">›</span>
-    <span style="color:var(--text);">Bitcoin Family Governance</span>
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
+    <ul class="nav-links">
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/tools/">Tools</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+    <a href="/services/" class="nav-cta">Work With Us</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/blog/">Insights</a>
+    <a href="/tools/">Tools</a>
+    <a href="/services/">Services</a>
+    <a href="/about/">About</a>
+    <a href="/services/" style="color: var(--accent); font-weight: 600;">Work With Us →</a>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HEADER ── -->
+<header class="article-header">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span>›</span>
+    <a href="/blog/">Blog</a><span>›</span>
+    Bitcoin Family Governance
+  </nav>
+  <div class="article-tag">Family Governance · Multi-Generational Wealth</div>
+  <h1 class="article-title">Bitcoin Family Governance: How to Manage Multi-Generational Bitcoin Wealth</h1>
+  <p class="article-subtitle">Whoever controls the keys controls the wealth. Without formal governance, a family's Bitcoin can be destroyed by a single dispute, a single accident, or a single generation that wasn't prepared.</p>
+  <div class="article-meta">
+    <span>By Hal Turner</span>
+    <span class="divider">|</span>
+    <span>The Bitcoin Family Office</span>
+    <span class="divider">|</span>
+    <span>February 25, 2026</span>
+    <span class="divider">|</span>
+    <span>~2,500 words · 11 min read</span>
+  </div>
+</header>
+
+<!-- ── ARTICLE BODY ── -->
+<main class="article-body">
+
+  <p>Bitcoin is the first bearer asset in human history that can be held in self-custody at any scale, with zero counterparty risk, and passed to heirs with perfect precision — or lost forever in a single moment of confusion. This is not like a brokerage account. There is no Schwab to call. There is no SIPC insurance. There is no "forgot my password" link.</p>
+
+  <p>For Bitcoin families who have built significant wealth — whether through early adoption, disciplined accumulation, or mining — the question is no longer <em>should we hold Bitcoin?</em> It's <em>how do we hold it together, across generations, without destroying it in the process?</em></p>
+
+  <p>The answer is formal governance. Not a handshake agreement. Not a note in a drawer. A documented, deliberate system that defines how your family makes decisions about Bitcoin, who has authority over what, how heirs are educated and inducted, and what triggers a formal review of the entire structure.</p>
+
+  <p>This is what wealthy families with conventional assets — oil, real estate, operating businesses — have done for generations. Bitcoin families need the same frameworks, adapted to the unique characteristics of a bearer asset.</p>
+
+  <h2>Why Bitcoin Families Need Formal Governance</h2>
+
+  <p>The most common Bitcoin estate planning failure mode isn't taxes. It's access. A family member dies with 10 BTC on a hardware wallet. The seed phrase is somewhere — a safe, a filing cabinet, a note app no one can unlock. The estate attorney doesn't know what a seed phrase is. The heirs don't know where to look. The Bitcoin sits unclaimed, and eventually is lost.</p>
+
+  <p>The second most common failure mode is conflict. A family holds significant Bitcoin. The parents die. Three adult children inherit equal shares through a trust. One wants to sell. One wants to hold. One wants to use it as collateral for a business. The trustee has no Investment Policy Statement to consult, no governance document defining the process, no binding dispute resolution mechanism. What should be a straightforward distribution turns into a multi-year legal fight — or a forced sale at the wrong price.</p>
+
+  <p>Unlike a contested brokerage account, you cannot easily freeze or hold Bitcoin during a dispute. Control is binary. Whoever has the keys has the asset. Without pre-defined governance, a family can lose its Bitcoin wealth not to market volatility, not to taxes, but to itself.</p>
+
+  <div class="callout">
+    <div class="callout-title">The Bearer Asset Problem</div>
+    <p>Bitcoin is a bearer instrument. Possession of the private key is legal ownership. There is no central authority to adjudicate disputes, freeze accounts, or restore access. Governance doesn't just improve outcomes — for Bitcoin families, it's often the difference between wealth preservation and catastrophic loss.</p>
   </div>
 
-  <header class="article-header">
-    <p class="article-tag">Family Office · Governance</p>
-    <h1>Bitcoin Family Governance: How Wealth-Holding Families Make Decisions</h1>
-    <p class="article-sub">The difference between a family that preserves Bitcoin wealth across generations and one that loses it in the third generation is almost never investment performance. It's governance — the formal and informal structures that determine how decisions get made, who has authority, and what happens when family members disagree.</p>
-    <div class="article-meta">
-      <span>By Hal Turner</span>
-      <span>The Bitcoin Family Office</span>
-      <span>February 25, 2026</span>
+  <h2>The Three Pillars of Bitcoin Family Governance</h2>
+
+  <p>Effective Bitcoin family governance rests on three documents. Together they define what you hold, how you make decisions about it, and what happens when you're gone.</p>
+
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <div class="pillar-number">01</div>
+      <h4>Investment Policy Statement</h4>
+      <p>Allocation targets, custody standards, rebalancing triggers, and conditions for selling or borrowing against Bitcoin.</p>
     </div>
-  </header>
-
-  <article class="article-body">
-
-    <p>The Rockefellers didn't preserve their wealth by making brilliant investments after John D. The Rothschilds didn't stay influential for 200 years by picking good stocks. Both families built governance structures — explicit rules about how decisions are made, who has authority over what, and how the next generation is prepared to steward wealth rather than consume it.</p>
-
-    <p>Bitcoin introduces a governance challenge that traditional family wealth has never faced: the assets are controlled by private keys, not institutions. There is no Rockefeller Center to manage. There is no board of directors or bank to provide structure. The governance framework must be built entirely by the family — and it must be built before the founder can no longer build it.</p>
-
-    <h2>What Family Governance Actually Is</h2>
-
-    <p>Family governance is the set of explicit agreements — formal and informal — that determine how a family manages shared wealth. For Bitcoin-holding families, this encompasses several distinct layers:</p>
-
-    <ul>
-      <li><strong>Investment governance:</strong> How decisions about Bitcoin holdings are made. Who can authorize transactions? Under what conditions can Bitcoin be sold? What is the allocation policy over time?</li>
-      <li><strong>Custody governance:</strong> Who holds which keys. What quorum is required for different transaction sizes. How keys are replaced or updated when circumstances change.</li>
-      <li><strong>Succession governance:</strong> Who takes over what role at what point. How incapacity is defined and triggers succession. How the next generation is prepared before they inherit authority.</li>
-      <li><strong>Family education governance:</strong> How knowledge about the family's Bitcoin holdings is transmitted. What each generation knows and when they learn it. Who is responsible for heir education.</li>
-      <li><strong>Conflict resolution governance:</strong> What happens when family members disagree. Who has final authority. How disputes are resolved without destroying family relationships or the estate.</li>
-    </ul>
-
-    <p>Most families have none of these explicitly articulated. They have informal practices, unspoken assumptions, and the authority of the person who holds the keys. That works until it doesn't — at incapacity, at death, at generational transfer, or at the moment when two family members want to do different things with the Bitcoin.</p>
-
-    <h2>The Investment Policy Statement: The Foundation</h2>
-
-    <p>The most important governance document for a Bitcoin-holding family is the Investment Policy Statement (IPS). A Bitcoin IPS is a formal, written document — typically two to four pages — that establishes the explicit policy framework for how the family handles Bitcoin decisions.</p>
-
-    <p>It answers the questions that will otherwise be answered by whoever happens to be in the room at the time of a decision:</p>
-
-    <ul>
-      <li>What percentage of the family's overall assets should be Bitcoin at any point?</li>
-      <li>Under what conditions can Bitcoin be sold or transferred?</li>
-      <li>What custody standards are required (minimum: hardware wallet; preferred: multisig)?</li>
-      <li>Who needs to approve a transfer above a certain threshold?</li>
-      <li>What happens to the Bitcoin during incapacity of the primary key holder?</li>
-      <li>How is the IPS amended, and who has authority to amend it?</li>
-    </ul>
-
-    <div class="callout"><p>An IPS is not a legal document — it doesn't bind your trustee or executor in the way a trust does. It is a governance document: a statement of intent and policy that guides decision-making. Its authority comes from the family's commitment to follow it, and from being incorporated by reference into your trust documents and Letter of Instruction. Use our <a href="/tools/bitcoin-investment-policy-statement">IPS Generator</a> to build yours.</p></div>
-
-    <p>For families where Bitcoin is held in a trust, the IPS should be incorporated by reference into the trust document — so that the trustee is explicitly guided by its provisions. For directed trust structures, the IPS governs the investment co-trustee's decisions. For family LLCs, the IPS is often included in or referenced by the operating agreement.</p>
-
-    <h2>The Family Constitution: The Broader Framework</h2>
-
-    <p>A Family Constitution (sometimes called a Family Charter or Family Compact) is a broader document that articulates the family's shared values, the principles that will guide stewardship of shared wealth, and the procedural rules for major family decisions. It is to family governance what a national constitution is to political governance: the foundational document that everything else derives from.</p>
-
-    <p>For Bitcoin-holding families, a Family Constitution typically includes:</p>
-
-    <h3>Shared Values and Purpose</h3>
-    <p>Why does the family hold Bitcoin? What principles guide stewardship decisions? What is the family's position on distribution vs. preservation? What obligations does each generation have to future generations? These answers — written down, agreed to — prevent the "why are we even keeping this" conversation from happening in the middle of a major price move or at a death.</p>
-
-    <h3>Decision Authority Matrix</h3>
-    <p>Who has authority to make which decisions? An authority matrix maps decision types to required approvals. Small transactions (under a defined threshold): primary key holder decides alone. Medium transactions (between two defined thresholds): primary key holder plus one designated family advisor or trustee. Large transactions (above the upper threshold): family council vote, with a defined quorum requirement. This prevents both paralysis (too many approvals needed for routine decisions) and unilateral action on major decisions.</p>
-
-    <h3>Succession Protocol</h3>
-    <p>How does authority transfer? Who takes over in what role under what conditions? A succession protocol eliminates the ambiguity that creates family conflict at the worst possible time. It specifies: who is named for each role, what qualifications are expected, how they are prepared, and what the transition looks like in practice.</p>
-
-    <h3>Conflict Resolution Process</h3>
-    <p>What happens when family members disagree? The Family Constitution should specify a process: informal discussion first, then a defined mediator (often a trusted advisor or a designated family elder), then a binding arbitration process if mediation fails. Bitcoin disputes are particularly high-stakes because the assets cannot be easily divided and because technical custody decisions require expertise most family members don't have.</p>
-
-    <h2>The Governance Documents Stack</h2>
-
-    <p>A complete Bitcoin family governance structure is built in layers. Each document serves a distinct purpose:</p>
-
-    <div class="doc-card">
-      <h4>Family Constitution (Narrative, Values-Based)</h4>
-      <p>The foundational document. States why the family holds Bitcoin, shared values, long-term purpose, and the principles that guide all lower-level governance. Not a legal document. Amended by family consensus.</p>
+    <div class="pillar-card">
+      <div class="pillar-number">02</div>
+      <h4>Family Constitution</h4>
+      <p>Family values, decision-making processes, council membership, dispute resolution, and when Bitcoin may be sold.</p>
     </div>
-
-    <div class="doc-card">
-      <h4>Investment Policy Statement (Policy, Operational)</h4>
-      <p>Governs how Bitcoin decisions are made: allocation policy, custody standards, transaction approval thresholds, distribution policy, amendment procedures. Referenced by or incorporated into the trust. <a href="/tools/bitcoin-investment-policy-statement">Build yours →</a></p>
+    <div class="pillar-card">
+      <div class="pillar-number">03</div>
+      <h4>Succession Plan</h4>
+      <p>Who gets what, under what conditions, how custody transfers, and what heirs must demonstrate before receiving.</p>
     </div>
+  </div>
 
-    <div class="doc-card">
-      <h4>Trust Document (Legal, Binding)</h4>
-      <p>The legal structure that holds the Bitcoin. Contains the rules the trustee must follow, the succession provisions, and the RUFADAA digital asset authority. Amended only by formal legal process. Incorporates IPS by reference.</p>
+  <p>No single document works in isolation. The IPS without a Family Constitution gives you operational standards but no decision-making framework. The Constitution without the IPS gives you process but no substance. And both without a succession plan leave the most critical question — what happens when the founder dies — unanswered.</p>
+
+  <h2>The Family Bitcoin Council</h2>
+
+  <p>The most important structural innovation for Bitcoin-holding families is the <strong>Family Bitcoin Council</strong>: a formal, named body with defined membership, meeting cadence, and decision authority over the family's Bitcoin holdings.</p>
+
+  <p>This is not a casual family conversation. It is a documented institution with minutes, rotating facilitator responsibilities, and clear rules about what each body can and cannot decide on its own.</p>
+
+  <h3>Membership</h3>
+
+  <p>The Council should include key family members — typically the founding generation and any adult heirs who have completed the heir education program — plus professional advisors. The professional cohort should include the estate planning attorney, the CPA (with Bitcoin-specific experience), and ideally a trust protector: an independent third party with authority to modify trust terms in response to changed circumstances (including Bitcoin-specific regulatory changes).</p>
+
+  <p>Keep the Council small enough to function. Five to seven members is typically the right range. A council of fifteen cannot make timely decisions.</p>
+
+  <h3>Meeting Cadence</h3>
+
+  <p>Three types of meetings anchor the governance calendar:</p>
+
+  <ul>
+    <li><strong>Quarterly price-vs-exposure review:</strong> Compare current BTC price to estate tax exposure thresholds. If a 50% price increase would push the estate above the federal exemption, that triggers a pre-defined planning review. This meeting is operational, not philosophical.</li>
+    <li><strong>Annual custody audit:</strong> Review custody arrangements, confirm seed phrase storage is current and accessible to the right parties, verify multisig configurations, rotate or confirm co-signers, and update the Letter of Instruction.</li>
+    <li><strong>Annual document review:</strong> Walk through the IPS, Family Constitution, and succession plan. Update any provisions that no longer reflect the family's situation, the regulatory environment, or the Bitcoin price level.</li>
+  </ul>
+
+  <h3>Decision Authority Matrix</h3>
+
+  <div class="decision-matrix">
+    <table>
+      <thead>
+        <tr>
+          <th>Decision</th>
+          <th>Authority Required</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Liquidate entire Bitcoin position</td>
+          <td><span class="authority-badge badge-unanimous">Unanimous Council Vote</span></td>
+        </tr>
+        <tr>
+          <td>Sell more than 25% of holdings</td>
+          <td><span class="authority-badge badge-unanimous">Unanimous Council Vote</span></td>
+        </tr>
+        <tr>
+          <td>Rebalance within IPS bands</td>
+          <td><span class="authority-badge badge-majority">Simple Majority</span></td>
+        </tr>
+        <tr>
+          <td>Change custody architecture</td>
+          <td><span class="authority-badge badge-majority">Simple Majority + Advisor Sign-Off</span></td>
+        </tr>
+        <tr>
+          <td>Emergency liquidation (medical, legal)</td>
+          <td><span class="authority-badge badge-trustee">Single Trustee Authority</span></td>
+        </tr>
+        <tr>
+          <td>Borrow against Bitcoin (within IPS LTV)</td>
+          <td><span class="authority-badge badge-trustee">Single Trustee Authority</span></td>
+        </tr>
+        <tr>
+          <td>Admit new Council member</td>
+          <td><span class="authority-badge badge-unanimous">Unanimous Council Vote</span></td>
+        </tr>
+        <tr>
+          <td>Annual distribution per succession plan</td>
+          <td><span class="authority-badge badge-trustee">Trustee Per Trust Terms</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The specific thresholds should be calibrated to your family's size, the scale of holdings, and your risk tolerance. What matters is that they are defined <em>before</em> a decision needs to be made — not during a crisis.</p>
+
+  <h2>The Investment Policy Statement for Bitcoin</h2>
+
+  <p>The IPS is the operational core of Bitcoin family governance. It is a living document — reviewed annually, updated when circumstances change — that defines the rules governing the family's Bitcoin allocation. Unlike a family constitution, which is philosophical and structural, the IPS is specific and quantitative.</p>
+
+  <div class="ips-template">
+    <div class="ips-header">Sample IPS Parameters — Bitcoin Allocation</div>
+    <div class="ips-row">
+      <span class="ips-label">Target Allocation</span>
+      <span class="ips-value">20–40% of liquid net worth</span>
     </div>
-
-    <div class="doc-card">
-      <h4>Letter of Instruction (Operational, Private)</h4>
-      <p>The practical access document: where wallets are, where seed phrases are stored, who to call. Not legally binding. Updated whenever custody arrangements change. <a href="/tools/bitcoin-letter-of-instruction">Build yours →</a></p>
+    <div class="ips-row">
+      <span class="ips-label">Rebalancing Trigger</span>
+      <span class="ips-value">If BTC exceeds 50% of portfolio</span>
     </div>
-
-    <div class="doc-card">
-      <h4>Succession Protocol (Practical, Role-Specific)</h4>
-      <p>Documents who is designated for each role, how they are trained, and the step-by-step process for transitioning authority at incapacity or death. Often included in the Letter of Instruction as a separate section.</p>
+    <div class="ips-row">
+      <span class="ips-label">Custody Standard</span>
+      <span class="ips-value">Hardware wallet + 2-of-3 multisig + professional co-signer</span>
     </div>
-
-    <h2>Preparing the Next Generation: The Governance of Heir Education</h2>
-
-    <p>The most common failure mode in multi-generational Bitcoin wealth is not theft or technical failure — it is heir unpreparedeness. A generation that inherits Bitcoin without understanding it will either sell it immediately (at whatever the price happens to be at the time of inheritance) or be vulnerable to the considerable market of people who profit from heir confusion and anxiety.</p>
-
-    <p>Governing heir education means making it explicit and scheduled — not assuming it will happen organically. A minimal heir education protocol for a Bitcoin-holding family:</p>
-
-    <ul>
-      <li><strong>Age 18:</strong> Heir learns that Bitcoin exists in the family's holdings. No amounts, no access details. Just awareness.</li>
-      <li><strong>Age 21–25:</strong> Heir is educated on what Bitcoin is, why the family holds it, and how custody works at a basic level. Hardware wallet demonstration (with a small amount). Introduction to the Letter of Instruction concept.</li>
-      <li><strong>When designated successor:</strong> Full briefing on custody structure, multisig signing process (practice run), professional contact list, succession protocol, and IPS.</li>
-      <li><strong>Before inheriting:</strong> Walk-through of the Letter of Instruction with the primary holder. Joint review of the estate documents. Introduction to the estate attorney and CPA.</li>
-    </ul>
-
-    <p>This protocol converts a potential governance failure into a governance success. The heir who arrives at the inheritance event already knowing how to use a hardware wallet, already knowing who to call, and already having a relationship with the estate attorney is not vulnerable to the improvisation and predation that destroy inherited wealth.</p>
-
-    <h2>Governance for Single Holders vs. Multi-Member Families</h2>
-
-    <p>Governance complexity scales with the number of family members involved in decision-making. A single holder with no dependents needs primarily: an IPS (so their executor understands the intent), a Letter of Instruction, and estate documents that convey clear authority to a named successor. The governance structure is lean and functional.</p>
-
-    <p>A married couple with adult children entering shared stewardship needs: a Family Constitution (even a simple one), a detailed IPS covering both spouses' authority, a multisig structure that reflects shared ownership, and an heir education protocol. The governance structure is more involved but still manageable.</p>
-
-    <p>A multi-generation family with significant accumulated Bitcoin wealth — the context for which a true family office structure is appropriate — needs the full stack: Family Constitution, IPS incorporated into trust documents, Family Council with defined authority, formal succession protocol, professional advisors coordinated by an investment policy framework. This is the institutional level of governance that traditional family offices have provided for centuries, now applied to Bitcoin.</p>
-
-    <h2>Starting the Governance Conversation</h2>
-
-    <p>Most Bitcoin-holding families have never explicitly had a governance conversation. The founder holds the keys, makes the decisions, and hasn't communicated the framework — because there isn't one yet. Starting this conversation is often the most important thing a Bitcoin-holding family can do.</p>
-
-    <p>A practical starting point: draft an IPS. The process of drafting an IPS forces the explicit conversations that governance requires: What is our allocation policy? Under what conditions do we sell? Who approves large transactions? Use our <a href="/tools/bitcoin-investment-policy-statement">Bitcoin IPS Generator</a> as a starting framework, then adapt it to your family's specific situation with your estate attorney.</p>
-
-    <p>From there: draft a simple succession protocol. Write down who is designated for each role and what they need to do. Walk that person through the custody arrangements. Then draft the Letter of Instruction. These three documents — IPS, succession protocol, and Letter of Instruction — form the functional minimum governance stack for most Bitcoin-holding families.</p>
-
-    <div class="author-box">
-      <div class="author-info">
-        <h4>Hal Turner</h4>
-        <p>Bitcoin Wealth Strategist, The Bitcoin Family Office. Focused on helping high-net-worth Bitcoin holders build institutional-grade estate plans, custody architecture, and succession structures. Content on this site is educational — not legal or tax advice.</p>
-      </div>
+    <div class="ips-row">
+      <span class="ips-label">Max Borrow (LTV)</span>
+      <span class="ips-value">25% LTV without Council vote; 40% max</span>
     </div>
-
-    <div class="related-grid">
-      <div class="related-card"><a href="/tools/bitcoin-investment-policy-statement">→ IPS Generator Tool</a></div>
-      <div class="related-card"><a href="/tools/bitcoin-letter-of-instruction">→ Letter of Instruction Builder</a></div>
-      <div class="related-card"><a href="/blog/bitcoin-heir-education-guide.html">→ Heir Education Hub</a></div>
-      <div class="related-card"><a href="/blog/bitcoin-dynasty-trust-vs-revocable-trust.html">→ Trust Structure Comparison</a></div>
+    <div class="ips-row">
+      <span class="ips-label">Emergency Liquidation Authority</span>
+      <span class="ips-value">Trustee may liquidate up to 2 BTC without vote for qualified needs</span>
     </div>
-
-    <div class="services-cta">
-      <h3>Build Your Family Governance Framework</h3>
-      <p>The Bitcoin Family Office helps families design and implement governance structures: IPS, succession protocols, heir education curricula, and trust coordination. If you're ready for a structured approach, we maintain a selective advisory waitlist.</p>
-      <a href="/services/">Explore Our Services →</a>
+    <div class="ips-row">
+      <span class="ips-label">Annual Gifting</span>
+      <span class="ips-value">Up to annual exclusion amount per beneficiary per year</span>
     </div>
-
-    <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
-      <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful Tax Strategy Available</p>
-      <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">For high-net-worth Bitcoin holders, mining is the only strategy that simultaneously generates yield, accumulates BTC, and creates significant tax offsets through equipment depreciation and operating expense deductions.</p>
-      <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a>
+    <div class="ips-row">
+      <span class="ips-label">Approved Sale Conditions</span>
+      <span class="ips-value">Council vote required for any sale outside emergency provision</span>
     </div>
+  </div>
 
-    <div style="background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.75rem;margin:2rem 0;">
-      <p style="font-size:0.75rem;color:var(--text-secondary);line-height:1.7;"><strong>Disclaimer.</strong> This article is provided for educational and informational purposes only and does not constitute legal, tax, financial, or investment advice. Estate and tax laws are complex and subject to change. Always consult a qualified estate planning attorney and licensed CPA. The Bitcoin Family Office does not provide legal or tax advice.</p>
+  <p>The IPS should also define the approved custody architecture in detail: which hardware wallet models are approved, how multisig keys are distributed (never all in one location), who serves as professional co-signer, and how the backup procedures work. Custody standards that are vague are custody standards that will fail.</p>
+
+  <p>One provision that is often overlooked: the IPS should address what happens if the price of Bitcoin drops dramatically. Too many families have governance structures that contemplate selling or distributing Bitcoin but have no protocol for holding through volatility without panic-selling below cost basis. Define the floor explicitly: <em>"The family will not sell Bitcoin solely in response to price decline unless the position falls below X% of portfolio and a Council vote confirms the decision."</em></p>
+
+  <!-- AM callout -->
+  <div class="am-callout">
+    <div class="am-callout-eyebrow">Tax Strategy for Bitcoin Families</div>
+    <h3>Mining as a Family Tax Strategy</h3>
+    <p>For Bitcoin-holding families managing significant wealth, Bitcoin mining offers depreciation and OpEx deductions that can offset gains across the portfolio. Mining infrastructure held within the right trust or entity structure can generate paper losses that shelter distributions or harvested gains — a powerful complement to the governance structure above.</p>
+    <a href="https://abundantmines.com/tax-strategy/" class="am-link" target="_blank" rel="noopener">See How Bitcoin Mining Reduces Your Family's Tax Burden →</a>
+  </div>
+
+  <h2>Heir Education: Building the Next Generation of Bitcoin Stewards</h2>
+
+  <p>The most common single point of failure in multi-generational Bitcoin wealth is an heir who inherits a hardware wallet, doesn't know what it is, and either loses it or sends the funds to a scammer. Heir education is not optional — it is as important as the custody architecture itself.</p>
+
+  <p>The education program should be embedded in the family governance structure — a formal curriculum with defined milestones, not casual conversations. Here is the framework we recommend:</p>
+
+  <div class="edu-timeline">
+    <div class="edu-item">
+      <div class="edu-age">Age 18</div>
+      <div class="edu-title">Bitcoin Fundamentals</div>
+      <div class="edu-desc">Introduction to what Bitcoin is, why the family holds it, and the basic principles of self-custody. No access to keys yet — concepts only. The goal is understanding, not responsibility.</div>
     </div>
-  </article>
-</div>
+    <div class="edu-item">
+      <div class="edu-age">Age 21</div>
+      <div class="edu-title">Custody Training</div>
+      <div class="edu-desc">Hands-on custody training with a small allocation (0.01 BTC or equivalent). The heir learns to set up a hardware wallet, back up a seed phrase, and transact on the Bitcoin network. This is supervised practice, not independent stewardship.</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-age">Age 25</div>
+      <div class="edu-title">First Distribution</div>
+      <div class="edu-desc">The heir's first meaningful distribution from the trust or family position — contingent on demonstrating custody competency. The trustee conducts a custody review before releasing funds. No competency demonstration, no distribution.</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-age">Annual</div>
+      <div class="edu-title">Family Governance Participation</div>
+      <div class="edu-desc">Adult heirs attend the annual family governance meeting. They observe Council operations, review the IPS, and are updated on the state of the estate plan. This is how succession is practiced before it's needed.</div>
+    </div>
+  </div>
 
+  <p>The heir education program should be documented in the family constitution and referenced in the trust documents. The trustee's authority to condition distributions on demonstrated custody competency should be explicitly written into the trust agreement — not left to the trustee's discretion.</p>
+
+  <h2>The Family Constitution for Bitcoin Families</h2>
+
+  <p>Where the IPS is operational, the Family Constitution is philosophical. It answers the questions that no spreadsheet can: <em>Why do we hold Bitcoin? What does it mean to our family? What would have to be true for us to sell it?</em></p>
+
+  <p>The core elements of a Bitcoin family constitution include:</p>
+
+  <h3>Family Vision Statement for Bitcoin</h3>
+
+  <p>A brief, honest statement of why the family holds Bitcoin. This matters more than it sounds. Families who hold Bitcoin because they believe it is the best long-term store of value have different governance needs than families who hold it as a speculative position or as a hedge against fiat monetary policy. The vision statement sets the frame for every decision that follows.</p>
+
+  <h3>Conditions for Sale</h3>
+
+  <p>Define the circumstances under which Bitcoin may be sold. These should be specific. "If we need the money" is not a condition — it's an invitation for conflict. Approved conditions might include: qualified medical emergency exceeding a defined threshold, estate tax liability that cannot otherwise be funded, or a unanimous Council vote following deliberation at a properly convened meeting. Everything else requires a new amendment to the constitution.</p>
+
+  <h3>Council Membership Process</h3>
+
+  <p>Define how family members join and leave the Council. Typically: adult heirs who have completed the education program may petition for membership; existing members vote by majority; removal requires unanimous vote by all members except the member in question. The professional advisors serve at the pleasure of the family members, not the other way around.</p>
+
+  <h3>Dispute Resolution</h3>
+
+  <p>Include a binding arbitration clause. If two Council members — or a Council member and the trustee — cannot resolve a dispute through the normal voting process, the dispute goes to binding arbitration before a specified arbitration body (JAMS or AAA, for example). The clause should specify the rules, venue, and how arbitrators are selected. This is not a failure mode — it is a pre-agreed safety valve that prevents a dispute from becoming a court case.</p>
+
+  <h2>The Sunset Conversation: Planning for Bitcoin's Milestones</h2>
+
+  <p>One of the most valuable exercises a Bitcoin family can undertake is the <strong>sunset conversation</strong>: a structured discussion about what happens when Bitcoin reaches certain price milestones. These conversations should produce written, adopted policy — not just shared expectations.</p>
+
+  <div class="sunset-card">
+    <div class="sunset-trigger">"If Bitcoin exceeds $500,000 per coin, we will establish a family foundation funded with 10% of our holdings to pursue our philanthropic mission."</div>
+    <div class="sunset-action">→ Triggers: engage estate counsel to structure the foundation, determine the optimal vehicle (DAF vs. private foundation), and execute within 180 days of the trigger date.</div>
+  </div>
+
+  <div class="sunset-card">
+    <div class="sunset-trigger">"If any family member's projected estate tax exposure exceeds $10 million based on current BTC price, we will engage estate planning counsel within 90 days."</div>
+    <div class="sunset-action">→ Triggers: quarterly price-vs-exposure review identifies the threshold breach; Council chair is responsible for engaging counsel within the 90-day window.</div>
+  </div>
+
+  <div class="sunset-card">
+    <div class="sunset-trigger">"If any heir demonstrates inability to maintain secure self-custody after age 25, their share will be held in a directed trust with a professional trustee until competency is established."</div>
+    <div class="sunset-action">→ Trustees may not distribute to an heir whose custody competency has not been certified by the family's designated Bitcoin custody advisor.</div>
+  </div>
+
+  <p>The sunset conversation forces the family to confront decisions before they're urgent. A family that has agreed in writing that a $500K Bitcoin price triggers a charitable foundation will not spend six months fighting about it when Bitcoin hits $500K. The decision has already been made.</p>
+
+  <h2>Documentation: Where Everything Lives</h2>
+
+  <p>All governance documents must be stored together and findable by heirs and advisors. This sounds obvious. It is consistently ignored. The typical failure: documents exist but are stored in four different places, two people know where each piece is, and the first one to die takes that knowledge with them.</p>
+
+  <p>The complete Bitcoin family governance package — stored together, indexed, and accessible — includes:</p>
+
+  <ul>
+    <li><strong>Trust documents</strong> (revocable trust, any irrevocable trusts, Wyoming DAPT if applicable)</li>
+    <li><strong>Family Bitcoin IPS</strong> (current version with amendment history)</li>
+    <li><strong>Family Constitution</strong> (with signature pages from all Council members)</li>
+    <li><strong>Letter of Instruction (LOI)</strong> (custody details: hardware wallet specs, seed phrase location, passphrase if any, exchange account details)</li>
+    <li><strong>Succession plan</strong> (who receives what, under what conditions, in what form)</li>
+    <li><strong>Heir education records</strong> (documentation that each heir completed the curriculum)</li>
+    <li><strong>Council meeting minutes</strong> (running record of decisions made)</li>
+  </ul>
+
+  <p>A physical binder — kept in a fireproof safe, with a copy held by the estate attorney — is not outdated. It is still the most reliable single repository for documents that heirs need to find in a crisis. Digital backups (encrypted) should supplement, not replace, the physical record.</p>
+
+  <!-- Services CTA -->
+  <div class="cta-block">
+    <h3>Build Your Family Governance Framework</h3>
+    <p>We work with Bitcoin families to develop Investment Policy Statements, Family Constitutions, heir education programs, and succession plans — all designed for the realities of self-custody Bitcoin at scale.</p>
+    <a href="/services/" class="btn btn-primary">Explore Our Services</a>
+    <a href="/monitor/heir-briefing" class="btn btn-secondary">Heir Briefing Program</a>
+  </div>
+
+  <h2>The IPS Generator: Build Your Own</h2>
+
+  <p>If you want to develop your family's Bitcoin IPS without starting from scratch, use our IPS generator — a structured tool that walks through each section of the document and produces a customized template your legal and financial advisors can review and finalize.</p>
+
+  <div class="callout">
+    <div class="callout-title">Build Your Investment Policy Statement</div>
+    <p>Our Bitcoin IPS generator produces a family-specific Investment Policy Statement covering allocation targets, custody standards, rebalancing triggers, approved borrowing, and emergency provisions. Start here: <a href="/tools/bitcoin-investment-policy-statement">Bitcoin IPS Generator →</a></p>
+  </div>
+
+  <h2>Conclusion: Governance Is the Work</h2>
+
+  <p>Bitcoin maximalism is a long-term conviction. Long-term convictions require long-term structures. A family that buys Bitcoin and holds it in a single hardware wallet, with a seed phrase written on a Post-It note, and no documentation of any kind, is not holding for the long term. They are holding until the first thing goes wrong.</p>
+
+  <p>Formal governance is not bureaucracy. It is the infrastructure that makes a multigenerational Bitcoin strategy possible. It is the difference between Bitcoin wealth that survives its founders and Bitcoin wealth that dies with them.</p>
+
+  <p>The families who will benefit most from the next twenty years of Bitcoin's growth are the ones who build the governance structures today — when prices are lower, exemptions are higher, and the decision can be made without urgency. Don't wait for the crisis. Build the Council, write the IPS, have the sunset conversation, and educate your heirs before they need to be educated.</p>
+
+  <p>That is how Bitcoin wealth is preserved across generations.</p>
+
+  <!-- Author box -->
+  <div class="author-box">
+    <div class="author-avatar">H</div>
+    <div class="author-info">
+      <div class="author-name">Hal Turner</div>
+      <div class="author-title">The Bitcoin Family Office</div>
+      <p class="author-bio">Hal Turner writes on Bitcoin estate planning, family governance, and multigenerational Bitcoin wealth management. The Bitcoin Family Office helps high-net-worth Bitcoin families build durable governance frameworks, custody structures, and succession plans designed for the realities of bearer-asset wealth.</p>
+    </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This article is for informational and educational purposes only. It does not constitute legal, tax, financial, or investment advice. Governance structures and estate planning strategies vary significantly based on individual circumstances, family dynamics, and applicable law. Consult a qualified estate planning attorney, CPA, and financial advisor before implementing any governance framework. The Bitcoin Family Office does not provide legal or tax advice.
+  </div>
+
+</main>
+
+<!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-logo">The Bitcoin <span>Family Office</span></div>
-  <nav class="footer-links">
-    <a href="/">Home</a><a href="/services/">Services</a><a href="/blog/">Research</a>
-    <a href="/tools/">Tools</a><a href="/about/">About</a><a href="/faq/">FAQ</a><a href="/disclosures/">Disclosures</a>
-  </nav>
-  <p class="footer-legal">The Bitcoin Family Office provides educational content for high-net-worth Bitcoin holders. Nothing on this site constitutes legal, tax, financial, or investment advice. &copy; 2026 The Bitcoin Family Office.</p>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">The Bitcoin <span>Family Office</span></div>
+      <p>Estate planning, governance, and wealth preservation for Bitcoin families. Built for holders who think in decades.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Planning</h4>
+      <ul>
+        <li><a href="/blog/">All Guides</a></li>
+        <li><a href="/blog/bitcoin-estate-planning-all-50-states">All 50 States</a></li>
+        <li><a href="/tools/bitcoin-estate-tax-calculator">Estate Tax Calculator</a></li>
+        <li><a href="/tools/bitcoin-investment-policy-statement">IPS Generator</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/services/">Overview</a></li>
+        <li><a href="/monitor/heir-briefing">Heir Briefing</a></li>
+        <li><a href="/services/">Trust Structuring</a></li>
+        <li><a href="/services/">Custody Review</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener">Mining Tax Strategy</a></li>
+        <li><a href="/blog/bitcoin-estate-planning-new-mexico">New Mexico Guide</a></li>
+        <li><a href="/services/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 The Bitcoin Family Office. All rights reserved.</p>
+    <p>Not legal or tax advice. For informational purposes only.</p>
+  </div>
 </footer>
+
+<script>
+  // Mobile nav toggle
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('nav-mobile');
+  hamburger.addEventListener('click', function() {
+    const isOpen = navMobile.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+</script>
 </body>
 </html>
