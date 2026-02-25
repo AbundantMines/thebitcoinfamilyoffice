@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Mining Tax Savings Calculator | The Bitcoin Family Office</title>
+<meta name="description" content="Calculate your Bitcoin mining tax savings: bonus depreciation, equipment deductions, net taxable income, and effective cost basis per BTC after tax benefits. Free tool.">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-mining-tax-calculator.html">
+<meta property="og:title" content="Bitcoin Mining Tax Savings Calculator">
+<meta property="og:description" content="Calculate your Bitcoin mining tax savings: bonus depreciation, equipment deductions, net taxable income, and effective cost basis per BTC after tax benefits.">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-mining-tax-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does Bitcoin mining reduce taxes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bitcoin mining creates deductible business expenses — equipment costs (eligible for 100% bonus depreciation in year one), electricity, hosting fees, and maintenance. These deductions offset ordinary income, potentially reducing your effective tax rate on mined Bitcoin significantly below what you'd pay buying BTC outright."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is bonus depreciation on mining equipment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bonus depreciation allows you to deduct the full cost of qualifying mining equipment in the year it's placed in service, rather than depreciating it over multiple years. Under current law, the bonus depreciation rate was 100% through 2022 and phases down 20% per year. In 2025 it is 40%, and in 2026 it is 20%. Consult a tax professional for your specific situation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is mined Bitcoin taxed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mined Bitcoin is treated as ordinary income at its fair market value on the date received. When you later sell or exchange it, you pay capital gains tax on any appreciation. However, mining creates business deductions (equipment, electricity, operations) that reduce your net taxable income."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Bitcoin mining better than buying Bitcoin from a tax perspective?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For high-income individuals, mining can be substantially more tax-efficient than buying. When you buy Bitcoin, you get no deduction. When you mine it, you get deductions for equipment and operations that can reduce or eliminate the tax on your mining income, lowering your effective cost basis per BTC."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What expenses can I deduct for Bitcoin mining?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Deductible mining expenses typically include: ASIC mining equipment (via depreciation or bonus depreciation), electricity costs, hosting or colocation fees, internet and network costs, maintenance and repair, management software, and a portion of home office expenses if applicable. Always consult a qualified tax professional."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-N8PP20VBTV');
+document.addEventListener('click',function(e){
+  gtag('event','hm_click',{x_pct:Math.round(e.clientX/window.innerWidth*100),y_pct:Math.round(e.clientY/window.innerHeight*100)});
+},{passive:true});
+var _sd={};
+window.addEventListener('scroll',function(){
+  var pct=Math.round((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight*100);
+  [25,50,75,100].forEach(function(m){if(pct>=m&&!_sd[m]){_sd[m]=1;gtag('event','hm_scroll',{depth:m});}});
+},{passive:true});
+</script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+  data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0a0a;--bg-elevated:#111111;--bg-card:#0f0f0f;
+  --accent:#f7931a;--accent-dim:rgba(247,147,26,0.10);--accent-border:rgba(247,147,26,0.25);
+  --text:#e8e4de;--text-secondary:#9a958d;--text-muted:#6b6660;
+  --border:rgba(255,255,255,0.06);
+  --display:'Playfair Display',Georgia,serif;
+  --body:'EB Garamond',Georgia,serif;
+  --sans:'Inter',-apple-system,sans-serif;
+  --max-w:780px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:18px;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.8;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+a:hover{opacity:0.8}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-mark{font-family:var(--sans);font-weight:500;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary)}
+.nav-mark span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;align-items:center;list-style:none}
+.nav-links a{font-family:var(--sans);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);transition:color 0.3s}
+.nav-links a:hover{color:var(--text);opacity:1}
+.nav-cta{color:var(--accent)!important;border:1px solid var(--accent-border);padding:0.4rem 0.9rem;border-radius:2px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:200}
+.hamburger span{display:block;width:22px;height:1px;background:var(--text-secondary);transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media(max-width:600px){
+  .hamburger{display:flex}
+  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:150}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:1rem}
+}
+
+/* PAGE */
+.page-header{padding:8rem 2rem 3rem;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border)}
+.breadcrumb{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem}
+.breadcrumb a{color:var(--text-muted)}
+.breadcrumb a:hover{color:var(--accent)}
+h1{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:400;line-height:1.2;letter-spacing:-0.01em;margin-bottom:0.75rem}
+.page-subtitle{font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
+
+/* TOOL WRAPPER */
+.tool-wrap{max-width:var(--max-w);margin:0 auto;padding:2.5rem 2rem 4rem}
+
+/* FORM */
+.calculator-form{background:var(--bg-elevated);border:1px solid var(--border);border-radius:6px;padding:2rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:0.4rem}
+label{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-secondary)}
+.field-hint{font-family:var(--sans);font-size:0.68rem;color:var(--text-muted);margin-top:-0.2rem}
+input,select{background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);color:var(--text);font-family:var(--sans);font-size:0.9rem;padding:0.65rem 0.9rem;border-radius:3px;outline:none;transition:border-color 0.2s;width:100%}
+input:focus,select:focus{border-color:var(--accent-border)}
+input.error{border-color:rgba(255,80,80,0.5)}
+.error-msg{font-family:var(--sans);font-size:0.7rem;color:#ff6b6b;margin-top:0.2rem;display:none}
+.calc-btn{margin-top:1.5rem;width:100%;padding:0.85rem;background:var(--accent);color:#000;font-family:var(--sans);font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;transition:opacity 0.2s}
+.calc-btn:hover{opacity:0.88}
+
+/* RESULTS */
+.results-section{margin-top:2rem;display:none}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:1.5rem}
+.result-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem}
+.result-card.highlight{border-color:var(--accent-border);background:rgba(247,147,26,0.04)}
+.result-label{font-family:var(--sans);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.4rem}
+.result-value{font-family:var(--display);font-size:1.5rem;font-weight:400;color:var(--text);line-height:1.1}
+.result-value.green{color:#4caf83}
+.result-sub{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);margin-top:0.3rem}
+
+/* DETAILS */
+details{margin-top:1.5rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px}
+summary{padding:1rem 1.25rem;font-family:var(--sans);font-size:0.78rem;letter-spacing:0.04em;color:var(--text-secondary);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::after{content:'▼';font-size:0.6rem;transition:transform 0.2s;color:var(--text-muted)}
+details[open] summary::after{transform:rotate(180deg)}
+.details-body{padding:0 1.25rem 1.25rem;font-family:var(--sans);font-size:0.8rem;color:var(--text-secondary);line-height:1.7}
+.details-body p{margin-bottom:0.6rem}
+.details-body .math-line{font-family:monospace;font-size:0.78rem;background:#1a1a1a;padding:0.25rem 0.6rem;border-radius:2px;margin:0.3rem 0;display:block}
+
+/* AM CALLOUT */
+.am-callout{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:6px;padding:1.75rem 2rem;margin:2rem 0}
+.am-callout-title{font-family:var(--display);font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:0.5rem}
+.am-callout p{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem}
+.am-callout a.btn{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block}
+
+/* AUTHOR */
+.author-box{display:flex;align-items:flex-start;gap:1rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin:2rem 0}
+.author-avatar{width:44px;height:44px;border-radius:50%;background:var(--accent-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--display);font-size:1.1rem;color:var(--accent)}
+.author-info strong{font-family:var(--sans);font-size:0.82rem;color:var(--text);display:block;margin-bottom:0.25rem}
+.author-info p{font-family:var(--sans);font-size:0.75rem;color:var(--text-muted);line-height:1.5;margin:0}
+
+/* SERVICES CTA */
+.services-cta{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:6px;padding:1.75rem 2rem;margin:2rem 0}
+.services-cta h3{font-family:var(--display);font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:0.5rem}
+.services-cta p{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem}
+.services-cta a.btn{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block}
+
+/* FAQ */
+.faq-section{margin:2.5rem 0}
+.faq-section h2{font-family:var(--display);font-size:1.3rem;font-weight:400;color:var(--text);margin-bottom:1.25rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1rem 0}
+.faq-q{font-family:var(--sans);font-size:0.82rem;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.1rem;color:var(--accent);flex-shrink:0;transition:transform 0.2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:0.8rem;color:var(--text-secondary);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s}
+.faq-item.open .faq-a{max-height:300px;padding-top:0.6rem}
+
+/* DISCLAIMER */
+.disclaimer{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);line-height:1.6;padding:1.25rem;border:1px solid var(--border);border-radius:4px;margin:2rem 0}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;margin-top:2rem}
+footer p{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted)}
+footer a{color:var(--text-muted)}
+footer a:hover{color:var(--accent)}
+
+/* RELATED */
+.related-section{margin:2rem 0}
+.related-section h3{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem}
+.related-card{background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem;transition:border-color 0.2s}
+.related-card:hover{border-color:var(--accent-border)}
+.related-card h4{font-family:var(--display);font-size:0.95rem;font-weight:400;color:var(--text);margin-bottom:0.35rem;line-height:1.3}
+.related-card p{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);margin:0;line-height:1.5}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-mark">The <span>Bitcoin</span> Family Office</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" onclick="closeMenu()">Home</a></li>
+    <li><a href="/about/" onclick="closeMenu()">About</a></li>
+    <li><a href="/blog/" onclick="closeMenu()">Research</a></li>
+    <li><a href="/tools/" onclick="closeMenu()">Tools</a></li>
+    <li><a href="/services/" class="nav-cta" onclick="closeMenu()">Services</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <p class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; Bitcoin Mining Tax Calculator</p>
+  <h1>Bitcoin Mining Tax Savings Calculator</h1>
+  <p class="page-subtitle">Estimate your after-tax cost basis per BTC, bonus depreciation offset, and net tax savings from mining vs. buying Bitcoin outright. All calculations are client-side — nothing leaves your browser.</p>
+</div>
+
+<div class="tool-wrap">
+
+  <!-- AM Callout (top) -->
+  <div class="am-callout">
+    <p class="am-callout-title">⛏ Bitcoin Mining Is the Most Powerful Tax Strategy in the Space</p>
+    <p>Equipment depreciation, electricity deductions, and bonus depreciation can dramatically reduce your effective cost basis. Abundant Mines has compiled every major Bitcoin mining tax strategy — including structures used by family offices and high-net-worth individuals.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" class="btn">Explore Mining Tax Strategies →</a>
+  </div>
+
+  <div class="calculator-form">
+    <div class="form-grid">
+      <div class="field">
+        <label for="btcMined">BTC Mined Per Month</label>
+        <input type="number" id="btcMined" placeholder="e.g. 0.05" min="0.0001" max="100" step="0.001">
+        <span class="field-hint">Your monthly mining output in BTC</span>
+        <span class="error-msg" id="err-btcMined">Enter a valid BTC amount (0.0001 – 100)</span>
+      </div>
+      <div class="field">
+        <label for="btcPrice">Current BTC Price ($)</label>
+        <input type="number" id="btcPrice" placeholder="e.g. 95000" min="1000" max="10000000" step="100">
+        <span class="field-hint">Used to calculate USD value of mined BTC</span>
+        <span class="error-msg" id="err-btcPrice">Enter a valid BTC price ($1,000 – $10,000,000)</span>
+      </div>
+      <div class="field">
+        <label for="equipCost">Mining Equipment Cost ($)</label>
+        <input type="number" id="equipCost" placeholder="e.g. 25000" min="0" max="100000000" step="500">
+        <span class="field-hint">Total cost of ASIC miners purchased this year</span>
+        <span class="error-msg" id="err-equipCost">Enter a valid equipment cost ($0+)</span>
+      </div>
+      <div class="field">
+        <label for="electricityCost">Electricity Cost ($/kWh)</label>
+        <input type="number" id="electricityCost" placeholder="e.g. 0.07" min="0.01" max="1" step="0.001">
+        <span class="field-hint">Your effective rate including hosting fees</span>
+        <span class="error-msg" id="err-electricityCost">Enter a rate between $0.01 and $1.00/kWh</span>
+      </div>
+      <div class="field">
+        <label for="hashRate">Hash Rate (TH/s)</label>
+        <input type="number" id="hashRate" placeholder="e.g. 200" min="1" max="1000000" step="1">
+        <span class="field-hint">Total mining power in terahashes per second</span>
+        <span class="error-msg" id="err-hashRate">Enter a hash rate between 1 and 1,000,000 TH/s</span>
+      </div>
+      <div class="field">
+        <label for="taxBracket">Federal Tax Bracket (%)</label>
+        <select id="taxBracket">
+          <option value="">Select your bracket</option>
+          <option value="22">22% — Married filing jointly up to $201K</option>
+          <option value="24">24% — Married filing jointly up to $383K</option>
+          <option value="32">32% — Married filing jointly up to $487K</option>
+          <option value="35">35% — Married filing jointly up to $731K</option>
+          <option value="37" selected>37% — Married filing jointly over $731K</option>
+        </select>
+        <span class="field-hint">Your marginal federal income tax rate</span>
+        <span class="error-msg" id="err-taxBracket">Please select your tax bracket</span>
+      </div>
+      <div class="field">
+        <label for="bonusDeprecPct">Bonus Depreciation Rate (%)</label>
+        <select id="bonusDeprecPct">
+          <option value="100">100% (pre-2023)</option>
+          <option value="80">80% (2023)</option>
+          <option value="60">60% (2024)</option>
+          <option value="40" selected>40% (2025)</option>
+          <option value="20">20% (2026)</option>
+          <option value="0">0% (no bonus depreciation)</option>
+        </select>
+        <span class="field-hint">Current law phases down 20%/year after 2022</span>
+      </div>
+      <div class="field">
+        <label for="powerConsumption">Miner Power Draw (watts per TH/s)</label>
+        <input type="number" id="powerConsumption" placeholder="e.g. 25" min="5" max="100" step="0.5" value="25">
+        <span class="field-hint">Efficiency — modern ASICs ~20–30 W/TH</span>
+        <span class="error-msg" id="err-powerConsumption">Enter efficiency between 5 and 100 W/TH</span>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate My Mining Tax Savings →</button>
+  </div>
+
+  <!-- Results -->
+  <div class="results-section" id="resultsSection">
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-label">Annual BTC Mined</div>
+        <div class="result-value" id="res-annualBtc">—</div>
+        <div class="result-sub" id="res-annualBtcUsd">—</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Annual Gross Mining Income</div>
+        <div class="result-value" id="res-grossIncome">—</div>
+        <div class="result-sub">Ordinary income at current BTC price</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Annual Electricity Cost</div>
+        <div class="result-value" id="res-electricityCost">—</div>
+        <div class="result-sub">Deductible operating expense</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Bonus Depreciation (Yr 1)</div>
+        <div class="result-value green" id="res-bonusDeprec">—</div>
+        <div class="result-sub" id="res-bonusDeprecSub">—</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Total Year 1 Deductions</div>
+        <div class="result-value green" id="res-totalDeductions">—</div>
+        <div class="result-sub">Bonus deprec. + electricity + remaining deprec.</div>
+      </div>
+      <div class="result-card highlight">
+        <div class="result-label">Net Taxable Mining Income (Yr 1)</div>
+        <div class="result-value" id="res-netTaxable">—</div>
+        <div class="result-sub" id="res-netTaxableSub">After all year-1 deductions</div>
+      </div>
+      <div class="result-card highlight">
+        <div class="result-label">Tax Savings vs. Buying Outright</div>
+        <div class="result-value green" id="res-taxSavings">—</div>
+        <div class="result-sub" id="res-taxSavingsSub">Year 1 advantage of mining vs. purchasing</div>
+      </div>
+      <div class="result-card highlight">
+        <div class="result-label">Effective Cost Basis per BTC</div>
+        <div class="result-value" id="res-costBasis">—</div>
+        <div class="result-sub" id="res-costBasisSub">After all deductions and tax benefits</div>
+      </div>
+    </div>
+
+    <details>
+      <summary>How we calculated this ▼</summary>
+      <div class="details-body" id="mathDetails">
+        <!-- populated by JS -->
+      </div>
+    </details>
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:2.5rem 0">
+
+  <!-- Author Box -->
+  <div class="author-box">
+    <div class="author-avatar">₿</div>
+    <div class="author-info">
+      <strong>The Bitcoin Family Office</strong>
+      <p>Independent research and advisory for families managing significant Bitcoin wealth. We do not manage assets or sell financial products. Our work is educational and structural — custody architecture, estate planning, tax strategy, and governance.</p>
+    </div>
+  </div>
+
+  <!-- AM Callout (bottom) -->
+  <div class="am-callout">
+    <p class="am-callout-title">Bitcoin Mining: The Most Powerful Tax Strategy Available</p>
+    <p>For high-net-worth Bitcoin holders, mining is the only strategy that simultaneously generates yield, accumulates BTC, and creates significant tax offsets — through equipment depreciation, operating expense deductions, and bonus depreciation on capital investments. Most family offices overlook mining entirely. Abundant Mines has compiled every major Bitcoin mining tax strategy in one place.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" class="btn">Explore Bitcoin Mining Tax Strategies →</a>
+  </div>
+
+  <!-- Services CTA -->
+  <div class="services-cta">
+    <h3>Work With The Bitcoin Family Office</h3>
+    <p>We advise a small number of families on Bitcoin custody architecture, estate planning, tax structuring, and governance. If you're working through these questions for your own family, we'd be glad to talk.</p>
+    <a href="/services/" class="btn">View Our Services →</a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How does Bitcoin mining reduce taxes?</div>
+      <div class="faq-a">Bitcoin mining creates deductible business expenses — equipment costs (eligible for bonus depreciation in year one), electricity, hosting fees, and maintenance. These deductions offset ordinary income, potentially reducing your effective tax rate on mined Bitcoin significantly below what you'd pay buying BTC outright.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is bonus depreciation on mining equipment?</div>
+      <div class="faq-a">Bonus depreciation allows you to deduct a large percentage of qualifying mining equipment in the year it's placed in service. Under current law, it was 100% through 2022 and phases down 20% per year — so in 2025 it is 40%, and in 2026 it is 20%. The remaining basis is depreciated over 5 years (MACRS). Consult a tax professional for your specific situation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How is mined Bitcoin taxed?</div>
+      <div class="faq-a">Mined Bitcoin is treated as ordinary income at its fair market value on the date received. When you later sell or exchange it, you pay capital gains tax on any appreciation above your cost basis. However, the deductions created by your mining operation can substantially reduce net taxable income.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is mining better than buying from a tax perspective?</div>
+      <div class="faq-a">For high-income individuals, mining can be substantially more tax-efficient. Buying Bitcoin creates no deductions. Mining creates deductions for equipment and operations that can reduce or eliminate the tax on your mining income, resulting in a lower effective cost basis per BTC.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What expenses can I deduct for Bitcoin mining?</div>
+      <div class="faq-a">Deductible mining expenses typically include: ASIC mining equipment (via depreciation or bonus depreciation), electricity, hosting or colocation fees, internet and network costs, maintenance, management software, and potentially a portion of home office expenses. Always consult a qualified tax professional.</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This calculator is for educational and illustrative purposes only. It does not constitute tax, legal, or financial advice. Tax laws change frequently and your specific situation may differ materially from these estimates. Bonus depreciation rates, deductibility rules, and income thresholds are subject to change. Always consult a qualified CPA or tax attorney before making tax-related decisions.
+  </div>
+
+  <!-- Related -->
+  <div class="related-section">
+    <h3>Related Reading</h3>
+    <div class="related-grid">
+      <a href="/blog/bitcoin-mining-tax-strategy.html" class="related-card">
+        <h4>Bitcoin Mining Tax Strategy</h4>
+        <p>Complete guide to deductions, depreciation schedules, and entity structures for mining operations.</p>
+      </a>
+      <a href="/tools/bitcoin-estate-tax-exposure-calculator.html" class="related-card">
+        <h4>Estate Tax Exposure Calculator</h4>
+        <p>Estimate your federal and state estate tax exposure on Bitcoin holdings.</p>
+      </a>
+      <a href="/blog/how-to-avoid-estate-tax-bitcoin.html" class="related-card">
+        <h4>How to Avoid Estate Tax on Bitcoin</h4>
+        <p>GRATs, dynasty trusts, and gifting strategies for high-net-worth Bitcoin holders.</p>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 The Bitcoin Family Office. All rights reserved. &nbsp;|&nbsp; <a href="/disclosures">Disclosures</a> &nbsp;|&nbsp; <a href="/about/">About</a></p>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('navLinks').classList.toggle('open');
+  document.body.style.overflow=document.getElementById('navLinks').classList.contains('open')?'hidden':'';
+}
+function closeMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navLinks').classList.remove('open');
+  document.body.style.overflow='';
+}
+function toggleFaq(el){
+  el.parentElement.classList.toggle('open');
+}
+
+function fmt(n){return n<0?'-$'+Math.abs(n).toLocaleString('en-US',{maximumFractionDigits:0}):'$'+n.toLocaleString('en-US',{maximumFractionDigits:0});}
+function fmtBtc(n){return n.toFixed(4)+' BTC';}
+
+function validate(){
+  var ok=true;
+  var fields=[
+    {id:'btcMined',min:0.0001,max:100,errId:'err-btcMined'},
+    {id:'btcPrice',min:1000,max:10000000,errId:'err-btcPrice'},
+    {id:'electricityCost',min:0.01,max:1,errId:'err-electricityCost'},
+    {id:'hashRate',min:1,max:1000000,errId:'err-hashRate'},
+    {id:'powerConsumption',min:5,max:100,errId:'err-powerConsumption'}
+  ];
+  fields.forEach(function(f){
+    var el=document.getElementById(f.id);
+    var err=document.getElementById(f.errId);
+    var v=parseFloat(el.value);
+    if(isNaN(v)||v<f.min||v>f.max){
+      el.classList.add('error');err.style.display='block';ok=false;
+    } else {
+      el.classList.remove('error');err.style.display='none';
+    }
+  });
+  // equipment cost
+  var ec=parseFloat(document.getElementById('equipCost').value);
+  var ecErr=document.getElementById('err-equipCost');
+  if(isNaN(ec)||ec<0){document.getElementById('equipCost').classList.add('error');ecErr.style.display='block';ok=false;}
+  else{document.getElementById('equipCost').classList.remove('error');ecErr.style.display='none';}
+  // tax bracket
+  if(!document.getElementById('taxBracket').value){
+    document.getElementById('err-taxBracket').style.display='block';ok=false;
+  } else {
+    document.getElementById('err-taxBracket').style.display='none';
+  }
+  return ok;
+}
+
+function calculate(){
+  if(!validate()) return;
+  gtag('event','tool_calculate',{tool:'mining_tax_calculator'});
+
+  var btcMined=parseFloat(document.getElementById('btcMined').value);
+  var btcPrice=parseFloat(document.getElementById('btcPrice').value);
+  var equipCost=parseFloat(document.getElementById('equipCost').value)||0;
+  var elecRate=parseFloat(document.getElementById('electricityCost').value);
+  var hashRate=parseFloat(document.getElementById('hashRate').value);
+  var taxBracket=parseFloat(document.getElementById('taxBracket').value)/100;
+  var bonusPct=parseFloat(document.getElementById('bonusDeprecPct').value)/100;
+  var wPerTh=parseFloat(document.getElementById('powerConsumption').value);
+
+  // Annual calcs
+  var annualBtc=btcMined*12;
+  var grossIncome=annualBtc*btcPrice;
+
+  // Electricity: watts = hashRate * wPerTh; kWh/yr = watts/1000 * 8760
+  var kwhPerYear=(hashRate*wPerTh)/1000*8760;
+  var annualElecCost=kwhPerYear*elecRate;
+
+  // Bonus depreciation year 1
+  var bonusAmount=equipCost*bonusPct;
+  var remainingBasis=equipCost*(1-bonusPct);
+  // Remaining 5-yr MACRS (yr 1 half-year convention = 20% of remaining basis * 0.5)
+  var macrsYr1=remainingBasis*0.20*0.5;
+  var totalDeductionsYr1=bonusAmount+annualElecCost+macrsYr1;
+
+  var netTaxable=grossIncome-totalDeductionsYr1;
+  var netTaxable0=Math.max(netTaxable,0);
+
+  // Tax on net income
+  var taxOnMining=netTaxable0*taxBracket;
+  // Tax if buying BTC outright (no deductions — you pay with after-tax dollars, effectively losing bracket% of the purchase)
+  var taxIfBuying=grossIncome*taxBracket;
+  var taxSavings=taxIfBuying-taxOnMining;
+  // Also include tax on deductions value
+  var deductionTaxValue=totalDeductionsYr1*taxBracket;
+
+  // Effective cost basis per BTC
+  var netCostUsd=grossIncome-deductionTaxValue;
+  var costBasisPerBtc=annualBtc>0?netCostUsd/annualBtc:0;
+
+  // Populate results
+  document.getElementById('res-annualBtc').textContent=fmtBtc(annualBtc);
+  document.getElementById('res-annualBtcUsd').textContent=fmt(grossIncome)+' at current price';
+  document.getElementById('res-grossIncome').textContent=fmt(grossIncome);
+  document.getElementById('res-electricityCost').textContent=fmt(annualElecCost);
+  document.getElementById('res-bonusDeprec').textContent=fmt(bonusAmount);
+  document.getElementById('res-bonusDeprecSub').textContent=(bonusPct*100).toFixed(0)+'% of $'+equipCost.toLocaleString()+' equipment cost';
+  document.getElementById('res-totalDeductions').textContent=fmt(totalDeductionsYr1);
+  document.getElementById('res-netTaxable').textContent=fmt(netTaxable);
+  document.getElementById('res-netTaxableSub').textContent=netTaxable<0?'Loss carry-forward available: '+fmt(Math.abs(netTaxable)):'Taxable after all year-1 deductions';
+  document.getElementById('res-taxSavings').textContent=fmt(taxSavings);
+  document.getElementById('res-taxSavingsSub').textContent='vs. buying $'+grossIncome.toLocaleString()+' of BTC at '+Math.round(taxBracket*100)+'% bracket';
+  document.getElementById('res-costBasis').textContent=fmt(costBasisPerBtc)+'/BTC';
+  document.getElementById('res-costBasisSub').textContent='vs. market price of '+fmt(btcPrice)+'/BTC';
+
+  // Math details
+  document.getElementById('mathDetails').innerHTML=`
+    <p><strong>Step 1: Annual mining income</strong></p>
+    <span class="math-line">${btcMined} BTC/month × 12 = ${annualBtc.toFixed(4)} BTC/year</span>
+    <span class="math-line">${annualBtc.toFixed(4)} BTC × $${btcPrice.toLocaleString()}/BTC = ${fmt(grossIncome)} gross income</span>
+    <p style="margin-top:0.75rem"><strong>Step 2: Annual electricity cost</strong></p>
+    <span class="math-line">Power draw: ${hashRate} TH/s × ${wPerTh} W/TH = ${(hashRate*wPerTh).toLocaleString()} W total</span>
+    <span class="math-line">kWh/year: ${(hashRate*wPerTh).toLocaleString()} W ÷ 1,000 × 8,760 hrs = ${Math.round(kwhPerYear).toLocaleString()} kWh</span>
+    <span class="math-line">Electricity cost: ${Math.round(kwhPerYear).toLocaleString()} kWh × $${elecRate}/kWh = ${fmt(annualElecCost)}</span>
+    <p style="margin-top:0.75rem"><strong>Step 3: Bonus depreciation (Year 1)</strong></p>
+    <span class="math-line">Equipment cost: $${equipCost.toLocaleString()}</span>
+    <span class="math-line">Bonus depreciation (${(bonusPct*100).toFixed(0)}%): $${equipCost.toLocaleString()} × ${(bonusPct*100).toFixed(0)}% = ${fmt(bonusAmount)}</span>
+    <span class="math-line">Remaining basis: $${equipCost.toLocaleString()} × ${((1-bonusPct)*100).toFixed(0)}% = ${fmt(remainingBasis)}</span>
+    <span class="math-line">MACRS 5-yr yr-1 (half-year): ${fmt(remainingBasis)} × 20% × 50% = ${fmt(macrsYr1)}</span>
+    <p style="margin-top:0.75rem"><strong>Step 4: Net taxable income</strong></p>
+    <span class="math-line">${fmt(grossIncome)} − ${fmt(bonusAmount)} (bonus) − ${fmt(annualElecCost)} (electricity) − ${fmt(macrsYr1)} (MACRS) = ${fmt(netTaxable)}</span>
+    <p style="margin-top:0.75rem"><strong>Step 5: Tax savings vs. buying</strong></p>
+    <span class="math-line">Tax if buying: ${fmt(grossIncome)} × ${Math.round(taxBracket*100)}% = ${fmt(taxIfBuying)}</span>
+    <span class="math-line">Tax on net mining income: ${fmt(Math.max(netTaxable,0))} × ${Math.round(taxBracket*100)}% = ${fmt(taxOnMining)}</span>
+    <span class="math-line">Year-1 tax savings: ${fmt(taxIfBuying)} − ${fmt(taxOnMining)} = ${fmt(taxSavings)}</span>
+    <p style="margin-top:0.75rem"><strong>Step 6: Effective cost basis per BTC</strong></p>
+    <span class="math-line">Net cost after tax benefit: ${fmt(grossIncome)} − ${fmt(deductionTaxValue)} (deduction value) = ${fmt(netCostUsd)}</span>
+    <span class="math-line">Cost basis per BTC: ${fmt(netCostUsd)} ÷ ${annualBtc.toFixed(4)} BTC = ${fmt(costBasisPerBtc)}/BTC</span>
+    <p style="margin-top:0.75rem;color:var(--text-muted);font-size:0.72rem;">Note: This model assumes all deductions are fully usable against ordinary income in year 1 and does not model passive activity loss rules, NIIT, self-employment taxes, or state-level taxes. Consult a CPA for your specific situation.</p>
+  `;
+
+  document.getElementById('resultsSection').style.display='block';
+  document.getElementById('resultsSection').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
