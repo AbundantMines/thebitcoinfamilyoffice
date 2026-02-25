@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitcoin Multi-Sig Inheritance Planning: Using Multisig for Estate Planning</title>
+  <meta name="description" content="Bitcoin multisig inheritance planning explained: how 2-of-3 multisig protects your Bitcoin estate, which software to use, how to document keys, and when multisig makes sense for your heirs." />
+  <meta name="keywords" content="bitcoin multisig inheritance, bitcoin multisig estate planning, multisig estate plan, 2-of-3 multisig, bitcoin inheritance planning, bitcoin key custody estate" />
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-multisig-inheritance" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Bitcoin Multi-Sig Inheritance Planning: Using Multisig for Estate Planning" />
+  <meta property="og:description" content="Bitcoin multisig inheritance planning explained: how 2-of-3 multisig protects your Bitcoin estate, which software to use, how to document keys, and when multisig makes sense for your heirs." />
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-multisig-inheritance" />
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg" />
+  <meta property="og:site_name" content="The Bitcoin Family Office" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bitcoin Multi-Sig Inheritance Planning: Using Multisig for Estate Planning" />
+  <meta name="twitter:description" content="Bitcoin multisig inheritance planning explained: how 2-of-3 multisig protects your Bitcoin estate, which software to use, how to document keys, and when multisig makes sense for your heirs." />
+  <meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg" />
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bitcoin Multi-Sig Inheritance Planning: Using Multisig for Estate Planning",
+    "description": "Bitcoin multisig inheritance planning explained: how 2-of-3 multisig protects your Bitcoin estate, which software to use, how to document keys, and when multisig makes sense for your heirs.",
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "author": {
+      "@type": "Person",
+      "name": "Hal Turner",
+      "affiliation": "The Bitcoin Family Office"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Bitcoin Family Office",
+      "url": "https://thebitcoinfamilyoffice.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://thebitcoinfamilyoffice.com/blog/bitcoin-multisig-inheritance"
+    },
+    "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-multisig-inheritance"
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://thebitcoinfamilyoffice.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://thebitcoinfamilyoffice.com/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Bitcoin Multisig Inheritance Planning",
+        "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-multisig-inheritance"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+
+    // hm_click events
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('a, button');
+      if (el) {
+        gtag('event', 'hm_click', {
+          element_tag: el.tagName,
+          element_text: (el.innerText || '').trim().substring(0, 100),
+          element_href: el.href || ''
+        });
+      }
+    });
+
+    // hm_scroll events
+    var scrollMarks = {25: false, 50: false, 75: false, 90: false};
+    window.addEventListener('scroll', function() {
+      var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      Object.keys(scrollMarks).forEach(function(mark) {
+        if (!scrollMarks[mark] && pct >= parseInt(mark)) {
+          scrollMarks[mark] = true;
+          gtag('event', 'hm_scroll', {depth: parseInt(mark)});
+        }
+      });
+    });
+  </script>
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+      --accent-hover: #d4b86a;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'EB Garamond', Georgia, serif;
+      --font-ui: 'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent-hover); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--text);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #0a0a0a !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 2px;
+    }
+    .nav-cta:hover { background: var(--accent-hover); color: #0a0a0a !important; }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      gap: 1rem;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .nav-mobile a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* ── HERO ── */
+    .article-hero {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+    }
+    .breadcrumb {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: var(--text-secondary); }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { margin: 0 0.5rem; }
+
+    .article-label {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .article-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.25;
+      max-width: 820px;
+      margin: 0 auto 1.25rem;
+    }
+
+    .article-meta {
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .article-meta .dot { color: var(--border); }
+
+    /* ── LAYOUT ── */
+    .article-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── CONTENT ── */
+    .article-body h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 2.5rem 0 0.75rem;
+      line-height: 1.3;
+    }
+    .article-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 2rem 0 0.5rem;
+    }
+    .article-body p {
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+    .article-body ul, .article-body ol {
+      margin: 0.75rem 0 1.25rem 1.5rem;
+    }
+    .article-body li {
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .article-body strong { color: var(--text); font-weight: 600; }
+    .article-body em { font-style: italic; color: var(--text-secondary); }
+
+    /* ── MULTISIG CONFIG TABLE ── */
+    .config-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+    }
+    .config-table th {
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .config-table td {
+      padding: 0.875rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+    .config-table tr:last-child td { border-bottom: none; }
+    .config-table tr:hover td { background: var(--bg-card); }
+    .config-table .tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+    }
+    .tag-good { background: rgba(100, 180, 100, 0.15); color: #7dc97d; }
+    .tag-risk { background: rgba(201, 122, 76, 0.15); color: #c97a4c; }
+    .tag-advanced { background: rgba(201, 168, 76, 0.1); color: var(--accent); }
+
+    /* ── KEY CARDS ── */
+    .key-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .key-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+    }
+    .key-card .key-number {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .key-card .key-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .key-card p {
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── SOFTWARE CARDS ── */
+    .software-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .software-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+    }
+    .software-card .sw-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .software-card .sw-type {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+    .software-card p {
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── STEP LIST ── */
+    .step-list {
+      list-style: none;
+      margin: 1rem 0 1.5rem;
+      padding: 0;
+      counter-reset: step-counter;
+    }
+    .step-list li {
+      counter-increment: step-counter;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+    .step-list li::before {
+      content: counter(step-counter);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 28px;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      font-weight: 700;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .step-list li .step-content { flex: 1; }
+    .step-list li .step-title {
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .step-list li .step-desc {
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      background: var(--bg-card);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+    }
+    .callout-label {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    .callout a { color: var(--accent); }
+
+    .callout-critical {
+      border-left-color: #c97a4c;
+      background: rgba(201, 122, 76, 0.06);
+    }
+    .callout-critical .callout-label { color: #c97a4c; }
+
+    /* ── SECTION DIVIDER ── */
+    .section-rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* ── LOI CHECKLIST ── */
+    .loi-list {
+      list-style: none;
+      margin: 1rem 0 1.5rem;
+      padding: 0;
+    }
+    .loi-list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.875rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin-bottom: 0.6rem;
+    }
+    .loi-list li::before {
+      content: '☐';
+      color: var(--accent);
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+    .loi-list li .loi-text { flex: 1; }
+    .loi-list li .loi-title {
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .loi-list li .loi-desc {
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+      line-height: 1.55;
+    }
+
+    /* ── AM CALLOUT ── */
+    .am-callout {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+      padding: 1.5rem 1.75rem;
+      margin: 2.5rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .am-callout-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .am-callout-content .am-label {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .am-callout-content p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.65;
+    }
+    .am-callout-content a { color: var(--accent); font-weight: 500; }
+
+    /* ── AUTHOR BOX ── */
+    .author-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.75rem;
+      margin: 3rem 0;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+    .author-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .author-info .author-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .author-info .author-title {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+    .author-info p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── SERVICES CTA ── */
+    .services-cta {
+      background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 2.25rem 2rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    .services-cta h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .services-cta p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+    }
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #0a0a0a;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent-hover); color: #0a0a0a; }
+
+    /* ── RELATED POSTS ── */
+    .related-posts { margin: 3rem 0; }
+    .related-posts h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .related-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem;
+      transition: border-color 0.2s;
+    }
+    .related-card:hover { border-color: var(--accent); }
+    .related-card .rc-label {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .related-card .rc-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      margin: 2.5rem 0;
+    }
+    .disclaimer p {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 3.5rem 1.5rem 2rem;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .footer-brand .footer-logo span { color: var(--accent); }
+    .footer-brand p {
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 260px;
+    }
+    .footer-col h4 {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a {
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-bottom p {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+    .footer-bottom a { color: var(--text-secondary); }
+    .footer-bottom a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .author-box { flex-direction: column; }
+      .key-grid, .software-grid { grid-template-columns: 1fr; }
+      .config-table { font-size: 0.78rem; }
+      .config-table th, .config-table td { padding: 0.6rem 0.75rem; }
+      .am-callout { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
+    <ul class="nav-links">
+      <li><a href="/about/">About</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/tools/">Tools</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/services/" class="nav-cta">Work With Us</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/about/">About</a>
+    <a href="/blog/">Insights</a>
+    <a href="/tools/">Tools</a>
+    <a href="/resources/">Resources</a>
+    <a href="/services/">Work With Us</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="article-hero">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span>›</span>
+    <a href="/blog/">Blog</a><span>›</span>
+    Bitcoin Multisig Inheritance Planning
+  </nav>
+  <div class="article-label">Custody &amp; Estate Planning</div>
+  <h1>Bitcoin Multi-Sig Inheritance Planning: Using Multisig for Estate Planning</h1>
+  <div class="article-meta">
+    <span>By Hal Turner</span>
+    <span class="dot">·</span>
+    <span>The Bitcoin Family Office</span>
+    <span class="dot">·</span>
+    <span>February 25, 2026</span>
+    <span class="dot">·</span>
+    <span>~13 min read</span>
+  </div>
+</header>
+
+<!-- ── ARTICLE ── -->
+<main class="article-wrap">
+  <article class="article-body">
+
+    <p>Most Bitcoin holders are one accident away from losing everything. Not to hackers — to their own custody setup. A single hardware wallet, a single seed phrase, a single point of failure. If that seed phrase is lost, stolen, or destroyed, the Bitcoin is gone forever. No recovery process. No customer service line. No second chance.</p>
+
+    <p>Multi-signature (multisig) Bitcoin wallets solve this problem by requiring multiple cryptographic keys to authorize any transaction. Lose one key? Your Bitcoin is still accessible. No single person — not your attorney, not your heir, not a thief who breaks into your home — can move your Bitcoin unilaterally. And when you die, a properly structured multisig setup allows your heirs to access the Bitcoin through a documented, legally coordinated process that doesn't depend on a single piece of paper surviving intact.</p>
+
+    <p>This is why multisig has become the standard custody architecture for serious Bitcoin holders — and why it deserves a central place in your estate plan. But multisig also introduces meaningful complexity. This guide explains how it works, when to use it, how to document it correctly, and when simpler solutions are the better choice.</p>
+
+    <hr class="section-rule" />
+
+    <h2>What Is Multisig? The Basics</h2>
+
+    <p>A standard Bitcoin wallet is controlled by a single private key — usually derived from a 12 or 24-word seed phrase. Whoever has that seed phrase controls the Bitcoin. Full stop.</p>
+
+    <p>A multisig wallet is controlled by a <em>set</em> of keys, and a transaction requires a minimum threshold of those keys to sign before the network will accept it. The most common configuration is <strong>2-of-3</strong>: three keys exist, and any two of them must sign to authorize a transaction. This is written as "M-of-N" where M is the required signatures and N is the total number of keys.</p>
+
+    <p>Other configurations you'll encounter:</p>
+
+    <table class="config-table">
+      <thead>
+        <tr>
+          <th>Configuration</th>
+          <th>Required Signatures</th>
+          <th>Total Keys</th>
+          <th>Estate Planning Use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>2-of-3</strong></td>
+          <td>2</td>
+          <td>3</td>
+          <td><span class="tag tag-good">Ideal</span> — standard for most holders</td>
+        </tr>
+        <tr>
+          <td><strong>3-of-5</strong></td>
+          <td>3</td>
+          <td>5</td>
+          <td><span class="tag tag-advanced">Advanced</span> — institutional / high-value holdings</td>
+        </tr>
+        <tr>
+          <td><strong>1-of-2</strong></td>
+          <td>1</td>
+          <td>2</td>
+          <td><span class="tag tag-advanced">Niche</span> — redundancy without threshold security</td>
+        </tr>
+        <tr>
+          <td><strong>2-of-2</strong></td>
+          <td>2</td>
+          <td>2</td>
+          <td><span class="tag tag-risk">Avoid</span> — both keys required; losing one = total loss</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The <strong>2-of-2 configuration is particularly dangerous for estate planning</strong>. It requires both keys to sign, with no redundancy — lose either key and the Bitcoin is permanently inaccessible. Never use 2-of-2 for an inheritance structure.</p>
+
+    <p>The core insight of multisig is that it eliminates the single point of failure. In a 2-of-3 setup, you can lose any one of the three keys — through theft, hardware failure, fire, or death — and the Bitcoin remains fully accessible using the other two. This is transformative for estate planning.</p>
+
+    <hr class="section-rule" />
+
+    <h2>Why Multisig Changes Everything for Estate Planning</h2>
+
+    <p>The fundamental problem with single-signature Bitcoin inheritance is fragility. Your estate plan reduces to a single fragile chain: <em>heir finds the hardware wallet → heir finds the seed phrase → heir accesses the Bitcoin</em>. Break any link in that chain and the estate is destroyed. Seed phrase destroyed in a house fire? Bitcoin gone. Seed phrase found by the wrong person before probate completes? Bitcoin stolen. Heir panics and enters the wrong PIN too many times? Hardware wallet wiped.</p>
+
+    <p>Multisig restructures the inheritance problem in three important ways:</p>
+
+    <p><strong>1. No single point of failure.</strong> With a properly distributed 2-of-3 setup, no single location, no single event, and no single person's death or mistake can render the Bitcoin inaccessible. Two keys must fail simultaneously — a dramatically lower probability.</p>
+
+    <p><strong>2. No unilateral control during your lifetime.</strong> In a typical single-sig setup, your attorney, your trust company, or any trusted party who knows the seed phrase has complete control. In a multisig setup, no single party has unilateral authority. Your attorney's firm could be compromised, your co-trustee could act in bad faith — but without a second key, they can't touch the Bitcoin. This is a meaningful fiduciary and security advantage.</p>
+
+    <p><strong>3. A legally coordinated death scenario.</strong> Rather than relying on your heir finding a seed phrase and figuring out what to do with it, a well-structured multisig inheritance creates a process: the executor follows the Letter of Instruction to locate keys, the trust document authorizes a professional custodian to co-sign, and the Bitcoin is transferred to the heir's wallet under attorney oversight. Every step is documented. Every party has a defined role.</p>
+
+    <div class="callout">
+      <div class="callout-label">The Core Trade-Off</div>
+      <p>Multisig is significantly more secure than single-sig for large holdings — but it is also significantly more complex. Your heirs must understand more steps, more hardware, and more documentation. If they don't have that understanding and you haven't engaged a professional service to guide them, multisig can create more risk, not less. We'll address this directly in the section on when not to use multisig.</p>
+    </div>
+
+    <hr class="section-rule" />
+
+    <h2>The 2-of-3 Multisig Estate Planning Architecture</h2>
+
+    <p>The most common and practical multisig estate planning setup distributes three keys across three locations, with two held by you and one held by a professional custodian. Here's how the architecture works:</p>
+
+    <div class="key-grid">
+      <div class="key-card">
+        <div class="key-number">Key 1</div>
+        <div class="key-name">Home Hardware Wallet</div>
+        <p>Your primary signing device — a Coldcard, Trezor, or Ledger kept at your home. This is the key you use for day-to-day transactions during your lifetime. The corresponding seed phrase backup is stored securely at home (ideally on a metal backup).</p>
+      </div>
+      <div class="key-card">
+        <div class="key-number">Key 2</div>
+        <div class="key-name">Offsite Hardware Wallet</div>
+        <p>A second hardware wallet stored at a different physical location — a bank safe deposit box, a fireproof safe at a trusted family member's home, or a private vault. This key is a redundant backup for both your lifetime use and the inheritance event.</p>
+      </div>
+      <div class="key-card">
+        <div class="key-number">Key 3</div>
+        <div class="key-name">Professional Custodian</div>
+        <p>A professional co-signing service (Unchained Capital or Casa) or a qualified trust company holds the third key as part of your trust structure. During your lifetime they never sign without your authorization. At death, they co-sign for your heirs upon receiving proper legal documentation.</p>
+      </div>
+    </div>
+
+    <h3>How It Works During Your Lifetime</h3>
+
+    <p>While you're alive, you use Keys 1 and 2 for all transactions. Key 3 (the custodian key) never needs to be involved in routine activity. You have full control of your Bitcoin — you simply use two of your three keys instead of one. Most multisig software supports hardware wallet signing flows that make this practical, not burdensome.</p>
+
+    <h3>How It Works at Death: The Inheritance Scenario</h3>
+
+    <p>When you die, the inheritance event unfolds as follows:</p>
+
+    <ol class="step-list">
+      <li>
+        <div class="step-content">
+          <div class="step-title">Executor locates the Letter of Instruction</div>
+          <div class="step-desc">The LOI (stored with your will or in a location documented in your will) explains the multisig setup: how many keys exist, where they are, what software was used, and who the custodian is. This document is the roadmap for everything that follows.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-content">
+          <div class="step-title">Executor secures Key 1 (home) and retrieves Key 2 (offsite)</div>
+          <div class="step-desc">Key 1 is found at the home address specified in the LOI. Key 2 is retrieved from the safe deposit box or offsite location. Both hardware wallets are secured under attorney supervision before any signing attempt.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-content">
+          <div class="step-title">Trust document authorizes Key 3 custodian to co-sign</div>
+          <div class="step-desc">The executor contacts the professional custodian (e.g., Unchained Capital) with the death certificate, trust documentation, and any other required legal materials. The custodian reviews the documentation and authorizes co-signing per the trust agreement.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-content">
+          <div class="step-title">Multisig wallet is reconstructed using the LOI</div>
+          <div class="step-desc">Using the multisig configuration file and xpub records from the LOI (see below), the executor and custodian reconstruct the multisig wallet in Sparrow or Caravan. They verify the balance before any signing.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-content">
+          <div class="step-title">Bitcoin is transferred to heir's wallet with 2 of 3 keys</div>
+          <div class="step-desc">The custodian signs with Key 3. The executor signs with either Key 1 or Key 2. The 2-of-3 threshold is met and the transaction is broadcast. Bitcoin is transferred to the heir's wallet. Only 2 of the 3 keys were needed — if one had been lost or destroyed, the process still succeeds.</div>
+        </div>
+      </li>
+    </ol>
+
+    <p>This is the power of multisig estate planning: even if one key is lost — say the home was destroyed in a fire with Key 1 inside — the inheritance still proceeds using Keys 2 and 3. The redundancy built into the architecture protects against the unpredictable circumstances of death.</p>
+
+    <hr class="section-rule" />
+
+    <h2>Software for Multisig Estate Planning</h2>
+
+    <p>Multisig Bitcoin wallets require coordinator software to manage the keys and construct transactions. The software tracks the xpubs (extended public keys) from all hardware wallets, generates receiving addresses, and coordinates the signing process. Your choice of software is an important detail to document in your LOI.</p>
+
+    <div class="software-grid">
+      <div class="software-card">
+        <div class="sw-name">Sparrow Wallet</div>
+        <div class="sw-type">Desktop · Open Source · Free</div>
+        <p>The most widely recommended multisig coordinator for serious holders. Excellent hardware wallet support, air-gap compatible (via QR codes with Coldcard), and clear transaction workflow. Strong community and documentation. Best overall choice for most 2-of-3 setups.</p>
+      </div>
+      <div class="software-card">
+        <div class="sw-name">Specter Desktop</div>
+        <div class="sw-type">Desktop · Open Source · Free</div>
+        <p>Open-source multisig coordinator with strong Bitcoin-only focus and hardware wallet support. Can run against your own full node for maximum privacy. Good option for technically sophisticated holders who run their own node infrastructure.</p>
+      </div>
+      <div class="software-card">
+        <div class="sw-name">Caravan</div>
+        <div class="sw-type">Web App · Open Source · Free</div>
+        <p>Unchained Capital's multisig coordinator, specifically designed with estate planning in mind. Runs entirely in your browser with no data stored server-side. Designed to be usable by heirs who are less technical — ideal if you use Unchained as your Key 3 custodian.</p>
+      </div>
+      <div class="software-card">
+        <div class="sw-name">Unchained Capital</div>
+        <div class="sw-type">Professional Custodian · Paid Service</div>
+        <p>Holds one key in your 2-of-3 setup as a professional co-signing custodian. At death, Unchained will co-sign transactions for your heirs after receiving proper legal documentation. Purpose-built for Bitcoin inheritance — they understand the problem deeply.</p>
+      </div>
+      <div class="software-card">
+        <div class="sw-name">Casa</div>
+        <div class="sw-type">Co-Signing Service · $10–120/month</div>
+        <p>Subscription-based co-signing service with tiered plans. Casa holds one key and guides heirs through the inheritance process with dedicated support. Higher-tier plans include legal document review and dedicated inheritance specialists. Good fit for non-technical families who need hand-holding at death.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Professional Services vs. DIY Multisig</div>
+      <p>Using Unchained or Casa as your Key 3 custodian changes the inheritance problem significantly. Instead of leaving your heirs to reconstruct a multisig wallet from scratch, these services guide them through a structured, documented process. For most families — especially those without a Bitcoin-technical trustee or executor — professional co-signing services are worth the ongoing cost. They are, in effect, buying simplicity for your heirs at the moment when simplicity matters most.</p>
+    </div>
+
+    <hr class="section-rule" />
+
+    <h2>The Multisig Letter of Instruction: What's Different</h2>
+
+    <p>If you hold a single-sig wallet, your <a href="/tools/bitcoin-letter-of-instruction">Letter of Instruction</a> must document one seed phrase and one hardware wallet. A multisig LOI is more complex — and the details it must capture are both different and more numerous. Missing any of them can make the Bitcoin permanently inaccessible even with all three hardware wallets in hand.</p>
+
+    <h3>The xpub Problem</h3>
+
+    <p>This is the most commonly misunderstood aspect of multisig inheritance. Even if your heirs locate all three hardware wallets and all three seed phrases, they cannot access the Bitcoin without knowing the <strong>multisig wallet configuration</strong> — specifically, the extended public key (xpub) from each device and the derivation path used when the multisig wallet was created.</p>
+
+    <p>Here's why: a hardware wallet contains many possible keys at different derivation paths. When you set up a 2-of-3 multisig, you use a specific key from each device. Sparrow or Caravan records exactly which key from each device participates in the multisig. Without that record, your heirs would have to guess — and the number of possible combinations is astronomical.</p>
+
+    <p>The xpub is <strong>not a secret</strong>. It cannot be used to spend your Bitcoin — only to receive and verify. It must be stored with your LOI so the multisig wallet can be reconstructed. The multisig configuration file exported from Sparrow or Specter contains all the necessary information and should be printed and stored alongside your LOI.</p>
+
+    <h3>Your Multisig LOI Must Include:</h3>
+
+    <ul class="loi-list">
+      <li>
+        <div class="loi-text">
+          <div class="loi-title">Multisig configuration (M-of-N)</div>
+          <div class="loi-desc">Specify the threshold: e.g., "This is a 2-of-3 multisig wallet. Any 2 of the 3 keys are required to sign a transaction."</div>
+        </div>
+      </li>
+      <li>
+        <div class="loi-text">
+          <div class="loi-title">Location of each hardware wallet and seed phrase</div>
+          <div class="loi-desc">Document Key 1 (home: specific room/safe), Key 2 (offsite: bank name, branch, box number), Key 3 (custodian name, account number, contact person).</div>
+        </div>
+      </li>
+      <li>
+        <div class="loi-text">
+          <div class="loi-title">Coordinator software used</div>
+          <div class="loi-desc">Specify exactly which software was used to create the multisig (e.g., Sparrow Wallet v1.9.x on macOS). Include instructions for where to download the current version.</div>
+        </div>
+      </li>
+      <li>
+        <div class="loi-text">
+          <div class="loi-title">xpub for each hardware wallet</div>
+          <div class="loi-desc">The extended public key for each signing device. Not a secret — required to reconstruct the wallet. Also included in the multisig configuration file.</div>
+        </div>
+      </li>
+      <li>
+        <div class="loi-text">
+          <div class="loi-title">Multisig configuration file</div>
+          <div class="loi-desc">The wallet configuration file exported from Sparrow or Specter. Store a printed copy and a digital copy (on encrypted USB) with the LOI. This single file contains all the information needed to reconstruct the multisig wallet.</div>
+        </div>
+      </li>
+      <li>
+        <div class="loi-text">
+          <div class="loi-title">Script type and derivation path</div>
+          <div class="loi-desc">Specify the script type (e.g., P2WSH native SegWit multisig) and the derivation path used for each key. Your coordinator software records this — export it explicitly.</div>
+        </div>
+      </li>
+      <li>
+        <div class="loi-text">
+          <div class="loi-title">Custodian contact and process</div>
+          <div class="loi-desc">Name, phone number, account number, and inheritance request process for your Key 3 custodian (Unchained, Casa, or trust company). Include what legal documentation they require.</div>
+        </div>
+      </li>
+      <li>
+        <div class="loi-text">
+          <div class="loi-title">Attorney contact</div>
+          <div class="loi-desc">The estate attorney who holds or is aware of this LOI and understands Bitcoin custody. Your heirs should not attempt to access a multisig wallet without legal guidance.</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="callout callout-critical">
+      <div class="callout-label">Critical: Store the Configuration File</div>
+      <p>The multisig wallet configuration file is the single most important document for multisig inheritance — more important than any individual hardware wallet or seed phrase. Export it from Sparrow or Specter, print it, and store it with your LOI. Update it whenever you modify the wallet. Without it, your heirs face a significant reconstruction challenge even with all three hardware wallets in hand.</p>
+    </div>
+
+    <hr class="section-rule" />
+
+    <h2>Multisig and Trusts: A Powerful Combination</h2>
+
+    <p>Multisig custody and trust structures are designed to work together. A properly drafted Bitcoin trust defines the legal relationship between the trust, the key holders, and the beneficiaries — turning the technical mechanics of multisig into a legally enforceable inheritance framework.</p>
+
+    <p>Here's how they interact:</p>
+
+    <p><strong>The trust entity holds keys within the multisig.</strong> Your revocable living trust can be the entity that controls Key 1 and Key 2, with you as the trustee during your lifetime. The professional custodian holds Key 3 as a directed trustee or custodian under the trust agreement. This gives the arrangement both legal structure and technical security.</p>
+
+    <p><strong>The trust document defines co-signing authority.</strong> The custodian won't simply co-sign for anyone who presents a death certificate. The trust document specifies: who has authority to request co-signing (the successor trustee), what documentation is required (death certificate, letters testamentary, possibly a court order), and the succession of authority if the primary successor is unavailable.</p>
+
+    <p><strong>Wyoming directed trusts are a particularly powerful combination.</strong> Wyoming's directed trust statute allows the separation of investment authority from administrative and distribution authority. You can appoint a professional directed trustee (the custodian) whose authority is limited specifically to co-signing Bitcoin transactions — they have no discretion over any other trust assets or decisions. This is a sophisticated structure that gives institutional-grade protection without giving a third party broad discretion over your estate.</p>
+
+    <p>If you're building a multisig inheritance structure for a significant Bitcoin holding, the trust document is not optional — it is what gives the technical multisig arrangement legal meaning and enforceability.</p>
+
+    <hr class="section-rule" />
+
+    <h2>The Tradeoff: Complexity vs. Security</h2>
+
+    <p>Multisig provides superior security for large Bitcoin holdings. It also introduces meaningful complexity that can work against you if not managed carefully. This is not a theoretical concern — it is the most common failure mode of DIY multisig estate planning.</p>
+
+    <p>Consider what your heirs must do in a DIY multisig inheritance with no professional service:</p>
+
+    <ul>
+      <li>Locate three hardware wallets across multiple locations</li>
+      <li>Find and understand the multisig configuration file</li>
+      <li>Download and install the coordinator software</li>
+      <li>Import all three xpubs and reconstruct the multisig wallet</li>
+      <li>Verify the wallet balance matches expectations</li>
+      <li>Set up their own hardware wallet to receive the Bitcoin</li>
+      <li>Construct, partially sign, and broadcast the transaction</li>
+    </ul>
+
+    <p>For a technically sophisticated heir with a clear LOI and no time pressure, this is manageable. For a grieving spouse or adult child who has never interacted with a hardware wallet, it is an enormous ask — and the consequences of mistakes are permanent.</p>
+
+    <p><strong>Professional co-signing services (Unchained Capital and Casa) directly address this problem.</strong> They are not just key custodians — they are also heir guides. When your heirs contact them with legal documentation, Unchained or Casa will walk them through the reconstruction and signing process step by step. They've done this before. They understand the grief context. They have dedicated inheritance teams. The cost of the subscription is, in significant part, the cost of having a technically competent team available to your heirs at the worst moment of their lives.</p>
+
+    <h3>When Multisig Is the Right Choice</h3>
+
+    <ul>
+      <li><strong>Large Bitcoin holdings ($500K+):</strong> At this level, the security advantage of multisig clearly outweighs the complexity cost. A single-sig wallet protecting this value is genuinely fragile.</li>
+      <li><strong>Technically sophisticated holders or heirs:</strong> If you or your heirs are comfortable with hardware wallets and can manage the documentation requirements, multisig is appropriate at lower holdings.</li>
+      <li><strong>Holders using a professional co-signing service:</strong> Unchained or Casa largely resolves the complexity problem for heirs. If you're using a professional service, the threshold for multisig drops significantly.</li>
+    </ul>
+
+    <hr class="section-rule" />
+
+    <h2>When NOT to Use Multisig for Estate Planning</h2>
+
+    <p>Multisig is not always the right answer. For many Bitcoin holders, a single-signature wallet with excellent documentation is safer than a multisig setup with poor documentation. This is one of the most important things to understand about Bitcoin inheritance planning.</p>
+
+    <p><strong>Small holdings.</strong> If you hold less than $100,000 in Bitcoin, the administrative overhead of a 2-of-3 multisig setup — three hardware wallets, a professional custodian subscription, a specialized attorney, and ongoing configuration management — may not be justified. A single-sig wallet with a robust <a href="/tools/bitcoin-letter-of-instruction">Letter of Instruction</a>, metal seed phrase backup, and proper trust structure is often more practical and nearly as secure for smaller amounts.</p>
+
+    <p><strong>Non-technical heirs with no professional service.</strong> If your heirs are not technically capable of managing a multisig reconstruction and you have not engaged a professional service, multisig complexity creates more risk than it eliminates. The documentation requirements are higher, the failure modes are more numerous, and the consequences of errors are identical: permanent loss of access. A single-sig setup with a clear, complete LOI and a trust structure is often the safer choice.</p>
+
+    <p><strong>Poor documentation.  </strong> A multisig setup with incomplete LOI documentation — missing the configuration file, unclear about key locations, no custodian relationship — is strictly worse than single-sig with good documentation. Multisig only provides its security advantages when the architecture and documentation are both sound. If you're not prepared to maintain both, stay with single-sig.</p>
+
+    <div class="callout">
+      <div class="callout-label">The Documentation Principle</div>
+      <p>A single-sig wallet with an excellent Letter of Instruction, metal seed phrase backup, and a proper trust is safer than a multisig wallet with poor documentation. Documentation quality matters more than custody architecture for most inheritance scenarios. Build the documentation first; add multisig when the documentation is solid.</p>
+    </div>
+
+    <div class="am-callout">
+      <div class="am-callout-icon">⛏</div>
+      <div class="am-callout-content">
+        <div class="am-label">Bitcoin Mining &amp; Tax Strategy</div>
+        <p>Bitcoin holders with mining income face a distinct layer of estate planning complexity: mining proceeds, equipment depreciation, and cost basis tracking all interact with your inheritance structure. Abundant Mines has published a comprehensive guide to <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener">Bitcoin mining tax strategy</a> — covering depreciation, bonus depreciation, and how mining operations can be structured to minimize both income and estate tax exposure.</p>
+      </div>
+    </div>
+
+    <hr class="section-rule" />
+
+    <h2>Building Your Multisig Inheritance: Where to Start</h2>
+
+    <p>If you've decided multisig is appropriate for your situation, the practical path forward looks like this:</p>
+
+    <ol class="step-list">
+      <li>
+        <div class="step-content">
+          <div class="step-title">Choose your professional custodian first</div>
+          <div class="step-desc">Select Unchained Capital or Casa before you purchase hardware wallets or configure any software. Your custodian choice shapes the rest of the architecture — they'll have recommendations for compatible hardware and will guide the setup process.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-content">
+          <div class="step-title">Purchase two hardware wallets of the same model</div>
+          <div class="step-desc">Keys 1 and 2 should be the same brand and model (e.g., two Coldcard Mk4s or two Trezor Model T devices). Using the same model simplifies the signing workflow and reduces the documentation burden on your heirs.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-content">
+          <div class="step-title">Set up the multisig wallet with coordinator software</div>
+          <div class="step-desc">Use Sparrow Wallet (for Coldcard/Trezor) or Caravan (for Unchained setups) to create the 2-of-3 multisig wallet. Export the xpubs from each hardware wallet and the custodian, confirm the configuration, and generate a receive address to verify everything is working.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-content">
+          <div class="step-title">Export and store the multisig configuration file</div>
+          <div class="step-desc">Export the wallet configuration from Sparrow or Caravan. Print two copies and store one with your LOI and one with your attorney. Also store a digital copy on an encrypted USB drive. This file is the most important inheritance document for your multisig setup.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-content">
+          <div class="step-title">Write a comprehensive multisig Letter of Instruction</div>
+          <div class="step-desc">Document all eight items listed above: configuration, key locations, coordinator software, xpubs, configuration file location, script type, custodian contact, and attorney contact. Have your Bitcoin estate attorney review it.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-content">
+          <div class="step-title">Update your trust document to reflect the multisig structure</div>
+          <div class="step-desc">Work with a Bitcoin-literate estate attorney to amend or draft your trust to explicitly address the multisig custody arrangement, the custodian's role, the required documentation for co-signing, and the succession of authority.</div>
+        </div>
+      </li>
+    </ol>
+
+    <p>The entire setup process — from hardware purchases to signed trust amendment — typically takes four to eight weeks for a family working with a professional service and attorney. Plan accordingly, and don't let perfect be the enemy of good: a partially documented multisig setup is better than no multisig setup, as long as you commit to completing the documentation.</p>
+
+    <hr class="section-rule" />
+
+    <!-- SERVICES CTA -->
+    <div class="services-cta">
+      <h3>Build a Multisig Inheritance Structure That Works</h3>
+      <p>The Bitcoin Family Office works with Bitcoin holders to design and document multisig estate plans — from custodian selection to LOI drafting to trust coordination. We've seen what breaks and what holds together.</p>
+      <a href="/services/" class="btn-primary">Explore Our Services</a>
+    </div>
+
+    <!-- RELATED POSTS -->
+    <div class="related-posts">
+      <h3>Continue Reading</h3>
+      <div class="related-grid">
+        <a href="/tools/bitcoin-letter-of-instruction" class="related-card">
+          <div class="rc-label">Tools</div>
+          <div class="rc-title">Bitcoin Letter of Instruction: Template and Complete Guide</div>
+        </a>
+        <a href="/blog/bitcoin-hardware-wallet-estate" class="related-card">
+          <div class="rc-label">Custody</div>
+          <div class="rc-title">Hardware Wallet Estate Planning: Ledger, Trezor, Coldcard — What Your Heirs Need to Know</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- AUTHOR BOX -->
+    <div class="author-box">
+      <div class="author-avatar">HT</div>
+      <div class="author-info">
+        <div class="author-name">Hal Turner</div>
+        <div class="author-title">The Bitcoin Family Office</div>
+        <p>Hal Turner focuses on wealth planning for Bitcoin holders — covering estate structures, custody architecture, multisig inheritance, and generational transfer strategies for individuals and families holding significant Bitcoin.</p>
+      </div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+      <p><strong>Disclaimer:</strong> This article is for informational and educational purposes only and does not constitute legal, tax, or financial advice. Bitcoin multisig custody and estate planning involves complex technical and legal considerations that vary by individual circumstance. The software and services mentioned are examples — conduct your own due diligence before selecting any custody solution or service provider. Consult a qualified estate attorney and Bitcoin custody professional before implementing any multisig inheritance structure. The Bitcoin Family Office does not provide legal advice.</p>
+    </div>
+
+  </article>
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">The Bitcoin <span>Family Office</span></div>
+        <p>Estate planning, custody architecture, and generational wealth strategy for serious Bitcoin holders.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Planning</h4>
+        <ul>
+          <li><a href="/blog/bitcoin-estate-planning-guide/">Estate Planning Guide</a></li>
+          <li><a href="/blog/bitcoin-trust-estate-planning/">Bitcoin Trusts</a></li>
+          <li><a href="/blog/bitcoin-ira-estate-planning/">Bitcoin IRA</a></li>
+          <li><a href="/blog/bitcoin-miners-estate-planning/">Miners</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="/tools/bitcoin-letter-of-instruction/">Letter of Instruction</a></li>
+          <li><a href="/tools/bitcoin-estate-checklist/">Estate Checklist</a></li>
+          <li><a href="/blog/bitcoin-executor-guide/">Executor Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/services/">Services</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Bitcoin Family Office. All rights reserved.</p>
+      <p><a href="/privacy/">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/disclaimer/">Disclaimer</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('nav-mobile');
+  hamburger.addEventListener('click', function() {
+    const isOpen = navMobile.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+</script>
+
+</body>
+</html>
