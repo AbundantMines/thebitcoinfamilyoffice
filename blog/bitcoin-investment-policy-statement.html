@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Investment Policy Statement for Family Offices: A Practical Framework | The Bitcoin Family Office</title>
+<meta name="description" content="How to write a Bitcoin Investment Policy Statement (IPS) for a family office. Covers allocation rationale, custody standards, rebalancing rules, and governance documentation.">
+<meta property="og:title" content="Bitcoin Investment Policy Statement for Family Offices: A Practical Framework">
+<meta property="og:description" content="How to write a Bitcoin Investment Policy Statement (IPS) for a family office. Covers allocation rationale, custody standards, rebalancing rules, and governance documentation.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-investment-policy-statement.html">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-investment-policy-statement.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bitcoin Investment Policy Statement for Family Offices: A Complete Framework",
+  "description": "How to write a Bitcoin investment policy statement for a family office. Allocation rationale, custody policy, liquidity requirements, rebalancing triggers — built from first principles.",
+  "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
+  "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-investment-policy-statement.html",
+  "datePublished": "2026-02-25",
+  "dateModified": "2026-02-25",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Bitcoin Family Office",
+    "url": "https://thebitcoinfamilyoffice.com"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebitcoinfamilyoffice.com"},
+    {"@type": "ListItem", "position": 2, "name": "Research", "item": "https://thebitcoinfamilyoffice.com/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "Article", "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-investment-policy-statement.html"}
+  ]
+}
+</script>
+
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+<script>
+(function(){
+  if(typeof gtag!=='function') return;
+  // Click heatmap — logs X/Y as percentage of viewport/page
+  document.addEventListener('click',function(e){
+    var el=e.target;
+    var tag=el.tagName+(el.id?'#'+el.id:el.className?' .'+String(el.className).trim().split(' ')[0]:'');
+    gtag('event','hm_click',{
+      'page':location.pathname,
+      'cx':Math.round(e.clientX/window.innerWidth*100),
+      'cy':Math.round((e.clientY+window.scrollY)/Math.max(document.body.scrollHeight,1)*100),
+      'el':tag.substring(0,40)
+    });
+  });
+  // Scroll depth — fires at 25/50/75/100% milestones
+  var _sd=0;
+  window.addEventListener('scroll',function(){
+    var pct=Math.round((window.scrollY+window.innerHeight)/Math.max(document.body.scrollHeight,1)*100);
+    var milestone=Math.floor(pct/25)*25;
+    if(milestone>_sd){_sd=milestone;gtag('event','hm_scroll',{'page':location.pathname,'depth':_sd});}
+  },{passive:true});
+})();
+</script>
+
+<!-- Cloudflare Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0a; --bg-elevated: #111; --accent: #f7931a;
+  --accent-dim: rgba(247,147,26,0.10); --accent-border: rgba(247,147,26,0.25);
+  --text: #e8e4de; --text-secondary: #9a958d; --text-muted: #6b6660;
+  --border: rgba(255,255,255,0.06);
+  --serif: 'EB Garamond', Georgia, serif;
+  --display: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --max-w: 720px;
+}
+html { font-size: 18px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { opacity: 0.8; }
+::selection { background: var(--accent-dim); color: var(--accent); }
+
+nav { position: sticky; top: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-mark { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); }
+.nav-mark span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); opacity: 1; }
+.nav-links .nav-cta { color: var(--accent) !important; border: 1px solid var(--accent-border); padding: 0.35rem 0.8rem; border-radius: 2px; }
+
+.article-header { padding: 7rem 2rem 4rem; border-bottom: 1px solid var(--border); text-align: center; position: relative; }
+.article-header::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 5rem; background: linear-gradient(to bottom, transparent, var(--accent-border)); }
+.article-tag { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: block; }
+.article-header h1 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.25; color: var(--text); max-width: 800px; margin: 0 auto 1.5rem; }
+.article-meta { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+
+.article-body { max-width: var(--max-w); margin: 0 auto; padding: 4rem 2rem 6rem; }
+.article-body h2 { font-family: var(--display); font-weight: 400; font-size: 1.6rem; line-height: 1.3; color: var(--text); margin: 3rem 0 1.25rem; }
+.article-body h3 { font-family: var(--sans); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); margin: 2rem 0 0.75rem; }
+.article-body p { margin-bottom: 1.5rem; font-size: 1.05rem; color: var(--text); }
+.article-body ul, .article-body ol { margin: 0 0 1.5rem 1.5rem; }
+.article-body li { margin-bottom: 0.5rem; font-size: 1.05rem; }
+.pull-quote { font-family: var(--display); font-style: italic; font-size: 1.3rem; line-height: 1.5; color: var(--text-secondary); border-left: 2px solid var(--accent); padding: 1.5rem 2rem; margin: 2.5rem 0; }
+.article-body strong { color: var(--text); font-weight: 500; }
+.article-body em { font-style: italic; color: var(--text-secondary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+.cta-box { max-width: var(--max-w); margin: 0 auto 4rem; padding: 2.5rem; border: 1px solid var(--accent-border); background: var(--accent-dim); border-radius: 4px; }
+.cta-box h3 { font-family: var(--display); font-weight: 400; font-size: 1.4rem; color: var(--text); margin-bottom: 0.75rem; }
+.cta-box p { font-family: var(--serif); color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1rem; }
+.cta-btn { display: inline-block; font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-border); padding: 0.65rem 1.4rem; border-radius: 2px; transition: background 0.2s; }
+.cta-btn:hover { background: var(--accent-dim); opacity: 1; }
+
+.related { border-top: 1px solid var(--border); padding: 3rem 2rem; max-width: var(--max-w); margin: 0 auto; }
+.related-label { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.5rem; }
+.related-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.related-links a { font-family: var(--serif); font-size: 1rem; color: var(--text-secondary); border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; transition: color 0.2s; }
+.related-links a:hover { color: var(--accent); opacity: 1; }
+
+footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-mark { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); }
+.footer-mark span { color: var(--accent); }
+.footer-copy { font-family: var(--sans); font-size: 0.63rem; color: var(--text-muted); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-family: var(--sans); font-size: 0.63rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); }
+.footer-links a:hover { color: var(--accent); opacity: 1; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 1px; background: var(--text-secondary); transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+@media (max-width: 640px) {
+  html { font-size: 16px; }
+  nav { padding: 1rem 1.25rem; }
+  .hamburger { display: flex; }
+  .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.97); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; z-index: 150; }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1rem; }
+  .article-body { padding: 3rem 1.25rem 5rem; }
+  footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-mark">The Bitcoin <span>Family Office</span></a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="/" onclick="closeMenu()">Home</a>
+    <a href="/blog/" onclick="closeMenu()">Blog</a>
+    <a href="/services/" onclick="closeMenu()">Services</a>
+    <a href="/faq/" onclick="closeMenu()">FAQ</a>
+    <a href="/#waitlist" class="nav-cta" onclick="closeMenu()">Join Waitlist</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <span class="article-tag">Governance &amp; Policy</span>
+  <h1>The Bitcoin Investment Policy Statement: A Framework for Family Offices</h1>
+  <div class="article-meta">The Bitcoin Family Office &nbsp;·&nbsp; February 2026 &nbsp;·&nbsp; 14 min read</div>
+</header>
+
+<article class="article-body">
+
+  <p class="article-breadcrumb" style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
+    <a href="/" style="color:var(--text-muted);text-decoration:none;">Home</a> <span style="margin:0 0.5rem;">&#x203A;</span>
+    <a href="/blog/" style="color:var(--text-muted);text-decoration:none;">Research</a> <span style="margin:0 0.5rem;">&#x203A;</span>
+    <span style="color:var(--text-secondary);">Article</span>
+    <span style="margin-left:1.5rem;padding-left:1.5rem;border-left:1px solid var(--border);">Est. 8 min read</span>
+  </p>
+  <p>Every serious investment operation needs a written investment policy statement. This is not a new insight — endowments, pension funds, and family offices have maintained IPS documents for decades, and for good reason: the discipline of committing investment reasoning to writing forces clarity, creates accountability, and provides institutional memory that survives personnel turnover and market turbulence. For Bitcoin, the need is more acute, not less.</p>
+
+  <p>Bitcoin's volatility creates strong behavioral pressure to deviate from any investment thesis during drawdowns. Its technical complexity creates pressure to make custody decisions ad hoc, without a principled framework. Its asymmetric return profile creates pressure to over-allocate during euphoric periods and exit during corrections. An IPS that addresses these pressures in advance — when thinking is clear and markets are calm — is one of the most valuable governance tools a Bitcoin-holding family office can have.</p>
+
+  <p>What follows is a comprehensive framework for building a Bitcoin IPS from first principles. It is not a template to fill in mechanically — every family's circumstances differ, and the IPS must reflect those differences. But it provides the structural logic and the key decision points that every Bitcoin IPS should address.</p>
+
+  <h2>The Thesis Statement: Why Bitcoin</h2>
+
+  <p>The IPS should begin with a clear statement of the investment thesis. Not a price prediction. A thesis: what properties of Bitcoin justify its role in the family's portfolio, and what conditions would alter that thesis?</p>
+
+  <p>A well-constructed Bitcoin thesis addresses several dimensions. It explains Bitcoin's monetary properties — its fixed supply schedule, its resistance to monetary debasement, its settlement finality — and why those properties are valuable in the specific context of the family's balance sheet. It articulates the relationship between Bitcoin's characteristics and the family's investment objectives. And it specifies the conditions — technological failure, regulatory prohibition, superior alternatives — that would cause the family to exit the position.</p>
+
+  <p>This thesis serves several functions. It provides a shared language for family discussions about Bitcoin. It gives the investment committee a framework for evaluating whether new information affects the investment case. It helps successors understand why the family holds Bitcoin, rather than simply inheriting a position without context. And it provides the analytical foundation for fiduciary documentation, which is particularly important for family offices with trustee obligations.</p>
+
+  <div class="pull-quote">An investment thesis written in calm markets is far more valuable than one improvised during a drawdown. The IPS is where you articulate your reasoning before emotion has a vote.</div>
+
+  <p>The thesis should be honest about Bitcoin's risks as well as its characteristics. A thesis that acknowledges volatility, regulatory uncertainty, and custody complexity — and explains why the family's circumstances make those risks acceptable — is far more durable than one that dismisses them. The families that maintain Bitcoin positions through significant drawdowns are those who did the intellectual work in advance.</p>
+
+  <h2>Allocation Policy</h2>
+
+  <p>The allocation section of the IPS should specify the family's target Bitcoin allocation as a percentage of total investable assets, along with the permissible range around that target and the triggers for rebalancing.</p>
+
+  <h3>Sizing the Allocation</h3>
+
+  <p>Allocation sizing is one of the most consequential decisions in Bitcoin investment management, and one of the most personal. It depends on the family's overall wealth level, its other assets and liabilities, its income needs, its time horizon, and its specific objectives for the Bitcoin position.</p>
+
+  <p>For most family offices, Bitcoin should be sized as a meaningful asymmetric position — large enough to matter to overall portfolio outcomes, small enough that a severe drawdown does not compromise the family's financial security or its ability to meet its obligations. The specific number varies widely depending on circumstances; a family with $100 million in traditional assets and a 50-year horizon has very different sizing considerations than one with $10 million and significant near-term distribution requirements.</p>
+
+  <p>Whatever the target allocation, the IPS should specify it explicitly. Vagueness in allocation policy is a behavioral trap: without a defined target, the actual allocation will be determined by market movements and emotional reactions rather than principled analysis. When Bitcoin appreciates significantly, the allocation will drift upward; when it declines, it will drift downward — precisely backwards from the discipline that long-term wealth preservation requires.</p>
+
+  <h3>Rebalancing Policy</h3>
+
+  <p>Bitcoin's volatility makes rebalancing policy particularly important. The IPS should specify whether the family rebalances on a calendar basis (quarterly, annually), on a threshold basis (when Bitcoin exceeds or falls below defined bounds relative to target), or using some combination. It should specify whether rebalancing takes place through buying and selling Bitcoin directly, through new capital deployment, or through adjustments to adjacent allocations.</p>
+
+  <p>The rebalancing section should also address the tax implications of rebalancing decisions, in coordination with the family's tax optimization strategy. For high-net-worth families with substantial appreciated Bitcoin positions, rebalancing can have significant capital gains consequences that must be weighed against the portfolio management benefits. A mechanical rebalancing policy that ignores tax consequences is not a prudent policy for families in high tax brackets.</p>
+
+  <h3>Hold vs. Sell Framework</h3>
+
+  <p>The IPS should articulate the family's framework for liquidity decisions. Under what circumstances does the family sell Bitcoin? Is it only for rebalancing back to target? For specific liquidity needs? For tax-loss harvesting? The document should specify the decision process — who can authorize liquidity events, what analysis is required, and what alternatives to selling (such as Bitcoin-backed lending) are permitted.</p>
+
+  <h2>Custody Policy</h2>
+
+  <p>Custody policy is the most technically distinctive section of a Bitcoin IPS, and potentially the most consequential. Unlike traditional assets where custody is handled institutionally with little operational burden on the family office, Bitcoin custody requires active decisions and ongoing management.</p>
+
+  <h3>Self-Custody vs. Institutional Custody</h3>
+
+  <p>The IPS should clearly specify the family's custody philosophy: the allocation between self-custody and institutional custody, the rationale for that split, and the approved providers for each category. This decision has profound implications for security, operational risk, succession planning, and regulatory exposure.</p>
+
+  <p>A purely institutional custody approach — holding all Bitcoin with regulated custodians — minimizes the technical burden on the family office but introduces counterparty risk and limits the full expression of Bitcoin's bearer-asset properties. A purely self-custody approach maximizes sovereign control but requires technical expertise and operational discipline that most family offices lack independently. Most sophisticated Bitcoin family offices operate a hybrid: institutional custody for large, infrequently accessed positions; self-custody with hardware wallets and multi-signature configurations for the family's core strategic reserve.</p>
+
+  <p>Our analysis of <a href="/blog/bitcoin-custody-solutions-family-offices.html">Bitcoin custody solutions for family offices</a> provides a detailed framework for evaluating these options. The custody policy in the IPS should reference and be consistent with this broader custody architecture.</p>
+
+  <h3>Multi-Signature Requirements</h3>
+
+  <p>For self-custody positions above defined thresholds, the IPS should specify the required multi-signature configuration: the number of keys, the required quorum, the geographic and organizational distribution of keyholders, and the approved hardware devices. These decisions should be made deliberately and documented precisely, not improvised operationally.</p>
+
+  <h3>Approved Institutional Custodians</h3>
+
+  <p>The IPS should maintain an approved list of institutional custodians, with the selection criteria specified. This list should include only regulated entities with demonstrated Bitcoin custody expertise, appropriate insurance, and institutional-grade security practices. It should be reviewed annually and updated as the custodian landscape evolves.</p>
+
+  <h2>Liquidity and Cash Management</h2>
+
+  <p>The IPS should specify the family's liquidity requirements relative to its Bitcoin position. For families with ongoing distribution needs — trust distributions, operating expenses, charitable commitments — the document should specify the minimum liquid buffer maintained in fiat or liquid equivalents, and the mechanism for replenishing that buffer when it is drawn down.</p>
+
+  <p>Bitcoin-backed lending deserves specific treatment in the liquidity section. For families with large, appreciated Bitcoin positions, lending against the position provides liquidity without triggering capital gains realization. But it introduces leverage and counterparty risk that must be managed within defined parameters. If the family permits Bitcoin-backed borrowing, the IPS should specify maximum loan-to-value ratios, approved lenders, and the conditions under which borrowing is authorized.</p>
+
+  <h2>Governance and Decision Rights</h2>
+
+  <p>The IPS should specify who has decision authority for different categories of Bitcoin-related decisions. This aligns with the broader governance framework described in our work on <a href="/blog/bitcoin-family-office-governance.html">Bitcoin family office governance</a>, but the IPS is the place to encode the specific investment-related decision rights.</p>
+
+  <ul>
+    <li><strong>Routine operational decisions</strong> (address management, fee monitoring, custody maintenance) — delegated to designated staff or advisors, no committee approval required.</li>
+    <li><strong>Rebalancing within policy bands</strong> — authorized by the chief investment officer or investment committee chair, reported to the full committee.</li>
+    <li><strong>Allocation changes outside policy bands</strong> — require full investment committee approval with documented rationale.</li>
+    <li><strong>Custody architecture changes</strong> — require investment committee approval plus legal review, given the operational and fiduciary implications.</li>
+    <li><strong>IPS amendments</strong> — require the process specified in the governance framework, typically family council ratification for material changes.</li>
+  </ul>
+
+  <h2>Risk Management Framework</h2>
+
+  <p>The risk management section should address the specific risk factors relevant to a Bitcoin position: price volatility, custody risk, regulatory risk, counterparty risk (for institutional custody), liquidity risk at scale, and succession risk.</p>
+
+  <p>For each risk category, the IPS should specify how the family monitors that risk, what thresholds trigger review, and what actions are authorized in response. This is not about having a predetermined exit plan for every scenario — markets are too complex for that — but about ensuring that risk management is proactive and disciplined rather than reactive and emotional.</p>
+
+  <p>The succession risk section deserves particular attention. As we discuss in our comprehensive guide to <a href="/blog/multi-generational-bitcoin-wealth-estate-planning.html">multi-generational Bitcoin wealth and estate planning</a>, custody arrangements that depend on a single individual's knowledge or physical possession are a material risk factor. The IPS should specify the succession protocols that ensure Bitcoin holdings remain accessible across personnel transitions, incapacitation, and death.</p>
+
+  <h2>Tax Considerations</h2>
+
+  <p>While comprehensive tax strategy belongs in a separate document, the IPS should specify the tax optimization principles that guide investment management decisions. These include the family's holding period preferences (long-term capital gains treatment requires positions held more than one year), its approach to tax-loss harvesting during drawdowns, its use of charitable vehicles for appreciated Bitcoin (CRTs, DAFs), and its coordination with the estate planning framework for step-up in basis opportunities.</p>
+
+  <p>The IPS should specify that tax implications must be considered in all rebalancing and liquidity decisions, and that the family's tax advisors are to be consulted before executing transactions above defined thresholds. Uncoordinated trading in large Bitcoin positions can generate avoidable tax liabilities — avoidable because the IPS explicitly requires coordination.</p>
+
+  <h2>Review and Amendment Process</h2>
+
+  <p>The IPS is a living document. Market conditions change, the family's circumstances evolve, regulatory developments alter the landscape, and institutional practice advances. The IPS should specify an annual review process, including who conducts the review, what factors trigger an out-of-cycle review, and what authority is required to amend specific sections.</p>
+
+  <p>The annual review should be a genuine substantive exercise, not a perfunctory sign-off. The investment committee should ask: Does our thesis still hold? Has our custody policy kept pace with best practices? Have our allocation targets become misaligned with our overall portfolio? Are our decision rights clearly understood by everyone who exercises them? These questions, asked annually in a structured format, are how governance remains vital rather than merely nominal.</p>
+
+  <h2>The IPS as Institutional Memory</h2>
+
+  <p>Family offices are more fragile than they appear. Key personnel change. Generations turn. Advisors retire. Markets create pressure to abandon strategy at precisely the wrong moments. The IPS serves as institutional memory — a record of the reasoning, decisions, and commitments that the family made when thinking was clear, for use when thinking is clouded by volatility or transition.</p>
+
+  <p>For Bitcoin specifically, this institutional memory function is crucial. The families that have maintained their Bitcoin positions through major drawdowns — 50%, 70%, 80% from peak — are disproportionately those who did the analytical work in advance, encoded it in a document, and committed to following it. Not because they knew what would happen, but because they had reasoned carefully about their thesis and their risk tolerance before markets tested them.</p>
+
+  <p>That preparation is what a well-constructed Bitcoin investment policy statement provides. Not certainty — certainty is unavailable in markets. But clarity: about why you hold Bitcoin, how much you hold, how you hold it, and what it would take to change any of those answers.</p>
+
+  <hr>
+
+    <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
+    <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful Tax Strategy Available</p>
+    <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">For high-net-worth Bitcoin holders, mining is the only strategy that simultaneously generates yield, accumulates BTC, and creates significant tax offsets — through equipment depreciation, operating expense deductions, and bonus depreciation on capital investments. Most family offices overlook mining entirely. Abundant Mines has compiled every major Bitcoin mining tax strategy in one place.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a>
+  </div>
+<p><em>This article is for educational purposes only and does not constitute legal, tax, or financial advice. Investment policy statements should be developed with qualified financial, legal, and tax advisors familiar with your specific circumstances.</em></p>
+
+</article>
+
+<div style="max-width:var(--max-w);margin:0 auto 2rem;padding:0 1.5rem;">
+  <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem;">Related Reading</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
+    <a href="/blog/bitcoin-custody-architecture.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+      <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Custody</p>
+      <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Custody Architecture for Family Offices</p>
+    </a>
+    <a href="/blog/complete-guide-bitcoin-family-offices.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+      <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Overview</p>
+      <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">The Complete Guide to Bitcoin Family Offices</p>
+    </a>
+    <a href="/blog/bitcoin-estate-planning-complete-guide.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+      <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Estate Planning</p>
+      <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Estate Planning: The Complete Guide</p>
+    </a>
+  </div>
+</div>
+
+<div class="author-box" style="max-width:var(--max-w);margin:0 auto 2rem;padding:1.5rem 2rem;background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;display:flex;gap:1.5rem;align-items:flex-start;">
+  <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:1rem;color:var(--accent);">&#x20BF;</div>
+  <div>
+    <p style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">The Bitcoin Family Office Research Team</p>
+    <p style="font-family:var(--serif);font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin:0;">Our research team focuses exclusively on Bitcoin wealth management &mdash; custody architecture, estate planning, tax strategy, and multi-generational stewardship. We do not advise on altcoins or fiat instruments. <a href="/about/" style="color:var(--accent);text-decoration:none;">About us &rarr;</a></p>
+  </div>
+</div>
+
+<div class="cta-box">
+  <h3>Need a Bitcoin Investment Policy Statement?</h3>
+  <p>We help family offices build defensible Bitcoin investment frameworks — from IPS development to governance architecture to custody selection. Designed for families managing $5M+ in Bitcoin assets.</p>
+  <a href="/services/" class="cta-btn">View Our Services</a>
+</div>
+
+<section class="related">
+  <div class="related-label">Continue Reading</div>
+  <div class="related-links">
+    <a href="/blog/bitcoin-family-office-governance.html">Bitcoin Family Office Governance: A Framework for Decision-Making at Scale</a>
+    <a href="/blog/bitcoin-custody-solutions-family-offices.html">Bitcoin Custody Solutions for Family Offices</a>
+    <a href="/blog/bitcoin-tax-optimization-high-net-worth.html">Bitcoin Tax Optimization for High-Net-Worth Families</a>
+    <a href="/blog/complete-guide-bitcoin-family-offices.html">The Complete Guide to Bitcoin Family Offices</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-mark">The Bitcoin <span>Family Office</span></div>
+  <p class="footer-copy">© 2026 The Bitcoin Family Office. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="/about/">About</a>
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/services/">Services</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/disclosures">Disclosures</a>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  const btn = document.getElementById('hamburger');
+  const links = document.getElementById('navLinks');
+  btn.classList.toggle('open');
+  links.classList.toggle('open');
+  document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navLinks').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>

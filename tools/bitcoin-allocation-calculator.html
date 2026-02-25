@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Allocation Calculator for High-Net-Worth Investors | The Bitcoin Family Office</title>
+<meta name="description" content="Calculate your optimal Bitcoin allocation based on total assets, risk tolerance, investment horizon, and age. Built for high-net-worth families and family offices managing significant Bitcoin positions.">
+<meta property="og:title" content="Bitcoin Allocation Calculator for High-Net-Worth Investors">
+<meta property="og:description" content="Calculate your optimal Bitcoin allocation based on total assets, risk tolerance, investment horizon, and age. Built for high-net-worth families and family offices.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-allocation-calculator.html">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-allocation-calculator.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bitcoin Allocation Calculator for High-Net-Worth Investors",
+  "description": "Calculate your optimal Bitcoin allocation based on total assets, risk tolerance, investment horizon, and age. Built for high-net-worth families and family offices managing significant Bitcoin positions.",
+  "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
+  "url": "https://thebitcoinfamilyoffice.com/tools/bitcoin-allocation-calculator.html",
+  "datePublished": "2026-02-25",
+  "dateModified": "2026-02-25",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Bitcoin Family Office",
+    "url": "https://thebitcoinfamilyoffice.com"
+  }
+}
+</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+<script>
+(function(){
+  if(typeof gtag!=='function') return;
+  document.addEventListener('click',function(e){
+    var el=e.target;
+    var tag=el.tagName+(el.id?'#'+el.id:el.className?' .'+String(el.className).trim().split(' ')[0]:'');
+    gtag('event','hm_click',{'page':location.pathname,'cx':Math.round(e.clientX/window.innerWidth*100),'cy':Math.round((e.clientY+window.scrollY)/Math.max(document.body.scrollHeight,1)*100),'el':tag.substring(0,40)});
+  });
+  var _sd=0;
+  window.addEventListener('scroll',function(){var pct=Math.round((window.scrollY+window.innerHeight)/Math.max(document.body.scrollHeight,1)*100);var milestone=Math.floor(pct/25)*25;if(milestone>_sd){_sd=milestone;gtag('event','hm_scroll',{'page':location.pathname,'depth':_sd});}},{passive:true});
+})();
+</script>
+
+<!-- Cloudflare Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0a; --bg-elevated: #111; --bg-card: #0f0f0f;
+  --accent: #c9a84c;
+  --accent-dim: rgba(201,168,76,0.10); --accent-border: rgba(201,168,76,0.25);
+  --text: #e8e4de; --text-secondary: #9a958d; --text-muted: #6b6660;
+  --border: rgba(255,255,255,0.06);
+  --serif: 'EB Garamond', Georgia, serif;
+  --display: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --max-w: 1100px;
+  --content-w: 720px;
+}
+html { font-size: 18px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { opacity: 0.8; }
+::selection { background: var(--accent-dim); color: var(--accent); }
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-mark { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); }
+.nav-mark span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); opacity: 1; }
+.nav-links .nav-cta { color: var(--accent) !important; border: 1px solid var(--accent-border); padding: 0.35rem 0.8rem; border-radius: 2px; }
+
+/* HEADER */
+.page-header { padding: 6rem 2rem 3.5rem; border-bottom: 1px solid var(--border); text-align: center; position: relative; }
+.page-header::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 4rem; background: linear-gradient(to bottom, transparent, var(--accent-border)); }
+.page-tag { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; display: block; }
+.page-header h1 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.2; color: var(--text); max-width: 700px; margin: 0 auto 1.25rem; }
+.page-header .subtitle { font-family: var(--sans); font-size: 0.82rem; color: var(--text-secondary); max-width: 520px; margin: 0 auto; line-height: 1.65; }
+
+/* CONTENT */
+.content-wrap { max-width: var(--content-w); margin: 0 auto; padding: 3.5rem 2rem 0; }
+.content-wrap h2 { font-family: var(--display); font-weight: 400; font-size: 1.55rem; line-height: 1.3; color: var(--text); margin: 3rem 0 1.25rem; }
+.content-wrap p { margin-bottom: 1.5rem; font-size: 1rem; color: var(--text); line-height: 1.85; }
+.content-wrap ul { margin: 0 0 1.5rem 1.5rem; }
+.content-wrap li { margin-bottom: 0.5rem; font-size: 1rem; line-height: 1.75; }
+.content-wrap strong { color: var(--text); font-weight: 500; }
+.content-wrap a { color: var(--accent); }
+
+/* CALCULATOR WRAPPER */
+.calc-wrapper { max-width: var(--max-w); margin: 3rem auto; padding: 0 2rem; }
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media (max-width: 768px) { .calc-grid { grid-template-columns: 1fr; } }
+
+/* CALC CARD */
+.calc-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; padding: 2rem; }
+.calc-card-title { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+
+/* FORM ELEMENTS */
+.field { margin-bottom: 1.5rem; }
+.field label { display: block; font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--text-secondary); margin-bottom: 0.5rem; }
+.field-row { display: flex; gap: 0.75rem; align-items: center; }
+.field input[type="number"],
+.field input[type="text"],
+.field select {
+  width: 100%; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 3px; color: var(--text); font-family: var(--sans); font-size: 0.85rem;
+  padding: 0.55rem 0.8rem; outline: none; transition: border-color 0.2s;
+  -webkit-appearance: none; appearance: none;
+}
+.field input[type="number"]:focus,
+.field input[type="text"]:focus,
+.field select:focus { border-color: var(--accent-border); }
+.field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6660' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2.25rem; }
+.field input[type="range"] { -webkit-appearance: none; width: 100%; height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; outline: none; cursor: pointer; margin-top: 0.25rem; }
+.field input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); cursor: pointer; transition: transform 0.1s; }
+.field input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.field input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--accent); cursor: pointer; border: none; }
+.range-val { font-family: var(--sans); font-size: 0.75rem; color: var(--accent); min-width: 3.5rem; text-align: right; white-space: nowrap; }
+
+.check-field { display: flex; align-items: center; gap: 0.65rem; cursor: pointer; }
+.check-field input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0; }
+.check-field span { font-family: var(--sans); font-size: 0.8rem; color: var(--text-secondary); }
+
+/* OUTPUTS */
+.output-card { background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 6px; padding: 2rem; position: sticky; top: 90px; }
+.output-card-title { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--accent-border); }
+
+.result-block { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+.result-block:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.result-label { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
+.result-value { font-family: var(--display); font-size: 2rem; font-weight: 400; color: var(--accent); line-height: 1.1; }
+.result-value.lg { font-size: 2.4rem; }
+.result-sub { font-family: var(--sans); font-size: 0.72rem; color: var(--text-secondary); margin-top: 0.35rem; line-height: 1.5; }
+
+.gap-badge { display: inline-block; font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.08em; padding: 0.25rem 0.65rem; border-radius: 2px; margin-top: 0.35rem; font-weight: 500; }
+.gap-under { background: rgba(201,168,76,0.12); color: var(--accent); border: 1px solid var(--accent-border); }
+.gap-over { background: rgba(255,80,80,0.08); color: #ff8080; border: 1px solid rgba(255,80,80,0.2); }
+.gap-aligned { background: rgba(80,200,120,0.08); color: #80c880; border: 1px solid rgba(80,200,120,0.2); }
+
+.family-office-note { background: var(--accent-dim); border: 1px solid var(--accent-border); border-radius: 4px; padding: 1rem 1.25rem; margin-top: 1.25rem; display: none; }
+.family-office-note.show { display: block; }
+.family-office-note p { font-family: var(--sans); font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+.family-office-note strong { color: var(--accent); }
+
+/* CTA */
+.calc-cta { max-width: var(--content-w); margin: 2.5rem auto 0; text-align: center; background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 4px; padding: 2.25rem 2rem; }
+.calc-cta p { font-family: var(--sans); font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.6; }
+.calc-cta a { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-border); padding: 0.6rem 1.5rem; border-radius: 2px; display: inline-block; transition: background 0.2s; }
+.calc-cta a:hover { background: var(--accent-dim); opacity: 1; }
+
+/* FOOTER CONTENT */
+.content-below { max-width: var(--content-w); margin: 4rem auto 0; padding: 0 2rem 5rem; }
+.content-below h2 { font-family: var(--display); font-weight: 400; font-size: 1.55rem; line-height: 1.3; color: var(--text); margin: 3rem 0 1.25rem; }
+.content-below p { margin-bottom: 1.5rem; font-size: 1rem; color: var(--text); line-height: 1.85; }
+.content-below ul { margin: 0 0 1.5rem 1.5rem; }
+.content-below li { margin-bottom: 0.5rem; font-size: 1rem; line-height: 1.75; }
+.content-below a { color: var(--accent); }
+.pull-quote { font-family: var(--display); font-style: italic; font-size: 1.25rem; line-height: 1.55; color: var(--text-secondary); border-left: 2px solid var(--accent); padding: 1.25rem 1.75rem; margin: 2.5rem 0; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-mark { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); }
+.footer-mark span { color: var(--accent); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); }
+.footer-links a:hover { color: var(--accent); opacity: 1; }
+.footer-copy { font-family: var(--sans); font-size: 0.63rem; color: var(--text-muted); }
+
+/* HAMBURGER */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 1px; background: var(--text-secondary); transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+@media (max-width: 640px) {
+  html { font-size: 16px; }
+  nav { padding: 1rem 1.25rem; }
+  .hamburger { display: flex; }
+  .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.97); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; z-index: 150; }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1rem; }
+  .output-card { position: static; }
+  .calc-wrapper { padding: 0 1rem; }
+  footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+  .footer-links { justify-content: center; flex-wrap: wrap; }
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much Bitcoin should a high-net-worth investor hold?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most institutional frameworks suggest Bitcoin allocations of 1–5% for conservative investors, 5–15% for moderate, and 15–30% for aggressive allocators with long horizons. Family offices with direct custody experience and multi-generational time horizons often hold higher concentrations. The right allocation depends on total investable assets, age, liquidity needs, estate planning goals, and risk tolerance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does age affect Bitcoin allocation strategy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes significantly. Younger investors can hold through multiple market cycles with decades remaining for structural appreciation. Investors in distribution mode — drawing on assets for income — cannot sustain the same drawdown duration. Age interacts with time horizon and liquidity needs to produce a more nuanced allocation framework than simple percentage rules."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should Bitcoin allocation change with estate planning goals?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. When Bitcoin is held within a dynasty trust or estate planning structure, the relevant horizon often extends beyond the primary investor's lifetime. Wyoming and South Dakota offer perpetuity-exempt trust structures, meaning Bitcoin can appreciate across generations without being forced through the estate system again — which meaningfully changes the optimal allocation framework."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the minimum portfolio size to justify a Bitcoin family office?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A dedicated family office structure typically makes financial sense at Bitcoin holdings above $10–25 million, where the tax efficiency, custody control, and estate planning benefits justify the overhead. Below that threshold, a well-structured self-directed IRA, Wyoming LLC, or qualified custodian relationship often provides better cost-adjusted outcomes."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-mark">The Bitcoin <span>Family Office</span></a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="/" onclick="closeMenu()">Home</a>
+    <a href="/blog/" onclick="closeMenu()">Blog</a>
+    <a href="/services/" onclick="closeMenu()">Services</a>
+    <a href="/faq/" onclick="closeMenu()">FAQ</a>
+    <a href="/tools/bitcoin-allocation-calculator.html" onclick="closeMenu()">Allocation Calculator</a>
+    <a href="/tools/bitcoin-estate-planning-checklist.html" onclick="closeMenu()">Estate Checklist</a>
+    <a href="/services/" class="nav-cta" onclick="closeMenu()">Get Started</a>
+  </div>
+</nav>
+
+<header class="page-header">
+  <span class="page-tag">Interactive Tool</span>
+  <h1>Bitcoin Allocation Calculator</h1>
+  <p class="subtitle">Enter your portfolio parameters and get an evidence-based Bitcoin allocation range — calibrated to your risk profile, horizon, and estate planning needs.</p>
+</header>
+
+<!-- ABOVE-FOLD EDITORIAL -->
+<div class="content-wrap">
+  <h2>How Bitcoin Allocation Works for High-Net-Worth Investors</h2>
+
+  <p>Bitcoin allocation for high-net-worth individuals is not a simple percentage decision. It requires integrating four variables that conventional portfolio theory handles poorly: asymmetric upside potential, sovereign-grade security properties, bearer-instrument complexity, and estate planning implications that differ fundamentally from every other asset class.</p>
+
+  <p>Most allocation frameworks default to the Kelly Criterion or a simple "volatility budget" approach — constraints that treat Bitcoin as a volatile commodity rather than a fundamentally different monetary asset. For families with generational time horizons and existing wealth to preserve, the relevant question is not "how much can I afford to lose?" but rather "what is the appropriate exposure to a potential monetary system transition?"</p>
+
+  <p>The allocation ranges produced by this calculator reflect institutional frameworks developed by family offices and wealth managers with direct experience structuring Bitcoin positions at the $5M–$100M+ level. They are not investment advice — they are structured starting points for a conversation with qualified advisors who understand both Bitcoin and your specific situation.</p>
+
+  <p><strong>Key principles that drive the ranges below:</strong></p>
+  <ul>
+    <li>Younger investors with longer horizons can absorb more volatility; a 30-year-old with a 20-year horizon should approach Bitcoin differently than a 65-year-old in wealth distribution mode</li>
+    <li>Larger portfolios generally warrant higher absolute dollar allocations but lower percentage positions — the estate planning complexity grows faster than the percentage</li>
+    <li>Risk tolerance self-assessments systematically underestimate tolerance until a real drawdown occurs; institutional frameworks build in conservatism</li>
+    <li>Once Bitcoin holdings exceed $5M, structural considerations — trusts, LLCs, professional custody — become mandatory rather than optional</li>
+  </ul>
+
+  <p>For a deeper treatment of the underlying frameworks, see our analysis of <a href="/blog/bitcoin-wealth-preservation-strategy.html">Bitcoin wealth preservation strategy</a> and the <a href="/blog/complete-guide-bitcoin-family-offices.html">complete guide to Bitcoin family offices</a>.</p>
+</div>
+
+<!-- CALCULATOR -->
+<div class="calc-wrapper">
+  <div class="calc-grid">
+
+    <!-- INPUTS -->
+    <div class="calc-card">
+      <div class="calc-card-title">Your Portfolio Parameters</div>
+
+      <div class="field">
+        <label for="totalAssets">Total Investable Assets</label>
+        <div class="field-row">
+          <input type="range" id="assetsSlider" min="100000" max="50000000" step="50000" value="5000000" oninput="syncAssets('slider')">
+          <span class="range-val" id="assetsDisplay">$5,000,000</span>
+        </div>
+        <input type="text" id="assetsText" value="5,000,000" placeholder="Enter amount" oninput="syncAssets('text')" style="margin-top:0.5rem;">
+      </div>
+
+      <div class="field">
+        <label for="currentAlloc">Current Bitcoin Allocation (%)</label>
+        <div class="field-row">
+          <input type="range" id="currentSlider" min="0" max="50" step="0.5" value="5" oninput="syncCurrent('slider')">
+          <span class="range-val" id="currentDisplay">5.0%</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="riskTolerance">Risk Tolerance</label>
+        <select id="riskTolerance" onchange="calculate()">
+          <option value="conservative">Conservative (1–5%)</option>
+          <option value="moderate" selected>Moderate (5–10%)</option>
+          <option value="aggressive">Aggressive (10–25%)</option>
+          <option value="very_aggressive">Very Aggressive (25%+)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="horizon">Investment Horizon</label>
+        <select id="horizon" onchange="calculate()">
+          <option value="short">1–3 years</option>
+          <option value="medium">3–7 years</option>
+          <option value="long" selected>7–15 years</option>
+          <option value="very_long">15+ years</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="age">Your Age</label>
+        <input type="number" id="age" min="18" max="100" value="42" oninput="calculate()" style="max-width:120px;">
+      </div>
+
+      <div class="field" style="margin-top:1.75rem;">
+        <label style="margin-bottom:0.75rem;">Estate Planning Consideration</label>
+        <label class="check-field">
+          <input type="checkbox" id="estatePlanning" onchange="calculate()">
+          <span>I am considering estate planning structures for Bitcoin holdings</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- OUTPUTS -->
+    <div class="output-card">
+      <div class="output-card-title">Your Allocation Analysis</div>
+
+      <div class="result-block">
+        <div class="result-label">Recommended Allocation Range</div>
+        <div class="result-value lg" id="outRange">5% – 10%</div>
+        <div class="result-sub" id="outRangeNote">Based on moderate risk tolerance with 7–15 year horizon</div>
+      </div>
+
+      <div class="result-block">
+        <div class="result-label">Current Bitcoin Position</div>
+        <div class="result-value" id="outCurrentDollar">$250,000</div>
+        <div class="result-sub" id="outCurrentPct">5.0% of total investable assets</div>
+      </div>
+
+      <div class="result-block">
+        <div class="result-label">Recommended Range ($ Amount)</div>
+        <div class="result-value" id="outRecommendedDollar">$250,000 – $500,000</div>
+        <div class="result-sub">Midpoint target: <span id="outMidpoint">$375,000</span></div>
+      </div>
+
+      <div class="result-block">
+        <div class="result-label">Gap to Recommended</div>
+        <div id="outGapBadge" class="gap-badge gap-aligned">Aligned with target range</div>
+        <div class="result-sub" id="outGapDetail" style="margin-top:0.5rem;"></div>
+      </div>
+
+      <div class="result-block">
+        <div class="result-label">Wealth Preservation Context</div>
+        <div class="result-sub" id="outWealthContext">At current allocation, Bitcoin represents 5.0% of total wealth. A family office structure becomes relevant above $5M in Bitcoin holdings.</div>
+      </div>
+
+      <div class="family-office-note" id="familyOfficeNote">
+        <p><strong>Estate Planning Note:</strong> Holdings at or above $5M warrant a formal family office structure — including trust situs selection, multi-signature custody architecture, and a directed trustee arrangement. See our <a href="/blog/bitcoin-family-office-cost.html" style="color:var(--accent);">family office cost analysis</a> for structure and cost guidance.</p>
+      </div>
+    </div>
+
+  </div><!-- /.calc-grid -->
+
+  <div class="calc-cta" style="max-width:var(--max-w);margin:2rem 0 0;">
+    <p>This calculator provides directional guidance based on institutional frameworks. Optimal allocation requires a full picture of your tax situation, estate plan, existing asset mix, and family governance structure.</p>
+    <a href="/services/">Ready to structure your Bitcoin holdings? Explore our services →</a>
+  </div>
+</div><!-- /.calc-wrapper -->
+
+<!-- BELOW-FOLD EDITORIAL -->
+<div class="content-below">
+
+  <h2>When Does a Family Office Structure Make Sense?</h2>
+
+  <p>The $5M threshold cited in this calculator is not arbitrary. It reflects the point at which the complexity of Bitcoin ownership — custody architecture, tax planning, estate structure, governance — exceeds what can be managed through conventional wealth management channels. At that scale, the cost of not having a structure (in terms of tax exposure, estate risk, and custody vulnerability) exceeds the cost of implementing one.</p>
+
+  <p>Below $1M in Bitcoin holdings, most individuals can manage adequately with a hardware wallet, a basic estate plan that references the holdings, and a qualified CPA. Between $1M and $5M, more sophisticated custody and basic trust structures become appropriate. Above $5M, a formal family office approach — or access to a shared-infrastructure single-family office equivalent — is justified.</p>
+
+  <div class="pull-quote">The question for Bitcoin families is not whether to structure, but when. The answer, in almost every case, is earlier than you think.</div>
+
+  <p>Family offices that structure Bitcoin holdings formally typically implement several components simultaneously: a Wyoming, Nevada, or South Dakota trust as the primary holding vehicle; a multi-signature custody architecture with professional co-trustees holding one key; an investment policy statement that specifies Bitcoin allocation targets and rebalancing triggers; and succession documentation that ensures heirs can actually access what they inherit.</p>
+
+  <p>The allocation question and the structure question are inseparable. A family that has decided to hold 15% of a $30M portfolio in Bitcoin — $4.5M — cannot make that decision responsibly without simultaneously addressing who holds the keys, what happens to those keys at death, and how the position is titled for estate and gift tax purposes. The calculator above gives you the allocation range; the structures give you the durable ownership.</p>
+
+  <p>For more on the structural side, see our analyses of <a href="/blog/bitcoin-family-office-cost.html">Bitcoin family office cost and structure</a>, <a href="/blog/bitcoin-wealth-preservation-strategy.html">Bitcoin wealth preservation strategy</a>, and the <a href="/blog/complete-guide-bitcoin-family-offices.html">complete guide to Bitcoin family offices</a>.</p>
+
+  <h2>Age, Horizon, and the Allocation Lifecycle</h2>
+
+  <p>The age and horizon inputs in this calculator interact in ways worth explaining. A 35-year-old with a "conservative" risk tolerance and a 15+ year horizon will receive a different recommendation than a 65-year-old with the same stated risk tolerance. This reflects a fundamental principle: risk tolerance is not just psychological preference, it is a function of time and liquidity.</p>
+
+  <p>A 35-year-old can hold through multiple Bitcoin cycles and still have decades to benefit from structural appreciation. A 65-year-old in distribution mode — drawing on assets rather than accumulating — cannot afford the same drawdown duration without affecting their income plan. The calculator adjusts for this reality, not as a simple linear age-based formula, but as an interaction between stated tolerance, horizon, and the implied liquidity needs that come with age.</p>
+
+  <p>For families with multiple generations, the relevant horizon often extends beyond the primary investor's lifetime — into the estate planning territory where dynasty trusts and perpetuity-exempt jurisdictions matter. Wyoming and South Dakota offer trust structures with no rule against perpetuities, meaning Bitcoin held in a properly structured dynasty trust can appreciate across generations without being forced through the estate system again.</p>
+
+  <p>The allocation question is ultimately a family question, not just an individual one. The calculator above captures the individual dimension. The structural and estate questions require a broader conversation — one we're equipped to have with serious families at the intersection of Bitcoin and generational wealth.</p>
+
+</div>
+
+
+<div style="max-width:780px;margin:2rem auto;padding:0 1.5rem;">
+  <div style="background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.25);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
+    <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.05rem;color:#e8e4dc;margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful Tax Strategy Available</p>
+    <p style="font-family:'Inter',-apple-system,sans-serif;font-size:0.85rem;color:#9a958d;line-height:1.7;margin-bottom:1rem;">For high-net-worth Bitcoin holders, mining is the only strategy that simultaneously generates yield, accumulates BTC, and creates significant tax offsets — through equipment depreciation, operating expense deductions, and bonus depreciation on capital investments. Most family offices overlook mining entirely. Abundant Mines has compiled every major Bitcoin mining tax strategy in one place.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:'Inter',-apple-system,sans-serif;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:#c9a84c;border:1px solid rgba(201,168,76,0.4);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a>
+  </div>
+</div>
+<footer>
+  <div class="footer-mark">The <span>Bitcoin</span> Family Office</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>
+    <a href="/services/">Services</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/disclosures">Disclosures</a>
+  </div>
+  <p class="footer-copy">© 2026 The Bitcoin Family Office. All rights reserved.</p>
+</footer>
+
+<script>
+// ─── ALLOCATION CALCULATION ENGINE ───────────────────────────────────────────
+
+const RISK_RANGES = {
+  conservative:    { base: [1, 5] },
+  moderate:        { base: [5, 10] },
+  aggressive:      { base: [10, 25] },
+  very_aggressive: { base: [25, 50] }
+};
+
+const HORIZON_MULT = {
+  short:     0.6,
+  medium:    0.85,
+  long:      1.0,
+  very_long: 1.2
+};
+
+function getAgeMult(age) {
+  if (age <= 35) return 1.15;
+  if (age <= 45) return 1.05;
+  if (age <= 55) return 1.0;
+  if (age <= 65) return 0.85;
+  return 0.65;
+}
+
+function formatDollar(n) {
+  if (n >= 1000000) return '$' + (n/1000000).toFixed(2).replace(/\.?0+$/, '') + 'M';
+  if (n >= 1000) return '$' + (n/1000).toFixed(1).replace(/\.?0+$/, '') + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+
+function parseDollarInput(str) {
+  return parseFloat(str.replace(/[^0-9.]/g, '')) || 0;
+}
+
+function syncAssets(source) {
+  if (source === 'slider') {
+    const v = parseFloat(document.getElementById('assetsSlider').value);
+    document.getElementById('assetsDisplay').textContent = formatDollar(v);
+    document.getElementById('assetsText').value = Math.round(v).toLocaleString();
+  } else {
+    const raw = parseDollarInput(document.getElementById('assetsText').value);
+    if (raw > 0) {
+      const clamped = Math.max(100000, Math.min(50000000, raw));
+      document.getElementById('assetsSlider').value = clamped;
+      document.getElementById('assetsDisplay').textContent = formatDollar(clamped);
+    }
+  }
+  calculate();
+}
+
+function syncCurrent(source) {
+  if (source === 'slider') {
+    const v = parseFloat(document.getElementById('currentSlider').value);
+    document.getElementById('currentDisplay').textContent = v.toFixed(1) + '%';
+  }
+  calculate();
+}
+
+function calculate() {
+  const totalAssets = Math.max(100000, parseDollarInput(document.getElementById('assetsText').value) || parseFloat(document.getElementById('assetsSlider').value));
+  const currentPct = parseFloat(document.getElementById('currentSlider').value);
+  const risk = document.getElementById('riskTolerance').value;
+  const horizon = document.getElementById('horizon').value;
+  const age = parseInt(document.getElementById('age').value) || 42;
+  const estatePlanning = document.getElementById('estatePlanning').checked;
+
+  // Calculate recommended range
+  const baseRange = RISK_RANGES[risk].base;
+  const hMult = HORIZON_MULT[horizon];
+  const aMult = getAgeMult(age);
+
+  let low  = Math.round(baseRange[0] * hMult * aMult * 10) / 10;
+  let high = Math.round(baseRange[1] * hMult * aMult * 10) / 10;
+
+  // Cap at reasonable limits
+  low  = Math.max(0.5, Math.min(low, 45));
+  high = Math.max(low + 1, Math.min(high, 60));
+
+  // Round nicely
+  low  = Math.round(low * 2) / 2;
+  high = Math.round(high * 2) / 2;
+
+  const midPct = (low + high) / 2;
+
+  // Dollar amounts
+  const currentDollar      = totalAssets * (currentPct / 100);
+  const recommendedLowDol  = totalAssets * (low / 100);
+  const recommendedHighDol = totalAssets * (high / 100);
+  const midDollar          = totalAssets * (midPct / 100);
+
+  // Gap analysis
+  let gapClass, gapText, gapDetail;
+  if (currentPct < low) {
+    const gapPct = (low - currentPct).toFixed(1);
+    const gapDol = formatDollar(recommendedLowDol - currentDollar);
+    gapClass = 'gap-under';
+    gapText  = `Underweight by ${gapPct}% (${gapDol})`;
+    gapDetail = `Increasing to ${low}% would add ${gapDol} in Bitcoin exposure.`;
+  } else if (currentPct > high) {
+    const gapPct = (currentPct - high).toFixed(1);
+    const gapDol = formatDollar(currentDollar - recommendedHighDol);
+    gapClass = 'gap-over';
+    gapText  = `Overweight by ${gapPct}% (${gapDol})`;
+    gapDetail = `Reducing to ${high}% would free ${gapDol} for diversification.`;
+  } else {
+    gapClass = 'gap-aligned';
+    gapText  = 'Aligned with target range';
+    gapDetail = `Your current allocation sits within the recommended range.`;
+  }
+
+  // Wealth context
+  const wealthPctStr = currentPct.toFixed(1);
+  const btcAbove5M   = currentDollar >= 5000000;
+  let wealthContext  = `At this allocation, Bitcoin represents ${wealthPctStr}% of total investable wealth.`;
+  if (btcAbove5M) {
+    wealthContext += ` At ${formatDollar(currentDollar)}, a formal family office structure is strongly recommended — see our <a href="/blog/bitcoin-family-office-cost.html" style="color:var(--accent);">family office cost guide</a>.`;
+  } else {
+    wealthContext += ` A family office structure becomes relevant above $5M in Bitcoin holdings.`;
+  }
+
+  // Horizon note
+  const horizonLabels = { short: '1–3 year', medium: '3–7 year', long: '7–15 year', very_long: '15+ year' };
+  const riskLabels    = { conservative: 'conservative', moderate: 'moderate', aggressive: 'aggressive', very_aggressive: 'very aggressive' };
+
+  // Update DOM
+  document.getElementById('outRange').textContent          = `${low}% – ${high}%`;
+  document.getElementById('outRangeNote').textContent      = `Based on ${riskLabels[risk]} risk tolerance with ${horizonLabels[horizon]} horizon, age-adjusted`;
+  document.getElementById('outCurrentDollar').textContent  = formatDollar(currentDollar);
+  document.getElementById('outCurrentPct').textContent     = `${currentPct.toFixed(1)}% of total investable assets`;
+  document.getElementById('outRecommendedDollar').textContent = `${formatDollar(recommendedLowDol)} – ${formatDollar(recommendedHighDol)}`;
+  document.getElementById('outMidpoint').textContent       = formatDollar(midDollar);
+
+  const badge = document.getElementById('outGapBadge');
+  badge.className = 'gap-badge ' + gapClass;
+  badge.textContent = gapText;
+  document.getElementById('outGapDetail').textContent = gapDetail;
+  document.getElementById('outWealthContext').innerHTML = wealthContext;
+
+  // Family office note
+  const foNote = document.getElementById('familyOfficeNote');
+  foNote.classList.toggle('show', estatePlanning);
+}
+
+// ─── NAV HELPERS ─────────────────────────────────────────────────────────────
+function toggleMenu() {
+  const btn   = document.getElementById('hamburger');
+  const links = document.getElementById('navLinks');
+  btn.classList.toggle('open');
+  links.classList.toggle('open');
+  document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navLinks').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Init
+calculate();
+</script>
+</body>
+</html>

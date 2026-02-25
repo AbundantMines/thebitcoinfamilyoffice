@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/">
 <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/">
-<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
-<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg">
+<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
 
 <!-- Schema.org -->
@@ -34,6 +34,29 @@
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+<script>
+(function(){
+  if(typeof gtag!=='function') return;
+  // Click heatmap — logs X/Y as percentage of viewport/page
+  document.addEventListener('click',function(e){
+    var el=e.target;
+    var tag=el.tagName+(el.id?'#'+el.id:el.className?' .'+String(el.className).trim().split(' ')[0]:'');
+    gtag('event','hm_click',{
+      'page':location.pathname,
+      'cx':Math.round(e.clientX/window.innerWidth*100),
+      'cy':Math.round((e.clientY+window.scrollY)/Math.max(document.body.scrollHeight,1)*100),
+      'el':tag.substring(0,40)
+    });
+  });
+  // Scroll depth — fires at 25/50/75/100% milestones
+  var _sd=0;
+  window.addEventListener('scroll',function(){
+    var pct=Math.round((window.scrollY+window.innerHeight)/Math.max(document.body.scrollHeight,1)*100);
+    var milestone=Math.floor(pct/25)*25;
+    if(milestone>_sd){_sd=milestone;gtag('event','hm_scroll',{'page':location.pathname,'depth':_sd});}
+  },{passive:true});
+})();
+</script>
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -273,10 +296,45 @@ footer {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+  z-index: 200;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--text-secondary);
+  transition: all 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
 @media (max-width: 600px) {
   html { font-size: 16px; }
   nav { padding: 1.1rem 1.25rem; }
-  .nav-links a:not(.nav-cta) { display: none; }
+  .hamburger { display: flex; }
+  .nav-links {
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,10,10,0.97);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    z-index: 150;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1rem; letter-spacing: 0.12em; }
+  .nav-links .nav-cta { padding: 0.7rem 1.8rem; font-size: 0.9rem; }
   .hero { padding: 7rem 1.25rem 3.5rem; }
   .posts { padding: 2rem 1.25rem; }
   .hero h1 { font-size: 1.9rem; }
@@ -288,10 +346,15 @@ footer {
 
 <nav id="nav">
   <a href="/" class="nav-mark">The <span>Bitcoin</span> Family Office</a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/blog/" class="active">Research</a>
-    <a href="/#waitlist" class="nav-cta">Join Waitlist</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="/" onclick="closeMenu()">Home</a>
+    <a href="/services/" onclick="closeMenu()">Services</a>
+    <a href="/blog/" class="active" onclick="closeMenu()">Research</a>
+    <a href="/faq/" onclick="closeMenu()">FAQ</a>
+    <a href="/#waitlist" class="nav-cta" onclick="closeMenu()">Join Waitlist</a>
   </div>
 </nav>
 
@@ -304,6 +367,163 @@ footer {
 </section>
 
 <section class="posts">
+
+  <!-- ════════════════════════════════════════════════
+       INTERACTIVE TOOLS
+       ════════════════════════════════════════════════ -->
+  <div style="grid-column:1/-1;padding:2rem 0 1rem;border-top:1px solid rgba(255,255,255,0.06);margin-bottom:0.5rem;">
+    <div style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#c9a84c;margin-bottom:0.75rem;">Interactive Tools</div>
+    <p style="font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.6;max-width:640px;">Free, browser-based tools for families and advisors structuring significant Bitcoin positions. No login required. All calculations stay in your browser.</p>
+  </div>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">🔧 Tool</span><span>Interactive</span></div>
+    <h2><a href="/tools/bitcoin-allocation-calculator.html">Bitcoin Allocation Calculator</a></h2>
+    <p class="post-excerpt">Enter your total investable assets, risk tolerance, investment horizon, and age to get an evidence-based Bitcoin allocation range — calibrated to your profile and estate planning needs. Live output, no form submission required.</p>
+    <a href="/tools/bitcoin-allocation-calculator.html" class="read-more">Use the calculator</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">🔧 Tool</span><span>24 Items</span></div>
+    <h2><a href="/tools/bitcoin-estate-planning-checklist.html">Bitcoin Estate Planning Checklist</a></h2>
+    <p class="post-excerpt">A comprehensive, interactive checklist covering custody, legal structures, tax planning, succession, and family office governance. Progress saves automatically. Print or export as PDF for advisor review.</p>
+    <a href="/tools/bitcoin-estate-planning-checklist.html" class="read-more">Open the checklist</a>
+  </article>
+
+  <!-- ════════════════════════════════════════════════
+       STATE-SPECIFIC BITCOIN ESTATE PLANNING GUIDES
+       ════════════════════════════════════════════════ -->
+  <div style="grid-column:1/-1;padding:2rem 0 1rem;border-top:1px solid rgba(255,255,255,0.06);margin-bottom:0.5rem;">
+    <div style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#c9a84c;margin-bottom:0.75rem;">State-Specific Bitcoin Estate Planning Guides</div>
+    <p style="font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.6;max-width:640px;">State law determines how Bitcoin is taxed, held in trust, and transferred at death. These guides cover the specific legal and tax frameworks for the 12 states with the highest concentration of Bitcoin wealth.</p>
+  </div>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Estate Planning</span><span>9 min read</span></div>
+    <h2><a href="/blog/bitcoin-estate-planning-texas.html">Bitcoin Estate Planning in Texas</a></h2>
+    <p class="post-excerpt">No state income tax, no estate tax, strong community property rules, and a modernized Uniform Trust Code make Texas one of the most favorable jurisdictions for Bitcoin estate planning. Includes community property step-up strategy and LLC structuring.</p>
+    <a href="/blog/bitcoin-estate-planning-texas.html" class="read-more">Read the guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Estate Planning</span><span>10 min read</span></div>
+    <h2><a href="/blog/bitcoin-estate-planning-wyoming.html">Bitcoin Estate Planning in Wyoming</a></h2>
+    <p class="post-excerpt">Wyoming is the gold standard Bitcoin trust jurisdiction in the United States — DPTA directed trusts, SPDI bank charters, DAO LLC statutes, no income or estate tax, and true perpetuity dynasty trusts. Available to families regardless of where they live.</p>
+    <a href="/blog/bitcoin-estate-planning-wyoming.html" class="read-more">Read the guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Estate Planning</span><span>9 min read</span></div>
+    <h2><a href="/blog/bitcoin-estate-planning-florida.html">Bitcoin Estate Planning in Florida</a></h2>
+    <p class="post-excerpt">No income tax, no estate tax, unlimited homestead protection, Qualified Spendthrift Trust statute, and Florida's directed trust framework. An analysis of Florida's asset protection culture and how it applies to Bitcoin family planning.</p>
+    <a href="/blog/bitcoin-estate-planning-florida.html" class="read-more">Read the guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Estate Planning</span><span>10 min read</span></div>
+    <h2><a href="/blog/bitcoin-estate-planning-california.html">Bitcoin Estate Planning in California</a></h2>
+    <p class="post-excerpt">California's 13.3% income tax on Bitcoin gains, aggressive trust beneficiary rules, and community property framework create unique challenges. How to navigate California's tax environment — and when domicile change makes sense.</p>
+    <a href="/blog/bitcoin-estate-planning-california.html" class="read-more">Read the guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Estate Planning</span><span>10 min read</span></div>
+    <h2><a href="/blog/bitcoin-estate-planning-new-york.html">Bitcoin Estate Planning in New York</a></h2>
+    <p class="post-excerpt">New York's estate tax "cliff effect," 10.9% income tax, Incomplete Gift Non-Grantor Trust strategy, and BitLicense regulatory environment. A detailed analysis of planning in one of America's most complex Bitcoin jurisdictions.</p>
+    <a href="/blog/bitcoin-estate-planning-new-york.html" class="read-more">Read the guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Estate Planning</span><span>9 min read</span></div>
+    <h2><a href="/blog/bitcoin-estate-planning-nevada.html">Bitcoin Estate Planning in Nevada</a></h2>
+    <p class="post-excerpt">Nevada Asset Protection Trusts, directed trust statute, dynasty trust without perpetuities limits, and strong single-member LLC charging order protection — alongside zero income and estate tax. A premier alternative to Wyoming for Bitcoin trust situs.</p>
+    <a href="/blog/bitcoin-estate-planning-nevada.html" class="read-more">Read the guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Estate Planning</span><span>9 min read</span></div>
+    <h2><a href="/blog/bitcoin-estate-planning-colorado.html">Bitcoin Estate Planning in Colorado</a></h2>
+    <p class="post-excerpt">Colorado's flat 4.4% income tax, no estate tax, TABOR spending limits, and growing Bitcoin ecosystem. How Colorado stacks up against Wyoming for trust situs, and what LLC formation strategy makes sense for Colorado-based Bitcoin families.</p>
+    <a href="/blog/bitcoin-estate-planning-colorado.html" class="read-more">Read the guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Estate Planning</span><span>9 min read</span></div>
+    <h2><a href="/blog/bitcoin-estate-planning-washington.html">Bitcoin Estate Planning in Washington State</a></h2>
+    <p class="post-excerpt">Washington's 7% capital gains excise tax on gains above $262K and estate tax starting at $2.19M create specific planning urgency. Community property step-up advantage, WA Trust Act provisions, and strategies for addressing both state tax layers.</p>
+    <a href="/blog/bitcoin-estate-planning-washington.html" class="read-more">Read the guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Estate Planning</span><span>9 min read</span></div>
+    <h2><a href="/blog/bitcoin-estate-planning-arizona.html">Bitcoin Estate Planning in Arizona</a></h2>
+    <p class="post-excerpt">Arizona's flat 2.5% income tax — among the lowest in any income-tax state — combined with no estate tax, community property step-up benefits, and Uniform Trust Code provisions. An increasingly attractive destination for California relocators.</p>
+    <a href="/blog/bitcoin-estate-planning-arizona.html" class="read-more">Read the guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Estate Planning</span><span>9 min read</span></div>
+    <h2><a href="/blog/bitcoin-estate-planning-tennessee.html">Bitcoin Estate Planning in Tennessee</a></h2>
+    <p class="post-excerpt">Tennessee's Hall Tax was fully repealed in 2022, leaving zero income tax on capital gains. No estate tax. Tennessee Investment Services Trust Act (TISTA) provides a self-settled asset protection framework. Nashville's growing Bitcoin ecosystem.</p>
+    <a href="/blog/bitcoin-estate-planning-tennessee.html" class="read-more">Read the guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Estate Planning</span><span>10 min read</span></div>
+    <h2><a href="/blog/bitcoin-estate-planning-south-dakota.html">Bitcoin Estate Planning in South Dakota</a></h2>
+    <p class="post-excerpt">South Dakota is the dynasty trust capital of the United States: no rule against perpetuities, directed trust statute, self-settled asset protection trusts, zero income and estate tax, and a deep trust administration industry built over decades. A full analysis for serious Bitcoin families.</p>
+    <a href="/blog/bitcoin-estate-planning-south-dakota.html" class="read-more">Read the guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Estate Planning</span><span>10 min read</span></div>
+    <h2><a href="/blog/bitcoin-estate-planning-oregon.html">Bitcoin Estate Planning in Oregon</a></h2>
+    <p class="post-excerpt">Oregon's 9.9% income tax and estate tax starting at $1M create significant planning urgency for Bitcoin families. The Oregon trust creator rule, gifting strategies, QTIP planning, and when domicile change is the most impactful move available.</p>
+    <a href="/blog/bitcoin-estate-planning-oregon.html" class="read-more">Read the guide</a>
+  </article>
+
+  <!-- ════════════════════════════════════════════════
+       BITCOIN MINING & INFRASTRUCTURE
+       ════════════════════════════════════════════════ -->
+  <div style="grid-column:1/-1;padding:2rem 0 1rem;border-top:1px solid rgba(255,255,255,0.06);margin-top:1rem;margin-bottom:0.5rem;">
+    <div style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#c9a84c;margin-bottom:0.75rem;">Bitcoin Mining &amp; Infrastructure</div>
+    <p style="font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.6;max-width:640px;">A first-principles analysis of Bitcoin mining as an acquisition strategy — the business model, tax treatment, hosting due diligence, and when it makes strategic sense for a family office.</p>
+  </div>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Mining &amp; Infrastructure</span><span>11 min read</span></div>
+    <h2><a href="/blog/bitcoin-mining-family-office.html">Bitcoin Mining and the Family Office: When Self-Mining Makes Strategic Sense</a></h2>
+    <p class="post-excerpt">Most family offices never think about Bitcoin mining. They should at least understand it. A first-principles analysis of hosted vs. self-mining, the Section 179 depreciation advantage, and when mining makes strategic sense for a specific family's tax and operational profile.</p>
+    <a href="/blog/bitcoin-mining-family-office.html" class="read-more">Read the analysis</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Mining &amp; Infrastructure</span><span>13 min read</span></div>
+    <h2><a href="/blog/bitcoin-mining-hosting-due-diligence.html">Bitcoin Mining Hosting Due Diligence: A Framework for Institutional Investors</a></h2>
+    <p class="post-excerpt">Hosted mining is a multi-year counterparty relationship. Most investors enter it with less diligence than they'd apply to a vendor contract worth one-tenth the amount. A structured due diligence framework covering power infrastructure, physical security, operational transparency, and commercial terms.</p>
+    <a href="/blog/bitcoin-mining-hosting-due-diligence.html" class="read-more">Read the framework</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Tax Strategy</span><span>12 min read</span></div>
+    <h2><a href="/blog/bitcoin-mining-tax-strategy.html">Bitcoin Mining Tax Strategy: Section 179, Bonus Depreciation, and Entity Structure</a></h2>
+    <p class="post-excerpt">Of all the ways to acquire Bitcoin, mining may have the most favorable tax treatment — if structured correctly. How mining income is taxed, how ASIC depreciation works, the optimal entity structure for different scales of operation, and how mining integrates with broader family office structures.</p>
+    <a href="/blog/bitcoin-mining-tax-strategy.html" class="read-more">Read the strategy</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta"><span class="tag">Mining &amp; Infrastructure</span><span>10 min read</span></div>
+    <h2><a href="/blog/bitcoin-mining-for-investors.html">Bitcoin Mining for Investors: Understanding the Business Model Before You Commit Capital</a></h2>
+    <p class="post-excerpt">Most guides to Bitcoin mining are written for technically-minded operators. This one is for investors. The business model, the variables that determine economics, breakeven analysis vs. IRR projections, and a clear-eyed analysis of when mining fits a serious Bitcoin strategy — and when it doesn't.</p>
+    <a href="/blog/bitcoin-mining-for-investors.html" class="read-more">Read the guide</a>
+  </article>
+
+  <!-- ════════════════════════════════════════════════
+       ALL OTHER ARTICLES
+       ════════════════════════════════════════════════ -->
+  <div style="grid-column:1/-1;padding:2rem 0 1rem;border-top:1px solid rgba(255,255,255,0.06);margin-top:1rem;margin-bottom:0.5rem;">
+    <div style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#c9a84c;margin-bottom:0.75rem;">All Research &amp; Analysis</div>
+  </div>
 
   <article class="post-card">
     <div class="post-meta">
@@ -355,6 +575,186 @@ footer {
     <a href="/blog/bitcoin-custody-solutions-family-offices.html" class="read-more">Read the full deep dive</a>
   </article>
 
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Governance</span>
+      <span>14 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-family-office-governance.html">Bitcoin Family Office Governance: A Framework for Decision-Making at Scale</a></h2>
+    <p class="post-excerpt">Most family office governance is designed for equities and fixed income. Bitcoin requires different structures — faster decision cycles, custody oversight committees, and succession protocols built around cryptographic key management. Here is a first-principles governance framework.</p>
+    <a href="/blog/bitcoin-family-office-governance.html" class="read-more">Read the framework</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Tax Strategy</span>
+      <span>13 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-grat-grantor-retained-annuity-trust.html">The Bitcoin GRAT: Using Grantor Retained Annuity Trusts for Wealth Transfer</a></h2>
+    <p class="post-excerpt">A GRAT allows high-growth assets to pass to heirs with minimal gift tax. For Bitcoin holders expecting continued appreciation, this structure can transfer extraordinary wealth to the next generation. Here's how it works — and where it can fail.</p>
+    <a href="/blog/bitcoin-grat-grantor-retained-annuity-trust.html" class="read-more">Read the analysis</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Tax Strategy</span>
+      <span>14 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-charitable-remainder-trust.html">Bitcoin in a Charitable Remainder Trust: Converting Appreciated Holdings Without Triggering Tax</a></h2>
+    <p class="post-excerpt">A charitable remainder trust lets Bitcoin holders convert appreciated positions into income streams without immediate capital gains tax. This is one of the most powerful — and underused — tools in Bitcoin tax planning for high-net-worth families.</p>
+    <a href="/blog/bitcoin-charitable-remainder-trust.html" class="read-more">Read the strategy</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Legal Planning</span>
+      <span>13 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-prenuptial-agreement.html">The Bitcoin Prenuptial Agreement: Protecting Your Holdings in Marriage and Divorce</a></h2>
+    <p class="post-excerpt">Bitcoin presents unique challenges in marital property law — valuation disputes, custody complications, and key management issues that no standard prenuptial agreement addresses. Here's what to cover before you say yes.</p>
+    <a href="/blog/bitcoin-prenuptial-agreement.html" class="read-more">Read the guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Governance</span>
+      <span>14 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-family-constitution.html">The Bitcoin Family Constitution: A Governance Framework for Multi-Generational Wealth</a></h2>
+    <p class="post-excerpt">The most durable family offices operate from written constitutions — documents that encode values, decision rights, and succession protocols across generations. Here's how to build one for a Bitcoin-focused family.</p>
+    <a href="/blog/bitcoin-family-constitution.html" class="read-more">Read the framework</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Technical Deep Dive</span>
+      <span>15 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-multisig-family-office-custody.html">Multi-Signature Bitcoin Custody for Family Offices: Architecture, Trade-offs, and Implementation</a></h2>
+    <p class="post-excerpt">Multi-signature custody is the gold standard for institutional Bitcoin holdings. For family offices, implementation requires balancing security, accessibility, and succession across decades. Here is the definitive framework.</p>
+    <a href="/blog/bitcoin-multisig-family-office-custody.html" class="read-more">Read the deep dive</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Tax Strategy</span>
+      <span>14 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-direct-ownership-vs-etf-tax.html">Direct Bitcoin vs. Bitcoin ETF: The Tax Case for Self-Custody at High Net Worth</a></h2>
+    <p class="post-excerpt">For high-net-worth investors, the choice between direct Bitcoin and a spot ETF isn't philosophical — it has significant tax, estate planning, and long-term cost implications. A data-driven analysis of both paths.</p>
+    <a href="/blog/bitcoin-direct-ownership-vs-etf-tax.html" class="read-more">Read the analysis</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Generational Wealth</span>
+      <span>15 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-generational-wealth-transfer.html">Passing Bitcoin Across Generations: A Framework for Multi-Generational Wealth Transfer</a></h2>
+    <p class="post-excerpt">Transferring Bitcoin to the next generation involves custodial complexity, tax planning, and heir education that no other asset demands. Here is a comprehensive framework — from annual gifting to dynasty trusts to technical succession protocols.</p>
+    <a href="/blog/bitcoin-generational-wealth-transfer.html" class="read-more">Read the framework</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Legal &amp; Fiduciary</span>
+      <span>13 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-fiduciary-duty-trustee.html">Bitcoin and Fiduciary Duty: What Trustees Need to Know</a></h2>
+    <p class="post-excerpt">Can a trustee hold Bitcoin and satisfy fiduciary duty? The prudent investor standard evaluates the portfolio as a whole — a blanket refusal to consider Bitcoin is not a fiduciary position. Here is the analytical framework every trustee needs.</p>
+    <a href="/blog/bitcoin-fiduciary-duty-trustee.html" class="read-more">Read the analysis</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Governance &amp; Policy</span>
+      <span>14 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-investment-policy-statement.html">The Bitcoin Investment Policy Statement: A Framework for Family Offices</a></h2>
+    <p class="post-excerpt">An IPS written in calm markets is more valuable than one improvised during a drawdown. Here is a complete, first-principles framework for building a Bitcoin investment policy statement — from thesis articulation to custody policy to rebalancing triggers.</p>
+    <a href="/blog/bitcoin-investment-policy-statement.html" class="read-more">Read the framework</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Legal Structures</span>
+      <span>15 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-wyoming-trust-llc.html">Bitcoin, Wyoming Trusts, and LLCs: The Gold Standard Jurisdiction</a></h2>
+    <p class="post-excerpt">Wyoming didn't adapt old laws to Bitcoin — it built new laws for Bitcoin. A detailed analysis of Wyoming's digital asset statutes, SPDI banking framework, directed trust provisions, and why serious Bitcoin families are choosing Wyoming for their structures.</p>
+    <a href="/blog/bitcoin-wyoming-trust-llc.html" class="read-more">Read the analysis</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Tax Strategy &amp; Retirement</span>
+      <span>15 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-ira-family-office.html">Bitcoin IRA for Family Offices: Self-Directed Retirement Accounts and Long-Term Tax Strategy</a></h2>
+    <p class="post-excerpt">A Roth IRA holding Bitcoin doesn't just defer taxes — it eliminates them permanently on every dollar of appreciation. For long-horizon Bitcoin investors, the math is compelling. Here is the complete framework for self-directed retirement accounts.</p>
+    <a href="/blog/bitcoin-ira-family-office.html" class="read-more">Read the guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Wealth Strategy</span>
+      <span>14 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-wealth-preservation-strategy.html">Bitcoin Wealth Preservation Strategy: A First-Principles Framework</a></h2>
+    <p class="post-excerpt">Bitcoin's value as a preservation asset is not about price — it is about monetary properties that remain constant when the properties of other stores of value are being actively managed by governments. A rigorous first-principles analysis for long-duration capital.</p>
+    <a href="/blog/bitcoin-wealth-preservation-strategy.html" class="read-more">Read the framework</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Structure &amp; Economics</span>
+      <span>16 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-family-office-cost.html">How Much Does a Bitcoin Family Office Cost? A Complete Analysis</a></h2>
+    <p class="post-excerpt">The most honest breakdown of Bitcoin family office costs available — setup costs, ongoing advisory fees, custody expenses, and the minimum asset threshold where dedicated infrastructure creates genuine economic value. No generic figures; real market rates.</p>
+    <a href="/blog/bitcoin-family-office-cost.html" class="read-more">Read the analysis</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Estate Planning</span>
+      <span>18 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-estate-planning-complete-guide.html">Bitcoin Estate Planning: The Complete Guide for High-Net-Worth Families</a></h2>
+    <p class="post-excerpt">Bitcoin estate planning is not a variation on traditional estate planning — it is a different discipline with different failure modes. The legal layer, technical key management layer, and documentation layer must be designed together or not at all. A first-principles framework for families with significant Bitcoin holdings.</p>
+    <a href="/blog/bitcoin-estate-planning-complete-guide.html" class="read-more">Read the complete guide</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Inheritance &amp; Succession</span>
+      <span>16 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-inheritance-planning.html">Bitcoin Inheritance Planning: A Practical Framework for Passing Bitcoin to Heirs</a></h2>
+    <p class="post-excerpt">A will that specifies your Bitcoin beneficiaries but leaves no access instructions is legally complete and practically useless. Bitcoin inheritance requires solving a technical problem alongside the legal one. A comprehensive framework covering multi-signature design, heir education, and the succession drill that every plan requires.</p>
+    <a href="/blog/bitcoin-inheritance-planning.html" class="read-more">Read the framework</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Technical Deep Dive</span>
+      <span>20 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-custody-architecture.html">Bitcoin Custody Architecture: A Technical Deep Dive for Family Offices</a></h2>
+    <p class="post-excerpt">Most writing about Bitcoin custody stops at "buy a hardware wallet." This doesn't. A first-principles analysis of threat modeling, the custody spectrum from hot to cold, multi-signature configurations, key material standards, geographic distribution, and the operational security protocols that determine whether your architecture works in practice.</p>
+    <a href="/blog/bitcoin-custody-architecture.html" class="read-more">Read the deep dive</a>
+  </article>
+
+  <article class="post-card">
+    <div class="post-meta">
+      <span class="tag">Structure &amp; Strategy</span>
+      <span>17 min read</span>
+    </div>
+    <h2><a href="/blog/bitcoin-family-office-vs-wealth-manager.html">Bitcoin Family Office vs. Wealth Manager: What Actually Serves Bitcoin-Heavy Portfolios</a></h2>
+    <p class="post-excerpt">A high-commercial-intent comparison with honest cost-benefit analysis. What a traditional wealth manager can and cannot do for significant Bitcoin holdings, where the gaps are structural rather than individual, and the threshold at which dedicated Bitcoin family office infrastructure creates genuine economic value.</p>
+    <a href="/blog/bitcoin-family-office-vs-wealth-manager.html" class="read-more">Read the comparison</a>
+  </article>
+
 </section>
 
 <footer>
@@ -363,6 +763,9 @@ footer {
     <p class="footer-meta">© 2026 The Bitcoin Family Office. All rights reserved.</p>
     <div class="footer-links">
       <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/services/">Services</a>
+      <a href="/faq/">FAQ</a>
       <a href="/disclosures">Disclosures</a>
     </div>
   </div>
@@ -373,6 +776,19 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 }, { passive: true });
+
+function toggleMenu() {
+  const btn = document.getElementById('hamburger');
+  const links = document.getElementById('navLinks');
+  btn.classList.toggle('open');
+  links.classList.toggle('open');
+  document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navLinks').classList.remove('open');
+  document.body.style.overflow = '';
+}
 </script>
 
 </body>
