@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Estate Planning State Comparison Tool | The Bitcoin Family Office</title>
+<meta name="description" content="Compare Bitcoin estate planning rules across up to 3 states side by side: estate tax, dynasty trust terms, asset protection, RUFADAA adoption, and more.">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-state-comparison.html">
+<meta property="og:title" content="Bitcoin Estate Planning State Comparison — Find the Best State for a Bitcoin Trust">
+<meta property="og:description" content="Compare estate tax, dynasty trust duration, asset protection, RUFADAA, and Bitcoin laws across states. Default: Wyoming vs. South Dakota vs. Nevada.">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-state-comparison.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best state for a Bitcoin trust?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wyoming, South Dakota, and Nevada are generally considered the top three states for Bitcoin trust formation. Wyoming has the most Bitcoin-specific legislation. South Dakota has no rule against perpetuities (allowing unlimited trust duration). Nevada offers the strongest asset protection. All three have no state income tax."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you have to live in a state to form a trust there?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. You can form a trust in any state by appointing a trustee or trust company based in that state. This is called trust situs. Wyoming, South Dakota, and Nevada all have licensed trust companies that can serve as trustee for non-resident families, allowing you to access favorable state law regardless of where you live."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is RUFADAA and why does it matter for Bitcoin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RUFADAA (Revised Uniform Fiduciary Access to Digital Assets Act) governs whether trustees and executors can access digital assets like Bitcoin after death. States that have adopted RUFADAA give fiduciaries legal authority to access accounts and wallets. Without it, heirs may face legal barriers to recovering Bitcoin even with proper estate planning documents."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a dynasty trust and which states allow them?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A dynasty trust is designed to hold assets across multiple generations without triggering estate or gift tax at each transfer. The key variable is the state's rule against perpetuities, which limits how long a trust can last. South Dakota, Nevada, and Wyoming all abolished the rule against perpetuities, allowing theoretically unlimited trust duration. Many other states limit trusts to 90–1,000 years."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which states have no estate tax for Bitcoin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most U.S. states have no estate tax — including Wyoming, South Dakota, Nevada, Texas, Florida, Tennessee, Arizona, Colorado, Georgia, North Carolina, and many others. States with estate taxes include Massachusetts (exemption: $2M), Oregon ($1M), Washington ($2.19M), Illinois ($4M), and New York ($6.94M), among others."
+      }
+    }
+  ]
+}
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-N8PP20VBTV');
+document.addEventListener('click',function(e){gtag('event','hm_click',{x_pct:Math.round(e.clientX/window.innerWidth*100),y_pct:Math.round(e.clientY/window.innerHeight*100)});},{passive:true});
+var _sd={};window.addEventListener('scroll',function(){var pct=Math.round((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight*100);[25,50,75,100].forEach(function(m){if(pct>=m&&!_sd[m]){_sd[m]=1;gtag('event','hm_scroll',{depth:m});}});},{passive:true});
+</script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0a0a;--bg-elevated:#111111;--bg-card:#0f0f0f;
+  --accent:#f7931a;--accent-dim:rgba(247,147,26,0.10);--accent-border:rgba(247,147,26,0.25);
+  --text:#e8e4de;--text-secondary:#9a958d;--text-muted:#6b6660;
+  --border:rgba(255,255,255,0.06);
+  --display:'Playfair Display',Georgia,serif;--body:'EB Garamond',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;
+  --max-w:1000px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:18px;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.8;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}a:hover{opacity:0.8}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-mark{font-family:var(--sans);font-weight:500;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary)}.nav-mark span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;align-items:center;list-style:none}
+.nav-links a{font-family:var(--sans);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);transition:color 0.3s}.nav-links a:hover{color:var(--text);opacity:1}
+.nav-cta{color:var(--accent)!important;border:1px solid var(--accent-border);padding:0.4rem 0.9rem;border-radius:2px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:200}
+.hamburger span{display:block;width:22px;height:1px;background:var(--text-secondary);transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media(max-width:600px){.hamburger{display:flex}.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:150}.nav-links.open{display:flex}.nav-links a{font-size:1rem}}
+
+.page-header{padding:8rem 2rem 3rem;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border)}
+.breadcrumb{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem}.breadcrumb a{color:var(--text-muted)}.breadcrumb a:hover{color:var(--accent)}
+h1{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:400;line-height:1.2;letter-spacing:-0.01em;margin-bottom:0.75rem}
+.page-subtitle{font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
+.tool-wrap{max-width:var(--max-w);margin:0 auto;padding:2.5rem 2rem 4rem}
+
+/* Selector */
+.selector-area{background:var(--bg-elevated);border:1px solid var(--border);border-radius:6px;padding:1.75rem 2rem;margin-bottom:2rem}
+.selector-area h3{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:1rem}
+.state-selectors{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+@media(max-width:700px){.state-selectors{grid-template-columns:1fr}}
+.state-picker{display:flex;flex-direction:column;gap:0.4rem}
+.state-picker label{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)}
+select{background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);color:var(--text);font-family:var(--sans);font-size:0.85rem;padding:0.6rem 0.85rem;border-radius:3px;outline:none;transition:border-color 0.2s;width:100%}
+select:focus{border-color:var(--accent-border)}
+.compare-btn{margin-top:1.25rem;padding:0.8rem 2rem;background:var(--accent);color:#000;font-family:var(--sans);font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;transition:opacity 0.2s}.compare-btn:hover{opacity:0.88}
+
+/* Comparison table */
+.comparison-wrap{overflow-x:auto;margin-top:1.5rem}
+.comparison-table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:0.82rem;min-width:600px}
+.comparison-table th{background:var(--bg-elevated);padding:0.9rem 1rem;font-weight:400;letter-spacing:0.04em;font-size:0.75rem;color:var(--text-secondary);border:1px solid var(--border);text-align:left}
+.comparison-table th.state-header{color:var(--accent);font-family:var(--display);font-size:0.95rem;font-weight:400;text-align:center}
+.comparison-table td{padding:0.8rem 1rem;border:1px solid var(--border);color:var(--text-secondary);vertical-align:top}
+.comparison-table td.row-label{color:var(--text-muted);font-size:0.72rem;letter-spacing:0.04em;background:rgba(255,255,255,0.02);white-space:nowrap}
+.comparison-table td.good{color:#4caf83}
+.comparison-table td.warn{color:#f7931a}
+.comparison-table td.bad{color:#ff6b6b}
+.badge{display:inline-block;font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.15rem 0.4rem;border-radius:2px;margin-right:0.3rem}
+.badge.yes{background:rgba(76,175,131,0.15);color:#4caf83;border:1px solid rgba(76,175,131,0.3)}
+.badge.no{background:rgba(255,107,107,0.12);color:#ff6b6b;border:1px solid rgba(255,107,107,0.25)}
+.badge.partial{background:rgba(247,147,26,0.12);color:#f7931a;border:1px solid rgba(247,147,26,0.25)}
+.state-guide-link{display:inline-block;margin-top:0.4rem;font-size:0.7rem;color:var(--accent)}
+
+/* Info sections */
+.am-callout{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:6px;padding:1.75rem 2rem;margin:2rem 0}
+.am-callout-title{font-family:var(--display);font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:0.5rem}
+.am-callout p{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem}
+.am-callout a.btn,.services-cta a.btn{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block}
+.author-box{display:flex;align-items:flex-start;gap:1rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin:2rem 0}
+.author-avatar{width:44px;height:44px;border-radius:50%;background:var(--accent-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--display);font-size:1.1rem;color:var(--accent)}
+.author-info strong{font-family:var(--sans);font-size:0.82rem;color:var(--text);display:block;margin-bottom:0.25rem}
+.author-info p{font-family:var(--sans);font-size:0.75rem;color:var(--text-muted);line-height:1.5;margin:0}
+.services-cta{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:6px;padding:1.75rem 2rem;margin:2rem 0}
+.services-cta h3{font-family:var(--display);font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:0.5rem}
+.services-cta p{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem}
+.faq-section{margin:2.5rem 0}
+.faq-section h2{font-family:var(--display);font-size:1.3rem;font-weight:400;color:var(--text);margin-bottom:1.25rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1rem 0}
+.faq-q{font-family:var(--sans);font-size:0.82rem;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.1rem;color:var(--accent);flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:0.8rem;color:var(--text-secondary);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s}
+.faq-item.open .faq-a{max-height:300px;padding-top:0.6rem}
+.disclaimer{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);line-height:1.6;padding:1.25rem;border:1px solid var(--border);border-radius:4px;margin:2rem 0}
+.related-section{margin:2rem 0}
+.related-section h3{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem}
+.related-card{background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem;transition:border-color 0.2s}.related-card:hover{border-color:var(--accent-border)}
+.related-card h4{font-family:var(--display);font-size:0.95rem;font-weight:400;color:var(--text);margin-bottom:0.35rem;line-height:1.3}
+.related-card p{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);margin:0;line-height:1.5}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;margin-top:2rem}
+footer p{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted)}
+footer a{color:var(--text-muted)}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-mark">The <span>Bitcoin</span> Family Office</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" onclick="closeMenu()">Home</a></li>
+    <li><a href="/about/" onclick="closeMenu()">About</a></li>
+    <li><a href="/blog/" onclick="closeMenu()">Research</a></li>
+    <li><a href="/tools/" onclick="closeMenu()">Tools</a></li>
+    <li><a href="/services/" class="nav-cta" onclick="closeMenu()">Services</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <p class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; Bitcoin State Comparison</p>
+  <h1>Bitcoin Estate Planning State Comparison Tool</h1>
+  <p class="page-subtitle">Compare up to 3 states side by side across estate tax, dynasty trust rules, asset protection, RUFADAA adoption, and Bitcoin-specific laws. Select any combination to compare — or use the defaults: Wyoming, South Dakota, and Nevada.</p>
+</div>
+
+<div class="tool-wrap">
+  <div class="selector-area">
+    <h3>Select up to 3 states to compare</h3>
+    <div class="state-selectors">
+      <div class="state-picker">
+        <label>State 1</label>
+        <select id="state1"></select>
+      </div>
+      <div class="state-picker">
+        <label>State 2</label>
+        <select id="state2"></select>
+      </div>
+      <div class="state-picker">
+        <label>State 3 (optional)</label>
+        <select id="state3">
+          <option value="">— No third state —</option>
+        </select>
+      </div>
+    </div>
+    <button class="compare-btn" onclick="compareStates()">Compare States →</button>
+  </div>
+
+  <div id="comparisonResult" style="display:none">
+    <div class="comparison-wrap">
+      <table class="comparison-table" id="compTable">
+      </table>
+    </div>
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:2.5rem 0">
+
+  <div class="author-box">
+    <div class="author-avatar">₿</div>
+    <div class="author-info">
+      <strong>The Bitcoin Family Office</strong>
+      <p>Independent research and advisory for families managing significant Bitcoin wealth. We do not manage assets or sell financial products. Our work is educational and structural — custody architecture, estate planning, tax strategy, and governance.</p>
+    </div>
+  </div>
+
+  <div class="am-callout">
+    <p class="am-callout-title">Bitcoin Mining: The Most Powerful Tax Strategy Available</p>
+    <p>No matter which state you choose for your trust, mining creates deductions that reduce your taxable income and effectively lower your cost basis on accumulated Bitcoin. Abundant Mines has compiled every major Bitcoin mining tax strategy used by family offices.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" class="btn">Explore Bitcoin Mining Tax Strategies →</a>
+  </div>
+
+  <div class="services-cta">
+    <h3>Work With The Bitcoin Family Office</h3>
+    <p>We advise a small number of families on Bitcoin custody architecture, estate planning, tax structuring, and governance. If you're working through these questions for your own family, we'd be glad to talk.</p>
+    <a href="/services/" class="btn">View Our Services →</a>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the best state for a Bitcoin trust?</div>
+      <div class="faq-a">Wyoming, South Dakota, and Nevada are generally the top three. Wyoming has the most Bitcoin-specific legislation. South Dakota has no rule against perpetuities (unlimited trust duration). Nevada offers the strongest asset protection. All three have no state income tax.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do you have to live in a state to form a trust there?</div>
+      <div class="faq-a">No. You can form a trust in any state by appointing a trustee or trust company based in that state. Wyoming, South Dakota, and Nevada all have licensed trust companies that serve non-resident families, giving you access to favorable state law regardless of where you live.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is RUFADAA and why does it matter for Bitcoin?</div>
+      <div class="faq-a">RUFADAA (Revised Uniform Fiduciary Access to Digital Assets Act) governs whether trustees and executors can access digital assets like Bitcoin after death. States that have adopted RUFADAA give fiduciaries legal authority to access accounts and wallets — critical for Bitcoin inheritance.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is a dynasty trust and which states allow them?</div>
+      <div class="faq-a">A dynasty trust holds assets across generations without triggering estate or gift tax at each transfer. South Dakota, Nevada, and Wyoming abolished the rule against perpetuities, allowing unlimited trust duration. Most states limit trusts to 90–1,000 years.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Which states have no estate tax?</div>
+      <div class="faq-a">Most U.S. states have no estate tax — including Wyoming, South Dakota, Nevada, Texas, Florida, Tennessee, Arizona, Colorado, Georgia, and many others. States with estate taxes include Massachusetts ($2M exemption), Oregon ($1M), Washington ($2.19M), Illinois ($4M), and New York ($6.94M), among others.</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> State law data is based on publicly available information as of early 2026 and may not reflect recent legislative changes. This tool is for educational purposes only and does not constitute legal advice. Trust law is complex — consult a qualified estate planning attorney licensed in the relevant state before making decisions.
+  </div>
+
+  <div class="related-section">
+    <h3>Related Reading</h3>
+    <div class="related-grid">
+      <a href="/blog/bitcoin-estate-planning-wyoming.html" class="related-card">
+        <h4>Bitcoin Estate Planning in Wyoming</h4>
+        <p>The most Bitcoin-friendly state — DAO law, SPDI banks, and purpose-built trust statutes.</p>
+      </a>
+      <a href="/blog/bitcoin-estate-planning-south-dakota.html" class="related-card">
+        <h4>Bitcoin Estate Planning in South Dakota</h4>
+        <p>No rule against perpetuities, no state income tax, and a powerful directed trust framework.</p>
+      </a>
+      <a href="/blog/bitcoin-estate-planning-nevada.html" class="related-card">
+        <h4>Bitcoin Estate Planning in Nevada</h4>
+        <p>The strongest asset protection laws in the U.S. — and a favorable trust environment for Bitcoin families.</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 The Bitcoin Family Office. All rights reserved. &nbsp;|&nbsp; <a href="/disclosures">Disclosures</a> &nbsp;|&nbsp; <a href="/about/">About</a></p>
+</footer>
+
+<script>
+var STATES={
+  WY:{name:'Wyoming',abbr:'WY',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'Unlimited (RAP abolished)',rufadaa:true,stateIncomeTax:'0%',assetProtection:'Excellent',btcLaws:'DAO LLC law; SPDI bank charter; digital asset property rights; no BTC capital gains at state level',guideUrl:'/blog/bitcoin-estate-planning-wyoming.html'},
+  SD:{name:'South Dakota',abbr:'SD',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'Unlimited (RAP abolished)',rufadaa:true,stateIncomeTax:'0%',assetProtection:'Excellent',btcLaws:'No rule against perpetuities; directed trust statute; domestic asset protection trust (DAPT); trust decanting',guideUrl:'/blog/bitcoin-estate-planning-south-dakota.html'},
+  NV:{name:'Nevada',abbr:'NV',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'Unlimited (365 yr rule waived)',rufadaa:true,stateIncomeTax:'0%',assetProtection:'Excellent',btcLaws:'Strongest DAPT laws in U.S.; 2-year seasoning period for creditor protection; blockchain technology statutes',guideUrl:'/blog/bitcoin-estate-planning-nevada.html'},
+  TX:{name:'Texas',abbr:'TX',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'300 years',rufadaa:true,stateIncomeTax:'0%',assetProtection:'Good',btcLaws:'Bitcoin rights bill passed (2023); BTC mining protected; no state capital gains tax',guideUrl:'/blog/bitcoin-estate-planning-texas.html'},
+  FL:{name:'Florida',abbr:'FL',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'360 years',rufadaa:true,stateIncomeTax:'0%',assetProtection:'Good',btcLaws:'No CBDC law (2023); no state income/capital gains tax; homestead exemption',guideUrl:'/blog/bitcoin-estate-planning-florida.html'},
+  TN:{name:'Tennessee',abbr:'TN',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'360 years',rufadaa:true,stateIncomeTax:'0%',assetProtection:'Moderate',btcLaws:'No state income tax; trust-friendly reforms; growing Bitcoin mining sector',guideUrl:'/blog/bitcoin-estate-planning-tennessee.html'},
+  AZ:{name:'Arizona',abbr:'AZ',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'500 years',rufadaa:true,stateIncomeTax:'2.5% flat',assetProtection:'Good',btcLaws:'RUFADAA adopted; crypto custody reform proposals; flat income tax',guideUrl:'/blog/bitcoin-estate-planning-arizona.html'},
+  CO:{name:'Colorado',abbr:'CO',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'1,000 years',rufadaa:true,stateIncomeTax:'4.4%',assetProtection:'Moderate',btcLaws:'RUFADAA adopted; crypto-forward regulatory sandbox; growing mining community',guideUrl:'/blog/bitcoin-estate-planning-colorado.html'},
+  NY:{name:'New York',abbr:'NY',estateTax:true,estateExemption:6940000,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~21 years + 21 yrs (RAP applies)',rufadaa:true,stateIncomeTax:'Up to 10.9%',assetProtection:'Poor',btcLaws:'BitLicense regime (most restrictive in U.S.); estate tax on estates above $6.94M',guideUrl:'/blog/bitcoin-estate-planning-new-york.html'},
+  CA:{name:'California',abbr:'CA',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'90 years',rufadaa:true,stateIncomeTax:'Up to 13.3%',assetProtection:'Poor',btcLaws:'No state estate tax but very high income/capital gains tax; DFPI licensing; no CBDC ban',guideUrl:'/blog/bitcoin-estate-planning-california.html'},
+  MA:{name:'Massachusetts',abbr:'MA',estateTax:true,estateExemption:2000000,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'5% flat (9% short-term gains)',assetProtection:'Moderate',btcLaws:'Estate tax kicks in at $2M (very low); trust siting in WY/SD commonly used',guideUrl:'/blog/bitcoin-estate-planning-massachusetts.html'},
+  OR:{name:'Oregon',abbr:'OR',estateTax:true,estateExemption:1000000,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'Up to 9.9%',assetProtection:'Moderate',btcLaws:'Estate tax kicks in at $1M (lowest in U.S.); high income tax; trust siting in WY/SD strongly recommended',guideUrl:'/blog/bitcoin-estate-planning-oregon.html'},
+  WA:{name:'Washington',abbr:'WA',estateTax:true,estateExemption:2193000,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'150 years',rufadaa:true,stateIncomeTax:'0% (7% capital gains tax on gains >$262K)',assetProtection:'Moderate',btcLaws:'Estate tax on estates above $2.19M; capital gains tax since 2023; RUFADAA adopted',guideUrl:'/blog/bitcoin-estate-planning-washington.html'},
+  IL:{name:'Illinois',abbr:'IL',estateTax:true,estateExemption:4000000,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~360 years',rufadaa:true,stateIncomeTax:'4.95%',assetProtection:'Moderate',btcLaws:'Estate tax above $4M; relatively moderate income tax; Chicago crypto hub',guideUrl:'/blog/bitcoin-estate-planning-illinois.html'},
+  CT:{name:'Connecticut',abbr:'CT',estateTax:true,estateExemption:13610000,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'Up to 6.99%',assetProtection:'Moderate',btcLaws:'Estate tax matches federal exemption ($13.61M in 2026); unified credit applies',guideUrl:'/blog/bitcoin-estate-planning-connecticut.html'},
+  MN:{name:'Minnesota',abbr:'MN',estateTax:true,estateExemption:3000000,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'Up to 9.85%',assetProtection:'Moderate',btcLaws:'Estate tax above $3M; high income tax; agricultural wealth intersection with Bitcoin',guideUrl:'/blog/bitcoin-estate-planning-minnesota.html'},
+  PA:{name:'Pennsylvania',abbr:'PA',estateTax:false,estateExemption:null,inheritanceTax:true,inheritanceRate:0.15,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'3.07%',assetProtection:'Moderate',btcLaws:'Inheritance tax (15% to non-spouse/non-lineal); no estate tax; RUFADAA adopted',guideUrl:'/blog/bitcoin-estate-planning-pennsylvania.html'},
+  MD:{name:'Maryland',abbr:'MD',estateTax:true,estateExemption:5000000,inheritanceTax:true,inheritanceRate:0.10,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'Up to 5.75%',assetProtection:'Moderate',btcLaws:'Both estate AND inheritance tax; one of only two states with both; trust siting elsewhere strongly recommended',guideUrl:'/blog/bitcoin-estate-planning-maryland.html'},
+  NJ:{name:'New Jersey',abbr:'NJ',estateTax:false,estateExemption:null,inheritanceTax:true,inheritanceRate:0.16,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'Up to 10.75%',assetProtection:'Poor',btcLaws:'Inheritance tax (up to 16% for non-class-A beneficiaries); no estate tax since 2018; high income tax',guideUrl:'/blog/bitcoin-estate-planning-new-jersey.html'},
+  VA:{name:'Virginia',abbr:'VA',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'Up to 5.75%',assetProtection:'Moderate',btcLaws:'No estate or inheritance tax; RUFADAA adopted; growing crypto economy in Northern VA',guideUrl:'/blog/bitcoin-estate-planning-virginia.html'},
+  GA:{name:'Georgia',abbr:'GA',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'5.49%',assetProtection:'Moderate',btcLaws:'No estate or inheritance tax; RUFADAA adopted; flat income tax reform underway',guideUrl:'/blog/bitcoin-estate-planning-georgia.html'},
+  NC:{name:'North Carolina',abbr:'NC',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'4.5%',assetProtection:'Moderate',btcLaws:'No estate or inheritance tax; declining income tax rate; RUFADAA adopted',guideUrl:'/blog/bitcoin-estate-planning-north-carolina.html'},
+  WI:{name:'Wisconsin',abbr:'WI',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'Up to 7.65%',assetProtection:'Moderate',btcLaws:'No estate or inheritance tax; RUFADAA adopted; agriculture-Bitcoin wealth intersection',guideUrl:'/blog/bitcoin-estate-planning-wisconsin.html'},
+  OH:{name:'Ohio',abbr:'OH',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'360 years',rufadaa:true,stateIncomeTax:'Up to 3.99%',assetProtection:'Moderate',btcLaws:'No estate or inheritance tax; RUFADAA adopted; growing crypto regulatory clarity',guideUrl:'/blog/bitcoin-estate-planning-ohio.html'},
+  MI:{name:'Michigan',abbr:'MI',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'4.25%',assetProtection:'Moderate',btcLaws:'No estate or inheritance tax; RUFADAA adopted; Detroit Bitcoin community',guideUrl:'/blog/bitcoin-estate-planning-michigan.html'},
+  IN:{name:'Indiana',abbr:'IN',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'3.15%',assetProtection:'Moderate',btcLaws:'Inheritance tax repealed 2013; no estate tax; RUFADAA adopted; low income tax',guideUrl:'/blog/bitcoin-estate-planning-indiana.html'},
+  UT:{name:'Utah',abbr:'UT',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'1,000 years',rufadaa:true,stateIncomeTax:'4.65%',assetProtection:'Moderate',btcLaws:'No estate or inheritance tax; RUFADAA adopted; Beehive capital of tech/crypto',guideUrl:'/blog/bitcoin-estate-planning-utah.html'},
+  MO:{name:'Missouri',abbr:'MO',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'Up to 4.95%',assetProtection:'Moderate',btcLaws:'No estate or inheritance tax; RUFADAA adopted',guideUrl:'/blog/bitcoin-estate-planning-missouri.html'},
+  SC:{name:'South Carolina',abbr:'SC',estateTax:false,estateExemption:null,inheritanceTax:false,inheritanceRate:null,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'Up to 6.4%',assetProtection:'Moderate',btcLaws:'No estate or inheritance tax; RUFADAA adopted; retiree-friendly state',guideUrl:'/blog/bitcoin-estate-planning-south-carolina.html'},
+  KY:{name:'Kentucky',abbr:'KY',estateTax:false,estateExemption:null,inheritanceTax:true,inheritanceRate:0.16,dynastyMaxTerm:'~90 years',rufadaa:true,stateIncomeTax:'4.5%',assetProtection:'Moderate',btcLaws:'Inheritance tax (up to 16% for non-exempt beneficiaries); RUFADAA adopted; mining-friendly energy costs',guideUrl:'/blog/bitcoin-estate-planning-kentucky.html'}
+};
+
+var STATE_KEYS=Object.keys(STATES);
+
+function populateSelects(){
+  var opts=STATE_KEYS.map(function(k){return '<option value="'+k+'">'+STATES[k].name+'</option>';}).join('');
+  document.getElementById('state1').innerHTML=opts;
+  document.getElementById('state2').innerHTML=opts;
+  document.getElementById('state3').innerHTML='<option value="">— No third state —</option>'+opts;
+  // Set defaults: WY, SD, NV
+  document.getElementById('state1').value='WY';
+  document.getElementById('state2').value='SD';
+  document.getElementById('state3').value='NV';
+}
+
+function toggleMenu(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('navLinks').classList.toggle('open');document.body.style.overflow=document.getElementById('navLinks').classList.contains('open')?'hidden':'';}
+function closeMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('navLinks').classList.remove('open');document.body.style.overflow='';}
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+
+function badge(val,good,neutral){
+  if(val===true) return '<span class="badge yes">Yes</span>';
+  if(val===false) return '<span class="badge no">No</span>';
+  return val;
+}
+
+function compareStates(){
+  var s1key=document.getElementById('state1').value;
+  var s2key=document.getElementById('state2').value;
+  var s3key=document.getElementById('state3').value;
+  var states=[STATES[s1key],STATES[s2key]];
+  if(s3key) states.push(STATES[s3key]);
+
+  gtag('event','tool_calculate',{tool:'state_comparison',states:[s1key,s2key,s3key].filter(Boolean).join(',')});
+
+  var colCount=states.length;
+  var stateHeaders=states.map(function(s){return '<th class="state-header">'+s.name+'</th>';}).join('');
+
+  function row(label,fn,cssClass){
+    var cells=states.map(function(s){var v=fn(s);return '<td class="'+(cssClass?cssClass(s,v):'')+'">'+v+'</td>';}).join('');
+    return '<tr><td class="row-label">'+label+'</td>'+cells+'</tr>';
+  }
+
+  function estateTaxCell(s){
+    if(!s.estateTax) return '<span class="badge yes">None</span> No state estate tax';
+    return '<span class="badge no">Yes</span> Exemption: $'+s.estateExemption.toLocaleString()+'<br><small>Top rate varies by bracket</small>';
+  }
+  function inheritTaxCell(s){
+    if(!s.inheritanceTax) return '<span class="badge yes">None</span>';
+    return '<span class="badge no">Yes</span> Up to '+Math.round(s.inheritanceRate*100)+'%';
+  }
+  function dynastyCell(s){
+    if(s.dynastyMaxTerm.includes('Unlimited')) return '<span class="badge yes">Unlimited</span>';
+    return s.dynastyMaxTerm;
+  }
+  function rufadaaCell(s){return badge(s.rufadaa);}
+  function incomeCell(s){
+    if(s.stateIncomeTax==='0%') return '<span class="badge yes">0%</span> No state income tax';
+    return s.stateIncomeTax;
+  }
+  function apCell(s){
+    if(s.assetProtection==='Excellent') return '<span class="badge yes">'+s.assetProtection+'</span>';
+    if(s.assetProtection==='Poor') return '<span class="badge no">'+s.assetProtection+'</span>';
+    return '<span class="badge partial">'+s.assetProtection+'</span>';
+  }
+  function guideCell(s){
+    if(s.guideUrl) return '<a href="'+s.guideUrl+'" class="state-guide-link">Read full guide →</a>';
+    return '<span style="color:var(--text-muted);font-size:0.72rem">Guide coming soon</span>';
+  }
+
+  var html='<thead><tr><th style="width:180px">Category</th>'+stateHeaders+'</tr></thead><tbody>';
+  html+='<tr><td class="row-label">State Estate Tax</td>'+states.map(function(s){return '<td>'+estateTaxCell(s)+'</td>';}).join('')+'</tr>';
+  html+='<tr><td class="row-label">Inheritance Tax</td>'+states.map(function(s){return '<td>'+inheritTaxCell(s)+'</td>';}).join('')+'</tr>';
+  html+='<tr><td class="row-label">Dynasty Trust Max Term</td>'+states.map(function(s){return '<td>'+dynastyCell(s)+'</td>';}).join('')+'</tr>';
+  html+='<tr><td class="row-label">RUFADAA Adopted</td>'+states.map(function(s){return '<td>'+rufadaaCell(s)+'</td>';}).join('')+'</tr>';
+  html+='<tr><td class="row-label">State Income Tax Rate</td>'+states.map(function(s){return '<td>'+incomeCell(s)+'</td>';}).join('')+'</tr>';
+  html+='<tr><td class="row-label">Asset Protection Rating</td>'+states.map(function(s){return '<td>'+apCell(s)+'</td>';}).join('')+'</tr>';
+  html+='<tr><td class="row-label">Notable Bitcoin Laws</td>'+states.map(function(s){return '<td style="font-size:0.78rem;line-height:1.6">'+s.btcLaws+'</td>';}).join('')+'</tr>';
+  html+='<tr><td class="row-label">Full State Guide</td>'+states.map(function(s){return '<td>'+guideCell(s)+'</td>';}).join('')+'</tr>';
+  html+='</tbody>';
+
+  document.getElementById('compTable').innerHTML=html;
+  document.getElementById('comparisonResult').style.display='block';
+  document.getElementById('comparisonResult').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// Initialize
+populateSelects();
+// Auto-run comparison on load with defaults
+window.addEventListener('load',function(){compareStates();});
+</script>
+</body>
+</html>

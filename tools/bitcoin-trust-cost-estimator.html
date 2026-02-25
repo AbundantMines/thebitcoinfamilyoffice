@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Trust Setup Cost Estimator | The Bitcoin Family Office</title>
+<meta name="description" content="Estimate how much a Bitcoin trust costs: attorney drafting fees, annual trustee fees, admin costs, and total 10-year ownership cost. Compare against estate tax savings.">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-trust-cost-estimator.html">
+<meta property="og:title" content="Bitcoin Trust Setup Cost Estimator — How Much Does a Bitcoin Trust Cost?">
+<meta property="og:description" content="Estimate attorney fees, trustee costs, and total 10-year cost for different Bitcoin trust types. Compare against potential estate tax savings.">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-trust-cost-estimator.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a Bitcoin trust cost to set up?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bitcoin trust setup costs vary by trust type and complexity. A simple revocable living trust typically costs $3,000–$8,000 in attorney fees. An irrevocable trust runs $8,000–$25,000. A dynasty trust optimized for Bitcoin — particularly in Wyoming or South Dakota — often costs $15,000–$50,000 or more due to the specialized drafting required. Annual trustee and administration fees add 0.1%–1% of trust assets per year."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the cheapest state to set up a Bitcoin trust?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wyoming, South Dakota, Nevada, and Delaware are the most favorable states for Bitcoin trust formation. Wyoming has the most Bitcoin-specific legislation. South Dakota has no rule against perpetuities (unlimited dynasty trust duration). Both states have low trustee fees and strong asset protection laws. You do not need to live in these states to use them — you just need a trustee or trust company based there."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a professional trustee and how much do they charge?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A professional trustee is a licensed trust company or bank that manages the trust as a fiduciary. They typically charge 0.25%–1.0% of trust assets annually, with minimum fees of $2,500–$10,000/year. For Bitcoin trusts, you want a trustee experienced with digital asset custody. Wyoming has several Bitcoin-specialized trust companies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a Bitcoin trust worth the cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For estates above the federal estate tax exemption (~$13.61M), a dynasty trust's cost is typically a small fraction of the estate tax it avoids. A trust costing $50,000–$150,000 over 10 years can prevent hundreds of thousands or millions in estate taxes. The cost-benefit calculation depends on your estate size, state of residence, and expected Bitcoin appreciation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between a revocable and irrevocable Bitcoin trust?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A revocable trust gives you full control and can be changed or revoked during your lifetime, but assets remain in your taxable estate. An irrevocable trust removes assets from your estate for tax purposes but limits your control. For estate tax savings, you generally need an irrevocable structure — either a traditional irrevocable trust, dynasty trust, GRAT, or CRT."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-N8PP20VBTV');
+document.addEventListener('click',function(e){
+  gtag('event','hm_click',{x_pct:Math.round(e.clientX/window.innerWidth*100),y_pct:Math.round(e.clientY/window.innerHeight*100)});
+},{passive:true});
+var _sd={};
+window.addEventListener('scroll',function(){
+  var pct=Math.round((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight*100);
+  [25,50,75,100].forEach(function(m){if(pct>=m&&!_sd[m]){_sd[m]=1;gtag('event','hm_scroll',{depth:m});}});
+},{passive:true});
+</script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0a0a;--bg-elevated:#111111;--bg-card:#0f0f0f;
+  --accent:#f7931a;--accent-dim:rgba(247,147,26,0.10);--accent-border:rgba(247,147,26,0.25);
+  --text:#e8e4de;--text-secondary:#9a958d;--text-muted:#6b6660;
+  --border:rgba(255,255,255,0.06);
+  --display:'Playfair Display',Georgia,serif;--body:'EB Garamond',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;--max-w:800px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:18px;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.8;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}a:hover{opacity:0.8}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-mark{font-family:var(--sans);font-weight:500;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary)}.nav-mark span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;align-items:center;list-style:none}
+.nav-links a{font-family:var(--sans);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);transition:color 0.3s}.nav-links a:hover{color:var(--text);opacity:1}
+.nav-cta{color:var(--accent)!important;border:1px solid var(--accent-border);padding:0.4rem 0.9rem;border-radius:2px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:200}
+.hamburger span{display:block;width:22px;height:1px;background:var(--text-secondary);transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media(max-width:600px){.hamburger{display:flex}.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:150}.nav-links.open{display:flex}.nav-links a{font-size:1rem}}
+.page-header{padding:8rem 2rem 3rem;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border)}
+.breadcrumb{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem}.breadcrumb a{color:var(--text-muted)}.breadcrumb a:hover{color:var(--accent)}
+h1{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:400;line-height:1.2;letter-spacing:-0.01em;margin-bottom:0.75rem}
+.page-subtitle{font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
+.tool-wrap{max-width:var(--max-w);margin:0 auto;padding:2.5rem 2rem 4rem}
+.est-note{background:rgba(247,147,26,0.06);border:1px solid var(--accent-border);border-radius:4px;padding:0.9rem 1.25rem;margin-bottom:1.5rem;font-family:var(--sans);font-size:0.78rem;color:var(--text-secondary);line-height:1.6}
+.calculator-form{background:var(--bg-elevated);border:1px solid var(--border);border-radius:6px;padding:2rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:0.4rem}.field.full{grid-column:1/-1}
+label{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-secondary)}
+.field-hint{font-family:var(--sans);font-size:0.68rem;color:var(--text-muted);margin-top:-0.2rem}
+input,select{background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);color:var(--text);font-family:var(--sans);font-size:0.9rem;padding:0.65rem 0.9rem;border-radius:3px;outline:none;transition:border-color 0.2s;width:100%}
+input:focus,select:focus{border-color:var(--accent-border)}input.error{border-color:rgba(255,80,80,0.5)}
+.error-msg{font-family:var(--sans);font-size:0.7rem;color:#ff6b6b;margin-top:0.2rem;display:none}
+.calc-btn{margin-top:1.5rem;width:100%;padding:0.85rem;background:var(--accent);color:#000;font-family:var(--sans);font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;transition:opacity 0.2s}.calc-btn:hover{opacity:0.88}
+.results-section{margin-top:2rem;display:none}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-bottom:1.5rem}
+.result-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem}
+.result-card.highlight{border-color:var(--accent-border);background:rgba(247,147,26,0.04)}
+.result-card.safe{border-color:rgba(76,175,131,0.3);background:rgba(76,175,131,0.04)}
+.result-label{font-family:var(--sans);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.4rem}
+.result-value{font-family:var(--display);font-size:1.4rem;font-weight:400;color:var(--text);line-height:1.1}
+.result-value.green{color:#4caf83}.result-value.range{font-size:1.1rem}
+.result-sub{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);margin-top:0.3rem}
+/* Comparison table */
+.comparison-table{margin-top:1.5rem;overflow-x:auto}
+.comparison-table table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:0.8rem}
+.comparison-table th{text-align:left;padding:0.6rem 0.85rem;border-bottom:1px solid var(--accent-border);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.68rem}
+.comparison-table td{padding:0.6rem 0.85rem;border-bottom:1px solid var(--border);color:var(--text-secondary)}
+.comparison-table tr:last-child td{border-bottom:none}
+.comparison-table td.highlight{color:var(--text);font-weight:500}
+.trust-type-desc{background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin-top:1.5rem;font-family:var(--sans);font-size:0.8rem;color:var(--text-secondary);line-height:1.7}
+.trust-type-desc strong{color:var(--text);display:block;margin-bottom:0.3rem}
+details{margin-top:1.5rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px}
+summary{padding:1rem 1.25rem;font-family:var(--sans);font-size:0.78rem;color:var(--text-secondary);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::after{content:'▼';font-size:0.6rem;transition:transform 0.2s;color:var(--text-muted)}
+details[open] summary::after{transform:rotate(180deg)}
+.details-body{padding:0 1.25rem 1.25rem;font-family:var(--sans);font-size:0.8rem;color:var(--text-secondary);line-height:1.7}
+.details-body p{margin-bottom:0.6rem}
+.details-body .math-line{font-family:monospace;font-size:0.78rem;background:#1a1a1a;padding:0.25rem 0.6rem;border-radius:2px;margin:0.3rem 0;display:block}
+.am-callout{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:6px;padding:1.75rem 2rem;margin:2rem 0}
+.am-callout-title{font-family:var(--display);font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:0.5rem}
+.am-callout p{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem}
+.am-callout a.btn,.services-cta a.btn{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block}
+.author-box{display:flex;align-items:flex-start;gap:1rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin:2rem 0}
+.author-avatar{width:44px;height:44px;border-radius:50%;background:var(--accent-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--display);font-size:1.1rem;color:var(--accent)}
+.author-info strong{font-family:var(--sans);font-size:0.82rem;color:var(--text);display:block;margin-bottom:0.25rem}
+.author-info p{font-family:var(--sans);font-size:0.75rem;color:var(--text-muted);line-height:1.5;margin:0}
+.services-cta{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:6px;padding:1.75rem 2rem;margin:2rem 0}
+.services-cta h3{font-family:var(--display);font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:0.5rem}
+.services-cta p{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem}
+.faq-section{margin:2.5rem 0}
+.faq-section h2{font-family:var(--display);font-size:1.3rem;font-weight:400;color:var(--text);margin-bottom:1.25rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1rem 0}
+.faq-q{font-family:var(--sans);font-size:0.82rem;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.1rem;color:var(--accent);flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:0.8rem;color:var(--text-secondary);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s}
+.faq-item.open .faq-a{max-height:300px;padding-top:0.6rem}
+.disclaimer{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);line-height:1.6;padding:1.25rem;border:1px solid var(--border);border-radius:4px;margin:2rem 0}
+.related-section{margin:2rem 0}
+.related-section h3{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem}
+.related-card{background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem;transition:border-color 0.2s}.related-card:hover{border-color:var(--accent-border)}
+.related-card h4{font-family:var(--display);font-size:0.95rem;font-weight:400;color:var(--text);margin-bottom:0.35rem;line-height:1.3}
+.related-card p{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);margin:0;line-height:1.5}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;margin-top:2rem}
+footer p{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted)}
+footer a{color:var(--text-muted)}footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-mark">The <span>Bitcoin</span> Family Office</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" onclick="closeMenu()">Home</a></li>
+    <li><a href="/about/" onclick="closeMenu()">About</a></li>
+    <li><a href="/blog/" onclick="closeMenu()">Research</a></li>
+    <li><a href="/tools/" onclick="closeMenu()">Tools</a></li>
+    <li><a href="/services/" class="nav-cta" onclick="closeMenu()">Services</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <p class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; Bitcoin Trust Cost Estimator</p>
+  <h1>Bitcoin Trust Setup Cost Estimator</h1>
+  <p class="page-subtitle">Estimate attorney drafting fees, annual trustee costs, ongoing administration expenses, and total 10-year cost of ownership — then compare against your potential estate tax savings. These are ballpark estimates, not quotes.</p>
+</div>
+
+<div class="tool-wrap">
+
+  <div class="est-note">
+    <strong>Important:</strong> All figures are rough estimates based on market data. Actual fees vary significantly by attorney, trust company, complexity, and state. This tool is for educational comparison only — not a substitute for professional advice or quotes from qualified attorneys.
+  </div>
+
+  <div class="calculator-form">
+    <div class="form-grid">
+      <div class="field">
+        <label for="holdingsValue">Bitcoin Holdings Value ($)</label>
+        <input type="number" id="holdingsValue" placeholder="e.g. 2000000" min="10000" max="1000000000" step="10000">
+        <span class="field-hint">Current total value of BTC to place in trust</span>
+        <span class="error-msg" id="err-holdingsValue">Enter a value of at least $10,000</span>
+      </div>
+      <div class="field">
+        <label for="trustType">Trust Type</label>
+        <select id="trustType">
+          <option value="">Select trust type</option>
+          <option value="revocable">Revocable Living Trust</option>
+          <option value="irrevocable">Irrevocable Trust</option>
+          <option value="dynasty">Dynasty Trust</option>
+          <option value="grat">Grantor Retained Annuity Trust (GRAT)</option>
+          <option value="crt">Charitable Remainder Trust (CRT)</option>
+        </select>
+        <span class="field-hint">Affects drafting complexity and tax treatment</span>
+        <span class="error-msg" id="err-trustType">Please select a trust type</span>
+      </div>
+      <div class="field">
+        <label for="trustState">Trust Situs State</label>
+        <select id="trustState">
+          <option value="wyoming">Wyoming (most Bitcoin-friendly)</option>
+          <option value="southdakota">South Dakota (no rule against perpetuities)</option>
+          <option value="nevada">Nevada (strong asset protection)</option>
+          <option value="delaware">Delaware (established trust law)</option>
+          <option value="other">Other state</option>
+        </select>
+        <span class="field-hint">You don't need to live there — just use a local trustee</span>
+      </div>
+      <div class="field">
+        <label for="proTrustee">Professional Corporate Trustee?</label>
+        <select id="proTrustee">
+          <option value="yes">Yes — hire a licensed trust company</option>
+          <option value="no">No — individual/family trustee</option>
+        </select>
+        <span class="field-hint">Professional trustees charge ongoing fees but add fiduciary protection</span>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculateTrustCost()">Estimate Trust Costs →</button>
+  </div>
+
+  <!-- Results -->
+  <div class="results-section" id="resultsSection3">
+    <div class="trust-type-desc" id="trustTypeDesc"></div>
+    <div class="results-grid" style="margin-top:1.25rem">
+      <div class="result-card">
+        <div class="result-label">Attorney Drafting (Low Estimate)</div>
+        <div class="result-value range" id="res3-attyLow">—</div>
+        <div class="result-sub">Experienced attorney, standard complexity</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Attorney Drafting (High Estimate)</div>
+        <div class="result-value range" id="res3-attyHigh">—</div>
+        <div class="result-sub">Specialist attorney, Bitcoin-specific provisions</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Annual Trustee Fee</div>
+        <div class="result-value range" id="res3-trusteeFee">—</div>
+        <div class="result-sub" id="res3-trusteeFeeSub">—</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Annual Admin / Accounting</div>
+        <div class="result-value range" id="res3-adminFee">—</div>
+        <div class="result-sub">Tax filings, accounting, record-keeping</div>
+      </div>
+      <div class="result-card highlight">
+        <div class="result-label">Total 10-Year Cost (Est.)</div>
+        <div class="result-value" id="res3-total10yr">—</div>
+        <div class="result-sub" id="res3-total10yrSub">Setup + ongoing fees over 10 years</div>
+      </div>
+      <div class="result-card safe">
+        <div class="result-label">Potential Estate Tax Avoided</div>
+        <div class="result-value green" id="res3-taxAvoided">—</div>
+        <div class="result-sub">If assets removed from taxable estate (40% fed. rate)</div>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Cost Category</th>
+            <th>Low Estimate</th>
+            <th>High Estimate</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody id="costTableBody">
+        </tbody>
+      </table>
+    </div>
+
+    <details>
+      <summary>How we calculated this</summary>
+      <div class="details-body" id="mathDetails3"></div>
+    </details>
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:2.5rem 0">
+
+  <div class="author-box">
+    <div class="author-avatar">₿</div>
+    <div class="author-info">
+      <strong>The Bitcoin Family Office</strong>
+      <p>Independent research and advisory for families managing significant Bitcoin wealth. We do not manage assets or sell financial products. Our work is educational and structural — custody architecture, estate planning, tax strategy, and governance.</p>
+    </div>
+  </div>
+
+  <div class="am-callout">
+    <p class="am-callout-title">Bitcoin Mining: The Most Powerful Tax Strategy Available</p>
+    <p>For high-net-worth Bitcoin holders, mining simultaneously generates yield, accumulates BTC, and creates tax offsets through equipment depreciation and operating expense deductions. These deductions can effectively fund trust contributions — moving Bitcoin outside your estate at a lower after-tax cost.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" class="btn">Explore Bitcoin Mining Tax Strategies →</a>
+  </div>
+
+  <div class="services-cta">
+    <h3>Work With The Bitcoin Family Office</h3>
+    <p>We advise a small number of families on Bitcoin custody architecture, estate planning, tax structuring, and governance. If you're working through these questions for your own family, we'd be glad to talk.</p>
+    <a href="/services/" class="btn">View Our Services →</a>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How much does a Bitcoin trust cost to set up?</div>
+      <div class="faq-a">Bitcoin trust setup costs vary by trust type and complexity. A revocable living trust typically costs $3,000–$8,000 in attorney fees. An irrevocable trust runs $8,000–$25,000. A dynasty trust optimized for Bitcoin often costs $15,000–$50,000 or more due to specialized drafting. Annual trustee and administration fees add 0.1%–1% of trust assets per year.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the cheapest state to set up a Bitcoin trust?</div>
+      <div class="faq-a">Wyoming, South Dakota, Nevada, and Delaware are the most favorable states. Wyoming has the most Bitcoin-specific legislation. South Dakota has no rule against perpetuities (unlimited dynasty trust duration). You do not need to live in these states — you just need a trustee or trust company based there.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is a professional trustee and how much do they charge?</div>
+      <div class="faq-a">A professional trustee is a licensed trust company that manages the trust as a fiduciary. They typically charge 0.25%–1.0% of trust assets annually, with minimums of $2,500–$10,000/year. For Bitcoin trusts, you want a trustee experienced with digital asset custody. Wyoming has several Bitcoin-specialized trust companies.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is a Bitcoin trust worth the cost?</div>
+      <div class="faq-a">For estates above the federal exemption (~$13.61M), a dynasty trust's cost is typically a small fraction of the estate tax it avoids. A trust costing $50,000–$150,000 over 10 years can prevent millions in estate taxes. The calculation depends on your estate size, state, and expected Bitcoin appreciation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the difference between a revocable and irrevocable Bitcoin trust?</div>
+      <div class="faq-a">A revocable trust gives you full control and can be changed during your lifetime, but assets remain in your taxable estate. An irrevocable trust removes assets from your estate for tax purposes but limits your control. For estate tax savings, you generally need an irrevocable structure.</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> These are rough estimates for educational and comparative purposes only. They do not constitute legal, tax, or financial advice. Actual attorney fees, trustee fees, and administrative costs vary significantly by jurisdiction, attorney, trust company, complexity, and asset size. Always obtain quotes from qualified professionals. Trust law is complex — the right structure for your situation requires professional analysis.
+  </div>
+
+  <div class="related-section">
+    <h3>Related Reading</h3>
+    <div class="related-grid">
+      <a href="/blog/how-to-set-up-bitcoin-trust.html" class="related-card">
+        <h4>How to Set Up a Bitcoin Trust</h4>
+        <p>Step-by-step guide to establishing a Bitcoin trust — from choosing the right type to executing the succession drill.</p>
+      </a>
+      <a href="/tools/bitcoin-estate-tax-exposure-calculator.html" class="related-card">
+        <h4>Estate Tax Exposure Calculator</h4>
+        <p>Estimate your federal and state estate tax exposure to understand what a trust could save.</p>
+      </a>
+      <a href="/tools/bitcoin-state-comparison.html" class="related-card">
+        <h4>Bitcoin State Comparison Tool</h4>
+        <p>Compare dynasty trust terms, asset protection, and estate tax rules across states.</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 The Bitcoin Family Office. All rights reserved. &nbsp;|&nbsp; <a href="/disclosures">Disclosures</a> &nbsp;|&nbsp; <a href="/about/">About</a></p>
+</footer>
+
+<script>
+// Trust type data
+var TRUST_TYPES={
+  revocable:{
+    name:'Revocable Living Trust',
+    desc:'A revocable trust avoids probate and simplifies asset transfer but does NOT remove assets from your taxable estate. Assets are still included in your gross estate at death. Best for probate avoidance and simplifying succession — not for estate tax reduction.',
+    attyLow:3000,attyHigh:8000,
+    trusteePctLow:0,trusteePctHigh:0,
+    adminLow:500,adminHigh:2000,
+    estateReduction:0,
+    note:'No estate tax benefit — revocable trusts are included in your taxable estate'
+  },
+  irrevocable:{
+    name:'Irrevocable Trust',
+    desc:'An irrevocable trust removes assets from your taxable estate and provides asset protection, but you give up direct control. Distributions to beneficiaries must follow trust terms. Most appropriate for estate tax planning with current-law assets.',
+    attyLow:8000,attyHigh:25000,
+    trusteePctLow:0.0025,trusteePctHigh:0.008,
+    adminLow:2000,adminHigh:6000,
+    estateReduction:1.0,
+    note:'Full removal of contributed assets from taxable estate'
+  },
+  dynasty:{
+    name:'Dynasty Trust',
+    desc:'A dynasty trust is designed to hold assets — including Bitcoin — across multiple generations without triggering estate or gift tax at each generational transfer. Wyoming and South Dakota allow unlimited duration. One of the most powerful structures for Bitcoin wealth preservation.',
+    attyLow:15000,attyHigh:50000,
+    trusteePctLow:0.0025,trusteePctHigh:0.0075,
+    adminLow:3000,adminHigh:10000,
+    estateReduction:1.0,
+    note:'Removes Bitcoin from estate permanently; grows tax-free across generations'
+  },
+  grat:{
+    name:'Grantor Retained Annuity Trust (GRAT)',
+    desc:'A GRAT allows you to transfer appreciation above the IRS hurdle rate (7520 rate) to beneficiaries gift-tax-free. Works best in low-interest-rate environments and for assets expected to significantly appreciate. Annuity payments return to you over the trust term.',
+    attyLow:10000,attyHigh:30000,
+    trusteePctLow:0.002,trusteePctHigh:0.008,
+    adminLow:2500,adminHigh:7500,
+    estateReduction:0.6,
+    note:'Transfers appreciation above IRS 7520 rate; actual savings depend on Bitcoin appreciation'
+  },
+  crt:{
+    name:'Charitable Remainder Trust (CRT)',
+    desc:'A CRT provides an income stream to you or beneficiaries for a term, then distributes the remainder to charity. Useful for diversifying a concentrated Bitcoin position without immediate capital gains tax. Generates a charitable deduction at setup. The "family" portion goes to charity at termination.',
+    attyLow:8000,attyHigh:20000,
+    trusteePctLow:0.002,trusteePctHigh:0.01,
+    adminLow:2000,adminHigh:5000,
+    estateReduction:0.5,
+    note:'Estate reduction depends on charitable deduction amount and distribution structure'
+  }
+};
+
+var STATE_BONUS={
+  wyoming:{modifier:1.0,note:'Wyoming: Most Bitcoin-specific trust law; LLC-wrapped custody; no state income tax'},
+  southdakota:{modifier:0.95,note:'South Dakota: No rule against perpetuities (unlimited dynasty term); no state income tax; established directed trust law'},
+  nevada:{modifier:0.98,note:'Nevada: Strong asset protection; no state income tax; favorable spendthrift provisions'},
+  delaware:{modifier:1.05,note:'Delaware: Most established trust law; many trust companies; slight premium for complex structures'},
+  other:{modifier:1.2,note:'Other state: May have higher attorney fees; fewer Bitcoin-specialized attorneys; potentially less favorable trust law'}
+};
+
+function toggleMenu(){
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('navLinks').classList.toggle('open');
+  document.body.style.overflow=document.getElementById('navLinks').classList.contains('open')?'hidden':'';
+}
+function closeMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navLinks').classList.remove('open');
+  document.body.style.overflow='';
+}
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+function fmt(n){return '$'+Math.round(n).toLocaleString('en-US');}
+function fmtRange(lo,hi){return fmt(lo)+' – '+fmt(hi);}
+
+function calculateTrustCost(){
+  var holdingsValue=parseFloat(document.getElementById('holdingsValue').value);
+  var trustTypeKey=document.getElementById('trustType').value;
+  var stateKey=document.getElementById('trustState').value;
+  var proTrustee=document.getElementById('proTrustee').value==='yes';
+
+  var ok=true;
+  if(isNaN(holdingsValue)||holdingsValue<10000){document.getElementById('holdingsValue').classList.add('error');document.getElementById('err-holdingsValue').style.display='block';ok=false;}
+  else{document.getElementById('holdingsValue').classList.remove('error');document.getElementById('err-holdingsValue').style.display='none';}
+  if(!trustTypeKey){document.getElementById('trustType').classList.add('error');document.getElementById('err-trustType').style.display='block';ok=false;}
+  else{document.getElementById('trustType').classList.remove('error');document.getElementById('err-trustType').style.display='none';}
+  if(!ok) return;
+
+  gtag('event','tool_calculate',{tool:'trust_cost_estimator'});
+
+  var tt=TRUST_TYPES[trustTypeKey];
+  var sb=STATE_BONUS[stateKey];
+
+  var attyLow=Math.round(tt.attyLow*sb.modifier);
+  var attyHigh=Math.round(tt.attyHigh*sb.modifier);
+
+  // Annual trustee fee
+  var trusteeFeeMin,trusteeFeeMax;
+  if(proTrustee&&tt.trusteePctLow>0){
+    trusteeFeeMin=Math.max(holdingsValue*tt.trusteePctLow,3000);
+    trusteeFeeMax=Math.max(holdingsValue*tt.trusteePctHigh,5000);
+  } else if(proTrustee){
+    trusteeFeeMin=1500;trusteeFeeMax=3000;
+  } else {
+    trusteeFeeMin=0;trusteeFeeMax=500; // token/admin support
+  }
+
+  var adminLow=tt.adminLow;
+  var adminHigh=tt.adminHigh;
+
+  // 10-year total
+  var total10Low=attyLow+(trusteeFeeMin+adminLow)*10;
+  var total10High=attyHigh+(trusteeFeeMax+adminHigh)*10;
+
+  var taxAvoided=holdingsValue*tt.estateReduction*0.40;
+
+  document.getElementById('res3-attyLow').textContent=fmt(attyLow);
+  document.getElementById('res3-attyHigh').textContent=fmt(attyHigh);
+  document.getElementById('res3-trusteeFee').textContent=proTrustee&&tt.trusteePctLow>0?fmtRange(trusteeFeeMin,trusteeFeeMax)+'/yr':proTrustee?fmtRange(trusteeFeeMin,trusteeFeeMax)+'/yr':'$0 – $500/yr';
+  document.getElementById('res3-trusteeFeeSub').textContent=proTrustee?'Professional corporate trustee ('+Math.round(tt.trusteePctLow*100*10)/10+'%–'+Math.round(tt.trusteePctHigh*100*10)/10+'% of assets)':'Individual/family trustee — no trustee fee';
+  document.getElementById('res3-adminFee').textContent=fmtRange(adminLow,adminHigh)+'/yr';
+  document.getElementById('res3-total10yr').textContent=fmtRange(total10Low,total10High);
+  document.getElementById('res3-total10yrSub').textContent='Setup + 10 yrs annual fees';
+  document.getElementById('res3-taxAvoided').textContent=fmt(taxAvoided);
+
+  document.getElementById('trustTypeDesc').innerHTML='<strong>'+tt.name+'</strong>'+tt.desc+'<br><br><em style="font-size:0.75rem;color:var(--accent)">'+tt.note+'</em><br><br><em style="font-size:0.75rem">State note: '+sb.note+'</em>';
+
+  // Table
+  var rows=[
+    ['Attorney drafting (setup)',fmt(attyLow),fmt(attyHigh),'One-time; billed at completion'],
+    ['Annual trustee fees',fmt(trusteeFeeMin)+'/yr',fmt(trusteeFeeMax)+'/yr',proTrustee?'Corporate trustee':'Individual trustee'],
+    ['Annual admin & accounting',fmt(adminLow)+'/yr',fmt(adminHigh)+'/yr','Tax filings, record-keeping, reporting'],
+    ['Custody setup (est.)',trustTypeKey==='revocable'?'$500 – $2,000':'$1,000 – $5,000',trustTypeKey==='revocable'?'$500 – $2,000':'$1,000 – $5,000','Multisig or institutional custody arrangement'],
+    ['10-year total (all-in)',fmt(total10Low),fmt(total10High),'Setup + 10 years of ongoing fees'],
+    ['Potential estate tax avoided','—',fmt(taxAvoided),'At 40% federal rate on removed assets']
+  ];
+  document.getElementById('costTableBody').innerHTML=rows.map(function(r){
+    return '<tr><td class="highlight">'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td></tr>';
+  }).join('');
+
+  document.getElementById('mathDetails3').innerHTML=`
+    <p><strong>Attorney fee calculation</strong></p>
+    <span class="math-line">Base ${tt.name} drafting: ${fmtRange(tt.attyLow,tt.attyHigh)}</span>
+    <span class="math-line">State modifier (${stateKey}): ×${sb.modifier} → ${fmtRange(attyLow,attyHigh)}</span>
+    <p style="margin-top:0.75rem"><strong>Annual trustee fees</strong></p>
+    <span class="math-line">${proTrustee&&tt.trusteePctLow>0?'Trust assets: '+fmt(holdingsValue)+' × '+Math.round(tt.trusteePctLow*10000)/100+'%–'+Math.round(tt.trusteePctHigh*10000)/100+'% = '+fmtRange(trusteeFeeMin,trusteeFeeMax)+'/yr':'Individual trustee: minimal or $0'}</span>
+    <p style="margin-top:0.75rem"><strong>Annual admin & accounting</strong></p>
+    <span class="math-line">Estimated: ${fmtRange(adminLow,adminHigh)}/yr (varies by complexity)</span>
+    <p style="margin-top:0.75rem"><strong>10-year total</strong></p>
+    <span class="math-line">Setup: ${fmtRange(attyLow,attyHigh)}</span>
+    <span class="math-line">10 years ongoing: (${fmtRange(trusteeFeeMin,trusteeFeeMax)} + ${fmtRange(adminLow,adminHigh)}) × 10</span>
+    <span class="math-line">Total: ${fmtRange(total10Low,total10High)}</span>
+    <p style="margin-top:0.75rem"><strong>Estate tax savings</strong></p>
+    <span class="math-line">Assets removed: ${fmt(holdingsValue)} × ${Math.round(tt.estateReduction*100)}% estate reduction = ${fmt(holdingsValue*tt.estateReduction)}</span>
+    <span class="math-line">Federal estate tax avoided (40%): ${fmt(taxAvoided)}</span>
+    <p style="margin-top:0.75rem;color:var(--text-muted);font-size:0.72rem;">Cost-benefit: For every dollar spent on trust costs, approximately ${taxAvoided>0?'$'+Math.round(taxAvoided/((total10Low+total10High)/2)*10)/10:' N/A'} in estate tax is avoided (rough estimate). Figures do not include Bitcoin appreciation over time, which would increase the tax savings.</p>
+  `;
+
+  document.getElementById('resultsSection3').style.display='block';
+  document.getElementById('resultsSection3').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Estate Tax Exposure Calculator | The Bitcoin Family Office</title>
+<meta name="description" content="Estimate your federal and state estate tax exposure on Bitcoin holdings. Model the TCJA sunset, state-specific rates, and potential dynasty trust savings. Free calculator.">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-estate-tax-exposure-calculator.html">
+<meta property="og:title" content="Bitcoin Estate Tax Exposure Calculator">
+<meta property="og:description" content="Estimate federal and state estate tax exposure on Bitcoin holdings — and potential savings from dynasty trust strategies.">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-estate-tax-exposure-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Bitcoin subject to estate tax?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Bitcoin is treated as property for federal estate tax purposes. Its fair market value on the date of death is included in your gross estate. If your taxable estate exceeds the federal exemption ($13.61M per individual in 2026), the excess is taxed at 40%. Married couples can combine exemptions to shelter up to $27.22M."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the TCJA estate tax sunset?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Tax Cuts and Jobs Act of 2017 doubled the federal estate tax exemption. That doubling is scheduled to sunset after 2025, cutting the exemption roughly in half — from approximately $13.61M to approximately $7M per person (indexed for inflation). If the sunset occurs, many more estates will face estate tax."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which states have estate taxes on Bitcoin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "As of 2026, 12 states plus the District of Columbia impose estate taxes: Connecticut, Hawaii, Illinois, Maine, Maryland, Massachusetts, Minnesota, New York, Oregon, Rhode Island, Vermont, and Washington. Several others (Iowa, Kentucky, Maryland, Nebraska, New Jersey, Pennsylvania) have inheritance taxes. State exemptions are often much lower than the federal exemption."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does a dynasty trust save estate taxes on Bitcoin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A dynasty trust removes assets from your taxable estate permanently. Bitcoin placed in a properly structured dynasty trust — ideally in states like Wyoming, South Dakota, or Nevada — can pass to multiple generations without triggering estate or gift tax at each transfer. The trust assets grow outside of your estate, compounding the tax benefit over time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the federal estate tax rate on Bitcoin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The federal estate tax rate is 40% on the taxable estate above the exemption amount. For 2026, the exemption is $13.61M per individual. A married couple can shelter up to $27.22M using portability. Estates above this threshold face a 40% tax on the excess, which can be devastating for illiquid Bitcoin holdings."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-N8PP20VBTV');
+document.addEventListener('click',function(e){
+  gtag('event','hm_click',{x_pct:Math.round(e.clientX/window.innerWidth*100),y_pct:Math.round(e.clientY/window.innerHeight*100)});
+},{passive:true});
+var _sd={};
+window.addEventListener('scroll',function(){
+  var pct=Math.round((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight*100);
+  [25,50,75,100].forEach(function(m){if(pct>=m&&!_sd[m]){_sd[m]=1;gtag('event','hm_scroll',{depth:m});}});
+},{passive:true});
+</script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+  data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0a0a;--bg-elevated:#111111;--bg-card:#0f0f0f;
+  --accent:#f7931a;--accent-dim:rgba(247,147,26,0.10);--accent-border:rgba(247,147,26,0.25);
+  --text:#e8e4de;--text-secondary:#9a958d;--text-muted:#6b6660;
+  --border:rgba(255,255,255,0.06);
+  --display:'Playfair Display',Georgia,serif;
+  --body:'EB Garamond',Georgia,serif;
+  --sans:'Inter',-apple-system,sans-serif;
+  --max-w:780px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:18px;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.8;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+a:hover{opacity:0.8}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-mark{font-family:var(--sans);font-weight:500;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary)}
+.nav-mark span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;align-items:center;list-style:none}
+.nav-links a{font-family:var(--sans);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);transition:color 0.3s}
+.nav-links a:hover{color:var(--text);opacity:1}
+.nav-cta{color:var(--accent)!important;border:1px solid var(--accent-border);padding:0.4rem 0.9rem;border-radius:2px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:200}
+.hamburger span{display:block;width:22px;height:1px;background:var(--text-secondary);transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media(max-width:600px){
+  .hamburger{display:flex}
+  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:150}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:1rem}
+}
+.page-header{padding:8rem 2rem 3rem;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border)}
+.breadcrumb{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem}
+.breadcrumb a{color:var(--text-muted)}
+.breadcrumb a:hover{color:var(--accent)}
+h1{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:400;line-height:1.2;letter-spacing:-0.01em;margin-bottom:0.75rem}
+.page-subtitle{font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
+.tool-wrap{max-width:var(--max-w);margin:0 auto;padding:2.5rem 2rem 4rem}
+
+/* Warning bar */
+.warning-bar{background:rgba(247,147,26,0.08);border:1px solid var(--accent-border);border-radius:4px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-family:var(--sans);font-size:0.78rem;color:var(--text-secondary);line-height:1.6}
+.warning-bar strong{color:var(--accent)}
+
+.calculator-form{background:var(--bg-elevated);border:1px solid var(--border);border-radius:6px;padding:2rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:0.4rem}
+label{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-secondary)}
+.field-hint{font-family:var(--sans);font-size:0.68rem;color:var(--text-muted);margin-top:-0.2rem}
+input,select{background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);color:var(--text);font-family:var(--sans);font-size:0.9rem;padding:0.65rem 0.9rem;border-radius:3px;outline:none;transition:border-color 0.2s;width:100%}
+input:focus,select:focus{border-color:var(--accent-border)}
+input.error,select.error{border-color:rgba(255,80,80,0.5)}
+.error-msg{font-family:var(--sans);font-size:0.7rem;color:#ff6b6b;margin-top:0.2rem;display:none}
+.calc-btn{margin-top:1.5rem;width:100%;padding:0.85rem;background:var(--accent);color:#000;font-family:var(--sans);font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;transition:opacity 0.2s}
+.calc-btn:hover{opacity:0.88}
+.results-section{margin-top:2rem;display:none}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:1.5rem}
+.result-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem}
+.result-card.danger{border-color:rgba(255,80,80,0.3);background:rgba(255,80,80,0.04)}
+.result-card.highlight{border-color:var(--accent-border);background:rgba(247,147,26,0.04)}
+.result-card.safe{border-color:rgba(76,175,131,0.3);background:rgba(76,175,131,0.04)}
+.result-label{font-family:var(--sans);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.4rem}
+.result-value{font-family:var(--display);font-size:1.5rem;font-weight:400;color:var(--text);line-height:1.1}
+.result-value.red{color:#ff6b6b}
+.result-value.green{color:#4caf83}
+.result-sub{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);margin-top:0.3rem}
+.state-link-box{background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1rem 1.25rem;margin-top:1rem;font-family:var(--sans);font-size:0.8rem;color:var(--text-secondary)}
+.state-link-box a{color:var(--accent)}
+details{margin-top:1.5rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px}
+summary{padding:1rem 1.25rem;font-family:var(--sans);font-size:0.78rem;letter-spacing:0.04em;color:var(--text-secondary);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::after{content:'▼';font-size:0.6rem;transition:transform 0.2s;color:var(--text-muted)}
+details[open] summary::after{transform:rotate(180deg)}
+.details-body{padding:0 1.25rem 1.25rem;font-family:var(--sans);font-size:0.8rem;color:var(--text-secondary);line-height:1.7}
+.details-body p{margin-bottom:0.6rem}
+.details-body .math-line{font-family:monospace;font-size:0.78rem;background:#1a1a1a;padding:0.25rem 0.6rem;border-radius:2px;margin:0.3rem 0;display:block}
+.am-callout{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:6px;padding:1.75rem 2rem;margin:2rem 0}
+.am-callout-title{font-family:var(--display);font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:0.5rem}
+.am-callout p{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem}
+.am-callout a.btn{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block}
+.author-box{display:flex;align-items:flex-start;gap:1rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin:2rem 0}
+.author-avatar{width:44px;height:44px;border-radius:50%;background:var(--accent-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--display);font-size:1.1rem;color:var(--accent)}
+.author-info strong{font-family:var(--sans);font-size:0.82rem;color:var(--text);display:block;margin-bottom:0.25rem}
+.author-info p{font-family:var(--sans);font-size:0.75rem;color:var(--text-muted);line-height:1.5;margin:0}
+.services-cta{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:6px;padding:1.75rem 2rem;margin:2rem 0}
+.services-cta h3{font-family:var(--display);font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:0.5rem}
+.services-cta p{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem}
+.services-cta a.btn{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block}
+.faq-section{margin:2.5rem 0}
+.faq-section h2{font-family:var(--display);font-size:1.3rem;font-weight:400;color:var(--text);margin-bottom:1.25rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1rem 0}
+.faq-q{font-family:var(--sans);font-size:0.82rem;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.1rem;color:var(--accent);flex-shrink:0;transition:transform 0.2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:0.8rem;color:var(--text-secondary);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s}
+.faq-item.open .faq-a{max-height:300px;padding-top:0.6rem}
+.disclaimer{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);line-height:1.6;padding:1.25rem;border:1px solid var(--border);border-radius:4px;margin:2rem 0}
+.related-section{margin:2rem 0}
+.related-section h3{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem}
+.related-card{background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem;transition:border-color 0.2s}
+.related-card:hover{border-color:var(--accent-border)}
+.related-card h4{font-family:var(--display);font-size:0.95rem;font-weight:400;color:var(--text);margin-bottom:0.35rem;line-height:1.3}
+.related-card p{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);margin:0;line-height:1.5}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;margin-top:2rem}
+footer p{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted)}
+footer a{color:var(--text-muted)}
+footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-mark">The <span>Bitcoin</span> Family Office</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" onclick="closeMenu()">Home</a></li>
+    <li><a href="/about/" onclick="closeMenu()">About</a></li>
+    <li><a href="/blog/" onclick="closeMenu()">Research</a></li>
+    <li><a href="/tools/" onclick="closeMenu()">Tools</a></li>
+    <li><a href="/services/" class="nav-cta" onclick="closeMenu()">Services</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <p class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; Bitcoin Estate Tax Calculator</p>
+  <h1>Bitcoin Estate Tax Exposure Calculator</h1>
+  <p class="page-subtitle">Estimate your federal and state estate tax liability on Bitcoin holdings — and model the impact of the TCJA exemption sunset. All calculations are client-side. Nothing leaves your browser.</p>
+</div>
+
+<div class="tool-wrap">
+
+  <div class="warning-bar">
+    <strong>⚠ TCJA Sunset Alert:</strong> The federal estate tax exemption is scheduled to drop from ~$13.61M to ~$7M per person after 2025 if Congress does not act. For married couples, this halves the combined shelter from $27.22M to ~$14M. If your estate is between these levels, planning window is now.
+  </div>
+
+  <div class="calculator-form">
+    <div class="form-grid">
+      <div class="field">
+        <label for="btcHoldings">BTC Holdings (amount)</label>
+        <input type="number" id="btcHoldings" placeholder="e.g. 10" min="0.01" max="1000000" step="0.01">
+        <span class="field-hint">Total BTC you hold across all accounts</span>
+        <span class="error-msg" id="err-btcHoldings">Enter a valid BTC amount (0.01+)</span>
+      </div>
+      <div class="field">
+        <label for="btcPrice2">BTC Price at Death ($)</label>
+        <input type="number" id="btcPrice2" placeholder="e.g. 95000" min="1000" max="10000000" step="1000">
+        <span class="field-hint">Estimate for estate valuation purposes</span>
+        <span class="error-msg" id="err-btcPrice2">Enter a valid BTC price ($1,000+)</span>
+      </div>
+      <div class="field">
+        <label for="otherAssets">Other Taxable Estate Assets ($)</label>
+        <input type="number" id="otherAssets" placeholder="e.g. 2000000" min="0" max="1000000000" step="10000" value="0">
+        <span class="field-hint">Real estate, securities, business interests, etc.</span>
+        <span class="error-msg" id="err-otherAssets">Enter a valid amount (0+)</span>
+      </div>
+      <div class="field">
+        <label for="maritalStatus">Marital Status</label>
+        <select id="maritalStatus">
+          <option value="married">Married (portability available)</option>
+          <option value="single">Single / Widowed</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="stateResidence">State of Residence</label>
+        <select id="stateResidence">
+          <option value="none">No state estate tax</option>
+          <option value="CT">Connecticut</option>
+          <option value="HI">Hawaii</option>
+          <option value="IL">Illinois</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MN">Minnesota</option>
+          <option value="NY">New York</option>
+          <option value="OR">Oregon</option>
+          <option value="RI">Rhode Island</option>
+          <option value="VT">Vermont</option>
+          <option value="WA">Washington</option>
+          <option value="DC">Washington, D.C.</option>
+          <option value="IA">Iowa (inheritance tax)</option>
+          <option value="KY">Kentucky (inheritance tax)</option>
+          <option value="NE">Nebraska (inheritance tax)</option>
+          <option value="NJ">New Jersey (inheritance tax)</option>
+          <option value="PA">Pennsylvania (inheritance tax)</option>
+        </select>
+        <span class="field-hint">Only states with estate or inheritance taxes listed</span>
+      </div>
+      <div class="field">
+        <label for="tcjaSunset">TCJA Exemption Scenario</label>
+        <select id="tcjaSunset">
+          <option value="current">Current law ($13.61M/person, 2026)</option>
+          <option value="sunset">TCJA sunsets (~$7M/person)</option>
+        </select>
+        <span class="field-hint">Model the impact of potential exemption reduction</span>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculateEstate()">Estimate My Estate Tax Exposure →</button>
+  </div>
+
+  <!-- Results -->
+  <div class="results-section" id="resultsSection2">
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-label">Total Bitcoin Value</div>
+        <div class="result-value" id="res2-btcValue">—</div>
+        <div class="result-sub" id="res2-btcSub">—</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Total Gross Estate</div>
+        <div class="result-value" id="res2-grossEstate">—</div>
+        <div class="result-sub">BTC + other taxable assets</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Federal Exemption Available</div>
+        <div class="result-value" id="res2-fedExemption">—</div>
+        <div class="result-sub" id="res2-fedExemptionSub">—</div>
+      </div>
+      <div class="result-card danger" id="res2-fedTaxCard">
+        <div class="result-label">Estimated Federal Estate Tax</div>
+        <div class="result-value red" id="res2-fedTax">—</div>
+        <div class="result-sub" id="res2-fedTaxSub">40% on amount above exemption</div>
+      </div>
+      <div class="result-card danger" id="res2-stateTaxCard">
+        <div class="result-label">Estimated State Estate Tax</div>
+        <div class="result-value red" id="res2-stateTax">—</div>
+        <div class="result-sub" id="res2-stateTaxSub">—</div>
+      </div>
+      <div class="result-card highlight">
+        <div class="result-label">Total Estate Tax Exposure</div>
+        <div class="result-value red" id="res2-totalTax">—</div>
+        <div class="result-sub" id="res2-totalTaxSub">Federal + state combined</div>
+      </div>
+      <div class="result-card safe">
+        <div class="result-label">Potential Dynasty Trust Savings</div>
+        <div class="result-value green" id="res2-trustSavings">—</div>
+        <div class="result-sub">Estimated tax removed from estate via trust structure</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Effective Estate Tax Rate</div>
+        <div class="result-value" id="res2-effectiveRate">—</div>
+        <div class="result-sub">As % of total gross estate</div>
+      </div>
+    </div>
+    <div class="state-link-box" id="stateLinkBox" style="display:none"></div>
+    <details>
+      <summary>How we calculated this</summary>
+      <div class="details-body" id="mathDetails2"></div>
+    </details>
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:2.5rem 0">
+
+  <!-- AM Callout -->
+  <div class="am-callout">
+    <p class="am-callout-title">Bitcoin Mining Can Offset Estate Tax Exposure</p>
+    <p>High estate tax exposure often reflects a concentrated Bitcoin position with no offsetting deductions. Mining creates year-over-year tax deductions that reduce ordinary income and — when structured correctly — can help fund trust contributions that move BTC outside your taxable estate. Abundant Mines documents these strategies in detail.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" class="btn">Explore Bitcoin Mining Tax Strategies →</a>
+  </div>
+
+  <div class="author-box">
+    <div class="author-avatar">₿</div>
+    <div class="author-info">
+      <strong>The Bitcoin Family Office</strong>
+      <p>Independent research and advisory for families managing significant Bitcoin wealth. We do not manage assets or sell financial products. Our work is educational and structural — custody architecture, estate planning, tax strategy, and governance.</p>
+    </div>
+  </div>
+
+  <div class="services-cta">
+    <h3>Work With The Bitcoin Family Office</h3>
+    <p>We advise a small number of families on Bitcoin custody architecture, estate planning, tax structuring, and governance. If you're working through these questions for your own family, we'd be glad to talk.</p>
+    <a href="/services/" class="btn">View Our Services →</a>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is Bitcoin subject to estate tax?</div>
+      <div class="faq-a">Yes. Bitcoin is treated as property for federal estate tax purposes. Its fair market value on the date of death is included in your gross estate. If your taxable estate exceeds the federal exemption ($13.61M per individual in 2026), the excess is taxed at 40%.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the TCJA estate tax sunset?</div>
+      <div class="faq-a">The Tax Cuts and Jobs Act of 2017 doubled the federal estate tax exemption. That doubling is scheduled to sunset after 2025, cutting the exemption roughly in half — from approximately $13.61M to approximately $7M per person. If it sunsets, many more estates will owe federal estate tax.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Which states have estate taxes on Bitcoin?</div>
+      <div class="faq-a">As of 2026, 12 states plus D.C. impose estate taxes: Connecticut, Hawaii, Illinois, Maine, Maryland, Massachusetts, Minnesota, New York, Oregon, Rhode Island, Vermont, and Washington. Several states have inheritance taxes instead. State exemptions are often much lower than the federal exemption.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How does a dynasty trust save estate taxes?</div>
+      <div class="faq-a">A dynasty trust removes assets from your taxable estate permanently. Bitcoin placed in a properly structured dynasty trust can pass to multiple generations without triggering estate or gift tax at each transfer. The trust assets grow outside of your estate, compounding the tax benefit over time.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the federal estate tax rate?</div>
+      <div class="faq-a">The federal estate tax rate is 40% on the taxable estate above the exemption. A married couple can shelter up to $27.22M using portability under current law. Estates above this threshold face a 40% tax on the excess — which can be devastating for illiquid Bitcoin holdings.</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This calculator provides rough estimates for educational purposes only. It does not constitute legal, tax, or financial advice. Estate tax laws are complex, vary significantly by state, and change frequently. State tax calculations are simplified approximations — actual rates have graduated brackets. Portability, marital deductions, charitable deductions, and other factors are not modeled. Consult a qualified estate planning attorney and CPA before making decisions.
+  </div>
+
+  <div class="related-section">
+    <h3>Related Reading</h3>
+    <div class="related-grid">
+      <a href="/blog/how-to-avoid-estate-tax-bitcoin.html" class="related-card">
+        <h4>How to Avoid Estate Tax on Bitcoin</h4>
+        <p>GRATs, dynasty trusts, gifting strategies, and LLC discount structures.</p>
+      </a>
+      <a href="/tools/bitcoin-trust-cost-estimator.html" class="related-card">
+        <h4>Bitcoin Trust Cost Estimator</h4>
+        <p>Compare trust setup costs against your estate tax exposure.</p>
+      </a>
+      <a href="/tools/bitcoin-state-comparison.html" class="related-card">
+        <h4>Bitcoin State Comparison Tool</h4>
+        <p>Compare estate planning features across up to 3 states side by side.</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 The Bitcoin Family Office. All rights reserved. &nbsp;|&nbsp; <a href="/disclosures">Disclosures</a> &nbsp;|&nbsp; <a href="/about/">About</a></p>
+</footer>
+
+<script>
+// State data: {name, estateExemption (0=none), estateTopRate, inheritanceRate, stateGuideUrl}
+var STATE_DATA={
+  none:{name:'No state estate tax',estateExemption:0,estateTopRate:0,inheritanceRate:0,stateGuideUrl:null},
+  CT:{name:'Connecticut',estateExemption:13610000,estateTopRate:0.12,inheritanceRate:0,stateGuideUrl:'/blog/bitcoin-estate-planning-connecticut.html'},
+  HI:{name:'Hawaii',estateExemption:5490000,estateTopRate:0.20,inheritanceRate:0,stateGuideUrl:'/blog/bitcoin-estate-planning-hawaii.html'},
+  IL:{name:'Illinois',estateExemption:4000000,estateTopRate:0.16,inheritanceRate:0,stateGuideUrl:'/blog/bitcoin-estate-planning-illinois.html'},
+  ME:{name:'Maine',estateExemption:7000000,estateTopRate:0.12,inheritanceRate:0,stateGuideUrl:null},
+  MD:{name:'Maryland',estateExemption:5000000,estateTopRate:0.16,inheritanceRate:0.10,stateGuideUrl:'/blog/bitcoin-estate-planning-maryland.html'},
+  MA:{name:'Massachusetts',estateExemption:2000000,estateTopRate:0.16,inheritanceRate:0,stateGuideUrl:'/blog/bitcoin-estate-planning-massachusetts.html'},
+  MN:{name:'Minnesota',estateExemption:3000000,estateTopRate:0.16,inheritanceRate:0,stateGuideUrl:'/blog/bitcoin-estate-planning-minnesota.html'},
+  NY:{name:'New York',estateExemption:6940000,estateTopRate:0.16,inheritanceRate:0,stateGuideUrl:'/blog/bitcoin-estate-planning-new-york.html'},
+  OR:{name:'Oregon',estateExemption:1000000,estateTopRate:0.16,inheritanceRate:0,stateGuideUrl:'/blog/bitcoin-estate-planning-oregon.html'},
+  RI:{name:'Rhode Island',estateExemption:1774583,estateTopRate:0.16,inheritanceRate:0,stateGuideUrl:null},
+  VT:{name:'Vermont',estateExemption:5000000,estateTopRate:0.16,inheritanceRate:0,stateGuideUrl:null},
+  WA:{name:'Washington',estateExemption:2193000,estateTopRate:0.20,inheritanceRate:0,stateGuideUrl:'/blog/bitcoin-estate-planning-washington.html'},
+  DC:{name:'Washington, D.C.',estateExemption:4528800,estateTopRate:0.16,inheritanceRate:0,stateGuideUrl:null},
+  IA:{name:'Iowa',estateExemption:0,estateTopRate:0,inheritanceRate:0.06,stateGuideUrl:null},
+  KY:{name:'Kentucky',estateExemption:0,estateTopRate:0,inheritanceRate:0.16,stateGuideUrl:'/blog/bitcoin-estate-planning-kentucky.html'},
+  NE:{name:'Nebraska',estateExemption:0,estateTopRate:0,inheritanceRate:0.18,stateGuideUrl:null},
+  NJ:{name:'New Jersey',estateExemption:0,estateTopRate:0,inheritanceRate:0.16,stateGuideUrl:'/blog/bitcoin-estate-planning-new-jersey.html'},
+  PA:{name:'Pennsylvania',estateExemption:0,estateTopRate:0,inheritanceRate:0.15,stateGuideUrl:'/blog/bitcoin-estate-planning-pennsylvania.html'}
+};
+
+function toggleMenu(){
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('navLinks').classList.toggle('open');
+  document.body.style.overflow=document.getElementById('navLinks').classList.contains('open')?'hidden':'';
+}
+function closeMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navLinks').classList.remove('open');
+  document.body.style.overflow='';
+}
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+function fmt(n){return n<0?'-$'+Math.abs(n).toLocaleString('en-US',{maximumFractionDigits:0}):'$'+n.toLocaleString('en-US',{maximumFractionDigits:0});}
+
+function calculateEstate(){
+  var btcHoldings=parseFloat(document.getElementById('btcHoldings').value);
+  var btcPrice=parseFloat(document.getElementById('btcPrice2').value);
+  var otherAssets=parseFloat(document.getElementById('otherAssets').value)||0;
+  var married=document.getElementById('maritalStatus').value==='married';
+  var stateKey=document.getElementById('stateResidence').value;
+  var tcja=document.getElementById('tcjaSunset').value;
+
+  var ok=true;
+  if(isNaN(btcHoldings)||btcHoldings<0.01){document.getElementById('btcHoldings').classList.add('error');document.getElementById('err-btcHoldings').style.display='block';ok=false;}
+  else{document.getElementById('btcHoldings').classList.remove('error');document.getElementById('err-btcHoldings').style.display='none';}
+  if(isNaN(btcPrice)||btcPrice<1000){document.getElementById('btcPrice2').classList.add('error');document.getElementById('err-btcPrice2').style.display='block';ok=false;}
+  else{document.getElementById('btcPrice2').classList.remove('error');document.getElementById('err-btcPrice2').style.display='none';}
+  if(!ok) return;
+
+  gtag('event','tool_calculate',{tool:'estate_tax_calculator'});
+
+  var btcValue=btcHoldings*btcPrice;
+  var grossEstate=btcValue+otherAssets;
+
+  // Federal exemption
+  var exemptionPerPerson=tcja==='sunset'?7000000:13610000;
+  var totalExemption=married?exemptionPerPerson*2:exemptionPerPerson;
+  var taxableEstate=Math.max(grossEstate-totalExemption,0);
+  var fedTax=taxableEstate*0.40;
+
+  // State tax (simplified — using flat approximation of top rate on excess over state exemption)
+  var state=STATE_DATA[stateKey];
+  var stateTax=0;
+  var stateNote='';
+  if(state.estateTopRate>0&&state.estateExemption>=0){
+    var stateExemption=married?state.estateExemption*2:state.estateExemption;
+    var stateTaxable=Math.max(grossEstate-stateExemption,0);
+    stateTax=stateTaxable*state.estateTopRate;
+    stateNote=state.name+' estate tax: '+Math.round(state.estateTopRate*100)+'% on estate above '+fmt(state.estateExemption)+(married?' (×2 for married)':'');
+  } else if(state.inheritanceRate>0){
+    stateTax=grossEstate*state.inheritanceRate;
+    stateNote=state.name+' inheritance tax: ~'+Math.round(state.inheritanceRate*100)+'% (rate varies by beneficiary relationship)';
+  } else {
+    stateNote='No estate or inheritance tax in this state.';
+  }
+
+  var totalTax=fedTax+stateTax;
+  var effectiveRate=grossEstate>0?totalTax/grossEstate*100:0;
+
+  // Dynasty trust savings estimate: removing BTC from estate
+  var trustSavings=btcValue*0.40; // rough: if BTC portion is removed from taxable estate
+
+  // Populate
+  document.getElementById('res2-btcValue').textContent=fmt(btcValue);
+  document.getElementById('res2-btcSub').textContent=btcHoldings.toFixed(4)+' BTC at '+fmt(btcPrice)+'/BTC';
+  document.getElementById('res2-grossEstate').textContent=fmt(grossEstate);
+  document.getElementById('res2-fedExemption').textContent=fmt(totalExemption);
+  document.getElementById('res2-fedExemptionSub').textContent=(tcja==='sunset'?'Post-sunset estimate (~$7M/person)':'Current law ($13.61M/person)')+(married?' × 2 (married portability)':'');
+  document.getElementById('res2-fedTax').textContent=fmt(fedTax);
+  document.getElementById('res2-fedTaxSub').textContent=taxableEstate>0?'40% on '+fmt(taxableEstate)+' taxable estate':'Below federal exemption — no federal estate tax';
+  if(fedTax===0){document.getElementById('res2-fedTaxCard').className='result-card safe';}
+  else{document.getElementById('res2-fedTaxCard').className='result-card danger';}
+  document.getElementById('res2-stateTax').textContent=fmt(stateTax);
+  document.getElementById('res2-stateTaxSub').textContent=stateNote;
+  if(stateTax===0){document.getElementById('res2-stateTaxCard').className='result-card safe';}
+  else{document.getElementById('res2-stateTaxCard').className='result-card danger';}
+  document.getElementById('res2-totalTax').textContent=fmt(totalTax);
+  document.getElementById('res2-totalTaxSub').textContent=fmt(fedTax)+' federal + '+fmt(stateTax)+' state';
+  document.getElementById('res2-trustSavings').textContent=fmt(trustSavings);
+  document.getElementById('res2-effectiveRate').textContent=effectiveRate.toFixed(1)+'%';
+
+  // State link box
+  var linkBox=document.getElementById('stateLinkBox');
+  if(state.stateGuideUrl){
+    linkBox.style.display='block';
+    linkBox.innerHTML='📖 Read our full guide: <a href="'+state.stateGuideUrl+'">Bitcoin Estate Planning in '+state.name+'</a>';
+  } else {
+    linkBox.style.display='none';
+  }
+
+  // Math details
+  document.getElementById('mathDetails2').innerHTML=`
+    <p><strong>Step 1: Total estate value</strong></p>
+    <span class="math-line">BTC: ${btcHoldings.toFixed(4)} × $${btcPrice.toLocaleString()} = ${fmt(btcValue)}</span>
+    <span class="math-line">Other assets: ${fmt(otherAssets)}</span>
+    <span class="math-line">Gross estate: ${fmt(grossEstate)}</span>
+    <p style="margin-top:0.75rem"><strong>Step 2: Federal exemption</strong></p>
+    <span class="math-line">Per-person exemption (${tcja==='sunset'?'post-sunset':'current law'}): ${fmt(exemptionPerPerson)}</span>
+    <span class="math-line">${married?'Married — portability doubles: '+fmt(totalExemption):'Single — exemption: '+fmt(totalExemption)}</span>
+    <p style="margin-top:0.75rem"><strong>Step 3: Federal estate tax</strong></p>
+    <span class="math-line">Taxable estate: ${fmt(grossEstate)} − ${fmt(totalExemption)} = ${fmt(taxableEstate)}</span>
+    <span class="math-line">Federal tax (40%): ${fmt(taxableEstate)} × 40% = ${fmt(fedTax)}</span>
+    <p style="margin-top:0.75rem"><strong>Step 4: State tax (${state.name})</strong></p>
+    <span class="math-line">${stateNote}</span>
+    <span class="math-line">Estimated state tax: ${fmt(stateTax)}</span>
+    <p style="margin-top:0.75rem"><strong>Step 5: Dynasty trust savings</strong></p>
+    <span class="math-line">If BTC (${fmt(btcValue)}) is removed from estate via dynasty trust:</span>
+    <span class="math-line">Potential savings: ${fmt(btcValue)} × 40% federal rate = ${fmt(trustSavings)}</span>
+    <p style="margin-top:0.75rem;color:var(--text-muted);font-size:0.72rem;">Note: State calculations use a simplified approximation of the top marginal rate applied to the full excess over the exemption. Actual tax uses graduated brackets. Marital deduction, portability election, charitable deductions, and other factors are not modeled. Consult a qualified estate attorney.</p>
+  `;
+
+  document.getElementById('resultsSection2').style.display='block';
+  document.getElementById('resultsSection2').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
