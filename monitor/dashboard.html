@@ -315,7 +315,10 @@ async function sendQuestion(){
   if(!q)return;
   input.value='';
   const histEl=document.getElementById('qaHistory');
-  histEl.innerHTML+=`<div class="qa-msg user">${q}</div>`;
+  const userMsg=document.createElement('div');
+  userMsg.className='qa-msg user';
+  userMsg.textContent=q; // safe: no innerHTML injection
+  histEl.appendChild(userMsg);
   document.getElementById('qaSend').disabled=true;
   const thinkingDiv=document.createElement('div');
   thinkingDiv.className='qa-msg assistant';
