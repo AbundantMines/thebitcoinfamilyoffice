@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Wealth Planning Dashboard | The Bitcoin Family Office</title>
+  <meta name="description" content="Your personal Bitcoin estate planning command center. Track exposure, succession readiness, document status, and heir preparedness — all private, all client-side.">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-wealth-dashboard">
+  <meta property="og:title" content="Bitcoin Wealth Planning Dashboard">
+  <meta property="og:description" content="Personal Bitcoin estate planning dashboard — estate exposure monitor, succession scorecard, document tracker. Private and client-side.">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-wealth-dashboard">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=EB+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');
+    document.addEventListener('click',function(e){gtag('event','hm_click',{x:e.clientX,y:e.clientY,path:window.location.pathname});});
+    var _sm={25:0,50:0,75:0,100:0};window.addEventListener('scroll',function(){var p=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);[25,50,75,100].forEach(function(m){if(p>=m&&!_sm[m]){_sm[m]=1;gtag('event','hm_scroll',{depth:m,path:window.location.pathname});}});});
+  </script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"Bitcoin Wealth Planning Dashboard","url":"https://thebitcoinfamilyoffice.com/tools/bitcoin-wealth-dashboard","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://thebitcoinfamilyoffice.com"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://thebitcoinfamilyoffice.com/tools/"},{"@type":"ListItem","position":3,"name":"Bitcoin Wealth Dashboard","item":"https://thebitcoinfamilyoffice.com/tools/bitcoin-wealth-dashboard"}]}}
+  </script>
+
+  <style>
+    :root{--bg:#0a0a0a;--bg-elevated:#111111;--bg-card:#141414;--border:#1e1e1e;--text:#e8e0d0;--text-secondary:#8a8070;--accent:#c9a84c;--accent-border:rgba(201,168,76,0.3);--red:#e05c5c;--green:#4caf82;--display:'Playfair Display',Georgia,serif;--serif:'EB Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;}
+    nav{background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;}
+    .nav-logo{font-family:var(--display);font-size:1.05rem;color:var(--text);text-decoration:none;}.nav-logo span{color:var(--accent);}
+    .nav-links{display:flex;gap:2rem;list-style:none;}.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;}.nav-links a:hover{color:var(--accent);}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}.hamburger span{display:block;width:24px;height:2px;background:var(--text);}
+    .nav-mobile{display:none;position:fixed;top:60px;left:0;right:0;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;}.nav-mobile.open{display:flex;}.nav-mobile a{color:var(--text-secondary);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 0;border-bottom:1px solid var(--border);}
+    @media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+
+    .page-header{max-width:960px;margin:0 auto;padding:3rem 2rem 1.5rem;}
+    .page-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+    .page-title{font-family:var(--display);font-size:clamp(1.8rem,3vw,2.5rem);color:var(--text);margin-bottom:0.5rem;}
+    .page-sub{font-family:var(--serif);font-size:1rem;color:var(--text-secondary);max-width:560px;margin-bottom:1rem;}
+    .privacy-note{font-size:0.72rem;color:var(--text-secondary);background:var(--bg-elevated);border:1px solid var(--border);padding:0.5rem 1rem;border-radius:3px;display:inline-block;}
+
+    .setup-panel{max-width:960px;margin:0 auto;padding:0 2rem 2rem;}
+    .setup-card{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:2rem;}
+    .setup-card h2{font-family:var(--display);font-size:1.2rem;margin-bottom:1.25rem;color:var(--text);}
+    .setup-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1.25rem;}
+    .field{display:flex;flex-direction:column;gap:0.4rem;}
+    .field label{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-secondary);}
+    .field input,.field select{background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;padding:0.65rem 0.9rem;color:var(--text);font-family:var(--sans);font-size:0.88rem;}
+    .field input:focus,.field select:focus{outline:none;border-color:var(--accent-border);}
+    .field select option{background:var(--bg-elevated);}
+    .btn-primary{background:var(--accent);color:var(--bg);border:none;padding:0.75rem 1.75rem;border-radius:3px;font-family:var(--sans);font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s;}.btn-primary:hover{opacity:0.88;}
+    .btn-ghost{background:transparent;color:var(--text-secondary);border:1px solid var(--border);padding:0.65rem 1.25rem;border-radius:3px;font-family:var(--sans);font-size:0.75rem;cursor:pointer;margin-left:0.75rem;}.btn-ghost:hover{border-color:var(--accent-border);color:var(--text);}
+
+    .dashboard{max-width:960px;margin:0 auto;padding:0 2rem 4rem;display:none;}
+    .dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-bottom:1.25rem;}
+    .dash-card{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:1.5rem 1.75rem;}
+    .dash-card-head{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem;}
+    .dash-big{font-family:var(--display);font-size:2.2rem;color:var(--accent);line-height:1;margin-bottom:0.35rem;}
+    .dash-label{font-size:0.75rem;color:var(--text-secondary);}
+    .dash-alert{font-size:0.75rem;padding:0.4rem 0.75rem;border-radius:2px;margin-top:0.75rem;display:inline-block;}
+    .alert-green{background:rgba(76,175,130,0.1);color:var(--green);}
+    .alert-amber{background:rgba(201,168,76,0.1);color:var(--accent);}
+    .alert-red{background:rgba(224,92,92,0.1);color:var(--red);}
+
+    .score-bar-bg{background:var(--border);border-radius:2px;height:6px;margin:0.75rem 0 0.4rem;}
+    .score-bar-fill{height:6px;border-radius:2px;transition:width 0.6s ease;}
+
+    .checklist-section{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;margin-bottom:1.25rem;}
+    .checklist-header{padding:1.25rem 1.75rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;}
+    .checklist-header h3{font-family:var(--display);font-size:1rem;color:var(--text);}
+    .checklist-header .score-chip{font-size:0.7rem;color:var(--accent);background:rgba(201,168,76,0.08);border:1px solid var(--accent-border);padding:0.25rem 0.65rem;border-radius:2px;}
+    .checklist-body{padding:0 1.75rem 1.5rem;display:none;}
+    .checklist-body.open{display:block;}
+    .check-item{display:flex;align-items:flex-start;gap:0.85rem;padding:0.65rem 0;border-bottom:1px solid var(--border);}
+    .check-item:last-child{border-bottom:none;}
+    .check-item input[type=checkbox]{width:16px;height:16px;margin-top:2px;accent-color:var(--accent);flex-shrink:0;}
+    .check-text{font-size:0.85rem;color:var(--text);line-height:1.45;}
+    .check-sub{font-size:0.75rem;color:var(--text-secondary);margin-top:0.2rem;}
+    .check-item input:checked ~ .check-labels .check-text{color:var(--text-secondary);text-decoration:line-through;}
+
+    .update-bar{background:var(--bg-elevated);border:1px solid var(--border);border-radius:6px;padding:1rem 1.75rem;display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:0.75rem;}
+    .update-info{font-size:0.75rem;color:var(--text-secondary);}
+    .update-info strong{color:var(--text);}
+
+    .cta-block{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:6px;padding:2rem;text-align:center;margin-top:2rem;}
+    .cta-block h3{font-family:var(--display);font-size:1.2rem;margin-bottom:0.6rem;}
+    .cta-block p{font-family:var(--serif);font-size:0.95rem;color:var(--text-secondary);margin-bottom:1.25rem;line-height:1.7;max-width:480px;margin-left:auto;margin-right:auto;}
+    .cta-block a{display:inline-block;background:var(--accent);color:var(--bg);font-family:var(--sans);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem 1.75rem;border-radius:2px;text-decoration:none;}
+
+    .disclaimer{background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.75rem;margin:2rem 2rem;max-width:960px;margin-left:auto;margin-right:auto;}
+    .disclaimer p{font-size:0.75rem;color:var(--text-secondary);line-height:1.7;}
+    footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;}
+    .footer-logo{font-family:var(--display);font-size:1rem;color:var(--text);margin-bottom:1.25rem;}.footer-logo span{color:var(--accent);}
+    .footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:1.5rem;margin-bottom:1.5rem;}.footer-links a{font-size:0.72rem;color:var(--text-secondary);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;}.footer-links a:hover{color:var(--accent);}
+    .footer-legal{font-size:0.7rem;color:var(--text-secondary);max-width:480px;margin:0 auto;line-height:1.7;}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
+  <ul class="nav-links">
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/blog/">Research</a></li>
+    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/faq/">FAQ</a></li>
+  </ul>
+  <div class="hamburger" onclick="document.getElementById('nm').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="nm">
+  <a href="/services/">Services</a><a href="/blog/">Research</a><a href="/tools/">Tools</a><a href="/about/">About</a><a href="/faq/">FAQ</a>
+</div>
+
+<!-- Breadcrumb -->
+<div style="max-width:960px;margin:0 auto;padding:1rem 2rem 0;">
+  <nav style="font-size:0.72rem;color:var(--text-secondary);">
+    <a href="/" style="color:var(--text-secondary);text-decoration:none;">Home</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href="/tools/" style="color:var(--text-secondary);text-decoration:none;">Tools</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span style="color:var(--text);">Bitcoin Wealth Dashboard</span>
+  </nav>
+</div>
+
+<div class="page-header">
+  <p class="page-label">Personal Planning Dashboard</p>
+  <h1 class="page-title">Bitcoin Wealth Planning Dashboard</h1>
+  <p class="page-sub">Your estate exposure, succession readiness, and document status — tracked in one place. Everything is stored locally in your browser. Nothing leaves your device.</p>
+  <span class="privacy-note">🔒 100% Private — all data stored in your browser only, never transmitted</span>
+</div>
+
+<!-- Setup Panel -->
+<div class="setup-panel" id="setupPanel">
+  <div class="setup-card">
+    <h2>Set Up Your Dashboard</h2>
+    <div class="setup-grid">
+      <div class="field">
+        <label>BTC Holdings</label>
+        <input type="number" id="btcAmt" placeholder="e.g. 15.5" step="0.01" min="0">
+      </div>
+      <div class="field">
+        <label>BTC Price (USD)</label>
+        <input type="number" id="btcPrice" placeholder="e.g. 95000" value="95000">
+      </div>
+      <div class="field">
+        <label>Other Taxable Assets ($)</label>
+        <input type="number" id="otherAssets" placeholder="e.g. 500000" value="0">
+      </div>
+      <div class="field">
+        <label>Marital Status</label>
+        <select id="married">
+          <option value="single">Single</option>
+          <option value="married">Married</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>State of Residence</label>
+        <select id="stateRes">
+          <option value="none">No state estate tax</option>
+          <option value="ma">Massachusetts ($2M exemption)</option>
+          <option value="or">Oregon ($1M exemption)</option>
+          <option value="wa">Washington ($2.193M exemption)</option>
+          <option value="mn">Minnesota ($3M exemption)</option>
+          <option value="il">Illinois ($4M exemption)</option>
+          <option value="md">Maryland ($5M exemption)</option>
+          <option value="vt">Vermont ($5M exemption)</option>
+          <option value="ri">Rhode Island ($1.77M exemption)</option>
+          <option value="ct">Connecticut ($12.92M exemption)</option>
+          <option value="ny">New York ($7.16M exemption)</option>
+          <option value="hi">Hawaii ($5.49M exemption)</option>
+          <option value="me">Maine ($6.41M exemption)</option>
+          <option value="dc">Washington DC ($4.528M exemption)</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="saveDashboard()">Launch My Dashboard →</button>
+    <button class="btn-ghost" onclick="loadDemo()">View Demo</button>
+  </div>
+</div>
+
+<!-- Dashboard -->
+<div class="dashboard" id="dashboard">
+  <div class="update-bar">
+    <div class="update-info">Dashboard for <strong id="db-label">—</strong> &nbsp;·&nbsp; Last updated: <strong id="db-updated">—</strong></div>
+    <div style="display:flex;gap:0.75rem;align-items:center;">
+      <span style="font-size:0.72rem;color:var(--text-secondary);">BTC price: $<span id="db-price">—</span></span>
+      <button class="btn-ghost" style="padding:0.4rem 0.9rem;font-size:0.7rem;" onclick="editSetup()">Edit Profile</button>
+      <button class="btn-ghost" style="padding:0.4rem 0.9rem;font-size:0.7rem;color:var(--red);border-color:rgba(224,92,92,0.2);" onclick="clearDashboard()">Reset</button>
+    </div>
+  </div>
+
+  <!-- Metric Row -->
+  <div class="dash-grid">
+    <div class="dash-card">
+      <div class="dash-card-head">Estate Value</div>
+      <div class="dash-big" id="db-estateValue">—</div>
+      <div class="dash-label">BTC + other assets</div>
+    </div>
+    <div class="dash-card" style="border-color:var(--accent-border);">
+      <div class="dash-card-head">Federal Exposure</div>
+      <div class="dash-big" id="db-fedExposure">—</div>
+      <div class="dash-label">Above federal exemption × 40%</div>
+      <div class="dash-alert" id="db-fedAlert">—</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-head">State Exposure</div>
+      <div class="dash-big" id="db-stateExposure">—</div>
+      <div class="dash-label" id="db-stateLabel">—</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-head">Succession Score</div>
+      <div class="dash-big" id="db-score">—</div>
+      <div class="score-bar-bg"><div class="score-bar-fill" id="db-scoreBar" style="width:0%;background:var(--accent);"></div></div>
+      <div class="dash-label">Items complete / 20</div>
+    </div>
+  </div>
+
+  <!-- Succession Checklist -->
+  <div id="checklistSections"></div>
+
+  <!-- Document Status -->
+  <div class="dash-card" style="margin-bottom:1.25rem;">
+    <div class="dash-card-head" style="margin-bottom:1rem;">Document Status</div>
+    <div id="docStatus" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.75rem;"></div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Want Daily Monitoring?</h3>
+    <p>Bitcoin Estate Watch monitors your estate tax exposure automatically — sending alerts when your exposure crosses planning thresholds as BTC price moves. Join the waitlist for early access.</p>
+    <a href="/tools/bitcoin-estate-watch">Join the Bitcoin Estate Watch Waitlist →</a>
+  </div>
+</div>
+
+<div class="disclaimer">
+  <p><strong>⚠ Dashboard Disclaimer.</strong> This dashboard provides illustrative estimates for educational purposes only. Estate tax calculations use simplified assumptions and do not constitute legal, tax, financial, or investment advice. The federal exemption shown reflects pre-2025 legislation amounts — 2025 tax legislation may have changed applicable thresholds. Verify all figures with a qualified estate planning attorney and licensed CPA. Individual circumstances vary significantly. Nothing in this tool creates an advisory relationship with The Bitcoin Family Office.</p>
+</div>
+
+<div style="max-width:960px;margin:0 auto;padding:0 2rem 2rem;">
+  <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
+    <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful Tax Strategy Available</p>
+    <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">For high-net-worth Bitcoin holders, mining is the only strategy that simultaneously generates yield, accumulates BTC, and creates significant tax offsets through equipment depreciation and operating expense deductions.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">The Bitcoin <span>Family Office</span></div>
+  <nav class="footer-links">
+    <a href="/">Home</a><a href="/services/">Services</a><a href="/blog/">Research</a>
+    <a href="/tools/">Tools</a><a href="/about/">About</a><a href="/faq/">FAQ</a><a href="/disclosures/">Disclosures</a>
+  </nav>
+  <p class="footer-legal">The Bitcoin Family Office provides educational content for high-net-worth Bitcoin holders. Nothing on this site constitutes legal, tax, financial, or investment advice. &copy; 2026 The Bitcoin Family Office.</p>
+</footer>
+
+<script>
+var STATE_TAX = {
+  none:{name:'No state estate tax',exemption:0,rate:0},
+  ma:{name:'Massachusetts',exemption:2000000,rate:0.16},
+  or:{name:'Oregon',exemption:1000000,rate:0.16},
+  wa:{name:'Washington',exemption:2193000,rate:0.20},
+  mn:{name:'Minnesota',exemption:3000000,rate:0.16},
+  il:{name:'Illinois',exemption:4000000,rate:0.16},
+  md:{name:'Maryland',exemption:5000000,rate:0.16},
+  vt:{name:'Vermont',exemption:5000000,rate:0.16},
+  ri:{name:'Rhode Island',exemption:1774583,rate:0.16},
+  ct:{name:'Connecticut',exemption:12920000,rate:0.12},
+  ny:{name:'New York',exemption:7160000,rate:0.16},
+  hi:{name:'Hawaii',exemption:5490000,rate:0.18},
+  me:{name:'Maine',exemption:6410000,rate:0.12},
+  dc:{name:'Washington DC',exemption:4528000,rate:0.16}
+};
+
+var CHECKLIST = [
+  {cat:'Legal Foundations',items:[
+    {id:'will',label:'Valid will in place',sub:'Includes or references digital assets'},
+    {id:'trust',label:'Revocable living trust established',sub:'With Bitcoin-specific provisions and successor trustee'},
+    {id:'poa',label:'Durable power of attorney',sub:'Includes digital asset authority (RUFADAA language)'},
+    {id:'hcd',label:'Healthcare directive',sub:'Advance directive / living will'},
+    {id:'beneficiaries',label:'Beneficiary designations reviewed',sub:'All accounts and policies updated'},
+  ]},
+  {cat:'Bitcoin-Specific Documents',items:[
+    {id:'loi',label:'Letter of Instruction written',sub:'Documents custody locations without listing seed phrases'},
+    {id:'custody_map',label:'Custody architecture documented',sub:'All wallets, exchanges, multisig described'},
+    {id:'ips',label:'Investment Policy Statement',sub:'Bitcoin allocation policy and governance rules'},
+    {id:'cost_basis',label:'Cost basis records current',sub:'Every acquisition documented: date, amount, price'},
+  ]},
+  {cat:'Heir Preparation',items:[
+    {id:'heir_knows',label:'Primary heir knows Bitcoin exists',sub:'Informed of holdings without compromising security'},
+    {id:'heir_educated',label:'Heir understands Bitcoin basics',sub:'Can explain hardware wallets and seed phrases'},
+    {id:'heir_contacts',label:'Heir has professional contacts',sub:'Attorney, CPA, and Bitcoin technical contact on file'},
+    {id:'heir_no_rush',label:'Heir instructed on 30-day rule',sub:'Do not move funds until legal authority established'},
+  ]},
+  {cat:'Professional Coordination',items:[
+    {id:'attorney',label:'Bitcoin-literate estate attorney engaged',sub:'Has reviewed/drafted Bitcoin-specific trust provisions'},
+    {id:'cpa',label:'Bitcoin-literate CPA engaged',sub:'Handles basis tracking, tax planning, and Form 8949'},
+    {id:'plan_reviewed',label:'Estate plan reviewed in last 2 years',sub:'Laws and holdings change — review annually'},
+    {id:'state_reviewed',label:'Trust situs reviewed',sub:'WY or SD trust considered if in high-tax state'},
+  ]},
+  {cat:'Tax Strategy',items:[
+    {id:'grat',label:'GRAT analysis completed (if applicable)',sub:'For holdings above the estate tax exemption'},
+    {id:'gifting',label:'Annual gifting strategy in place',sub:'$18K/year per recipient without using lifetime exemption'},
+    {id:'mining_tax',label:'Mining tax strategy evaluated',sub:'Depreciation and OpEx offsets considered'},
+  ]}
+];
+
+var DOCS = [
+  {id:'doc_will',label:'Will',link:null},
+  {id:'doc_trust',label:'Revocable Trust',link:null},
+  {id:'doc_loi',label:'Letter of Instruction',link:'/tools/bitcoin-letter-of-instruction'},
+  {id:'doc_ips',label:'Investment Policy Statement',link:'/tools/bitcoin-investment-policy-statement'},
+  {id:'doc_custody',label:'Custody Architecture Doc',link:null},
+  {id:'doc_poa',label:'Power of Attorney',link:null},
+  {id:'doc_costbasis',label:'Cost Basis Records',link:null},
+  {id:'doc_hcd',label:'Healthcare Directive',link:null},
+];
+
+var profile = {};
+var checkState = {};
+var docState = {};
+
+function fmt(n){if(n>=1e6)return'$'+(n/1e6).toFixed(1)+'M';if(n>=1e3)return'$'+(n/1e3).toFixed(0)+'K';return'$'+Math.round(n);}
+
+function saveDashboard(){
+  var btc=parseFloat(document.getElementById('btcAmt').value)||0;
+  if(!btc){alert('Please enter your BTC amount.');return;}
+  profile={btc:btc,price:parseFloat(document.getElementById('btcPrice').value)||95000,other:parseFloat(document.getElementById('otherAssets').value)||0,married:document.getElementById('married').value,state:document.getElementById('stateRes').value,updated:new Date().toLocaleDateString()};
+  localStorage.setItem('bfo_dash_profile',JSON.stringify(profile));
+  checkState=JSON.parse(localStorage.getItem('bfo_dash_checks')||'{}');
+  docState=JSON.parse(localStorage.getItem('bfo_dash_docs')||'{}');
+  showDashboard();
+  gtag('event','dashboard_setup',{btc:btc,married:profile.married,state:profile.state});
+}
+
+function loadDemo(){
+  profile={btc:25,price:95000,other:500000,married:'single',state:'or',updated:new Date().toLocaleDateString()};
+  checkState={will:true,trust:true,loi:true,heir_knows:true,attorney:true,cpa:true};
+  docState={doc_will:'have',doc_trust:'have',doc_loi:'have'};
+  showDashboard();
+}
+
+function showDashboard(){
+  document.getElementById('setupPanel').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  renderMetrics();
+  renderChecklist();
+  renderDocs();
+}
+
+function renderMetrics(){
+  var estateVal=profile.btc*profile.price+profile.other;
+  var fedExemption=profile.married==='married'?27220000:13610000;
+  var fedTaxable=Math.max(0,estateVal-fedExemption);
+  var fedExposure=fedTaxable*0.40;
+  var st=STATE_TAX[profile.state]||STATE_TAX.none;
+  var stTaxable=st.exemption>0?Math.max(0,estateVal-st.exemption):0;
+  var stExposure=stTaxable*st.rate;
+
+  document.getElementById('db-label').textContent=profile.btc+' BTC @ $'+profile.price.toLocaleString();
+  document.getElementById('db-updated').textContent=profile.updated;
+  document.getElementById('db-price').textContent=profile.price.toLocaleString();
+  document.getElementById('db-estateValue').textContent=fmt(estateVal);
+  document.getElementById('db-fedExposure').textContent=fmt(fedExposure);
+  document.getElementById('db-stateExposure').textContent=st.exemption>0?fmt(stExposure):'$0';
+  document.getElementById('db-stateLabel').textContent=st.exemption>0?st.name+' state tax':'No state estate tax';
+
+  var fedAlert=document.getElementById('db-fedAlert');
+  if(fedExposure===0){fedAlert.textContent='Below federal exemption';fedAlert.className='dash-alert alert-green';}
+  else if(fedExposure<500000){fedAlert.textContent='Moderate — planning worthwhile';fedAlert.className='dash-alert alert-amber';}
+  else if(fedExposure<2000000){fedAlert.textContent='Significant — plan now';fedAlert.className='dash-alert alert-amber';}
+  else{fedAlert.textContent='Critical — urgent planning needed';fedAlert.className='dash-alert alert-red';}
+
+  var totalItems=CHECKLIST.reduce(function(n,c){return n+c.items.length;},0);
+  var done=Object.values(checkState).filter(Boolean).length;
+  var score=Math.round((done/totalItems)*100);
+  document.getElementById('db-score').textContent=done+'/'+totalItems;
+  document.getElementById('db-scoreBar').style.width=score+'%';
+  var color=score<30?'var(--red)':score<60?'var(--accent)':'var(--green)';
+  document.getElementById('db-scoreBar').style.background=color;
+}
+
+function renderChecklist(){
+  var html='';
+  CHECKLIST.forEach(function(cat){
+    var catDone=cat.items.filter(function(i){return checkState[i.id];}).length;
+    html+='<div class="checklist-section"><div class="checklist-header" onclick="toggleCat(this)"><h3>'+cat.cat+'</h3><span class="score-chip">'+catDone+'/'+cat.items.length+'</span></div><div class="checklist-body">';
+    cat.items.forEach(function(item){
+      var chk=checkState[item.id]?'checked':'';
+      html+='<div class="check-item"><input type="checkbox" id="chk-'+item.id+'" '+chk+' onchange="toggleCheck(\''+item.id+'\',this.checked)"><div class="check-labels"><div class="check-text">'+item.label+'</div><div class="check-sub">'+item.sub+'</div></div></div>';
+    });
+    html+='</div></div>';
+  });
+  document.getElementById('checklistSections').innerHTML=html;
+}
+
+function renderDocs(){
+  var html='';
+  DOCS.forEach(function(doc){
+    var status=docState[doc.id]||'missing';
+    var color=status==='have'?'var(--green)':status==='in-progress'?'var(--accent)':'var(--red)';
+    var label=status==='have'?'✓ Have it':status==='in-progress'?'⟳ In progress':'✗ Missing';
+    var linkHtml=doc.link&&status!=='have'?'<a href="'+doc.link+'" style="font-size:0.7rem;color:var(--accent);text-decoration:none;margin-left:0.5rem;">Build →</a>':'';
+    html+='<div style="background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;padding:0.75rem 1rem;display:flex;align-items:center;justify-content:space-between;"><div><div style="font-size:0.82rem;color:var(--text);">'+doc.label+'</div><div style="font-size:0.7rem;color:'+color+';margin-top:0.15rem;">'+label+'</div></div><div style="display:flex;align-items:center;">'+linkHtml+'<select onchange="setDoc(\''+doc.id+'\',this.value)" style="background:var(--bg);border:1px solid var(--border);color:var(--text-secondary);font-size:0.68rem;padding:0.25rem 0.4rem;border-radius:2px;margin-left:0.5rem;"><option value="missing" '+(status==='missing'?'selected':'')+'>Missing</option><option value="in-progress" '+(status==='in-progress'?'selected':'')+'>In progress</option><option value="have" '+(status==='have'?'selected':'')+'>Have it</option></select></div></div>';
+  });
+  document.getElementById('docStatus').innerHTML=html;
+}
+
+function toggleCat(el){el.nextElementSibling.classList.toggle('open');}
+function toggleCheck(id,val){checkState[id]=val;localStorage.setItem('bfo_dash_checks',JSON.stringify(checkState));renderMetrics();}
+function setDoc(id,val){docState[id]=val;localStorage.setItem('bfo_dash_docs',JSON.stringify(docState));renderDocs();}
+function editSetup(){document.getElementById('setupPanel').style.display='block';document.getElementById('dashboard').style.display='none';}
+function clearDashboard(){if(confirm('Reset dashboard and clear all data?')){localStorage.removeItem('bfo_dash_profile');localStorage.removeItem('bfo_dash_checks');localStorage.removeItem('bfo_dash_docs');location.reload();}}
+
+// Auto-load on return
+(function(){
+  var saved=localStorage.getItem('bfo_dash_profile');
+  if(saved){
+    profile=JSON.parse(saved);
+    checkState=JSON.parse(localStorage.getItem('bfo_dash_checks')||'{}');
+    docState=JSON.parse(localStorage.getItem('bfo_dash_docs')||'{}');
+    document.getElementById('btcAmt').value=profile.btc;
+    document.getElementById('btcPrice').value=profile.price;
+    document.getElementById('otherAssets').value=profile.other;
+    document.getElementById('married').value=profile.married;
+    document.getElementById('stateRes').value=profile.state;
+    showDashboard();
+  }
+})();
+</script>
+</body>
+</html>
