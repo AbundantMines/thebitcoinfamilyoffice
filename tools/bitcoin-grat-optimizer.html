@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitcoin GRAT Optimizer | Grantor Retained Annuity Trust Calculator</title>
+  <meta name="description" content="Model the outcome of a Bitcoin Grantor Retained Annuity Trust (GRAT). Calculate remainder to heirs, estate tax savings, and annual annuity payments based on BTC appreciation scenarios." />
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-grat-optimizer" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bitcoin GRAT Optimizer | The Bitcoin Family Office" />
+  <meta property="og:description" content="Model the outcome of a Bitcoin Grantor Retained Annuity Trust. Calculate estate tax savings, remainder to heirs, and breakeven appreciation rate." />
+  <meta property="og:image" content="/assets/og-image.svg" />
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-grat-optimizer" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bitcoin GRAT Optimizer | The Bitcoin Family Office" />
+  <meta name="twitter:description" content="Model the outcome of a Bitcoin Grantor Retained Annuity Trust. Calculate estate tax savings, remainder to heirs, and breakeven appreciation rate." />
+  <meta name="twitter:image" content="/assets/og-image.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+
+    // Heatmap: click events
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('a,button,input,select,[data-hm]');
+      if (el) {
+        gtag('event', 'hm_click', {
+          element_tag: el.tagName.toLowerCase(),
+          element_text: (el.innerText || el.value || el.getAttribute('aria-label') || '').substring(0, 80),
+          element_id: el.id || '',
+          page_path: location.pathname
+        });
+      }
+    }, true);
+
+    // Heatmap: scroll depth
+    (function(){
+      var marks = [25,50,75,90,100], fired = {};
+      window.addEventListener('scroll', function(){
+        var pct = Math.round((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100);
+        marks.forEach(function(m){
+          if(pct >= m && !fired[m]){
+            fired[m] = true;
+            gtag('event','hm_scroll',{scroll_depth: m, page_path: location.pathname});
+          }
+        });
+      }, {passive:true});
+    })();
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://thebitcoinfamilyoffice.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://thebitcoinfamilyoffice.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Bitcoin GRAT Optimizer",
+        "item": "https://thebitcoinfamilyoffice.com/tools/bitcoin-grat-optimizer"
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a Grantor Retained Annuity Trust (GRAT)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A GRAT is an irrevocable trust where the grantor contributes assets and receives fixed annuity payments for a set term. At the end of the term, any remaining assets — including all appreciation above the IRS Section 7520 hurdle rate — pass to beneficiaries with little or no gift tax. GRATs are governed by IRC Section 2702."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is Bitcoin particularly well-suited for a GRAT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The GRAT mechanism is most powerful when the contributed asset appreciates significantly above the 7520 hurdle rate. Bitcoin's historical annualized appreciation has vastly exceeded typical 7520 rates (currently ~4–5%), meaning the remainder passed to heirs — free of estate and gift tax — can be substantial. The high-volatility, high-appreciation profile of Bitcoin makes it an ideal GRAT asset."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a zeroed-out GRAT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A zeroed-out GRAT is structured so the present value of all annuity payments equals the initial contribution, resulting in a near-zero taxable gift. If the asset appreciates beyond the 7520 rate, the entire excess passes to heirs gift-tax free. If it does not, the GRAT simply expires with no tax consequence — making it a heads-you-win, tails-you-break-even structure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the key risk of a Bitcoin GRAT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The primary risk is grantor mortality: if the grantor dies during the GRAT term, the trust assets are pulled back into the taxable estate, negating the strategy entirely. Shorter GRAT terms reduce this risk. A secondary risk is that Bitcoin underperforms the 7520 hurdle rate — but in a zeroed-out structure, this results in no tax cost, only an opportunity cost."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+      --accent-border: rgba(201,168,76,0.3);
+      --accent-bg: rgba(201,168,76,0.06);
+      --display: 'Playfair Display', Georgia, serif;
+      --serif: 'EB Garamond', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --radius: 4px;
+      --max-w: 860px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── NAVIGATION ── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent) !important;
+      border: 1px solid var(--accent-border);
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      gap: 1rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .mobile-nav a:hover { color: var(--accent); }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      padding: 1.4rem 0 0;
+      flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb .sep { opacity: 0.4; }
+    .breadcrumb .current { color: var(--text); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .tool-badge {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .page-title {
+      font-family: var(--display);
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 0.9rem;
+    }
+
+    .page-subtitle {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 680px;
+    }
+
+    /* ── TOOL CARD ── */
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .tool-card h2 {
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── FORM GRID ── */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+
+    .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-field.full { grid-column: 1 / -1; }
+
+    .form-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .form-label .note {
+      display: block;
+      font-size: 0.67rem;
+      letter-spacing: 0.03em;
+      text-transform: none;
+      color: var(--text-secondary);
+      opacity: 0.7;
+      margin-top: 0.15rem;
+    }
+
+    .form-input, .form-select {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      padding: 0.6rem 0.85rem;
+      width: 100%;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--accent-border);
+    }
+    .form-input::placeholder { color: var(--text-secondary); opacity: 0.6; }
+
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8070' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.85rem center;
+      padding-right: 2.2rem;
+      cursor: pointer;
+    }
+
+    /* Rate buttons */
+    .rate-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .rate-btn {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.45rem 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .rate-btn:hover { border-color: var(--accent-border); color: var(--accent); }
+    .rate-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-bg);
+    }
+
+    .custom-rate-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+      min-width: 120px;
+    }
+    .custom-rate-wrap .form-input {
+      flex: 1;
+    }
+    .custom-rate-wrap .unit {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    /* Calculate button */
+    .calc-btn {
+      display: block;
+      width: 100%;
+      margin-top: 1.75rem;
+      padding: 0.9rem 2rem;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .calc-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .calc-btn:active { transform: translateY(0); }
+
+    /* ── RESULTS ── */
+    #results {
+      display: none;
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.35s ease;
+    }
+    #results.visible { display: block; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .results-header {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* Scenario tabs */
+    .scenario-tabs {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .scenario-tab {
+      flex: 1;
+      padding: 0.6rem 0.75rem;
+      font-family: var(--sans);
+      font-size: 0.73rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      background: var(--bg-elevated);
+      border: none;
+      cursor: pointer;
+      border-right: 1px solid var(--border);
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .scenario-tab:last-child { border-right: none; }
+    .scenario-tab:hover { color: var(--accent); background: var(--bg-card); }
+    .scenario-tab.active {
+      color: var(--accent);
+      background: var(--bg-card);
+      box-shadow: inset 0 -2px 0 var(--accent);
+    }
+
+    /* Hero metric */
+    .metric-hero {
+      background: var(--bg-card);
+      border: 1px solid var(--accent-border);
+      border-radius: 6px;
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .metric-hero-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.6rem;
+    }
+
+    .metric-hero-value {
+      font-family: var(--display);
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric-hero-sub {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    /* Metric chips row */
+    .metric-chips {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 600px) {
+      .metric-chips { grid-template-columns: 1fr 1fr; }
+    }
+
+    .metric-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+    }
+
+    .metric-chip-label {
+      font-family: var(--sans);
+      font-size: 0.67rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.35rem;
+    }
+
+    .metric-chip-value {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .metric-chip-value.highlight { color: var(--accent); }
+
+    /* Comparison table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+    .comparison-table th {
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.65rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .comparison-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+    }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table td.positive { color: var(--accent); font-weight: 500; }
+    .comparison-table td.label { color: var(--text-secondary); font-size: 0.82rem; }
+
+    /* Risk note */
+    .risk-note {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-left: 3px solid rgba(201,168,76,0.5);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+    .risk-note strong { color: var(--text); }
+
+    /* Collapsible */
+    .collapsible {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .collapsible-toggle {
+      width: 100%;
+      background: var(--bg-elevated);
+      border: none;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+    .collapsible-toggle:hover { color: var(--text); }
+    .collapsible-arrow {
+      transition: transform 0.25s;
+      font-size: 0.6rem;
+    }
+    .collapsible-toggle.open .collapsible-arrow { transform: rotate(180deg); }
+
+    .collapsible-body {
+      display: none;
+      padding: 1.25rem;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+    .collapsible-body.open { display: block; }
+
+    .collapsible-body p { margin-bottom: 0.75rem; }
+    .collapsible-body p:last-child { margin-bottom: 0; }
+    .collapsible-body code {
+      font-size: 0.8rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.1rem 0.35rem;
+      color: var(--accent);
+    }
+
+    /* Three-scenario side-by-side table */
+    .all-scenarios {
+      margin-bottom: 1.5rem;
+    }
+
+    .all-scenarios h3 {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .scenario-compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .scenario-compare-table th {
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.65rem 0.85rem;
+      text-align: right;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+    .scenario-compare-table th:first-child { text-align: left; }
+    .scenario-compare-table th:last-child { border-right: none; }
+    .scenario-compare-table td {
+      padding: 0.7rem 0.85rem;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      color: var(--text);
+      text-align: right;
+    }
+    .scenario-compare-table td:first-child { text-align: left; color: var(--text-secondary); }
+    .scenario-compare-table td:last-child { border-right: none; }
+    .scenario-compare-table tr:last-child td { border-bottom: none; }
+    .scenario-compare-table td.accent { color: var(--accent); font-weight: 500; }
+
+    /* Estimate label */
+    .estimate-tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.63rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* ── PROSE ── */
+    .prose {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+    }
+    .prose h2 {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--text);
+      margin: 2rem 0 0.85rem;
+      line-height: 1.3;
+    }
+    .prose p { margin-bottom: 1rem; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose em { color: var(--text-secondary); font-style: italic; }
+
+    /* ── AUTHOR BOX ── */
+    .author-box {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .author-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--display);
+      font-size: 1.3rem;
+      color: var(--accent);
+    }
+
+    .author-info {}
+    .author-name {
+      font-family: var(--display);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+    .author-title {
+      font-family: var(--sans);
+      font-size: 0.73rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SERVICES CTA ── */
+    .services-cta {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    .services-cta h3 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .services-cta p {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .services-cta a {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      padding: 0.6rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .services-cta a:hover { background: var(--accent-bg); }
+
+    /* ── RELATED CARDS ── */
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    @media (max-width: 680px) {
+      .related-grid { grid-template-columns: 1fr; }
+    }
+
+    .related-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+      display: block;
+    }
+    .related-card:hover { border-color: var(--accent-border); text-decoration: none; }
+
+    .related-card-type {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .related-card-title {
+      font-family: var(--display);
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .disclaimer strong {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: var(--bg-elevated);
+      padding: 3rem 1.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 680px) {
+      .footer-top { grid-template-columns: 1fr; }
+    }
+    .footer-col-title {
+      font-family: var(--display);
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 0.9rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .footer-links a {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.03em;
+    }
+    .footer-logo {
+      font-family: var(--display);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .footer-logo span { color: var(--accent); }
+
+    /* Utility */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+<!-- SITE HEADER -->
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
+    <ul class="nav-links">
+      <li><a href="/bitcoin-estate-planning/">Estate Planning</a></li>
+      <li><a href="/bitcoin-tax-planning/">Tax Planning</a></li>
+      <li><a href="/bitcoin-trusts/">Trusts</a></li>
+      <li><a href="/tools/">Tools</a></li>
+      <li><a href="/services/" class="nav-cta">Work With Us</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="/bitcoin-estate-planning/">Estate Planning</a>
+    <a href="/bitcoin-tax-planning/">Tax Planning</a>
+    <a href="/bitcoin-trusts/">Trusts</a>
+    <a href="/tools/">Tools</a>
+    <a href="/services/">Work With Us →</a>
+  </nav>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="page-wrap">
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span class="sep">›</span>
+    <a href="/tools/">Tools</a>
+    <span class="sep">›</span>
+    <span class="current">Bitcoin GRAT Optimizer</span>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="tool-badge">Interactive Calculator</div>
+    <h1 class="page-title">Bitcoin GRAT Optimizer</h1>
+    <p class="page-subtitle">
+      A Grantor Retained Annuity Trust (GRAT) is among the most powerful estate planning structures available for holders of rapidly appreciating assets. Model how a Bitcoin GRAT could transfer wealth to your heirs — with near-zero gift tax exposure — under conservative, moderate, and aggressive appreciation scenarios.
+    </p>
+  </header>
+
+  <!-- WHAT IS A GRAT PROSE -->
+  <div class="prose">
+    <h2>How a Bitcoin GRAT Works</h2>
+    <p>
+      You contribute Bitcoin to an irrevocable trust for a fixed term — typically 2 to 10 years. Each year, the trust pays you back a fixed annuity (calculated using the IRS Section 7520 rate). At the end of the term, whatever remains in the trust — including all appreciation above that hurdle rate — passes to your heirs gift-tax free.
+    </p>
+    <p>
+      Because Bitcoin's historical appreciation has dramatically exceeded typical 7520 rates, the "zeroed-out GRAT" (structured to have near-zero taxable gift) can transfer enormous wealth out of your estate at minimal tax cost. The downside: if you don't survive the term, assets revert to your estate.
+    </p>
+    <p>
+      <em>All results are illustrative estimates. A GRAT must be drafted by a qualified estate planning attorney and reviewed for your specific facts and tax situation.</em>
+    </p>
+  </div>
+
+  <!-- CALCULATOR CARD -->
+  <div class="tool-card">
+    <h2>GRAT Inputs</h2>
+    <div class="form-grid">
+
+      <!-- BTC Amount -->
+      <div class="form-field">
+        <label class="form-label" for="btcAmount">
+          Bitcoin to Contribute (BTC)
+          <span class="note">Amount you will transfer into the GRAT</span>
+        </label>
+        <input class="form-input" type="number" id="btcAmount" min="0.01" step="0.01" placeholder="e.g. 10" value="10" />
+      </div>
+
+      <!-- BTC Price -->
+      <div class="form-field">
+        <label class="form-label" for="btcPrice">
+          Current BTC Price (USD)
+          <span class="note">Market price at time of GRAT funding</span>
+        </label>
+        <input class="form-input" type="number" id="btcPrice" min="1" step="1000" placeholder="e.g. 95000" value="95000" />
+      </div>
+
+      <!-- GRAT Term -->
+      <div class="form-field">
+        <label class="form-label" for="gratTerm">
+          GRAT Term (Years)
+          <span class="note">Shorter terms reduce mortality risk</span>
+        </label>
+        <select class="form-select" id="gratTerm">
+          <option value="2" selected>2 Years</option>
+          <option value="3">3 Years</option>
+          <option value="5">5 Years</option>
+          <option value="7">7 Years</option>
+          <option value="10">10 Years</option>
+        </select>
+      </div>
+
+      <!-- Section 7520 Rate -->
+      <div class="form-field">
+        <label class="form-label" for="rate7520">
+          IRS Section 7520 Rate (%)
+          <span class="note">Hurdle rate set by IRS monthly — currently ~4.4%</span>
+        </label>
+        <input class="form-input" type="number" id="rate7520" min="0.1" max="20" step="0.1" value="4.4" />
+      </div>
+
+      <!-- Grantor Age -->
+      <div class="form-field">
+        <label class="form-label" for="grantorAge">
+          Grantor Age
+          <span class="note">Must survive the GRAT term for strategy to work</span>
+        </label>
+        <input class="form-input" type="number" id="grantorAge" min="18" max="99" step="1" placeholder="e.g. 55" value="55" />
+      </div>
+
+      <!-- Appreciation Rate -->
+      <div class="form-field full">
+        <label class="form-label">
+          BTC Annual Appreciation Assumption
+          <span class="note">Select a preset or enter a custom rate</span>
+        </label>
+        <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-top:0.25rem;">
+          <div class="rate-group">
+            <button class="rate-btn" id="rateBtn20" data-rate="20" onclick="selectRate(20)">Conservative 20%</button>
+            <button class="rate-btn active" id="rateBtn40" data-rate="40" onclick="selectRate(40)">Moderate 40%</button>
+            <button class="rate-btn" id="rateBtn80" data-rate="80" onclick="selectRate(80)">Aggressive 80%</button>
+          </div>
+          <div class="custom-rate-wrap">
+            <input class="form-input" type="number" id="customRate" placeholder="Custom" min="0" max="500" step="1" style="max-width:90px;" oninput="selectRate(null)" />
+            <span class="unit">% / yr</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">Calculate GRAT Outcome →</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results">
+
+    <p class="results-header">
+      Illustrative Estimates — Scenario Analysis
+      <span class="estimate-tag">Illustrative Estimate</span>
+    </p>
+
+    <!-- Scenario Tabs -->
+    <div class="scenario-tabs">
+      <button class="scenario-tab active" id="tabConservative" onclick="showScenario('conservative')">Conservative</button>
+      <button class="scenario-tab" id="tabModerate" onclick="showScenario('moderate')">Moderate</button>
+      <button class="scenario-tab" id="tabAggressive" onclick="showScenario('aggressive')">Aggressive</button>
+      <button class="scenario-tab" id="tabCustom" onclick="showScenario('custom')">Custom</button>
+    </div>
+
+    <!-- Hero Metric -->
+    <div class="metric-hero">
+      <div class="metric-hero-label">Estimated Remainder to Heirs (Gift-Tax Free)</div>
+      <div class="metric-hero-value" id="heroRemainder">—</div>
+      <div class="metric-hero-sub" id="heroSub">End-of-term trust balance after annuity payments returned to grantor</div>
+    </div>
+
+    <!-- Metric Chips -->
+    <div class="metric-chips">
+      <div class="metric-chip">
+        <div class="metric-chip-label">Estate Tax Saved</div>
+        <div class="metric-chip-value highlight" id="chipTaxSaved">—</div>
+      </div>
+      <div class="metric-chip">
+        <div class="metric-chip-label">Annual Annuity Payment</div>
+        <div class="metric-chip-value" id="chipAnnuity">—</div>
+      </div>
+      <div class="metric-chip">
+        <div class="metric-chip-label">Breakeven Appreciation</div>
+        <div class="metric-chip-value" id="chipBreakeven">—</div>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>With GRAT</th>
+          <th>Without GRAT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">Initial Contribution Value</td>
+          <td id="cmpInitial">—</td>
+          <td id="cmpInitialNo">—</td>
+        </tr>
+        <tr>
+          <td class="label">Projected BTC Value at Term End</td>
+          <td id="cmpProjected">—</td>
+          <td id="cmpProjectedNo">—</td>
+        </tr>
+        <tr>
+          <td class="label">Total Annuity Returned to Grantor</td>
+          <td id="cmpAnnuityTotal">—</td>
+          <td class="label" style="font-style:italic;">N/A — full value in estate</td>
+        </tr>
+        <tr>
+          <td class="label">Amount Transferred to Heirs</td>
+          <td class="positive" id="cmpToHeirs">—</td>
+          <td class="positive" id="cmpToHeirsNo">—</td>
+        </tr>
+        <tr>
+          <td class="label">Estimated Estate/Gift Tax</td>
+          <td class="positive" id="cmpTax">~$0 (zeroed-out GRAT)</td>
+          <td id="cmpTaxNo">—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- All Scenarios Side-by-Side -->
+    <div class="all-scenarios">
+      <h3>All Scenarios at a Glance</h3>
+      <table class="scenario-compare-table" id="allScenariosTable">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Conservative (20%/yr)</th>
+            <th>Moderate (40%/yr)</th>
+            <th>Aggressive (80%/yr)</th>
+          </tr>
+        </thead>
+        <tbody id="allScenariosBody">
+          <!-- filled by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Risk Note -->
+    <div class="risk-note">
+      <strong>⚠ Longevity Risk:</strong> If the grantor dies during the GRAT term, the trust assets are included back in the taxable estate — negating the strategy entirely. Shorter GRAT terms reduce this risk. Grantor age at entry is a key variable. Consult with an estate planning attorney to evaluate whether a rolling 2-year GRAT series is more appropriate than a longer single-term structure.
+    </div>
+
+    <!-- How We Calculated This -->
+    <div class="collapsible">
+      <button class="collapsible-toggle" id="mathToggle" onclick="toggleCollapsible()">
+        How We Calculated This
+        <span class="collapsible-arrow">▼</span>
+      </button>
+      <div class="collapsible-body" id="mathBody">
+        <p><strong>Initial GRAT Value:</strong> BTC Amount × Current BTC Price</p>
+        <p><strong>Annual Annuity Payment (zeroed-out GRAT):</strong><br/>
+          <code>Annuity = GRAT Value × (r / (1 − (1 + r)^(−n)))</code><br/>
+          where <code>r</code> = Section 7520 rate and <code>n</code> = term in years. This is the standard present-value annuity formula. A zeroed-out GRAT sets annuity payments so the present value of all payments equals the initial contribution, producing a near-zero taxable gift.
+        </p>
+        <p><strong>Projected BTC Value:</strong><br/>
+          <code>Future Value = Initial Value × (1 + appreciation rate)^term</code>
+        </p>
+        <p><strong>Remainder to Heirs:</strong><br/>
+          <code>Remainder = Projected Value − (Annual Annuity × Term)</code><br/>
+          If remainder is negative, the GRAT expires with no transfer (no tax cost, just no benefit).
+        </p>
+        <p><strong>Estate Tax Saved:</strong><br/>
+          <code>Tax Saved = Remainder × 40%</code> (current top federal estate tax rate). Actual savings depend on your estate size and applicable exemptions.
+        </p>
+        <p><strong>Breakeven Appreciation Rate:</strong><br/>
+          The minimum annualized appreciation rate that results in a positive remainder. Solved numerically: find the rate where <code>Initial × (1 + r)^n = Annuity × n</code>.
+        </p>
+        <p><em>These calculations are simplified. They do not account for trust expenses, state estate taxes, income tax on annuity payments, investment timing within the term, or partial-year considerations. All figures are illustrative estimates only.</em></p>
+      </div>
+    </div>
+
+  </div><!-- /#results -->
+
+  <!-- AM TAX STRATEGY CALLOUT -->
+  <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
+    <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful Tax Strategy Available</p>
+    <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">For high-net-worth Bitcoin holders, mining is the only strategy that simultaneously generates yield, accumulates BTC, and creates significant tax offsets — through equipment depreciation, operating expense deductions, and bonus depreciation on capital investments. Most family offices overlook mining entirely. Abundant Mines has compiled every major Bitcoin mining tax strategy in one place.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- AUTHOR BOX -->
+  <div class="author-box">
+    <div class="author-avatar">H</div>
+    <div class="author-info">
+      <div class="author-name">Hal Turner</div>
+      <div class="author-title">Bitcoin Wealth Strategist · The Bitcoin Family Office</div>
+    </div>
+  </div>
+
+  <!-- SERVICES CTA -->
+  <div class="services-cta">
+    <h3>Structure a GRAT for Your Bitcoin Holdings</h3>
+    <p>
+      Modeling outcomes is the first step. Executing a GRAT requires coordination between your estate attorney, CPA, and wealth advisor. We work with high-net-worth Bitcoin holders to structure, fund, and administer GRATs — including rolling 2-year GRAT series for ongoing transfer.
+    </p>
+    <a href="/services/">Explore Our Advisory Services →</a>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- RELATED READING -->
+  <div>
+    <p class="section-label">Related Reading</p>
+    <div class="related-grid">
+      <a href="/bitcoin-grantor-retained-annuity-trust.html" class="related-card">
+        <div class="related-card-type">Guide</div>
+        <div class="related-card-title">Bitcoin Grantor Retained Annuity Trusts: The Complete Guide</div>
+      </a>
+      <a href="/estate-tax-sunset-calculator.html" class="related-card">
+        <div class="related-card-type">Calculator</div>
+        <div class="related-card-title">Estate Tax Sunset Calculator: Your 2025 Exposure</div>
+      </a>
+      <a href="/bitcoin-dynasty-trust-vs-revocable-trust.html" class="related-card">
+        <div class="related-card-type">Analysis</div>
+        <div class="related-card-title">Bitcoin Dynasty Trust vs. Revocable Trust: Key Differences</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <strong>Tool & Calculator Disclaimer</strong>
+    This calculator is a planning tool for illustrative and educational purposes only. All outputs are estimates based on simplified mathematical models and the assumptions you enter. They do not constitute legal, tax, financial, or investment advice. Results may differ materially from actual outcomes due to market conditions, trust expenses, tax law changes, state-level taxes, income taxes on annuity receipts, and other factors not modeled here. A Grantor Retained Annuity Trust is a complex irrevocable legal structure. Any GRAT must be drafted by a qualified estate planning attorney licensed in your state. Consult a qualified attorney, CPA, and financial advisor before making any estate planning decisions. The Bitcoin Family Office and its authors bear no responsibility for decisions made based on this tool.
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-col-title">Estate Planning</div>
+        <ul class="footer-links">
+          <li><a href="/bitcoin-estate-planning/">Overview</a></li>
+          <li><a href="/bitcoin-grantor-retained-annuity-trust.html">GRAT Strategies</a></li>
+          <li><a href="/bitcoin-dynasty-trust-vs-revocable-trust.html">Dynasty Trusts</a></li>
+          <li><a href="/bitcoin-trusts/">Bitcoin Trusts</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Tools</div>
+        <ul class="footer-links">
+          <li><a href="/tools/">All Tools</a></li>
+          <li><a href="/tools/bitcoin-grat-optimizer.html">GRAT Optimizer</a></li>
+          <li><a href="/estate-tax-sunset-calculator.html">Estate Tax Calculator</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Advisory</div>
+        <ul class="footer-links">
+          <li><a href="/services/">Services</a></li>
+          <li><a href="/bitcoin-tax-planning/">Tax Planning</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 The Bitcoin Family Office. All rights reserved. Not legal or financial advice.</div>
+      <div class="footer-logo">The Bitcoin <span>Family Office</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── STATE ──
+var selectedRate = 40;
+var currentScenario = 'conservative';
+var lastResults = null;
+
+// ── HAMBURGER ──
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+
+// ── RATE BUTTONS ──
+function selectRate(rate) {
+  selectedRate = rate;
+  ['rateBtn20','rateBtn40','rateBtn80'].forEach(function(id) {
+    document.getElementById(id).classList.remove('active');
+  });
+  if (rate === 20) document.getElementById('rateBtn20').classList.add('active');
+  else if (rate === 40) document.getElementById('rateBtn40').classList.add('active');
+  else if (rate === 80) document.getElementById('rateBtn80').classList.add('active');
+  if (rate !== null) document.getElementById('customRate').value = '';
+}
+
+document.getElementById('customRate').addEventListener('input', function() {
+  if (this.value) {
+    selectedRate = parseFloat(this.value) || 0;
+    ['rateBtn20','rateBtn40','rateBtn80'].forEach(function(id) {
+      document.getElementById(id).classList.remove('active');
+    });
+  }
+});
+
+// ── SCENARIO TABS ──
+function showScenario(scenario) {
+  currentScenario = scenario;
+  ['Conservative','Moderate','Aggressive','Custom'].forEach(function(s) {
+    var btn = document.getElementById('tab' + s);
+    if (btn) btn.classList.remove('active');
+  });
+  var activeId = 'tab' + scenario.charAt(0).toUpperCase() + scenario.slice(1);
+  var activeBtn = document.getElementById(activeId);
+  if (activeBtn) activeBtn.classList.add('active');
+  if (lastResults) updateDisplay(lastResults, scenario);
+}
+
+// ── FORMAT ──
+function fmt(n) {
+  if (n === null || isNaN(n)) return '—';
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+function fmtPct(n) {
+  if (n === null || isNaN(n)) return '—';
+  return n.toFixed(2) + '%';
+}
+
+// ── CALCULATE GRAT ──
+function calcGrat(initialValue, r7520, term, appreciationRate) {
+  // r7520 in decimal form
+  var r = r7520 / 100;
+  var appR = appreciationRate / 100;
+
+  // Annual annuity (zeroed-out)
+  var annuity;
+  if (r === 0) {
+    annuity = initialValue / term;
+  } else {
+    annuity = initialValue * (r / (1 - Math.pow(1 + r, -term)));
+  }
+
+  // Projected value
+  var projected = initialValue * Math.pow(1 + appR, term);
+
+  // Total annuity returned
+  var totalAnnuity = annuity * term;
+
+  // Remainder
+  var remainder = projected - totalAnnuity;
+
+  // Estate tax saved (40%)
+  var taxSaved = remainder > 0 ? remainder * 0.40 : 0;
+
+  // Breakeven appreciation rate — solve numerically
+  // projected = totalAnnuity => initialValue*(1+bkr)^term = annuity*term
+  var target = totalAnnuity;
+  var breakeven = null;
+  if (target > 0 && initialValue > 0) {
+    breakeven = (Math.pow(target / initialValue, 1 / term) - 1) * 100;
+  }
+
+  return {
+    initialValue: initialValue,
+    annuity: annuity,
+    totalAnnuity: totalAnnuity,
+    projected: projected,
+    remainder: Math.max(remainder, 0),
+    remainderRaw: remainder,
+    taxSaved: taxSaved,
+    breakeven: breakeven,
+    appreciationRate: appreciationRate
+  };
+}
+
+// ── MAIN CALCULATE ──
+function calculate() {
+  var btcAmount = parseFloat(document.getElementById('btcAmount').value) || 0;
+  var btcPrice = parseFloat(document.getElementById('btcPrice').value) || 0;
+  var term = parseInt(document.getElementById('gratTerm').value) || 2;
+  var r7520 = parseFloat(document.getElementById('rate7520').value) || 4.4;
+  var grantorAge = parseInt(document.getElementById('grantorAge').value) || 55;
+
+  var customRateVal = parseFloat(document.getElementById('customRate').value);
+  var activeRate = (!isNaN(customRateVal) && document.getElementById('customRate').value !== '') ? customRateVal : selectedRate;
+
+  if (btcAmount <= 0 || btcPrice <= 0) {
+    alert('Please enter a valid BTC amount and price.');
+    return;
+  }
+
+  var initial = btcAmount * btcPrice;
+
+  var conservative = calcGrat(initial, r7520, term, 20);
+  var moderate = calcGrat(initial, r7520, term, 40);
+  var aggressive = calcGrat(initial, r7520, term, 80);
+  var custom = calcGrat(initial, r7520, term, activeRate);
+
+  lastResults = {
+    conservative: conservative,
+    moderate: moderate,
+    aggressive: aggressive,
+    custom: custom,
+    term: term,
+    r7520: r7520,
+    initial: initial,
+    btcAmount: btcAmount,
+    btcPrice: btcPrice,
+    grantorAge: grantorAge,
+    activeRate: activeRate
+  };
+
+  // Update scenario compare table headers
+  var thead = document.querySelector('#allScenariosTable thead tr');
+  if (activeRate !== 20 && activeRate !== 40 && activeRate !== 80) {
+    thead.cells[3].textContent = 'Custom (' + activeRate.toFixed(1) + '%/yr)';
+  } else {
+    thead.cells[3].textContent = 'Aggressive (80%/yr)';
+  }
+
+  buildAllScenariosTable(conservative, moderate, aggressive, custom, activeRate);
+
+  // Default to first tab
+  var firstTab = 'conservative';
+  currentScenario = firstTab;
+  ['Conservative','Moderate','Aggressive','Custom'].forEach(function(s) {
+    document.getElementById('tab'+s).classList.remove('active');
+  });
+  document.getElementById('tabConservative').classList.add('active');
+
+  // Update custom tab label
+  document.getElementById('tabCustom').textContent = activeRate === 20 ? 'Conservative' : activeRate === 40 ? 'Moderate' : activeRate === 80 ? 'Aggressive' : 'Custom (' + activeRate.toFixed(0) + '%)';
+
+  updateDisplay(lastResults, currentScenario);
+
+  var resultsEl = document.getElementById('results');
+  resultsEl.classList.add('visible');
+  setTimeout(function() {
+    resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 80);
+
+  // Fire GA event
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'grat_calculate', {
+      btc_amount: btcAmount,
+      grat_term: term,
+      rate_7520: r7520,
+      custom_rate: activeRate,
+      initial_value: Math.round(initial)
+    });
+  }
+}
+
+function updateDisplay(results, scenario) {
+  var d = results[scenario];
+  if (!d) d = results.conservative;
+
+  document.getElementById('heroRemainder').textContent = d.remainderRaw > 0 ? fmt(d.remainder) : '$0 (no remainder — BTC did not outperform 7520 hurdle)';
+  document.getElementById('heroSub').textContent =
+    'Based on ' + d.appreciationRate + '%/yr BTC appreciation · ' + results.term + '-year term · ' + fmtPct(results.r7520) + ' Section 7520 rate';
+
+  document.getElementById('chipTaxSaved').textContent = d.taxSaved > 0 ? fmt(d.taxSaved) : '$0';
+  document.getElementById('chipAnnuity').textContent = fmt(d.annuity);
+  document.getElementById('chipBreakeven').textContent = d.breakeven !== null ? fmtPct(d.breakeven) + '/yr' : '—';
+
+  // Comparison table
+  document.getElementById('cmpInitial').textContent = fmt(results.initial);
+  document.getElementById('cmpInitialNo').textContent = fmt(results.initial);
+  document.getElementById('cmpProjected').textContent = fmt(d.projected);
+  document.getElementById('cmpProjectedNo').textContent = fmt(d.projected);
+  document.getElementById('cmpAnnuityTotal').textContent = fmt(d.totalAnnuity);
+  document.getElementById('cmpToHeirs').textContent = d.remainder > 0 ? fmt(d.remainder) : '$0';
+  document.getElementById('cmpToHeirsNo').textContent = fmt(d.projected) + ' (taxable)';
+  document.getElementById('cmpTaxNo').textContent = fmt(d.projected * 0.40) + ' (est. 40% estate tax)';
+}
+
+function buildAllScenariosTable(con, mod, agg, cust, activeRate) {
+  var rows = [
+    ['BTC Projected Value', fmt(con.projected), fmt(mod.projected), fmt(agg.projected)],
+    ['Total Annuity to Grantor', fmt(con.totalAnnuity), fmt(mod.totalAnnuity), fmt(agg.totalAnnuity)],
+    ['Remainder to Heirs', fmt(con.remainder), fmt(mod.remainder), fmt(agg.remainder), true],
+    ['Estate Tax Saved (40%)', fmt(con.taxSaved), fmt(mod.taxSaved), fmt(agg.taxSaved), true],
+    ['Annual Annuity Payment', fmt(con.annuity), fmt(mod.annuity), fmt(agg.annuity)],
+    ['Breakeven Rate', fmtPct(con.breakeven)+'/yr', fmtPct(mod.breakeven)+'/yr', fmtPct(agg.breakeven)+'/yr']
+  ];
+
+  // If custom differs from all three, use custom for column 4
+  var col4 = (activeRate !== 20 && activeRate !== 40 && activeRate !== 80) ? cust : agg;
+
+  var html = '';
+  rows.forEach(function(row) {
+    var accent = row[4] ? ' class="accent"' : '';
+    html += '<tr>';
+    html += '<td>' + row[0] + '</td>';
+    html += '<td' + accent + '>' + row[1] + '</td>';
+    html += '<td' + accent + '>' + row[2] + '</td>';
+    html += '<td' + accent + '>' + row[3] + '</td>';
+    html += '</tr>';
+  });
+  document.getElementById('allScenariosBody').innerHTML = html;
+}
+
+// ── COLLAPSIBLE ──
+function toggleCollapsible() {
+  var toggle = document.getElementById('mathToggle');
+  var body = document.getElementById('mathBody');
+  toggle.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+// Run calc on page load with defaults (quietly, results hidden)
+// (No — only show results when user clicks)
+</script>
+
+</body>
+</html>

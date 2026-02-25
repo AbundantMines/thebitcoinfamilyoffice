@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estate Tax Sunset Calculator for Bitcoin Holders | The Bitcoin Family Office</title>
+<meta name="description" content="The TCJA estate tax exemption expires December 31, 2025. See exactly how much the sunset costs your Bitcoin estate — and what the planning window is worth. Free calculator.">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/estate-tax-sunset-calculator">
+<meta property="og:title" content="Estate Tax Sunset Calculator — Quantify Your Planning Window">
+<meta property="og:description" content="The TCJA exemption expires December 31, 2025. Model current exposure vs. post-sunset exposure on your Bitcoin estate. Planning window value shown instantly.">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/estate-tax-sunset-calculator">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://thebitcoinfamilyoffice.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://thebitcoinfamilyoffice.com/tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Estate Tax Sunset Calculator",
+      "item": "https://thebitcoinfamilyoffice.com/tools/estate-tax-sunset-calculator"
+    }
+  ]
+}
+</script>
+
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the TCJA estate tax sunset and when does it happen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Tax Cuts and Jobs Act of 2017 temporarily doubled the federal estate tax exemption. That doubling expires after December 31, 2025 unless Congress acts to extend it. After the sunset, the per-person exemption reverts from approximately $13.61M to approximately $7M (inflation-adjusted estimate). For married couples, the combined shelter drops from ~$27.22M to ~$14M. Any estate that falls between these levels has a closing planning window."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the TCJA sunset specifically affect Bitcoin holders?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bitcoin's price appreciation makes the sunset especially consequential. A holding worth $5M today could be worth $20M in five years. The current elevated exemption creates a narrow window to transfer that appreciation potential out of your taxable estate — through GRATs, dynasty trusts, or direct gifting — before both the exemption drops and the asset grows further. The math compounds: lower exemption plus higher BTC price equals exponentially larger estate tax exposure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a GRAT and how does it help with Bitcoin estate planning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Grantor Retained Annuity Trust (GRAT) lets you transfer assets to heirs with minimal gift tax. You fund a trust with Bitcoin, receive annuity payments back over a term, and any appreciation above the IRS hurdle rate (the 7520 rate) passes to beneficiaries estate- and gift-tax free. For rapidly appreciating assets like Bitcoin, GRATs can move enormous value out of your taxable estate. The current high exemption environment makes zeroed-out GRATs particularly efficient right now."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a Spousal Lifetime Access Trust (SLAT) and when should I use one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A SLAT is an irrevocable trust funded with your lifetime gift tax exemption, where your spouse is a permissible beneficiary. It removes assets from your taxable estate while preserving indirect access through your spouse. For married couples, a SLAT is one of the most efficient ways to use the elevated TCJA exemption before it sunsets — placing Bitcoin in a SLAT today locks in the current $13.61M exemption permanently, even if the law changes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What states impose an estate tax on Bitcoin beyond the federal tax?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "As of 2026, twelve states plus Washington D.C. impose estate taxes in addition to the federal estate tax: Massachusetts, Oregon, Washington, Minnesota, Illinois, Maryland, Vermont, Rhode Island, Connecticut, Hawaii, Maine, and New York. Several states also have inheritance taxes (Maryland, Iowa, Kentucky, Nebraska, New Jersey, Pennsylvania). State exemptions are often far lower than the federal threshold — Massachusetts, for example, has a $2M exemption — meaning Bitcoin holders in these states face additional exposure at much lower estate values."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-N8PP20VBTV');
+document.addEventListener('click',function(e){
+  gtag('event','hm_click',{x_pct:Math.round(e.clientX/window.innerWidth*100),y_pct:Math.round(e.clientY/window.innerHeight*100)});
+},{passive:true});
+var _sd={};
+window.addEventListener('scroll',function(){
+  var pct=Math.round((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight*100);
+  [25,50,75,100].forEach(function(m){if(pct>=m&&!_sd[m]){_sd[m]=1;gtag('event','hm_scroll',{depth:m});}});
+},{passive:true});
+</script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+  data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --bg-elevated:#111111;
+  --bg-card:#141414;
+  --border:#1e1e1e;
+  --text:#e8e0d0;
+  --text-secondary:#8a8070;
+  --text-muted:#5a5248;
+  --accent:#c9a84c;
+  --accent-border:rgba(201,168,76,0.3);
+  --accent-dim:rgba(201,168,76,0.08);
+  --danger:#c0392b;
+  --danger-dim:rgba(192,57,43,0.08);
+  --danger-border:rgba(192,57,43,0.3);
+  --safe:#4caf83;
+  --safe-dim:rgba(76,175,131,0.08);
+  --safe-border:rgba(76,175,131,0.3);
+  --display:'Playfair Display',Georgia,serif;
+  --body:'EB Garamond',Georgia,serif;
+  --sans:'Inter',-apple-system,sans-serif;
+  --max-w:800px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:18px;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.8;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+a:hover{opacity:0.8}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-mark{font-family:var(--sans);font-weight:500;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary)}
+.nav-mark span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;align-items:center;list-style:none}
+.nav-links a{font-family:var(--sans);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);transition:color 0.3s}
+.nav-links a:hover{color:var(--text);opacity:1}
+.nav-cta{color:var(--accent)!important;border:1px solid var(--accent-border);padding:0.4rem 0.9rem;border-radius:2px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:200}
+.hamburger span{display:block;width:22px;height:1px;background:var(--text-secondary);transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media(max-width:640px){
+  .hamburger{display:flex}
+  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:150}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:1rem}
+}
+
+/* Header */
+.page-header{padding:8rem 2rem 3rem;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border)}
+.breadcrumb{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem}
+.breadcrumb a{color:var(--text-muted)}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{color:var(--text-secondary)}
+h1{font-family:var(--display);font-size:clamp(1.85rem,4vw,2.65rem);font-weight:400;line-height:1.2;letter-spacing:-0.01em;margin-bottom:0.75rem}
+.page-subtitle{font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.65;margin-bottom:1rem}
+.page-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.5rem}
+.page-meta-item{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted)}
+.page-meta-item strong{color:var(--accent)}
+
+/* Tool wrap */
+.tool-wrap{max-width:var(--max-w);margin:0 auto;padding:2.5rem 2rem 5rem}
+
+/* Alert bar */
+.alert-bar{background:rgba(201,168,76,0.07);border:1px solid var(--accent-border);border-radius:4px;padding:1rem 1.25rem;margin-bottom:2rem;font-family:var(--sans);font-size:0.78rem;color:var(--text-secondary);line-height:1.65}
+.alert-bar strong{color:var(--accent)}
+
+/* Form */
+.calculator-form{background:var(--bg-elevated);border:1px solid var(--border);border-radius:6px;padding:2rem}
+.form-section-label{font-family:var(--sans);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;border-bottom:1px solid var(--border);padding-bottom:0.5rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem}
+@media(max-width:580px){.form-grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:0.4rem}
+label{font-family:var(--sans);font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-secondary)}
+.field-hint{font-family:var(--sans);font-size:0.67rem;color:var(--text-muted);margin-top:-0.1rem;line-height:1.45}
+input,select{background:#181818;border:1px solid rgba(255,255,255,0.08);color:var(--text);font-family:var(--sans);font-size:0.88rem;padding:0.65rem 0.9rem;border-radius:3px;outline:none;transition:border-color 0.2s;width:100%;-webkit-appearance:none;appearance:none}
+input:focus,select:focus{border-color:var(--accent-border)}
+input.error,select.error{border-color:var(--danger-border)}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238a8070'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.85rem center;padding-right:2rem}
+.error-msg{font-family:var(--sans);font-size:0.68rem;color:#e05252;margin-top:0.2rem;display:none}
+.calc-btn{margin-top:0.5rem;width:100%;padding:0.9rem;background:var(--accent);color:#000;font-family:var(--sans);font-size:0.76rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;transition:opacity 0.2s}
+.calc-btn:hover{opacity:0.85}
+.calc-btn:active{opacity:0.7}
+
+/* Results */
+.results-section{margin-top:2.5rem;display:none}
+.results-intro{font-family:var(--sans);font-size:0.78rem;color:var(--text-muted);margin-bottom:1.25rem;letter-spacing:0.02em}
+
+/* Chips row */
+.chips-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0.85rem;margin-bottom:1.5rem}
+@media(max-width:580px){.chips-row{grid-template-columns:1fr}}
+.chip{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.1rem 1.25rem}
+.chip.accent{border-color:var(--accent-border);background:rgba(201,168,76,0.06)}
+.chip.danger{border-color:var(--danger-border);background:var(--danger-dim)}
+.chip.safe{border-color:var(--safe-border);background:var(--safe-dim)}
+.chip-label{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.35rem}
+.chip-value{font-family:var(--display);font-size:1.45rem;font-weight:400;line-height:1.1;color:var(--text)}
+.chip.danger .chip-value{color:#e05252}
+.chip.accent .chip-value{color:var(--accent)}
+.chip.safe .chip-value{color:var(--safe)}
+.chip-sub{font-family:var(--sans);font-size:0.68rem;color:var(--text-muted);margin-top:0.3rem;line-height:1.4}
+
+/* Countdown banner */
+.countdown-banner{background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1rem 1.25rem;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.countdown-label{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted)}
+.countdown-value{font-family:var(--display);font-size:1.3rem;font-weight:400;color:var(--accent)}
+.countdown-note{font-family:var(--sans);font-size:0.72rem;color:var(--text-secondary);line-height:1.5}
+
+/* Urgency tier */
+.urgency-block{border-radius:4px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;border:1px solid}
+.urgency-block.tier-low{background:var(--safe-dim);border-color:var(--safe-border)}
+.urgency-block.tier-medium{background:rgba(201,168,76,0.06);border-color:var(--accent-border)}
+.urgency-block.tier-high{background:rgba(230,126,34,0.06);border-color:rgba(230,126,34,0.35)}
+.urgency-block.tier-critical{background:var(--danger-dim);border-color:var(--danger-border)}
+.urgency-tier-label{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.35rem}
+.tier-low .urgency-tier-label{color:var(--safe)}
+.tier-medium .urgency-tier-label{color:var(--accent)}
+.tier-high .urgency-tier-label{color:#e67e22}
+.tier-critical .urgency-tier-label{color:#e05252}
+.urgency-tier-name{font-family:var(--display);font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:0.5rem}
+.urgency-tier-desc{font-family:var(--sans);font-size:0.78rem;color:var(--text-secondary);line-height:1.65;margin-bottom:0.85rem}
+.urgency-actions-label{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.5rem}
+.urgency-actions{list-style:none;padding:0}
+.urgency-actions li{font-family:var(--sans);font-size:0.78rem;color:var(--text-secondary);line-height:1.55;padding:0.25rem 0;display:flex;gap:0.5rem;align-items:flex-start}
+.urgency-actions li::before{content:'→';color:var(--accent);flex-shrink:0;margin-top:0.05em}
+
+/* State note */
+.state-note{background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:0.9rem 1.25rem;margin-bottom:1.25rem;font-family:var(--sans);font-size:0.78rem;color:var(--text-secondary);line-height:1.6;display:none}
+.state-note strong{color:var(--text)}
+
+/* How we calculated this */
+details{margin-bottom:1.5rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px}
+summary{padding:1rem 1.25rem;font-family:var(--sans);font-size:0.78rem;letter-spacing:0.04em;color:var(--text-secondary);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'▼';font-size:0.58rem;transition:transform 0.2s;color:var(--text-muted)}
+details[open] summary::after{transform:rotate(180deg)}
+.details-body{padding:0 1.25rem 1.25rem;font-family:var(--sans);font-size:0.78rem;color:var(--text-secondary);line-height:1.7}
+.details-body p{margin-bottom:0.5rem}
+.details-body p:first-child{margin-top:0.5rem}
+.math-line{font-family:'Courier New',monospace;font-size:0.74rem;background:#0d0d0d;padding:0.25rem 0.65rem;border-radius:2px;margin:0.3rem 0;display:block;color:var(--text-secondary);border:1px solid var(--border)}
+.math-line.result{color:var(--accent);border-color:var(--accent-border)}
+
+/* Separators */
+.section-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
+
+/* Author box */
+.author-box{display:flex;align-items:flex-start;gap:1rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin:2rem 0}
+.author-avatar{width:44px;height:44px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--display);font-size:1.1rem;color:var(--accent)}
+.author-info strong{font-family:var(--sans);font-size:0.82rem;color:var(--text);display:block;margin-bottom:0.2rem}
+.author-info span{font-family:var(--sans);font-size:0.72rem;color:var(--accent);display:block;margin-bottom:0.35rem;letter-spacing:0.04em}
+.author-info p{font-family:var(--sans);font-size:0.75rem;color:var(--text-muted);line-height:1.55;margin:0}
+
+/* Services CTA */
+.services-cta{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0}
+.services-cta h3{font-family:var(--display);font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:0.5rem}
+.services-cta p{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem}
+.btn-outline{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;transition:background 0.2s}
+.btn-outline:hover{background:var(--accent-dim);opacity:1}
+
+/* FAQ */
+.faq-section{margin:2.5rem 0}
+.faq-section h2{font-family:var(--display);font-size:1.3rem;font-weight:400;color:var(--text);margin-bottom:1.25rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1rem 0}
+.faq-q{font-family:var(--sans);font-size:0.82rem;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;line-height:1.4}
+.faq-q::after{content:'+';font-size:1.15rem;color:var(--accent);flex-shrink:0;transition:transform 0.2s;margin-top:-0.1em}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--sans);font-size:0.78rem;color:var(--text-secondary);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s}
+.faq-item.open .faq-a{max-height:350px;padding-top:0.65rem}
+
+/* Disclaimer */
+.disclaimer{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);line-height:1.65;padding:1.25rem;border:1px solid var(--border);border-radius:4px;margin:2rem 0}
+.disclaimer strong{color:var(--text-secondary)}
+.strong-disclaimer{padding:1.5rem 1.75rem;border:1px solid rgba(201,168,76,0.25);background:rgba(201,168,76,0.04);border-radius:4px;margin:2rem 0}
+.strong-disclaimer .disc-header{font-family:var(--sans);font-size:0.66rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem}
+.strong-disclaimer p{font-family:var(--sans);font-size:0.73rem;color:var(--text-secondary);line-height:1.8;margin-bottom:0.65rem}
+.strong-disclaimer p:last-child{margin-bottom:0;font-size:0.7rem;color:var(--text-muted)}
+
+/* Related */
+.related-section{margin:2rem 0}
+.related-section h3{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem}
+.related-card{background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem;transition:border-color 0.2s;display:block}
+.related-card:hover{border-color:var(--accent-border);opacity:1}
+.related-card h4{font-family:var(--display);font-size:0.95rem;font-weight:400;color:var(--text);margin-bottom:0.35rem;line-height:1.3}
+.related-card p{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);margin:0;line-height:1.5}
+
+/* Footer */
+footer{border-top:1px solid var(--border);padding:2.25rem 2rem;margin-top:2rem}
+.footer-inner{max-width:var(--max-w);margin:0 auto;display:flex;flex-direction:column;gap:1rem;align-items:center;text-align:center}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem}
+.footer-links a{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)}
+.footer-links a:hover{color:var(--accent)}
+.footer-copy{font-family:var(--sans);font-size:0.68rem;color:var(--text-muted)}
+.footer-legal{font-family:var(--sans);font-size:0.65rem;color:var(--text-muted);line-height:1.6;max-width:640px;opacity:0.8}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-mark">The <span>Bitcoin</span> Family Office</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" onclick="closeMenu()">Home</a></li>
+    <li><a href="/about/" onclick="closeMenu()">About</a></li>
+    <li><a href="/blog/" onclick="closeMenu()">Research</a></li>
+    <li><a href="/tools/" onclick="closeMenu()">Tools</a></li>
+    <li><a href="/services/" class="nav-cta" onclick="closeMenu()">Services</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <p class="breadcrumb">
+    <a href="/">Home</a> &rsaquo;
+    <a href="/tools/">Tools</a> &rsaquo;
+    <span>Estate Tax Sunset Calculator</span>
+  </p>
+  <h1>Estate Tax Sunset Calculator</h1>
+  <p class="page-subtitle">The federal estate tax exemption under TCJA expires December 31, 2025. After that date, the per-person exemption reverts from $13.61M to approximately $7M. This calculator quantifies exactly what that reversion costs your estate — and what the planning window is worth.</p>
+  <div class="page-meta">
+    <span class="page-meta-item">By <strong>Hal Turner</strong></span>
+    <span class="page-meta-item">Bitcoin Wealth Strategist</span>
+    <span class="page-meta-item">All calculations are <strong>client-side</strong> — nothing leaves your browser</span>
+  </div>
+</div>
+
+<div class="tool-wrap">
+
+  <div class="alert-bar">
+    <strong>⚠ TCJA Sunset Window:</strong> Congress has not extended the elevated exemption. The $13.61M per-person exemption expires after December 31, 2025. Married couples currently shelter up to $27.22M from federal estate tax. After the sunset, that shelter drops to approximately $14M combined. The gap is your planning window — and it has a hard deadline.
+  </div>
+
+  <!-- Calculator form -->
+  <div class="calculator-form">
+    <p class="form-section-label">Your Estate — Enter Values Below</p>
+    <div class="form-grid">
+      <div class="field">
+        <label for="btcAmount">BTC Held</label>
+        <input type="number" id="btcAmount" placeholder="e.g. 15" min="0" max="1000000" step="0.001">
+        <span class="field-hint">Total Bitcoin across all wallets and accounts</span>
+        <span class="error-msg" id="err-btcAmount">Enter a BTC amount greater than zero.</span>
+      </div>
+      <div class="field">
+        <label for="btcPrice">Estimated BTC Price (USD)</label>
+        <input type="number" id="btcPrice" placeholder="95000" value="95000" min="1" max="100000000" step="1000">
+        <span class="field-hint">Used to estimate Bitcoin's estate value</span>
+        <span class="error-msg" id="err-btcPrice">Enter a valid BTC price.</span>
+      </div>
+      <div class="field">
+        <label for="otherAssets">Other Taxable Assets (USD)</label>
+        <input type="number" id="otherAssets" placeholder="0" min="0" max="1000000000" step="10000" value="0">
+        <span class="field-hint">Real estate, equities, business interests, etc.</span>
+        <span class="error-msg" id="err-otherAssets">Enter 0 or a valid dollar amount.</span>
+      </div>
+      <div class="field">
+        <label for="maritalStatus">Marital Status</label>
+        <select id="maritalStatus">
+          <option value="married">Married (portability available)</option>
+          <option value="single">Single / Widowed</option>
+        </select>
+        <span class="field-hint">Married couples can combine exemptions via portability election</span>
+      </div>
+      <div class="field" style="grid-column:1/-1">
+        <label for="stateResidence">State of Residence</label>
+        <select id="stateResidence">
+          <option value="none">— No state estate tax —</option>
+          <optgroup label="States with Estate Tax">
+            <option value="CT">Connecticut</option>
+            <option value="HI">Hawaii</option>
+            <option value="IL">Illinois</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MN">Minnesota</option>
+            <option value="NY">New York</option>
+            <option value="OR">Oregon</option>
+            <option value="RI">Rhode Island</option>
+            <option value="VT">Vermont</option>
+            <option value="WA">Washington</option>
+            <option value="DC">Washington, D.C.</option>
+          </optgroup>
+        </select>
+        <span class="field-hint">States with estate taxes listed — affects urgency note only (state tax modeled separately)</span>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="runCalculator()">Calculate My Planning Window →</button>
+  </div>
+
+  <!-- Results section (hidden until calculated) -->
+  <div class="results-section" id="resultsSection">
+
+    <p class="results-intro">Illustrative estimates only. See disclaimer below. Results model federal exposure using simplified flat-rate calculations.</p>
+
+    <!-- Three chips: Current, Post-Sunset, Planning Window -->
+    <div class="chips-row">
+      <div class="chip danger">
+        <div class="chip-label">Current Federal Exposure</div>
+        <div class="chip-value" id="res-currentExposure">—</div>
+        <div class="chip-sub" id="res-currentExposureSub">Under current $13.61M exemption</div>
+      </div>
+      <div class="chip danger">
+        <div class="chip-label">Post-Sunset Exposure</div>
+        <div class="chip-value" id="res-sunsetExposure">—</div>
+        <div class="chip-sub">After Jan 1, 2026 — ~$7M exemption</div>
+      </div>
+      <div class="chip accent">
+        <div class="chip-label">Planning Window Value ✦</div>
+        <div class="chip-value" id="res-planningWindow">—</div>
+        <div class="chip-sub" id="res-windowSub">Additional tax if no action taken</div>
+      </div>
+    </div>
+
+    <!-- Countdown banner -->
+    <div class="countdown-banner">
+      <div>
+        <div class="countdown-label">Deadline — December 31, 2025</div>
+        <div class="countdown-value" id="res-countdown">—</div>
+      </div>
+      <div class="countdown-note" id="res-countdownNote"></div>
+    </div>
+
+    <!-- Urgency tier -->
+    <div class="urgency-block" id="urgencyBlock">
+      <div class="urgency-tier-label" id="urgencyTierLabel">Urgency Tier</div>
+      <div class="urgency-tier-name" id="urgencyTierName">—</div>
+      <div class="urgency-tier-desc" id="urgencyTierDesc"></div>
+      <div class="urgency-actions-label">Strategies to consider before the deadline</div>
+      <ul class="urgency-actions" id="urgencyActions"></ul>
+    </div>
+
+    <!-- State note -->
+    <div class="state-note" id="stateNote"></div>
+
+    <!-- How we calculated this -->
+    <details>
+      <summary>How we calculated this — methodology &amp; assumptions</summary>
+      <div class="details-body" id="mathDetails">
+        <p>Calculations will appear after you run the calculator.</p>
+      </div>
+    </details>
+
+  </div><!-- /results-section -->
+
+  <hr class="section-divider">
+
+  <!-- AM Callout (required) -->
+  <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
+    <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful Tax Strategy Available</p>
+    <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">For high-net-worth Bitcoin holders, mining is the only strategy that simultaneously generates yield, accumulates BTC, and creates significant tax offsets — through equipment depreciation, operating expense deductions, and bonus depreciation on capital investments. Most family offices overlook mining entirely. Abundant Mines has compiled every major Bitcoin mining tax strategy in one place.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a>
+  </div>
+
+  <!-- Author box -->
+  <div class="author-box">
+    <div class="author-avatar">H</div>
+    <div class="author-info">
+      <strong>Hal Turner</strong>
+      <span>Bitcoin Wealth Strategist</span>
+      <p>I advise Bitcoin-concentrated families on estate structure, trust architecture, and tax planning. The TCJA sunset is the defining estate planning event of this decade for high-net-worth Bitcoin holders — and most families are not yet aware of it.</p>
+    </div>
+  </div>
+
+  <!-- Services CTA -->
+  <div class="services-cta">
+    <h3>Work With The Bitcoin Family Office</h3>
+    <p>We advise a small number of families on Bitcoin estate planning, custody architecture, and TCJA sunset strategy. If your planning window value is meaningful, the time to structure is now — not after December 31st. We'd be glad to work through this with you.</p>
+    <a href="/services/" class="btn-outline">View Our Services →</a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the TCJA estate tax sunset and when does it happen?</div>
+      <div class="faq-a">The Tax Cuts and Jobs Act of 2017 temporarily doubled the federal estate tax exemption. That doubling expires after December 31, 2025 unless Congress acts to extend it. After the sunset, the per-person exemption reverts from approximately $13.61M to approximately $7M (inflation-adjusted estimate). For married couples, the combined shelter drops from ~$27.22M to ~$14M. Any estate that falls between these thresholds is in the planning window right now.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Why does the sunset matter more for Bitcoin holders than other estates?</div>
+      <div class="faq-a">Bitcoin's price appreciation makes the sunset especially consequential. A holding worth $5M today could be worth $20M in five years. The current elevated exemption creates a narrow window to transfer that appreciation potential out of your taxable estate — through GRATs, dynasty trusts, or direct gifting — before both the exemption drops and the asset grows further. Lower exemption plus higher BTC price equals exponentially larger estate tax exposure.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is a GRAT and how does it help with the sunset?</div>
+      <div class="faq-a">A Grantor Retained Annuity Trust (GRAT) lets you transfer assets to heirs with minimal or zero gift tax. You fund a trust with Bitcoin, receive annuity payments back over a term, and any appreciation above the IRS hurdle rate passes to beneficiaries estate- and gift-tax free. For rapidly appreciating assets like Bitcoin, GRATs can move enormous value out of your taxable estate. Acting before December 31, 2025 lets you lock in the current exemption against any up-front gift tax cost.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is a Spousal Lifetime Access Trust (SLAT) and when should I use one?</div>
+      <div class="faq-a">A SLAT is an irrevocable trust funded with your lifetime gift tax exemption, where your spouse is a permissible beneficiary. It removes assets from your taxable estate while preserving indirect access through your spouse. For married couples, a SLAT is one of the most efficient ways to use the elevated TCJA exemption before it sunsets — placing Bitcoin in a SLAT today locks in the current $13.61M exemption permanently, even if the law changes tomorrow.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Which states impose estate tax on Bitcoin in addition to the federal tax?</div>
+      <div class="faq-a">Twelve states plus Washington D.C. impose estate taxes in addition to the federal estate tax: Massachusetts, Oregon, Washington, Minnesota, Illinois, Maryland, Vermont, Rhode Island, Connecticut, Hawaii, Maine, and New York. State exemptions are often far lower — Massachusetts has a $2M exemption, for example. Bitcoin holders in these states face additional exposure at estate values well below the federal threshold.</div>
+    </div>
+  </div>
+
+  <!-- Strong disclaimer -->
+  <div class="strong-disclaimer">
+    <p class="disc-header">⚠ Calculator Disclaimer — Read Before Using Results</p>
+    <p><strong style="color:var(--text);">Results produced by this calculator are rough, illustrative estimates only and must not be relied upon for any financial, legal, tax, or investment decision.</strong> All figures are clearly labeled "Illustrative Estimate." Actual outcomes will differ — often significantly — from any number shown here.</p>
+    <p>This calculator uses simplified assumptions: a flat 40% federal rate applied to the estate above the exemption with no brackets, graduated rates, credits, or deductions modeled. The post-sunset exemption of $7M per person is an approximation — the actual inflation-adjusted figure will be determined by the IRS and may differ. State estate taxes are not modeled in this calculator. Portability, marital deduction, charitable deductions, debt offsets, and other factors are excluded.</p>
+    <p>Laws change. Congress may extend, modify, or repeal the TCJA sunset. The post-sunset exemption shown reflects the law as currently scheduled. This tool does not constitute legal, tax, financial, or investment advice. It is provided for illustrative and educational purposes only. Individual circumstances vary substantially. <strong style="color:var(--text);">Do not take any action without first consulting a qualified estate planning attorney and licensed CPA who is familiar with your complete financial situation and applicable law.</strong></p>
+    <p>The Bitcoin Family Office makes no representation that information contained herein is current, accurate, or complete. Tax law and Bitcoin's regulatory status change frequently. This calculator was built to help you understand the structure of the problem — not to replace qualified professional advice.</p>
+  </div>
+
+  <!-- Related reading -->
+  <div class="related-section">
+    <h3>Related Tools &amp; Research</h3>
+    <div class="related-grid">
+      <a href="/tools/bitcoin-estate-tax-exposure-calculator.html" class="related-card">
+        <h4>Bitcoin Estate Tax Exposure Calculator</h4>
+        <p>Model total federal and state estate tax exposure on your Bitcoin holdings, including dynasty trust savings.</p>
+      </a>
+      <a href="/blog/bitcoin-grantor-retained-annuity-trust.html" class="related-card">
+        <h4>Bitcoin GRAT Strategy</h4>
+        <p>How Grantor Retained Annuity Trusts work for Bitcoin holders — mechanics, timing, and risk considerations.</p>
+      </a>
+      <a href="/blog/how-to-avoid-estate-tax-bitcoin.html" class="related-card">
+        <h4>How to Avoid Estate Tax on Bitcoin</h4>
+        <p>GRATs, dynasty trusts, SLATs, annual gifting, and LLC discount structures — a comprehensive overview.</p>
+      </a>
+    </div>
+  </div>
+
+</div><!-- /tool-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/blog/">Research</a>
+      <a href="/tools/">Tools</a>
+      <a href="/services/">Services</a>
+      <a href="/disclosures">Disclosures</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 The Bitcoin Family Office. All rights reserved.</p>
+    <p class="footer-legal">The Bitcoin Family Office is an independent research and education platform. We do not provide legal, tax, financial, or investment advice. Nothing on this website constitutes a solicitation to buy or sell any asset. All content is for informational purposes only. Bitcoin involves significant risk of loss. Consult qualified legal and financial professionals before acting.</p>
+  </div>
+</footer>
+
+<script>
+// ─── State data for states with estate tax ───────────────────────────────────
+var STATE_ESTATE_TAX = {
+  CT: {name:'Connecticut', note:'Connecticut imposes a state estate tax with an exemption equal to the federal exemption (currently mirroring federal thresholds). The top state rate is 12%. Your Connecticut state exposure may be separate from the federal figure above.'},
+  HI: {name:'Hawaii', note:'Hawaii imposes a state estate tax with a $5.49M per-person exemption (2026). The top rate is 20%. Depending on your estate size, Hawaii state estate tax may add substantial additional exposure.'},
+  IL: {name:'Illinois', note:'Illinois imposes a state estate tax with a $4M exemption. The top rate is 16%. Illinois does not adjust its exemption for inflation — many Bitcoin-concentrated estates exceed this threshold well before the federal exemption.'},
+  ME: {name:'Maine', note:'Maine has a state estate tax with a $6.8M exemption (approximately). The top rate is 12%. Maine state exposure may apply at estate values well below the federal threshold.'},
+  MD: {name:'Maryland', note:'Maryland imposes both a state estate tax (5% exemption ~$5M) and an inheritance tax (10% for some beneficiaries). Maryland residents may face double-layer state taxation on top of federal exposure.'},
+  MA: {name:'Massachusetts', note:'Massachusetts has one of the lowest state estate tax exemptions in the country — $2M per person. The top rate is 16%. Many Bitcoin holders in Massachusetts will face state estate tax long before they reach the federal threshold. This is among the most urgent planning states.'},
+  MN: {name:'Minnesota', note:'Minnesota imposes a state estate tax with a $3M exemption. The top rate is 16%. Minnesota does not have portability — married couples cannot combine exemptions. This creates additional urgency for married Minnesota residents.'},
+  NY: {name:'New York', note:'New York has an estate tax with an approximately $6.94M exemption and a "cliff tax" — if your estate exceeds 105% of the exemption, you lose the entire exemption. New York Bitcoin holders face both federal and state exposure, and the cliff tax creates nonlinear risk.'},
+  OR: {name:'Oregon', note:'Oregon has one of the lowest state estate tax exemptions — $1M per person. The top rate is 16%. Oregon residents with any meaningful Bitcoin position are likely already above the state threshold.'},
+  RI: {name:'Rhode Island', note:'Rhode Island imposes a state estate tax with a ~$1.77M exemption. The top rate is 16%. Rhode Island residents should model state exposure separately.'},
+  VT: {name:'Vermont', note:'Vermont imposes a state estate tax with a $5M exemption. The top rate is 16%. Vermont state exposure may apply at estate values below the federal threshold.'},
+  WA: {name:'Washington', note:'Washington State imposes an estate tax with a ~$2.19M exemption. The top rate is 20% — the highest state estate tax rate in the country. Washington residents with Bitcoin holdings should treat state planning as equally urgent to federal planning.'},
+  DC: {name:'Washington, D.C.', note:'Washington D.C. imposes an estate tax with an approximately $4.53M exemption. The top rate is 16%. D.C. residents should factor state-level exposure into their overall planning.'}
+};
+
+// ─── Urgency tiers ────────────────────────────────────────────────────────────
+var TIERS = {
+  low: {
+    label: 'Urgency Tier',
+    name: 'Low — Limited Immediate Window',
+    cssClass: 'tier-low',
+    desc: 'Your planning window value is under $500,000. The estate is currently either below the federal exemption or modestly above it. The TCJA sunset creates limited incremental federal exposure at your current estate size. This may change as Bitcoin appreciates.',
+    actions: [
+      'Review your estate plan annually as BTC price changes — the math shifts quickly',
+      'Consider annual gift exclusion gifting ($18,000 per recipient per year, no gift tax) to begin moving BTC to heirs',
+      'Ensure beneficiary designations are current and custody succession plan is documented',
+      'A dynasty trust may still be worth structuring to capture future BTC appreciation outside your estate'
+    ]
+  },
+  medium: {
+    label: 'Urgency Tier',
+    name: 'Medium — Meaningful Planning Window',
+    cssClass: 'tier-medium',
+    desc: 'Your planning window value is between $500,000 and $2,000,000. The TCJA sunset creates measurable additional federal estate tax exposure at your current estate size. Structured gifting or a trust arrangement established before December 31, 2025 could eliminate this exposure.',
+    actions: [
+      'Begin a GRAT (Grantor Retained Annuity Trust) — transfer Bitcoin appreciation out of your estate now',
+      'If married, evaluate a Spousal Lifetime Access Trust (SLAT) using the current $13.61M exemption before it sunsets',
+      'Use annual gift exclusions ($18,000/recipient) to move BTC incrementally to heirs',
+      'Consult an estate planning attorney to evaluate whether a dynasty trust justifies setup costs at your estate size',
+      'Document a clear custody succession plan — key management, wallet access, and trustee instructions'
+    ]
+  },
+  high: {
+    label: 'Urgency Tier',
+    name: 'High — Significant Planning Window',
+    cssClass: 'tier-high',
+    desc: 'Your planning window value is between $2,000,000 and $5,000,000. The TCJA sunset creates significant incremental federal estate tax exposure. At this level, the cost of inaction substantially exceeds the cost of planning. Structured arrangements established before December 31, 2025 could eliminate most or all of this incremental exposure.',
+    actions: [
+      'Establish a dynasty trust in a favorable jurisdiction (Wyoming, South Dakota, Nevada) to remove Bitcoin from your taxable estate',
+      'Structure a GRAT with your Bitcoin holdings to transfer future appreciation to heirs gift-tax free',
+      'If married, execute a Spousal Lifetime Access Trust (SLAT) before the sunset deadline — this locks in the current exemption permanently',
+      'Consider an Intentionally Defective Grantor Trust (IDGT) to sell Bitcoin to heirs in exchange for a promissory note, removing the asset from your estate',
+      'Use any remaining lifetime gift tax exemption before the sunset — gifts made before 2026 using the elevated exemption are not clawed back even if the law changes'
+    ]
+  },
+  critical: {
+    label: 'Urgency Tier — Act Now',
+    name: 'Critical — Immediate Action Required',
+    cssClass: 'tier-critical',
+    desc: 'Your planning window value exceeds $5,000,000. The TCJA sunset creates very large incremental federal estate tax exposure at your current estate size. This is a structural wealth preservation crisis with a hard deadline. The cost of not acting before December 31, 2025 is measured in millions of dollars of additional, avoidable estate tax.',
+    actions: [
+      'Contact an estate planning attorney immediately — lead times for trust structuring are 4–8 weeks minimum',
+      'Establish a dynasty trust in Wyoming, South Dakota, or Nevada to permanently remove Bitcoin from your taxable estate',
+      'Execute one or more GRATs funded with Bitcoin before the sunset deadline',
+      'If married, fund a Spousal Lifetime Access Trust (SLAT) using the full $13.61M exemption per spouse',
+      'Consider an Intentionally Defective Grantor Trust (IDGT) or grantor trust sale for a large transfer at low gift-tax cost',
+      'Ensure all annual gift exclusions ($18,000/recipient) are fully used for this year and plan for next',
+      'Evaluate charitable strategies (Charitable Lead Trust, CRT) if philanthropic goals align — these can also reduce estate exposure significantly'
+    ]
+  }
+};
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+function fmt(n) {
+  if (n === 0) return '$0';
+  var abs = Math.abs(Math.round(n));
+  return (n < 0 ? '-' : '') + '$' + abs.toLocaleString('en-US');
+}
+
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('navLinks').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('navLinks').classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navLinks').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+
+function getDaysRemaining() {
+  var deadline = new Date('2025-12-31T23:59:59');
+  var now = new Date();
+  var diff = deadline - now;
+  if (diff <= 0) return 0;
+  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+}
+
+// ─── Main calculator ──────────────────────────────────────────────────────────
+function runCalculator() {
+  // --- Parse inputs ---
+  var btcAmt = parseFloat(document.getElementById('btcAmount').value);
+  var btcPrc = parseFloat(document.getElementById('btcPrice').value);
+  var other  = parseFloat(document.getElementById('otherAssets').value) || 0;
+  var married = document.getElementById('maritalStatus').value === 'married';
+  var stateKey = document.getElementById('stateResidence').value;
+
+  // --- Validate ---
+  var ok = true;
+  function setErr(id, errId, cond) {
+    var el = document.getElementById(id);
+    var em = document.getElementById(errId);
+    if (cond) { el.classList.add('error'); em.style.display = 'block'; ok = false; }
+    else { el.classList.remove('error'); em.style.display = 'none'; }
+  }
+  setErr('btcAmount', 'err-btcAmount', isNaN(btcAmt) || btcAmt <= 0);
+  setErr('btcPrice',  'err-btcPrice',  isNaN(btcPrc) || btcPrc <= 0);
+  setErr('otherAssets','err-otherAssets', isNaN(other) || other < 0);
+  if (!ok) return;
+
+  // --- Fire GA4 event ---
+  if (typeof gtag === 'function') {
+    gtag('event', 'tool_calculate', { tool: 'estate_tax_sunset_calculator', btc_amount: btcAmt, married: married });
+  }
+
+  // --- Core numbers ---
+  var btcValue   = btcAmt * btcPrc;
+  var grossEstate = btcValue + other;
+
+  // Federal exemptions
+  var CURRENT_EXEMPTION_SINGLE = 13610000;
+  var SUNSET_EXEMPTION_SINGLE  = 7000000;  // inflation-adjusted estimate
+  var currentExemption = married ? CURRENT_EXEMPTION_SINGLE * 2 : CURRENT_EXEMPTION_SINGLE;
+  var sunsetExemption  = married ? SUNSET_EXEMPTION_SINGLE  * 2 : SUNSET_EXEMPTION_SINGLE;
+
+  // Taxable estate under each scenario
+  var currentTaxable = Math.max(grossEstate - currentExemption, 0);
+  var sunsetTaxable  = Math.max(grossEstate - sunsetExemption,  0);
+
+  // Federal estate tax under each scenario (flat 40%)
+  var currentExposure = currentTaxable * 0.40;
+  var sunsetExposure  = sunsetTaxable  * 0.40;
+
+  // Planning window value = additional tax created by sunset
+  var planningWindow = Math.max(sunsetExposure - currentExposure, 0);
+
+  // --- Days remaining ---
+  var daysLeft = getDaysRemaining();
+
+  // --- Urgency tier ---
+  var tierKey;
+  if      (planningWindow === 0)           tierKey = 'low';
+  else if (planningWindow < 500000)        tierKey = 'low';
+  else if (planningWindow < 2000000)       tierKey = 'medium';
+  else if (planningWindow < 5000000)       tierKey = 'high';
+  else                                     tierKey = 'critical';
+  var tier = TIERS[tierKey];
+
+  // ── Populate chips ──
+  // Current exposure chip — green if zero, red if positive
+  var curChip = document.querySelector('.chips-row .chip:nth-child(1)');
+  curChip.className = 'chip ' + (currentExposure > 0 ? 'danger' : 'safe');
+  document.getElementById('res-currentExposure').textContent = fmt(currentExposure);
+  document.getElementById('res-currentExposureSub').textContent =
+    currentExposure > 0
+      ? '40% on ' + fmt(currentTaxable) + ' above $' + (currentExemption/1000000).toFixed(2) + 'M exemption'
+      : 'Below current ' + fmt(currentExemption) + ' exemption — no federal exposure';
+
+  // Post-sunset exposure chip
+  var sunChip = document.querySelector('.chips-row .chip:nth-child(2)');
+  sunChip.className = 'chip ' + (sunsetExposure > 0 ? 'danger' : 'safe');
+  document.getElementById('res-sunsetExposure').textContent = fmt(sunsetExposure);
+
+  // Planning window chip
+  document.getElementById('res-planningWindow').textContent = fmt(planningWindow);
+  document.getElementById('res-windowSub').textContent =
+    planningWindow > 0
+      ? 'Additional tax created by sunset — can be reduced or eliminated with planning'
+      : 'Your estate is below both thresholds — no incremental sunset exposure at current values';
+
+  // ── Countdown ──
+  document.getElementById('res-countdown').textContent =
+    daysLeft > 0 ? daysLeft + ' day' + (daysLeft === 1 ? '' : 's') + ' remaining' : 'Deadline has passed';
+  document.getElementById('res-countdownNote').innerHTML =
+    daysLeft > 0
+      ? 'The TCJA exemption expires <strong>December 31, 2025</strong>. Gifts and trust transfers using the elevated exemption must be completed by this date. Trust setup typically requires 4–8 weeks minimum.'
+      : 'The December 31, 2025 deadline has passed. However, advanced strategies such as GRATs, SLATs, and dynasty trusts funded with your remaining lifetime exemption may still be available under post-sunset rules. Consult an estate planning attorney about current options.';
+
+  // ── Urgency block ──
+  var urgencyBlock = document.getElementById('urgencyBlock');
+  urgencyBlock.className = 'urgency-block ' + tier.cssClass;
+  document.getElementById('urgencyTierLabel').textContent = tier.label;
+  document.getElementById('urgencyTierName').textContent  = tier.name;
+  document.getElementById('urgencyTierDesc').textContent  = tier.desc;
+  var actionsEl = document.getElementById('urgencyActions');
+  actionsEl.innerHTML = '';
+  tier.actions.forEach(function(a) {
+    var li = document.createElement('li');
+    li.textContent = a;
+    actionsEl.appendChild(li);
+  });
+
+  // ── State note ──
+  var stateNoteEl = document.getElementById('stateNote');
+  if (stateKey !== 'none' && STATE_ESTATE_TAX[stateKey]) {
+    stateNoteEl.style.display = 'block';
+    stateNoteEl.innerHTML = '<strong>⚠ ' + STATE_ESTATE_TAX[stateKey].name + ' State Estate Tax:</strong> ' + STATE_ESTATE_TAX[stateKey].note;
+  } else {
+    stateNoteEl.style.display = 'none';
+  }
+
+  // ── Math details ──
+  document.getElementById('mathDetails').innerHTML = [
+    '<p><strong>Step 1 — Total estate value</strong></p>',
+    '<span class="math-line">Bitcoin: ' + btcAmt + ' BTC × ' + fmt(btcPrc) + '/BTC = ' + fmt(btcValue) + '</span>',
+    '<span class="math-line">Other assets: ' + fmt(other) + '</span>',
+    '<span class="math-line result">Gross estate: ' + fmt(grossEstate) + '</span>',
+
+    '<p><strong>Step 2 — Federal exemptions</strong></p>',
+    '<span class="math-line">Current exemption per person: ' + fmt(CURRENT_EXEMPTION_SINGLE) + '</span>',
+    '<span class="math-line">' + (married ? 'Married — portability doubles to: ' + fmt(currentExemption) : 'Single — total exemption: ' + fmt(currentExemption)) + '</span>',
+    '<span class="math-line">Post-sunset exemption per person (estimate): ' + fmt(SUNSET_EXEMPTION_SINGLE) + '</span>',
+    '<span class="math-line">' + (married ? 'Married post-sunset: ' + fmt(sunsetExemption) : 'Single post-sunset: ' + fmt(sunsetExemption)) + '</span>',
+
+    '<p><strong>Step 3 — Federal estate tax</strong></p>',
+    '<span class="math-line">Current taxable estate: max(' + fmt(grossEstate) + ' − ' + fmt(currentExemption) + ', 0) = ' + fmt(currentTaxable) + '</span>',
+    '<span class="math-line">Current federal tax: ' + fmt(currentTaxable) + ' × 40% = ' + fmt(currentExposure) + '</span>',
+    '<span class="math-line">Post-sunset taxable estate: max(' + fmt(grossEstate) + ' − ' + fmt(sunsetExemption) + ', 0) = ' + fmt(sunsetTaxable) + '</span>',
+    '<span class="math-line">Post-sunset federal tax: ' + fmt(sunsetTaxable) + ' × 40% = ' + fmt(sunsetExposure) + '</span>',
+
+    '<p><strong>Step 4 — Planning window value</strong></p>',
+    '<span class="math-line result">Planning window = max(' + fmt(sunsetExposure) + ' − ' + fmt(currentExposure) + ', 0) = ' + fmt(planningWindow) + '</span>',
+
+    '<p style="margin-top:0.75rem;"><em>Assumptions: Flat 40% federal rate on estate above exemption. No graduated brackets, credits, marital deduction, or debt offsets modeled. Post-sunset $7M per-person exemption is an estimate — actual IRS figure may differ. State taxes not included. All figures are Illustrative Estimates only.</em></p>'
+  ].join('');
+
+  // ── Show results ──
+  var resultsEl = document.getElementById('resultsSection');
+  resultsEl.style.display = 'block';
+  resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+
+</body>
+</html>
