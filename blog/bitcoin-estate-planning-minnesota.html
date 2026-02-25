@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bitcoin Estate Planning in Minnesota: The $3 Million Exemption | The Bitcoin Family Office</title>
-  <meta name="description" content="Minnesota's $3M estate tax exemption is one of the lowest in the country. At $95K BTC, just 31 coins trigger MN estate tax. Learn state-specific Bitcoin planning strategies." />
-  <meta name="keywords" content="bitcoin estate planning minnesota, minnesota bitcoin estate tax, minnesota estate tax exemption, bitcoin inheritance minnesota, cryptocurrency estate planning minnesota" />
+  <title>Bitcoin Estate Planning in Minnesota: $3M Estate Tax Threshold | The Bitcoin Family Office</title>
+  <meta name="description" content="Minnesota has one of the lowest state estate tax exemptions in the country at $3M — not portable between spouses. With Bitcoin at $95K, just 32 BTC triggers Minnesota estate tax. Here's how to plan." />
+  <meta name="keywords" content="bitcoin estate planning Minnesota, Minnesota estate tax bitcoin, Minnesota bitcoin trust, bitcoin inheritance Minnesota, cryptocurrency estate planning Minnesota" />
   <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-estate-planning-minnesota" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Bitcoin Estate Planning in Minnesota: The $3 Million Exemption and No Portability" />
-  <meta property="og:description" content="Minnesota's $3M estate tax exemption is one of the lowest in the country. At $95K BTC, just 31 coins trigger MN estate tax. Learn state-specific Bitcoin planning strategies." />
+  <meta property="og:title" content="Bitcoin Estate Planning in Minnesota: $3M Estate Tax Threshold" />
+  <meta property="og:description" content="Minnesota has one of the lowest state estate tax exemptions in the country at $3M, not portable between spouses. 32 BTC triggers Minnesota estate tax at current prices." />
   <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg" />
   <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-estate-planning-minnesota" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="The Bitcoin Family Office" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Bitcoin Estate Planning in Minnesota: The $3 Million Exemption and No Portability" />
-  <meta name="twitter:description" content="Minnesota's $3M estate tax exemption is one of the lowest in the US. At $95K BTC, just 31 coins trigger MN estate tax." />
+  <meta name="twitter:title" content="Bitcoin Estate Planning in Minnesota: $3M Estate Tax Threshold" />
+  <meta name="twitter:description" content="Minnesota has one of the lowest state estate tax exemptions — $3M, not portable. 32 BTC now triggers MN estate tax. Essential planning guide." />
   <meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.svg" />
 
   <!-- JSON-LD: Article -->
@@ -25,14 +25,14 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Bitcoin Estate Planning in Minnesota: The $3 Million Exemption and No Portability",
-    "description": "Minnesota's $3M estate tax exemption is one of the lowest in the country. At $95K BTC, just 31 coins trigger MN estate tax. Learn state-specific Bitcoin planning strategies.",
+    "headline": "Bitcoin Estate Planning in Minnesota: $3M Estate Tax Threshold",
+    "description": "Minnesota has one of the lowest state estate tax exemptions in the country at $3M — not portable between spouses. With Bitcoin at $95K, just 32 BTC triggers Minnesota estate tax. Here's how to plan.",
     "datePublished": "2026-02-25",
     "dateModified": "2026-02-25",
     "author": {
       "@type": "Person",
       "name": "Hal Turner",
-      "jobTitle": "Founder",
+      "jobTitle": "Principal",
       "worksFor": {
         "@type": "Organization",
         "name": "The Bitcoin Family Office"
@@ -47,8 +47,7 @@
       "@type": "WebPage",
       "@id": "https://thebitcoinfamilyoffice.com/blog/bitcoin-estate-planning-minnesota"
     },
-    "image": "https://thebitcoinfamilyoffice.com/assets/og-image.svg",
-    "keywords": ["bitcoin estate planning minnesota", "minnesota estate tax", "bitcoin inheritance", "cryptocurrency estate planning"]
+    "keywords": ["bitcoin estate planning Minnesota", "Minnesota estate tax", "bypass trust", "cryptocurrency inheritance Minnesota"]
   }
   </script>
 
@@ -93,7 +92,7 @@
     gtag('js', new Date());
     gtag('config', 'G-N8PP20VBTV');
 
-    // hm_click tracking
+    // hm_click event
     document.addEventListener('click', function(e) {
       var el = e.target.closest('a, button');
       if (el) {
@@ -105,14 +104,15 @@
       }
     });
 
-    // hm_scroll tracking
-    var scrollMarks = {25: false, 50: false, 75: false, 90: false};
+    // hm_scroll event
+    var scrollDepths = [25, 50, 75, 90];
+    var scrollFired = {};
     window.addEventListener('scroll', function() {
-      var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-      [25, 50, 75, 90].forEach(function(mark) {
-        if (pct >= mark && !scrollMarks[mark]) {
-          scrollMarks[mark] = true;
-          gtag('event', 'hm_scroll', { scroll_depth: mark, page_path: window.location.pathname });
+      var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      scrollDepths.forEach(function(d) {
+        if (scrollPct >= d && !scrollFired[d]) {
+          scrollFired[d] = true;
+          gtag('event', 'hm_scroll', { scroll_depth: d, page_path: window.location.pathname });
         }
       });
     });
@@ -122,8 +122,6 @@
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --bg: #0a0a0a;
       --bg-elevated: #111111;
@@ -132,248 +130,205 @@
       --text: #e8e0d0;
       --text-secondary: #8a8070;
       --accent: #c9a84c;
-      --accent-hover: #d4b86a;
-      --max-w: 800px;
+      --accent-dim: rgba(201,168,76,0.12);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'EB Garamond', Georgia, serif;
+      --font-ui: 'Inter', system-ui, sans-serif;
     }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'EB Garamond', Georgia, serif;
+      font-family: var(--font-body);
       font-size: 1.125rem;
       line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
     }
 
-    /* NAV */
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
     nav {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(10,10,10,0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      height: 64px;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      height: 64px;
     }
-
-    .nav-brand {
-      font-family: 'Playfair Display', serif;
+    .nav-logo {
+      font-family: var(--font-display);
       font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.01em;
     }
-
+    .nav-logo span { color: var(--accent); }
     .nav-links {
       display: flex;
-      align-items: center;
       gap: 2rem;
       list-style: none;
-    }
-
-    .nav-links a {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
+      font-family: var(--font-ui);
+      font-size: 0.875rem;
       font-weight: 500;
-      color: var(--text-secondary);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: color 0.2s;
     }
-
-    .nav-links a:hover { color: var(--accent); }
-
-    .nav-cta {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--bg) !important;
-      background: var(--accent);
-      padding: 0.45rem 1.1rem;
-      border-radius: 2px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      transition: background 0.2s !important;
-    }
-
-    .nav-cta:hover { background: var(--accent-hover) !important; color: var(--bg) !important; }
-
-    .hamburger {
+    .nav-links a { color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+    .nav-hamburger {
       display: none;
       flex-direction: column;
       gap: 5px;
+      cursor: pointer;
       background: none;
       border: none;
-      cursor: pointer;
       padding: 4px;
     }
-
-    .hamburger span {
+    .nav-hamburger span {
       display: block;
       width: 24px;
       height: 2px;
       background: var(--text);
       transition: all 0.3s;
     }
-
-    .mobile-menu {
+    .nav-mobile {
       display: none;
-      position: fixed;
-      top: 64px;
-      left: 0;
-      right: 0;
       background: var(--bg-elevated);
-      border-bottom: 1px solid var(--border);
-      padding: 1.5rem 2rem;
-      z-index: 99;
+      border-top: 1px solid var(--border);
+      padding: 1rem 1.5rem;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 0;
     }
-
-    .mobile-menu.open { display: flex; }
-
-    .mobile-menu a {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 500;
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
       color: var(--text-secondary);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.4rem 0;
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      padding: 0.75rem 0;
       border-bottom: 1px solid var(--border);
+      display: block;
     }
-
-    .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { color: var(--accent); }
+    .nav-mobile a:last-child { border-bottom: none; }
+    .nav-mobile a:hover { color: var(--accent); text-decoration: none; }
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .hamburger { display: flex; }
+      .nav-hamburger { display: flex; }
     }
 
-    /* BREADCRUMB */
-    .breadcrumb {
-      max-width: var(--max-w);
+    /* ── HERO ── */
+    .article-hero {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 1.5rem 3rem;
+    }
+    .article-hero-inner {
+      max-width: 800px;
       margin: 0 auto;
-      padding: 1.25rem 2rem 0;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
+    }
+    .breadcrumb {
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
       color: var(--text-secondary);
+      margin-bottom: 1.5rem;
       display: flex;
-      align-items: center;
       gap: 0.5rem;
+      align-items: center;
       flex-wrap: wrap;
     }
-
-    .breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
-    .breadcrumb a:hover { color: var(--accent); }
-    .breadcrumb .sep { opacity: 0.4; }
-
-    /* ARTICLE HEADER */
-    .article-header {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 2.5rem 2rem 2rem;
-    }
-
-    .article-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.72rem;
+    .breadcrumb a { color: var(--text-secondary); }
+    .breadcrumb a:hover { color: var(--accent); text-decoration: none; }
+    .breadcrumb-sep { opacity: 0.4; }
+    .article-tag {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
       font-weight: 600;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 1rem;
+      background: var(--accent-dim);
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
     }
-
     .article-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.9rem, 4vw, 2.75rem);
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
       font-weight: 700;
       line-height: 1.2;
       color: var(--text);
       margin-bottom: 1.25rem;
     }
-
     .article-subtitle {
-      font-family: 'EB Garamond', serif;
       font-size: 1.2rem;
       color: var(--text-secondary);
       line-height: 1.6;
-      margin-bottom: 2rem;
-      font-style: italic;
+      margin-bottom: 1.75rem;
     }
-
     .article-meta {
       display: flex;
       align-items: center;
       gap: 1.5rem;
-      padding: 1.25rem 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-ui);
       font-size: 0.82rem;
       color: var(--text-secondary);
       flex-wrap: wrap;
     }
+    .article-meta-divider { opacity: 0.3; }
 
-    .article-meta .meta-item { display: flex; align-items: center; gap: 0.4rem; }
-
-    /* ARTICLE BODY */
-    .article-body {
-      max-width: var(--max-w);
+    /* ── LAYOUT ── */
+    .article-layout {
+      max-width: 800px;
       margin: 0 auto;
-      padding: 2.5rem 2rem;
+      padding: 3rem 1.5rem 5rem;
     }
 
-    .article-body h2 {
-      font-family: 'Playfair Display', serif;
+    /* ── PROSE ── */
+    .prose h2 {
+      font-family: var(--font-display);
       font-size: 1.65rem;
       font-weight: 700;
       color: var(--text);
-      margin: 2.5rem 0 1rem;
-      line-height: 1.3;
+      margin: 2.75rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
     }
-
-    .article-body h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
+    .prose h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
       font-weight: 600;
-      color: var(--accent);
+      color: var(--text);
       margin: 2rem 0 0.75rem;
     }
-
-    .article-body p { margin-bottom: 1.4rem; }
-
-    .article-body ul, .article-body ol {
-      margin: 0 0 1.4rem 1.5rem;
+    .prose p {
+      margin-bottom: 1.35rem;
+      color: var(--text);
     }
-
-    .article-body li { margin-bottom: 0.5rem; }
-
-    .article-body strong { color: var(--text); font-weight: 600; }
-
-    .article-body a {
-      color: var(--accent);
-      text-decoration: underline;
-      text-decoration-color: rgba(201,168,76,0.35);
-      text-underline-offset: 3px;
-      transition: text-decoration-color 0.2s;
+    .prose ul, .prose ol {
+      margin: 0.75rem 0 1.35rem 1.5rem;
     }
+    .prose li {
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .prose strong { color: var(--text); font-weight: 600; }
+    .prose em { font-style: italic; }
 
-    .article-body a:hover { text-decoration-color: var(--accent); }
-
-    /* CALLOUT BOXES */
+    /* ── CALLOUT BOXES ── */
     .callout {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -382,227 +337,267 @@
       margin: 2rem 0;
       border-radius: 2px;
     }
-
     .callout-label {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-ui);
       font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 0.6rem;
     }
+    .callout p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+      line-height: 1.7;
+    }
+    .callout p strong { color: var(--text); }
+    .callout p:not(:last-child) { margin-bottom: 0.75rem; }
 
-    .callout p { margin-bottom: 0.6rem; font-size: 1rem; }
-    .callout p:last-child { margin-bottom: 0; }
+    .callout-warning {
+      border-left-color: #c94c4c;
+    }
+    .callout-warning .callout-label { color: #c94c4c; }
 
-    /* DATA TABLE */
-    .data-table-wrap { overflow-x: auto; margin: 2rem 0; }
+    .callout-alert {
+      border-left-color: #c97a4c;
+    }
+    .callout-alert .callout-label { color: #c97a4c; }
 
-    table {
+    /* ── STAT BOX ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .stat-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      text-align: center;
+      border-radius: 2px;
+    }
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+    .stat-label {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+    }
+
+    /* ── COMPARISON TABLE ── */
+    .compare-table {
       width: 100%;
       border-collapse: collapse;
-      font-family: 'Inter', sans-serif;
+      margin: 2rem 0;
+      font-family: var(--font-ui);
       font-size: 0.9rem;
     }
-
-    th {
+    .compare-table th {
       background: var(--bg-card);
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      border: 1px solid var(--border);
       padding: 0.75rem 1rem;
       text-align: left;
-      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
-
-    td {
+    .compare-table td {
+      border: 1px solid var(--border);
       padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--border);
       color: var(--text);
-      line-height: 1.5;
+      vertical-align: top;
     }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.01); }
+    .compare-table .td-accent { color: var(--accent); font-weight: 600; }
+    .compare-table .td-dim { color: var(--text-secondary); }
 
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: rgba(255,255,255,0.02); }
-
-    /* CTA BOXES */
+    /* ── CTA BOXES ── */
     .cta-box {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      padding: 2rem 2rem;
+      padding: 2rem;
       margin: 2.5rem 0;
-      border-radius: 2px;
       text-align: center;
+      border-radius: 2px;
     }
-
     .cta-box h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-size: 1.3rem;
-      font-weight: 700;
       color: var(--text);
       margin-bottom: 0.75rem;
     }
-
     .cta-box p {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: var(--text-secondary);
       margin-bottom: 1.25rem;
+      line-height: 1.6;
     }
-
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
     .btn {
       display: inline-block;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.82rem;
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--bg);
-      background: var(--accent);
       padding: 0.75rem 1.75rem;
+      background: var(--accent);
+      color: #0a0a0a;
       border-radius: 2px;
-      text-decoration: none;
-      transition: background 0.2s;
-      margin: 0.3rem;
+      transition: opacity 0.2s;
     }
-
-    .btn:hover { background: var(--accent-hover); color: var(--bg); }
-
+    .btn:hover { opacity: 0.85; text-decoration: none; }
     .btn-outline {
       background: transparent;
       color: var(--accent);
       border: 1px solid var(--accent);
     }
+    .btn-outline:hover { background: var(--accent-dim); }
 
-    .btn-outline:hover { background: var(--accent); color: var(--bg); }
-
-    /* AM MINING CALLOUT */
-    .mining-callout {
-      background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(20,20,20,0) 100%);
-      border: 1px solid rgba(201,168,76,0.25);
+    /* ── AM CALLOUT ── */
+    .am-callout {
+      background: linear-gradient(135deg, #111 0%, #141414 100%);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 2px;
       padding: 1.75rem 2rem;
       margin: 2.5rem 0;
-      border-radius: 2px;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+    .am-callout-icon {
+      font-size: 1.75rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .am-callout-body h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .am-callout-body p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 0.75rem;
+    }
+    .am-callout-body a {
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .mining-callout .callout-label { color: var(--accent); }
-
-    .mining-callout h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.6rem;
-    }
-
-    .mining-callout p { font-size: 1rem; margin-bottom: 0.75rem; }
-    .mining-callout p:last-child { margin-bottom: 0; }
-
-    /* AUTHOR BOX */
+    /* ── AUTHOR BOX ── */
     .author-box {
       background: var(--bg-card);
       border: 1px solid var(--border);
       padding: 1.75rem 2rem;
-      margin: 3rem 0 2rem;
-      border-radius: 2px;
+      margin: 3rem 0;
       display: flex;
-      gap: 1.5rem;
+      gap: 1.25rem;
       align-items: flex-start;
+      border-radius: 2px;
     }
-
     .author-avatar {
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      background: var(--bg-elevated);
-      border: 2px solid var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(201,168,76,0.3);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
       color: var(--accent);
       flex-shrink: 0;
     }
-
     .author-info h4 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-size: 1rem;
-      font-weight: 700;
       color: var(--text);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
-
     .author-info .author-title {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-ui);
       font-size: 0.78rem;
       color: var(--accent);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
       margin-bottom: 0.6rem;
+      letter-spacing: 0.05em;
     }
-
     .author-info p {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 0;
-    }
-
-    /* DISCLAIMER */
-    .disclaimer {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 1.25rem 1.5rem;
-      margin: 2rem 0;
-      border-radius: 2px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    .disclaimer strong { color: var(--text-secondary); }
-
-    /* FOOTER */
-    footer {
-      background: var(--bg-elevated);
-      border-top: 1px solid var(--border);
-      padding: 3rem 2rem 2rem;
-      margin-top: 4rem;
-    }
-
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-
-    .footer-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .footer-tagline {
       font-size: 0.9rem;
       color: var(--text-secondary);
       line-height: 1.6;
       margin-bottom: 0;
     }
 
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      border-radius: 2px;
+      margin: 2rem 0;
+    }
+    .disclaimer p {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+    .disclaimer strong { color: var(--text-secondary); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+    }
+    .footer-brand .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .footer-brand .footer-logo span { color: var(--accent); }
+    .footer-brand p {
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
     .footer-col h5 {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-ui);
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -610,385 +605,390 @@
       color: var(--text-secondary);
       margin-bottom: 1rem;
     }
-
     .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 0.5rem; }
-
-    .footer-col ul a {
-      font-family: 'Inter', sans-serif;
+    .footer-col li { margin-bottom: 0.6rem; }
+    .footer-col a {
+      font-family: var(--font-ui);
       font-size: 0.85rem;
       color: var(--text-secondary);
-      text-decoration: none;
       transition: color 0.2s;
     }
-
-    .footer-col ul a:hover { color: var(--accent); }
-
+    .footer-col a:hover { color: var(--accent); text-decoration: none; }
     .footer-bottom {
-      border-top: 1px solid var(--border);
+      max-width: 1200px;
+      margin: 2rem auto 0;
       padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
-      font-family: 'Inter', sans-serif;
+      gap: 0.75rem;
+      font-family: var(--font-ui);
       font-size: 0.78rem;
       color: var(--text-secondary);
     }
 
     @media (max-width: 768px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .article-body { padding: 2rem 1.25rem; }
-      .article-header { padding: 2rem 1.25rem 1.5rem; }
-      .breadcrumb { padding: 1rem 1.25rem 0; }
-      nav { padding: 0 1.25rem; }
-      .author-box { flex-direction: column; gap: 1rem; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .article-hero { padding: 2.5rem 1.25rem 2rem; }
+      .am-callout { flex-direction: column; gap: 0.75rem; }
+      .author-box { flex-direction: column; gap: 0.75rem; }
+      .compare-table { font-size: 0.82rem; }
     }
-
     @media (max-width: 480px) {
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+      .btn-group { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ── NAVIGATION ── -->
 <nav>
-  <a href="/" class="nav-brand">The Bitcoin Family Office</a>
-  <ul class="nav-links">
-    <li><a href="/blog/">Blog</a></li>
-    <li><a href="/tools/">Tools</a></li>
-    <li><a href="/about/">About</a></li>
-    <li><a href="/services/" class="nav-cta">Get Started</a></li>
-  </ul>
-  <button class="hamburger" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
+    <ul class="nav-links">
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/tools/bitcoin-estate-tax-calculator">Calculator</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/services/">Services</a>
+    <a href="/blog/">Insights</a>
+    <a href="/tools/bitcoin-estate-tax-calculator">Calculator</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="/blog/">Blog</a>
-  <a href="/tools/">Tools</a>
-  <a href="/about/">About</a>
-  <a href="/services/">Get Started</a>
-</div>
 
-<!-- BREADCRUMB -->
-<div class="breadcrumb">
-  <a href="/">Home</a>
-  <span class="sep">›</span>
-  <a href="/blog/">Blog</a>
-  <span class="sep">›</span>
-  <span>Bitcoin Estate Planning in Minnesota</span>
-</div>
-
-<!-- ARTICLE HEADER -->
-<header class="article-header">
-  <div class="article-label">Estate Planning · Minnesota</div>
-  <h1 class="article-title">Bitcoin Estate Planning in Minnesota: The $3 Million Exemption and No Portability</h1>
-  <p class="article-subtitle">Minnesota has the second-lowest estate tax exemption of any state — and a long track record of aggressive enforcement. For Bitcoin holders, the math is already alarming at current prices.</p>
-  <div class="article-meta">
-    <div class="meta-item">
-      <span>By <strong style="color:var(--text)">Hal Turner</strong></span>
-    </div>
-    <div class="meta-item">
+<!-- ── ARTICLE HERO ── -->
+<header class="article-hero">
+  <div class="article-hero-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/blog/">Insights</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Bitcoin Estate Planning in Minnesota</span>
+    </nav>
+    <div class="article-tag">Estate Planning · Minnesota</div>
+    <h1 class="article-title">Bitcoin Estate Planning in Minnesota: $3M Estate Tax Threshold</h1>
+    <p class="article-subtitle">Minnesota has one of the lowest state estate tax exemptions in the country — $3 million, not portable between spouses, with rates reaching 16%. At $95K per Bitcoin, just 32 BTC triggers Minnesota estate tax. Here is what every Minnesota Bitcoin holder must know.</p>
+    <div class="article-meta">
+      <span>By Hal Turner</span>
+      <span class="article-meta-divider">|</span>
       <span>February 25, 2026</span>
-    </div>
-    <div class="meta-item">
-      <span>~11 min read</span>
+      <span class="article-meta-divider">|</span>
+      <span>~13 min read</span>
     </div>
   </div>
 </header>
 
-<!-- ARTICLE BODY -->
-<article class="article-body">
+<!-- ── ARTICLE BODY ── -->
+<main>
+  <article class="article-layout">
+    <div class="prose">
 
-  <p>If you hold Bitcoin and live in Minnesota, the estate tax conversation starts at <strong>$3 million</strong> — not the $13.61 million federal threshold that most financial planning content focuses on. Minnesota's estate tax exemption is among the lowest of any state in the nation, and unlike the federal exemption, it has no inflation adjustment and no planned increases on the horizon. At $95,000 per Bitcoin, just <strong>31 BTC</strong> crosses the Minnesota threshold on its own — before a house, retirement account, car, or any other asset enters the picture.</p>
+      <p>If you hold Bitcoin in Minnesota, you are operating in one of the most estate-tax-hostile environments in the United States. Minnesota levies its own state estate tax with an exemption of just <strong>$3 million per person</strong> — not portable between spouses — and tax rates that reach <strong>16%</strong> on amounts above the threshold. Pair that with Minnesota's income tax rate of up to <strong>9.85%</strong>, one of the highest in the country, and you have a state where the government is aggressively positioned to capture a significant share of Bitcoin wealth at multiple points: when you sell, and when you die.</p>
 
-  <p>Minnesota is also known for diligent estate tax enforcement. The state's Department of Revenue has a dedicated estate tax program and actively pursues underfiled or undervalued estates. For Bitcoin holders in Minnesota, this is not a distant planning problem. It is a present and urgent one.</p>
+      <p>This is not a theoretical concern. At a Bitcoin price of $95,000, a Minnesota resident holding just <strong>32 BTC</strong> — worth roughly $3.04 million — has a taxable estate. That figure catches a surprisingly broad range of holders: people who bought consistently through 2019, 2020, and 2021, healthcare professionals who allocated retirement savings to Bitcoin, technology workers who have been accumulating for a decade. The $3M threshold is low enough that estate planning is not just for the ultra-wealthy — it is a practical necessity for any serious Minnesota Bitcoin holder.</p>
 
-  <p>This guide covers everything Minnesota Bitcoin holders need to know about state estate tax — the mechanics, the math, and the planning strategies that can meaningfully reduce or eliminate exposure.</p>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <span class="stat-value">$3M</span>
+          <div class="stat-label">MN Estate Tax Exemption</div>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value">13–16%</span>
+          <div class="stat-label">MN Estate Tax Rates</div>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value">9.85%</span>
+          <div class="stat-label">MN Top Income Tax Rate</div>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value">32 BTC</span>
+          <div class="stat-label">Triggers MN Estate Tax at $95K/BTC</div>
+        </div>
+      </div>
 
-  <h2>Minnesota Estate Tax: How It Works</h2>
+      <h2>Minnesota Estate Tax: The Fundamentals</h2>
 
-  <h3>The $3 Million Exemption</h3>
+      <p>Minnesota imposes a state estate tax under Minn. Stat. § 291.03. The tax applies to the estates of Minnesota residents — regardless of where their assets are located — and to the Minnesota-sited property of non-residents. The current exemption is <strong>$3 million</strong>, and rates are graduated from <strong>13% to 16%</strong> on the taxable amount above the threshold.</p>
 
-  <p>Minnesota exempts the first $3 million of a taxable estate from state estate tax. This exemption has been at $3 million since 2020 and is not indexed for inflation. There is no legislative plan to increase it further. As Bitcoin's price rises and general asset values continue to grow, the real value of this exemption erodes every year — catching more and more estates in its net without any change in the law.</p>
+      <p>Unlike the federal estate tax, which has a high exemption ($13.61 million per person in 2024, $13.99 million in 2025) and allows portability between spouses, Minnesota's exemption is <strong>not portable</strong>. A deceased spouse's unused Minnesota exemption cannot be transferred to the surviving spouse. This is the most consequential feature of Minnesota estate tax for married couples — and the most frequently overlooked.</p>
 
-  <p>Taxable estate for Minnesota purposes includes all assets owned at death: Bitcoin, real estate, bank accounts, brokerage accounts, retirement accounts (with some nuances), life insurance (if the deceased held incidents of ownership), business interests, and any other property. The starting point is gross estate value before any debts or expenses.</p>
+      <div class="callout callout-warning">
+        <div class="callout-label">⚠ No Portability in Minnesota</div>
+        <p>A married couple in Minnesota cannot simply rely on the survivor's own $3M exemption after the first spouse dies. <strong>Without a bypass trust, the first spouse's $3M exemption is permanently lost</strong> if the estate passes outright to the survivor. Effective combined exemption without planning: $3M. With a properly funded bypass trust: $6M.</p>
+      </div>
 
-  <h3>Minnesota Estate Tax Rates: 13% to 16%</h3>
+      <h2>The $3M Math: Who Is Actually Exposed</h2>
 
-  <p>Unlike the federal estate tax, which has a single 40% top rate, Minnesota uses a graduated rate structure on the amount above the $3 million exemption. The rates begin at 13% and increase to a top rate of 16% on amounts significantly above the threshold. These rates are not trivial — for a Bitcoin holder with $6 million in total assets, the Minnesota estate tax bill can easily reach $300,000 to $400,000 or more.</p>
+      <p>Let us do the math explicitly, because the numbers are arresting.</p>
 
-  <div class="callout">
-    <div class="callout-label">Minnesota Estate Tax Rate Overview</div>
-    <div class="data-table-wrap">
-      <table>
+      <p>At a Bitcoin price of $95,000:</p>
+      <ul>
+        <li><strong>32 BTC = $3.04M</strong> — Minnesota estate tax kicks in. A single-person household with 32 BTC and modest other assets (home equity, retirement accounts, personal property) is well into Minnesota estate tax territory.</li>
+        <li><strong>50 BTC = $4.75M</strong> — Approximately $1.75M in taxable excess. At Minnesota's marginal rates in this range (approximately 13–14%), that is roughly $225,000–$245,000 in Minnesota estate tax.</li>
+        <li><strong>100 BTC = $9.5M</strong> — Approximately $6.5M in taxable excess. Minnesota estate tax at or approaching 16% on the upper portion — potentially $800,000–$1M+ in state tax alone, on top of any federal estate tax.</li>
+      </ul>
+
+      <p>These are not edge cases. These are real positions held by real Minnesota families. Many have been accumulating for years and simply have not updated their estate plans to reflect how dramatically their net worth has grown. Bitcoin's asymmetric upside, which made these holders wealthy, also created an estate tax problem that many of them are only now beginning to appreciate.</p>
+
+      <div class="callout callout-alert">
+        <div class="callout-label">⚡ The Accumulator's Trap</div>
+        <p>Long-term Bitcoin accumulators in Minnesota face a compounding problem: their basis is typically very low (purchased at $5K, $10K, $20K per coin), their current value is high, and their estate plan was written when they held far less. <strong>Every year without an updated estate plan is a year of potential compounded exposure.</strong></p>
+      </div>
+
+      <h2>The Bypass Trust: Essential for Every Minnesota Bitcoin Couple</h2>
+
+      <p>Given Minnesota's non-portable exemption, the bypass trust — also called a credit shelter trust, family trust, or B trust — is the foundational tool for married Minnesota Bitcoin holders. This is not optional planning for the wealthy. At a $3 million threshold, it is essential planning for any married couple with meaningful Bitcoin holdings.</p>
+
+      <p>Here is how the bypass trust operates in a Minnesota context:</p>
+
+      <ol>
+        <li><strong>First spouse dies.</strong> Instead of leaving everything to the surviving spouse outright (which forfeits the deceased's $3M exemption), assets up to $3 million are directed into the bypass trust.</li>
+        <li><strong>Surviving spouse benefits.</strong> The trust is typically structured to benefit the surviving spouse — they can receive income, and often principal for health, education, maintenance, and support — while keeping the assets outside their taxable estate.</li>
+        <li><strong>Second spouse dies.</strong> The bypass trust assets pass to heirs without being included in the surviving spouse's estate. The surviving spouse's estate separately uses its own $3M exemption. Combined effective exemption: <strong>$6 million</strong>.</li>
+      </ol>
+
+      <p>For a Bitcoin-holding couple, the bypass trust might be funded with Bitcoin specifically — perhaps a specific number of BTC allocated to the trust at the first death. This requires careful attention to valuation (Bitcoin's price at date of death determines the value of assets available to fund the bypass), key access protocols for self-custodied coins, and trustee capabilities for managing a Bitcoin position over time.</p>
+
+      <table class="compare-table">
         <thead>
           <tr>
-            <th>Taxable Estate Value</th>
-            <th>Approximate Effective Rate</th>
-            <th>Estimated MN Tax</th>
+            <th>Scenario</th>
+            <th>Estate at 2nd Death</th>
+            <th>MN Estate Tax</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>$3,000,000 (at threshold)</td><td>—</td><td>$0</td></tr>
-          <tr><td>$4,000,000</td><td>~13%</td><td>~$130,000</td></tr>
-          <tr><td>$5,000,000</td><td>~13.5%</td><td>~$270,000</td></tr>
-          <tr><td>$6,000,000</td><td>~14%</td><td>~$420,000</td></tr>
-          <tr><td>$8,000,000</td><td>~14.5%</td><td>~$725,000</td></tr>
-          <tr><td>$10,000,000</td><td>~15%</td><td>~$1,050,000</td></tr>
-          <tr><td>$15,000,000+</td><td>~16% (top rate)</td><td>~$1,900,000+</td></tr>
+          <tr>
+            <td>No planning (outright to survivor)</td>
+            <td class="td-dim">Full estate, 1 exemption ($3M)</td>
+            <td class="td-accent">Tax on excess above $3M</td>
+          </tr>
+          <tr>
+            <td>Bypass trust properly funded</td>
+            <td class="td-dim">$3M bypass shielded + survivor's $3M exemption</td>
+            <td class="td-accent">Tax only on excess above $6M</td>
+          </tr>
+          <tr>
+            <td>Bypass trust + GRAT</td>
+            <td class="td-dim">Appreciation transferred out pre-death</td>
+            <td class="td-accent">Significantly reduced</td>
+          </tr>
         </tbody>
       </table>
+
+      <h2>Minnesota's Income Tax Problem: 9.85% on Bitcoin Gains</h2>
+
+      <p>Minnesota's estate tax burden does not exist in isolation. The state also levies one of the highest income tax rates in the United States: <strong>9.85%</strong> on taxable income above approximately $304,970 (for married couples, 2024). Bitcoin holders who sell in Minnesota pay this rate in addition to federal capital gains tax.</p>
+
+      <p>For a long-term Bitcoin holder selling at a significant gain, the combined federal and Minnesota tax bill can be severe:</p>
+      <ul>
+        <li>Federal long-term capital gains: 20% (for high earners)</li>
+        <li>Federal net investment income tax (NIIT): 3.8%</li>
+        <li>Minnesota income tax: 9.85%</li>
+        <li><strong>Combined marginal rate on Bitcoin gains: ~33.65%</strong></li>
+      </ul>
+
+      <p>This means a Minnesota Bitcoin holder selling $1 million in appreciated Bitcoin effectively sends approximately $336,500 to federal and state tax authorities. The remaining approximately $663,500 is what funds lifestyle, reinvestment, or philanthropy.</p>
+
+      <p>This income tax environment makes <em>holding</em> Bitcoin — rather than selling — even more valuable in Minnesota than in lower-tax states. It also creates significant planning opportunities around <strong>how</strong> and <strong>when</strong> Bitcoin is sold, and whether charitable giving (via charitable remainder trusts, donor-advised funds, or direct charitable transfers of appreciated Bitcoin) can reduce the income tax burden.</p>
+
+      <div class="am-callout">
+        <div class="am-callout-icon">⚡</div>
+        <div class="am-callout-body">
+          <h4>Offset Minnesota Income Tax with Bitcoin Mining Deductions</h4>
+          <p>Bitcoin mining through a properly structured entity can generate significant tax deductions — bonus depreciation on mining equipment, operating expense deductions, and more — that can offset Minnesota's 9.85% income tax rate on other income. For high-income Bitcoin holders in Minnesota, mining is worth serious consideration as a tax strategy, not just an accumulation strategy.</p>
+          <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener">Explore Bitcoin Mining Tax Strategy →</a>
+        </div>
+      </div>
+
+      <h2>Minnesota Wealth Migration: The Domicile Change Option</h2>
+
+      <p>For very large Bitcoin holders — those with positions of 100+ BTC or multi-million-dollar Bitcoin wealth — the tax calculus in Minnesota may be compelling enough to consider a genuine change of domicile. <strong>South Dakota and Wyoming</strong> are the two states most commonly targeted by high-earning Minnesotans:</p>
+
+      <ul>
+        <li><strong>Wyoming:</strong> No state income tax. No state estate tax. One of the best trust jurisdictions in the country (DAPT, directed trust, dynasty trust). Very favorable for Bitcoin holders specifically.</li>
+        <li><strong>South Dakota:</strong> No state income tax. No state estate tax. Excellent trust law. Popular for dynasty trusts and offshore trust settlors relocating domestically.</li>
+      </ul>
+
+      <p>A domicile change is not as simple as buying a house in Cheyenne or Sioux Falls. To successfully change domicile from Minnesota's perspective, the individual must:</p>
+      <ol>
+        <li>Establish a physical presence and residence in the new state</li>
+        <li>Abandon Minnesota as a primary domicile (voter registration, driver's license, bank accounts, club memberships, social connections)</li>
+        <li>Spend the appropriate number of days outside Minnesota</li>
+        <li>Update estate planning documents, financial accounts, and professional registrations to reflect the new domicile</li>
+      </ol>
+
+      <p>Minnesota aggressively audits claimed domicile changes, particularly for high-income taxpayers. A successful domicile change requires careful documentation and ideally a genuine lifestyle shift to the new state — not just a paper change. For someone with a $10M Bitcoin position facing potential $1M+ in Minnesota estate tax and $335K/year in state income tax on Bitcoin sales, the math on a genuine relocation can be extremely compelling.</p>
+
+      <p>That said, many Minnesota Bitcoin holders are deeply rooted in the state — professional practices, family, community ties — and relocation is not realistic. For them, the focus shifts to maximizing the effectiveness of planning <em>within</em> Minnesota's tax structure.</p>
+
+      <h2>Minnesota Trust Law and RUFADAA</h2>
+
+      <p>Minnesota has adopted a comprehensive trust code under <strong>Chapter 501C</strong> of the Minnesota Statutes, based on the Uniform Trust Code. Minnesota courts have a solid body of trust law precedent, and Minnesota is a competent trust jurisdiction for traditional trust planning purposes.</p>
+
+      <p>Minnesota has also adopted the <strong>Revised Uniform Fiduciary Access to Digital Assets Act (RUFADAA)</strong>, which governs how executors, trustees, and agents under powers of attorney can access digital assets — including Bitcoin — after the account holder's death or incapacity. Under Minnesota RUFADAA, fiduciary access to digital assets is governed by:</p>
+      <ul>
+        <li>The explicit authorizations in the governing estate planning documents</li>
+        <li>The terms of service of any custodian (exchange, custody platform)</li>
+        <li>Whether the assets are custodied or self-custodied</li>
+      </ul>
+
+      <p>For self-custodied Bitcoin, RUFADAA gives fiduciaries authority to act but does not create the technical ability to access private keys. Every Minnesota Bitcoin estate plan must address the practical question of key access: where are the keys stored, who has access, and what is the tested recovery protocol? Bitcoin inaccessible to heirs is Bitcoin lost.</p>
+
+      <h2>No DAPT in Minnesota: Use Wyoming for Asset Protection</h2>
+
+      <p>Minnesota does not have a Domestic Asset Protection Trust (DAPT) statute. Minnesota law does not permit a person to be a beneficiary of a self-settled spendthrift trust — meaning you cannot establish a trust in Minnesota, fund it with your own assets, name yourself as a beneficiary, and claim creditor protection for those assets.</p>
+
+      <p>For Minnesota Bitcoin holders who need asset protection — physicians, attorneys, business owners, executives — the solution is a <strong>Wyoming DAPT</strong>. Wyoming's DAPT statute is among the strongest in the country. A properly structured and funded Wyoming DAPT can provide significant creditor protection while also layering in estate planning efficiency through coordinated trust design.</p>
+
+      <p>The combination of a Wyoming DAPT for asset protection and a properly drafted revocable trust with bypass trust provisions for Minnesota estate tax creates a robust planning architecture for most Minnesota Bitcoin holders.</p>
+
+      <h2>The GRAT: Transferring Bitcoin Appreciation Out of Your Estate</h2>
+
+      <p>A Grantor Retained Annuity Trust (GRAT) is a federal transfer tax planning tool that works particularly well with appreciating assets like Bitcoin. The concept: you transfer Bitcoin into the GRAT, receive annuity payments back for a fixed term, and any appreciation above the IRS Section 7520 hurdle rate transfers to your heirs free of gift and estate tax at the end of the term.</p>
+
+      <p>Bitcoin's price volatility makes it genuinely well-suited for GRATs. If you can time a GRAT to capture a period of significant Bitcoin appreciation, you can transfer enormous wealth to heirs with zero transfer tax. Practical considerations:</p>
+      <ul>
+        <li><strong>Rolling GRATs:</strong> Instead of one large GRAT, establish multiple shorter-term GRATs sequentially to maximize the probability of capturing appreciation across market cycles.</li>
+        <li><strong>Mortality risk:</strong> If the grantor dies during the GRAT term, the assets are pulled back into the estate. Shorter terms (2-year GRATs, for example) reduce this risk.</li>
+        <li><strong>Zeroed-out GRATs:</strong> The GRAT can be structured so the annuity payments essentially return all principal to the grantor, with only the excess appreciation going to heirs. This minimizes gift tax regardless of the outcome.</li>
+      </ul>
+
+      <p>For Minnesota residents, the GRAT reduces the federal taxable estate and also directly reduces the Minnesota taxable estate — both meaningful given the two overlapping tax systems.</p>
+
+      <h2>Wyoming Dynasty Trust for Minnesota Holders</h2>
+
+      <p>While Minnesota has no specific dynasty trust statute, Minnesota Bitcoin holders can establish a <strong>Wyoming dynasty trust</strong> to hold Bitcoin for multiple generations. Wyoming allows trusts to continue indefinitely (no rule against perpetuities for trusts) and provides the DAPT asset protection layer simultaneously.</p>
+
+      <p>A Wyoming dynasty trust funded with Bitcoin:</p>
+      <ul>
+        <li>Can hold Bitcoin indefinitely across generations without triggering estate tax at each death</li>
+        <li>Provides creditor protection for beneficiaries (spendthrift provisions)</li>
+        <li>Allows the settlor to remain a discretionary beneficiary (DAPT feature)</li>
+        <li>Can be administered by a professional corporate trustee with Bitcoin custody expertise</li>
+        <li>Bypasses the Minnesota estate tax at both the funding generation's death and subsequent generations</li>
+      </ul>
+
+      <p>The trust must be properly established in Wyoming with Wyoming-sited administration and a Wyoming trustee. It must have genuine economic substance. But for a Minnesota family with significant Bitcoin wealth, the combination of Minnesota estate tax avoidance and creditor protection makes the Wyoming dynasty trust one of the most powerful tools available.</p>
+
+      <h2>Twin Cities Bitcoin Community: Planning for the North Star State's Holders</h2>
+
+      <p>Minneapolis-St. Paul has a growing and sophisticated Bitcoin community. The Twin Cities are home to a significant concentration of healthcare and medical device professionals — Minnesota is headquarters to many of the world's largest medical device companies, including Medtronic, Abbott (formerly St. Jude Medical), and others — as well as financial services firms, technology companies, and insurance industry executives. Many of these professionals have been systematically accumulating Bitcoin alongside their traditional retirement savings for years.</p>
+
+      <p>The combination of high professional incomes, long-term Bitcoin accumulation, and Minnesota's aggressive tax structure creates a planning environment where proactive estate planning delivers measurable, material results. The difference between a well-structured estate plan and a default outcome for a Minnesota family with 50–100 BTC can easily be $250,000 to $1 million or more in state estate tax.</p>
+
+      <div class="cta-box">
+        <h3>Calculate Your Minnesota Estate Tax Exposure</h3>
+        <p>Use our Bitcoin estate tax calculator to model your exact Minnesota estate tax liability based on your Bitcoin holdings and total estate size. See how bypass trusts, GRATs, and Wyoming dynasty trusts reduce your exposure.</p>
+        <div class="btn-group">
+          <a href="/tools/bitcoin-estate-tax-calculator" class="btn">Run the Calculator →</a>
+          <a href="/blog/bitcoin-estate-planning-all-50-states" class="btn btn-outline">All 50 States Guide</a>
+        </div>
+      </div>
+
+      <h2>Planning Priorities for Minnesota Bitcoin Holders</h2>
+
+      <p>Given Minnesota's uniquely challenging tax environment — low estate tax exemption, non-portable, high income tax — here is the strategic priority order for Minnesota Bitcoin holders:</p>
+
+      <ol>
+        <li><strong>Bypass Trust — Essential.</strong> If you are married and your combined estate may exceed $3 million (which includes all assets, not just Bitcoin), a bypass trust is your highest-priority planning action. This is the most reliable way to double your effective Minnesota exemption from $3M to $6M.</li>
+        <li><strong>Digital Asset Estate Plan Update.</strong> Ensure your estate planning documents explicitly authorize fiduciaries to access, manage, and transfer Bitcoin. Address key access for self-custodied Bitcoin with a tested, secure protocol.</li>
+        <li><strong>Wyoming DAPT</strong> (if creditor risk warrants). Healthcare professionals and business owners with liability exposure should consider a Wyoming self-settled trust as an asset protection vehicle, especially for Bitcoin held outside retirement accounts.</li>
+        <li><strong>Income Tax Planning.</strong> Work with a CPA experienced in cryptocurrency to manage the timing and character of Bitcoin dispositions, explore charitable giving strategies (donor-advised fund, charitable remainder trust with appreciated Bitcoin), and consider mining as a deduction source.</li>
+        <li><strong>GRAT for Larger Holdings.</strong> If your Bitcoin position is meaningfully above the $3M threshold, GRATs can transfer significant appreciation to heirs with zero transfer tax. Model this with a financial advisor familiar with cryptocurrency-specific GRAT mechanics.</li>
+        <li><strong>Domicile Change Analysis.</strong> If you hold 100+ BTC and are not deeply tied to Minnesota by professional or personal obligations, a genuine domicile change to Wyoming or South Dakota may be worth modeling. The tax savings can be extraordinary for large holders over time.</li>
+        <li><strong>Wyoming Dynasty Trust.</strong> For larger holdings intended for multiple generations, a Wyoming dynasty trust provides the combination of indefinite duration, creditor protection, and estate tax bypass that Minnesota law alone cannot offer.</li>
+      </ol>
+
+      <div class="callout">
+        <div class="callout-label">Work With Specialists</div>
+        <p>Bitcoin estate planning in Minnesota requires fluency in both cryptocurrency and Minnesota-specific estate tax law. The interaction between Minnesota's non-portable $3M exemption, federal transfer tax rules, Minnesota RUFADAA, and Wyoming trust law is complex. <a href="/services/">The Bitcoin Family Office</a> specializes exclusively in this intersection — serving Minnesota families and Bitcoin holders nationally.</p>
+      </div>
+
     </div>
-    <p>Estimates are illustrative. Exact tax is calculated using Minnesota's bracket structure. Consult a Minnesota estate attorney for precise figures based on your estate composition.</p>
-  </div>
 
-  <h3>No Portability — Each Spouse Has a Separate $3 Million</h3>
-
-  <p>This is the point that surprises most married Minnesota Bitcoin holders. At the federal level, married couples can effectively combine their exemptions through portability — if one spouse dies, the surviving spouse can elect to "inherit" the deceased spouse's unused federal exemption. A married couple can effectively protect $27.22 million from federal estate tax with proper planning.</p>
-
-  <p><strong>Minnesota provides no such portability.</strong> Each spouse has their own $3 million exemption, period. If the first spouse to die leaves everything directly to the surviving spouse (using the unlimited marital deduction), the first spouse's $3 million exemption is permanently lost. The surviving spouse then dies with a single $3 million exemption — and the entire estate above that amount is subject to Minnesota estate tax.</p>
-
-  <p>For a married couple holding 60 BTC between them at $95,000 — a total value of $5.7 million — failing to plan around portability means the estate will face Minnesota estate tax on $2.7 million at the second spouse's death. That's a tax bill approaching $400,000 or more that proper credit shelter trust planning could largely or entirely eliminate.</p>
-
-  <h3>Minnesota Has No Inheritance Tax</h3>
-
-  <p>Minnesota imposes an <em>estate tax</em>, not an inheritance tax. The distinction is meaningful: the estate tax is paid by the estate before assets are distributed to heirs. Beneficiaries who receive Minnesota assets — including Bitcoin — do not pay an additional Minnesota tax on what they inherit. Federal capital gains rules apply to inherited assets based on stepped-up basis rules at the federal level, but that's a separate issue from Minnesota's estate tax.</p>
-
-  <h3>Minnesota is a Common Law Equitable Distribution State</h3>
-
-  <p>Minnesota follows common law property principles, not community property rules. Each spouse legally owns the assets titled in their name alone. Bitcoin held in a wallet or exchange account under one spouse's name and control is generally that spouse's separate property for estate purposes. This has planning implications: for credit shelter trust funding purposes, it matters who holds title to what assets, and Bitcoin ownership should be clearly documented and structured between spouses with estate planning in mind.</p>
-
-  <h2>The Bitcoin Math in Minnesota</h2>
-
-  <p>The numbers are stark. With Bitcoin at approximately $95,000:</p>
-
-  <div class="callout">
-    <div class="callout-label">Minnesota Threshold in Bitcoin Terms</div>
-    <p><strong>31 BTC</strong> at $95,000 = $2,945,000 — just under the MN threshold alone.</p>
-    <p><strong>32 BTC</strong> at $95,000 = $3,040,000 — in taxable territory at $40,000 above the exemption, <em>before any other assets</em>.</p>
-    <p>Add a $400,000 home and a $150,000 retirement account, and the threshold drops to roughly <strong>26 BTC</strong>.</p>
-    <p>At $250,000 per Bitcoin (a commonly modeled target), the threshold drops to just <strong>12 BTC</strong> — for a single individual, before any other assets.</p>
-  </div>
-
-  <p>Minnesota has a long history of aggressive estate tax enforcement. The state's Department of Revenue actively matches death records against estate tax returns and pursues cases where estates that appear taxable — based on public records of property ownership, business registration, or investment accounts — fail to file. Bitcoin's pseudonymity does not create a planning exemption. If the estate is taxable, it must be reported.</p>
-
-  <p>For moderate Bitcoin holders — the early adopters who bought between 2015 and 2020, the employees who took Bitcoin compensation, the retail investors who accumulated steadily — the Minnesota threshold is already in range at current prices. Planning cannot wait for Bitcoin's next major price move.</p>
-
-  <h2>Minnesota-Specific Bitcoin Estate Planning Strategies</h2>
-
-  <h3>1. Credit Shelter Trust (A/B Trust)</h3>
-
-  <p>The credit shelter trust — also called a bypass trust or A/B trust — is the foundational tool for married Minnesota Bitcoin holders who want to preserve both spouses' $3 million exemptions.</p>
-
-  <p>The structure is straightforward: when the first spouse dies, assets up to the Minnesota exemption ($3 million) are placed into an irrevocable trust — the "B trust" or credit shelter trust — rather than passing directly to the surviving spouse. The surviving spouse can still benefit from the trust's income and assets, but the trust assets are not counted in the surviving spouse's taxable estate when they die.</p>
-
-  <p>The result: a married couple can shelter up to <strong>$6 million</strong> from Minnesota estate tax — $3 million for each spouse. Without the credit shelter trust, the couple is limited to $3 million total at the second death.</p>
-
-  <p>For Bitcoin held in the credit shelter trust, future appreciation also escapes the estate. If the Bitcoin in the trust doubles from $95,000 to $190,000 per coin between the first and second spouse's death, the entire appreciation accumulates inside the trust — outside the surviving spouse's taxable estate. The estate tax savings compound with Bitcoin's price appreciation.</p>
-
-  <h3>2. South Dakota or Wyoming Dynasty Trust</h3>
-
-  <p>Minnesota residents are not limited to Minnesota trust structures. A growing number of high-net-worth Minnesotans are establishing dynasty trusts in South Dakota or Wyoming — states with no state income tax, no rule against perpetuities, and uniquely favorable trust laws — to hold Bitcoin and other appreciating assets.</p>
-
-  <p>South Dakota in particular has become the dominant domestic trust jurisdiction. South Dakota has no trust income tax, no state capital gains tax, exceptional asset protection provisions, and allows self-settled trusts where the grantor can be a discretionary beneficiary. Wyoming offers similar advantages with additional specific protections for digital assets including cryptocurrency.</p>
-
-  <p>A Minnesota resident who transfers Bitcoin into a properly established South Dakota or Wyoming dynasty trust with an independent trustee removes those assets from their Minnesota taxable estate — permanently, for the life of the trust. South Dakota permits perpetual trusts with no mandatory termination date. The trust can hold Bitcoin for children, grandchildren, and future generations without triggering Minnesota estate tax at each generation.</p>
-
-  <p>The transfer to the dynasty trust is treated as a taxable gift for federal purposes (using federal lifetime exemption or potentially paying gift tax), but subsequent appreciation — potentially far larger — escapes both Minnesota estate tax and the generation-skipping transfer tax if structured properly.</p>
-
-  <h3>3. Annual Gifting Program</h3>
-
-  <p>Every person can give up to <strong>$18,000 per recipient per year</strong> (2024 IRS annual exclusion) completely free of gift tax and without using any lifetime exemption. These gifts are removed from the estate immediately and permanently.</p>
-
-  <p>For a married couple using gift-splitting, each recipient can receive $36,000 per year from the couple combined. A family with two adult children and four grandchildren can transfer $216,000 per year out of the estate — in Bitcoin, in cash, or in other assets — with zero gift tax and zero reduction in the Minnesota estate tax exemption.</p>
-
-  <p>Applied to Bitcoin specifically: gifting Bitcoin at today's prices removes not just the current value but all future appreciation from the estate. A gift of $18,000 in Bitcoin today might represent $90,000 to $180,000 in future estate value if Bitcoin appreciates 5x to 10x. The estate tax savings from a systematic gifting program compound over time.</p>
-
-  <p>Annual gifts should be documented. For Bitcoin, this means a contemporaneous record of the transfer, the wallet addresses involved, the date, the recipient, and the fair market value on the date of transfer. The IRS and Minnesota Department of Revenue both expect this level of documentation.</p>
-
-  <h3>4. Grantor Retained Annuity Trust (GRAT)</h3>
-
-  <p>A GRAT is an estate freeze technique particularly suited to concentrated, high-appreciation positions like Bitcoin. You transfer Bitcoin into the GRAT, then receive fixed annuity payments back over a defined term — typically two to five years. At the end of the GRAT term, the remainder passes to heirs.</p>
-
-  <p>The "freeze" mechanics work as follows: the IRS assumes your Bitcoin will grow at a baseline interest rate (the Section 7520 rate, currently modest). Any actual appreciation above that assumed rate passes to your heirs completely gift-tax free — removed from your Minnesota estate with no additional tax cost. If Bitcoin significantly outperforms the IRS hurdle rate (which history suggests is likely over most multi-year periods), the GRAT transfers the excess appreciation at zero tax cost.</p>
-
-  <p>The risk profile of a GRAT is asymmetric in your favor: if Bitcoin underperforms, the assets come back to you and you're no worse off than before. If Bitcoin outperforms — as it has tended to do over multi-year periods — your heirs receive the excess appreciation free of Minnesota estate tax and federal estate tax.</p>
-
-  <p>Short-term GRATs (two years) are particularly popular because they reduce the risk of dying during the trust term (which would cause the assets to return to the estate) while still capturing near-term Bitcoin appreciation cycles.</p>
-
-  <div class="mining-callout">
-    <div class="callout-label">Bitcoin Tax Strategy</div>
-    <h3>Reduce Your Taxable Income Before the Estate Question Even Arises</h3>
-    <p>Estate planning protects what you've built. Bitcoin mining is one of the most powerful strategies for reducing what you owe along the way — through depreciation deductions, bonus depreciation on mining equipment, and operational expense write-offs that meaningfully reduce ordinary income tax.</p>
-    <p>Reducing current-year tax liabilities increases the capital available for estate planning tools like GRATs and dynasty trust funding.</p>
-    <p><a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener">Explore Bitcoin mining tax strategies at Abundant Mines →</a></p>
-  </div>
-
-  <h2>Minnesota vs. Federal Planning: Side by Side</h2>
-
-  <div class="data-table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Issue</th>
-          <th>Federal</th>
-          <th>Minnesota</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Exemption (2024)</td><td>$13.61M per person</td><td>$3M per person</td></tr>
-        <tr><td>Portability</td><td>Yes — surviving spouse can elect to use deceased spouse's unused exemption</td><td>No — use it or lose it</td></tr>
-        <tr><td>Top marginal rate</td><td>40%</td><td>16%</td></tr>
-        <tr><td>Rate structure</td><td>Single flat rate of 40% above exemption</td><td>Graduated 13%–16%</td></tr>
-        <tr><td>Inflation adjustment</td><td>Yes (until possible 2026 sunset)</td><td>No — $3M has been flat since 2020</td></tr>
-        <tr><td>Inheritance tax</td><td>None</td><td>None</td></tr>
-        <tr><td>Property system</td><td>Varies by state</td><td>Common law (equitable distribution)</td></tr>
-        <tr><td>Out-of-state trust options</td><td>Federal gift/estate rules apply regardless of state</td><td>SD or WY dynasty trusts available to MN residents</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h2>Minnesota's History of Estate Tax Enforcement</h2>
-
-  <p>Minnesota does not take a passive approach to estate tax collection. The Department of Revenue actively cross-references death records with county property records, business registration databases, and financial accounts to identify estates that appear taxable but have not filed a return. Minnesota estate tax returns are due nine months after the date of death and must include a full accounting of all estate assets.</p>
-
-  <p>For Bitcoin holders, this creates specific considerations:</p>
-
-  <ul>
-    <li><strong>Bitcoin is property for estate tax purposes.</strong> The IRS treats Bitcoin as property, and Minnesota follows federal classification for estate purposes. Bitcoin holdings must be reported and valued on the estate tax return.</li>
-    <li><strong>Exchange records create a paper trail.</strong> If the deceased held Bitcoin on a centralized exchange (Coinbase, Kraken, etc.), those records will be subpoenaed or voluntarily provided to the estate's executor. Bitcoin on exchanges does not disappear at death.</li>
-    <li><strong>Self-custody Bitcoin requires specific documentation planning.</strong> Hardware wallets and cold storage must be included in estate planning documents. Access instructions must be available to the executor. Bitcoin that heirs cannot access cannot be transferred — and the IRS's position is that it's still in the estate regardless of accessibility.</li>
-  </ul>
-
-  <p>The practical implication: Minnesota Bitcoin holders must plan not just to minimize estate tax but to ensure their estates can comply with filing requirements and pay any tax due without forcing heirs into a distressed Bitcoin sale.</p>
-
-  <h2>The Liquidity Problem: Paying the Tax</h2>
-
-  <p>Minnesota estate tax is due within nine months of death. For an estate concentrated in Bitcoin, this creates a liquidity problem: if heirs lack cash to pay the estate tax, they may be forced to sell Bitcoin at whatever price exists at the time — regardless of whether that price reflects an optimal exit point.</p>
-
-  <p>Estate planning for Bitcoin holders should include a liquidity analysis. Options for ensuring estate tax liquidity include:</p>
-
-  <ul>
-    <li><strong>Maintaining a cash reserve</strong> within the estate to cover estimated tax liability without requiring an immediate Bitcoin sale.</li>
-    <li><strong>Life insurance</strong> owned outside the estate (via an Irrevocable Life Insurance Trust, or ILIT) to provide tax-free proceeds that can fund the estate tax bill.</li>
-    <li><strong>Installment payment options</strong> for certain closely held business assets — though Bitcoin's classification here is more complex and not guaranteed.</li>
-    <li><strong>Estate planning that reduces the taxable estate below the $3 million threshold</strong> through the strategies discussed above — eliminating the tax liability entirely.</li>
-  </ul>
-
-  <p>The best liquidity plan is the one that doesn't require one: proper credit shelter trust planning and dynasty trust transfers that keep the estate below the threshold before death occurs.</p>
-
-  <h2>Finding a Bitcoin-Literate Minnesota Estate Attorney</h2>
-
-  <p>The combination of Minnesota-specific estate tax rules and Bitcoin's unique custodial and technical characteristics demands an attorney who understands both. Most estate attorneys are highly competent with Minnesota law; few have meaningful experience with Bitcoin's technical dimensions.</p>
-
-  <p>Questions to ask when evaluating a Minnesota estate attorney for Bitcoin planning:</p>
-
-  <ul>
-    <li><strong>Have you drafted trust documents that specifically address Bitcoin held in self-custody — hardware wallets, multisig, and cold storage?</strong> Standard trust language for "digital assets" may be insufficient for operational Bitcoin access planning.</li>
-    <li><strong>Are you familiar with the credit shelter trust structure as calibrated for Minnesota's $3 million exemption — not the federal threshold?</strong> Some attorneys draft documents using federal triggers that don't capture the state-level planning need.</li>
-    <li><strong>Have you worked with South Dakota or Wyoming dynasty trusts for Minnesota clients?</strong> Out-of-state situs planning requires understanding both jurisdictions — and the grantor's Minnesota obligations don't disappear just because the trust is in another state.</li>
-    <li><strong>How do you approach Bitcoin valuation for estate and gift tax purposes?</strong> Defensible valuations — using the average of daily high and low on the valuation date from a major exchange — must be documented contemporaneously and retained.</li>
-    <li><strong>Do you coordinate with CPAs who understand cryptocurrency taxation?</strong> Estate and income tax planning for Bitcoin holders are deeply intertwined. The attorney and accountant must work from the same facts.</li>
-  </ul>
-
-  <h2>Action Steps for Minnesota Bitcoin Holders</h2>
-
-  <p>If you are a Minnesota resident with meaningful Bitcoin holdings, here is a practical starting point:</p>
-
-  <ol>
-    <li><strong>Calculate your current total estate value.</strong> Include Bitcoin at today's market price, your home, retirement accounts, brokerage accounts, life insurance death benefits, and any business interests. Compare to the $3 million threshold.</li>
-    <li><strong>Model future price scenarios.</strong> Run the analysis at $150K, $250K, and $500K Bitcoin to understand how quickly your exposure escalates. Minnesota's flat exemption makes this exercise increasingly alarming at higher prices.</li>
-    <li><strong>Review your existing estate documents.</strong> Most wills and trusts drafted before 2020 for Minnesota clients do not reflect the current $3 million exemption correctly. Many use federal-trigger language that misses the state planning opportunity entirely.</li>
-    <li><strong>Implement a gifting program immediately.</strong> Annual gifting is the simplest, lowest-cost estate reduction strategy available. It requires no trust, no attorney — just consistent execution and proper documentation.</li>
-    <li><strong>Evaluate credit shelter trust planning with a Minnesota estate attorney.</strong> For married couples, this is often the single highest-leverage planning step available and should not be deferred.</li>
-    <li><strong>Explore dynasty trust siting in South Dakota or Wyoming.</strong> If your Bitcoin holdings significantly exceed the $3 million threshold — or are expected to — a dynasty trust is worth serious evaluation.</li>
-  </ol>
-
-  <div class="cta-box">
-    <h3>Calculate Your Minnesota Estate Tax Exposure</h3>
-    <p>Use our Bitcoin estate tax calculator to model your Minnesota-specific liability across multiple Bitcoin price scenarios and planning strategies.</p>
-    <a href="/tools/bitcoin-estate-tax-calculator" class="btn">Open Estate Tax Calculator</a>
-    <a href="/blog/bitcoin-estate-planning-all-50-states.html" class="btn btn-outline">All 50 States Guide</a>
-  </div>
-
-  <h2>The Bottom Line for Minnesota Bitcoin Holders</h2>
-
-  <p>Minnesota's estate tax is not a planning edge case. With a $3 million exemption — one of the lowest in the country — and no portability between spouses, even moderate Bitcoin holders face meaningful state estate tax exposure at current prices. The state's history of active enforcement means that failing to file is not a viable strategy. And Bitcoin's appreciation trajectory means that waiting to plan is itself a planning decision — one that becomes more expensive with each passing year.</p>
-
-  <p>The good news: every strategy discussed in this guide is available to Minnesota residents right now. Credit shelter trusts, South Dakota or Wyoming dynasty trusts, annual gifting programs, and GRATs are all established, legal, and effective. The difference between a $400,000 Minnesota estate tax bill and a substantially smaller one is almost entirely a function of whether you engaged a qualified attorney and implemented a plan.</p>
-
-  <p>Minnesota will collect its estate tax. The question is whether you've structured your affairs to minimize what's owed — or left that question unanswered for your heirs to deal with under deadline pressure and potential market duress.</p>
-
-  <div class="cta-box">
-    <h3>Work With a Bitcoin-Focused Planning Team</h3>
-    <p>The Bitcoin Family Office helps Minnesota residents build estate plans that account for Bitcoin's unique characteristics and Minnesota's demanding estate tax environment. Start the conversation today.</p>
-    <a href="/services/" class="btn">Explore Our Services</a>
-  </div>
-
-  <!-- AUTHOR BOX -->
-  <div class="author-box">
-    <div class="author-avatar">HT</div>
-    <div class="author-info">
-      <h4>Hal Turner</h4>
-      <div class="author-title">Founder · The Bitcoin Family Office</div>
-      <p>Hal Turner focuses on Bitcoin wealth strategy for long-term holders navigating complex tax and estate planning environments. The Bitcoin Family Office provides education and strategic frameworks for protecting generational Bitcoin wealth.</p>
+    <!-- AUTHOR BOX -->
+    <div class="author-box">
+      <div class="author-avatar">HT</div>
+      <div class="author-info">
+        <h4>Hal Turner</h4>
+        <div class="author-title">Principal, The Bitcoin Family Office</div>
+        <p>Hal Turner advises significant Bitcoin holders on estate planning, trust structuring, and generational wealth preservation. The Bitcoin Family Office works with Minnesota families and clients across all 50 states, with exclusive focus on the unique planning challenges facing serious Bitcoin holders.</p>
+      </div>
     </div>
-  </div>
 
-  <!-- DISCLAIMER -->
-  <div class="disclaimer">
-    <strong>Disclaimer:</strong> This article is for educational and informational purposes only and does not constitute legal, tax, or financial advice. Estate tax laws are complex and fact-specific. Consult a qualified Minnesota estate attorney and tax professional before implementing any planning strategies. Bitcoin prices used are illustrative approximations and will change. The Bitcoin Family Office does not provide legal or tax advice.
-  </div>
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+      <p><strong>Disclaimer:</strong> This article is for informational and educational purposes only and does not constitute legal, tax, or financial advice. Estate planning involves complex legal and tax considerations that vary by individual circumstance. The information provided reflects general principles as of the date of publication and may not apply to your specific situation. Minnesota estate tax law, federal tax law, and Bitcoin prices are all subject to change. Consult a qualified attorney and tax advisor before making any estate planning decisions.</p>
+    </div>
 
-</article>
+  </article>
+</main>
 
-<!-- FOOTER -->
+<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">The Bitcoin Family Office</div>
-        <p class="footer-tagline">Wealth strategy and estate planning education for serious Bitcoin holders and their families.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Resources</h5>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/tools/">Tools</a></li>
-          <li><a href="/tools/bitcoin-estate-tax-calculator">Estate Tax Calculator</a></li>
-          <li><a href="/blog/bitcoin-estate-planning-all-50-states.html">All 50 States Guide</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Planning</h5>
-        <ul>
-          <li><a href="/services/">Services</a></li>
-          <li><a href="/blog/bitcoin-trust-strategies/">Trust Strategies</a></li>
-          <li><a href="/blog/bitcoin-gifting-strategies/">Gifting Strategies</a></li>
-          <li><a href="/blog/bitcoin-grat-strategy/">GRAT Planning</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href="/privacy/">Privacy Policy</a></li>
-          <li><a href="/terms/">Terms of Use</a></li>
-        </ul>
-      </div>
+    <div class="footer-brand">
+      <div class="footer-logo">The Bitcoin <span>Family Office</span></div>
+      <p>Sophisticated estate and wealth planning for families building multi-generational Bitcoin wealth. Serving Minnesota clients, all 50 states, and internationally.</p>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 The Bitcoin Family Office. All rights reserved.</span>
-      <span>Educational content only. Not legal, tax, or financial advice.</span>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="/services/">All Services</a></li>
+        <li><a href="/services/bitcoin-estate-planning/">Estate Planning</a></li>
+        <li><a href="/services/bitcoin-trust-services/">Trust Services</a></li>
+        <li><a href="/services/bitcoin-tax-planning/">Tax Planning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/tools/bitcoin-estate-tax-calculator">Estate Tax Calculator</a></li>
+        <li><a href="/blog/bitcoin-estate-planning-all-50-states">All 50 States Guide</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/services/#consultation">Free Consultation</a></li>
+        <li><a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener">Mining Tax Strategy</a></li>
+      </ul>
     </div>
   </div>
+  <div class="footer-bottom">
+    <span>© 2026 The Bitcoin Family Office. All rights reserved.</span>
+    <span>Not legal or financial advice. Consult a qualified professional.</span>
+  </div>
 </footer>
+
+<script>
+  // Mobile nav toggle
+  var hamburger = document.getElementById('hamburger');
+  var navMobile = document.getElementById('nav-mobile');
+  hamburger.addEventListener('click', function() {
+    var isOpen = navMobile.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+</script>
 
 </body>
 </html>
