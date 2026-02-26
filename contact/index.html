@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — The Bitcoin Family Office</title>
+<meta name="description" content="Get in touch with The Bitcoin Family Office. For advisory inquiries, research questions, or partnership discussions.">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/contact/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a09;
+    --bg-elevated: #111110;
+    --border: rgba(255,255,255,0.08);
+    --text: #e8e6e0;
+    --text-secondary: #a09e98;
+    --text-muted: #6b6962;
+    --accent: #c9a84c;
+    --accent-border: rgba(201,168,76,0.25);
+    --serif: 'Playfair Display', Georgia, serif;
+    --garamond: 'EB Garamond', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--garamond);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,9,0.95); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.2rem 2rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+  }
+  .nav-mark { font-family: var(--sans); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; }
+  .nav-mark span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { border: 1px solid var(--accent-border); padding: 0.4rem 1rem; border-radius: 2px; color: var(--accent) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 1px; background: var(--text-secondary); }
+  .mobile-menu { display: none; background: var(--bg-elevated); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; flex-direction: column; gap: 1.2rem; }
+  .mobile-menu a { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; }
+  .mobile-menu.open { display: flex; }
+  main { flex: 1; max-width: 640px; margin: 0 auto; padding: 5rem 2rem; }
+  .eyebrow { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
+  h1 { font-family: var(--serif); font-size: 2.4rem; font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; }
+  .lead { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2.5rem; line-height: 1.75; }
+  .contact-options { display: grid; gap: 1.5rem; margin-bottom: 3rem; }
+  .contact-card {
+    padding: 1.75rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--accent);
+    border-radius: 2px;
+  }
+  .contact-card h3 { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .contact-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.65; }
+  .btn { display: inline-block; font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.7rem 1.5rem; border-radius: 2px; text-decoration: none; transition: all 0.2s; }
+  .btn-primary { background: var(--accent); color: #0a0a09; font-weight: 500; }
+  .btn-primary:hover { opacity: 0.9; text-decoration: none; }
+  .btn-secondary { border: 1px solid var(--accent-border); color: var(--accent); }
+  .btn-secondary:hover { background: rgba(201,168,76,0.08); text-decoration: none; }
+  footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; }
+  .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
+  .footer-links a { font-family: var(--sans); font-size: 0.63rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; }
+  .footer-links a:hover { color: var(--text-secondary); }
+  .footer-copy { font-family: var(--sans); font-size: 0.62rem; color: var(--text-muted); }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    h1 { font-size: 1.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-mark">The Bitcoin <span>Family Office</span></a>
+  <button class="hamburger" aria-label="Toggle menu" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/services/">Services</a>
+    <a href="/blog/">Research</a>
+    <a href="/tools/">Tools</a>
+    <a href="/news/">News</a>
+    <a href="/about/">About</a>
+    <a href="/monitor/signup" class="nav-cta">Get Started →</a>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/services/">Services</a>
+  <a href="/blog/">Research</a>
+  <a href="/tools/">Tools</a>
+  <a href="/news/">News</a>
+  <a href="/about/">About</a>
+  <a href="/monitor/signup">Get Started →</a>
+</div>
+
+<main>
+  <div class="eyebrow">Contact</div>
+  <h1>Get in touch.</h1>
+  <p class="lead">We respond to every qualified inquiry personally. All conversations are handled with strict confidentiality.</p>
+
+  <div class="contact-options">
+    <div class="contact-card">
+      <h3>Advisory Inquiry</h3>
+      <p>For families with significant Bitcoin holdings seeking custody architecture review, estate planning strategy, or tax structure guidance. Engagements begin with a confidential introduction.</p>
+      <a href="/services/" class="btn btn-primary">View Advisory Services →</a>
+    </div>
+    <div class="contact-card">
+      <h3>Estate Watch</h3>
+      <p>Questions about the Bitcoin Estate Watch monitoring service, billing, or account access.</p>
+      <a href="/monitor/" class="btn btn-secondary">Estate Watch Home →</a>
+    </div>
+    <div class="contact-card">
+      <h3>General &amp; Press</h3>
+      <p>Research questions, press inquiries, or advisor partnership discussions.</p>
+      <a href="mailto:hal@thebitcoinfamilyoffice.com" class="btn btn-secondary">hal@thebitcoinfamilyoffice.com</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/services/">Services</a>
+    <a href="/blog/">Research</a>
+    <a href="/tools/">Tools</a>
+    <a href="/disclosures">Disclosures</a>
+    <a href="/privacy/">Privacy</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 The Bitcoin Family Office. All rights reserved.</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', function() {
+    document.querySelector('nav').style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(0,0,0,0.4)' : 'none';
+  });
+</script>
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+</body>
+</html>
