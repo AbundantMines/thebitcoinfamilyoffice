@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin and Medicaid Planning: Protecting Your Holdings When Long-Term Care Strikes</title>
+  <meta name="description" content="Bitcoin is a countable Medicaid asset in virtually every state. Learn how to protect your BTC from spend-down using MAPTs, spousal protections, and elder law strategies before the 5-year lookback window closes.">
+  <meta name="keywords" content="bitcoin medicaid planning, protect bitcoin from medicaid, bitcoin long term care planning, medicaid asset protection trust bitcoin, bitcoin spend down medicaid">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-medicaid-planning">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bitcoin and Medicaid Planning: Protecting Your Holdings When Long-Term Care Strikes">
+  <meta property="og:description" content="Bitcoin is fully countable under Medicaid rules. Without planning, a long-term care event forces a complete spend-down. Here's how to protect your BTC holdings using trusts and elder law strategies.">
+  <meta property="og:image" content="/assets/og-image.png">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-medicaid-planning">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('a, button');
+      if (el) {
+        gtag('event', 'hm_click', {
+          element_text: el.innerText ? el.innerText.trim().substring(0, 100) : '',
+          element_href: el.href || '',
+          page_path: window.location.pathname
+        });
+      }
+    });
+
+    var scrollMarks = {25: false, 50: false, 75: false, 90: false};
+    window.addEventListener('scroll', function() {
+      var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      Object.keys(scrollMarks).forEach(function(mark) {
+        if (!scrollMarks[mark] && pct >= parseInt(mark)) {
+          scrollMarks[mark] = true;
+          gtag('event', 'hm_scroll', { scroll_depth: mark + '%', page_path: window.location.pathname });
+        }
+      });
+    });
+  </script>
+
+  <!-- Cloudflare Beacon -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Bitcoin and Medicaid Planning: Protecting Your Holdings When Long-Term Care Strikes",
+        "description": "Bitcoin is fully countable under Medicaid rules. Without planning, a long-term care event forces a complete spend-down. Here's how to protect your BTC holdings using trusts and elder law strategies.",
+        "image": "https://thebitcoinfamilyoffice.com/assets/og-image.png",
+        "datePublished": "2026-02-25",
+        "dateModified": "2026-02-25",
+        "author": {
+          "@type": "Person",
+          "name": "Hal Turner",
+          "affiliation": "The Bitcoin Family Office"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "The Bitcoin Family Office",
+          "url": "https://thebitcoinfamilyoffice.com"
+        },
+        "mainEntityOfPage": "https://thebitcoinfamilyoffice.com/blog/bitcoin-medicaid-planning"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://thebitcoinfamilyoffice.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://thebitcoinfamilyoffice.com/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Bitcoin and Medicaid Planning",
+            "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-medicaid-planning"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.125rem;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav { position: relative; }
+    @media(max-width:640px) {
+      .hamburger { display: block !important; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #111111;
+        padding: 1rem 2rem;
+        z-index: 999;
+        border-bottom: 1px solid #1e1e1e;
+      }
+      .nav-links.open { display: flex; }
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      padding: 0.75rem 2rem;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.4rem; }
+
+    /* HERO */
+    .article-hero {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+    .article-hero .category-tag {
+      display: inline-block;
+      background: rgba(201,168,76,0.12);
+      color: var(--accent);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2px;
+      border: 1px solid rgba(201,168,76,0.25);
+      margin-bottom: 1.5rem;
+    }
+    .article-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.25;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      color: var(--text);
+    }
+    .article-hero .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .article-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .article-meta span {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    .article-meta .meta-accent { color: var(--accent); }
+
+    /* LAYOUT */
+    .article-layout {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    /* PROSE */
+    .article-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 3rem 0 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .article-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 2rem 0 0.75rem;
+    }
+    .article-body p {
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+    .article-body a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: rgba(201,168,76,0.4);
+    }
+    .article-body a:hover { text-decoration-color: var(--accent); }
+    .article-body ul, .article-body ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body strong { color: var(--text); font-weight: 600; }
+
+    /* CALLOUT BOXES */
+    .callout {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 2px;
+    }
+    .callout.warning {
+      border-left-color: #c94c4c;
+    }
+    .callout .callout-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .callout.warning .callout-label {
+      color: #c94c4c;
+    }
+    .callout p { margin-bottom: 0; }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; margin: 2rem 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+    }
+    thead tr { background: var(--bg-card); border-bottom: 1px solid var(--accent); }
+    th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:hover { background: var(--bg-card); }
+    td { padding: 0.75rem 1rem; color: var(--text); }
+
+    /* STAT GRID */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .stat-card .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+    .stat-card .stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      margin: 2rem 0;
+      position: relative;
+      padding-left: 2rem;
+      border-left: 2px solid var(--border);
+    }
+    .timeline-item {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.4rem;
+      top: 0.4rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+    .timeline-item h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .timeline-item p {
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    /* FAQ */
+    .faq-section { margin-top: 3rem; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 0;
+    }
+    .faq-question {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .faq-answer { color: var(--text); }
+
+    /* AUTHOR BOX */
+    .author-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      margin: 3rem 0;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .author-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .author-info .author-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .author-info p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* CTA BOX */
+    .cta-box {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 4px;
+      padding: 2rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    .cta-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      border: none;
+      padding: 0;
+    }
+    .cta-box p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.75rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.85; text-decoration: none; }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .disclaimer strong { color: var(--text-secondary); }
+
+    /* RELATED ARTICLES */
+    .related-articles {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .related-articles h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      border: none;
+      padding: 0;
+    }
+    .related-articles ul { margin: 0; list-style: none; padding: 0; }
+    .related-articles li { margin-bottom: 0.5rem; padding-left: 0; }
+    .related-articles a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav style="background:#111;border-bottom:1px solid #1e1e1e;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;position:relative;">
+  <a href="/" style="font-family:'Playfair Display',serif;color:#c9a84c;font-size:1.2rem;text-decoration:none;font-weight:700;">The Bitcoin Family Office</a>
+  <div class="nav-links" style="display:flex;gap:2rem;">
+    <a href="/" style="color:#e8e0d0;text-decoration:none;font-size:0.9rem;">Home</a>
+    <a href="/services/" style="color:#e8e0d0;text-decoration:none;font-size:0.9rem;">Services</a>
+    <a href="/tools/" style="color:#e8e0d0;text-decoration:none;font-size:0.9rem;">Tools</a>
+    <a href="/blog/" style="color:#e8e0d0;text-decoration:none;font-size:0.9rem;">Blog</a>
+    <a href="/about/" style="color:#e8e0d0;text-decoration:none;font-size:0.9rem;">About</a>
+  </div>
+  <button onclick="this.previousElementSibling.classList.toggle('open')" style="display:none;background:none;border:none;color:#e8e0d0;font-size:1.5rem;cursor:pointer;position:absolute;right:1rem;" class="hamburger">☰</button>
+</nav>
+<style>@media(max-width:640px){.hamburger{display:block!important}.nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#111111;padding:1rem 2rem;z-index:999;border-bottom:1px solid #1e1e1e}.nav-links.open{display:flex}}</style>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/">Home</a><span>›</span>
+  <a href="/blog/">Blog</a><span>›</span>
+  Bitcoin and Medicaid Planning
+</div>
+
+<!-- HERO -->
+<div class="article-hero">
+  <div class="category-tag">Elder Law &amp; Long-Term Care</div>
+  <h1>Bitcoin and Medicaid Planning: Protecting Your Holdings When Long-Term Care Strikes</h1>
+  <p class="subtitle">Bitcoin is a countable asset under Medicaid rules in virtually every state. Without a plan, a long-term care event can force you to liquidate everything. Here's how to protect your BTC — before the 5-year clock starts ticking.</p>
+  <div class="article-meta">
+    <span>By <span class="meta-accent">Hal Turner</span></span>
+    <span>The Bitcoin Family Office</span>
+    <span class="meta-accent">February 25, 2026</span>
+    <span>~3,700 words · 15 min read</span>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-layout">
+  <article class="article-body">
+
+    <p>Nobody wants to think about needing a nursing home. But the numbers make thinking about it mandatory: the median annual cost of a private nursing home room in the United States now exceeds $108,000 — more than $9,000 per month. Memory care facilities often run higher. Home health aides and assisted living costs add up nearly as fast. For a Bitcoin holder who has spent years building generational wealth, a long-term care event without a plan doesn't just threaten comfort — it threatens the entire portfolio.</p>
+
+    <p>Medicaid — the joint federal-state program that pays for long-term care for qualifying individuals — has strict asset rules. Bitcoin, unlike a primary residence or certain retirement accounts, receives no special exemption treatment. In virtually every state, your Bitcoin is a fully countable asset, and Medicaid will require you to spend it down to near zero before stepping in to pay for care. That's the bad news.</p>
+
+    <p>The good news: with advance planning — specifically, planning that begins at least five years before a care event — Bitcoin holders have real options for protecting their holdings. This guide explains the Medicaid framework, the unique challenges Bitcoin presents, and the strategies an elder law attorney can use to help you keep more of what you've built.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <span class="stat-value">$9K+</span>
+        <span class="stat-label">Median monthly nursing home cost (private room)</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">70%</span>
+        <span class="stat-label">Americans who will need some long-term care after age 65</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">5 years</span>
+        <span class="stat-label">Medicaid lookback period for asset transfers</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">$2,000</span>
+        <span class="stat-label">Typical asset limit for Medicaid eligibility (individual)</span>
+      </div>
+    </div>
+
+    <h2>Why Bitcoin and Medicaid Planning Is Urgent</h2>
+
+    <p>The urgency isn't about fear — it's about lead time. Medicaid's most powerful protection mechanism, the five-year lookback rule, means that any asset transfers you make to protect your Bitcoin must happen <em>at least five years</em> before you apply for Medicaid benefits. Transfer your Bitcoin to a trust today; the clock starts today. If you need nursing home care in year four, Medicaid can penalize you for that transfer and delay your eligibility for benefits.</p>
+
+    <p>This is why Medicaid planning for Bitcoin holders is not a "someday" conversation. The best time to act is when you're healthy, wealthy, and have no immediate need for care. Once a cognitive decline diagnosis arrives, once a fall happens, once a hospitalization begins — the planning options narrow dramatically and, in some scenarios, close entirely.</p>
+
+    <p>Bitcoin holders face a particular urgency compared to traditional asset holders: their assets are highly volatile, potentially very large, and entirely liquid in the eyes of Medicaid. A Bitcoin holder with $500,000 in BTC and a $500,000 home is not wealthier than a traditional retiree with the same net worth — but Medicaid treats them differently because the home may be partially exempt while the Bitcoin is fully countable.</p>
+
+    <h2>Medicaid's 5-Year Lookback Rule and Bitcoin</h2>
+
+    <p>The five-year lookback rule is the centerpiece of Medicaid's anti-avoidance framework. When you apply for Medicaid long-term care benefits, the state Medicaid agency reviews all asset transfers you made in the preceding 60 months — five years. If you transferred assets for less than fair market value during that period (including gifts, sales to family members at a discount, or transfers to trusts in certain circumstances), Medicaid imposes a penalty period — a period during which you're ineligible for benefits.</p>
+
+    <p>The penalty period is calculated by dividing the total value of disqualifying transfers by the average monthly cost of nursing home care in your state. If you transferred $200,000 in Bitcoin in year three and nursing home costs in your state average $8,000 per month, the penalty period is 25 months. During those 25 months, you receive no Medicaid benefits — and must pay privately for care.</p>
+
+    <div class="callout warning">
+      <div class="callout-label">Critical Warning</div>
+      <p>The 5-year lookback has no minimum threshold. There is no exemption for small gifts, annual exclusion gifts, or transfers made for "legitimate" reasons other than Medicaid eligibility avoidance. If you transferred Bitcoin in the lookback period, Medicaid will examine it. Proper planning — well before the lookback window — is the only reliable protection.</p>
+    </div>
+
+    <h3>How the Lookback Interacts with Bitcoin's Volatility</h3>
+
+    <p>Bitcoin's price volatility creates a specific lookback risk that doesn't exist for stable assets. If you transferred $50,000 of Bitcoin four years ago and that Bitcoin is now worth $400,000, does Medicaid value the transfer at $50,000 or $400,000? Under federal Medicaid rules, the transfer is generally valued at fair market value at the time of transfer — not at today's value. This can create unexpected planning windfalls (early transfers are valued at a lower price) but also unexpected complexity around documentation and valuation at time of transfer. You need contemporaneous records of the value of any Bitcoin transferred in the lookback period.</p>
+
+    <h2>Is Bitcoin a Countable Asset for Medicaid?</h2>
+
+    <p>Yes — in virtually every state, Bitcoin and other cryptocurrencies are treated as countable resources for Medicaid eligibility purposes. Medicaid divides assets into two categories: countable (or non-exempt) resources and exempt resources. Exempt resources don't count toward the asset limit; countable resources do.</p>
+
+    <h3>Countable Resources</h3>
+
+    <p>Resources are countable if they are accessible — meaning you can convert them to cash and use them for your care. Bitcoin is accessible. It can be sold, converted to fiat, and used to pay for nursing home care. The fact that it's held on a hardware wallet rather than in a bank account doesn't change its character. Countable resources include:</p>
+
+    <ul>
+      <li>Checking and savings accounts</li>
+      <li>Investment accounts (stocks, bonds, mutual funds)</li>
+      <li><strong>Bitcoin and other cryptocurrencies</strong></li>
+      <li>Second homes and investment real estate</li>
+      <li>IRAs and 401(k)s (in most states, once in payout status)</li>
+      <li>Cash value of life insurance above certain limits</li>
+    </ul>
+
+    <h3>Exempt Resources</h3>
+
+    <p>Exempt resources are excluded from the Medicaid asset calculation. The list is limited and specific:</p>
+
+    <ul>
+      <li><strong>Primary residence</strong> (up to a certain equity limit — typically $688,000 or $1,033,000 depending on state, as of 2024; subject to estate recovery after death)</li>
+      <li>One vehicle of any value (in most states)</li>
+      <li>Household furnishings and personal items</li>
+      <li>Irrevocable prepaid funeral and burial arrangements up to state limits</li>
+      <li>Term life insurance (no cash value)</li>
+      <li>Certain medical equipment</li>
+    </ul>
+
+    <p>Bitcoin does not fit any of these exemption categories. There is no "Bitcoin homestead exemption." There is no cryptocurrency analog to the primary residence rule. Every satoshi in your wallet is a countable resource.</p>
+
+    <h2>Medicaid Spend-Down: What It Means for Bitcoin Holders</h2>
+
+    <p>"Spend-down" is exactly what it sounds like. If your countable resources exceed the Medicaid asset limit — typically $2,000 for an individual (though this varies significantly by state) — you must spend down those excess resources to the limit before Medicaid will pay for care.</p>
+
+    <p>For a Bitcoin holder with significant holdings, spend-down is catastrophic. Suppose you have $600,000 in Bitcoin and $3,000 in a checking account. To qualify for Medicaid, you would need to reduce countable assets to $2,000 — meaning you'd need to liquidate essentially all of your Bitcoin, pay for care with the proceeds, and eventually exhaust the funds before Medicaid steps in.</p>
+
+    <p>The practical implication: a substantial Bitcoin stack that wasn't protected ahead of time could be entirely consumed by long-term care costs over a multi-year nursing home stay — with nothing left for heirs.</p>
+
+    <div class="callout">
+      <div class="callout-label">Spend-Down Reality Check</div>
+      <p>At $9,000–$12,000 per month, a nursing home stay of 36 months costs $324,000–$432,000. A 5-year stay: $540,000–$720,000. Without Medicaid coverage, those costs fall entirely on your assets — including Bitcoin — before Medicaid begins paying. This is why advance planning matters so much.</p>
+    </div>
+
+    <h2>Medicaid Asset Protection Trust (MAPT): Putting Bitcoin in Trust Before the Lookback</h2>
+
+    <p>The most widely used tool for protecting assets from Medicaid spend-down is the <strong>Medicaid Asset Protection Trust (MAPT)</strong> — sometimes called an irrevocable income-only trust or a Medicaid trust. A MAPT is an irrevocable trust to which you transfer assets, and which then holds those assets outside of your estate for Medicaid purposes.</p>
+
+    <p>The key mechanics:</p>
+
+    <ol>
+      <li><strong>You transfer assets to the MAPT.</strong> This is a completed gift — you give up control of the assets.</li>
+      <li><strong>The MAPT holds the assets.</strong> You can no longer access the principal (the Bitcoin). You may, in some states, receive income from the trust (e.g., dividends, interest), but not principal.</li>
+      <li><strong>After 5 years, the assets are protected.</strong> Once the lookback period expires, those assets no longer count for Medicaid eligibility — even if they've appreciated dramatically.</li>
+      <li><strong>At your death, assets pass to beneficiaries.</strong> The MAPT distributes assets to your chosen heirs — children, grandchildren, or other beneficiaries — without going through probate and without being subject to Medicaid estate recovery (in most states, for assets in an irrevocable trust).</li>
+    </ol>
+
+    <h3>Bitcoin in a MAPT: Specific Considerations</h3>
+
+    <p>Transferring Bitcoin to a MAPT requires careful structuring. Unlike transferring a bank account or a real estate deed, transferring Bitcoin custody means transferring private key control. The trust — administered by a trustee — must have a secure method for holding the private keys. Options include:</p>
+
+    <ul>
+      <li><strong>Multi-signature wallet</strong> with keys distributed among trustees and co-trustees</li>
+      <li><strong>Qualified custodian</strong> holding the Bitcoin in the trust's name</li>
+      <li><strong>Hardware wallet</strong> held in a controlled environment, with access protocols documented in the trust administration records</li>
+    </ul>
+
+    <p>Do not simply "label" Bitcoin as belonging to the trust while continuing to hold the keys yourself. From a Medicaid perspective, if you retain practical control of the private keys, you likely retain a countable interest in the asset.</p>
+
+    <p>Also important: the MAPT should be drafted to explicitly permit the trustee to hold, custody, and administer digital assets. Many older trust forms don't contemplate cryptocurrency, and a trustee without explicit authority to hold digital assets may be in a legally ambiguous position.</p>
+
+    <h2>The 5-Year Window: Act Now If You're Healthy</h2>
+
+    <p>The planning calculus is brutally simple: if you're healthy today and you have significant Bitcoin holdings, you have an opportunity to start the 5-year clock by transferring Bitcoin to a MAPT now. If you wait until a health crisis strikes, your options shrink dramatically.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>Year 0: Transfer Bitcoin to MAPT</h4>
+        <p>5-year lookback clock starts. You give up control of the principal but retain income rights (if the trust allows). Bitcoin appreciates outside your countable estate.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Years 1–4: Lookback Period Active</h4>
+        <p>If you need Medicaid during this window, the transfer is reviewable and may trigger a penalty period. You must plan for private-pay costs during this period or have other resources available.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Year 5+: Full Medicaid Protection</h4>
+        <p>The lookback period has expired. The Bitcoin in the MAPT is no longer a countable Medicaid resource. If you need care now, it does not affect eligibility — regardless of what Bitcoin is worth.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>At Your Death: Distribution to Heirs</h4>
+        <p>Bitcoin passes from the MAPT to named beneficiaries, outside probate, and typically outside the reach of Medicaid estate recovery.</p>
+      </div>
+    </div>
+
+    <p>The ideal time to fund a MAPT with Bitcoin is not "when you're sick" but "when you're healthy, when the 5-year window feels very long, and when Bitcoin may still have substantial future appreciation ahead of it." Every year of healthy delay is a year of lookback window you cannot get back.</p>
+
+    <h2>Caregiver Child Exception: Is There a Bitcoin Equivalent?</h2>
+
+    <p>Federal Medicaid law contains a specific exception to the lookback penalty for transfers of a parent's primary residence to a child who has lived in the home and provided care for the parent for at least two years immediately before the parent's institutionalization. This "caregiver child exception" allows the home to be transferred without triggering a lookback penalty, recognizing that the child's caregiving may have delayed the need for institutional care.</p>
+
+    <p>Does any equivalent apply to Bitcoin? The short answer is: no. The caregiver child exception is specifically limited to the primary residence under federal law. There is no analog that permits penalty-free transfer of Bitcoin, cash, or investment assets to a caregiver child. Any transfer of Bitcoin to a child — even one who has been providing hands-on care — during the lookback period is subject to the standard transfer penalty rules.</p>
+
+    <p>Some states have expanded caregiver child provisions, and a few states recognize broader caregiving relationships for other assets, but these are state-specific exceptions and you should not assume they apply in your state. Consult an elder law attorney in your state for the applicable rules.</p>
+
+    <h2>Spousal Protections: Can Your Spouse Keep Your Bitcoin?</h2>
+
+    <p>Federal Medicaid law provides important protections for the spouse who remains in the community (the "community spouse") when the other spouse enters a nursing home. These protections prevent complete impoverishment of the household.</p>
+
+    <h3>Community Spouse Resource Allowance (CSRA)</h3>
+
+    <p>The community spouse is allowed to retain a share of the couple's combined countable assets — the Community Spouse Resource Allowance (CSRA). The federal floor is approximately $29,724 and the ceiling is $148,620 (2024 figures, subject to annual adjustment). Many states allow the community spouse to retain up to the federal maximum. Some states have additional state-specific protections.</p>
+
+    <p>This means: if a married couple has $300,000 in Bitcoin and the husband enters a nursing home, the wife may be able to keep approximately $148,620 of the Bitcoin as her CSRA — without spending it down for his Medicaid eligibility. The remaining $151,380 would need to be spent down (or otherwise protected through planning).</p>
+
+    <p><strong>Important:</strong> The CSRA is calculated at the time of institutionalization (or the "snapshot date"), based on all countable assets at that time. The value of Bitcoin at the snapshot date determines how the CSRA calculation works. A subsequent rise in Bitcoin's price doesn't increase the CSRA that's already been set.</p>
+
+    <h3>Minimum Monthly Maintenance Needs Allowance (MMMNA)</h3>
+
+    <p>The community spouse is also entitled to retain enough of the institutionalized spouse's income to meet a minimum monthly needs allowance. If the community spouse's income is below this threshold, income from the institutionalized spouse can be diverted to meet it. This protects ongoing living expenses — though it doesn't directly protect Bitcoin principal.</p>
+
+    <h2>Annuity Strategy Combined With Bitcoin Liquidation</h2>
+
+    <p>For couples facing an immediate nursing home crisis where the 5-year planning window has closed, one strategy involves liquidating Bitcoin and converting the proceeds to a Medicaid-compliant annuity. A Medicaid-compliant annuity (sometimes called a "Medicaid annuity") converts a lump-sum asset into a stream of income for the community spouse — income that is protected and doesn't count as a countable asset.</p>
+
+    <p>The mechanics: the community spouse purchases an irrevocable, actuarially sound annuity with Bitcoin proceeds. The annuity pays a fixed monthly income to the community spouse for the remainder of his or her life expectancy. The lump sum has been converted to income; the asset is gone; the institutionalized spouse qualifies for Medicaid.</p>
+
+    <p>This is not a perfect strategy — you're liquidating Bitcoin and purchasing an annuity, giving up future appreciation — but for families facing immediate care needs without prior planning, it can preserve a significant income stream for the community spouse. The annuity must meet specific Medicaid requirements (naming the state as remainder beneficiary, among others) and must be purchased with the assistance of an experienced elder law attorney.</p>
+
+    <div class="callout">
+      <div class="callout-label">Important</div>
+      <p>The annuity strategy requires careful coordination with state Medicaid rules — which vary. Some states have additional restrictions on Medicaid-compliant annuities. Do not attempt this without an elder law attorney familiar with your state's specific rules.</p>
+    </div>
+
+    <h2>State-by-State Variation: Medicaid Is Not a Federal Program</h2>
+
+    <p>Medicaid is a joint federal-state program. While federal law sets the floor for eligibility rules, lookback periods, and exempt asset categories, states have significant flexibility to adjust rules within federal boundaries — and many do. This creates meaningful variation in how Bitcoin Medicaid planning works across state lines.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Issue</th>
+            <th>Federal Rule</th>
+            <th>State Variation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Asset limit (individual)</td>
+            <td>$2,000 (minimum)</td>
+            <td>Some states allow up to $8,000–$15,000</td>
+          </tr>
+          <tr>
+            <td>CSRA (community spouse)</td>
+            <td>$29,724–$148,620</td>
+            <td>Some states allow full $148,620; a few allow the couple's home equity as supplement</td>
+          </tr>
+          <tr>
+            <td>Lookback period</td>
+            <td>60 months (5 years)</td>
+            <td>Uniform — all states follow 60 months</td>
+          </tr>
+          <tr>
+            <td>Home equity limit for exemption</td>
+            <td>$688,000 base; states may increase to $1,033,000</td>
+            <td>Some states (CA, MA) use the higher limit; others use the lower</td>
+          </tr>
+          <tr>
+            <td>MAPT protection from estate recovery</td>
+            <td>Federal minimum recovery rules</td>
+            <td>Many states cannot reach irrevocable trust assets post-death; a few aggressively pursue them</td>
+          </tr>
+          <tr>
+            <td>Annuity rules</td>
+            <td>Must be actuarially sound, irrevocable, name state as beneficiary</td>
+            <td>Some states impose additional restrictions or look-through rules</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>California, for example, recently changed its Medicaid estate recovery rules to limit clawback of assets in certain trusts. New York has historically aggressive Medicaid planning rules that restrict some trust strategies available in other states. Texas operates Medicaid under a unique framework. The rules in your state are the rules that matter — which is why working with an elder law attorney licensed in your state is non-negotiable.</p>
+
+    <h2>Bitcoin vs. Cash for Medicaid Planning: Unique Challenges</h2>
+
+    <p>Bitcoin holders face specific challenges that traditional asset holders don't. Understanding them is the first step toward addressing them.</p>
+
+    <h3>Valuation at Time of Transfer</h3>
+
+    <p>When you transfer Bitcoin to a MAPT, you must document the fair market value at the time of transfer. This is straightforward — use the exchange rate on the date of transfer and retain a screenshot or record from a reputable source. But given Bitcoin's volatility, the value could be materially different a week later. Time the transfer to a stable price point if possible, and document meticulously.</p>
+
+    <h3>No Partial Exemption</h3>
+
+    <p>A primary residence is partially exempt from Medicaid asset calculations — only the equity above the state's home equity limit counts. Bitcoin has no such partial exemption. Every dollar of BTC is countable, period.</p>
+
+    <h3>Custody Chain Documentation</h3>
+
+    <p>Medicaid eligibility workers may not know how to assess Bitcoin holdings. They may ask for documentation of all assets. Be prepared to produce wallet addresses, custodian account statements, or other documentation showing current holdings — and historical holdings during the lookback period. Blockchain records are public and permanent; Medicaid agencies can engage forensic consultants if they suspect undisclosed digital asset holdings.</p>
+
+    <h3>Liquidity Risk During Planning</h3>
+
+    <p>Transferring Bitcoin to a MAPT means giving up access to principal. If you transfer 80% of your Bitcoin to a MAPT and then face unexpected expenses, you've limited your access to liquid capital. Sound planning accounts for this — don't transfer so much that you're left without resources for ordinary living expenses.</p>
+
+    <h2>Warning: Converting Bitcoin to Avoid Medicaid Can Trigger Penalties</h2>
+
+    <p>One instinct people have when learning about Medicaid spend-down rules: "I'll just give the Bitcoin to my kids before I apply." This is dangerous if done inside the lookback window.</p>
+
+    <div class="callout warning">
+      <div class="callout-label">Red Flag Warning</div>
+      <p>Transferring Bitcoin to family members for less than fair market value within 60 months of a Medicaid application will likely trigger a penalty period. There is no exception for gifts to adult children, transfers to "needy" family members, or transactions done "out of love." Medicaid looks at the outcome — assets left your possession — not the motive. Penalty periods can last months or years, during which you must pay privately for care with no Medicaid coverage.</p>
+    </div>
+
+    <p>Similarly, selling Bitcoin at a significant discount to a family member — sometimes called a "sweetheart sale" — is treated as a transfer for less than fair market value. Medicaid treats the difference between the sale price and fair market value as a gift, subject to the same penalty calculation.</p>
+
+    <p>Even outright gifting Bitcoin as part of an annual gift tax exclusion strategy doesn't protect you for Medicaid purposes. The gift tax annual exclusion and the Medicaid lookback are entirely separate frameworks. A gift that's perfectly fine for gift tax purposes can still trigger a Medicaid penalty period.</p>
+
+    <h2>Working With a Medicaid Planning Attorney: The Elder Law Specialty</h2>
+
+    <p>Medicaid planning is a specialized area of elder law. Not every estate planning attorney practices Medicaid law, and not every elder law attorney has experience with digital assets. For Bitcoin holders, you need both.</p>
+
+    <p>When selecting a Medicaid planning attorney, look for:</p>
+
+    <ul>
+      <li><strong>Elder law specialization:</strong> Active practice in Medicaid eligibility, long-term care planning, and trust design specifically for asset protection</li>
+      <li><strong>State licensure in your state:</strong> Medicaid rules are state-specific; you need someone who knows your state's specific rules</li>
+      <li><strong>Digital asset experience:</strong> The attorney should understand what Bitcoin is, how custody works, and how to draft trust language that accommodates digital assets</li>
+      <li><strong>Proactive approach:</strong> The best Medicaid planning attorneys will ask about your assets and plan timing, not just draft documents. If an attorney doesn't ask about the 5-year lookback timeline in the first meeting, that's a warning sign.</li>
+    </ul>
+
+    <p>NAELA (National Academy of Elder Law Attorneys) is a good starting point for finding qualified elder law practitioners.</p>
+
+    <h2>FAQ: Bitcoin and Medicaid Planning</h2>
+
+    <div class="faq-section">
+
+      <div class="faq-item">
+        <div class="faq-question">1. Does Medicaid know about my Bitcoin? Will they find it?</div>
+        <div class="faq-answer">
+          <p>Medicaid applications require disclosure of all assets under penalty of perjury. Failure to disclose Bitcoin holdings is fraud. Beyond the ethical and legal obligation, Medicaid agencies are increasingly aware of digital assets and can access blockchain records, exchange account information (via subpoena to U.S.-based exchanges), and third-party data sources. Assuming they won't find your Bitcoin is not a planning strategy — it's a risk with potentially criminal consequences.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">2. Can I put Bitcoin in a MAPT and still control it?</div>
+        <div class="faq-answer">
+          <p>No. A MAPT is irrevocable — you give up control of the principal. If you retain the right to direct the trustee, revoke the trust, or access the Bitcoin at will, Medicaid will treat the assets as still countable resources. The trust must be genuinely irrevocable, with an independent trustee who controls access to the Bitcoin, for it to work as a Medicaid asset protection vehicle.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">3. What if I transferred Bitcoin to a trust years ago for estate planning purposes — does that trigger the lookback?</div>
+        <div class="faq-answer">
+          <p>It depends on the type of trust and when the transfer occurred. Transfers to an irrevocable trust within the lookback period are generally reviewable by Medicaid. Transfers to a revocable living trust are typically not treated as completed transfers and don't start the lookback clock. If the transfer occurred more than 60 months ago, it's outside the lookback window — though you'll need documentation. The type, timing, and terms of the trust all matter; have your elder law attorney review any existing trust arrangements.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">4. Can a Bitcoin MAPT also protect assets from estate taxes?</div>
+        <div class="faq-answer">
+          <p>Not directly. A MAPT is designed for Medicaid asset protection, not federal estate tax reduction. Because you give up control of the assets (required for Medicaid protection), the assets may be removed from your taxable estate — but the trust's primary design purpose is Medicaid eligibility, not estate tax optimization. An irrevocable trust that works for both Medicaid and estate tax planning requires careful coordination with an attorney who practices both areas. See our <a href="/blog/bitcoin-estate-planning-guide">Bitcoin Estate Planning Guide</a> for the broader estate planning framework.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">5. My spouse has Bitcoin and I'm entering a nursing home. Can I make them give it to our kids to protect it?</div>
+        <div class="faq-answer">
+          <p>No — the community spouse's assets are included in the Medicaid calculation at the time of institutionalization. The community spouse can retain up to the CSRA limit. Any assets transferred by the community spouse during the lookback period may be subject to Medicaid penalty rules in many states (the rules on community spouse transfers during lookback vary). Do not attempt asset transfers without consulting an elder law attorney first.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">6. What if my Bitcoin is in a cold wallet with no exchange record — does Medicaid still count it?</div>
+        <div class="faq-answer">
+          <p>Yes. Self-custodied Bitcoin is still a countable resource regardless of how it's held. The obligation to disclose applies to all assets, including self-custodied digital assets. The lack of a centralized exchange record doesn't remove the asset from Medicaid's reach — it just makes it harder to value, not legally exempt. Valuation based on public blockchain records and market prices applies.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">7. Can I set up a Special Needs Trust for a disabled child and put Bitcoin in it?</div>
+        <div class="faq-answer">
+          <p>Yes — transferring assets to a first-party or third-party Special Needs Trust for a disabled child is an exception to the Medicaid lookback penalty rules. If your child is disabled and you transfer Bitcoin to a properly structured Special Needs Trust for that child's benefit, the transfer may not trigger a Medicaid penalty period. Special Needs Trusts must comply with strict federal and state requirements. See our guide on <a href="/blog/bitcoin-special-needs-trust">Bitcoin Special Needs Trusts</a> for more detail.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">8. How long does it take to set up a MAPT for Bitcoin?</div>
+        <div class="faq-answer">
+          <p>Drafting a MAPT typically takes 2–6 weeks, depending on attorney workload and complexity. The trust must be drafted, signed, and funded — and funding a Bitcoin MAPT requires setting up appropriate custody arrangements, transferring the Bitcoin to the trust's custody, and documenting the transfer value. Plan for 4–8 weeks from initial attorney consultation to a fully funded trust. The 5-year lookback clock starts on the date of the transfer, not the date the trust is signed — so getting the Bitcoin into the trust promptly matters.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RELATED ARTICLES -->
+    <div class="related-articles">
+      <h3>Related Resources</h3>
+      <ul>
+        <li><a href="/blog/bitcoin-special-needs-trust">Bitcoin Special Needs Trust: Protecting Holdings for Disabled Beneficiaries</a></li>
+        <li><a href="/blog/bitcoin-estate-planning-guide">The Complete Bitcoin Estate Planning Guide</a></li>
+        <li><a href="/services/">Bitcoin Estate Planning Services — Work With Us</a></li>
+      </ul>
+    </div>
+
+    <!-- AUTHOR BOX -->
+    <div class="author-box">
+      <div class="author-avatar">⚖️</div>
+      <div class="author-info">
+        <h4>Hal Turner</h4>
+        <div class="author-title">The Bitcoin Family Office</div>
+        <p>Hal Turner writes on Bitcoin estate planning, elder law strategy, and digital asset wealth preservation at The Bitcoin Family Office. This content is educational and does not constitute legal, tax, or financial advice.</p>
+      </div>
+    </div>
+
+    <!-- AM MINING TAX CTA -->
+    <div class="cta-box">
+      <h3>Bitcoin Mining as a Tax and Wealth Strategy</h3>
+      <p>Long-term care planning isn't just about protecting what you have — it's about building wealth efficiently in the years before you need care. Bitcoin mining generates income with significant potential tax advantages: bonus depreciation, operating expense deductions, and more. If you hold substantial Bitcoin and are thinking about tax efficiency alongside long-term care planning, the mining tax strategy from Abundant Mines is worth reviewing.</p>
+      <a href="https://abundantmines.com/tax-strategy/" class="cta-btn" target="_blank" rel="noopener">Explore the Bitcoin Mining Tax Strategy →</a>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+      <strong>Legal & Tax Disclaimer:</strong> The content on this page is provided for general educational and informational purposes only. It does not constitute legal advice, tax advice, financial advice, or any professional advisory relationship. Medicaid rules are complex, vary significantly by state, and change frequently. The figures cited (asset limits, CSRA limits, cost of care) are approximate and subject to annual adjustment. Nothing in this article should be construed as advice to delay disclosing assets to Medicaid or to transfer assets for the purpose of Medicaid qualification without proper legal counsel. Always consult a qualified elder law attorney, licensed in your jurisdiction, before making any asset transfers or establishing any trust. Do not make irrevocable financial decisions based on this article alone.
+    </div>
+
+  </article>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:1rem;">
+    <a href="/">The Bitcoin Family Office</a> &nbsp;·&nbsp;
+    <a href="/blog/">Blog</a> &nbsp;·&nbsp;
+    <a href="/services/">Services</a> &nbsp;·&nbsp;
+    <a href="/about/">About</a>
+  </p>
+  <p>© 2026 The Bitcoin Family Office. Educational content only — not legal, tax, or financial advice.</p>
+</footer>
+
+</body>
+</html>
