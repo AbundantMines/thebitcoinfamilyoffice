@@ -48,3 +48,36 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{\"host\":\"thebitcoinfamilyoffice.com\",\"key\":\"thebitcoinfamilyoffice\",\"keyLocation\":\"https://thebitcoinfamilyoffice.com/thebitcoinfamilyoffice.txt\",\"urlList\":$URL_LIST}" \
             -w "\nHTTP %{http_code}\n"
+
+      - name: Submit sitemap to Google Search Console
+        env:
+          GSC_CLIENT_ID: ${{ secrets.GSC_CLIENT_ID }}
+          GSC_CLIENT_SECRET: ${{ secrets.GSC_CLIENT_SECRET }}
+          GSC_REFRESH_TOKEN: ${{ secrets.GSC_REFRESH_TOKEN }}
+        run: |
+          python3 - << 'PYEOF'
+          import json, urllib.parse, os
+          from urllib.request import urlopen, Request
+          # Refresh token
+          data = urllib.parse.urlencode({
+              "refresh_token": os.environ["GSC_REFRESH_TOKEN"],
+              "client_id":     os.environ["GSC_CLIENT_ID"],
+              "client_secret": os.environ["GSC_CLIENT_SECRET"],
+              "grant_type":    "refresh_token",
+          }).encode()
+          with urlopen(Request("https://oauth2.googleapis.com/token", data=data,
+              headers={"Content-Type": "application/x-www-form-urlencoded"}), timeout=10) as r:
+              token = json.loads(r.read())["access_token"]
+          # Submit sitemap
+          site    = urllib.parse.quote("sc-domain:thebitcoinfamilyoffice.com", safe="")
+          sitemap = urllib.parse.quote("https://thebitcoinfamilyoffice.com/sitemap.xml", safe="")
+          req = Request(
+              f"https://searchconsole.googleapis.com/webmasters/v3/sites/{site}/sitemaps/{sitemap}",
+              data=b"", headers={"Authorization": f"Bearer {token}"}, method="PUT"
+          )
+          try:
+              urlopen(req, timeout=10)
+              print("✅ Sitemap submitted to Google Search Console")
+          except Exception as e:
+              print(f"GSC submit error (non-fatal): {e}")
+          PYEOF
