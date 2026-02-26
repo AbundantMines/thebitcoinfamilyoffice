@@ -674,25 +674,24 @@
 
   <!-- ─── NAVIGATION ─── -->
   <nav class="site-nav" aria-label="Main navigation">
+      <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+      
     <div class="nav-inner">
       <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
-      <ul class="nav-links" role="list">
-        <li><a href="/services/">Services</a></li>
-        <li><a href="/blog/">Insights</a></li>
-        <li><a href="/tools/bitcoin-estate-tax-calculator">Calculator</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/contact/">Contact</a></li>
-      </ul>
+      <div class="nav-links" id="navLinks">
+      <a href="/" onclick="closeMenu()">Home</a>
+      <a href="/services/" onclick="closeMenu()">Services</a>
+      <a href="/blog/" onclick="closeMenu()">Research</a>
+      <a href="/news/" onclick="closeMenu()">News</a>
+      <a href="/monitor/" onclick="closeMenu()">Estate Watch</a>
+      <a href="/faq/" onclick="closeMenu()">FAQ</a>
+      <a href="/monitor/signup" class="nav-cta" onclick="closeMenu()">Get Started</a>
+    </div>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="toggleNav(this)">
         <span></span><span></span><span></span>
       </button>
-    </div>
-    <div class="nav-mobile" id="navMobile" role="navigation" aria-label="Mobile navigation">
-      <a href="/services/">Services</a>
-      <a href="/blog/">Insights</a>
-      <a href="/tools/bitcoin-estate-tax-calculator">Estate Tax Calculator</a>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
     </div>
   </nav>
 

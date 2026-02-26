@@ -109,7 +109,7 @@
   .mobile-menu.open { display: flex; }
   .mobile-menu a { font-family: var(--display); font-size: 1.4rem; color: var(--text); }
   .mobile-close { position: absolute; top: 1.5rem; right: 2rem; font-size: 1.5rem; background: none; border: none; color: var(--text); cursor: pointer; }
-  @media(max-width:768px){ .nav-links{display:none;} .hamburger{display:flex;} }
+  @media(max-width:768px){ .nav-links{display:none;}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);align-items:center;justify-content:center;gap:2.5rem;z-index:150;} .hamburger{display:flex;} }
   .breadcrumb { max-width: 780px; margin: 2rem auto 0; padding: 0 2rem; font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--text-secondary); }
   .breadcrumb a { color: var(--text-secondary); }
   .breadcrumb a:hover { color: var(--accent); }
@@ -171,15 +171,18 @@
 
 <nav class="site-nav">
   <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
-  <ul class="nav-links">
-    <li><a href="/blog/">Research</a></li>
-    <li><a href="/tools/">Tools</a></li>
-    <li><a href="/services/">Services</a></li>
-    <li><a href="/about/">About</a></li>
-  </ul>
-  <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-links" id="navLinks">
+      <a href="/" onclick="closeMenu()">Home</a>
+      <a href="/services/" onclick="closeMenu()">Services</a>
+      <a href="/blog/" onclick="closeMenu()">Research</a>
+      <a href="/news/" onclick="closeMenu()">News</a>
+      <a href="/monitor/" onclick="closeMenu()">Estate Watch</a>
+      <a href="/faq/" onclick="closeMenu()">FAQ</a>
+      <a href="/monitor/signup" class="nav-cta" onclick="closeMenu()">Get Started</a>
+    </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">

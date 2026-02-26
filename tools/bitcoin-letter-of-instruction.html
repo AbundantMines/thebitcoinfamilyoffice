@@ -150,7 +150,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--bg-elevated);border-botto
 .nav-mobile.open{display:flex;}
 .nav-mobile a{color:var(--text-secondary);font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.6rem 0;border-bottom:1px solid var(--border);}
 .nav-mobile a:last-child{border-bottom:none;}
-@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+@media(max-width:768px){.nav-links{display:none;}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);align-items:center;justify-content:center;gap:2.5rem;z-index:150;}.hamburger{display:flex;}}
 
 /* HERO */
 .hero{text-align:center;padding:4.5rem 2rem 3rem;max-width:720px;margin:0 auto;}
@@ -330,24 +330,19 @@ footer{border-top:1px solid var(--border);padding:2rem;margin-top:1rem;}
 <!-- NAV -->
 <nav>
   <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleNav()">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/blog/">Blog</a></li>
-    <li><a href="/tools/">Tools</a></li>
-    <li><a href="/faq/">FAQ</a></li>
-    <li><a href="/services/" class="nav-cta">Services</a></li>
-  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+  <div class="nav-links" id="navLinks">
+      <a href="/" onclick="closeMenu()">Home</a>
+      <a href="/services/" onclick="closeMenu()">Services</a>
+      <a href="/blog/" onclick="closeMenu()">Research</a>
+      <a href="/news/" onclick="closeMenu()">News</a>
+      <a href="/monitor/" onclick="closeMenu()">Estate Watch</a>
+      <a href="/faq/" onclick="closeMenu()">FAQ</a>
+      <a href="/monitor/signup" class="nav-cta" onclick="closeMenu()">Get Started</a>
+    </div>
 </nav>
-<div class="nav-mobile" id="navMobile">
-  <a href="/" onclick="closeNav()">Home</a>
-  <a href="/blog/" onclick="closeNav()">Blog</a>
-  <a href="/tools/" onclick="closeNav()">Tools</a>
-  <a href="/faq/" onclick="closeNav()">FAQ</a>
-  <a href="/services/" onclick="closeNav()">Services</a>
-</div>
 
 <!-- BREADCRUMB -->
 <div class="breadcrumb-wrap">

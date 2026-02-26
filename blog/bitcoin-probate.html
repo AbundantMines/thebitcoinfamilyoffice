@@ -36,7 +36,7 @@
     .nav-links{display:flex;gap:2rem;list-style:none;}.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;}.nav-links a:hover{color:var(--accent);}
     .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}.hamburger span{display:block;width:24px;height:2px;background:var(--text);}
     .nav-mobile{display:none;position:fixed;top:60px;left:0;right:0;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;}.nav-mobile.open{display:flex;}.nav-mobile a{color:var(--text-secondary);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 0;border-bottom:1px solid var(--border);}
-    @media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+    @media(max-width:768px){.nav-links{display:none;}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);align-items:center;justify-content:center;gap:2.5rem;z-index:150;}.hamburger{display:flex;}}
     .wrap{max-width:760px;margin:0 auto;padding:0 2rem;}
     .breadcrumb{padding:1.25rem 0 0;font-size:0.72rem;color:var(--text-secondary);}
     .breadcrumb a{color:var(--text-secondary);text-decoration:none;}.breadcrumb a:hover{color:var(--accent);}
@@ -103,24 +103,19 @@
 
 <nav>
   <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
-  <ul class="nav-links">
-    <li><a href="/services/">Services</a></li>
-    <li><a href="/blog/">Research</a></li>
-    <li><a href="/tools/">Tools</a></li>
-    <li><a href="/about/">About</a></li>
-    <li><a href="/faq/">FAQ</a></li>
-  </ul>
-  <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-mobile').classList.toggle('open')">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-links" id="navLinks">
+      <a href="/" onclick="closeMenu()">Home</a>
+      <a href="/services/" onclick="closeMenu()">Services</a>
+      <a href="/blog/" onclick="closeMenu()">Research</a>
+      <a href="/news/" onclick="closeMenu()">News</a>
+      <a href="/monitor/" onclick="closeMenu()">Estate Watch</a>
+      <a href="/faq/" onclick="closeMenu()">FAQ</a>
+      <a href="/monitor/signup" class="nav-cta" onclick="closeMenu()">Get Started</a>
+    </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
 </nav>
-<div class="nav-mobile">
-  <a href="/services/">Services</a>
-  <a href="/blog/">Research</a>
-  <a href="/tools/">Tools</a>
-  <a href="/about/">About</a>
-  <a href="/faq/">FAQ</a>
-</div>
 
 <div class="wrap">
   <div class="breadcrumb">

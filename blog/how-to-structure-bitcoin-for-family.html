@@ -144,16 +144,18 @@ footer a:hover{color:var(--accent)}
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-logo">The <span>Bitcoin</span> Family Office</a>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="/" onclick="closeMenu()">Home</a></li>
-      <li><a href="/about/" onclick="closeMenu()">About</a></li>
-      <li><a href="/blog/" onclick="closeMenu()">Research</a></li>
-      <li><a href="/services/" onclick="closeMenu()">Services</a></li>
-      <li><a href="/faq/" onclick="closeMenu()">FAQ</a></li>
-    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    <div class="nav-links" id="navLinks">
+      <a href="/" onclick="closeMenu()">Home</a>
+      <a href="/services/" onclick="closeMenu()">Services</a>
+      <a href="/blog/" onclick="closeMenu()">Research</a>
+      <a href="/news/" onclick="closeMenu()">News</a>
+      <a href="/monitor/" onclick="closeMenu()">Estate Watch</a>
+      <a href="/faq/" onclick="closeMenu()">FAQ</a>
+      <a href="/monitor/signup" class="nav-cta" onclick="closeMenu()">Get Started</a>
+    </div>
   </div>
 </nav>
 
@@ -391,16 +393,14 @@ footer a:hover{color:var(--accent)}
 </footer>
 
 <script>
-function toggleMenu(){
-  document.getElementById('hamburger').classList.toggle('open');
-  document.getElementById('navLinks').classList.toggle('open');
-  document.body.style.overflow=document.getElementById('navLinks').classList.contains('open')?'hidden':'';
-}
-function closeMenu(){
-  document.getElementById('hamburger').classList.remove('open');
-  document.getElementById('navLinks').classList.remove('open');
-  document.body.style.overflow='';
-}
+function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('navLinks').classList.remove('open');
+  }
 window.addEventListener('scroll',function(){
   var s=document.documentElement,pct=Math.round(s.scrollTop/(s.scrollHeight-s.clientHeight)*100);
   document.getElementById('read-progress').style.width=(isNaN(pct)?0:pct)+'%';

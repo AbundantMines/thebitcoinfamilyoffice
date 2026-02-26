@@ -743,15 +743,21 @@
 
   <!-- NAV -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
+      <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+      
     <div class="nav-inner">
       <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
-      <ul class="nav-links">
-        <li><a href="/blog/">Insights</a></li>
-        <li><a href="/estate-planning/">Estate Planning</a></li>
-        <li><a href="/tax-strategy/">Tax Strategy</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/services/" class="cta-link">Work With Us</a></li>
-      </ul>
+      <div class="nav-links" id="navLinks">
+      <a href="/" onclick="closeMenu()">Home</a>
+      <a href="/services/" onclick="closeMenu()">Services</a>
+      <a href="/blog/" onclick="closeMenu()">Research</a>
+      <a href="/news/" onclick="closeMenu()">News</a>
+      <a href="/monitor/" onclick="closeMenu()">Estate Watch</a>
+      <a href="/faq/" onclick="closeMenu()">FAQ</a>
+      <a href="/monitor/signup" class="nav-cta" onclick="closeMenu()">Get Started</a>
+    </div>
       <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
