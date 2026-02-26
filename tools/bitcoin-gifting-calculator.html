@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Gifting Strategy Calculator — The Bitcoin Family Office</title>
+  <meta name="description" content="Model your annual Bitcoin gifting strategy. See how annual exclusion gifts reduce your taxable estate over time with our interactive gifting calculator.">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-gifting-calculator.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bitcoin Gifting Strategy Calculator — The Bitcoin Family Office">
+  <meta property="og:description" content="Model your annual Bitcoin gifting strategy. See how annual exclusion gifts reduce your taxable estate over time.">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-gifting-calculator.html">
+  <meta property="og:type" content="website">
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+  </script>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+      --accent-dim: rgba(201, 168, 76, 0.10);
+      --accent-hover: #d4b86a;
+      --accent-border: rgba(201, 168, 76, 0.25);
+      --red: #e05c5c;
+      --green: #4caf7d;
+      --green-dim: rgba(76, 175, 125, 0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent) !important;
+      color: #0a0a0a !important;
+      padding: 0.5rem 1.25rem !important;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--accent-hover) !important; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--bg-elevated);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+      }
+      .nav-links.nav-open { display: flex; }
+      .nav-links a { padding: 0.75rem 1.5rem; width: 100%; }
+      .nav-cta { margin: 0.5rem 1.5rem; width: auto !important; text-align: center; }
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(180deg, #111111 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      padding: 0.3rem 0.9rem;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* MAIN LAYOUT */
+    .calculator-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* TWO-COLUMN LAYOUT */
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* INPUTS PANEL */
+    .inputs-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.75rem;
+      position: sticky;
+      top: 80px;
+    }
+    .inputs-panel h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* FORM GROUPS */
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
+    .form-group label span.hint {
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+      opacity: 0.7;
+      margin-left: 0.4rem;
+    }
+    .input-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .input-unit-wrap {
+      position: relative;
+      flex: 1;
+    }
+    .input-unit-wrap .unit {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      pointer-events: none;
+    }
+    .input-unit-wrap input {
+      padding-left: 1.75rem;
+    }
+    input[type="number"], input[type="text"], select {
+      width: 100%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.6rem 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+    input[type="number"]:focus,
+    input[type="text"]:focus,
+    select:focus {
+      border-color: var(--accent);
+    }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8070' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.85rem center;
+      padding-right: 2.25rem;
+      cursor: pointer;
+    }
+    .toggle-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .toggle-btn {
+      flex: 1;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-secondary);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.55rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .toggle-btn.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* SLIDERS */
+    .slider-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .slider-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .slider-val {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    input[type="range"] {
+      width: 100%;
+      height: 4px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--border);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+      cursor: pointer;
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      cursor: pointer;
+    }
+    .slider-minmax {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      margin-top: 0.1rem;
+    }
+
+    /* RESULTS PANEL */
+    .results-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* STAT CARDS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+    .stat-card.primary {
+      border-color: var(--accent-border);
+      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(201,168,76,0.04) 100%);
+    }
+    .stat-card.full {
+      grid-column: 1 / -1;
+    }
+    .stat-card .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .stat-card .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+    }
+    .stat-card .stat-sub {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 0.3rem;
+    }
+    .stat-card.success .stat-value {
+      color: var(--green);
+    }
+    .stat-card.success {
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--green-dim) 100%);
+    }
+    .stat-card.warn .stat-value {
+      color: var(--red);
+    }
+
+    /* TABLE SECTION */
+    .table-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .table-section-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .table-section-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+    .btn-pdf {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none;
+      border-radius: 4px;
+      padding: 0.55rem 1.25rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-pdf:hover { background: var(--accent-hover); }
+    .table-scroll {
+      overflow-x: auto;
+      max-height: 480px;
+      overflow-y: auto;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .data-table thead {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    .data-table th {
+      background: var(--bg-elevated);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: right;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .data-table th:first-child { text-align: center; }
+    .data-table td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid rgba(30,30,30,0.7);
+      text-align: right;
+      color: var(--text-secondary);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .data-table td:first-child {
+      text-align: center;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .data-table tbody tr:hover td {
+      background: var(--bg-elevated);
+      color: var(--text);
+    }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table td.gift-val { color: var(--accent); font-weight: 600; }
+    .data-table td.estate-val { color: var(--text); }
+
+    /* DISCLAIMER WITHIN TOOL */
+    .tool-disclaimer {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.1rem 1.4rem;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .tool-disclaimer strong {
+      font-size: 0.73rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    /* CTA STRIP */
+    .cta-strip {
+      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(201,168,76,0.06) 100%);
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .cta-strip h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+    .cta-strip p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .cta-strip .cta-btns {
+      display: flex;
+      gap: 0.75rem;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    .btn-cta-primary {
+      background: var(--accent);
+      color: #0a0a0a;
+      padding: 0.7rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-cta-primary:hover { background: var(--accent-hover); }
+    .btn-cta-secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      padding: 0.7rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-cta-secondary:hover { background: var(--accent-dim); }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    footer a { color: var(--text-secondary); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    /* Print styles */
+    @media print {
+      .nav, .hamburger, .btn-pdf, .cta-strip, footer { display: none !important; }
+      body { background: white; color: black; }
+      .inputs-panel, .results-panel, .stat-card, .table-section {
+        border: 1px solid #ddd !important;
+        background: white !important;
+        color: black !important;
+      }
+      .stat-value { color: #b8860b !important; }
+      .calc-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">The Bitcoin Family Office</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="/blog/">Research</a>
+        <a href="/tools/">Tools</a>
+        <a href="/monitor/">Estate Watch</a>
+        <a href="/services/">Services</a>
+        <a href="/about/">About</a>
+        <a href="/monitor/signup.html" class="nav-cta">Join Waitlist</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-badge">Interactive Tool</div>
+    <h1>Bitcoin Gifting Strategy Calculator</h1>
+    <p>Model your annual gifting strategy and see how consistent exclusion gifts reduce your taxable estate over time — tax-free.</p>
+  </header>
+
+  <!-- CALCULATOR -->
+  <main class="calculator-wrap">
+    <div class="calc-grid">
+
+      <!-- ===== INPUTS PANEL ===== -->
+      <div class="inputs-panel">
+        <h2>Your Inputs</h2>
+
+        <!-- Holdings type toggle -->
+        <div class="form-group">
+          <label>Enter holdings as</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="btn-btc" onclick="setInputMode('btc')">₿ BTC amount</button>
+            <button class="toggle-btn" id="btn-usd" onclick="setInputMode('usd')">$ Dollar value</button>
+          </div>
+        </div>
+
+        <!-- BTC Amount (shown in BTC mode) -->
+        <div class="form-group" id="group-btc">
+          <label>Current BTC holdings <span class="hint">(₿)</span></label>
+          <div class="input-unit-wrap">
+            <span class="unit">₿</span>
+            <input type="number" id="btc-holdings" value="5" min="0.001" step="0.01" oninput="recalculate()">
+          </div>
+        </div>
+
+        <!-- USD Amount (shown in USD mode) -->
+        <div class="form-group" id="group-usd" style="display:none;">
+          <label>Current portfolio value <span class="hint">($)</span></label>
+          <div class="input-unit-wrap">
+            <span class="unit">$</span>
+            <input type="number" id="usd-holdings" value="500000" min="1000" step="1000" oninput="recalculate()">
+          </div>
+        </div>
+
+        <!-- BTC Price -->
+        <div class="form-group" id="group-price">
+          <label>Current BTC price <span class="hint">($)</span></label>
+          <div class="input-unit-wrap">
+            <span class="unit">$</span>
+            <input type="number" id="btc-price" value="97000" min="1000" step="1000" oninput="recalculate()">
+          </div>
+        </div>
+
+        <!-- Recipients -->
+        <div class="form-group">
+          <label>Number of recipients <span class="hint">(children, heirs)</span></label>
+          <input type="number" id="num-recipients" value="2" min="1" max="50" step="1" oninput="recalculate()">
+        </div>
+
+        <!-- Marital Status -->
+        <div class="form-group">
+          <label>Marital status</label>
+          <div class="toggle-group">
+            <button class="toggle-btn" id="btn-single" onclick="setMarital('single')">Single</button>
+            <button class="toggle-btn active" id="btn-married" onclick="setMarital('married')">Married</button>
+          </div>
+        </div>
+
+        <!-- Annual Exclusion (read-only, updated by marital status) -->
+        <div class="form-group">
+          <label>Annual exclusion per recipient <span class="hint">(2026)</span></label>
+          <div class="input-unit-wrap">
+            <span class="unit">$</span>
+            <input type="number" id="annual-exclusion" value="36000" min="1000" step="1000" oninput="recalculate()">
+          </div>
+        </div>
+
+        <!-- Gift Rate Slider -->
+        <div class="form-group">
+          <label>Annual gift rate</label>
+          <div class="slider-wrap">
+            <div class="slider-top">
+              <span style="font-size:0.78rem;color:var(--text-secondary);">% of portfolio gifted per year</span>
+              <span class="slider-val" id="gift-rate-val">15%</span>
+            </div>
+            <input type="range" id="gift-rate" min="5" max="50" step="1" value="15" oninput="updateSlider('gift-rate','gift-rate-val','%'); recalculate()">
+            <div class="slider-minmax"><span>5%</span><span>50%</span></div>
+          </div>
+        </div>
+
+        <!-- BTC Appreciation Slider -->
+        <div class="form-group">
+          <label>BTC annual appreciation</label>
+          <div class="slider-wrap">
+            <div class="slider-top">
+              <span style="font-size:0.78rem;color:var(--text-secondary);">Expected price growth per year</span>
+              <span class="slider-val" id="btc-appr-val">30%</span>
+            </div>
+            <input type="range" id="btc-appr" min="0" max="100" step="1" value="30" oninput="updateSlider('btc-appr','btc-appr-val','%'); recalculate()">
+            <div class="slider-minmax"><span>0%</span><span>100%</span></div>
+          </div>
+        </div>
+
+        <!-- Years Slider -->
+        <div class="form-group">
+          <label>Modeling period</label>
+          <div class="slider-wrap">
+            <div class="slider-top">
+              <span style="font-size:0.78rem;color:var(--text-secondary);">Number of years to project</span>
+              <span class="slider-val" id="years-val">15 yrs</span>
+            </div>
+            <input type="range" id="years" min="5" max="30" step="1" value="15" oninput="updateSliderYears(); recalculate()">
+            <div class="slider-minmax"><span>5 yrs</span><span>30 yrs</span></div>
+          </div>
+        </div>
+
+      </div><!-- /inputs-panel -->
+
+      <!-- ===== RESULTS PANEL ===== -->
+      <div class="results-panel">
+
+        <!-- SUMMARY STATS -->
+        <div class="stats-grid">
+          <div class="stat-card primary">
+            <div class="stat-label">Total Gifted</div>
+            <div class="stat-value" id="stat-total-gifted">—</div>
+            <div class="stat-sub" id="stat-total-gifted-sub"></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Gift Tax Liability</div>
+            <div class="stat-value" id="stat-gift-tax">—</div>
+            <div class="stat-sub" id="stat-gift-tax-sub"></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Remaining Estate</div>
+            <div class="stat-value" id="stat-remaining">—</div>
+            <div class="stat-sub" id="stat-remaining-sub"></div>
+          </div>
+          <div class="stat-card success">
+            <div class="stat-label">Estate Tax Reduction</div>
+            <div class="stat-value" id="stat-estate-reduction">—</div>
+            <div class="stat-sub">vs. not gifting at federal 40% rate</div>
+          </div>
+          <div class="stat-card full">
+            <div class="stat-label">Your Annual Max Exclusion Gift (Year 1)</div>
+            <div class="stat-value" id="stat-max-gift">—</div>
+            <div class="stat-sub" id="stat-max-gift-sub"></div>
+          </div>
+        </div>
+
+        <!-- ANNUAL TABLE -->
+        <div class="table-section">
+          <div class="table-section-header">
+            <h3>Year-by-Year Projection</h3>
+            <button class="btn-pdf" onclick="printCalc()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+              Download PDF
+            </button>
+          </div>
+          <div class="table-scroll">
+            <table class="data-table" id="projection-table">
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>BTC Price</th>
+                  <th>BTC Holdings</th>
+                  <th>Annual Gift $</th>
+                  <th>Cumulative Gifted</th>
+                  <th>Remaining Estate</th>
+                </tr>
+              </thead>
+              <tbody id="table-body">
+                <!-- filled by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TWO-TIER DISCLAIMER -->
+        <div class="tool-disclaimer">
+          <strong>⚠ Illustrative Purposes Only</strong><br><br>
+          This calculator provides hypothetical projections based on the inputs you enter. It is not financial, legal, or tax advice. Actual results will vary significantly based on Bitcoin price volatility, changes in tax law, gift structuring, and your specific financial situation.<br><br>
+          <strong>Assumptions:</strong> The calculator assumes (1) annual BTC appreciation compounds linearly at the rate you specify, (2) gifts are made at the beginning of each year from BTC holdings, (3) all gifts qualify for the annual exclusion (no taxable gifts assumed unless exclusion is exceeded), (4) estate tax reduction is estimated at the 40% federal estate tax rate applied to the total gifted amount, and (5) no capital gains tax is reflected (basis transfer to recipient). This is a simplified model. Consult a qualified estate planning attorney and CPA before making any gifting decisions.
+        </div>
+
+        <!-- CTA STRIP -->
+        <div class="cta-strip">
+          <div>
+            <h3>Ready to Build Your Gifting Plan?</h3>
+            <p>Work with specialists who understand Bitcoin estate planning — from annual exclusion strategies to ING trusts and dynasty structures.</p>
+          </div>
+          <div class="cta-btns">
+            <a href="/services/" class="btn-cta-primary">Get Started</a>
+            <a href="https://abundantmines.com/tax-strategy/" class="btn-cta-secondary" target="_blank">Mining Tax Strategy</a>
+          </div>
+        </div>
+
+      </div><!-- /results-panel -->
+    </div><!-- /calc-grid -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 The Bitcoin Family Office · <a href="/about/">About</a> · <a href="/services/">Services</a> · <a href="/blog/">Research</a> · <a href="/tools/">Tools</a></p>
+    <p style="margin-top:0.5rem;">Educational tool only. Not legal, tax, or financial advice. Results are illustrative projections.</p>
+  </footer>
+
+  <script>
+    /* ========================================================
+       STATE
+    ======================================================== */
+    let inputMode = 'btc';   // 'btc' | 'usd'
+    let marital = 'married';
+
+    /* ========================================================
+       UTILS
+    ======================================================== */
+    function fmt(n, dec = 0) {
+      if (!isFinite(n)) return '—';
+      return '$' + n.toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+    function fmtBtc(n) {
+      if (!isFinite(n)) return '—';
+      return n.toFixed(4).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' ₿';
+    }
+    function fmtPct(n) {
+      return n.toFixed(1) + '%';
+    }
+
+    /* ========================================================
+       SLIDER LABELS
+    ======================================================== */
+    function updateSlider(id, labelId, suffix) {
+      document.getElementById(labelId).textContent = document.getElementById(id).value + suffix;
+    }
+    function updateSliderYears() {
+      document.getElementById('years-val').textContent = document.getElementById('years').value + ' yrs';
+    }
+
+    /* ========================================================
+       TOGGLE FUNCTIONS
+    ======================================================== */
+    function setInputMode(mode) {
+      inputMode = mode;
+      document.getElementById('btn-btc').classList.toggle('active', mode === 'btc');
+      document.getElementById('btn-usd').classList.toggle('active', mode === 'usd');
+      document.getElementById('group-btc').style.display = mode === 'btc' ? '' : 'none';
+      document.getElementById('group-usd').style.display = mode === 'usd' ? '' : 'none';
+      document.getElementById('group-price').style.display = mode === 'btc' ? '' : 'none';
+      recalculate();
+    }
+
+    function setMarital(m) {
+      marital = m;
+      document.getElementById('btn-single').classList.toggle('active', m === 'single');
+      document.getElementById('btn-married').classList.toggle('active', m === 'married');
+      document.getElementById('annual-exclusion').value = m === 'married' ? 36000 : 18000;
+      recalculate();
+    }
+
+    /* ========================================================
+       CORE CALCULATION
+    ======================================================== */
+    function recalculate() {
+      // --- Read inputs ---
+      const btcPrice   = parseFloat(document.getElementById('btc-price').value) || 97000;
+      const numRec     = parseInt(document.getElementById('num-recipients').value) || 2;
+      const exclusion  = parseFloat(document.getElementById('annual-exclusion').value) || 36000;
+      const giftRatePct= parseFloat(document.getElementById('gift-rate').value) / 100;
+      const apprPct    = parseFloat(document.getElementById('btc-appr').value) / 100;
+      const years      = parseInt(document.getElementById('years').value) || 15;
+
+      // Derive starting BTC holdings
+      let startBtc;
+      if (inputMode === 'btc') {
+        startBtc = parseFloat(document.getElementById('btc-holdings').value) || 5;
+      } else {
+        const usdVal = parseFloat(document.getElementById('usd-holdings').value) || 500000;
+        startBtc = usdVal / btcPrice;
+      }
+
+      const maxAnnualExclusionGift = exclusion * numRec;
+
+      // --- Year-by-year simulation ---
+      let btcHeld        = startBtc;
+      let currentPrice   = btcPrice;
+      let cumulativeGifted = 0;
+      let rows           = [];
+
+      // Scenario B: no gifting (for estate tax comparison)
+      let btcNoGift = startBtc;
+
+      for (let yr = 1; yr <= Math.min(years, 30); yr++) {
+        // Price appreciates at start of year
+        currentPrice = currentPrice * (1 + apprPct);
+
+        // Portfolio value before gift
+        const portfolioValue = btcHeld * currentPrice;
+        const portfolioNoGift = btcNoGift * currentPrice;
+
+        // Determine gift amount
+        const desiredGiftUSD = portfolioValue * giftRatePct;
+        // Cap gift at max exclusion (we assume gifts stay within exclusion for simplicity)
+        const actualGiftUSD  = Math.min(desiredGiftUSD, maxAnnualExclusionGift);
+        const btcGifted      = actualGiftUSD / currentPrice;
+
+        // Update holdings
+        btcHeld = Math.max(0, btcHeld - btcGifted);
+        cumulativeGifted += actualGiftUSD;
+
+        rows.push({
+          year: yr,
+          btcPrice: currentPrice,
+          btcHeld: btcHeld,
+          estateValue: btcHeld * currentPrice,
+          annualGift: actualGiftUSD,
+          cumulative: cumulativeGifted
+        });
+      }
+
+      // Final values
+      const finalRow = rows[rows.length - 1];
+      const finalEstate = finalRow ? finalRow.estateValue : startBtc * btcPrice;
+      const totalGifted = cumulativeGifted;
+
+      // No-gifting scenario final estate value
+      let noGiftPrice = btcPrice;
+      for (let yr = 1; yr <= Math.min(years, 30); yr++) {
+        noGiftPrice *= (1 + apprPct);
+      }
+      const noGiftEstate = startBtc * noGiftPrice;
+
+      // Estate tax reduction (40% federal estate tax on gifted amount)
+      const estateTaxReduction = totalGifted * 0.40;
+
+      // Gift tax liability — assuming all gifts are within annual exclusion (no taxable gifts)
+      // For simple model: if desired gift > exclusion, it's capped, so liability stays $0
+      // In reality, excess gifts would use lifetime exemption; for this tool we keep it clean
+      const giftTaxLiability = 0;
+
+      // --- Update summary cards ---
+      document.getElementById('stat-total-gifted').textContent = fmt(totalGifted);
+      document.getElementById('stat-total-gifted-sub').textContent = `Over ${years} years across ${numRec} recipient${numRec !== 1 ? 's' : ''}`;
+
+      const taxEl = document.getElementById('stat-gift-tax');
+      const taxCard = taxEl.closest('.stat-card');
+      taxEl.textContent = fmt(giftTaxLiability);
+      taxCard.classList.remove('warn');
+      document.getElementById('stat-gift-tax-sub').textContent =
+        giftTaxLiability === 0
+          ? 'Within annual exclusion — no gift tax owed'
+          : 'Estimated gift tax (consult a professional)';
+      if (giftTaxLiability > 0) taxCard.classList.add('warn');
+
+      document.getElementById('stat-remaining').textContent = fmt(finalEstate);
+      document.getElementById('stat-remaining-sub').textContent = `≈ ${fmtBtc(finalRow ? finalRow.btcHeld : startBtc)} at projected price`;
+
+      document.getElementById('stat-estate-reduction').textContent = fmt(estateTaxReduction);
+
+      document.getElementById('stat-max-gift').textContent = fmt(maxAnnualExclusionGift);
+      document.getElementById('stat-max-gift-sub').textContent =
+        `${numRec} recipient${numRec !== 1 ? 's' : ''} × ${fmt(exclusion)} = ${fmt(maxAnnualExclusionGift)}/year · Zero gift tax`;
+
+      // --- Populate table ---
+      const tbody = document.getElementById('table-body');
+      tbody.innerHTML = '';
+      rows.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${row.year}</td>
+          <td>${fmt(row.btcPrice)}</td>
+          <td>${fmtBtc(row.btcHeld)}</td>
+          <td class="gift-val">${fmt(row.annualGift)}</td>
+          <td>${fmt(row.cumulative)}</td>
+          <td class="estate-val">${fmt(row.estateValue)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // --- GA4 Event ---
+      if (typeof gtag === 'function') {
+        gtag('event', 'gifting_calc_use', {
+          'btc_holdings': parseFloat(startBtc.toFixed(4)),
+          'years': years,
+          'recipients': numRec,
+          'appr_pct': apprPct * 100,
+          'gift_rate_pct': giftRatePct * 100
+        });
+      }
+    }
+
+    /* ========================================================
+       PRINT
+    ======================================================== */
+    function printCalc() {
+      window.print();
+    }
+
+    /* ========================================================
+       INIT
+    ======================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      // Initial slider labels
+      updateSlider('gift-rate', 'gift-rate-val', '%');
+      updateSlider('btc-appr', 'btc-appr-val', '%');
+      updateSliderYears();
+      // Initial calculation
+      recalculate();
+    });
+  </script>
+
+</body>
+</html>
