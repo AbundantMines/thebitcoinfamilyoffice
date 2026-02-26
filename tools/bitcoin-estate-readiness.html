@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Estate Readiness Score | The Bitcoin Family Office</title>
+  <meta name="description" content="Take our 20-question assessment to see how well-protected your Bitcoin estate is. Get a readiness score, gap analysis, and prioritized action items.">
+  <meta name="keywords" content="bitcoin estate planning checklist, bitcoin estate readiness, bitcoin estate score, bitcoin inheritance planning">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-estate-readiness">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bitcoin Estate Readiness Score | The Bitcoin Family Office">
+  <meta property="og:description" content="20-question assessment: how well-protected is your Bitcoin estate? Get your score, critical gaps, and action plan.">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-estate-readiness">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bitcoin Estate Readiness Score">
+  <meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=EB+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+  </script>
+
+  <!-- Cloudflare Beacon -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+      --accent-hover: #d4b560;
+      --accent-dim: rgba(201,168,76,0.12);
+      --green: #4caf7d;
+      --green-dim: rgba(76,175,125,0.12);
+      --amber: #c9a84c;
+      --amber-dim: rgba(201,168,76,0.12);
+      --red: #e05555;
+      --red-dim: rgba(224,85,85,0.12);
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent);
+      color: #000 !important;
+      padding: 8px 18px;
+      border-radius: 4px;
+      font-weight: 600 !important;
+      font-size: 13px !important;
+    }
+    .nav-cta:hover { background: var(--accent-hover); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0; right: 0;
+        background: var(--bg-elevated);
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 20px;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.nav-open { display: flex; }
+    }
+
+    /* ── HEADER ── */
+    .page-header {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    .tool-badge {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(201,168,76,0.25);
+      margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .page-header p {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* ── WRAPPER ── */
+    .tool-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ── PROGRESS ── */
+    .progress-bar-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .progress-track {
+      flex: 1;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: width 0.4s ease;
+    }
+    .progress-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    /* ── QUESTIONS ── */
+    .questions-section { display: flex; flex-direction: column; gap: 16px; }
+    .question-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      transition: border-color 0.2s;
+    }
+    .question-card.answered { border-color: rgba(201,168,76,0.2); }
+    .question-header {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .q-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+      transition: all 0.2s;
+    }
+    .question-card.answered .q-number {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .q-text {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.5;
+      padding-top: 3px;
+    }
+    .q-options {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      margin-left: 42px;
+    }
+    @media (max-width: 480px) {
+      .q-options { margin-left: 0; flex-wrap: wrap; }
+    }
+    .q-btn {
+      padding: 8px 20px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .q-btn:hover { border-color: var(--text-secondary); color: var(--text); }
+    .q-btn.yes.selected   { background: var(--green-dim); border-color: var(--green); color: var(--green); }
+    .q-btn.inprog.selected { background: var(--amber-dim); border-color: var(--amber); color: var(--amber); }
+    .q-btn.no.selected    { background: var(--red-dim); border-color: var(--red); color: var(--red); }
+
+    /* ── LIVE SCORE BAR ── */
+    .live-score-bar {
+      position: sticky;
+      bottom: 0;
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      z-index: 50;
+    }
+    .live-score-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+    .live-score-track {
+      flex: 1;
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .live-score-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.4s ease, background 0.4s ease;
+    }
+    .live-score-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .btn-results {
+      padding: 10px 24px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .btn-results:hover { background: var(--accent-hover); }
+    .btn-results:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* ── RESULTS SECTION ── */
+    .results-section {
+      display: none;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .results-section.visible { display: flex; }
+
+    /* Score gauge */
+    .gauge-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .gauge-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 24px;
+    }
+    .gauge-svg {
+      transform: rotate(-90deg);
+      width: 200px;
+      height: 200px;
+    }
+    .gauge-bg {
+      fill: none;
+      stroke: var(--border);
+      stroke-width: 14;
+    }
+    .gauge-fill {
+      fill: none;
+      stroke-width: 14;
+      stroke-linecap: round;
+      stroke-dasharray: 502;
+      stroke-dashoffset: 502;
+      transition: stroke-dashoffset 1.2s cubic-bezier(.2,.8,.3,1), stroke 0.6s ease;
+    }
+    .gauge-center {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .gauge-score {
+      font-family: 'Playfair Display', serif;
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--text);
+    }
+    .gauge-grade {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .gauge-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .gauge-subtitle {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Summary text */
+    .summary-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+    }
+    .summary-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .summary-card p {
+      font-family: 'EB Garamond', serif;
+      font-size: 17px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    /* Gaps list */
+    .gaps-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+    }
+    .gaps-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .gaps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .gap-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      background: var(--bg-elevated);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+    }
+    .gap-item.inprog {
+      border-left-color: var(--amber);
+    }
+    .gap-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .gap-content { flex: 1; }
+    .gap-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .gap-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .gap-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .gap-link:hover { text-decoration: underline; }
+    .no-gaps {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      color: var(--green);
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Score breakdown */
+    .breakdown-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+    }
+    .breakdown-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .breakdown-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+    }
+    .breakdown-item {
+      padding: 12px 14px;
+      background: var(--bg-elevated);
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .breakdown-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .breakdown-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.3;
+    }
+    .breakdown-pts {
+      font-size: 13px;
+      font-weight: 600;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    /* CTA card */
+    .cta-card {
+      background: linear-gradient(135deg, #1a140a 0%, #141414 100%);
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .cta-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .cta-card p {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 24px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1px solid rgba(201,168,76,0.4);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: var(--accent-dim); border-color: var(--accent); }
+
+    /* Retake */
+    .retake-row { text-align: center; margin-top: 8px; }
+    .retake-btn {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* Disclaimer */
+    .disclaimer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px 48px;
+      border-top: 1px solid var(--border);
+    }
+    .disclaimer p {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      opacity: 0.7;
+    }
+
+    /* Print */
+    @media print {
+      .nav, .live-score-bar, .questions-section, .progress-bar-wrap,
+      .btn-results, .retake-btn, .hamburger { display: none !important; }
+      .results-section { display: flex !important; }
+      body { background: #fff; color: #000; }
+      .gauge-score, .gauge-grade, .gauge-title { color: #000; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">The Bitcoin Family Office</a>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="/blog/">Research</a>
+      <a href="/tools/">Tools</a>
+      <a href="/monitor/">Estate Watch</a>
+      <a href="/services/">Services</a>
+      <a href="/about/">About</a>
+      <a href="/monitor/signup.html" class="nav-cta">Join Waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="tool-badge">Free Assessment</div>
+  <h1>Bitcoin Estate Readiness Score</h1>
+  <p>Answer 20 questions about your Bitcoin estate planning. Get an instant score, letter grade, critical gap analysis, and a prioritized action plan.</p>
+</div>
+
+<div class="tool-wrapper">
+
+  <!-- Progress -->
+  <div class="progress-bar-wrap">
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+    <div class="progress-text" id="progressText">0 of 20 answered</div>
+  </div>
+
+  <!-- Questions -->
+  <div class="questions-section" id="questionsSection"></div>
+
+  <!-- Results -->
+  <div class="results-section" id="resultsSection">
+
+    <!-- Gauge -->
+    <div class="gauge-wrap" id="gaugeWrap">
+      <div class="gauge-container">
+        <svg class="gauge-svg" viewBox="0 0 200 200">
+          <circle class="gauge-bg" cx="100" cy="100" r="80"/>
+          <circle class="gauge-fill" id="gaugeFill" cx="100" cy="100" r="80"/>
+        </svg>
+        <div class="gauge-center">
+          <div class="gauge-score" id="gaugeScore">0</div>
+          <div class="gauge-grade" id="gaugeGrade">F</div>
+        </div>
+      </div>
+      <div class="gauge-title" id="gaugeTitle">Your Bitcoin Estate Readiness Score</div>
+      <div class="gauge-subtitle" id="gaugeSubtitle">Analyzing your estate protection level...</div>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary-card" id="summaryCard"></div>
+
+    <!-- Gaps -->
+    <div class="gaps-card" id="gapsCard"></div>
+
+    <!-- Score breakdown -->
+    <div class="breakdown-card" id="breakdownCard"></div>
+
+    <!-- CTA -->
+    <div class="cta-card">
+      <h3>Ready to Close Your Gaps?</h3>
+      <p>Our team specializes exclusively in Bitcoin estate planning — from revocable trusts and dynasty structures to multi-signature custody architecture for generational wealth.</p>
+      <div class="cta-buttons">
+        <a href="/services/" class="btn-primary">Get a Professional Review →</a>
+        <button class="btn-secondary" onclick="window.print()">Download Results ↓</button>
+      </div>
+    </div>
+
+    <div class="retake-row">
+      <button class="retake-btn" onclick="retake()">← Retake the Assessment</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Sticky score bar -->
+<div class="live-score-bar" id="liveScoreBar">
+  <div class="live-score-label">Your Score</div>
+  <div class="live-score-track">
+    <div class="live-score-fill" id="liveScoreFill" style="width:0%; background:var(--red)"></div>
+  </div>
+  <div class="live-score-value" id="liveScoreValue">0</div>
+  <button class="btn-results" id="btnResults" onclick="showResults()" disabled>See Results</button>
+</div>
+
+<div class="disclaimer">
+  <p><strong>Disclaimer:</strong> This assessment is for educational purposes only and does not constitute legal, tax, or financial advice. Estate planning requirements vary by state, jurisdiction, and individual circumstances. Scores are illustrative and based on general best practices in Bitcoin estate planning. Consult a qualified Bitcoin estate planning attorney and financial advisor before making any legal or financial decisions. The Bitcoin Family Office is not responsible for outcomes based on this assessment.</p>
+</div>
+
+<script>
+  // ── QUESTION DATA ──
+  const QUESTIONS = [
+    {
+      q: "Do you have a current will that mentions your Bitcoin?",
+      action: "Create a will that explicitly names your Bitcoin and how it should be distributed.",
+      link: "/blog/bitcoin-estate-planning-guide",
+      linkText: "Bitcoin Estate Planning Guide →"
+    },
+    {
+      q: "Have you set up a revocable living trust?",
+      action: "A revocable living trust avoids probate and gives your family immediate access to Bitcoin.",
+      link: "/blog/bitcoin-revocable-living-trust",
+      linkText: "Bitcoin Revocable Living Trust Guide →"
+    },
+    {
+      q: "Do you use hardware wallet self-custody (not exchange)?",
+      action: "Exchange-held Bitcoin can be frozen, hacked, or inaccessible to heirs. Move to self-custody.",
+      link: "/blog/bitcoin-custody-architecture",
+      linkText: "Bitcoin Custody Architecture →"
+    },
+    {
+      q: "Do you use multi-signature (2-of-3 or better) for your Bitcoin?",
+      action: "Multi-sig prevents single points of failure and enables secure inheritance without revealing keys.",
+      link: "/blog/bitcoin-multisig-estate-planning",
+      linkText: "Bitcoin Multi-Sig for Estate Planning →"
+    },
+    {
+      q: "Have you written a Letter of Instruction for your executor?",
+      action: "A Letter of Instruction tells your executor exactly how to find and access your Bitcoin.",
+      link: "/tools/letter-of-instruction-builder.html",
+      linkText: "Build Your Letter of Instruction →"
+    },
+    {
+      q: "Does your executor know Bitcoin is in your estate?",
+      action: "Your executor needs to know Bitcoin exists before they can protect it. Have the conversation.",
+      link: "/blog/bitcoin-estate-planning-guide",
+      linkText: "Estate Planning Guide →"
+    },
+    {
+      q: "Have you designated a beneficiary for all Bitcoin holdings?",
+      action: "Beneficiary designations ensure your Bitcoin passes directly — without probate delays.",
+      link: "/blog/bitcoin-estate-planning-guide",
+      linkText: "Bitcoin Estate Planning Guide →"
+    },
+    {
+      q: "Have you worked with a Bitcoin estate planning attorney (not a generalist)?",
+      action: "General estate attorneys often overlook Bitcoin-specific custody, tax, and access issues.",
+      link: "/services/",
+      linkText: "Work With a Bitcoin Estate Specialist →"
+    },
+    {
+      q: "Do you have an irrevocable or dynasty trust for Bitcoin?",
+      action: "An irrevocable trust removes Bitcoin from your taxable estate and protects future appreciation.",
+      link: "/blog/bitcoin-trust-types-guide",
+      linkText: "Bitcoin Trust Types Explained →"
+    },
+    {
+      q: "Are your private keys geographically distributed?",
+      action: "Keys in one location create a single point of failure from fire, flood, theft, or disaster.",
+      link: "/blog/bitcoin-custody-architecture",
+      linkText: "Custody Architecture Best Practices →"
+    },
+    {
+      q: "Has your spouse or partner been briefed on Bitcoin access?",
+      action: "If you died today, could your partner access your Bitcoin? If not, this is urgent.",
+      link: "/blog/bitcoin-estate-planning-guide",
+      linkText: "Bitcoin Estate Planning Guide →"
+    },
+    {
+      q: "Have you tested your Bitcoin recovery procedure in the last 12 months?",
+      action: "Untested recovery procedures fail when it matters most. Test your seed backup now.",
+      link: "/blog/bitcoin-custody-architecture",
+      linkText: "Custody Architecture Guide →"
+    },
+    {
+      q: "Have your named heirs received Bitcoin education?",
+      action: "Heirs who don't understand Bitcoin are likely to lose it. Education is part of the estate plan.",
+      link: "/blog/bitcoin-estate-planning-guide",
+      linkText: "Bitcoin Estate Planning Guide →"
+    },
+    {
+      q: "Do you have an estate tax plan if your estate exceeds the federal exemption?",
+      action: "Without planning, 40% of your Bitcoin above the exemption goes to the IRS — not your family.",
+      link: "/tools/estate-tax-calculator.html",
+      linkText: "Calculate Your Estate Tax Exposure →"
+    },
+    {
+      q: "Have you updated your beneficiary designations in the last 2 years?",
+      action: "Outdated beneficiary designations can override your will. Review them regularly.",
+      link: "/blog/bitcoin-estate-planning-guide",
+      linkText: "Estate Planning Guide →"
+    },
+    {
+      q: "Do you have an Investment Policy Statement for your Bitcoin holdings?",
+      action: "An IPS guides your heirs on whether to hold, sell, or rebalance — preventing emotional decisions.",
+      link: "/blog/bitcoin-estate-planning-guide",
+      linkText: "Bitcoin Estate Planning Guide →"
+    },
+    {
+      q: "Has your CPA reviewed your Bitcoin for tax optimization?",
+      action: "Bitcoin-specific tax strategies (harvesting, charitable trusts, mining deductions) can save significantly.",
+      link: "/services/",
+      linkText: "Connect With a Bitcoin CPA →"
+    },
+    {
+      q: "Is there a succession plan for your Bitcoin in your business (if applicable)?",
+      action: "Business-held Bitcoin requires separate succession planning beyond personal estate planning.",
+      link: "/services/",
+      linkText: "Business Succession Planning →"
+    },
+    {
+      q: "Do you have a plan for incapacity (not just death)?",
+      action: "A durable power of attorney for digital assets ensures your Bitcoin is managed if you're incapacitated.",
+      link: "/blog/bitcoin-estate-planning-guide",
+      linkText: "Incapacity Planning for Bitcoin →"
+    },
+    {
+      q: "Have you reviewed your estate plan in the last 12 months?",
+      action: "Estate laws change. Bitcoin values change. Your plan should be reviewed annually.",
+      link: "/services/",
+      linkText: "Schedule an Annual Review →"
+    }
+  ];
+
+  // ── STATE ──
+  let answers = new Array(20).fill(null); // null, 'yes', 'inprog', 'no'
+
+  // ── BUILD QUESTIONS ──
+  function buildQuestions() {
+    const container = document.getElementById('questionsSection');
+    container.innerHTML = '';
+    QUESTIONS.forEach((q, i) => {
+      const card = document.createElement('div');
+      card.className = 'question-card';
+      card.id = 'qcard-' + i;
+      card.innerHTML = `
+        <div class="question-header">
+          <div class="q-number" id="qnum-${i}">${i+1}</div>
+          <div class="q-text">${q.q}</div>
+        </div>
+        <div class="q-options">
+          <button class="q-btn yes" onclick="answer(${i}, 'yes', this)">✓ Yes</button>
+          <button class="q-btn inprog" onclick="answer(${i}, 'inprog', this)">⏳ In Progress</button>
+          <button class="q-btn no" onclick="answer(${i}, 'no', this)">✗ No</button>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  function answer(idx, val, btn) {
+    answers[idx] = val;
+    // Update UI
+    const card = document.getElementById('qcard-' + idx);
+    card.classList.add('answered');
+    card.querySelectorAll('.q-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    updateLiveScore();
+  }
+
+  function updateLiveScore() {
+    const answered = answers.filter(a => a !== null).length;
+    const score = calcScore();
+
+    // Progress
+    document.getElementById('progressFill').style.width = (answered/20*100) + '%';
+    document.getElementById('progressText').textContent = answered + ' of 20 answered';
+
+    // Live bar
+    const fill = document.getElementById('liveScoreFill');
+    fill.style.width = score + '%';
+    fill.style.background = scoreColor(score);
+    document.getElementById('liveScoreValue').textContent = score;
+
+    // Enable button once all answered
+    const btn = document.getElementById('btnResults');
+    btn.disabled = answered < 20;
+    if (answered === 20) {
+      btn.style.animation = 'pulse 1s ease 2';
+    }
+  }
+
+  function calcScore() {
+    let total = 0;
+    answers.forEach(a => {
+      if (a === 'yes') total += 5;
+      else if (a === 'inprog') total += 2;
+    });
+    return total;
+  }
+
+  function scoreColor(s) {
+    if (s >= 80) return 'var(--green)';
+    if (s >= 50) return 'var(--amber)';
+    return 'var(--red)';
+  }
+
+  function getGrade(s) {
+    if (s >= 90) return 'A';
+    if (s >= 75) return 'B';
+    if (s >= 60) return 'C';
+    if (s >= 40) return 'D';
+    return 'F';
+  }
+
+  function getGradeLabel(grade) {
+    const labels = {
+      A: 'Excellent — your estate is well-protected',
+      B: 'Good — a few critical gaps remain',
+      C: 'Fair — meaningful gaps need attention',
+      D: 'At Risk — significant vulnerabilities exist',
+      F: 'Critical — your Bitcoin estate is largely unprotected'
+    };
+    return labels[grade];
+  }
+
+  function showResults() {
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const score = calcScore();
+    const grade = getGrade(score);
+    const pct = score;
+    const color = scoreColor(score);
+
+    // Animate gauge
+    const circumference = 502; // 2 * π * 80
+    const offset = circumference - (pct / 100) * circumference;
+    const gaugeFill = document.getElementById('gaugeFill');
+    setTimeout(() => {
+      gaugeFill.style.strokeDashoffset = offset;
+      gaugeFill.style.stroke = color;
+    }, 200);
+
+    document.getElementById('gaugeScore').textContent = score;
+    document.getElementById('gaugeGrade').textContent = grade;
+    document.getElementById('gaugeGrade').style.color = color;
+    document.getElementById('gaugeTitle').textContent = getGradeLabel(grade);
+    document.getElementById('gaugeSubtitle').textContent =
+      `Your Bitcoin estate is ${pct}% protected. ${getGapsCount()} critical gap${getGapsCount() !== 1 ? 's' : ''} identified.`;
+
+    // Summary
+    buildSummary(score, grade, pct);
+
+    // Gaps
+    buildGaps();
+
+    // Breakdown
+    buildBreakdown();
+
+    // Show results
+    document.getElementById('resultsSection').classList.add('visible');
+    document.getElementById('questionsSection').style.display = 'none';
+    document.getElementById('progressFill').closest('.progress-bar-wrap').style.display = 'none';
+
+    // GA4
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'estate_readiness_complete', {
+        score: score,
+        grade: grade
+      });
+    }
+
+    // Scroll to results
+    setTimeout(() => {
+      document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+
+  function getGapsCount() {
+    return answers.filter(a => a === 'no').length;
+  }
+
+  function buildSummary(score, grade, pct) {
+    const yesCount = answers.filter(a => a === 'yes').length;
+    const inProgCount = answers.filter(a => a === 'inprog').length;
+    const noCount = answers.filter(a => a === 'no').length;
+
+    const el = document.getElementById('summaryCard');
+    el.innerHTML = `
+      <h3>Your Estate Protection Summary</h3>
+      <p>Your Bitcoin estate is <strong style="color:${scoreColor(score)}">${pct}% protected</strong> based on your responses.</p>
+      <p style="margin-top:12px;">
+        <span style="color:var(--green); font-weight:600;">${yesCount} areas secured</span> · 
+        <span style="color:var(--amber); font-weight:600;">${inProgCount} in progress</span> · 
+        <span style="color:var(--red); font-weight:600;">${noCount} gaps identified</span>
+      </p>
+      ${noCount > 0 ? `<p style="margin-top:16px; font-family:'EB Garamond',serif; font-size:17px;">Here are the critical gaps your estate plan must address:</p>` : ''}
+    `;
+  }
+
+  function buildGaps() {
+    const el = document.getElementById('gapsCard');
+    const noItems = answers
+      .map((a, i) => ({ a, i }))
+      .filter(x => x.a === 'no' || x.a === 'inprog');
+
+    if (noItems.length === 0) {
+      el.innerHTML = `
+        <h3>🏆 Gap Analysis</h3>
+        <div class="no-gaps">Exceptional — you've answered Yes to every question. Your Bitcoin estate is comprehensively protected.</div>
+      `;
+      return;
+    }
+
+    // Sort: no first, then in-progress
+    noItems.sort((a, b) => {
+      if (a.a === 'no' && b.a !== 'no') return -1;
+      if (a.a !== 'no' && b.a === 'no') return 1;
+      return 0;
+    });
+
+    const noCount = noItems.filter(x => x.a === 'no').length;
+    const inprogCount = noItems.filter(x => x.a === 'inprog').length;
+
+    let html = `<h3>⚠️ Gap Analysis <span style="font-family:'Inter';font-size:14px;font-weight:400;color:var(--text-secondary)">(${noCount} gaps · ${inprogCount} in progress)</span></h3>`;
+    html += '<div class="gaps-list">';
+
+    noItems.forEach(({ a, i }) => {
+      const q = QUESTIONS[i];
+      const isNo = a === 'no';
+      html += `
+        <div class="gap-item${isNo ? '' : ' inprog'}">
+          <div class="gap-icon">${isNo ? '⛔' : '⏳'}</div>
+          <div class="gap-content">
+            <div class="gap-title">Question ${i+1}: ${QUESTIONS[i].q}</div>
+            <div class="gap-desc">${q.action}</div>
+            ${q.link ? `<a href="${q.link}" class="gap-link">${q.linkText}</a>` : ''}
+          </div>
+        </div>
+      `;
+    });
+
+    html += '</div>';
+    el.innerHTML = html;
+  }
+
+  function buildBreakdown() {
+    const el = document.getElementById('breakdownCard');
+    let html = '<h3>Score Breakdown</h3><div class="breakdown-grid">';
+
+    answers.forEach((a, i) => {
+      const pts = a === 'yes' ? 5 : a === 'inprog' ? 2 : 0;
+      const color = a === 'yes' ? 'var(--green)' : a === 'inprog' ? 'var(--amber)' : 'var(--red)';
+      const label = a === 'yes' ? 'Secured' : a === 'inprog' ? 'In Progress' : 'Gap';
+      html += `
+        <div class="breakdown-item">
+          <div class="breakdown-dot" style="background:${color}"></div>
+          <div class="breakdown-label">Q${i+1}</div>
+          <div class="breakdown-pts" style="color:${color}">${pts}/5</div>
+        </div>
+      `;
+    });
+
+    html += '</div>';
+    el.innerHTML = html;
+  }
+
+  function retake() {
+    answers = new Array(20).fill(null);
+    document.getElementById('resultsSection').classList.remove('visible');
+    document.getElementById('questionsSection').style.display = '';
+    document.getElementById('progressFill').closest('.progress-bar-wrap').style.display = '';
+    buildQuestions();
+    updateLiveScore();
+    // Reset gauge
+    document.getElementById('gaugeFill').style.strokeDashoffset = 502;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── INIT ──
+  buildQuestions();
+  updateLiveScore();
+</script>
+
+</body>
+</html>
