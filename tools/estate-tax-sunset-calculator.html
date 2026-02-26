@@ -446,7 +446,7 @@ footer{border-top:1px solid var(--border);padding:2.25rem 2rem;margin-top:2rem}
       <div class="urgency-tier-label" id="urgencyTierLabel">Urgency Tier</div>
       <div class="urgency-tier-name" id="urgencyTierName">—</div>
       <div class="urgency-tier-desc" id="urgencyTierDesc"></div>
-      <div class="urgency-actions-label">Strategies to consider before the deadline</div>
+      <div class="urgency-actions-label">Strategies to consider now</div>
       <ul class="urgency-actions" id="urgencyActions"></ul>
     </div>
 
@@ -652,7 +652,8 @@ function closeMenu() {
 function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
 
 function getDaysRemaining() {
-  var deadline = new Date('2025-12-31T23:59:59');
+  // Estate tax law is in flux in 2026 — using year-end as a general planning horizon
+  var deadline = new Date('2026-12-31T23:59:59');
   var now = new Date();
   var diff = deadline - now;
   if (diff <= 0) return 0;
@@ -746,7 +747,8 @@ function runCalculator() {
     daysLeft > 0 ? daysLeft + ' day' + (daysLeft === 1 ? '' : 's') + ' remaining' : 'Deadline has passed';
   document.getElementById('res-countdownNote').innerHTML =
     daysLeft > 0
-      : 'GRATs, SLATs, dynasty trusts, and direct gifting strategies are available now. Trust setup typically requires 4–8 weeks. Consult a Bitcoin-literate estate attorney to determine which strategies fit your situation under current law.';
+      ? 'GRATs, SLATs, dynasty trusts, and direct gifting strategies are available now. Trust setup typically requires 4–8 weeks. Start sooner than you think you need to — attorneys are busy and law changes can happen fast.'
+      : 'GRATs, SLATs, dynasty trusts, and direct gifting strategies are available now. Consult a Bitcoin-literate estate attorney to determine which strategies fit your situation under current law.';
 
   // ── Urgency block ──
   var urgencyBlock = document.getElementById('urgencyBlock');
