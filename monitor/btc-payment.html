@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pay with Bitcoin — Bitcoin Estate Watch</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>(function(){var g=window.dataLayer=window.dataLayer||[];function gtag(){g.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');})();</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<!-- QR Code library (pure JS, no external deps) -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg-elevated: #111111;
+  --bg-card: #141414;
+  --border: #1e1e1e;
+  --text: #e8e0d0;
+  --text-secondary: #8a8070;
+  --accent: #c9a84c;
+  --accent-border: rgba(201,168,76,0.2);
+  --accent-glow: rgba(201,168,76,0.08);
+  --display: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', system-ui, sans-serif;
+  --red: #e87070;
+  --green: #6bcb77;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+nav {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.back {
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color .2s;
+}
+.back:hover { color: var(--accent); }
+
+/* ── Main layout ── */
+.page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  width: 100%;
+  max-width: 520px;
+  padding: 2.5rem;
+}
+
+/* ── Header ── */
+.card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-glow);
+  border: 1px solid var(--accent-border);
+  border-radius: 2px;
+  padding: .3rem .75rem;
+  margin-bottom: 1rem;
+}
+.card-header h1 {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: .5rem;
+}
+.card-header p {
+  font-size: .85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Loading state ── */
+#loading {
+  text-align: center;
+  padding: 2rem 0;
+}
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+  margin: 0 auto 1rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text {
+  font-size: .82rem;
+  color: var(--text-secondary);
+}
+
+/* ── Payment details ── */
+#payment { display: none; }
+
+.plan-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: .85rem 1rem;
+  margin-bottom: 1.5rem;
+}
+.plan-info .plan-name {
+  font-size: .75rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .15rem;
+}
+.plan-info .plan-desc {
+  font-size: .82rem;
+  color: var(--text-secondary);
+}
+.plan-price {
+  text-align: right;
+}
+.plan-price .usd {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.plan-price .btc {
+  font-size: .75rem;
+  color: var(--accent);
+  margin-top: .1rem;
+}
+
+/* ── Amount ── */
+.amount-block {
+  text-align: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--accent-border);
+  border-radius: 3px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.amount-label {
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: .5rem;
+}
+.amount-btc {
+  font-family: var(--display);
+  font-size: 2rem;
+  color: var(--accent);
+  font-weight: 400;
+  line-height: 1.1;
+}
+.amount-usd {
+  font-size: .82rem;
+  color: var(--text-secondary);
+  margin-top: .3rem;
+}
+.btc-rate {
+  font-size: .7rem;
+  color: var(--text-secondary);
+  margin-top: .3rem;
+  opacity: .7;
+}
+
+/* ── QR + Address ── */
+.qr-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+#qrCanvas {
+  background: #fff;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  transition: transform .15s;
+}
+#qrCanvas:hover { transform: scale(1.02); }
+.address-block {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: .85rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  cursor: pointer;
+  transition: border-color .2s;
+}
+.address-block:hover { border-color: var(--accent-border); }
+.address-text {
+  font-family: 'Courier New', monospace;
+  font-size: .75rem;
+  color: var(--text);
+  flex: 1;
+  word-break: break-all;
+  line-height: 1.5;
+}
+.copy-btn {
+  flex-shrink: 0;
+  font-size: .65rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: opacity .2s;
+  white-space: nowrap;
+}
+.copy-btn.copied { color: var(--green); }
+
+/* ── Timer ── */
+.timer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding: .6rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.timer-label {
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+#timer {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+#timer.urgent { color: var(--red); }
+
+/* ── Status ── */
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: 1.5rem;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .3; }
+}
+.status-dot.green { background: var(--green); animation: none; }
+.status-dot.red { background: var(--red); animation: none; }
+.status-dot.orange { background: var(--accent); }
+#statusText {
+  font-size: .8rem;
+  color: var(--text-secondary);
+}
+
+/* ── Security note ── */
+.security-note {
+  font-size: .72rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+}
+.security-note strong { color: var(--text); }
+
+/* ── Expired state ── */
+#expired { display: none; text-align: center; padding: 1.5rem 0; }
+.expired-msg {
+  font-size: .95rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.btn-new-address {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 2px;
+  padding: .85rem 2rem;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn-new-address:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ── Error state ── */
+#errorState {
+  display: none;
+  text-align: center;
+  padding: 2rem 0;
+}
+.error-msg {
+  color: var(--red);
+  font-size: .88rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+.btn-retry {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: 2px;
+  padding: .6rem 1.5rem;
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+.btn-retry:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Confirmed overlay ── */
+#confirmed {
+  display: none;
+  text-align: center;
+  padding: 2rem 0;
+}
+.confirmed-icon {
+  font-size: 3rem;
+  margin-bottom: .75rem;
+}
+.confirmed-title {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--green);
+  margin-bottom: .5rem;
+}
+.confirmed-sub {
+  font-size: .85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 540px) {
+  .card { padding: 1.75rem 1.25rem; }
+  .amount-btc { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/monitor/signup" class="back">← Back to plans</a>
+</nav>
+
+<div class="page">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-badge">🟠 Bitcoin Payment</div>
+      <h1>Pay with Bitcoin</h1>
+      <p>Self-sovereign, on-chain. No card, no middleman.<br>Send exact amount to the address below.</p>
+    </div>
+
+    <!-- Loading -->
+    <div id="loading">
+      <div class="spinner"></div>
+      <div class="loading-text">Generating your payment address…</div>
+    </div>
+
+    <!-- Error -->
+    <div id="errorState">
+      <div class="error-msg" id="errorMsg">Unable to generate address. Please try again.</div>
+      <button class="btn-retry" onclick="initPayment()">Retry</button>
+    </div>
+
+    <!-- Payment -->
+    <div id="payment">
+      <div class="plan-line">
+        <div class="plan-info">
+          <div class="plan-name" id="planName">Watch</div>
+          <div class="plan-desc" id="planDesc">Monthly monitoring</div>
+        </div>
+        <div class="plan-price">
+          <div class="usd" id="priceUsd">$19</div>
+          <div class="btc" id="priceBtc">≈ 0.00019 BTC</div>
+        </div>
+      </div>
+
+      <div class="amount-block">
+        <div class="amount-label">Send exactly</div>
+        <div class="amount-btc" id="amountBtc">0.00000000 BTC</div>
+        <div class="amount-usd" id="amountUsd">≈ $0.00 USD</div>
+        <div class="btc-rate" id="btcRate">@ $0 / BTC</div>
+      </div>
+
+      <div class="qr-section">
+        <canvas id="qrCanvas" title="Click to copy address"></canvas>
+        <div class="address-block" onclick="copyAddress()" title="Click to copy">
+          <div class="address-text" id="addressText">bc1q…</div>
+          <div class="copy-btn" id="copyBtn">Copy</div>
+        </div>
+      </div>
+
+      <div class="timer-row">
+        <div class="timer-label">Payment window</div>
+        <div id="timer">30:00</div>
+      </div>
+
+      <div class="status-row">
+        <div class="status-dot" id="statusDot"></div>
+        <div id="statusText">Waiting for payment… (checking every 15 seconds)</div>
+      </div>
+
+      <div class="security-note">
+        <strong>One-time address.</strong> This address was generated uniquely for your payment.
+        Send only <strong>Bitcoin (BTC)</strong> on the main network.
+        Do not send from an exchange — they may add a fee that shortchanges the amount.
+      </div>
+    </div>
+
+    <!-- Expired -->
+    <div id="expired">
+      <div class="expired-msg">
+        Your 30-minute payment window has expired.<br>
+        Generate a fresh address to continue.
+      </div>
+      <button class="btn-new-address" onclick="initPayment()">Generate New Address</button>
+    </div>
+
+    <!-- Confirmed -->
+    <div id="confirmed">
+      <div class="confirmed-icon">✅</div>
+      <div class="confirmed-title">Payment Confirmed!</div>
+      <div class="confirmed-sub">
+        Your Bitcoin payment has been received.<br>
+        Redirecting to your account…
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Plan config ────────────────────────────────────────────────────────────────
+const PLAN_INFO = {
+  'watch-monthly':  { name: 'Watch',       desc: 'Monthly monitoring',       usd: 19  },
+  'watch-annual':   { name: 'Watch',       desc: 'Annual (save 2 months)',   usd: 190 },
+  'pro-monthly':    { name: 'Watch Pro',   desc: 'Monthly monitoring',       usd: 49  },
+  'pro-annual':     { name: 'Watch Pro',   desc: 'Annual (save ~2 months)',  usd: 490 },
+};
+
+function getPlanKey(tier, billing) {
+  const t = (tier || 'watch').toLowerCase().replace('watch-pro','pro');
+  const b = (billing || 'monthly').toLowerCase();
+  const key = `${t}-${b}`;
+  return PLAN_INFO[key] ? key : 'watch-monthly';
+}
+
+// ── State ──────────────────────────────────────────────────────────────────────
+let paymentId = null;
+let address   = null;
+let amountBtc = null;
+let expiresAt = null;
+let timerInterval = null;
+let pollInterval  = null;
+let tier = null;
+
+// ── URL params ─────────────────────────────────────────────────────────────────
+const params = new URLSearchParams(location.search);
+const planParam    = params.get('plan')    || 'watch';
+const billingParam = params.get('billing') || 'monthly';
+const planKey      = getPlanKey(planParam, billingParam);
+const plan         = PLAN_INFO[planKey];
+
+// ── Show/hide helpers ──────────────────────────────────────────────────────────
+function showOnly(id) {
+  ['loading','errorState','payment','expired','confirmed'].forEach(s => {
+    document.getElementById(s).style.display = (s === id) ? 'block' : 'none';
+  });
+  if (id === 'payment') document.getElementById('payment').style.display = 'block';
+}
+
+// ── Init plan display ──────────────────────────────────────────────────────────
+document.getElementById('planName').textContent = plan.name;
+document.getElementById('planDesc').textContent = plan.desc;
+document.getElementById('priceUsd').textContent = '$' + plan.usd;
+
+// ── Fetch payment address ──────────────────────────────────────────────────────
+async function initPayment() {
+  clearInterval(timerInterval);
+  clearInterval(pollInterval);
+  showOnly('loading');
+
+  try {
+    const res = await fetch('/api/btc/new-address', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: params.get('email') || '',
+        tier: planParam,
+        billing: billingParam,
+        amount_usd: plan.usd
+      })
+    });
+
+    if (!res.ok) throw new Error(`Server error ${res.status}`);
+    const data = await res.json();
+
+    paymentId = data.payment_id;
+    address   = data.address;
+    amountBtc = data.amount_btc;
+    expiresAt = new Date(data.expires_at);
+    tier      = data.tier || planKey;
+
+    // Populate UI
+    document.getElementById('amountBtc').textContent = amountBtc.toFixed(8) + ' BTC';
+    document.getElementById('amountUsd').textContent = '≈ $' + data.amount_usd + ' USD';
+    document.getElementById('btcRate').textContent   = '@ $' + data.btc_price.toLocaleString() + ' / BTC';
+    document.getElementById('priceBtc').textContent  = '≈ ' + amountBtc.toFixed(6) + ' BTC';
+    document.getElementById('addressText').textContent = address;
+
+    // QR code — encode as BIP21 URI
+    const qrUri = `bitcoin:${address}?amount=${amountBtc.toFixed(8)}`;
+    const canvas = document.getElementById('qrCanvas');
+    QRCode.toCanvas(canvas, qrUri, {
+      width: 180,
+      color: { dark: '#000000', light: '#ffffff' }
+    });
+
+    showOnly('payment');
+    startTimer();
+    startPolling();
+
+  } catch (e) {
+    console.error('initPayment error:', e);
+    document.getElementById('errorMsg').textContent = 'Could not generate address: ' + e.message;
+    showOnly('errorState');
+  }
+}
+
+// ── Timer ──────────────────────────────────────────────────────────────────────
+function startTimer() {
+  timerInterval = setInterval(() => {
+    const remaining = expiresAt - Date.now();
+    if (remaining <= 0) {
+      clearInterval(timerInterval);
+      clearInterval(pollInterval);
+      showOnly('expired');
+      return;
+    }
+    const mins = Math.floor(remaining / 60000);
+    const secs = Math.floor((remaining % 60000) / 1000);
+    const el   = document.getElementById('timer');
+    el.textContent = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+    el.className = remaining < 5 * 60000 ? 'urgent' : '';
+  }, 1000);
+}
+
+// ── Polling ────────────────────────────────────────────────────────────────────
+function startPolling() {
+  pollInterval = setInterval(checkPayment, 15000);
+  // First check after 5s (unlikely to be paid in <5s, but catches edge cases)
+  setTimeout(checkPayment, 5000);
+}
+
+async function checkPayment() {
+  if (!paymentId) return;
+  try {
+    const res  = await fetch(`/api/btc/check/${paymentId}`);
+    const data = await res.json();
+    const dot  = document.getElementById('statusDot');
+    const text = document.getElementById('statusText');
+
+    switch (data.status) {
+      case 'confirmed':
+        clearInterval(timerInterval);
+        clearInterval(pollInterval);
+        showOnly('confirmed');
+        setTimeout(() => {
+          window.location.href = `/monitor/success?method=bitcoin&plan=${encodeURIComponent(tier)}`;
+        }, 2500);
+        break;
+
+      case 'broadcasting':
+        dot.className  = 'status-dot orange';
+        text.textContent = '🔄 Transaction detected in mempool — waiting for confirmation…';
+        break;
+
+      case 'expired':
+        clearInterval(timerInterval);
+        clearInterval(pollInterval);
+        showOnly('expired');
+        break;
+
+      case 'pending':
+      default:
+        dot.className  = 'status-dot';
+        const lastChecked = new Date().toLocaleTimeString();
+        text.textContent = `Checking for payment… (last checked ${lastChecked})`;
+    }
+  } catch (e) {
+    console.error('Poll error:', e);
+    // Silent fail — will retry
+  }
+}
+
+// ── Copy address ───────────────────────────────────────────────────────────────
+function copyAddress() {
+  if (!address) return;
+  navigator.clipboard.writeText(address).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(() => {
+    // Fallback
+    const ta = document.createElement('textarea');
+    ta.value = address;
+    ta.style.position = 'fixed';
+    ta.style.opacity  = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  });
+}
+
+// QR canvas click also copies
+document.getElementById('qrCanvas').addEventListener('click', copyAddress);
+
+// ── Boot ───────────────────────────────────────────────────────────────────────
+initPayment();
+</script>
+<script defer data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}' src="https://static.cloudflareinsights.com/beacon.min.js"></script>
+</body>
+</html>

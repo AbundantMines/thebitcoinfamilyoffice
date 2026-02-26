@@ -62,6 +62,10 @@ select{cursor:pointer;}
 .btn-submit{width:100%;background:var(--accent);color:#0a0a0a;border:none;border-radius:2px;padding:1.1rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:opacity .2s;margin-top:.5rem;}
 .btn-submit:hover{opacity:.9;}
 .btn-submit:disabled{opacity:.5;cursor:default;}
+.btc-option{margin-top:.75rem;display:none;}
+.btn-btc{display:block;width:100%;background:transparent;border:1px solid var(--accent);color:var(--accent);border-radius:2px;padding:.9rem 1rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background .2s,color .2s;text-align:center;text-decoration:none;}
+.btn-btc:hover{background:rgba(201,168,76,.08);}
+.btc-note{margin-top:.5rem;font-size:.7rem;color:var(--text-secondary);text-align:center;}
 .err{color:#e87070;font-size:.8rem;margin-top:.75rem;display:none;}
 .disclaimer{font-size:.72rem;color:var(--text-secondary);line-height:1.6;margin-top:1rem;}
 @media(max-width:768px){.main{grid-template-columns:1fr;} .left{display:none;} .right{padding:2rem 1.5rem;}}
@@ -164,6 +168,10 @@ select{cursor:pointer;}
         <div class="ep-note">Estimate only. Verify with a qualified estate attorney.</div>
       </div>
       <button type="submit" class="btn-submit" id="submitBtn">Calculate My Exposure →</button>
+      <div class="btc-option" id="btcOption">
+        <a href="#" class="btn-btc" id="btcBtn">🟠 Pay with Bitcoin instead</a>
+        <div class="btc-note">Self-sovereign · no card required · on-chain payment</div>
+      </div>
       <div class="err" id="errMsg"></div>
       <p class="disclaimer">By submitting, you agree to receive estate monitoring updates by email. Your financial data (BTC holdings, asset values) is used only to calculate your exposure and is never sold. <a href="/privacy" style="color:var(--accent)">Privacy Policy</a>. Cancel anytime. Not legal advice.</p>
     </form>
@@ -197,13 +205,31 @@ function updatePreview(){
   document.getElementById('prevTotal').textContent=e.totalTax>0?fmt(e.totalTax):'$0 (below all thresholds)';
   document.getElementById('submitBtn').textContent=e.totalTax>0?'Start Monitoring for '+fmt(e.totalTax)+' →':'Calculate My Exposure →';
 }
-// Plan selection styling
+// Plan selection styling + Bitcoin option
+function updateBtcOption(){
+  const tier=document.querySelector('input[name=tier]:checked').value;
+  const email=document.getElementById('email').value.trim();
+  const btcOpt=document.getElementById('btcOption');
+  const btcBtn=document.getElementById('btcBtn');
+  if(tier==='free'){btcOpt.style.display='none';return;}
+  // Map tier to btc-payment params
+  const planMap={watch:'watch',pro:'pro'};
+  const planSlug=planMap[tier]||'watch';
+  let href='/monitor/btc-payment?plan='+planSlug+'&billing=monthly';
+  if(email)href+='&email='+encodeURIComponent(email);
+  btcBtn.href=href;
+  btcOpt.style.display='block';
+}
 document.querySelectorAll('.plan-opt').forEach(function(el){
   el.addEventListener('click',function(){
     document.querySelectorAll('.plan-opt').forEach(function(e){e.classList.remove('selected');});
     el.classList.add('selected');
+    updateBtcOption();
   });
 });
+document.getElementById('email').addEventListener('input',updateBtcOption);
+// Init on load
+updateBtcOption();
 document.getElementById('signupForm').addEventListener('submit',async function(e){
   e.preventDefault();
   const tier=document.querySelector('input[name=tier]:checked').value;
