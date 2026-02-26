@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Generation-Skipping Trust (GST): Move Wealth Two Generations Without Double Estate Tax</title>
+  <meta name="description" content="Learn how a Bitcoin Generation-Skipping Trust (GST) eliminates estate tax at each generational transfer, letting your BTC compound for grandchildren and beyond.">
+  <meta name="keywords" content="bitcoin generation skipping trust, bitcoin GST trust, bitcoin skip person trust, bitcoin estate planning, multi-generational bitcoin wealth">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-generation-skipping-trust">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bitcoin Generation-Skipping Trust (GST): Move Wealth Two Generations Without Double Estate Tax">
+  <meta property="og:description" content="A GST trust lets Bitcoin skip the estate tax hit at your children's death. Learn how to set one up and why volatile assets like BTC are ideal candidates.">
+  <meta property="og:image" content="/assets/og-image.png">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-generation-skipping-trust">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('a, button');
+      if (el) {
+        gtag('event', 'hm_click', {
+          element_text: el.innerText ? el.innerText.trim().substring(0, 100) : '',
+          element_href: el.href || '',
+          page_path: window.location.pathname
+        });
+      }
+    });
+
+    var scrollMarks = {25: false, 50: false, 75: false, 90: false};
+    window.addEventListener('scroll', function() {
+      var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      Object.keys(scrollMarks).forEach(function(mark) {
+        if (!scrollMarks[mark] && pct >= parseInt(mark)) {
+          scrollMarks[mark] = true;
+          gtag('event', 'hm_scroll', { scroll_depth: mark + '%', page_path: window.location.pathname });
+        }
+      });
+    });
+  </script>
+
+  <!-- Cloudflare Beacon -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Bitcoin Generation-Skipping Trust (GST): Move Wealth Two Generations Without Double Estate Tax",
+        "description": "A GST trust lets Bitcoin skip the estate tax hit at your children's death. Learn how to set one up and why volatile assets like BTC are ideal candidates.",
+        "image": "https://thebitcoinfamilyoffice.com/assets/og-image.png",
+        "datePublished": "2026-02-25",
+        "dateModified": "2026-02-25",
+        "author": {
+          "@type": "Person",
+          "name": "Hal Turner",
+          "affiliation": "The Bitcoin Family Office"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "The Bitcoin Family Office",
+          "url": "https://thebitcoinfamilyoffice.com"
+        },
+        "mainEntityOfPage": "https://thebitcoinfamilyoffice.com/blog/bitcoin-generation-skipping-trust"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://thebitcoinfamilyoffice.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://thebitcoinfamilyoffice.com/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Bitcoin Generation-Skipping Trust",
+            "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-generation-skipping-trust"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.125rem;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav { position: relative; }
+    @media(max-width:640px) {
+      .hamburger { display: block !important; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #111111;
+        padding: 1rem 2rem;
+        z-index: 999;
+        border-bottom: 1px solid #1e1e1e;
+      }
+      .nav-links.open { display: flex; }
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      padding: 0.75rem 2rem;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.4rem; }
+
+    /* HERO */
+    .article-hero {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+    .article-hero .category-tag {
+      display: inline-block;
+      background: rgba(201,168,76,0.12);
+      color: var(--accent);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2px;
+      border: 1px solid rgba(201,168,76,0.25);
+      margin-bottom: 1.5rem;
+    }
+    .article-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.25;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      color: var(--text);
+    }
+    .article-hero .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .article-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .article-meta span {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    .article-meta .meta-accent { color: var(--accent); }
+
+    /* LAYOUT */
+    .article-layout {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    /* PROSE */
+    .article-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 3rem 0 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .article-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 2rem 0 0.75rem;
+    }
+    .article-body p {
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+    .article-body a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: rgba(201,168,76,0.4);
+    }
+    .article-body a:hover { text-decoration-color: var(--accent); }
+    .article-body ul, .article-body ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body strong { color: var(--text); font-weight: 600; }
+
+    /* CALLOUT BOXES */
+    .callout {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 2px;
+    }
+    .callout .callout-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .callout p { margin-bottom: 0; }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; margin: 2rem 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+    }
+    thead tr { background: var(--bg-card); border-bottom: 1px solid var(--accent); }
+    th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:hover { background: var(--bg-card); }
+    td { padding: 0.75rem 1rem; color: var(--text); }
+
+    /* MATH EXAMPLE */
+    .math-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    .math-box h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    .math-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+    }
+    .math-row:last-child { border-bottom: none; }
+    .math-label { font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--text-secondary); }
+    .math-value { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .math-value.highlight { color: var(--accent); }
+
+    /* FAQ */
+    .faq-section { margin-top: 3rem; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 0;
+    }
+    .faq-question {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .faq-answer { color: var(--text); }
+
+    /* AUTHOR BOX */
+    .author-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      margin: 3rem 0;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .author-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .author-info .author-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .author-info p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* CTA BOX */
+    .cta-box {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 4px;
+      padding: 2rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    .cta-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      border: none;
+      padding: 0;
+    }
+    .cta-box p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.75rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.85; text-decoration: none; }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .disclaimer strong { color: var(--text-secondary); }
+
+    /* INTERNAL LINKS */
+    .related-articles {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .related-articles h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      border: none;
+      padding: 0;
+    }
+    .related-articles ul { margin: 0; list-style: none; padding: 0; }
+    .related-articles li { margin-bottom: 0.5rem; padding-left: 0; }
+    .related-articles a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav style="background:#111;border-bottom:1px solid #1e1e1e;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;position:relative;">
+  <a href="/" style="font-family:'Playfair Display',serif;color:#c9a84c;font-size:1.2rem;text-decoration:none;font-weight:700;">The Bitcoin Family Office</a>
+  <div class="nav-links" style="display:flex;gap:2rem;">
+    <a href="/" style="color:#e8e0d0;text-decoration:none;font-size:0.9rem;">Home</a>
+    <a href="/services/" style="color:#e8e0d0;text-decoration:none;font-size:0.9rem;">Services</a>
+    <a href="/tools/" style="color:#e8e0d0;text-decoration:none;font-size:0.9rem;">Tools</a>
+    <a href="/blog/" style="color:#e8e0d0;text-decoration:none;font-size:0.9rem;">Blog</a>
+    <a href="/about/" style="color:#e8e0d0;text-decoration:none;font-size:0.9rem;">About</a>
+  </div>
+  <button onclick="this.previousElementSibling.classList.toggle('open')" style="display:none;background:none;border:none;color:#e8e0d0;font-size:1.5rem;cursor:pointer;position:absolute;right:1rem;" class="hamburger">☰</button>
+</nav>
+<style>@media(max-width:640px){.hamburger{display:block!important}.nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#111111;padding:1rem 2rem;z-index:999;border-bottom:1px solid #1e1e1e}.nav-links.open{display:flex}}</style>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/">Home</a><span>›</span>
+  <a href="/blog/">Blog</a><span>›</span>
+  Bitcoin Generation-Skipping Trust (GST)
+</div>
+
+<!-- HERO -->
+<div class="article-hero">
+  <div class="category-tag">Estate Planning</div>
+  <h1>Bitcoin Generation-Skipping Trust (GST): Move Wealth Two Generations Without Double Estate Tax</h1>
+  <p class="subtitle">How to transfer Bitcoin to your grandchildren — and skip the estate tax hit at your children's estate — using a properly structured GST trust.</p>
+  <div class="article-meta">
+    <span>By <span class="meta-accent">Hal Turner</span></span>
+    <span>The Bitcoin Family Office</span>
+    <span class="meta-accent">February 25, 2026</span>
+    <span>~3,600 words · 15 min read</span>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-layout">
+  <article class="article-body">
+
+    <p>Most Bitcoin holders think about estate planning in one dimension: keeping the IRS out of their estate when they die. That's the right instinct, but it's only half the problem. If you leave Bitcoin to your children without a plan, your grandchildren face a second round of estate taxation when your children eventually die — on an asset that may have appreciated dramatically in the intervening years. A Bitcoin Generation-Skipping Trust (GST trust) eliminates that second bite.</p>
+
+    <p>This is one of the most powerful and underused tools in Bitcoin estate planning. Getting it right requires understanding both the federal generation-skipping transfer (GST) tax and the unique properties of Bitcoin as a multi-generational asset. Let's go deep.</p>
+
+    <h2>What the GST Tax Is — and Why Congress Created It</h2>
+
+    <p>The federal estate tax applies when you die and leave assets to heirs. Congress designed it to tax wealth at each generational transfer. For most of American history, wealthy families found a workaround: establish a trust that benefited their children, then grandchildren, then great-grandchildren — without ever triggering a taxable estate event, because the trust never technically "died." The assets just flowed from generation to generation, compounding tax-free.</p>
+
+    <p>Congress closed this loophole in 1986 with the Generation-Skipping Transfer (GST) tax. The GST tax is a separate federal tax — layered on top of estate and gift taxes — that applies whenever assets pass to a "skip person": generally, someone two or more generations below the transferor. Your grandchildren are skip persons. So are great-grandchildren and more remote descendants. Even unrelated individuals who are 37.5 or more years younger than you qualify as skip persons under federal law.</p>
+
+    <p>The GST tax rate is steep: it equals the highest marginal estate tax rate, which under current law is 40%. That means a transfer of appreciated Bitcoin to your grandchild could face an effective combined tax rate — estate plus GST — that approaches 64 cents on the dollar. Without planning, multi-generational Bitcoin wealth gets decimated.</p>
+
+    <div class="callout">
+      <div class="callout-label">Key Insight</div>
+      <p>The GST tax was explicitly designed to prevent dynastic wealth transfer. A properly structured GST trust — using your GST exemption — turns that design against itself, locking in tax-free generational compounding for decades.</p>
+    </div>
+
+    <h2>The GST Exemption in 2026: Use It Before It Changes</h2>
+
+    <p>Every individual receives a GST exemption equal to the federal estate and gift tax exemption. Under current law, that exemption is indexed for inflation and stood at approximately $13.61 million per individual (and $27.22 million for married couples) in 2025. The exact figure for 2026 will be announced by the IRS as part of annual inflation adjustments.</p>
+
+    <p>Federal tax law is subject to Congressional action, and there is ongoing legislative discussion about the future of the current exemption levels. Consult your estate attorney about the current applicable exemption amount and any anticipated legislative changes. What is certain: if you have significant Bitcoin holdings, allocating GST exemption to a trust funded with those holdings is a strategy worth examining now, while exemptions remain at historically elevated levels under current law.</p>
+
+    <p>The GST exemption works differently from the estate tax exemption in one important respect: it can be allocated proactively to transfers made during life, shielding all future appreciation from GST tax. That allocation-during-life feature is especially powerful for Bitcoin, whose price trajectory has historically featured dramatic appreciation.</p>
+
+    <div class="callout">
+      <div class="callout-label">Planning Note</div>
+      <p>If you contribute $1M of Bitcoin to a GST trust and allocate $1M of GST exemption today, every dollar of future appreciation — whether BTC reaches $200K, $500K, or beyond — passes to grandchildren and subsequent generations entirely free of GST tax. The exemption is locked in at today's value; future appreciation rides for free.</p>
+    </div>
+
+    <h2>How a GST Trust Works: Skip Persons, Non-Skip Persons, and Taxable Distributions</h2>
+
+    <p>A generation-skipping trust is a specific type of irrevocable trust designed to hold assets across multiple generations while minimizing the tax exposure at each generational level. Understanding how transfers are taxed (or not) within a GST trust requires knowing the terminology.</p>
+
+    <h3>Skip Persons and Non-Skip Persons</h3>
+
+    <p>A <strong>skip person</strong> is any beneficiary who is two or more generations below the transferor in the generational chain, or an unrelated person 37.5+ years younger. Your grandchildren, great-grandchildren, and their descendants are all skip persons relative to you. Your children are not — they are "non-skip persons."</p>
+
+    <p>A <strong>non-skip person</strong> is a beneficiary in the same generation as the transferor or one generation below. Your children fall here. Distributions to non-skip persons are not subject to the GST tax (though they may be subject to income tax if they come from trust income).</p>
+
+    <h3>The Three Types of GST Transactions</h3>
+
+    <ol>
+      <li><strong>Direct skip:</strong> A transfer directly to a skip person. If you give Bitcoin directly to your grandchild, that's a direct skip, and GST tax applies (unless covered by your exemption).</li>
+      <li><strong>Taxable distribution:</strong> A distribution from a trust to a skip person. If your GST trust distributes Bitcoin or cash to a grandchild, that's a taxable distribution — subject to GST tax if the trust lacks sufficient GST exemption allocation.</li>
+      <li><strong>Taxable termination:</strong> When a non-skip person's interest in a trust terminates (e.g., your child dies while holding a life income interest in the trust), leaving only skip persons as beneficiaries. GST tax applies to the trust assets at that point — unless the trust has a GST-exempt status.</li>
+    </ol>
+
+    <p>An "exempt" GST trust — one where 100% of GST exemption has been allocated — avoids all three categories of taxable GST events. All distributions to skip persons, and the ultimate termination of non-skip interests, flow without GST tax. This is the target structure for multi-generational Bitcoin planning.</p>
+
+    <h2>Bitcoin + GST Compounding: The Multi-Generational Math</h2>
+
+    <p>To see why this matters, consider two scenarios: you own $1 million worth of Bitcoin today, and you're deciding between leaving it outright in your will versus placing it in a properly structured GST trust with full GST exemption allocated.</p>
+
+    <div class="math-box">
+      <h4>Scenario Inputs</h4>
+      <div class="math-row">
+        <span class="math-label">Initial BTC Value (2026)</span>
+        <span class="math-value">$1,000,000</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Assumed BTC growth rate</span>
+        <span class="math-value">15% per year (illustrative only)</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Generational span</span>
+        <span class="math-value">25 years per generation</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Estate + GST tax rate at each death</span>
+        <span class="math-value">~64% combined (illustrative)</span>
+      </div>
+    </div>
+
+    <div class="math-box">
+      <h4>Path A: Outright Inheritance at Each Generation</h4>
+      <div class="math-row">
+        <span class="math-label">BTC value at your death (25 years)</span>
+        <span class="math-value">~$32,900,000</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">After estate tax (40%)</span>
+        <span class="math-value">~$19,740,000 to children</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Grows to at children's death (25 more years)</span>
+        <span class="math-value">~$649,000,000</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">After estate tax (40%) at children's death</span>
+        <span class="math-value">~$389,400,000 to grandchildren</span>
+      </div>
+    </div>
+
+    <div class="math-box">
+      <h4>Path B: GST Trust (Exempt — No Tax at Either Death)</h4>
+      <div class="math-row">
+        <span class="math-label">BTC value at your death (25 years)</span>
+        <span class="math-value">~$32,900,000</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Tax at your death (trust continues, no tax event)</span>
+        <span class="math-value">$0</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Grows to at children's death (25 more years)</span>
+        <span class="math-value">~$1,082,000,000</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Tax at children's death (trust continues, no GST tax)</span>
+        <span class="math-value">$0</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Available to grandchildren</span>
+        <span class="math-value highlight">~$1,082,000,000</span>
+      </div>
+    </div>
+
+    <p><em>Figures are illustrative, using compounding math only — they are not investment projections. Bitcoin returns are highly volatile and unpredictable. The math is intended to show the structural tax advantage of removing tax drag at each generational transfer, not to predict any specific outcome.</em></p>
+
+    <p>The difference isn't modest. It's the difference between $389 million and over $1 billion reaching your grandchildren — a gap driven entirely by the tax drag at each generational transfer, not by investment performance. This is the structural power of a GST trust applied to a high-appreciation asset like Bitcoin.</p>
+
+    <h2>How to Allocate GST Exemption to Bitcoin</h2>
+
+    <p>GST exemption doesn't automatically attach to every gift you make. For lifetime transfers, you must make an affirmative allocation on <strong>Form 709</strong> (the federal gift tax return). For transfers at death, allocation happens on the estate tax return (Form 706). Getting this right is critical — a missed or late allocation can have permanent, costly consequences.</p>
+
+    <h3>Automatic Allocation Rules (and Their Limits)</h3>
+
+    <p>Under current law, GST exemption is automatically allocated to direct skips and to certain indirect skips (transfers to trusts where skip persons are the only beneficiaries). However, automatic allocation rules don't cover every scenario, and they often don't work the way planners intend for complex multi-beneficiary trusts with both children and grandchildren as beneficiaries.</p>
+
+    <p>For a Bitcoin GST trust that includes both your children (non-skip persons) and grandchildren (skip persons) as potential beneficiaries, <strong>automatic allocation may not apply</strong>. Your attorney should make an affirmative, timely election on Form 709 to allocate exemption to the trust. This is not a step to leave to chance or to a tax preparer unfamiliar with GST rules.</p>
+
+    <h3>The Inclusion Ratio</h3>
+
+    <p>GST exemption creates an "inclusion ratio" for each trust. A ratio of zero means the trust is fully exempt — no GST tax on any distribution or termination. A ratio of one means the trust is fully taxable. Partial allocations result in ratios between zero and one, creating complexity. The goal: achieve an inclusion ratio of zero by allocating GST exemption equal to the full value of assets transferred to the trust.</p>
+
+    <p>For volatile assets like Bitcoin, timing matters. If you fund a $1M Bitcoin trust and the price drops 30% before you file Form 709, you've over-allocated exemption relative to current value. If price rises 40% before filing, you've under-allocated and the trust is no longer fully exempt. Working with counsel to time the allocation and fund the trust in a coordinated way is essential.</p>
+
+    <h2>GST Trust vs. Dynasty Trust: Understanding the Overlap</h2>
+
+    <p>These terms are sometimes used interchangeably and sometimes treated as distinct structures. The truth: a dynasty trust is a specific flavor of GST trust, but not all GST trusts are dynasty trusts.</p>
+
+    <p>A <strong>GST trust</strong> is any trust structured to receive an allocation of GST exemption, enabling assets to pass to skip persons without incurring GST tax. It may be structured for a finite term — say, to benefit your grandchildren — or for a longer period.</p>
+
+    <p>A <strong>dynasty trust</strong> is a GST trust designed to continue in perpetuity (or for the maximum period allowed by state law), benefiting multiple generations indefinitely. Most states used to impose a "rule against perpetuities" limiting trusts to about 90 years. A growing number of states — South Dakota, Wyoming, Nevada, and others — have abolished or dramatically extended this rule, allowing dynasty trusts to run for centuries.</p>
+
+    <p>For Bitcoin holders thinking multi-generationally, a dynasty trust in a favorable state is typically the right structure. You get the GST exemption benefit <em>plus</em> the perpetual compounding of assets across unlimited generations.</p>
+
+    <p>See our detailed guide on <a href="/blog/bitcoin-dynasty-trust">Bitcoin Dynasty Trusts</a> for a deeper look at perpetual trust design.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>GST Trust (Basic)</th>
+            <th>Dynasty Trust</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GST exemption allocation</td>
+            <td>Yes</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Duration</td>
+            <td>May be time-limited</td>
+            <td>Perpetual (state permitting)</td>
+          </tr>
+          <tr>
+            <td>Generations covered</td>
+            <td>Defined (e.g., grandchildren)</td>
+            <td>Unlimited</td>
+          </tr>
+          <tr>
+            <td>Best state jurisdictions</td>
+            <td>Any</td>
+            <td>SD, WY, NV preferred</td>
+          </tr>
+          <tr>
+            <td>Ideal for Bitcoin?</td>
+            <td>Yes, if time-limited is OK</td>
+            <td>Yes — preferred for maximum compounding</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Trustee Selection for Multi-Generational Bitcoin Custody</h2>
+
+    <p>Choosing a trustee for a Bitcoin GST trust is one of the most consequential decisions you'll make — and one of the most frequently underestimated. A trustee for a trust expected to hold Bitcoin for 25, 50, or 100+ years faces challenges that didn't exist a decade ago.</p>
+
+    <h3>What Trustee Must Manage</h3>
+
+    <ul>
+      <li><strong>Private key management:</strong> The trustee controls the keys to the trust's Bitcoin. Loss or compromise = catastrophic, irreversible loss. Not a job for an individual who could die or become incapacitated.</li>
+      <li><strong>Institutional continuity:</strong> An individual trustee who dies creates a succession problem. Corporate trustees provide continuity across generations — but must understand Bitcoin and digital asset custody.</li>
+      <li><strong>Regulatory compliance:</strong> Bitcoin trust regulations continue to evolve. The trustee must keep pace with reporting requirements, FinCEN obligations, and state trust law.</li>
+      <li><strong>Technology evolution:</strong> Multisig wallets, hardware security modules, air-gapped custody — these are not optional for a multi-decade Bitcoin trust. The trustee must be technically capable.</li>
+    </ul>
+
+    <h3>Trustee Options</h3>
+
+    <p><strong>Corporate trust companies with digital asset capability:</strong> A growing number of chartered trust companies now offer digital asset custody services. Look for Wyoming-chartered trust companies that explicitly serve digital asset trusts — Wyoming law provides a clear framework for this.</p>
+
+    <p><strong>Directed trust with a distribution trustee and a custodian:</strong> Many practitioners now recommend splitting the trustee role. An independent trust company serves as administrative trustee and handles distributions, while a specialized Bitcoin custodian (e.g., a qualified custodian under applicable law) handles the private keys. This separation of duties reduces single points of failure.</p>
+
+    <p><strong>Protector role:</strong> Consider adding a trust protector — an independent third party with power to remove and replace trustees, adjust administrative provisions, and adapt the trust to changed circumstances. A trust protector provides a safeguard against a trustee who becomes incompetent or unresponsive.</p>
+
+    <h2>Best States for Bitcoin GST Trusts: SD, WY, NV</h2>
+
+    <p>State law matters for GST trusts because trusts are governed by the law of the state where they're administered — and state laws vary dramatically on three key dimensions: the rule against perpetuities, state income tax on trust income, and asset protection from creditors.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>State</th>
+            <th>Perpetuity Rule</th>
+            <th>State Income Tax on Trust</th>
+            <th>Asset Protection</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>South Dakota</strong></td>
+            <td>None — trusts can be perpetual</td>
+            <td>No state income tax</td>
+            <td>Excellent — 2-year fraudulent conveyance period</td>
+          </tr>
+          <tr>
+            <td><strong>Wyoming</strong></td>
+            <td>None — trusts can be perpetual</td>
+            <td>No state income tax</td>
+            <td>Strong — clear digital asset trust statutes</td>
+          </tr>
+          <tr>
+            <td><strong>Nevada</strong></td>
+            <td>None (or 365-year limit)</td>
+            <td>No state income tax</td>
+            <td>Strong — 2-year DAPT statute of limitations</td>
+          </tr>
+          <tr>
+            <td><strong>Delaware</strong></td>
+            <td>Up to 110 years</td>
+            <td>No tax on accumulated income for non-DE beneficiaries</td>
+            <td>Good — long track record</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>You don't need to live in these states to use them. Many Bitcoin estate planners recommend South Dakota or Wyoming trusts administered by a licensed trust company in those states. You can live in California, New York, or Texas while your GST trust is sited in South Dakota and administered under South Dakota law.</p>
+
+    <p><strong>Wyoming</strong> has an additional advantage: the Wyoming Qualified Spendthrift Trust Act and Wyoming's specific digital asset statutes (enacted in 2019 and expanded since) provide a clear legal framework for holding digital assets in trust — a framework most other states lack. Wyoming-chartered trust companies that specialize in digital assets are a natural fit for Bitcoin dynasty trusts.</p>
+
+    <h2>Common GST Mistakes with Bitcoin</h2>
+
+    <p>GST planning is complex. These are the mistakes we see most frequently with Bitcoin holders.</p>
+
+    <h3>1. Late GST Exemption Allocation</h3>
+
+    <p>If you fund a trust and fail to file Form 709 allocating GST exemption by the due date (including extensions) for the year of the transfer, you lose the ability to allocate exemption at the time-of-transfer value. You can still allocate exemption later, but at the current fair market value — not the value when you made the transfer. For a fast-moving asset like Bitcoin, a missed allocation can cost millions.</p>
+
+    <h3>2. Assuming Automatic Allocation Applies</h3>
+
+    <p>As noted above, automatic allocation rules don't always apply and don't always produce the intended result. Never assume automatic allocation did the job. Have your attorney confirm with a specific Form 709 filing.</p>
+
+    <h3>3. Funding a GST Trust With Leveraged or Encumbered BTC</h3>
+
+    <p>If you transfer BTC to a trust subject to a loan or leverage arrangement, the trust may have a built-in gain and complex valuation issues. Transfer clean, unencumbered Bitcoin to your GST trust.</p>
+
+    <h3>4. Mixing GST-Exempt and Non-Exempt Assets in the Same Trust</h3>
+
+    <p>If you add assets to a trust after the initial funding without allocating additional GST exemption, the trust's inclusion ratio increases. The cleanest approach: fund separate trusts for exempt and non-exempt assets, or be meticulous about allocating exemption to every subsequent addition.</p>
+
+    <h3>5. No Custody Plan for the Bitcoin</h3>
+
+    <p>The trust is legally sound, but if no one can access the Bitcoin — because the private keys were lost or stored only in the grantor's head — the plan fails. Multi-signature custody, with keys distributed among trustees, co-trustees, and a qualified custodian, is essential for any multi-generational Bitcoin trust.</p>
+
+    <h2>Working With an Estate Attorney: Form 709 and the GST Election</h2>
+
+    <p>Creating a Bitcoin GST trust is not a DIY project. You need a licensed estate planning attorney — ideally one with specific experience in trust and estate law and an understanding of digital asset custody. The process, in broad strokes:</p>
+
+    <ol>
+      <li><strong>Design the trust:</strong> Attorney drafts an irrevocable GST trust with appropriate provisions for digital asset ownership, trustee powers, distribution standards, trust protector provisions, and applicable state law.</li>
+      <li><strong>Fund the trust:</strong> Bitcoin is transferred to the trust's custody arrangements. This is a taxable gift and must be reported.</li>
+      <li><strong>File Form 709:</strong> By the gift tax return due date (April 15 of the following year, or October 15 with extension), file Form 709 making an affirmative election to allocate GST exemption equal to the value of the transferred Bitcoin.</li>
+      <li><strong>Obtain a qualified appraisal if needed:</strong> For large Bitcoin transfers, document the fair market value at the time of transfer.</li>
+      <li><strong>Establish ongoing administration:</strong> The trust must be administered in conformance with its terms. Trustee meetings, distribution decisions, tax filings, and custody management are ongoing obligations.</li>
+    </ol>
+
+    <p>For more foundational context, see our <a href="/blog/bitcoin-estate-planning-guide">Bitcoin Estate Planning Guide</a> and our primer on the <a href="/blog/bitcoin-grat-grantor-retained-annuity-trust">Bitcoin GRAT (Grantor Retained Annuity Trust)</a>.</p>
+
+    <div class="callout">
+      <div class="callout-label">Attorney Checklist</div>
+      <p>When interviewing estate attorneys for a Bitcoin GST trust, ask: (1) Have you drafted GST trusts with digital asset provisions before? (2) Which state do you recommend for siting the trust and why? (3) How will you handle the Form 709 GST exemption election? (4) What custody arrangement do you recommend for the Bitcoin? Vague answers on any of these are a red flag.</p>
+    </div>
+
+    <h2>FAQ: Bitcoin Generation-Skipping Trusts</h2>
+
+    <div class="faq-section">
+
+      <div class="faq-item">
+        <div class="faq-question">1. Can I put Bitcoin I already own in a GST trust, or does it have to be new Bitcoin?</div>
+        <div class="faq-answer">
+          <p>You can transfer Bitcoin you already own into a GST trust. The transfer is treated as a taxable gift (or bequest, if done at death) and must be reported. For lifetime transfers, the fair market value at the time of transfer counts against your gift and GST exemption. There's no requirement that the Bitcoin be newly acquired.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">2. What happens if my GST exemption is fully used up? Can I still create a GST trust?</div>
+        <div class="faq-answer">
+          <p>Yes, but the trust would not be fully exempt from GST tax. Transfers exceeding your available exemption would create a non-zero inclusion ratio, meaning GST tax would apply to some distributions and terminations. Many planners still use GST trusts in this situation to shelter as much as possible — partial exemption is better than none.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">3. My children are my primary heirs. Can a GST trust also benefit them?</div>
+        <div class="faq-answer">
+          <p>Yes. GST trusts can and often do include children (non-skip persons) as beneficiaries during their lifetimes, with the trust assets ultimately distributing to or benefiting grandchildren (skip persons). Distributions to children are not subject to GST tax. The GST tax only applies to distributions to, or terminations that leave only, skip persons.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">4. What if Bitcoin's price crashes? Does the GST trust still make sense?</div>
+        <div class="faq-answer">
+          <p>A price decline after you fund the trust and allocate GST exemption means you've effectively over-allocated exemption relative to the current value. This isn't a problem — you can always substitute other assets into a GST trust (if the trust allows), but the bigger point is that you've "locked in" a low-value moment for exemption purposes. If Bitcoin recovers, that recovery is entirely sheltered. A temporary price decline is actually a planning opportunity for funding a GST trust.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">5. How does a Bitcoin GST trust differ from just leaving Bitcoin in a will to my grandchildren?</div>
+        <div class="faq-answer">
+          <p>A bequest to grandchildren in your will is a direct skip — it triggers GST tax at your death (unless covered by your exemption), in addition to whatever estate tax applies. A GST trust, funded during life with GST exemption allocated, eliminates GST tax at your death and at your children's death. Wills also don't provide the multi-generational trust structure, asset protection, or trustee governance that a GST trust offers.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">6. Can a GST trust hold Bitcoin ETFs or Bitcoin held in a brokerage account, or only self-custodied Bitcoin?</div>
+        <div class="faq-answer">
+          <p>A GST trust can hold any form of Bitcoin exposure — self-custodied BTC, Bitcoin ETF shares held in a brokerage account, Bitcoin held with a qualified custodian, or other digital asset vehicles. The custodial approach depends on the trust terms and trustee capabilities. Many practitioners use a combination: a custodian holds the Bitcoin in the trust's name, while the trust company handles administration.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">7. Is there a minimum amount of Bitcoin that makes a GST trust worthwhile?</div>
+        <div class="faq-answer">
+          <p>There's no legal minimum, but there's an economic one. Establishing and administering a GST trust has real costs — legal fees, trustee fees, ongoing administration. For most practitioners, a trust funded with less than $500,000–$1 million in assets struggles to justify the overhead. That said, if you're planning long-term and expect significant appreciation, even a smaller initial funding can make sense — particularly if you can combine a GST trust with other strategies.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">8. Can I serve as my own trustee of a Bitcoin GST trust?</div>
+        <div class="faq-answer">
+          <p>In some states, the grantor can serve as trustee of an irrevocable trust, but this creates significant risks — particularly the risk that the IRS treats the trust assets as still in your taxable estate under the grantor trust rules. For a GST trust designed to remove assets from your estate, you generally should not be the sole trustee. An independent trustee (corporate or individual) is standard. You may be able to serve as a co-trustee with limited powers without collapsing the estate tax benefits, but this is highly fact-specific. Your attorney must analyze this carefully.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RELATED ARTICLES -->
+    <div class="related-articles">
+      <h3>Related Resources</h3>
+      <ul>
+        <li><a href="/blog/bitcoin-dynasty-trust">Bitcoin Dynasty Trust: Multi-Generational Wealth Without Limits</a></li>
+        <li><a href="/blog/bitcoin-estate-planning-guide">The Complete Bitcoin Estate Planning Guide</a></li>
+        <li><a href="/blog/bitcoin-grat-grantor-retained-annuity-trust">Bitcoin GRAT: Remove Appreciation From Your Estate With a Grantor Retained Annuity Trust</a></li>
+        <li><a href="/services/">Bitcoin Estate Planning Services — Work With Us</a></li>
+      </ul>
+    </div>
+
+    <!-- AUTHOR BOX -->
+    <div class="author-box">
+      <div class="author-avatar">⚖️</div>
+      <div class="author-info">
+        <h4>Hal Turner</h4>
+        <div class="author-title">The Bitcoin Family Office</div>
+        <p>Hal Turner writes on Bitcoin estate planning, trust strategy, and multi-generational wealth preservation at The Bitcoin Family Office. This content is educational and does not constitute legal, tax, or financial advice.</p>
+      </div>
+    </div>
+
+    <!-- AM MINING TAX CTA -->
+    <div class="cta-box">
+      <h3>Bitcoin + Tax Strategy: Mining May Be Your Most Powerful Lever</h3>
+      <p>Bitcoin mining generates income that can be structured to create significant tax deductions — bonus depreciation, operating expense deductions, and more. If you hold substantial Bitcoin and are concerned about tax exposure, the mining tax strategy guide from Abundant Mines explains how mining fits into a broader Bitcoin wealth plan.</p>
+      <a href="https://abundantmines.com/tax-strategy/" class="cta-btn" target="_blank" rel="noopener">Explore the Bitcoin Mining Tax Strategy →</a>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+      <strong>Legal & Tax Disclaimer:</strong> The content on this page is provided for general educational and informational purposes only. It does not constitute legal advice, tax advice, financial advice, or any professional advisory relationship. Bitcoin GST trust planning involves complex federal and state tax law that changes over time. The mathematical illustrations in this article are hypothetical and are not investment projections. Bitcoin is a highly volatile asset — past performance does not predict future results. Always consult a qualified estate planning attorney, licensed in your jurisdiction, before establishing any trust or making any gift. Do not store private keys, seed phrases, or wallet access credentials in your will or trust documents.
+    </div>
+
+  </article>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:1rem;">
+    <a href="/">The Bitcoin Family Office</a> &nbsp;·&nbsp;
+    <a href="/blog/">Blog</a> &nbsp;·&nbsp;
+    <a href="/services/">Services</a> &nbsp;·&nbsp;
+    <a href="/about/">About</a>
+  </p>
+  <p>© 2026 The Bitcoin Family Office. Educational content only — not legal, tax, or financial advice.</p>
+</footer>
+
+</body>
+</html>
