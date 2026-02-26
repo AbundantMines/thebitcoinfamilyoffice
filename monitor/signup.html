@@ -87,12 +87,14 @@ select{cursor:pointer;}
       <div class="tier-card featured">
         <div class="tier-name">Watch — Most Popular</div>
         <div class="tier-price">$19 <span>/month</span></div>
-        <div class="tier-features">• Daily exposure monitoring<br>• Threshold alerts<br>• State law change digest<br>• Monthly estate summary</div>
+        <div style="font-size:.72rem;color:var(--accent);margin-top:.2rem;" id="leftWatchBtc">≈ 0.00025 BTC/mo</div>
+        <div class="tier-features">• Daily exposure monitoring<br>• Threshold alerts<br>• State law change digest<br>• Monthly estate summary<br>• <strong>Paid in Bitcoin</strong></div>
       </div>
       <div class="tier-card">
         <div class="tier-name">Watch Pro</div>
         <div class="tier-price">$49 <span>/month</span></div>
-        <div class="tier-features">• Everything in Watch<br>• Daily BTC price brief<br>• Succession Scorecard<br>• Heir Briefing Generator<br>• Priority support</div>
+        <div style="font-size:.72rem;color:var(--accent);margin-top:.2rem;" id="leftProBtc">≈ 0.00065 BTC/mo</div>
+        <div class="tier-features">• Everything in Watch<br>• Daily BTC price brief<br>• Succession Scorecard<br>• Heir Briefing Generator<br>• Priority support<br>• <strong>Paid in Bitcoin</strong></div>
       </div>
     </div>
     <div class="trust">
@@ -143,16 +145,16 @@ select{cursor:pointer;}
             <input type="radio" name="tier" value="watch" checked>
             <div class="plan-label">
               <div class="plan-name">Watch</div>
-              <div class="plan-price">$19/month</div>
-              <div class="plan-desc">Daily monitoring + threshold alerts + state law digest.</div>
+              <div class="plan-price">$19/month · <span id="watchBtcLabel">≈ 0.00025 BTC</span></div>
+              <div class="plan-desc">Daily monitoring + threshold alerts + state law digest. <strong style="color:var(--accent)">Paid in Bitcoin.</strong></div>
             </div>
           </label>
           <label class="plan-opt">
             <input type="radio" name="tier" value="pro">
             <div class="plan-label">
               <div class="plan-name">Watch Pro</div>
-              <div class="plan-price">$49/month</div>
-              <div class="plan-desc">Everything in Watch + succession scorecard + heir briefing + daily brief.</div>
+              <div class="plan-price">$49/month · <span id="proBtcLabel">≈ 0.00065 BTC</span></div>
+              <div class="plan-desc">Everything in Watch + succession scorecard + heir briefing + daily brief. <strong style="color:var(--accent)">Paid in Bitcoin.</strong></div>
             </div>
           </label>
         </div>
@@ -168,10 +170,7 @@ select{cursor:pointer;}
         <div class="ep-note">Estimate only. Verify with a qualified estate attorney.</div>
       </div>
       <button type="submit" class="btn-submit" id="submitBtn">Calculate My Exposure →</button>
-      <div class="btc-option" id="btcOption">
-        <a href="#" class="btn-btc" id="btcBtn">🟠 Pay with Bitcoin instead</a>
-        <div class="btc-note">Self-sovereign · no card required · on-chain payment</div>
-      </div>
+
       <div class="err" id="errMsg"></div>
       <p class="disclaimer">By submitting, you agree to receive estate monitoring updates by email. Your financial data (BTC holdings, asset values) is used only to calculate your exposure and is never sold. <a href="/privacy" style="color:var(--accent)">Privacy Policy</a>. Cancel anytime. Not legal advice.</p>
     </form>
@@ -180,7 +179,7 @@ select{cursor:pointer;}
 <script>
 const STATE_TAX={OR:1e6,MA:2e6,WA:2193e3,MN:3e6,IL:4e6,RI:1733264,MD:5e6,ME:6410e3,HI:5490e3,NY:7160e3};
 const FED=13610000;
-const BTC_PRICE=95000;
+let BTC_PRICE=95000;
 function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n);}
 function calcExposure(btc,other,state){
   const total=btc*BTC_PRICE+(other||0);
@@ -191,6 +190,20 @@ function calcExposure(btc,other,state){
   const stateTax=stateTaxable>0?Math.round(stateTaxable*0.14):0;
   return{total,fedTax,stateTax,totalTax:fedTax+stateTax};
 }
+function updateBtcLabels(){
+  const watchBtc=(19/BTC_PRICE).toFixed(8);
+  const proBtc=(49/BTC_PRICE).toFixed(8);
+  ['watchBtcLabel','leftWatchBtc'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='≈ '+watchBtc+' BTC';});
+  ['proBtcLabel','leftProBtc'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='≈ '+proBtc+' BTC';});
+}
+// Fetch live BTC price
+fetch('https://api.coindesk.com/v1/bpi/currentprice/USD.json')
+  .then(r=>r.json()).then(d=>{
+    const p=d&&d.bpi&&d.bpi.USD&&d.bpi.USD.rate_float;
+    if(p&&p>1000){BTC_PRICE=Math.round(p);updateBtcLabels();}
+  }).catch(()=>{});
+// Init labels with default price
+updateBtcLabels();
 function updatePreview(){
   const btc=parseFloat(document.getElementById('btc').value)||0;
   const other=parseFloat(document.getElementById('other').value)||0;
@@ -205,65 +218,68 @@ function updatePreview(){
   document.getElementById('prevTotal').textContent=e.totalTax>0?fmt(e.totalTax):'$0 (below all thresholds)';
   document.getElementById('submitBtn').textContent=e.totalTax>0?'Start Monitoring for '+fmt(e.totalTax)+' →':'Calculate My Exposure →';
 }
-// Plan selection styling + Bitcoin option
-function updateBtcOption(){
-  const tier=document.querySelector('input[name=tier]:checked').value;
-  const email=document.getElementById('email').value.trim();
-  const btcOpt=document.getElementById('btcOption');
-  const btcBtn=document.getElementById('btcBtn');
-  if(tier==='free'){btcOpt.style.display='none';return;}
-  // Map tier to btc-payment params
-  const planMap={watch:'watch',pro:'pro'};
-  const planSlug=planMap[tier]||'watch';
-  let href='/monitor/btc-payment?plan='+planSlug+'&billing=monthly';
-  if(email)href+='&email='+encodeURIComponent(email);
-  btcBtn.href=href;
-  btcOpt.style.display='block';
-}
+// Plan selection styling
 document.querySelectorAll('.plan-opt').forEach(function(el){
   el.addEventListener('click',function(){
     document.querySelectorAll('.plan-opt').forEach(function(e){e.classList.remove('selected');});
     el.classList.add('selected');
-    updateBtcOption();
   });
 });
-document.getElementById('email').addEventListener('input',updateBtcOption);
-// Init on load
-updateBtcOption();
-document.getElementById('signupForm').addEventListener('submit',async function(e){
+// Submit handler — BTC payment flow
+document.getElementById('signupForm').addEventListener('submit', async function(e) {
   e.preventDefault();
-  const tier=document.querySelector('input[name=tier]:checked').value;
-  const email=document.getElementById('email').value.trim();
-  const name=document.getElementById('name').value.trim();
-  const btc=parseFloat(document.getElementById('btc').value)||0;
-  const other=parseFloat(document.getElementById('other').value)||0;
-  const state=document.getElementById('state').value;
-  if(!email){document.getElementById('errMsg').textContent='Email is required.';document.getElementById('errMsg').style.display='block';return;}
-  const btn=document.getElementById('submitBtn');
-  btn.disabled=true; btn.textContent='Processing…';
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  if (!email) { document.getElementById('errMsg').textContent='Email is required.'; document.getElementById('errMsg').style.display='block'; return; }
+  const btc = parseFloat(document.getElementById('btc').value)||0;
+  const other = parseFloat(document.getElementById('other').value)||0;
+  const state = document.getElementById('state').value;
+  const tier = document.querySelector('input[name="tier"]:checked')?.value || 'free';
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Processing…';
   document.getElementById('errMsg').style.display='none';
-  try{
-    const r=await fetch('/api/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,btcAmount:btc,otherAssets:other,state,tier}),credentials:'include'});
-    const d=await r.json();
-    if(r.ok){
-      if(tier==='free'){
-        // Show result inline
-        btn.textContent='Done — check your email for your snapshot.';
+
+  if (tier === 'free') {
+    try {
+      const r = await fetch('/api/signup', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name,email,btcAmount:btc,otherAssets:other,state,tier}), credentials:'include'});
+      const d = await r.json();
+      if (r.ok) {
+        btn.textContent = 'Done — check your email for your snapshot.';
         document.getElementById('preview').style.display='block';
-      } else if(d.checkoutUrl){
-        window.location.href=d.checkoutUrl;
+        if (d.dashboard) window.location.href = d.dashboard;
       } else {
-        window.location.href='/monitor/success';
+        document.getElementById('errMsg').textContent=d.error||'Something went wrong. Please try again.';
+        document.getElementById('errMsg').style.display='block';
+        btn.disabled=false; btn.textContent='Calculate My Exposure →';
       }
-    } else {
-      document.getElementById('errMsg').textContent=d.error||'Something went wrong. Please try again.';
+    } catch(ex) {
+      document.getElementById('errMsg').textContent='Network error. Please try again.';
       document.getElementById('errMsg').style.display='block';
       btn.disabled=false; btn.textContent='Calculate My Exposure →';
     }
-  }catch(ex){
-    document.getElementById('errMsg').textContent='Network error. Please try again.';
+    return;
+  }
+
+  // Paid: BTC payment flow
+  try {
+    const btcAmount = tier==='watch' ? parseFloat((19/BTC_PRICE).toFixed(8)) : parseFloat((49/BTC_PRICE).toFixed(8));
+    const r = await fetch('/api/btc/new-address', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({tier, email, name, btcAmount: btc, otherAssets: other, state, planBtcAmount: btcAmount})
+    });
+    const d = await r.json();
+    if (d.paymentId && d.address) {
+      window.location.href = `/monitor/payment?id=${d.paymentId}&tier=${tier}&email=${encodeURIComponent(email)}`;
+    } else {
+      throw new Error(d.error || 'Failed to generate payment address');
+    }
+  } catch(err) {
+    document.getElementById('errMsg').textContent='Error: '+err.message;
     document.getElementById('errMsg').style.display='block';
-    btn.disabled=false; btn.textContent='Calculate My Exposure →';
+    btn.disabled = false;
+    btn.textContent = 'Try Again';
   }
 });
 </script>

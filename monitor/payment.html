@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Complete Payment — Bitcoin Estate Watch</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>(function(){var g=window.dataLayer=window.dataLayer||[];function gtag(){g.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');})();</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<style>
+:root{
+  --bg:#0a0a0a;
+  --bg-elevated:#111;
+  --bg-card:#141414;
+  --border:#1e1e1e;
+  --text:#e8e0d0;
+  --text-secondary:#8a8070;
+  --accent:#c9a84c;
+  --accent-border:rgba(201,168,76,0.2);
+  --accent-bg:rgba(201,168,76,0.06);
+  --green:#4caf78;
+  --green-bg:rgba(76,175,120,0.08);
+  --display:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;display:flex;flex-direction:column;}
+nav{display:flex;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);}
+.back{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;}
+.back:hover{color:var(--accent);}
+.nav-logo{margin-left:1.5rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+.main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:3rem 1.5rem;}
+.card{width:100%;max-width:560px;background:var(--bg-card);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+/* Header */
+.card-header{padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--border);}
+.plan-badge{display:inline-block;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:2px;padding:.25rem .6rem;margin-bottom:1rem;}
+.card-header h1{font-family:var(--display);font-size:1.6rem;font-weight:400;color:var(--text);line-height:1.3;margin-bottom:.5rem;}
+.card-header p{font-size:.85rem;color:var(--text-secondary);}
+/* Status bar */
+.status-bar{padding:1rem 2rem;background:var(--bg-elevated);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.75rem;}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.status-dot.confirming{background:#f5c842;}
+.status-dot.active{background:var(--green);animation:none;}
+.status-dot.expired{background:#e87070;animation:none;}
+.status-text{font-size:.82rem;color:var(--text);font-weight:500;}
+.status-subtext{font-size:.72rem;color:var(--text-secondary);margin-left:auto;}
+/* Body */
+.card-body{padding:2rem;}
+/* Amount section */
+.amount-section{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:3px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;}
+.amount-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:.6rem;}
+.amount-btc{font-size:1.6rem;font-weight:600;color:var(--accent);letter-spacing:-.01em;}
+.amount-usd{font-size:.82rem;color:var(--text-secondary);margin-top:.25rem;}
+.amount-instruction{font-size:.78rem;color:var(--text);margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);line-height:1.6;}
+/* QR + address */
+.qr-address{display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1.5rem;}
+.qr-wrap{flex-shrink:0;background:#fff;border-radius:3px;padding:8px;display:flex;align-items:center;justify-content:center;}
+.qr-wrap img{display:block;border-radius:2px;}
+.address-wrap{flex:1;min-width:0;}
+.address-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:.5rem;}
+.address-box{background:var(--bg);border:1px solid var(--border);border-radius:2px;padding:.75rem 1rem;font-family:'Courier New',monospace;font-size:.78rem;color:var(--text);word-break:break-all;line-height:1.5;}
+.btn-copy{width:100%;background:transparent;border:1px solid var(--accent-border);color:var(--accent);border-radius:2px;padding:.6rem 1rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;cursor:pointer;margin-top:.5rem;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:.5rem;}
+.btn-copy:hover{background:var(--accent-bg);}
+.btn-copy.copied{background:var(--green-bg);border-color:rgba(76,175,120,.3);color:var(--green);}
+/* Progress steps */
+.steps{display:flex;gap:0;margin-bottom:1.5rem;}
+.step{flex:1;text-align:center;position:relative;}
+.step::after{content:'';position:absolute;top:12px;left:50%;right:-50%;height:1px;background:var(--border);z-index:0;}
+.step:last-child::after{display:none;}
+.step-dot{width:24px;height:24px;border-radius:50%;border:1px solid var(--border);background:var(--bg-card);margin:0 auto .5rem;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--text-secondary);position:relative;z-index:1;}
+.step-dot.active{border-color:var(--accent);background:var(--accent-bg);color:var(--accent);}
+.step-dot.done{border-color:var(--green);background:var(--green-bg);color:var(--green);}
+.step-label{font-size:.65rem;color:var(--text-secondary);}
+.step.active .step-label{color:var(--text);}
+.step.done .step-label{color:var(--green);}
+/* Info boxes */
+.info-box{background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;padding:1rem 1.25rem;margin-bottom:1rem;font-size:.78rem;color:var(--text-secondary);line-height:1.7;}
+.info-box strong{color:var(--text);}
+/* Expiry */
+.expiry-row{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;margin-bottom:1rem;}
+.expiry-label{font-size:.72rem;color:var(--text-secondary);}
+.expiry-val{font-size:.85rem;color:var(--text);font-weight:500;font-variant-numeric:tabular-nums;}
+/* Manual check link */
+.manual-check{text-align:center;margin-top:1rem;}
+.manual-check a{font-size:.75rem;color:var(--text-secondary);text-decoration:none;border-bottom:1px solid var(--border);}
+.manual-check a:hover{color:var(--accent);border-color:var(--accent);}
+/* Success state */
+.success-banner{display:none;background:var(--green-bg);border:1px solid rgba(76,175,120,.25);border-radius:3px;padding:1.25rem 1.5rem;text-align:center;margin-bottom:1.5rem;}
+.success-banner .s-icon{font-size:2rem;margin-bottom:.5rem;}
+.success-banner h3{font-family:var(--display);font-size:1.2rem;color:var(--green);margin-bottom:.3rem;}
+.success-banner p{font-size:.8rem;color:var(--text-secondary);}
+/* Error/expired */
+.expired-overlay{display:none;text-align:center;padding:2rem;}
+.expired-overlay h3{font-family:var(--display);font-size:1.2rem;color:#e87070;margin-bottom:.5rem;}
+.expired-overlay p{font-size:.8rem;color:var(--text-secondary);margin-bottom:1.25rem;}
+.btn-restart{display:inline-block;background:var(--accent);color:#0a0a0a;border:none;border-radius:2px;padding:.75rem 1.5rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;cursor:pointer;text-decoration:none;}
+@media(max-width:500px){
+  .qr-address{flex-direction:column;}
+  .qr-wrap{align-self:center;}
+  .card-body,.card-header{padding:1.5rem;}
+  .main{padding:1.5rem 1rem;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/monitor/signup" class="back">← Back</a>
+  <span class="nav-logo">Bitcoin Estate Watch</span>
+</nav>
+
+<div class="main">
+  <div class="card">
+    <div class="card-header">
+      <div class="plan-badge" id="planBadge">Watch Plan</div>
+      <h1>Send Bitcoin to activate your account.</h1>
+      <p>Your unique payment address is reserved for 24 hours. Send the exact amount shown below.</p>
+    </div>
+
+    <div class="status-bar">
+      <div class="status-dot" id="statusDot"></div>
+      <span class="status-text" id="statusText">Awaiting payment</span>
+      <span class="status-subtext" id="lastChecked">Checking every 15s</span>
+    </div>
+
+    <div class="card-body">
+      <!-- Progress steps -->
+      <div class="steps">
+        <div class="step active" id="step1">
+          <div class="step-dot active" id="step1dot">1</div>
+          <div class="step-label">Send BTC</div>
+        </div>
+        <div class="step" id="step2">
+          <div class="step-dot" id="step2dot">2</div>
+          <div class="step-label">Confirming</div>
+        </div>
+        <div class="step" id="step3">
+          <div class="step-dot" id="step3dot">3</div>
+          <div class="step-label">Active</div>
+        </div>
+      </div>
+
+      <!-- Success banner (hidden until confirmed) -->
+      <div class="success-banner" id="successBanner">
+        <div class="s-icon">✓</div>
+        <h3>Payment confirmed!</h3>
+        <p>Redirecting to your dashboard…</p>
+      </div>
+
+      <!-- Amount -->
+      <div class="amount-section">
+        <div class="amount-label">Amount due</div>
+        <div class="amount-btc" id="amountBtc">Loading…</div>
+        <div class="amount-usd" id="amountUsd"></div>
+        <div class="amount-instruction" id="amountInstruction"></div>
+      </div>
+
+      <!-- QR + Address -->
+      <div class="qr-address" id="qrAddressSection">
+        <div class="qr-wrap">
+          <img id="qrImg" src="" alt="BTC payment QR code" width="160" height="160">
+        </div>
+        <div class="address-wrap">
+          <div class="address-label">Bitcoin address</div>
+          <div class="address-box" id="addressBox">Loading…</div>
+          <button class="btn-copy" id="copyBtn" onclick="copyAddress()">
+            <span id="copyIcon">⧉</span> Copy address
+          </button>
+        </div>
+      </div>
+
+      <!-- Expiry countdown -->
+      <div class="expiry-row">
+        <span class="expiry-label">⏳ Address expires in</span>
+        <span class="expiry-val" id="expiryCountdown">23:59:59</span>
+      </div>
+
+      <!-- Info boxes -->
+      <div class="info-box">
+        <strong>Confirmation time:</strong> Bitcoin transactions typically confirm in 10–60 minutes. Your account activates after 1 confirmation.
+      </div>
+      <div class="info-box">
+        <strong>Exact amount:</strong> Send the exact BTC amount shown above. Over/underpayment may require manual reconciliation.
+      </div>
+
+      <!-- Manual check -->
+      <div class="manual-check">
+        <a href="#" id="manualCheckLink" onclick="manualCheck(event)">I've already paid — check manually</a>
+      </div>
+
+      <!-- Expired state -->
+      <div class="expired-overlay" id="expiredOverlay">
+        <h3>Payment window expired</h3>
+        <p>The 24-hour payment window has closed. Please start a new subscription to get a fresh address.</p>
+        <a href="/monitor/signup" class="btn-restart">Start over</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Parse URL params
+const params = new URLSearchParams(window.location.search);
+const PAYMENT_ID = params.get('id');
+const TIER = params.get('tier') || 'watch';
+const EMAIL = params.get('email') || '';
+
+// Plan config
+const PLAN = {
+  watch: { name: 'Watch Plan', usd: 19 },
+  pro:   { name: 'Watch Pro',  usd: 49 }
+};
+const plan = PLAN[TIER] || PLAN.watch;
+
+// State
+let btcAddress = '';
+let btcAmount = 0;
+let expiresAt = null;
+let pollInterval = null;
+let countdownInterval = null;
+let isExpired = false;
+let isConfirmed = false;
+
+// Update plan badge
+document.getElementById('planBadge').textContent = plan.name;
+
+function fmt(n){ return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n); }
+
+function initPage(data) {
+  btcAddress = data.address;
+  btcAmount = parseFloat(data.btcAmount || data.planBtcAmount || (plan.usd / 95000)).toFixed(8);
+  const usdEquiv = data.usdAmount || plan.usd;
+
+  // Expiry: use server-provided or default 24h from now
+  expiresAt = data.expiresAt ? new Date(data.expiresAt) : new Date(Date.now() + 24*60*60*1000);
+
+  // Amount section
+  document.getElementById('amountBtc').textContent = btcAmount + ' BTC';
+  document.getElementById('amountUsd').textContent = '≈ ' + fmt(usdEquiv) + ' USD at current price';
+  document.getElementById('amountInstruction').textContent =
+    'Send exactly ' + btcAmount + ' BTC to the address below. Do not send from an exchange that batches withdrawals.';
+
+  // Address
+  document.getElementById('addressBox').textContent = btcAddress;
+
+  // QR code
+  const qrData = encodeURIComponent('bitcoin:' + btcAddress + '?amount=' + btcAmount);
+  document.getElementById('qrImg').src =
+    'https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=' + qrData;
+
+  // Start countdown
+  startCountdown();
+
+  // Start polling
+  startPolling();
+}
+
+function startCountdown() {
+  countdownInterval = setInterval(function() {
+    if (!expiresAt) return;
+    const diff = expiresAt - Date.now();
+    if (diff <= 0) {
+      clearInterval(countdownInterval);
+      handleExpired();
+      return;
+    }
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('expiryCountdown').textContent =
+      String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  }, 1000);
+}
+
+function startPolling() {
+  pollInterval = setInterval(pollStatus, 15000);
+}
+
+async function pollStatus() {
+  if (isConfirmed || isExpired || !PAYMENT_ID) return;
+  try {
+    const r = await fetch('/api/btc/check/' + PAYMENT_ID);
+    const d = await r.json();
+    handleStatus(d);
+    const now = new Date().toLocaleTimeString();
+    document.getElementById('lastChecked').textContent = 'Last checked ' + now;
+  } catch(err) {
+    document.getElementById('lastChecked').textContent = 'Check failed — retrying…';
+  }
+}
+
+function handleStatus(d) {
+  const status = (d.status || '').toLowerCase();
+
+  if (status === 'active' || status === 'confirmed' || status === 'paid') {
+    handleConfirmed();
+  } else if (status === 'confirming' || status === 'pending' || (d.confirmations > 0)) {
+    const confs = d.confirmations || 1;
+    setStep('confirming', confs);
+  } else if (status === 'expired') {
+    handleExpired();
+  }
+  // else: still awaiting — no change needed
+}
+
+function setStep(phase, confs) {
+  const dot1 = document.getElementById('step1dot');
+  const dot2 = document.getElementById('step2dot');
+  const dot3 = document.getElementById('step3dot');
+  const statusDot = document.getElementById('statusDot');
+  const statusText = document.getElementById('statusText');
+
+  if (phase === 'confirming') {
+    dot1.className = 'step-dot done'; dot1.textContent = '✓';
+    document.getElementById('step1').className = 'step done';
+    dot2.className = 'step-dot active'; dot2.textContent = '2';
+    document.getElementById('step2').className = 'step active';
+    statusDot.className = 'status-dot confirming';
+    statusText.textContent = 'Confirming (' + (confs||1) + '/3 blocks)…';
+  }
+}
+
+function handleConfirmed() {
+  if (isConfirmed) return;
+  isConfirmed = true;
+  clearInterval(pollInterval);
+  clearInterval(countdownInterval);
+
+  // Update steps
+  ['step1dot','step2dot','step3dot'].forEach(id=>{
+    const el = document.getElementById(id);
+    el.className = 'step-dot done'; el.textContent = '✓';
+  });
+  ['step1','step2','step3'].forEach(id=>document.getElementById(id).className='step done');
+
+  // Status bar
+  document.getElementById('statusDot').className = 'status-dot active';
+  document.getElementById('statusText').textContent = 'Payment confirmed — account active!';
+
+  // Show success banner
+  document.getElementById('successBanner').style.display = 'block';
+  document.getElementById('expiryCountdown').textContent = '—';
+
+  // Track conversion
+  if (window.dataLayer) {
+    window.dataLayer.push({event:'btc_payment_confirmed', tier: TIER, email: EMAIL});
+  }
+
+  // Redirect after 2.5s
+  setTimeout(function() {
+    window.location.href = '/monitor/dashboard';
+  }, 2500);
+}
+
+function handleExpired() {
+  if (isExpired || isConfirmed) return;
+  isExpired = true;
+  clearInterval(pollInterval);
+  clearInterval(countdownInterval);
+
+  document.getElementById('statusDot').className = 'status-dot expired';
+  document.getElementById('statusText').textContent = 'Payment window expired';
+  document.getElementById('expiryCountdown').textContent = '00:00:00';
+  document.getElementById('qrAddressSection').style.opacity = '0.4';
+  document.getElementById('expiredOverlay').style.display = 'block';
+}
+
+function copyAddress() {
+  if (!btcAddress) return;
+  navigator.clipboard.writeText(btcAddress).then(function() {
+    const btn = document.getElementById('copyBtn');
+    const icon = document.getElementById('copyIcon');
+    btn.className = 'btn-copy copied';
+    icon.textContent = '✓';
+    btn.childNodes[1].textContent = ' Copied!';
+    setTimeout(function() {
+      btn.className = 'btn-copy';
+      icon.textContent = '⧉';
+      btn.childNodes[1].textContent = ' Copy address';
+    }, 2000);
+  }).catch(function() {
+    // Fallback: select the text
+    const box = document.getElementById('addressBox');
+    const range = document.createRange();
+    range.selectNode(box);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+  });
+}
+
+async function manualCheck(e) {
+  e.preventDefault();
+  const link = document.getElementById('manualCheckLink');
+  link.textContent = 'Checking…';
+  await pollStatus();
+  link.textContent = isConfirmed ? 'Confirmed!' : "I've already paid — check manually";
+}
+
+// Load payment details
+async function loadPayment() {
+  if (!PAYMENT_ID) {
+    // No payment ID — show error
+    document.getElementById('amountBtc').textContent = 'Error';
+    document.getElementById('addressBox').textContent = 'Invalid payment link. Please start over.';
+    return;
+  }
+
+  try {
+    // Try to load from API first
+    const r = await fetch('/api/btc/check/' + PAYMENT_ID);
+    const d = await r.json();
+
+    if (d.address) {
+      initPage(d);
+      // Also handle current status
+      handleStatus(d);
+    } else {
+      // Fallback: render with what we have from URL params
+      initPage({
+        address: d.address || '—',
+        btcAmount: d.btcAmount || (plan.usd / 95000).toFixed(8),
+        usdAmount: d.usdAmount || plan.usd,
+        expiresAt: d.expiresAt || null
+      });
+    }
+  } catch(err) {
+    // Graceful fallback — show loading state with retry
+    document.getElementById('addressBox').textContent = 'Loading address…';
+    document.getElementById('amountBtc').textContent = 'Loading…';
+    document.getElementById('lastChecked').textContent = 'Connection error — retrying…';
+    setTimeout(loadPayment, 5000);
+  }
+}
+
+// Kick off
+loadPayment();
+</script>
+<script defer data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}' src="https://static.cloudflareinsights.com/beacon.min.js"></script>
+</body>
+</html>
