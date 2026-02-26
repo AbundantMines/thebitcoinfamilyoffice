@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Dynasty Trust Analyzer | The Bitcoin Family Office</title>
+  <meta name="description" content="Calculate whether a Bitcoin dynasty trust makes financial sense for your estate. See estate tax savings across multiple generations with our free analyzer.">
+  <meta name="keywords" content="bitcoin dynasty trust calculator, bitcoin dynasty trust cost, bitcoin estate planning, dynasty trust bitcoin">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-dynasty-trust-analyzer">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bitcoin Dynasty Trust Analyzer | The Bitcoin Family Office">
+  <meta property="og:description" content="Calculate whether a Bitcoin dynasty trust makes financial sense for your estate. See estate tax savings across multiple generations.">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-dynasty-trust-analyzer">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bitcoin Dynasty Trust Analyzer">
+  <meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=EB+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+  </script>
+
+  <!-- Cloudflare Beacon -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+      --accent-hover: #d4b560;
+      --accent-dim: rgba(201,168,76,0.12);
+      --green: #4caf7d;
+      --red: #e05555;
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent);
+      color: #000 !important;
+      padding: 8px 18px;
+      border-radius: 4px;
+      font-weight: 600 !important;
+      font-size: 13px !important;
+    }
+    .nav-cta:hover { background: var(--accent-hover); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0; right: 0;
+        background: var(--bg-elevated);
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 20px;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.nav-open { display: flex; }
+    }
+
+    /* ── PAGE ── */
+    .page-header {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    .tool-badge {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(201,168,76,0.25);
+      margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .page-header p {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .tool-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .tool-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── INPUTS PANEL ── */
+    .panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .panel-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .input-group {
+      margin-bottom: 24px;
+    }
+    .input-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .input-label span:first-child {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .input-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    input[type="range"] {
+      width: 100%;
+      height: 4px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--border);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg-card);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.2);
+      cursor: pointer;
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg-card);
+      cursor: pointer;
+    }
+    input[type="number"], input[type="text"] {
+      width: 100%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input[type="number"]:focus, input[type="text"]:focus {
+      border-color: var(--accent);
+    }
+    .toggle-row {
+      display: flex;
+      gap: 8px;
+    }
+    .toggle-btn {
+      flex: 1;
+      padding: 10px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .toggle-btn.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .gen-row {
+      display: flex;
+      gap: 8px;
+    }
+    .gen-btn {
+      flex: 1;
+      padding: 10px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .gen-btn.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── RESULTS PANEL ── */
+    .results-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+    }
+    .metric-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+    .metric-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .metric-sub {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
+    .metric-value.danger { color: var(--red); }
+    .metric-value.good { color: var(--green); }
+
+    /* Advantage card */
+    .advantage-card {
+      background: linear-gradient(135deg, #1a140a 0%, #141414 100%);
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .advantage-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+    .advantage-value {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .advantage-desc {
+      font-family: 'EB Garamond', serif;
+      font-size: 17px;
+      color: var(--text-secondary);
+    }
+
+    /* Projection grid */
+    .projection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .proj-item {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+    }
+    .proj-year {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+    .proj-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* Chart */
+    .chart-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .chart-title {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    .chart-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .chart-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .chart-row-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      width: 60px;
+      flex-shrink: 0;
+    }
+    .chart-bars {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bar-track {
+      flex: 1;
+      height: 22px;
+      background: var(--bg-elevated);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.5s ease;
+    }
+    .bar-fill.no-trust { background: var(--red); opacity: 0.8; }
+    .bar-fill.with-trust { background: var(--green); opacity: 0.8; }
+    .bar-legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .bar-val {
+      font-size: 12px;
+      color: var(--text-secondary);
+      width: 80px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .chart-legend {
+      display: flex;
+      gap: 20px;
+      margin-top: 16px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
+
+    /* Breakeven */
+    .breakeven-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .breakeven-detail {
+      font-family: 'EB Garamond', serif;
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+
+    /* CTA */
+    .cta-section {
+      background: var(--bg-card);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .cta-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .cta-section p {
+      font-family: 'EB Garamond', serif;
+      font-size: 17px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent-hover); }
+
+    /* Disclaimer */
+    .disclaimer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+    }
+    .disclaimer p {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">The Bitcoin Family Office</a>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="/blog/">Research</a>
+      <a href="/tools/">Tools</a>
+      <a href="/monitor/">Estate Watch</a>
+      <a href="/services/">Services</a>
+      <a href="/about/">About</a>
+      <a href="/monitor/signup.html" class="nav-cta">Join Waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="tool-badge">Free Tool</div>
+  <h1>Bitcoin Dynasty Trust Analyzer</h1>
+  <p>See exactly how much estate tax a dynasty trust could save across your family's generations — calculated live from your actual Bitcoin position.</p>
+</div>
+
+<div class="tool-wrapper">
+  <div class="tool-grid">
+
+    <!-- INPUTS -->
+    <div class="panel">
+      <div class="panel-title">Your Inputs</div>
+
+      <div class="input-group">
+        <div class="input-label">
+          <span>BTC Holdings</span>
+          <span class="input-value" id="btcVal">10 BTC</span>
+        </div>
+        <input type="range" id="btcSlider" min="0.1" max="500" step="0.1" value="10" oninput="updateBTC(this.value)">
+      </div>
+
+      <div class="input-group">
+        <div class="input-label">
+          <span>Current BTC Price</span>
+        </div>
+        <input type="number" id="btcPrice" value="68000" min="1000" max="5000000" step="1000" oninput="recalc()">
+      </div>
+
+      <div class="input-group">
+        <div class="input-label">
+          <span>Your Age</span>
+          <span class="input-value" id="ageVal">45</span>
+        </div>
+        <input type="range" id="ageSlider" min="25" max="80" step="1" value="45" oninput="updateAge(this.value)">
+      </div>
+
+      <div class="input-group">
+        <div class="input-label">
+          <span>Annual BTC Appreciation</span>
+          <span class="input-value" id="aprVal">15%</span>
+        </div>
+        <input type="range" id="aprSlider" min="0" max="50" step="1" value="15" oninput="updateApr(this.value)">
+      </div>
+
+      <div class="input-group">
+        <div class="input-label">
+          <span>Generations to Model</span>
+        </div>
+        <div class="gen-row">
+          <button class="gen-btn" onclick="setGens(1, this)">1 Gen</button>
+          <button class="gen-btn active" onclick="setGens(2, this)">2 Gens</button>
+          <button class="gen-btn" onclick="setGens(3, this)">3 Gens</button>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="input-label">
+          <span>Estate Tax Exemption (per person)</span>
+        </div>
+        <input type="number" id="exemption" value="13600000" min="0" max="50000000" step="100000" oninput="recalc()">
+      </div>
+
+      <div class="input-group">
+        <div class="input-label">
+          <span>Do You Have a Spouse?</span>
+        </div>
+        <div class="toggle-row">
+          <button class="toggle-btn active" onclick="setSpouse(true, this)">Yes</button>
+          <button class="toggle-btn" onclick="setSpouse(false, this)">No</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results-panel">
+
+      <!-- Advantage (hero) -->
+      <div class="advantage-card">
+        <div class="advantage-label">Dynasty Trust Advantage</div>
+        <div class="advantage-value" id="trustAdvantage">$0</div>
+        <div class="advantage-desc" id="trustAdvantageDesc">Total estate tax saved across all generations</div>
+      </div>
+
+      <!-- Current exposure -->
+      <div class="metric-card">
+        <div class="metric-label">Current Estate Tax Exposure (If You Died Today)</div>
+        <div class="metric-value danger" id="currentTax">$0</div>
+        <div class="metric-sub" id="currentTaxSub"></div>
+      </div>
+
+      <!-- Projected values -->
+      <div class="metric-card">
+        <div class="metric-label">Projected Bitcoin Estate Value</div>
+        <div class="projection-grid" style="margin-top:12px;">
+          <div class="proj-item">
+            <div class="proj-year">10 Years</div>
+            <div class="proj-val" id="proj10">—</div>
+          </div>
+          <div class="proj-item">
+            <div class="proj-year">20 Years</div>
+            <div class="proj-val" id="proj20">—</div>
+          </div>
+          <div class="proj-item">
+            <div class="proj-year">30 Years</div>
+            <div class="proj-val" id="proj30">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Without vs With trust -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div class="metric-card">
+          <div class="metric-label">Tax Without Trust</div>
+          <div class="metric-value danger" id="taxWithout">$0</div>
+          <div class="metric-sub">Cumulative across generations</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Tax With Trust</div>
+          <div class="metric-value good" id="taxWith">$0</div>
+          <div class="metric-sub">Tax on initial gift only</div>
+        </div>
+      </div>
+
+      <!-- Breakeven -->
+      <div class="metric-card">
+        <div class="metric-label">Break-Even Analysis</div>
+        <div class="breakeven-row">
+          <div>
+            <div class="metric-value" id="breakevenVal">—</div>
+            <div class="metric-sub">until trust pays for itself ($25K setup cost)</div>
+          </div>
+          <div class="breakeven-detail" id="breakevenDetail"></div>
+        </div>
+      </div>
+
+      <!-- Chart -->
+      <div class="chart-section">
+        <div class="chart-title">Estate Tax Burden Comparison</div>
+        <div class="chart-group" id="chartGroup"></div>
+        <div class="chart-legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background:var(--red); opacity:0.8;"></div>
+            Without Dynasty Trust
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:var(--green); opacity:0.8;"></div>
+            With Dynasty Trust
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-section">
+        <h3>Ready to Protect Your Bitcoin Legacy?</h3>
+        <p>Dynasty trusts require specialized Bitcoin estate planning — not your generalist attorney. Our team structures Bitcoin-native trusts that hold across generations.</p>
+        <a href="/services/" class="btn-primary">Schedule a Strategy Session →</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  <p><strong>Disclaimer:</strong> This tool is for educational and illustrative purposes only. It does not constitute legal, tax, or financial advice. Estate tax laws, exemption amounts, and trust regulations change frequently and vary by state. All projections use simplified assumptions and actual results will differ. Bitcoin investment involves substantial risk of loss. Please consult a qualified estate planning attorney, CPA, and financial advisor before making any decisions. The Bitcoin Family Office does not guarantee the accuracy of these calculations.</p>
+</div>
+
+<script>
+  // ── STATE ──
+  let state = {
+    btc: 10,
+    price: 68000,
+    age: 45,
+    apr: 15,
+    gens: 2,
+    exemption: 13600000,
+    hasSpouse: true
+  };
+
+  const ESTATE_TAX_RATE = 0.40;
+  const GIFT_TAX_RATE   = 0.40;
+  const SETUP_COST      = 25000;
+  const GEN_YEARS       = [10, 20, 30];
+
+  function fmt(n) {
+    if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(2) + 'B';
+    if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(2) + 'M';
+    if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(1) + 'K';
+    return '$' + Math.round(n).toLocaleString();
+  }
+
+  function projValue(years) {
+    return state.btc * state.price * Math.pow(1 + state.apr/100, years);
+  }
+
+  function effectiveExemption() {
+    return state.hasSpouse ? state.exemption * 2 : state.exemption;
+  }
+
+  function estateTaxOn(value) {
+    const exempt = effectiveExemption();
+    const taxable = Math.max(0, value - exempt);
+    return taxable * ESTATE_TAX_RATE;
+  }
+
+  // Without trust: tax applies at each generation transfer
+  // Each generation receives the net (post-tax) estate and it grows again
+  function taxWithoutTrust() {
+    const genYears = 30 / state.gens; // spread evenly
+    let val = state.btc * state.price;
+    let totalTax = 0;
+
+    for (let g = 0; g < state.gens; g++) {
+      // Grow for genYears
+      val = val * Math.pow(1 + state.apr/100, genYears);
+      // Pay estate tax
+      const tax = estateTaxOn(val);
+      totalTax += tax;
+      val -= tax;
+    }
+    return totalTax;
+  }
+
+  // With trust: pay gift tax on current value once, then all appreciation is exempt
+  function taxWithTrust() {
+    const currentVal = state.btc * state.price;
+    const exempt = effectiveExemption();
+    // Gift tax on amount over exemption at time of trust creation
+    const taxableGift = Math.max(0, currentVal - exempt);
+    return taxableGift * GIFT_TAX_RATE;
+  }
+
+  // Current estate tax if died today
+  function currentEstateTax() {
+    return estateTaxOn(state.btc * state.price);
+  }
+
+  // When does trust break even?
+  function breakevenYears() {
+    const trustTax = taxWithTrust();
+    const setupTotal = SETUP_COST + trustTax;
+    // Savings accumulate as estate grows — find year where savings > setupTotal
+    for (let y = 1; y <= 50; y++) {
+      const woVal = state.btc * state.price * Math.pow(1 + state.apr/100, y);
+      const wTax = estateTaxOn(woVal);
+      const savings = wTax - trustTax;
+      if (savings >= SETUP_COST) return y;
+    }
+    return null;
+  }
+
+  function recalc() {
+    // Read live inputs
+    state.price = parseFloat(document.getElementById('btcPrice').value) || 68000;
+    state.exemption = parseFloat(document.getElementById('exemption').value) || 13600000;
+
+    const currentTax = currentEstateTax();
+    const withoutTax = taxWithoutTrust();
+    const withTax    = taxWithTrust();
+    const advantage  = Math.max(0, withoutTax - withTax);
+    const currentVal = state.btc * state.price;
+
+    // Current exposure
+    document.getElementById('currentTax').textContent = fmt(currentTax);
+    document.getElementById('currentTaxSub').textContent =
+      currentTax > 0
+        ? `On ${fmt(currentVal)} Bitcoin position after ${fmt(effectiveExemption())} exemption`
+        : `Below exemption threshold — no estate tax today`;
+
+    // Projections
+    const p10 = projValue(10), p20 = projValue(20), p30 = projValue(30);
+    document.getElementById('proj10').textContent = fmt(p10);
+    document.getElementById('proj20').textContent = fmt(p20);
+    document.getElementById('proj30').textContent = fmt(p30);
+
+    // Tax comparison
+    document.getElementById('taxWithout').textContent = fmt(withoutTax);
+    document.getElementById('taxWith').textContent = fmt(withTax);
+
+    // Advantage
+    document.getElementById('trustAdvantage').textContent = fmt(advantage);
+    document.getElementById('trustAdvantageDesc').textContent =
+      `Total estate tax saved across ${state.gens} generation${state.gens>1?'s':''} — at ${state.apr}% annual appreciation`;
+
+    // Breakeven
+    const be = breakevenYears();
+    const beEl = document.getElementById('breakevenVal');
+    const beDetail = document.getElementById('breakevenDetail');
+    if (be !== null) {
+      beEl.textContent = be + (be === 1 ? ' year' : ' years');
+      beEl.className = 'metric-value good';
+      beDetail.textContent = `Trust fully justified by year ${be}`;
+    } else {
+      beEl.textContent = 'N/A';
+      beEl.className = 'metric-value';
+      beDetail.textContent = 'Estate may be below exemption threshold';
+    }
+
+    // Chart
+    renderChart(p10, p20, p30, withTax);
+
+    // GA4 event (throttled)
+    if (typeof gtag !== 'undefined') {
+      clearTimeout(window._gaTimer);
+      window._gaTimer = setTimeout(() => {
+        gtag('event', 'dynasty_analyzer_use', {
+          btc: state.btc,
+          years: state.gens * 10,
+          savings: Math.round(advantage)
+        });
+      }, 2000);
+    }
+  }
+
+  function renderChart(p10, p20, p30, trustTax) {
+    const years = [10, 20, 30];
+    const vals  = [p10, p20, p30];
+    const maxVal = Math.max(
+      ...vals.map(v => estateTaxOn(v)),
+      trustTax,
+      1
+    );
+
+    const group = document.getElementById('chartGroup');
+    group.innerHTML = '';
+
+    years.forEach((yr, i) => {
+      const noTrust = estateTaxOn(vals[i]);
+      const wTrust  = i === 0 ? trustTax : 0; // gift tax paid once at year 0, shown in Y10 bar
+
+      const noW = Math.min(100, (noTrust / maxVal) * 100);
+      const wW  = Math.min(100, ((i === 0 ? trustTax : 0) / maxVal) * 100);
+
+      const row = document.createElement('div');
+      row.className = 'chart-row';
+      row.innerHTML = `
+        <div class="chart-row-label">${yr} yr</div>
+        <div class="chart-bars">
+          <div class="bar-wrap">
+            <div class="bar-legend-dot" style="background:var(--red); opacity:0.8; width:8px; height:8px; border-radius:50%; flex-shrink:0;"></div>
+            <div class="bar-track">
+              <div class="bar-fill no-trust" style="width:${noW}%"></div>
+            </div>
+            <div class="bar-val">${fmt(noTrust)}</div>
+          </div>
+          <div class="bar-wrap">
+            <div class="bar-legend-dot" style="background:var(--green); opacity:0.8; width:8px; height:8px; border-radius:50%; flex-shrink:0;"></div>
+            <div class="bar-track">
+              <div class="bar-fill with-trust" style="width:${i===0 ? wW : 0}%"></div>
+            </div>
+            <div class="bar-val">${i === 0 ? fmt(trustTax) : '$0'}</div>
+          </div>
+        </div>
+      `;
+      group.appendChild(row);
+    });
+  }
+
+  // ── UI UPDATERS ──
+  function updateBTC(val) {
+    state.btc = parseFloat(val);
+    document.getElementById('btcVal').textContent = parseFloat(val) + ' BTC';
+    recalc();
+  }
+  function updateAge(val) {
+    state.age = parseInt(val);
+    document.getElementById('ageVal').textContent = val;
+    recalc();
+  }
+  function updateApr(val) {
+    state.apr = parseInt(val);
+    document.getElementById('aprVal').textContent = val + '%';
+    recalc();
+  }
+  function setGens(n, btn) {
+    state.gens = n;
+    document.querySelectorAll('.gen-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    recalc();
+  }
+  function setSpouse(val, btn) {
+    state.hasSpouse = val;
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    recalc();
+  }
+
+  // Initial calc
+  recalc();
+</script>
+
+</body>
+</html>
