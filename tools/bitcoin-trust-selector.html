@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Trust Type Selector — Find the Right Trust for Your Bitcoin | The Bitcoin Family Office</title>
+<meta name="description" content="Answer 6 questions and get a personalized Bitcoin trust type recommendation. Revocable, irrevocable, dynasty, GRAT, SLAT, CRT — find what fits your situation.">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-trust-selector.html">
+<meta property="og:title" content="Bitcoin Trust Type Selector — The Bitcoin Family Office">
+<meta property="og:description" content="6-question decision tool to find the right Bitcoin trust type for your estate plan.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-trust-selector.html">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=EB+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());
+  gtag('config','G-N8PP20VBTV');
+  document.addEventListener('click',function(e){gtag('event','hm_click',{x:e.clientX,y:e.clientY,path:window.location.pathname});});
+  var _sm={25:0,50:0,75:0,100:0};
+  window.addEventListener('scroll',function(){var p=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);[25,50,75,100].forEach(function(m){if(p>=m&&!_sm[m]){_sm[m]=1;gtag('event','hm_scroll',{depth:m,path:window.location.pathname});}});});
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Bitcoin Trust Type Selector",
+  "url": "https://thebitcoinfamilyoffice.com/tools/bitcoin-trust-selector.html",
+  "description": "Interactive 6-question decision tool to recommend the right Bitcoin trust type for your estate planning situation.",
+  "isPartOf": {"@type": "WebSite", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"},
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebitcoinfamilyoffice.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://thebitcoinfamilyoffice.com/tools/"},
+      {"@type": "ListItem", "position": 3, "name": "Bitcoin Trust Type Selector", "item": "https://thebitcoinfamilyoffice.com/tools/bitcoin-trust-selector.html"}
+    ]
+  }
+}
+</script>
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --bg-elevated: #111111;
+  --bg-card: #141414;
+  --accent: #f7931a;
+  --accent-dim: rgba(247,147,26,0.12);
+  --accent-border: rgba(247,147,26,0.3);
+  --text: #e8e4de;
+  --text-secondary: #9a958d;
+  --text-muted: #6b6660;
+  --border: rgba(255,255,255,0.07);
+  --display: 'Playfair Display', Georgia, serif;
+  --serif: 'EB Garamond', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --radius: 6px;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+::selection { background: var(--accent-dim); color: var(--accent); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.25rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10,10,10,0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-mark { font-family: var(--sans); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; }
+.nav-mark span { color: var(--accent); }
+.nav-links { display: flex; gap: 1.75rem; list-style: none; }
+.nav-links a { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-links .nav-cta { color: var(--accent) !important; border: 1px solid var(--accent-border); padding: 0.4rem 0.9rem; border-radius: 2px; }
+.nav-links .nav-cta:hover { background: var(--accent-dim); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 1px; }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.97); align-items: center; justify-content: center; gap: 2.5rem; z-index: 150; }
+  .hamburger { display: flex; }
+}
+
+/* ── LAYOUT ── */
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+main { padding-top: 100px; padding-bottom: 5rem; }
+
+/* ── PAGE HEADER ── */
+.page-header { padding: 2.5rem 0 2rem; text-align: center; }
+.page-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+.page-header h1 { font-family: var(--display); font-size: clamp(1.75rem, 4vw, 2.4rem); line-height: 1.25; color: var(--text); margin-bottom: 0.75rem; }
+.page-header p { font-family: var(--serif); font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; max-width: 540px; margin: 0 auto; }
+
+/* ── PROGRESS BAR ── */
+.progress-wrap { margin: 0 0 2rem; }
+.progress-label { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); display: flex; justify-content: space-between; margin-bottom: 0.6rem; }
+.progress-label span:last-child { color: var(--accent); }
+.progress-track { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.4s cubic-bezier(0.4,0,0.2,1); }
+
+/* ── QUESTION CARD ── */
+.question-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem 2rem;
+  animation: fadeSlideIn 0.35s ease;
+}
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.q-number { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.9rem; }
+.q-text { font-family: var(--display); font-size: clamp(1.15rem, 2.5vw, 1.4rem); color: var(--text); line-height: 1.35; margin-bottom: 1.75rem; }
+.options { display: flex; flex-direction: column; gap: 0.75rem; }
+.option-btn {
+  display: flex; align-items: center; gap: 1rem;
+  width: 100%; padding: 1rem 1.25rem;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 4px; cursor: pointer; text-align: left;
+  transition: border-color 0.2s, background 0.2s, transform 0.1s;
+  font-family: var(--sans); font-size: 0.9rem; color: var(--text);
+}
+.option-btn:hover { border-color: var(--accent-border); background: rgba(247,147,26,0.04); transform: translateX(3px); }
+.option-btn:active { transform: scale(0.99); }
+.option-btn.selected { border-color: var(--accent); background: var(--accent-dim); }
+.option-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--text-muted); flex-shrink: 0; transition: border-color 0.2s, background 0.2s; }
+.option-btn.selected .option-dot { border-color: var(--accent); background: var(--accent); }
+.option-btn:hover .option-dot { border-color: var(--accent); }
+
+/* ── RESULTS ── */
+.results-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  animation: fadeSlideIn 0.4s ease;
+}
+.results-hero {
+  background: linear-gradient(135deg, rgba(247,147,26,0.12) 0%, rgba(247,147,26,0.04) 100%);
+  border-bottom: 1px solid var(--accent-border);
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+}
+.results-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+.results-trust-type { font-family: var(--display); font-size: clamp(1.5rem, 4vw, 2.2rem); color: var(--text); line-height: 1.2; margin-bottom: 0.5rem; }
+.results-tagline { font-family: var(--serif); font-size: 1rem; color: var(--text-secondary); line-height: 1.7; }
+.results-body { padding: 2rem; }
+.results-section { margin-bottom: 2rem; }
+.results-section-label { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.9rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+.why-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.why-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; line-height: 1.65; color: var(--text-secondary); }
+.why-list li::before { content: '▸'; color: var(--accent); font-size: 0.7rem; margin-top: 0.28rem; flex-shrink: 0; }
+.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.feature-cell { background: var(--bg-card); padding: 0.85rem 1rem; }
+.feature-cell .fc-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
+.feature-cell .fc-val { font-size: 0.88rem; color: var(--text); line-height: 1.5; }
+.feature-cell .fc-val.good { color: #6bcb77; }
+.feature-cell .fc-val.neutral { color: var(--text-secondary); }
+.feature-cell .fc-val.bad { color: #e07070; }
+.cost-banner { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 1rem 1.25rem; display: flex; align-items: center; gap: 1rem; }
+.cost-icon { font-size: 1.5rem; }
+.cost-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.2rem; }
+.cost-range { font-family: var(--display); font-size: 1.1rem; color: var(--accent); }
+.next-step-block { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; }
+.next-step-block p { font-family: var(--serif); font-size: 0.95rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 1.25rem; }
+.cta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.btn-primary { display: inline-block; background: var(--accent); color: #0a0a0a; font-family: var(--sans); font-weight: 600; font-size: 0.82rem; letter-spacing: 0.06em; padding: 0.85rem 1.75rem; border-radius: 2px; text-decoration: none; transition: opacity 0.2s; }
+.btn-primary:hover { opacity: 0.85; }
+.btn-outline { display: inline-block; border: 1px solid var(--accent-border); color: var(--accent); font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.06em; padding: 0.82rem 1.6rem; border-radius: 2px; text-decoration: none; transition: background 0.2s; }
+.btn-outline:hover { background: var(--accent-dim); }
+.startover-row { text-align: center; margin-top: 1.5rem; }
+.startover-btn { background: none; border: 1px solid var(--border); color: var(--text-muted); font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.08em; padding: 0.7rem 1.5rem; border-radius: 2px; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+.startover-btn:hover { border-color: var(--text-muted); color: var(--text); }
+
+/* ── DISCLAIMER ── */
+.disclaimer { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 2rem; font-size: 0.72rem; color: var(--text-muted); line-height: 1.75; }
+.disclaimer strong { color: var(--text-secondary); }
+
+/* ── FOOTER ── */
+footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; text-align: center; margin-top: 2rem; }
+.footer-logo { font-family: var(--display); font-size: 1rem; color: var(--text); margin-bottom: 1.25rem; }
+.footer-logo span { color: var(--accent); }
+.footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1.5rem; }
+.footer-links a { font-size: 0.7rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; }
+.footer-links a:hover { color: var(--accent); }
+.footer-legal { font-size: 0.68rem; color: var(--text-muted); max-width: 480px; margin: 0 auto; line-height: 1.75; }
+
+@media (max-width: 560px) {
+  .question-card, .results-body { padding: 1.5rem 1.25rem; }
+  .results-hero { padding: 2rem 1.25rem 1.5rem; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .cta-row { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-mark">The Bitcoin <span>Family Office</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/">Home</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/blog/">Research</a></li>
+    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/faq/">FAQ</a></li>
+    <li><a href="/monitor/signup" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main>
+  <div class="wrap">
+
+    <!-- Breadcrumb -->
+    <div style="padding:0.5rem 0 0;font-size:0.72rem;color:var(--text-muted);">
+      <a href="/" style="color:var(--text-muted);text-decoration:none;">Home</a>
+      <span style="margin:0 0.4rem;">›</span>
+      <a href="/tools/" style="color:var(--text-muted);text-decoration:none;">Tools</a>
+      <span style="margin:0 0.4rem;">›</span>
+      <span style="color:var(--text-secondary);">Trust Type Selector</span>
+    </div>
+
+    <header class="page-header">
+      <p class="page-label">Planning Tool</p>
+      <h1>Bitcoin Trust Type Selector</h1>
+      <p>Answer 6 questions to find the right trust structure for your Bitcoin estate plan. Takes under 3 minutes.</p>
+    </header>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-label">
+        <span>Question <span id="progressStep">1</span> of 6</span>
+        <span id="progressPct">0% complete</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- QUESTION CONTAINER -->
+    <div id="questionContainer"></div>
+
+    <!-- RESULTS CONTAINER -->
+    <div id="resultsContainer" style="display:none;"></div>
+
+  </div><!-- /.wrap -->
+</main>
+
+<footer>
+  <div class="footer-logo">The Bitcoin <span>Family Office</span></div>
+  <nav class="footer-links">
+    <a href="/">Home</a><a href="/services/">Services</a><a href="/blog/">Research</a>
+    <a href="/tools/">Tools</a><a href="/about/">About</a><a href="/faq/">FAQ</a><a href="/disclosures/">Disclosures</a>
+  </nav>
+  <p class="footer-legal">The Bitcoin Family Office provides educational content for high-net-worth Bitcoin holders. Nothing on this site constitutes legal, tax, financial, or investment advice. &copy; 2026 The Bitcoin Family Office.</p>
+</footer>
+
+<script>
+// ── NAV TOGGLE ──────────────────────────────────────────────────────────────
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// ── QUESTIONS DATA ──────────────────────────────────────────────────────────
+const questions = [
+  {
+    id: 'value',
+    text: 'What is your approximate Bitcoin holdings value?',
+    options: [
+      { value: 'under500k', label: 'Under $500K' },
+      { value: '500kto2m',  label: '$500K – $2M' },
+      { value: '2to10m',   label: '$2M – $10M' },
+      { value: 'over10m',  label: 'Over $10M' }
+    ]
+  },
+  {
+    id: 'goal',
+    text: 'What is your primary goal with this trust?',
+    options: [
+      { value: 'estate_tax', label: 'Minimize estate taxes' },
+      { value: 'creditors',  label: 'Protect assets from creditors' },
+      { value: 'children',   label: 'Pass Bitcoin to my children' },
+      { value: 'grandchildren', label: 'Pass Bitcoin to grandchildren or further' },
+      { value: 'charity',    label: 'Include charitable giving' }
+    ]
+  },
+  {
+    id: 'control',
+    text: 'How much control do you want to maintain during your lifetime?',
+    options: [
+      { value: 'full',        label: 'Yes — full control, I want to be trustee and can amend anytime' },
+      { value: 'some',        label: 'Yes — some control, I can retain certain benefits' },
+      { value: 'irrevocable', label: 'No — irrevocable is fine if it gets the tax benefits' }
+    ]
+  },
+  {
+    id: 'married',
+    text: 'Are you married?',
+    options: [
+      { value: 'yes',         label: 'Yes' },
+      { value: 'no',          label: 'No' },
+      { value: 'domestic',    label: 'Domestic partnership' }
+    ]
+  },
+  {
+    id: 'prevChildren',
+    text: 'Do you have children from a previous relationship?',
+    options: [
+      { value: 'yes', label: 'Yes — I need to protect their inheritance separately' },
+      { value: 'no',  label: 'No' }
+    ]
+  },
+  {
+    id: 'privacy',
+    text: 'How important is privacy in your estate plan?',
+    options: [
+      { value: 'very',     label: 'Very important — keep assets and heirs private' },
+      { value: 'somewhat', label: 'Somewhat important' },
+      { value: 'not',      label: 'Not a primary concern' }
+    ]
+  }
+];
+
+// ── TRUST PROFILES ──────────────────────────────────────────────────────────
+const trustProfiles = {
+  revocable: {
+    name: 'Revocable Living Trust',
+    tagline: 'Foundational, flexible, probate-free — the right starting point for most Bitcoin holders.',
+    url: '/blog/bitcoin-revocable-living-trust.html',
+    why: [
+      'You retain full control as your own trustee — amend or revoke at any time without tax consequences.',
+      'Bitcoin passes to heirs instantly at death, bypassing public probate and preserving privacy.',
+      'Simple foundation that can be upgraded to irrevocable structures as your wealth grows.'
+    ],
+    features: [
+      { label: 'Probate avoidance', value: 'Yes', cls: 'good' },
+      { label: 'Estate tax reduction', value: 'No — still in taxable estate', cls: 'bad' },
+      { label: 'Creditor protection', value: 'Limited', cls: 'neutral' },
+      { label: 'Control retained', value: 'Full', cls: 'good' },
+      { label: 'Setup complexity', value: 'Low', cls: 'good' },
+      { label: 'Best for vs. alternatives', value: 'Best for $500K–$2M; pair with GRAT or SLAT at higher values', cls: 'neutral' }
+    ],
+    cost: '$3,000 – $8,000',
+    nextText: 'A Revocable Living Trust is your estate planning foundation. Read our full guide to structuring one for Bitcoin, then talk to our team about pairing it with irrevocable structures for tax efficiency.'
+  },
+  irrevocable: {
+    name: 'Irrevocable Trust',
+    tagline: 'Removes Bitcoin from your taxable estate while locking in creditor and legal protection.',
+    url: '/blog/bitcoin-irrevocable-trust.html',
+    why: [
+      'Bitcoin moved into the trust is removed from your taxable estate — a key tool for holders facing estate tax exposure.',
+      'Provides the strongest creditor protection of any trust structure, shielding Bitcoin from lawsuits and judgments.',
+      'With a professional trustee, ensures disciplined Bitcoin governance and proper succession — no heir can unilaterally liquidate.'
+    ],
+    features: [
+      { label: 'Probate avoidance', value: 'Yes', cls: 'good' },
+      { label: 'Estate tax reduction', value: 'Yes — if properly structured', cls: 'good' },
+      { label: 'Creditor protection', value: 'Strong', cls: 'good' },
+      { label: 'Control retained', value: 'Limited after funding', cls: 'neutral' },
+      { label: 'Setup complexity', value: 'Moderate–High', cls: 'neutral' },
+      { label: 'Best for vs. alternatives', value: 'Single-life holders; married holders may prefer SLAT for retained benefits', cls: 'neutral' }
+    ],
+    cost: '$8,000 – $25,000',
+    nextText: 'An Irrevocable Trust is a significant commitment — Bitcoin moved in cannot come back out. Read our complete guide to Bitcoin irrevocable trusts before engaging an attorney, then schedule a consultation to model your specific situation.'
+  },
+  dynasty: {
+    name: 'Dynasty Trust',
+    tagline: 'Keeps Bitcoin in your family across generations — free from estate tax at every generational transfer.',
+    url: '/blog/bitcoin-dynasty-trust.html',
+    why: [
+      'Bitcoin compounds inside the dynasty trust for 100–1,000 years (depending on state), free from estate tax at each generation.',
+      'Eliminates generation-skipping transfer (GST) tax on transfers to grandchildren and great-grandchildren.',
+      'Wyoming and South Dakota allow perpetual dynasty trusts — the optimal jurisdictions for Bitcoin dynasty structures.'
+    ],
+    features: [
+      { label: 'Probate avoidance', value: 'Yes', cls: 'good' },
+      { label: 'Estate/GST tax', value: 'Eliminated at each generation', cls: 'good' },
+      { label: 'Creditor protection', value: 'Excellent', cls: 'good' },
+      { label: 'Duration', value: 'Perpetual (WY/SD)', cls: 'good' },
+      { label: 'Setup complexity', value: 'High', cls: 'neutral' },
+      { label: 'Best for vs. alternatives', value: 'Optimal for $5M+ Bitcoin with multi-generational intent; combines well with GST exemption planning', cls: 'neutral' }
+    ],
+    cost: '$25,000 – $75,000+',
+    nextText: 'Dynasty Trusts require careful planning around the generation-skipping tax exemption and trust situs. Wyoming is the premier Bitcoin dynasty trust jurisdiction. Read the full guide, then let\'s talk about structuring your generational Bitcoin legacy.'
+  },
+  grat: {
+    name: 'Grantor Retained Annuity Trust (GRAT)',
+    tagline: 'Transfer future Bitcoin appreciation to heirs with zero gift tax — ideal for high-growth assets.',
+    url: '/blog/bitcoin-grat-grantor-retained-annuity-trust.html',
+    why: [
+      'You receive a fixed annuity from the trust for its term, then any appreciation above the IRS hurdle rate passes to heirs gift-tax free.',
+      'Particularly powerful for Bitcoin: if BTC appreciates significantly during the GRAT term, the transfer to heirs is massively tax-efficient.',
+      'Rolling short-term GRATs (2–3 year terms) spread the risk — any appreciation goes to heirs; any underperformance simply returns the asset to you.'
+    ],
+    features: [
+      { label: 'Estate tax benefit', value: 'Yes — removes appreciation', cls: 'good' },
+      { label: 'Gift tax cost', value: 'Near-zero if structured correctly', cls: 'good' },
+      { label: 'Control retained', value: 'Annuity payments retained', cls: 'good' },
+      { label: 'Risk', value: 'If grantor dies during term, assets return to estate', cls: 'neutral' },
+      { label: 'Best for', value: 'High-appreciation assets like Bitcoin held by single holders', cls: 'good' },
+      { label: 'Setup complexity', value: 'Moderate', cls: 'neutral' }
+    ],
+    cost: '$10,000 – $25,000',
+    nextText: 'GRATs are one of the most powerful estate planning tools available for Bitcoin, especially during periods of high expected appreciation. Read our Bitcoin GRAT guide to understand how to model the outcomes, then use our GRAT Optimizer to run the numbers on your position.'
+  },
+  crt: {
+    name: 'Charitable Remainder Trust (CRT)',
+    tagline: 'Convert appreciated Bitcoin to an income stream while eliminating capital gains and reducing your taxable estate.',
+    url: '/blog/bitcoin-charitable-remainder-trust.html',
+    why: [
+      'Donate appreciated Bitcoin to a CRT, get an immediate partial charitable deduction, and receive annual income from the trust for life.',
+      'Bitcoin transferred into the CRT avoids capital gains tax on the sale — a powerful strategy for those with low-basis BTC.',
+      'Remainder goes to your chosen charity at death, removing the full value from your taxable estate.'
+    ],
+    features: [
+      { label: 'Capital gains avoidance', value: 'Yes — on BTC sold inside trust', cls: 'good' },
+      { label: 'Income stream', value: 'Yes — for life or term', cls: 'good' },
+      { label: 'Charitable deduction', value: 'Partial — at funding', cls: 'good' },
+      { label: 'Estate inclusion', value: 'Removed from estate', cls: 'good' },
+      { label: 'Heirs receive trust assets', value: 'No — remainder to charity', cls: 'bad' },
+      { label: 'Best for', value: 'Charitably inclined holders with low-basis BTC', cls: 'good' }
+    ],
+    cost: '$8,000 – $20,000',
+    nextText: 'Charitable Remainder Trusts are a sophisticated tax strategy that works best when you have meaningful charitable intent alongside significant unrealized Bitcoin gains. Read our complete CRT guide to understand how to pair it with other structures.'
+  },
+  slat: {
+    name: 'Spousal Lifetime Access Trust (SLAT)',
+    tagline: 'Remove Bitcoin from your taxable estate while your spouse retains access — the optimal married-couple structure.',
+    url: '/blog/bitcoin-slat-estate-planning.html',
+    why: [
+      'Bitcoin is moved out of your taxable estate as an irrevocable gift, but your spouse (as beneficiary) retains full access to trust income and principal.',
+      'Doubles the estate tax benefit for married couples: both spouses can create reciprocal SLATs (with careful timing and structuring to avoid the reciprocal trust doctrine).',
+      'Provides strong asset protection while maintaining indirect access to Bitcoin through your spouse.'
+    ],
+    features: [
+      { label: 'Estate tax reduction', value: 'Yes — gift removes from estate', cls: 'good' },
+      { label: 'Spouse access retained', value: 'Yes — as beneficiary', cls: 'good' },
+      { label: 'Grantor access', value: 'Indirect only (via spouse)', cls: 'neutral' },
+      { label: 'Creditor protection', value: 'Strong', cls: 'good' },
+      { label: 'Reciprocal risk', value: 'Careful timing required', cls: 'neutral' },
+      { label: 'Best for', value: 'Married couples with $3M+ in Bitcoin facing estate tax', cls: 'good' }
+    ],
+    cost: '$15,000 – $35,000',
+    nextText: 'SLATs are the premier married-couple Bitcoin estate planning tool — they accomplish estate tax reduction while maintaining indirect access. Read our complete SLAT guide, then talk to our team about pairing reciprocal SLATs for maximum estate tax efficiency.'
+  },
+  minors: {
+    name: 'Trust for Minors',
+    tagline: 'Protect and transfer Bitcoin to children with age-gated distributions and guardian oversight.',
+    url: '/blog/bitcoin-trust-for-minors.html',
+    why: [
+      'Prevents minor children (or irresponsible young adults) from receiving and immediately spending inherited Bitcoin.',
+      'Staggered distribution schedules (e.g., 25% at 25, 25% at 30, 50% at 35) preserve Bitcoin wealth across the heir\'s lifetime.',
+      'Particularly important when children are from multiple relationships — clear trust terms prevent disputes and protect each child\'s share.'
+    ],
+    features: [
+      { label: 'Probate avoidance', value: 'Yes', cls: 'good' },
+      { label: 'Age-gated distributions', value: 'Yes — customizable', cls: 'good' },
+      { label: 'Guardian/trustee control', value: 'Until distribution ages', cls: 'good' },
+      { label: 'Estate tax benefit', value: 'Limited — still in estate if revocable', cls: 'neutral' },
+      { label: 'Blended family protection', value: 'Excellent', cls: 'good' },
+      { label: 'Best for', value: 'Any Bitcoin holder with minor children or children from multiple relationships', cls: 'good' }
+    ],
+    cost: '$5,000 – $15,000',
+    nextText: 'Trusts for minors are an essential tool for any Bitcoin holder with young children or complex family situations. Read our guide to structuring Bitcoin trusts for minors, then let\'s talk about the right distribution schedule and custody architecture for your situation.'
+  },
+  gst: {
+    name: 'Generation-Skipping Trust',
+    tagline: 'Pass Bitcoin to grandchildren or great-grandchildren free from the generation-skipping transfer tax.',
+    url: '/blog/bitcoin-generation-skipping-trust.html',
+    why: [
+      'Applies your GST tax exemption to Bitcoin transfers to grandchildren, skipping a full generation of estate tax.',
+      'Each generation-skipping transfer normally triggers a 40% GST tax on top of estate tax — this structure eliminates that second layer.',
+      'Ideal for families where children are already financially secure and the goal is wealth preservation for grandchildren.'
+    ],
+    features: [
+      { label: 'Estate tax', value: 'Reduced at first generation', cls: 'good' },
+      { label: 'GST tax', value: 'Eliminated when exemption applied', cls: 'good' },
+      { label: 'Generation skip', value: '1–2 generations', cls: 'good' },
+      { label: 'Duration', value: 'State-dependent', cls: 'neutral' },
+      { label: 'Complexity', value: 'High — requires GST allocation', cls: 'neutral' },
+      { label: 'vs. Dynasty Trust', value: 'GST Trust is shorter-term; Dynasty Trust is perpetual', cls: 'neutral' }
+    ],
+    cost: '$15,000 – $40,000',
+    nextText: 'Generation-Skipping Trusts require careful application of the GST tax exemption at funding — mistakes here are very costly. Read our complete guide, then consult with a qualified estate attorney before taking any steps.'
+  }
+};
+
+// ── STATE ──────────────────────────────────────────────────────────────────
+let currentStep = 0;
+const answers = {};
+
+// ── RECOMMENDATION ENGINE ──────────────────────────────────────────────────
+function getRecommendation(a) {
+  const { value, goal, control, married, prevChildren, privacy } = a;
+
+  // Charity always → CRT
+  if (goal === 'charity') return 'crt';
+
+  // Under $500K + full control → Revocable Living Trust (start simple)
+  if (value === 'under500k' && control === 'full') return 'revocable';
+  if (value === 'under500k' && goal === 'children') return 'revocable';
+
+  // Pass to grandchildren
+  if (goal === 'grandchildren') {
+    if (value === 'over10m' || value === '2to10m') return 'dynasty';
+    return 'gst';
+  }
+
+  // Estate tax reduction
+  if (goal === 'estate_tax') {
+    if ((married === 'yes' || married === 'domestic') && control !== 'full') return 'slat';
+    if (married === 'no' && (value === '2to10m' || value === 'over10m') && control === 'irrevocable') return 'grat';
+    if (married === 'no' && control !== 'full') return 'grat';
+    if (value === 'over10m') return 'dynasty';
+    if (control === 'full') return 'revocable'; // starting point, needs upgrade
+    return 'irrevocable';
+  }
+
+  // Creditor protection
+  if (goal === 'creditors') return 'irrevocable';
+
+  // Pass to children
+  if (goal === 'children') {
+    if (prevChildren === 'yes') return 'minors';
+    if (control === 'full') return 'revocable';
+    if (value === 'over10m') return 'dynasty';
+    return 'irrevocable';
+  }
+
+  // Large holdings + privacy
+  if (value === 'over10m' && privacy === 'very') return 'dynasty';
+  if (value === 'over10m') return 'dynasty';
+  if (value === '2to10m' && control !== 'full') return 'irrevocable';
+
+  return 'revocable';
+}
+
+// ── RENDER ─────────────────────────────────────────────────────────────────
+function updateProgress(step) {
+  const pct = Math.round((step / questions.length) * 100);
+  document.getElementById('progressStep').textContent = Math.min(step + 1, questions.length);
+  document.getElementById('progressPct').textContent = pct + '% complete';
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+function renderQuestion(index) {
+  const q = questions[index];
+  updateProgress(index);
+
+  const selectedVal = answers[q.id] || null;
+
+  const optionsHTML = q.options.map(opt => `
+    <button class="option-btn${selectedVal === opt.value ? ' selected' : ''}"
+            onclick="selectAnswer('${q.id}', '${opt.value}', ${index})"
+            data-value="${opt.value}">
+      <span class="option-dot"></span>
+      <span>${opt.label}</span>
+    </button>
+  `).join('');
+
+  document.getElementById('questionContainer').innerHTML = `
+    <div class="question-card">
+      <p class="q-number">Question ${index + 1} of ${questions.length}</p>
+      <h2 class="q-text">${q.text}</h2>
+      <div class="options">${optionsHTML}</div>
+    </div>
+  `;
+}
+
+function selectAnswer(questionId, value, stepIndex) {
+  answers[questionId] = value;
+
+  // GA4 event
+  if (typeof gtag === 'function') {
+    gtag('event', 'trust_selector_step', { step: stepIndex + 1, answer: value, question: questionId });
+  }
+
+  // Re-render to show selection
+  renderQuestion(stepIndex);
+
+  // Auto-advance after brief delay
+  setTimeout(() => {
+    const nextStep = stepIndex + 1;
+    if (nextStep < questions.length) {
+      currentStep = nextStep;
+      renderQuestion(nextStep);
+    } else {
+      showResults();
+    }
+  }, 320);
+}
+
+function showResults() {
+  const trustKey = getRecommendation(answers);
+  const trust = trustProfiles[trustKey];
+
+  // GA4 completion event
+  if (typeof gtag === 'function') {
+    gtag('event', 'trust_selector_complete', { recommendation: trustKey });
+  }
+
+  // Hide question container, show results
+  document.getElementById('questionContainer').style.display = 'none';
+  document.getElementById('progressWrap').style.display = 'none';
+
+  const featuresHTML = trust.features.map(f => `
+    <div class="feature-cell">
+      <div class="fc-label">${f.label}</div>
+      <div class="fc-val ${f.cls}">${f.value}</div>
+    </div>
+  `).join('');
+
+  const whyHTML = trust.why.map(w => `<li>${w}</li>`).join('');
+
+  document.getElementById('resultsContainer').innerHTML = `
+    <div class="results-card">
+      <div class="results-hero">
+        <p class="results-label">Your Recommended Trust Type</p>
+        <h2 class="results-trust-type">${trust.name}</h2>
+        <p class="results-tagline">${trust.tagline}</p>
+      </div>
+      <div class="results-body">
+        <div class="results-section">
+          <p class="results-section-label">Why This Fits You</p>
+          <ul class="why-list">${whyHTML}</ul>
+        </div>
+        <div class="results-section">
+          <p class="results-section-label">Key Features &amp; Comparisons</p>
+          <div class="feature-grid">${featuresHTML}</div>
+        </div>
+        <div class="results-section">
+          <p class="results-section-label">Estimated Setup Cost</p>
+          <div class="cost-banner">
+            <span class="cost-icon">₿</span>
+            <div>
+              <div class="cost-label">Attorney + Trust formation</div>
+              <div class="cost-range">${trust.cost}</div>
+            </div>
+          </div>
+        </div>
+        <div class="results-section">
+          <p class="results-section-label">Next Step</p>
+          <div class="next-step-block">
+            <p>${trust.nextText}</p>
+            <div class="cta-row">
+              <a href="${trust.url}" class="btn-primary">Read the ${trust.name} Guide →</a>
+              <a href="/services/" class="btn-outline">Talk to Our Team →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="startover-row">
+      <button class="startover-btn" onclick="startOver()">↺ Start Over — Answer Different Questions</button>
+    </div>
+    <div class="disclaimer">
+      <strong>Educational Tool Disclaimer.</strong> This selector provides general educational guidance only and does not constitute legal, tax, or financial advice. Trust type recommendations are based on simplified inputs and do not account for your complete financial picture, state law specifics, or current tax law. Estate planning decisions require qualified legal counsel. Always consult a licensed estate planning attorney and CPA before creating any trust or transferring assets.
+    </div>
+  `;
+
+  document.getElementById('resultsContainer').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function startOver() {
+  // Reset state
+  currentStep = 0;
+  Object.keys(answers).forEach(k => delete answers[k]);
+
+  // Show question UI, hide results
+  document.getElementById('resultsContainer').style.display = 'none';
+  document.getElementById('resultsContainer').innerHTML = '';
+  document.getElementById('progressWrap').style.display = 'block';
+  document.getElementById('questionContainer').style.display = 'block';
+
+  renderQuestion(0);
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'trust_selector_restart', {});
+  }
+}
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+  renderQuestion(0);
+});
+</script>
+
+</body>
+</html>
