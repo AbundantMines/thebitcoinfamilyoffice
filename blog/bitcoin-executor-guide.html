@@ -3,361 +3,1017 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bitcoin Executor Guide: How to Handle a Bitcoin Estate | The Bitcoin Family Office</title>
-  <meta name="description" content="A step-by-step guide for executors and successor trustees handling a Bitcoin estate. What to do in the first 60 days, how to avoid scams, and how to transfer Bitcoin to heirs.">
+  <title>The Bitcoin Executor's Guide: How to Administer an Estate with Digital Assets | The Bitcoin Family Office</title>
+  <meta name="description" content="A complete guide for estate executors who discover the deceased held Bitcoin. Learn how to locate digital assets, access hardware wallets safely, work with attorneys, handle taxes, and distribute crypto to beneficiaries.">
   <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-executor-guide">
-  <meta property="og:title" content="Bitcoin Executor Guide: Handling a Bitcoin Estate — The Bitcoin Family Office">
-  <meta property="og:description" content="Named executor or successor trustee for a Bitcoin estate? This guide walks you through the first 60 days: securing assets, establishing legal authority, and transferring to heirs.">
-  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+  <meta property="og:title" content="The Bitcoin Executor's Guide: How to Administer an Estate with Digital Assets">
+  <meta property="og:description" content="A complete guide for estate executors handling Bitcoin in an estate. Covers asset location, hardware wallet access, attorney coordination, tax obligations, and beneficiary distribution.">
+  <meta property="og:image" content="/assets/og-image.png">
   <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-executor-guide">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=EB+Garamond:wght@400;500&family=EB+Garamond:ital@1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=EB+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
   <script>
-    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');
-    document.addEventListener('click',function(e){gtag('event','hm_click',{x:e.clientX,y:e.clientY,path:window.location.pathname});});
-    var _sm={25:0,50:0,75:0,100:0};window.addEventListener('scroll',function(){var p=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);[25,50,75,100].forEach(function(m){if(p>=m&&!_sm[m]){_sm[m]=1;gtag('event','hm_scroll',{depth:m,path:window.location.pathname});}});});
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('a[href]');
+      if (el) {
+        gtag('event', 'hm_click', { link_url: el.href, link_text: el.innerText });
+      }
+    });
+    var lastScroll = 0;
+    window.addEventListener('scroll', function() {
+      var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      if (pct >= lastScroll + 25) {
+        lastScroll = pct;
+        gtag('event', 'hm_scroll', { scroll_depth: pct });
+      }
+    });
   </script>
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[
-    {"@type":"HowTo","name":"How to Handle a Bitcoin Estate as Executor","description":"A 12-step guide for executors and successor trustees managing a Bitcoin estate through the probate and succession process.","step":[
-      {"@type":"HowToStep","position":1,"name":"Do Not Touch the Hardware Wallet","text":"Secure the physical device but do not attempt to access Bitcoin yet. Document its location."},
-      {"@type":"HowToStep","position":2,"name":"Find the Letter of Instruction","text":"The Letter of Instruction contains custody details, wallet locations, and your operational roadmap. Locate it immediately."},
-      {"@type":"HowToStep","position":3,"name":"Secure All Physical Access Points","text":"Photograph hardware wallets, seed backup locations, and any documents. Do not access."},
-      {"@type":"HowToStep","position":4,"name":"Contact a Bitcoin-Literate Estate Attorney","text":"You need legal authority before touching anything. File for Letters Testamentary or begin trust administration."},
-      {"@type":"HowToStep","position":5,"name":"Establish the Date-of-Death Value","text":"Record the BTC price and wallet balance on the date of death for estate tax and step-up basis purposes."},
-      {"@type":"HowToStep","position":6,"name":"Do Not Sell Bitcoin Prematurely","text":"Heirs receive a step-up in basis at death. Selling before establishing stepped-up basis triggers capital gains."},
-      {"@type":"HowToStep","position":7,"name":"Engage a Bitcoin CPA","text":"Estate tax returns, step-up basis, HIFO cost basis — these require a CPA who understands Bitcoin accounting."},
-      {"@type":"HowToStep","position":8,"name":"Guard Against Scams","text":"Scammers monitor obituaries. No legitimate professional will contact you unsolicited to help with Bitcoin inheritance."},
-      {"@type":"HowToStep","position":9,"name":"Inventory and Document All Holdings","text":"Hardware wallets, software wallets, exchange accounts, Lightning nodes — create a complete holdings inventory."},
-      {"@type":"HowToStep","position":10,"name":"Transfer to Heirs or Beneficiaries","text":"With legal authority established and attorney guidance, execute the transfer according to the will or trust."},
-      {"@type":"HowToStep","position":11,"name":"File Required Tax Returns","text":"Estate tax return (Form 706 if applicable), final income tax return, and any state estate tax filings."},
-      {"@type":"HowToStep","position":12,"name":"Document Everything","text":"Keep meticulous records of every action, decision, and transfer as executor. You have a fiduciary duty."}
-    ]},
-    {"@type":"Article","headline":"Bitcoin Executor Guide: How to Handle a Bitcoin Estate","datePublished":"2026-02-25","dateModified":"2026-02-25","author":{"@type":"Person","name":"Hal Turner","jobTitle":"Editor","worksFor":{"@type":"Organization","name":"The Bitcoin Family Office"}},"publisher":{"@type":"Organization","name":"The Bitcoin Family Office","url":"https://thebitcoinfamilyoffice.com"}},
-    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://thebitcoinfamilyoffice.com"},{"@type":"ListItem","position":2,"name":"Research","item":"https://thebitcoinfamilyoffice.com/blog/"},{"@type":"ListItem","position":3,"name":"Bitcoin Executor Guide","item":"https://thebitcoinfamilyoffice.com/blog/bitcoin-executor-guide"}]}
-  ]}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "The Bitcoin Executor's Guide: How to Administer an Estate with Digital Assets",
+        "description": "A complete guide for estate executors who discover the deceased held Bitcoin. Covers asset location, hardware wallet access, attorney coordination, tax obligations, and beneficiary distribution.",
+        "datePublished": "2026-02-26",
+        "dateModified": "2026-02-26",
+        "author": {
+          "@type": "Person",
+          "name": "Hal Turner",
+          "jobTitle": "Bitcoin Estate Planning Analyst",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "The Bitcoin Family Office"
+          }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "The Bitcoin Family Office",
+          "url": "https://thebitcoinfamilyoffice.com"
+        },
+        "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-executor-guide",
+        "image": "https://thebitcoinfamilyoffice.com/assets/og-image.png",
+        "mainEntityOfPage": "https://thebitcoinfamilyoffice.com/blog/bitcoin-executor-guide"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://thebitcoinfamilyoffice.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://thebitcoinfamilyoffice.com/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "The Bitcoin Executor's Guide",
+            "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-executor-guide"
+          }
+        ]
+      }
+    ]
+  }
   </script>
+
   <style>
-    :root{--bg:#0a0a0a;--bg-elevated:#111111;--bg-card:#141414;--border:#1e1e1e;--text:#e8e0d0;--text-secondary:#8a8070;--accent:#c9a84c;--accent-border:rgba(201,168,76,0.3);--display:'Playfair Display',Georgia,serif;--serif:'EB Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{background:var(--bg);color:var(--text);font-family:var(--serif);font-size:1.05rem;line-height:1.8;}
-    nav{background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;}
-    .nav-logo{font-family:var(--display);font-size:1.05rem;color:var(--text);text-decoration:none;}.nav-logo span{color:var(--accent);}
-    .nav-links{display:flex;gap:2rem;list-style:none;}.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;}.nav-links a:hover{color:var(--accent);}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}.hamburger span{display:block;width:24px;height:2px;background:var(--text);}
-    .nav-mobile{display:none;position:fixed;top:60px;left:0;right:0;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;}.nav-mobile.open{display:flex;}.nav-mobile a{color:var(--text-secondary);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 0;border-bottom:1px solid var(--border);}
-    @media(max-width:768px){.nav-links{display:none;}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);align-items:center;justify-content:center;gap:2.5rem;z-index:150;}.hamburger{display:flex;}}
-    .wrap{max-width:760px;margin:0 auto;padding:0 2rem;}
-    .breadcrumb{padding:1.25rem 0 0;font-size:0.72rem;color:var(--text-secondary);}
-    .breadcrumb a{color:var(--text-secondary);text-decoration:none;}.breadcrumb a:hover{color:var(--accent);}
-    header.article-header{padding:2.5rem 0 1.5rem;}
-    .article-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
-    h1{font-family:var(--display);font-size:clamp(1.9rem,3.5vw,2.6rem);color:var(--text);line-height:1.2;margin-bottom:1rem;}
-    .article-meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-family:var(--sans);font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.5rem;}
-    .article-intro{font-size:1.12rem;color:var(--text-secondary);line-height:1.85;border-left:2px solid var(--accent-border);padding-left:1.25rem;margin-bottom:2rem;}
-    .toc{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.5rem 2rem;margin-bottom:2.5rem;}
-    .toc h4{font-family:var(--sans);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem;}
-    .toc ol{padding-left:1.25rem;}.toc li{margin-bottom:0.35rem;}.toc a{color:var(--text-secondary);text-decoration:none;font-family:var(--sans);font-size:0.82rem;}.toc a:hover{color:var(--accent);}
-    h2{font-family:var(--display);font-size:1.6rem;color:var(--text);margin:2.5rem 0 1rem;line-height:1.3;}
-    h3{font-family:var(--sans);font-size:1rem;font-weight:600;color:var(--text);margin:1.75rem 0 0.6rem;letter-spacing:0.02em;}
-    p{margin-bottom:1.1rem;}
-    a{color:var(--accent);text-decoration:none;}.article-body a:hover{text-decoration:underline;}
-    strong{font-weight:600;color:var(--text);}
-    .step-block{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:1.5rem 1.75rem;margin:1.5rem 0;}
-    .step-block.phase-1{border-left:3px solid #e74c3c;}
-    .step-block.phase-2{border-left:3px solid var(--accent);}
-    .step-block.phase-3{border-left:3px solid #2ecc71;}
-    .step-num{font-family:var(--sans);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.4rem;}
-    .step-title{font-family:var(--display);font-size:1.1rem;color:var(--text);margin-bottom:0.6rem;}
-    .phase-header{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.4rem 0.8rem;border-radius:2px;display:inline-block;margin-bottom:1.25rem;}
-    .phase-1-hdr{background:rgba(231,76,60,0.12);color:#e74c3c;border:1px solid rgba(231,76,60,0.3);}
-    .phase-2-hdr{background:rgba(201,168,76,0.12);color:var(--accent);border:1px solid var(--accent-border);}
-    .phase-3-hdr{background:rgba(46,204,113,0.12);color:#2ecc71;border:1px solid rgba(46,204,113,0.3);}
-    .warning-box{background:rgba(231,76,60,0.08);border:1px solid rgba(231,76,60,0.3);border-radius:4px;padding:1.5rem;margin:1.5rem 0;}
-    .warning-box strong{color:#e74c3c;}
-    .info-box{background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin:1.5rem 0;}
-    .checklist{list-style:none;padding:0;}
-    .checklist li{padding:0.4rem 0;padding-left:1.5rem;position:relative;font-family:var(--sans);font-size:0.88rem;color:var(--text-secondary);}
-    .checklist li::before{content:"□";position:absolute;left:0;color:var(--accent);}
-    .cta-inline{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.25rem 1.5rem;margin:2rem 0;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
-    .cta-inline p{margin:0;font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);flex:1;}
-    .cta-inline a{font-family:var(--sans);font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1rem;border-radius:2px;white-space:nowrap;}
-    .related{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.5rem;margin:2rem 0;}
-    .related h4{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem;}
-    .related ul{list-style:none;padding:0;}.related li{margin-bottom:0.4rem;}.related a{font-family:var(--sans);font-size:0.82rem;}
-    .author-box{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.5rem;margin:2.5rem 0;}
-    .author-box .author-name{font-family:var(--display);font-size:1rem;color:var(--text);margin-bottom:0.25rem;}
-    .author-box p{font-size:0.82rem;color:var(--text-secondary);font-family:var(--sans);margin:0;}
-    .services-cta{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:6px;padding:2rem;text-align:center;margin:2rem 0;}
-    .services-cta h3{font-family:var(--display);font-size:1.2rem;margin-bottom:0.6rem;}
-    .services-cta p{font-size:0.9rem;color:var(--text-secondary);margin-bottom:1.25rem;font-family:var(--sans);}
-    .services-cta a{display:inline-block;background:var(--accent);color:var(--bg);font-family:var(--sans);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem 1.75rem;border-radius:2px;text-decoration:none;}
-    .disclaimer{font-size:0.78rem;color:var(--text-secondary);font-family:var(--sans);line-height:1.7;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2rem;}
-    footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;margin-top:2rem;}
-    .footer-logo{font-family:var(--display);font-size:1rem;color:var(--text);margin-bottom:1.25rem;}.footer-logo span{color:var(--accent);}
-    .footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:1.5rem;margin-bottom:1.5rem;}.footer-links a{font-size:0.72rem;color:var(--text-secondary);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;}.footer-links a:hover{color:var(--accent);}
-    .footer-legal{font-size:0.7rem;color:var(--text-secondary);max-width:480px;margin:0 auto;line-height:1.7;}
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+      --accent-border: rgba(201,168,76,.3);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: all .25s;
+    }
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      gap: 1rem;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .nav-mobile a:hover { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--text-secondary); }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb-sep { color: var(--border); }
+
+    /* ── ARTICLE HEADER ── */
+    .article-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+    .article-deck {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      border-left: 3px solid var(--accent-border);
+      padding-left: 1.25rem;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--text);
+      margin: 2.75rem 0 1rem;
+      line-height: 1.25;
+    }
+    h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 2rem 0 0.75rem;
+      letter-spacing: 0.02em;
+    }
+    p { margin-bottom: 1.35rem; }
+    ul, ol {
+      margin: 0 0 1.35rem 1.6rem;
+    }
+    li { margin-bottom: 0.45rem; }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+    }
+    .callout-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .callout p:last-child { margin-bottom: 0; }
+
+    .callout-danger {
+      border-left-color: #c0392b;
+      background: rgba(192,57,43,0.06);
+    }
+    .callout-danger .callout-label { color: #e74c3c; }
+
+    .callout-warning {
+      border-left-color: #e67e22;
+      background: rgba(230,126,34,0.06);
+    }
+    .callout-warning .callout-label { color: #e67e22; }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; margin: 2rem 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+    }
+    th {
+      background: var(--bg-card);
+      color: var(--accent);
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    td {
+      padding: 0.7rem 1rem;
+      border: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: var(--bg-card); }
+
+    /* ── STEP BOX ── */
+    .step-list {
+      counter-reset: steps;
+      list-style: none;
+      margin-left: 0;
+    }
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      align-items: flex-start;
+    }
+    .step-list li::before {
+      content: counter(steps);
+      background: var(--accent);
+      color: var(--bg);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      min-width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin: 2rem 0 2.5rem;
+    }
+    .toc-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    .toc ol {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+    .toc li { margin-bottom: 0.35rem; }
+    .toc a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .toc a:hover { color: var(--accent); }
+
+    /* ── SERVICES CTA ── */
+    .services-cta {
+      background: var(--bg-card);
+      border: 1px solid var(--accent-border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    .services-cta h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin: 0 0 0.75rem;
+    }
+    .services-cta p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+    .btn-primary:hover { opacity: 0.9; text-decoration: none; }
+
+    /* ── AM CTA ── */
+    .am-cta {
+      background: linear-gradient(135deg, #0f0e0b 0%, #1a1505 100%);
+      border: 1px solid var(--accent-border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 3rem 0;
+    }
+    .am-cta h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin: 0 0 0.75rem;
+    }
+    .am-cta p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+    .am-cta a.am-link {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.65rem 1.5rem;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+    .am-cta a.am-link:hover { background: var(--accent); color: var(--bg); text-decoration: none; }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin: 2.5rem 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .disclaimer strong { color: var(--text); }
+
+    /* ── AUTHOR BOX ── */
+    .author-box {
+      display: flex;
+      gap: 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 3rem 0 2rem;
+      align-items: flex-start;
+    }
+    .author-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--bg);
+      flex-shrink: 0;
+    }
+    .author-info h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .author-info .author-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .author-info p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    footer a { color: var(--text-secondary); }
+    footer a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
+
+<!-- Navigation -->
 <nav>
-  <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
-  <div class="nav-links" id="navLinks">
-      <a href="/" onclick="closeMenu()">Home</a>
-      <a href="/services/" onclick="closeMenu()">Services</a>
-      <a href="/blog/" onclick="closeMenu()">Research</a>
-      <a href="/news/" onclick="closeMenu()">News</a>
-      <a href="/monitor/" onclick="closeMenu()">Estate Watch</a>
-      <a href="/faq/" onclick="closeMenu()">FAQ</a>
-      <a href="/monitor/signup" class="nav-cta" onclick="closeMenu()">Get Started</a>
-    </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </button>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">The Bitcoin Family Office</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/tools/">Tools</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/monitor/">Estate Watch</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Toggle navigation" onclick="document.getElementById('mobile-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="mobile-nav">
+    <a href="/">Home</a>
+    <a href="/services/">Services</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Blog</a>
+    <a href="/monitor/">Estate Watch</a>
+    <a href="/about/">About</a>
+  </div>
 </nav>
 
-<div class="wrap">
-  <nav class="breadcrumb">
-    <a href="/">Home</a> <span style="margin:0 0.4rem;">›</span>
-    <a href="/blog/">Research</a> <span style="margin:0 0.4rem;">›</span>
-    <span style="color:var(--text);">Bitcoin Executor Guide</span>
-  </nav>
+<!-- Main Content -->
+<div class="page-wrapper">
 
-  <header class="article-header">
-    <p class="article-label">For Executors &amp; Successor Trustees</p>
-    <h1>Bitcoin Executor Guide: How to Handle a Bitcoin Estate in 12 Steps</h1>
-    <div class="article-meta">
-      <span>By Hal Turner</span>
-      <span>February 25, 2026</span>
-      <span>Executor Resource</span>
-      <span>~3,200 words</span>
-    </div>
-    <p class="article-intro">You've been named executor of an estate — or successor trustee of a trust — that includes Bitcoin. You have legal authority. What you may not have is the operational knowledge to act on it. This guide walks you through the next 60 days in 12 steps, starting with the single most important thing to do on day one (and what not to do).</p>
-  </header>
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="/">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="/blog/">Blog</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Bitcoin Executor's Guide</span>
+  </div>
 
+  <!-- Article Header -->
+  <div class="article-meta">Estate Administration · February 26, 2026</div>
+  <h1>The Bitcoin Executor's Guide: How to Administer an Estate with Digital Assets</h1>
+  <div class="article-deck">
+    You've been named executor of an estate and you've just discovered the deceased held Bitcoin. The assets may be worth tens — or hundreds — of thousands of dollars. They're also locked behind cryptography, private keys, and hardware devices you may never have encountered before. This guide walks you through every step.
+  </div>
+
+  <hr class="divider">
+
+  <!-- Table of Contents -->
   <div class="toc">
-    <h4>Contents</h4>
+    <div class="toc-title">Table of Contents</div>
     <ol>
-      <li><a href="#before-you-begin">Before You Begin: Three Things You Must Understand</a></li>
-      <li><a href="#phase-1">Phase 1 — Days 1–7: Secure and Document</a></li>
-      <li><a href="#phase-2">Phase 2 — Days 8–21: Establish Legal Authority</a></li>
-      <li><a href="#phase-3">Phase 3 — Days 22–60: Execute the Transfer</a></li>
-      <li><a href="#scam-warning">The Scam Warning Every Executor Needs</a></li>
-      <li><a href="#if-no-loi">If There Is No Letter of Instruction</a></li>
-      <li><a href="#professional-team">Building Your Professional Team</a></li>
+      <li><a href="#your-role">Your Role as Bitcoin Executor</a></li>
+      <li><a href="#locate-assets">Step 1: Locate the Bitcoin</a></li>
+      <li><a href="#hardware-wallets">Step 2: Accessing Hardware Wallets Safely</a></li>
+      <li><a href="#software-wallets">Step 3: Software Wallets and Exchange Accounts</a></li>
+      <li><a href="#seed-phrase-doctrine">The Seed Phrase Doctrine (Critical)</a></li>
+      <li><a href="#work-with-attorney">Step 4: Working with Estate Attorneys</a></li>
+      <li><a href="#tax-obligations">Step 5: Tax Obligations for Bitcoin Inheritances</a></li>
+      <li><a href="#valuation">Step 6: Valuing Bitcoin for the Estate</a></li>
+      <li><a href="#distribution">Step 7: Distributing Bitcoin to Beneficiaries</a></li>
+      <li><a href="#professional-help">When to Call a Professional</a></li>
+      <li><a href="#checklist">Executor Checklist</a></li>
     </ol>
   </div>
 
-  <div class="article-body">
+  <!-- Section 1 -->
+  <h2 id="your-role">Your Role as Bitcoin Executor</h2>
 
-    <h2 id="before-you-begin">Before You Begin: Three Things You Must Understand</h2>
+  <p>Being named executor — or personal representative, depending on your state — means you have a fiduciary duty to identify, protect, and distribute all assets belonging to the deceased. That duty extends fully to digital assets, including Bitcoin and other cryptocurrencies.</p>
 
-    <p>Bitcoin is fundamentally different from every other asset you will manage as executor. Before you take any action, understand these three realities:</p>
+  <p>But Bitcoin presents complications that no previous generation of executors has faced. Traditional assets have safeguards: banks freeze accounts on notice of death, brokerages place holds, real property titles are public record. Bitcoin has none of these mechanisms. A hardware wallet sitting in a desk drawer looks like a USB drive. The assets on it can vanish permanently if the device is wiped, the PIN is entered incorrectly too many times, or the recovery phrase is lost.</p>
 
-    <h3>1. Legal Authority ≠ Operational Access</h3>
-    <p>A court-issued Letters Testamentary makes you the legal executor of the estate. It gives you authority over bank accounts, brokerage accounts, real estate — and Bitcoin. But Bitcoin held in self-custody does not respond to court orders. The blockchain does not know you are the executor. Access to self-custodied Bitcoin requires the private keys or seed phrase — not a court document. You need both legal authority and operational access.</p>
+  <p>The good news: Bitcoin is designed to be held long-term. Assets on a properly secured hardware wallet aren't going anywhere unless someone actively moves them. Your first job isn't to access the funds — it's to secure them in place and gather information before taking any action.</p>
 
-    <h3>2. Irreversible Mistakes Are Possible</h3>
-    <p>Sending Bitcoin to the wrong address is permanent. Attempting to access a hardware wallet with the wrong PIN repeatedly can permanently lock or wipe the device. Acting on bad advice from someone claiming to be a "Bitcoin recovery specialist" can result in theft of the entire estate. The first rule of Bitcoin estate administration is: when in doubt, do nothing and get qualified help.</p>
+  <div class="callout">
+    <div class="callout-label">Core Principle</div>
+    <p>When in doubt, do nothing. Bitcoin secured properly will stay secured. Rushing to "do something" with a hardware wallet you don't understand is how assets disappear permanently. Secure the device, document what you find, and get expert help before touching anything.</p>
+  </div>
 
-    <h3>3. The Step-Up in Basis Is Valuable — Don't Destroy It</h3>
-    <p>When someone dies holding appreciated Bitcoin, their heirs receive a step-up in cost basis to the fair market value on the date of death. If Bitcoin was purchased at $5,000 and is worth $95,000 at death, the heirs' cost basis is $95,000 — not $5,000. This eliminates decades of capital gains. <strong>Do not sell the Bitcoin until you understand this rule and have confirmed the date-of-death value with a Bitcoin-literate CPA.</strong> Selling prematurely can cost heirs enormous sums in unnecessary taxes.</p>
+  <p>This guide is structured in the rough order you'll encounter these challenges — from the first chaotic days of discovering assets to the final distribution to heirs. Read through the whole thing before taking any action on the digital assets themselves.</p>
 
-    <h2 id="phase-1">Phase 1 — Days 1–7: Secure and Document</h2>
-    <span class="phase-header phase-1-hdr">Phase 1 · Days 1–7 · Secure and Document</span>
+  <!-- Section 2 -->
+  <h2 id="locate-assets">Step 1: Locate the Bitcoin</h2>
 
-    <div class="step-block phase-1">
-      <div class="step-num">Step 1</div>
-      <div class="step-title">Locate and Photograph — Do Not Access</div>
-      <p>Find any hardware wallets (Ledger, Trezor, Coldcard, or similar USB devices), any written documents that appear to be seed phrases (12 or 24 words), and any envelopes or documents labeled "Letter of Instruction," "Bitcoin Instructions," or similar. Photograph or document their location. Do not plug in hardware wallets. Do not attempt to enter any PINs. Do not photograph seed phrases (seed phrase photos are a security risk).</p>
-      <p>Secure these items physically — in a safe if available. If no safe, in a locked drawer or box. The goal of day one is preservation, not access.</p>
-    </div>
+  <p>Most executors discover Bitcoin assets through one of three paths: the deceased mentioned it before death, a document or letter was left with instructions, or a family member finds hardware devices or printed materials during the initial search of belongings. A fourth, harder path: you find nothing explicit but suspect from financial statements that digital assets may exist.</p>
 
-    <div class="step-block phase-1">
-      <div class="step-num">Step 2</div>
-      <div class="step-title">Find the Letter of Instruction</div>
-      <p>The Letter of Instruction (LOI) is a private document — not filed with a court, not part of the will — that the deceased should have prepared describing how to access their Bitcoin. It may contain: wallet locations, custody structure, who to contact for technical help, exchange account details, and the location (not the actual words) of seed phrase backups.</p>
-      <p>Search for the LOI in a home safe, fireproof file cabinet, with the estate attorney, with a designated "trusted contact," or in a sealed envelope stored with other important documents. If you find it, do not share it broadly — it is highly sensitive. If no LOI exists, proceed to the <a href="#if-no-loi">"If There Is No Letter of Instruction"</a> section below.</p>
-    </div>
+  <h3>Search the Physical Space</h3>
 
-    <div class="step-block phase-1">
-      <div class="step-num">Step 3</div>
-      <div class="step-title">Record the Date-of-Death Value</div>
-      <p>The fair market value of Bitcoin on the exact date of death is critical for two reasons: (1) it establishes the gross estate value for estate tax purposes, and (2) it becomes the heirs' stepped-up cost basis. Record it immediately — look up the Bitcoin price on a credible source (CoinGecko, Kraken, Coinbase) for the specific date of death and note the USD value per BTC and the approximate number of BTC held. This is time-sensitive: estate tax returns require this figure.</p>
-      <p>If you do not yet know the exact amount of Bitcoin held, estimate based on any documents you've found. You will get the precise figure later from the wallet software, but the price on the date of death is fixed and needs to be captured now.</p>
-    </div>
+  <p>Before anything else, conduct a methodical physical search of the deceased's home office, safe, lockbox, filing cabinet, and anywhere important documents are stored. You are looking for:</p>
 
-    <div class="warning-box">
-      <strong>⚠ Scam Warning — Read Immediately</strong>
-      <p style="margin-top:0.5rem;">Within days of an obituary being published, scammers search for estates with Bitcoin. They will contact you claiming to be: "Bitcoin recovery specialists," "probate cryptocurrency consultants," forensic accountants who "specialize in digital assets," or even law enforcement. They will seem credible and offer to help you access the Bitcoin — for a fee or a percentage of the estate. <strong>No legitimate professional will contact you unsolicited.</strong> Every person who helps with this estate should be verified independently, hired through your estate attorney's referral, and have verifiable credentials. Do not share seed phrases, private keys, or wallet passwords with anyone you did not hire through proper channels.</p>
-    </div>
+  <ul>
+    <li><strong>Hardware wallets</strong> — Ledger (looks like a slim USB drive or credit card), Trezor (small plastic device with screen), Coldcard (metal device), BitBox, or other branded devices. Most are roughly the size of a thumb drive or small phone.</li>
+    <li><strong>Metal seed phrase storage plates</strong> — Stainless steel cards or tiles stamped with 12 or 24 words. These may be in a fireproof safe or locked box.</li>
+    <li><strong>Paper backups</strong> — Sheets of paper with 12 or 24 words printed or handwritten. These are seed phrase backups. Handle them carefully and store them securely — do not photograph them with a smartphone, do not type them into any computer, and do not share them with anyone until you understand what they are (see the Seed Phrase Doctrine section).</li>
+    <li><strong>USB drives or encrypted drives</strong> — May contain wallet files, private keys, or a Bitcoin Core installation.</li>
+    <li><strong>Instructions or sealed letters</strong> — A thoughtful Bitcoin holder may have left a "letter to executor" or "digital asset instructions" document that explains how to access accounts.</li>
+    <li><strong>Exchange statements or emails</strong> — Paper statements from Coinbase, Kraken, or other exchanges, or printed email confirmations of account activity.</li>
+  </ul>
 
-    <h2 id="phase-2">Phase 2 — Days 8–21: Establish Legal Authority and Build Your Team</h2>
-    <span class="phase-header phase-2-hdr">Phase 2 · Days 8–21 · Legal Authority + Team</span>
+  <h3>Search the Digital Space</h3>
 
-    <div class="step-block phase-2">
-      <div class="step-num">Step 4</div>
-      <div class="step-title">File for Letters Testamentary (or Begin Trust Administration)</div>
-      <p>If the deceased had a will, file for probate and obtain Letters Testamentary from the probate court. This document formally names you as executor and grants legal authority over estate assets. Some states have a waiting period; some have simplified small-estate affidavit procedures for estates under a threshold.</p>
-      <p>If the Bitcoin was held in a revocable trust (common for estates that planned ahead), the trust becomes irrevocable at death and you step in as successor trustee. No probate is required — the trust document itself is your authority. Obtain a certified copy of the trust.</p>
-      <p><strong>Why this matters for Bitcoin:</strong> Exchanges will require documentation before allowing access to accounts. If the Bitcoin is on an exchange (Coinbase, Kraken, etc.), you cannot access it without legal authority documentation. If it's self-custodied, you technically have physical access before this step — but proceeding without legal authority creates personal liability.</p>
-    </div>
+  <p>With appropriate legal authorization (Letters Testamentary from probate court), search the deceased's email, computer files, and password manager for references to Bitcoin:</p>
 
-    <div class="step-block phase-2">
-      <div class="step-num">Step 5</div>
-      <div class="step-title">Engage a Bitcoin-Literate Estate Attorney</div>
-      <p>Your general estate attorney may be excellent but may not know what a seed phrase is. For Bitcoin estates of any meaningful size, you want an attorney who has handled digital asset estates before. Ask specifically: "Have you administered a self-custodied Bitcoin estate before?" and "Do you understand the difference between a hardware wallet and an exchange account?"</p>
-      <p>Your estate attorney will guide you through: probate or trust administration procedures in your state, exchange account succession (each exchange has its own deceased account process), required tax filings, and creditor notification requirements. Do not proceed to accessing or distributing Bitcoin without legal counsel.</p>
-    </div>
+  <ul>
+    <li>Email search terms: "Bitcoin," "BTC," "Coinbase," "Ledger," "Trezor," "Kraken," "transaction confirmation," "wallet address"</li>
+    <li>Computer files: Look for wallet software (Electrum, Bitcoin Core, Sparrow Wallet), PDF confirmations, spreadsheets tracking holdings</li>
+    <li>Browser bookmarks and history: Exchange websites, blockchain explorers, wallet software sites</li>
+    <li>Password managers: 1Password, LastPass, Bitwarden, or browser-saved passwords — look for any exchange account credentials</li>
+  </ul>
 
-    <div class="step-block phase-2">
-      <div class="step-num">Step 6</div>
-      <div class="step-title">Engage a Bitcoin CPA</div>
-      <p>The tax implications of a Bitcoin estate are significant and specialized. A Bitcoin CPA will handle: the estate tax return (Form 706, required for estates above the federal exemption — verify current amount with your attorney), the final income tax return for the deceased, the step-up in basis documentation for heirs, and guidance on HIFO (Highest In, First Out) cost basis method to minimize future capital gains.</p>
-      <p>The CPA should also advise on whether Bitcoin should be distributed in-kind (Bitcoin transferred to heirs) or liquidated (sold for cash, then distributed). In most cases, distributing in-kind preserves the step-up in basis for heirs; the CPA will confirm based on the specific estate structure.</p>
-    </div>
+  <h3>Check Financial Statements for On-Ramp Activity</h3>
 
-    <div class="step-block phase-2">
-      <div class="step-num">Step 7</div>
-      <div class="step-title">Inventory All Bitcoin Holdings</div>
-      <p>With the Letter of Instruction and legal authority in hand, conduct a complete inventory. Look for: hardware wallets and the Bitcoin they hold, software wallets (Electrum, Sparrow, Bitcoin Core), exchange accounts (Coinbase, Kraken, Swan, River, Strike), Lightning Network wallets or nodes, and multi-signature wallet participation (requires coordination with co-signers).</p>
-      <p>For hardware wallets: connect to the appropriate software (Ledger Live for Ledger, Trezor Suite for Trezor) and record the balance without moving any Bitcoin. The goal of this step is inventory, not access for transfer.</p>
-      <p>For exchange accounts: contact the exchange's deceased account or estate team. Each exchange has a formal process requiring death certificate, Letters Testamentary or trust documentation, and sometimes notarized affidavits. Processing typically takes 2–6 weeks.</p>
-    </div>
+  <p>Review bank statements for wire transfers or ACH payments to known Bitcoin exchanges. Coinbase, Kraken, Gemini, and River Financial are common. Large recurring transfers to financial entities you don't recognize may indicate purchases. If you see these but find no hardware wallet or account credentials, the Bitcoin may still exist on exchange — which is actually the easier scenario to resolve, as exchanges have estate transfer processes.</p>
 
-    <div class="step-block phase-2">
-      <div class="step-num">Step 8</div>
-      <div class="step-title">Do Not Sell Bitcoin Yet</div>
-      <p>This step is about what not to do. The temptation to liquidate Bitcoin to simplify administration is understandable — but it may destroy significant value for heirs. The stepped-up cost basis means heirs who inherit Bitcoin and sell it immediately have zero capital gain. Selling during estate administration (before distribution to heirs) means the estate pays the gain, not the heirs at their stepped-up basis. Your CPA will advise on the specific structure, but the default is: do not sell.</p>
-      <p>There are exceptions: if the estate has insufficient liquid assets to pay debts and taxes, Bitcoin may need to be liquidated. If so, do this under your CPA's guidance, with full documentation of the forced-liquidation rationale.</p>
-    </div>
+  <div class="callout callout-warning">
+    <div class="callout-label">Don't Assume Zero</div>
+    <p>Some Bitcoin holders are private about their holdings and leave minimal paper trail by design. The absence of obvious documentation doesn't mean no assets exist. If the deceased was technically sophisticated or privacy-conscious, conduct a thorough search before concluding there are no digital assets.</p>
+  </div>
 
-    <h2 id="phase-3">Phase 3 — Days 22–60: Execute the Transfer</h2>
-    <span class="phase-header phase-3-hdr">Phase 3 · Days 22–60 · Transfer and Close</span>
+  <!-- Section 3 -->
+  <h2 id="hardware-wallets">Step 2: Accessing Hardware Wallets Safely</h2>
 
-    <div class="step-block phase-3">
-      <div class="step-num">Step 9</div>
-      <div class="step-title">Establish New Wallets for Each Beneficiary</div>
-      <p>Before transferring Bitcoin to heirs, each heir should set up their own Bitcoin wallet and custody solution. You should not transfer Bitcoin to a wallet you control on their behalf — this creates a second custody hand-off and potential confusion. Ideally, each heir: sets up a hardware wallet (Ledger or Trezor are accessible for most heirs), backs up their seed phrase properly, and provides you with a receiving address.</p>
-      <p>If an heir is not Bitcoin-literate, this is the moment to engage a Bitcoin concierge or educator to walk them through the setup. Do not rush this step — a mis-configured wallet or a lost seed phrase at this stage means permanent loss of the inheritance.</p>
-    </div>
+  <p>Hardware wallets are the most common way serious Bitcoin holders secure significant amounts. They are also the most consequential device you'll encounter, because multiple incorrect PIN attempts will wipe the device permanently. Before touching a hardware wallet, understand exactly what you're holding.</p>
 
-    <div class="step-block phase-3">
-      <div class="step-num">Step 10</div>
-      <div class="step-title">Execute the Transfer — With Verification</div>
-      <p>When transferring Bitcoin on-chain, always send a small test transaction first (0.001 BTC or less) and confirm the heir received it before sending the remainder. Bitcoin transactions are irreversible. A single character wrong in an address sends Bitcoin to an unrecoverable address permanently.</p>
-      <p>For multi-signature wallets: coordinate with all required co-signers. The co-signers may be attorneys, trusted individuals, or hardware security modules — the LOI or trust document will specify. Multi-sig transfers often require legal coordination in addition to technical coordination.</p>
-      <p>Document every transaction: timestamp, amount, sending address, receiving address, transaction ID (txid). This becomes part of your executor accounting record.</p>
-    </div>
+  <h3>The Three Things You Need (and Only Need One)</h3>
 
-    <div class="step-block phase-3">
-      <div class="step-num">Step 11</div>
-      <div class="step-title">File Required Tax Returns</div>
-      <p>Your CPA will coordinate the required filings, which typically include: the deceased's final Form 1040 (income through the date of death), Form 706 if the estate exceeds the federal exemption, state estate tax returns if applicable (Oregon, Washington, Massachusetts, Illinois, Minnesota, and others have state estate taxes), and K-1s if the estate operated as an estate entity during administration.</p>
-      <p>Estate tax returns are due 9 months from the date of death, with a 6-month extension available. Do not miss this deadline — there are significant penalties for late filing even if no tax is owed.</p>
-    </div>
+  <p>A hardware wallet can be accessed in one of two ways:</p>
 
-    <div class="step-block phase-3">
-      <div class="step-num">Step 12</div>
-      <div class="step-title">Document Everything and Close the Estate</div>
-      <p>As executor, you have a fiduciary duty to beneficiaries. Maintain meticulous records: every decision made, every professional consulted, every transaction executed, every tax filing submitted. Prepare a final accounting for beneficiaries showing all estate assets, liabilities paid, administrative expenses, and distributions made.</p>
-      <p>For Bitcoin specifically: document the date-of-death value used for step-up basis, the method of determining the value, and all wallet addresses involved in transfers. This documentation protects you personally if a beneficiary later disputes the administration.</p>
-    </div>
+  <ul>
+    <li><strong>Option A: The device + PIN</strong> — If the deceased left the PIN (ideally in a sealed letter separate from the will), you can plug in the device, enter the PIN, and access the wallet directly. This is the simplest path.</li>
+    <li><strong>Option B: The seed phrase</strong> — A 12 or 24-word recovery phrase can restore the wallet to any compatible hardware device. You do not need the original device if you have the seed phrase.</li>
+  </ul>
 
-    <h2 id="scam-warning">The Scam Warning Every Executor Needs (Expanded)</h2>
+  <p>You only need one of these two things. If you have neither, you need a specialist.</p>
 
-    <p>Bitcoin inheritance scams are sophisticated and growing. Here are the specific patterns to watch for:</p>
+  <h3>Rules for Hardware Wallet Safety</h3>
 
-    <h3>The "Recovery Specialist" Scam</h3>
-    <p>A "Bitcoin recovery specialist" contacts you offering to help access locked wallets — for 10-20% of the recovered Bitcoin. In reality, they will take your seed phrase or private key and steal the Bitcoin. Legitimate custody recovery (for genuinely lost keys) is extremely rare and almost never involves a cold call from someone who "found your contact information online."</p>
+  <ol class="step-list">
+    <li>Do not plug the device into any computer until you understand exactly what software is on that computer and who has access to it. Malicious software can intercept wallet connections.</li>
+    <li>Do not enter a PIN you are not confident in. Most hardware wallets allow 3–10 attempts before wiping the device permanently. Trezor wipes after a certain number of incorrect attempts; Ledger permanently bricks after 3 incorrect PIN entries.</li>
+    <li>Do not "test" the device with a guessed PIN. If you're unsure of the PIN, stop and get help.</li>
+    <li>Do not connect the device to an internet-connected computer without understanding the risks. A compromised computer can broadcast a seed phrase if it's displayed on screen.</li>
+    <li>Photograph the device (including any serial numbers or model identifiers) for the estate inventory before handling it further.</li>
+    <li>Store the device in a secure, climate-controlled location — ideally the same safe where it was found, or a bank safe deposit box.</li>
+  </ol>
 
-    <h3>The "Probate Court" Scam</h3>
-    <p>Someone claiming to be from the probate court contacts you, saying there are "digital asset filings" needed or a "Bitcoin disclosure requirement." Probate courts do not proactively contact executors about cryptocurrency. All legitimate contacts from courts come through your attorney.</p>
+  <h3>If the Deceased Left a PIN</h3>
 
-    <h3>The Phishing Exchange Scam</h3>
-    <p>You receive an email that appears to be from Coinbase, Kraken, or another exchange saying the deceased's account requires "verification" and asking you to click a link. Always navigate directly to exchange websites — never click links in unsolicited emails related to estate matters.</p>
+  <p>Some Bitcoin holders include device access instructions in a separate sealed letter stored with a trusted attorney or in a safe — not in the will itself (more on this below). If you have the PIN:</p>
 
-    <h3>The Compromised Heir Scam</h3>
-    <p>A scammer contacts one of the heirs, claiming to be a "Bitcoin estate specialist" who can get them their inheritance faster. The heir, eager to receive their share, shares information they shouldn't. Educate all beneficiaries: no one should contact them about the Bitcoin estate except the attorney and executor you hired.</p>
+  <ul>
+    <li>Download the manufacturer's official companion app from the manufacturer's website only (Ledger Live for Ledger, Trezor Suite for Trezor)</li>
+    <li>Use a computer you control and trust — ideally one that has never been used for general web browsing</li>
+    <li>Connect the device and enter the PIN</li>
+    <li>Navigate to "Receive" to see the wallet's public address — you can look this up on a blockchain explorer (blockchain.com, mempool.space) to verify the balance before attempting any transfers</li>
+    <li>Do not initiate any transfers until you have legal authority (Letters Testamentary) and tax guidance</li>
+  </ul>
 
-    <h2 id="if-no-loi">If There Is No Letter of Instruction</h2>
+  <h3>If No PIN Was Left — Working with Specialists</h3>
 
-    <p>This is the most difficult scenario. Without a Letter of Instruction, you know the deceased held Bitcoin but may not know: where it is, how much there is, what custody method was used, or how to access it. Your options, in order:</p>
+  <p>If the PIN is unknown but you have a seed phrase backup, a qualified Bitcoin estate specialist can help you restore the wallet to a new device. This process — called "wallet recovery" — is straightforward if performed correctly but catastrophic if performed carelessly (entering a seed phrase on a compromised device transfers everything to the attacker instantly).</p>
 
-    <p><strong>1. Search thoroughly.</strong> Check computers, phones, and paper files for anything related to Bitcoin: emails from Coinbase/Kraken/Swan/River, hardware wallet devices, printed QR codes, "seed" or "mnemonic" written on paper, files named wallet.dat, or metal backup devices (Cryptosteel, Bilodal).</p>
+  <p>Do not attempt seed phrase restoration without specialist guidance for estate amounts. See the "When to Call a Professional" section for how to find qualified help.</p>
 
-    <p><strong>2. Check email for exchange accounts.</strong> Search the deceased's email for account registration confirmations from Coinbase, Kraken, Swan Bitcoin, River Financial, Strike, Gemini, or similar. Each exchange has an estate/deceased account process.</p>
+  <!-- Section 4 -->
+  <h2 id="software-wallets">Step 3: Software Wallets and Exchange Accounts</h2>
 
-    <p><strong>3. Check tax returns.</strong> Bitcoin on exchanges appears on 1099s. Check the last 3 years of tax returns for Bitcoin-related 1099s, which will identify the exchange.</p>
+  <h3>Centralized Exchanges (Coinbase, Kraken, Gemini, etc.)</h3>
 
-    <p><strong>4. Engage a forensic accountant.</strong> For larger estates, a forensic accountant specializing in digital assets can analyze transaction records, blockchain data, and financial records to identify Bitcoin holdings. Hire through your estate attorney's referral.</p>
+  <p>Bitcoin held on a centralized exchange is actually the easiest type to handle in an estate context. These companies have established estate transfer procedures and are required to comply with court orders. The process typically involves:</p>
 
-    <p><strong>5. Accept the loss.</strong> If the deceased used self-custody with no documentation and no seed phrase can be located, the Bitcoin may be permanently inaccessible. This is why estate planning documentation is so critical. There is no "Bitcoin recovery" without the private keys — no legal authority can compel the blockchain to release funds.</p>
+  <ul>
+    <li>Contacting the exchange's estate/bereavement team directly (all major exchanges have dedicated processes)</li>
+    <li>Submitting Letters Testamentary or equivalent legal documentation</li>
+    <li>Providing a certified copy of the death certificate</li>
+    <li>Completing the exchange's estate claim form</li>
+    <li>The exchange will freeze the account pending legal review, then facilitate transfer to the estate</li>
+  </ul>
 
-    <div class="cta-inline">
-      <p>If you're planning ahead and don't want to leave your executor in this situation, the Letter of Instruction Builder takes 20 minutes.</p>
-      <a href="/tools/bitcoin-letter-of-instruction">Build Your LOI →</a>
-    </div>
+  <p>Typical processing time is 2–8 weeks depending on the exchange and jurisdiction. Coinbase, Kraken, and Gemini all have reasonably mature estate processes as of 2026. Smaller or offshore exchanges may be significantly more difficult and may require legal escalation.</p>
 
-    <h2 id="professional-team">Building Your Professional Team</h2>
+  <div class="callout">
+    <div class="callout-label">Important: Notify Exchanges Promptly</div>
+    <p>Even if you cannot immediately complete the estate claim process, notify the exchange of the account holder's death as soon as you have legal authority. This prevents any scheduled transactions, recurring purchases, or automated transfers from occurring. Most exchanges will freeze the account upon receiving a death notification and basic documentation.</p>
+  </div>
 
-    <p>A Bitcoin estate of any meaningful size requires a three-person professional team:</p>
+  <h3>Software Wallets on Computers or Phones</h3>
 
-    <h3>Estate Attorney</h3>
-    <p>Handles probate or trust administration, legal authority documentation, exchange account succession processes, creditor notifications, and court filings. For Bitcoin estates, specifically ask about their experience with digital asset estates and their familiarity with self-custody vs. exchange custody.</p>
+  <p>The deceased may have had a software wallet like Electrum, Sparrow, or Exodus installed on their computer or smartphone. These present moderate complexity:</p>
 
-    <h3>Bitcoin CPA</h3>
-    <p>Handles the step-up in basis documentation, estate tax return (Form 706), final income tax return, HIFO cost basis elections, and guidance on in-kind vs. liquidation distribution. A general CPA may not understand the nuances of Bitcoin cost basis accounting — specifically request someone with Bitcoin estate experience.</p>
+  <ul>
+    <li>The device must be accessible (you'll need the login password for the computer or phone)</li>
+    <li>The wallet may have its own password separate from the device password</li>
+    <li>The wallet is only as secure as the device — a compromised device may mean compromised funds</li>
+    <li>Software wallets also have seed phrase backups; if you find these, the same rules apply as hardware wallets</li>
+  </ul>
 
-    <h3>Bitcoin Custody Consultant (for larger estates)</h3>
-    <p>For estates above $500,000 in Bitcoin, consider engaging a Bitcoin custody consultant — someone who can physically examine hardware wallets, coordinate multi-signature wallet transfers, and advise on the technical aspects of the transfer process. This is distinct from a "recovery specialist" — you hire them through a referral, you verify their credentials, and they work alongside your attorney, not independently.</p>
+  <p>For software wallets, work with a Bitcoin specialist before attempting to access or move funds. The risk of loss from a poorly executed move is very real.</p>
 
-    <!-- AM Tax CTA -->
-    <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
-      <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful Tax Strategy Available</p>
-      <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">For high-net-worth Bitcoin holders, mining is the only strategy that simultaneously generates yield, accumulates BTC, and creates significant tax offsets — through equipment depreciation, operating expense deductions, and bonus depreciation on capital investments.</p>
-      <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a>
-    </div>
+  <!-- Section 5 -->
+  <h2 id="seed-phrase-doctrine">The Seed Phrase Doctrine (Critical)</h2>
 
-    <div class="related">
-      <h4>Related Resources</h4>
-      <ul>
-        <li><a href="/tools/bitcoin-letter-of-instruction">Letter of Instruction Builder</a> — Build the document that prevents this situation</li>
-        <li><a href="/blog/first-30-days-inheriting-bitcoin.html">First 30 Days Inheriting Bitcoin</a> — For heirs receiving an inheritance</li>
-        <li><a href="/blog/bitcoin-inheritance-scams.html">Bitcoin Inheritance Scams</a> — Five scam profiles in detail</li>
-        <li><a href="/blog/bitcoin-heir-education-guide.html">Bitcoin Heir Education Guide</a> — For heirs who need to learn Bitcoin basics</li>
-        <li><a href="/blog/bitcoin-estate-planning-guide.html">Bitcoin Estate Planning Guide</a> — The complete planning reference</li>
-        <li><a href="/blog/bitcoin-incapacity-planning">Bitcoin Incapacity Planning</a> — Planning for incapacity, not just death</li>
-      </ul>
-    </div>
+  <div class="callout callout-danger">
+    <div class="callout-label">⚠ Critical Safety Rule</div>
+    <p><strong>NEVER write a seed phrase in a will, trust document, or any legal document filed with a court.</strong> Probate court documents are public record in most states. A seed phrase in a will becomes publicly accessible and gives anyone who reads it complete control over the Bitcoin. The entire amount can be drained in minutes by anyone with internet access.</p>
+  </div>
 
-    <div class="author-box">
-      <div class="author-name">Hal Turner</div>
-      <p>Editor, The Bitcoin Family Office. The Bitcoin Family Office provides research and educational resources on Bitcoin estate planning, custody, and family governance for high-net-worth holders and their advisors.</p>
-    </div>
+  <p>This is perhaps the most important doctrine in Bitcoin estate planning, and it's worth understanding in depth even as an executor — because you need to know what the deceased should have done, which helps you understand what you might find.</p>
 
-    <div class="services-cta">
-      <h3>Working Through a Bitcoin Estate?</h3>
-      <p>The Bitcoin Family Office works with a selective group of families and their advisors navigating Bitcoin estate matters. If you need referrals to Bitcoin-literate estate attorneys, CPAs, or custody consultants in your area, we may be able to help.</p>
-      <a href="/services/">Explore Our Services</a>
-    </div>
+  <h3>What a Seed Phrase Is</h3>
 
-    <div class="disclaimer">
-      <strong>Disclaimer.</strong> This guide is provided for educational purposes only and does not constitute legal, tax, financial, or investment advice. Every estate is different; laws vary by state and change over time. Always consult a qualified estate planning attorney and licensed CPA before taking any action as executor or successor trustee. The Bitcoin Family Office does not provide legal or tax advice and is not a law firm.
+  <p>A seed phrase (also called a recovery phrase or mnemonic) is a sequence of 12 or 24 English words generated by a wallet. These words, in that exact order, are mathematically equivalent to the master private key for the entire wallet. Anyone who possesses these words can import them into any compatible wallet software anywhere in the world and immediately control all funds associated with that wallet.</p>
+
+  <p>This is both the power and the danger of seed phrases. For estate purposes: a seed phrase in the wrong hands is a complete, irreversible theft of the Bitcoin. There is no chargeback. There is no dispute process. There is no "freeze the account." The funds are simply gone.</p>
+
+  <h3>The Correct Protocol for Executors</h3>
+
+  <p>A well-prepared Bitcoin holder will have stored their seed phrase in one of these ways — and as executor, knowing the correct protocols helps you know what to look for:</p>
+
+  <ul>
+    <li><strong>Sealed letter with estate attorney:</strong> A sealed, signed letter held by the attorney to be delivered to the executor upon death. This letter contains access instructions but is never filed with any court.</li>
+    <li><strong>Fireproof/waterproof metal storage:</strong> Seed phrase stamped on stainless steel plates in a home safe or safety deposit box, with the location disclosed separately.</li>
+    <li><strong>Multi-signature setups:</strong> Advanced holders may use a multi-signature arrangement where multiple keys are required, distributed among trusted parties. This requires a specialist to unwind.</li>
+    <li><strong>Hardware security modules:</strong> Institutional-grade storage in a custodied environment, with a designated access pathway for estate situations.</li>
+  </ul>
+
+  <h3>What to Do If You Find a Seed Phrase</h3>
+
+  <p>If you find a piece of paper or metal plate with 12 or 24 words that appear to be a seed phrase:</p>
+
+  <ol>
+    <li>Do not photograph it with a smartphone. Smartphone photos are often backed up to cloud services automatically.</li>
+    <li>Do not type it into any computer, even to "check the balance."</li>
+    <li>Do not share it with anyone who is not a verified estate specialist or attorney.</li>
+    <li>Store it in a secure location (bank safe deposit box is ideal).</li>
+    <li>Treat it with the same security level as cash — because that's effectively what it is.</li>
+    <li>Engage a qualified Bitcoin estate specialist before proceeding.</li>
+  </ol>
+
+  <!-- Section 6 -->
+  <h2 id="work-with-attorney">Step 4: Working with Estate Attorneys</h2>
+
+  <p>Not all estate attorneys have meaningful experience with digital assets, and the gap between a generalist estate attorney and one who understands Bitcoin can cost the estate significantly — in fees, in delays, and potentially in lost assets.</p>
+
+  <h3>What Your Estate Attorney Needs to Know</h3>
+
+  <p>Your estate attorney should understand or be willing to learn:</p>
+
+  <ul>
+    <li>The legal status of digital assets in your state under the Revised Uniform Fiduciary Access to Digital Assets Act (RUFADAA), which has been adopted in most U.S. states</li>
+    <li>How to secure Letters Testamentary that explicitly reference digital assets</li>
+    <li>How to communicate with exchanges and custodians using proper legal documentation</li>
+    <li>The difference between on-chain Bitcoin (self-custodied) and exchange-held Bitcoin (custodied) and why it matters for the estate process</li>
+    <li>Tax treatment of inherited Bitcoin and the step-up in basis rules</li>
+  </ul>
+
+  <h3>RUFADAA and Your Legal Authority</h3>
+
+  <p>The Revised Uniform Fiduciary Access to Digital Assets Act gives estate executors, trustees, and guardians legal authority to access and manage digital assets. As of 2026, the majority of U.S. states have enacted RUFADAA or similar legislation, though the specifics vary by state.</p>
+
+  <p>Under RUFADAA, as executor you generally have the legal right to access the deceased's digital accounts and assets, subject to the terms of service of each platform and the specifics of the will or court order. However, RUFADAA explicitly prioritizes any instructions the deceased left through an online tool (like a legacy contact designation) over the will itself — so check whether the deceased designated any digital asset access preferences on their platforms.</p>
+
+  <h3>Getting Letters Testamentary</h3>
+
+  <p>Letters Testamentary (or Letters of Administration if there is no will) are the legal document that proves your authority to act as executor. You'll need these to compel exchanges to cooperate. Work with your attorney to:</p>
+
+  <ul>
+    <li>File the will with probate court promptly</li>
+    <li>Obtain Letters Testamentary as early in the process as possible</li>
+    <li>Ensure the letters do not have overly narrow limitations that could prevent you from accessing digital accounts</li>
+    <li>Request a sufficient number of certified copies — exchanges may require originals or certified copies, not photocopies</li>
+  </ul>
+
+  <!-- Section 7 -->
+  <h2 id="tax-obligations">Step 5: Tax Obligations for Bitcoin Inheritances</h2>
+
+  <p>Bitcoin in an estate triggers several potential tax events, and getting this wrong exposes both the estate and the beneficiaries to significant liability. The good news is that the tax treatment of inherited Bitcoin is in several ways favorable — but only if handled correctly.</p>
+
+  <h3>Estate Tax</h3>
+
+  <p>Bitcoin held by the deceased is included in the gross estate for federal estate tax purposes at its fair market value on the date of death (or the alternate valuation date 6 months later, if elected). As of 2026, the federal estate tax exemption is a closely watched number given ongoing Congressional discussions — consult with a qualified estate tax attorney for current thresholds, as they may be subject to legislative changes.</p>
+
+  <p>Approximately 20 states and the District of Columbia impose their own estate or inheritance taxes, often with lower exemption thresholds than the federal level. If the estate includes significant Bitcoin holdings, state-level estate tax exposure deserves careful analysis.</p>
+
+  <h3>Step-Up in Cost Basis</h3>
+
+  <p>This is the most valuable tax feature of inherited Bitcoin: under IRC Section 1014, inherited assets generally receive a step-up in cost basis to the fair market value on the date of death. For Bitcoin holdings acquired years ago at much lower prices, this can eliminate enormous embedded capital gains tax liability.</p>
+
+  <p>For example: if the deceased purchased 5 BTC for $10,000 total and it's worth $500,000 at death, the beneficiary who inherits it receives a cost basis of $500,000 — not $10,000. If the beneficiary later sells for $500,000, they owe no capital gains tax on that inherited appreciation. This is a significant benefit of direct Bitcoin ownership versus some other asset structures.</p>
+
+  <div class="callout">
+    <div class="callout-label">Documentation Matters</div>
+    <p>To establish the step-up in basis, you need documented proof of the fair market value of Bitcoin on the date of death. Pull and preserve price data from a reputable source (Coinbase, CoinGecko, Bloomberg) showing the closing price or a reasonable fair market value on that specific date. This documentation will be critical for the estate tax return and for beneficiaries' future tax filings.</p>
+  </div>
+
+  <h3>Income Tax During Administration</h3>
+
+  <p>If the estate sells Bitcoin during the administration period (before distribution to beneficiaries), the estate may recognize capital gain or loss. Gain on inherited property sold by the estate within a year is generally treated as long-term, regardless of the actual holding period. Consult with a CPA who has cryptocurrency experience before executing any sales.</p>
+
+  <h3>Required Reporting</h3>
+
+  <p>Bitcoin received as an inheritance is not taxable income to the beneficiary at the time of receipt — but they'll need to track their new cost basis carefully for future tax purposes. As an executor, you should provide each beneficiary with documentation of:</p>
+
+  <ul>
+    <li>The date of death</li>
+    <li>The amount of Bitcoin transferred</li>
+    <li>The fair market value on the date of death (their new cost basis)</li>
+    <li>The source of the inherited Bitcoin (exchange, hardware wallet, etc.)</li>
+  </ul>
+
+  <!-- Section 8 -->
+  <h2 id="valuation">Step 6: Valuing Bitcoin for the Estate</h2>
+
+  <p>Valuing Bitcoin for estate purposes is conceptually simpler than some assets (there's a publicly quoted price) but has some nuances worth understanding.</p>
+
+  <h3>Date-of-Death Valuation</h3>
+
+  <p>For federal estate tax purposes, Bitcoin is valued at the mean between the highest and lowest quoted selling prices on the date of death — the same methodology used for publicly traded stocks. Because crypto markets operate 24/7, you should capture price data for the full calendar date of death, not just the moment of death.</p>
+
+  <p>Use reputable sources: major exchanges like Coinbase or Kraken, or data aggregators like CoinMarketCap or CoinGecko. Pull and preserve multiple data points, including opening, closing, high, low, and the calculated mean. Save screenshots and export data as CSV for your estate records.</p>
+
+  <h3>For Significant Holdings: Get a Formal Appraisal</h3>
+
+  <p>If the estate includes very large Bitcoin holdings (say, 10+ BTC or holdings that represent a significant portion of the estate), a formal appraisal from a qualified appraiser may be appropriate. For assets like this, the IRS may scrutinize the valuation methodology, and having a defensible, documented analysis matters.</p>
+
+  <h3>Hard-to-Value Scenarios</h3>
+
+  <p>Certain situations complicate valuation: Bitcoin held in a multi-signature arrangement, partial ownership interests in Bitcoin mining equipment, or interests in Bitcoin mining operations. These require specialized valuation expertise and should be handled by professionals with Bitcoin-specific experience.</p>
+
+  <!-- Section 9 -->
+  <h2 id="distribution">Step 7: Distributing Bitcoin to Beneficiaries</h2>
+
+  <p>Once you have legal authority, have inventoried the assets, obtained tax guidance, and are ready to distribute, you have two main options for transferring Bitcoin to beneficiaries: in-kind transfer or liquidation.</p>
+
+  <h3>Option A: In-Kind Transfer (Transferring the Bitcoin Itself)</h3>
+
+  <p>Beneficiaries who want to hold Bitcoin can receive it directly. For this to work:</p>
+
+  <ul>
+    <li>Each beneficiary must have (or set up) a Bitcoin wallet capable of receiving Bitcoin</li>
+    <li>You'll need the wallet address for each beneficiary — a string of letters and numbers (or a QR code)</li>
+    <li>Transfers must be documented: the transaction ID (txid), the date, the amount, and the Bitcoin price at time of transfer</li>
+    <li>For exchange-held Bitcoin, initiate the transfer through the exchange's standard interface</li>
+    <li>For self-custodied Bitcoin, work with a specialist to execute the on-chain transfer safely</li>
+  </ul>
+
+  <p>Before any on-chain transfer, send a small "test" transaction (e.g., a small fraction of a Bitcoin) to verify the beneficiary's address is correct and they can access the funds. Bitcoin transactions are irreversible — a transfer to the wrong address cannot be recalled.</p>
+
+  <h3>Option B: Liquidation</h3>
+
+  <p>If beneficiaries prefer cash, or the will specifies cash distributions, the estate can liquidate Bitcoin on a regulated exchange before distribution. Key considerations:</p>
+
+  <ul>
+    <li>For large liquidations, consult with a crypto-aware broker or institutional trading desk — liquidating large amounts on a retail exchange can move the market and result in worse pricing than a negotiated OTC (over-the-counter) trade</li>
+    <li>All proceeds must be documented for tax purposes</li>
+    <li>Any gain recognized at the estate level (if Bitcoin is sold above the date-of-death value) will be reported on the estate's income tax return (Form 1041)</li>
+  </ul>
+
+  <h3>Partial Distributions</h3>
+
+  <p>If the estate has multiple beneficiaries each receiving a percentage, Bitcoin can be split proportionally before distribution. Work with your attorney to document the division clearly — noting the specific Bitcoin amounts, transactions IDs, and values at time of distribution — so each beneficiary has clean records for their own tax filing.</p>
+
+  <!-- Section 10 -->
+  <h2 id="professional-help">When to Call a Professional</h2>
+
+  <p>There is no shame in bringing in expert help. Bitcoin estate administration is genuinely complex, and the cost of errors — permanently lost funds, tax penalties, beneficiary disputes — can far exceed professional fees. Consider bringing in a specialist in any of these situations:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Situation</th>
+          <th>Specialist Needed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hardware wallet found but no PIN or seed phrase</td>
+          <td>Bitcoin recovery specialist</td>
+        </tr>
+        <tr>
+          <td>Multi-signature wallet setup</td>
+          <td>Bitcoin technical specialist + estate attorney</td>
+        </tr>
+        <tr>
+          <td>Estate value over federal estate tax threshold</td>
+          <td>Estate tax attorney + CPA with crypto experience</td>
+        </tr>
+        <tr>
+          <td>Suspected Bitcoin holdings but nothing found</td>
+          <td>Digital forensics specialist</td>
+        </tr>
+        <tr>
+          <td>Exchange refuses to cooperate</td>
+          <td>Estate litigation attorney with digital asset experience</td>
+        </tr>
+        <tr>
+          <td>Large on-chain transfers (multiple BTC)</td>
+          <td>Bitcoin estate specialist to oversee</td>
+        </tr>
+        <tr>
+          <td>Disputed beneficiary claims</td>
+          <td>Probate litigation attorney</td>
+        </tr>
+        <tr>
+          <td>Bitcoin in mining operations or business</td>
+          <td>Business valuation specialist + Bitcoin attorney</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 11 -->
+  <h2 id="checklist">Executor Checklist: Bitcoin Estate Administration</h2>
+
+  <h3>Immediate Steps (First 30 Days)</h3>
+  <ul>
+    <li>☐ Conduct physical search for hardware wallets, paper backups, and sealed letters</li>
+    <li>☐ Search digital devices and email for Bitcoin-related accounts</li>
+    <li>☐ Secure all hardware wallets in a bank safe deposit box or equivalent secure storage</li>
+    <li>☐ Secure any seed phrase backups (paper or metal) in separate secure storage from the devices</li>
+    <li>☐ Do not attempt to access hardware wallets without PIN certainty</li>
+    <li>☐ Notify any identified exchanges of the account holder's death</li>
+    <li>☐ Pull and document Bitcoin price on date of death from multiple sources</li>
+    <li>☐ Engage an estate attorney with digital asset experience</li>
+    <li>☐ File for probate and obtain Letters Testamentary</li>
+  </ul>
+
+  <h3>During Administration</h3>
+  <ul>
+    <li>☐ Inventory all Bitcoin holdings (exchange accounts + self-custodied)</li>
+    <li>☐ File estate claims with all identified exchanges using Letters Testamentary</li>
+    <li>☐ Obtain formal valuation documentation for estate tax purposes</li>
+    <li>☐ Engage CPA with crypto tax experience</li>
+    <li>☐ Determine whether to distribute Bitcoin in-kind or liquidate</li>
+    <li>☐ Collect wallet addresses from beneficiaries who will receive Bitcoin in-kind</li>
+    <li>☐ Confirm test transaction before full transfer</li>
+  </ul>
+
+  <h3>Distribution and Close</h3>
+  <ul>
+    <li>☐ Document all transfers with transaction IDs, dates, amounts, and FMV at time of transfer</li>
+    <li>☐ Provide each beneficiary with cost basis documentation</li>
+    <li>☐ File estate income tax return (Form 1041) if Bitcoin was sold during administration</li>
+    <li>☐ File estate tax return if applicable</li>
+    <li>☐ Obtain final receipts from all beneficiaries</li>
+  </ul>
+
+  <hr class="divider">
+
+  <!-- Services CTA -->
+  <div class="services-cta">
+    <h3>Need Help Navigating a Bitcoin Estate?</h3>
+    <p>The Bitcoin Family Office specializes in estate administration involving digital assets. From asset location and hardware wallet access to tax documentation and beneficiary distribution, we work alongside your estate attorney to protect every satoshi.</p>
+    <a href="/services/" class="btn-primary">Explore Estate Services</a>
+  </div>
+
+  <!-- AM CTA -->
+  <div class="am-cta">
+    <h3>Bitcoin Mining: The Most Powerful Tax Strategy Available</h3>
+    <p>If the estate you're administering — or your own financial planning — involves significant Bitcoin wealth, understanding mining's tax advantages is essential. Bitcoin mining offers accelerated depreciation, operational expense deductions, and bonus depreciation that can dramatically reduce tax exposure for high-net-worth Bitcoin holders.</p>
+    <a href="https://abundantmines.com/tax-strategy/" class="am-link" target="_blank" rel="noopener">Explore Mining Tax Strategy →</a>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This article is provided for general informational purposes only and does not constitute legal, tax, or financial advice. Estate administration involving digital assets is complex and highly fact-specific. Laws and regulations governing digital assets and estate taxation change frequently. Consult a qualified estate attorney, CPA with cryptocurrency experience, and/or a Bitcoin estate specialist before taking any action. The Bitcoin Family Office does not provide legal advice and is not a licensed law firm. Nothing herein creates an attorney-client relationship.
+  </div>
+
+  <!-- Author Box -->
+  <div class="author-box">
+    <div class="author-avatar">H</div>
+    <div class="author-info">
+      <h4>Hal Turner</h4>
+      <div class="author-title">Bitcoin Estate Planning Analyst · The Bitcoin Family Office</div>
+      <p>Hal Turner covers the intersection of Bitcoin custody, estate planning, and generational wealth transfer. He works with families, estate attorneys, and fiduciaries to navigate the technical and legal complexities of digital asset inheritance.</p>
     </div>
   </div>
-</div>
+
+</div><!-- end page-wrapper -->
 
 <footer>
-  <div class="footer-logo">The Bitcoin <span>Family Office</span></div>
-  <nav class="footer-links">
-    <a href="/">Home</a><a href="/services/">Services</a><a href="/blog/">Research</a>
-    <a href="/tools/">Tools</a><a href="/about/">About</a><a href="/faq/">FAQ</a><a href="/disclosures/">Disclosures</a>
-  </nav>
-  <p class="footer-legal">The Bitcoin Family Office provides educational content for high-net-worth Bitcoin holders. Nothing on this site constitutes legal, tax, financial, or investment advice. &copy; 2026 The Bitcoin Family Office.</p>
+  <p>© 2026 The Bitcoin Family Office · <a href="/privacy/">Privacy</a> · <a href="/disclaimer/">Disclaimer</a> · <a href="/blog/">Blog</a></p>
 </footer>
+
 </body>
 </html>

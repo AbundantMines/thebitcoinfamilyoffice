@@ -1,1206 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bitcoin and Special Needs Trusts: Protecting a Disabled Beneficiary's Inheritance | The Bitcoin Family Office</title>
-  <meta name="description" content="Leaving Bitcoin directly to a disabled beneficiary can disqualify them from Medicaid and SSI. How a Special Needs Trust preserves their benefits and their Bitcoin." />
-  <meta name="keywords" content="bitcoin special needs trust, SNT bitcoin, disabled beneficiary bitcoin inheritance, bitcoin medicaid SSI, bitcoin estate planning special needs" />
-  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-special-needs-trust" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Bitcoin and Special Needs Trusts: Protecting a Disabled Beneficiary's Inheritance" />
-  <meta property="og:description" content="Leaving Bitcoin directly to a disabled beneficiary can disqualify them from Medicaid and SSI. How a Special Needs Trust preserves their benefits and their Bitcoin." />
-  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png" />
-  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-special-needs-trust" />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="The Bitcoin Family Office" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Bitcoin and Special Needs Trusts: Protecting a Disabled Beneficiary's Inheritance" />
-  <meta name="twitter:description" content="A direct Bitcoin inheritance can eliminate Medicaid and SSI eligibility. How to use a Special Needs Trust to protect both." />
-  <meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png" />
-
-  <!-- JSON-LD: Article + BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Article",
-        "headline": "Bitcoin and Special Needs Trusts: Protecting a Disabled Beneficiary's Inheritance",
-        "description": "Leaving Bitcoin directly to a disabled beneficiary can disqualify them from Medicaid and SSI. How a Special Needs Trust preserves their benefits and their Bitcoin.",
-        "datePublished": "2026-02-25",
-        "dateModified": "2026-02-25",
-        "author": {
-          "@type": "Person",
-          "name": "Hal Turner",
-          "affiliation": "The Bitcoin Family Office"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "The Bitcoin Family Office",
-          "url": "https://thebitcoinfamilyoffice.com"
-        },
-        "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-special-needs-trust",
-        "image": "https://thebitcoinfamilyoffice.com/assets/og-image.png",
-        "mainEntityOfPage": "https://thebitcoinfamilyoffice.com/blog/bitcoin-special-needs-trust"
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://thebitcoinfamilyoffice.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Blog",
-            "item": "https://thebitcoinfamilyoffice.com/blog/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Bitcoin Special Needs Trust",
-            "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-special-needs-trust"
-          }
-        ]
-      }
-    ]
-  }
-  </script>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-  <!-- Cloudflare Web Analytics -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
-
-  <!-- Google Analytics GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-N8PP20VBTV');
-
-    // hm_click event
-    document.addEventListener('click', function(e) {
-      var el = e.target.closest('a, button');
-      if (el) {
-        gtag('event', 'hm_click', {
-          element_text: el.innerText ? el.innerText.trim().substring(0, 100) : '',
-          element_href: el.href || '',
-          page_path: window.location.pathname
-        });
-      }
-    });
-
-    // hm_scroll event
-    var scrollDepths = [25, 50, 75, 90];
-    var scrollFired = {};
-    window.addEventListener('scroll', function() {
-      var scrollTop = window.scrollY || document.documentElement.scrollTop;
-      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (docHeight <= 0) return;
-      var pct = Math.round((scrollTop / docHeight) * 100);
-      scrollDepths.forEach(function(d) {
-        if (pct >= d && !scrollFired[d]) {
-          scrollFired[d] = true;
-          gtag('event', 'hm_scroll', { scroll_depth: d, page_path: window.location.pathname });
-        }
-      });
-    }, { passive: true });
-  </script>
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #0a0a0a;
-      --bg-elevated: #111111;
-      --bg-card: #141414;
-      --border: #1e1e1e;
-      --text: #e8e0d0;
-      --text-secondary: #8a8070;
-      --accent: #c9a84c;
-      --accent-hover: #e0bf6a;
-      --font-serif: 'Playfair Display', Georgia, serif;
-      --font-body: 'EB Garamond', Georgia, serif;
-      --font-ui: 'Inter', system-ui, sans-serif;
-      --max-width: 780px;
-      --content-width: 1200px;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 1.125rem;
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── NAV ── */
-    .site-nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10,10,10,0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: var(--content-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo {
-      font-family: var(--font-serif);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-decoration: none;
-      letter-spacing: 0.01em;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: var(--font-ui);
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      font-family: var(--font-ui);
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--bg) !important;
-      background: var(--accent);
-      padding: 0.45rem 1.1rem;
-      border-radius: 3px;
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      transition: background 0.2s;
-    }
-    .nav-cta:hover { background: var(--accent-hover) !important; }
-
-    /* Hamburger */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .nav-mobile {
-      display: none;
-      flex-direction: column;
-      background: var(--bg-elevated);
-      border-top: 1px solid var(--border);
-      padding: 1rem 1.5rem 1.5rem;
-      gap: 1rem;
-    }
-    .nav-mobile.open { display: flex; }
-    .nav-mobile a {
-      font-family: var(--font-ui);
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-decoration: none;
-      padding: 0.4rem 0;
-      border-bottom: 1px solid var(--border);
-      transition: color 0.2s;
-    }
-    .nav-mobile a:hover { color: var(--accent); }
-    .nav-mobile a:last-child { border-bottom: none; }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-    }
-
-    /* ── HERO / HEADER ── */
-    .article-hero {
-      background: var(--bg-elevated);
-      border-bottom: 1px solid var(--border);
-      padding: 4rem 1.5rem 3rem;
-    }
-    .article-hero-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-ui);
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-    .breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
-    .breadcrumb a:hover { color: var(--accent); }
-    .breadcrumb-sep { color: var(--border); }
-
-    .article-tag {
-      display: inline-block;
-      font-family: var(--font-ui);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      border-radius: 2px;
-      padding: 0.25rem 0.6rem;
-      margin-bottom: 1.25rem;
-    }
-    .article-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--text);
-      margin-bottom: 1.25rem;
-    }
-    .article-subtitle {
-      font-family: var(--font-body);
-      font-size: 1.2rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 2rem;
-      font-style: italic;
-    }
-    .article-meta {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1.5rem;
-      font-family: var(--font-ui);
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-    }
-    .article-meta-item { display: flex; align-items: center; gap: 0.4rem; }
-    .meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border); }
-
-    /* ── ARTICLE BODY ── */
-    .article-layout {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 3rem 1.5rem 4rem;
-    }
-
-    .article-body h2 {
-      font-family: var(--font-serif);
-      font-size: 1.65rem;
-      font-weight: 600;
-      color: var(--text);
-      margin: 2.5rem 0 1rem;
-      padding-top: 0.5rem;
-      border-top: 1px solid var(--border);
-    }
-    .article-body h3 {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text);
-      margin: 2rem 0 0.75rem;
-    }
-    .article-body p {
-      margin-bottom: 1.4rem;
-      color: var(--text);
-    }
-    .article-body ul, .article-body ol {
-      margin: 0 0 1.4rem 1.5rem;
-    }
-    .article-body li {
-      margin-bottom: 0.5rem;
-      color: var(--text);
-    }
-    .article-body strong { color: var(--accent); font-weight: 600; }
-    .article-body em { font-style: italic; color: var(--text-secondary); }
-    .article-body a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(201,168,76,0.4); transition: color 0.2s; }
-    .article-body a:hover { color: var(--accent-hover); }
-
-    /* Callout box */
-    .callout {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      border-radius: 4px;
-      padding: 1.25rem 1.5rem;
-      margin: 2rem 0;
-    }
-    .callout-label {
-      font-family: var(--font-ui);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-    .callout p { margin: 0; font-size: 1rem; color: var(--text-secondary); }
-    .callout p strong { color: var(--text); }
-
-    /* Warning callout */
-    .callout-warning {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-left: 3px solid #c94c4c;
-      border-radius: 4px;
-      padding: 1.25rem 1.5rem;
-      margin: 2rem 0;
-    }
-    .callout-warning .callout-label { color: #c94c4c; }
-    .callout-warning p { margin: 0; font-size: 1rem; color: var(--text-secondary); }
-    .callout-warning p strong { color: var(--text); }
-
-    /* Example box */
-    .example-box {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.25rem 1.5rem;
-      margin: 1.5rem 0;
-    }
-    .example-box .ex-label {
-      font-family: var(--font-ui);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      margin-bottom: 0.5rem;
-    }
-    .example-box p { margin: 0; font-size: 1rem; }
-
-    /* CTA inline */
-    .cta-inline {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.75rem 2rem;
-      margin: 2.5rem 0;
-      text-align: center;
-    }
-    .cta-inline h3 {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-      border: none;
-      padding: 0;
-      color: var(--text);
-    }
-    .cta-inline p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.25rem; }
-    .btn {
-      display: inline-block;
-      font-family: var(--font-ui);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      padding: 0.7rem 1.5rem;
-      border-radius: 3px;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-    .btn-primary { background: var(--accent); color: var(--bg); }
-    .btn-primary:hover { background: var(--accent-hover); color: var(--bg) !important; }
-    .btn-secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); margin-left: 0.75rem; }
-    .btn-secondary:hover { background: var(--accent); color: var(--bg) !important; }
-
-    /* AM Mining callout */
-    .am-callout {
-      background: linear-gradient(135deg, #141414 0%, #111111 100%);
-      border: 1px solid var(--border);
-      border-top: 2px solid var(--accent);
-      border-radius: 4px;
-      padding: 1.75rem 2rem;
-      margin: 2.5rem 0;
-    }
-    .am-callout .am-label {
-      font-family: var(--font-ui);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .am-callout h3 {
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-      border: none;
-      padding: 0;
-      color: var(--text);
-    }
-    .am-callout p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem; }
-    .am-callout a.btn { margin: 0; }
-
-    /* Author box */
-    .author-box {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.25rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.5rem;
-      margin: 3rem 0;
-    }
-    .author-avatar {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: var(--bg-elevated);
-      border: 2px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-    .author-info { flex: 1; }
-    .author-name {
-      font-family: var(--font-serif);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.15rem;
-    }
-    .author-title {
-      font-family: var(--font-ui);
-      font-size: 0.78rem;
-      color: var(--accent);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-    .author-bio { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; }
-
-    /* Services CTA */
-    .services-cta {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 2rem;
-      margin: 2rem 0;
-      text-align: center;
-    }
-    .services-cta h3 {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 0.6rem;
-      border: none;
-      padding: 0;
-    }
-    .services-cta p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.25rem; }
-
-    /* Comparison table */
-    .compare-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0 2rem;
-      font-family: var(--font-ui);
-      font-size: 0.88rem;
-    }
-    .compare-table th {
-      background: var(--bg-card);
-      color: var(--accent);
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      padding: 0.75rem 1rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
-    .compare-table td {
-      padding: 0.7rem 1rem;
-      border-bottom: 1px solid var(--border);
-      color: var(--text-secondary);
-      vertical-align: top;
-    }
-    .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table td:first-child { color: var(--text); font-weight: 500; }
-
-    /* Disclaimer */
-    .disclaimer {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.25rem 1.5rem;
-      margin: 2.5rem 0;
-      font-family: var(--font-ui);
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    .disclaimer strong { color: var(--text-secondary); font-weight: 600; }
-
-    /* ── FOOTER ── */
-    .site-footer {
-      background: var(--bg-elevated);
-      border-top: 1px solid var(--border);
-      padding: 4rem 1.5rem 2rem;
-    }
-    .footer-inner {
-      max-width: var(--content-width);
-      margin: 0 auto;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-    .footer-brand .footer-logo {
-      font-family: var(--font-serif);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 0.75rem;
-    }
-    .footer-tagline {
-      font-family: var(--font-ui);
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-    .footer-col h4 {
-      font-family: var(--font-ui);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      margin-bottom: 1rem;
-    }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 0.5rem; }
-    .footer-col ul li a {
-      font-family: var(--font-ui);
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-col ul li a:hover { color: var(--accent); }
-    .footer-bottom {
-      border-top: 1px solid var(--border);
-      padding-top: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .footer-copyright {
-      font-family: var(--font-ui);
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-    }
-    .footer-legal { display: flex; gap: 1.5rem; }
-    .footer-legal a {
-      font-family: var(--font-ui);
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-legal a:hover { color: var(--accent); }
-
-    @media (max-width: 768px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .footer-brand { grid-column: 1 / -1; }
-      .btn-secondary { margin-left: 0; margin-top: 0.5rem; }
-      .compare-table { font-size: 0.8rem; }
-      .compare-table th, .compare-table td { padding: 0.5rem 0.6rem; }
-    }
-    @media (max-width: 480px) {
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .article-body h2 { font-size: 1.4rem; }
-      .author-box { flex-direction: column; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin and Special Needs Trusts: Protecting Disabled Beneficiaries Without Losing Government Benefits | The Bitcoin Family Office</title>
+<meta name="description" content="If you hold Bitcoin and have a disabled child or family member, leaving BTC directly to them could destroy their SSI and Medicaid eligibility. Here's how a Special Needs Trust protects both the inheritance and the benefits.">
+<meta property="og:title" content="Bitcoin and Special Needs Trusts: Protecting Disabled Beneficiaries Without Losing Government Benefits">
+<meta property="og:description" content="If you hold Bitcoin and have a disabled child or family member, leaving BTC directly to them could destroy their SSI and Medicaid eligibility. Here's how a Special Needs Trust protects both.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-special-needs-trust">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-special-needs-trust">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bitcoin and Special Needs Trusts: Protecting Disabled Beneficiaries Without Losing Government Benefits",
+  "description": "If you hold Bitcoin and have a disabled child or family member, leaving BTC directly to them could destroy their SSI and Medicaid eligibility. A Special Needs Trust lets your heir use Bitcoin's wealth without forfeiting essential government support.",
+  "author": {"@type": "Person", "name": "Hal Turner"},
+  "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-special-needs-trust",
+  "datePublished": "2026-02-26",
+  "dateModified": "2026-02-26",
+  "publisher": {"@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebitcoinfamilyoffice.com"},
+    {"@type": "ListItem", "position": 2, "name": "Research", "item": "https://thebitcoinfamilyoffice.com/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "Bitcoin and Special Needs Trusts", "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-special-needs-trust"}
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+<script>
+(function(){
+  if(typeof gtag!=='function') return;
+  document.addEventListener('click',function(e){
+    var el=e.target;
+    var tag=el.tagName+(el.id?'#'+el.id:el.className?' .'+String(el.className).trim().split(' ')[0]:'');
+    gtag('event','hm_click',{'page':location.pathname,'cx':Math.round(e.clientX/window.innerWidth*100),'cy':Math.round((e.clientY+window.scrollY)/Math.max(document.body.scrollHeight,1)*100),'el':tag.substring(0,40)});
+  });
+  var _sd=0;
+  window.addEventListener('scroll',function(){
+    var pct=Math.round((window.scrollY+window.innerHeight)/Math.max(document.body.scrollHeight,1)*100);
+    var milestone=Math.floor(pct/25)*25;
+    if(milestone>_sd){_sd=milestone;gtag('event','hm_scroll',{'page':location.pathname,'depth':_sd});}
+  },{passive:true});
+})();
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg: #0a0a0a; --bg-elevated: #111; --bg-card: #141414; --accent: #c9a84c; --accent-dim: rgba(201,168,76,0.10); --accent-border: rgba(201,168,76,.3); --text: #e8e0d0; --text-secondary: #8a8070; --text-muted: #6b6660; --border: #1e1e1e; --serif: 'EB Garamond', Georgia, serif; --display: 'Playfair Display', Georgia, serif; --sans: 'Inter', -apple-system, sans-serif; --max-w: 720px; }
+html { font-size: 18px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: var(--accent); text-decoration: none; } a:hover { opacity: 0.8; }
+::selection { background: var(--accent-dim); color: var(--accent); }
+nav { position: sticky; top: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-mark { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); }
+.nav-mark span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); opacity: 1; }
+.nav-links .nav-cta { color: var(--accent) !important; border: 1px solid var(--accent-border); padding: 0.35rem 0.8rem; border-radius: 2px; }
+.article-header { padding: 7rem 2rem 4rem; border-bottom: 1px solid var(--border); text-align: center; position: relative; }
+.article-header::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 5rem; background: linear-gradient(to bottom, transparent, var(--accent-border)); }
+.article-tag { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: block; }
+.article-header h1 { font-family: var(--display); font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.25; color: var(--text); max-width: 800px; margin: 0 auto 1.5rem; }
+.article-meta { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+.article-body { max-width: var(--max-w); margin: 0 auto; padding: 4rem 2rem 6rem; }
+.article-body h2 { font-family: var(--display); font-weight: 700; font-size: 1.6rem; line-height: 1.3; color: var(--text); margin: 3rem 0 1.25rem; }
+.article-body h3 { font-family: var(--sans); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); margin: 2rem 0 0.75rem; }
+.article-body p { margin-bottom: 1.5rem; font-size: 1.05rem; color: var(--text); }
+.article-body ul, .article-body ol { margin: 0 0 1.5rem 1.5rem; }
+.article-body li { margin-bottom: 0.5rem; font-size: 1.05rem; }
+.pull-quote { font-family: var(--display); font-style: italic; font-size: 1.3rem; line-height: 1.5; color: var(--text-secondary); border-left: 2px solid var(--accent); padding: 1.5rem 2rem; margin: 2.5rem 0; }
+.article-body strong { color: var(--text); font-weight: 500; }
+hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+.compare-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; }
+.compare-box h4 { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+.compare-box ul { margin-left: 1rem; }
+.compare-box li { font-family: var(--sans); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.4rem; }
+.warning-box { background: rgba(201,168,76,0.06); border: 1px solid var(--accent-border); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; }
+.warning-box p { font-family: var(--sans); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.75; margin: 0; }
+.warning-box strong { color: var(--accent); }
+.services-cta { background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 4px; padding: 2.5rem; max-width: var(--max-w); margin: 0 auto 4rem; text-align: center; }
+.services-cta h3 { font-family: var(--display); font-weight: 700; font-size: 1.4rem; color: var(--text); margin-bottom: 0.75rem; }
+.services-cta p { font-family: var(--sans); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6; }
+.services-cta a { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-border); padding: 0.6rem 1.4rem; border-radius: 2px; display: inline-block; transition: background 0.2s; }
+.services-cta a:hover { background: var(--accent-dim); opacity: 1; }
+.related { border-top: 1px solid var(--border); padding: 3rem 2rem; max-width: var(--max-w); margin: 0 auto; }
+.related-label { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.5rem; }
+.related-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.related-links a { font-family: var(--serif); font-size: 1rem; color: var(--text-secondary); border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; transition: color 0.2s; }
+.related-links a:hover { color: var(--accent); opacity: 1; }
+footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-mark { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); }
+.footer-mark span { color: var(--accent); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); }
+.footer-links a:hover { color: var(--accent); opacity: 1; }
+.footer-copy { font-family: var(--sans); font-size: 0.63rem; color: var(--text-muted); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 1px; background: var(--text-secondary); transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+@media (max-width: 640px) { html { font-size: 16px; } nav { padding: 1rem 1.25rem; } .hamburger { display: flex; } .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.97); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; z-index: 150; } .nav-links.open { display: flex; } .nav-links a { font-size: 1rem; } .article-body { padding: 3rem 1.25rem 5rem; } footer { flex-direction: column; gap: 0.75rem; text-align: center; } .footer-links { justify-content: center; flex-wrap: wrap; } }
+</style>
 </head>
 <body>
 
-<!-- ── NAVIGATION ── -->
-<nav class="site-nav">
-      <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </button>
-      
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">The Bitcoin Family Office</a>
-    <div class="nav-links" id="navLinks">
-      <a href="/" onclick="closeMenu()">Home</a>
-      <a href="/services/" onclick="closeMenu()">Services</a>
-      <a href="/blog/" onclick="closeMenu()">Research</a>
-      <a href="/news/" onclick="closeMenu()">News</a>
-      <a href="/monitor/" onclick="closeMenu()">Estate Watch</a>
-      <a href="/faq/" onclick="closeMenu()">FAQ</a>
-      <a href="/monitor/signup" class="nav-cta" onclick="closeMenu()">Get Started</a>
-    </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+<nav>
+  <a href="/" class="nav-mark">The <span>Bitcoin</span> Family Office</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="/" onclick="closeMenu()">Home</a>
+    <a href="/services/" onclick="closeMenu()">Services</a>
+    <a href="/tools/" onclick="closeMenu()">Tools</a>
+    <a href="/blog/" onclick="closeMenu()">Blog</a>
+    <a href="/monitor/" onclick="closeMenu()">Estate Watch</a>
+    <a href="/about/" onclick="closeMenu()">About</a>
+    <a href="/services/" class="nav-cta" onclick="closeMenu()">Get Structured</a>
   </div>
 </nav>
 
-<!-- ── ARTICLE HERO ── -->
-<header class="article-hero">
-  <div class="article-hero-inner">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a>
-      <span class="breadcrumb-sep">›</span>
-      <a href="/blog/">Blog</a>
-      <span class="breadcrumb-sep">›</span>
-      <span>Bitcoin Special Needs Trust</span>
-    </nav>
-    <div class="article-tag">Estate Planning</div>
-    <h1 class="article-title">Bitcoin and Special Needs Trusts: Protecting a Disabled Beneficiary's Inheritance</h1>
-    <p class="article-subtitle">
-      Leaving Bitcoin directly to a disabled family member can instantly disqualify them from Medicaid, SSI, and other means-tested benefits they depend on for daily care. A properly structured Special Needs Trust solves this — but Bitcoin adds layers of complexity that most SNT attorneys have never encountered.
-    </p>
-    <div class="article-meta">
-      <div class="article-meta-item">By <strong style="color:var(--text);">Hal Turner</strong></div>
-      <div class="meta-dot"></div>
-      <div class="article-meta-item">February 25, 2026</div>
-      <div class="meta-dot"></div>
-      <div class="article-meta-item">~14 min read</div>
-    </div>
-  </div>
+<header class="article-header">
+  <span class="article-tag">Special Needs Planning &middot; Trusts &middot; Benefits Preservation</span>
+  <h1>Bitcoin and Special Needs Trusts: Protecting Disabled Beneficiaries Without Losing Government Benefits</h1>
+  <p class="article-meta">By Hal Turner, Bitcoin Estate Planning Analyst &mdash; February 26, 2026 &mdash; 18 min read</p>
 </header>
 
-<!-- ── ARTICLE BODY ── -->
-<main>
-  <article class="article-layout" itemscope itemtype="https://schema.org/Article">
-    <div class="article-body">
+<article class="article-body">
 
-      <p>
-        Most Bitcoin estate planning advice is written for wealthy, healthy heirs. This article is for families with a different situation: a beloved family member with a disability who depends on government benefit programs for medical care and daily support — and who stands to receive a Bitcoin inheritance that could eliminate that safety net in an instant.
-      </p>
-      <p>
-        At $95,000 per Bitcoin, it takes 0.021 BTC — less than $2,000 worth even at that price a few years ago — to exceed the $2,000 asset limit that governs Supplemental Security Income (SSI) and Medicaid eligibility. A direct Bitcoin inheritance of any meaningful size will end those benefits. And losing Medicaid doesn't just mean paying out-of-pocket for prescriptions — for many disabled individuals, it means losing access to residential care, in-home support, and life-sustaining medical services that may cost tens or hundreds of thousands of dollars per year.
-      </p>
-      <p>
-        A <strong>Special Needs Trust (SNT)</strong> is the legal instrument designed to solve this problem. But making an SNT work with Bitcoin requires careful attention to custody, investment policy, trustee selection, and distribution standards that most SNT attorneys have not yet confronted. This guide walks through every layer.
-      </p>
+  <p>You have spent years accumulating Bitcoin. You have also spent years caring for a child — or an adult family member — with a disability. You want your Bitcoin to provide for them long after you are gone. And you are terrified of getting this wrong.</p>
 
-      <!-- ── SECTION 1 ── -->
-      <h2>The Core Problem: Benefits Cliffs and Bitcoin</h2>
+  <p>Your fear is justified. Leaving Bitcoin directly to a disabled beneficiary who receives Supplemental Security Income (SSI) or Medicaid could be one of the most expensive estate planning mistakes you ever make. Not because of taxes. Because of government benefits eligibility rules that most estate planning attorneys barely understand — and that virtually no Bitcoin-focused advisor has written about.</p>
 
-      <p>
-        The federal benefit programs that serve people with disabilities — primarily <strong>Supplemental Security Income (SSI)</strong> and <strong>Medicaid</strong> — are needs-based. They impose strict asset limits that count most property a recipient owns. For SSI, the limit is <strong>$2,000 for an individual</strong> ($3,000 for a couple). Many Medicaid programs use the same threshold, though details vary by state.
-      </p>
-      <p>
-        At today's Bitcoin price of approximately $95,000/BTC:
-      </p>
-      <ul>
-        <li>0.021 BTC ≈ $2,000 — the SSI asset limit. Any holding above this disqualifies the beneficiary from SSI.</li>
-        <li>0.1 BTC ≈ $9,500 — roughly five times the asset limit. Received directly, this eliminates SSI and potentially Medicaid in most states.</li>
-        <li>1 BTC ≈ $95,000 — a life-changing inheritance that, received outright by an SSI/Medicaid recipient, would eliminate their benefits entirely and potentially cost far more in lost care than it provides in cash.</li>
-      </ul>
-      <p>
-        The cruel math: a disabled individual who loses Medicaid due to an inheritance may need to spend down virtually all of those inherited funds on care costs before re-qualifying for benefits. The inheritance that was meant to improve their life effectively becomes a temporary bridge to spending down — not a lasting improvement.
-      </p>
-      <p>
-        Bitcoin's price volatility adds a layer of urgency. Even a position that appears modest today can breach the asset limit quickly if prices rise. A parent who leaves their disabled child 0.02 BTC today, thinking it's under the limit, may inadvertently create a benefits crisis if Bitcoin appreciates between the time the estate plan is drafted and when the inheritance is received.
-      </p>
+  <p>This article closes that gap. We cover exactly how Special Needs Trusts work, why Bitcoin introduces unique complications, how to properly fund and structure an SNT for a Bitcoin holder's estate, and which complementary tools — including ABLE accounts — can work alongside the trust to maximize your beneficiary's quality of life.</p>
 
-      <div class="callout-warning">
-        <div class="callout-label">Critical Warning</div>
-        <p><strong>Never leave Bitcoin directly to a disabled beneficiary who receives SSI or Medicaid.</strong> Even a small Bitcoin inheritance received outright can immediately disqualify them from the benefits they depend on for care. A Special Needs Trust must be in place before the inheritance is received.</p>
-      </div>
-
-      <!-- ── SECTION 2 ── -->
-      <h2>What a Special Needs Trust Is — and How It Works</h2>
-
-      <p>
-        A <strong>Special Needs Trust (SNT)</strong> is a specific type of irrevocable trust designed to hold assets for a disabled beneficiary without those assets being counted as the beneficiary's own resources for purposes of means-tested benefit eligibility. Assets held in a properly drafted SNT are owned by the trust — not by the beneficiary — and therefore do not count against their SSI or Medicaid asset limits.
-      </p>
-      <p>
-        The foundational legal authority is 42 U.S.C. § 1396p(d)(4)(A) for first-party SNTs and § 1396p(d)(4)(C) for pooled trusts. Third-party SNTs are governed by state trust law and federal benefit regulations. When properly structured and administered, an SNT allows a disabled beneficiary to receive supplemental support — technology, recreation, education, personal care beyond what government programs cover — without losing access to those programs.
-      </p>
-      <p>
-        <strong>How the trust distributes:</strong> The trustee makes discretionary distributions from the trust for the beneficiary's "supplemental and extra care" — items and services that are not provided by government programs. The trustee must be careful not to make distributions that would be deemed to "replace" government benefits (called "in-kind support and maintenance" or ISM), as those can reduce SSI payments. Distributions must be structured to <em>supplement</em>, never substitute.
-      </p>
-
-      <!-- ── SECTION 3 ── -->
-      <h2>Third-Party SNT vs. First-Party SNT: A Critical Distinction</h2>
-
-      <p>
-        There are two fundamentally different types of Special Needs Trusts, and the distinction matters enormously for Bitcoin families.
-      </p>
-
-      <h3>Third-Party Special Needs Trust</h3>
-      <p>
-        A third-party SNT is funded with assets belonging to <em>someone other than the beneficiary</em> — typically a parent, grandparent, or sibling. This is the instrument most relevant for Bitcoin estate planning: you create and fund the trust during your lifetime or at death, for the benefit of your disabled family member.
-      </p>
-      <p>
-        Key features of a third-party SNT:
-      </p>
-      <ul>
-        <li><strong>No Medicaid payback requirement.</strong> When the beneficiary dies, the remaining trust assets pass to other named remainder beneficiaries (other children, charity, etc.) — not to Medicaid to reimburse the state for care provided. This is the most important distinction from a first-party SNT.</li>
-        <li><strong>No contribution limits.</strong> You can fund it with as much Bitcoin as you wish — through annual exclusion gifts during your lifetime, through your will at death, or by naming the trust as beneficiary on life insurance or retirement accounts.</li>
-        <li><strong>Tax treatment:</strong> Contributions are treated as gifts by the donor; the trust itself pays income tax as a complex trust (or the grantor may be treated as the owner under grantor trust rules if living). Capital gains inside the trust are generally taxed at trust rates, which can be punitive at high income levels — a reason to plan distributions carefully.</li>
-        <li><strong>Flexibility in design:</strong> You control the trust terms — trustee selection, investment policy, distribution standards, and successor provisions — within the legal parameters for SNT qualification.</li>
-      </ul>
-
-      <h3>First-Party Special Needs Trust (Self-Settled)</h3>
-      <p>
-        A first-party SNT is funded with assets that <em>belong to the disabled individual themselves</em> — for example, a personal injury settlement, an inheritance already received outright, or the individual's own savings. This type is established under 42 U.S.C. § 1396p(d)(4)(A) and must be established by a parent, grandparent, legal guardian, or court.
-      </p>
-      <p>
-        Critical limitations of a first-party SNT:
-      </p>
-      <ul>
-        <li><strong>Medicaid payback on death.</strong> At the beneficiary's death, the state Medicaid program must be repaid for all benefits paid during the beneficiary's lifetime. Remaining assets only pass to other beneficiaries after Medicaid is reimbursed. For a disabled individual who has received Medicaid for decades, this payback obligation can be substantial.</li>
-        <li><strong>Must be established while beneficiary is under 65.</strong> First-party SNTs cannot be established for individuals 65 or older — which matters if a disability develops in later adulthood.</li>
-        <li><strong>Complex administration:</strong> The Medicaid agency in the state of residence must typically be notified, and distributions are subject to more intense scrutiny than third-party SNTs.</li>
-      </ul>
-
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th>Feature</th>
-            <th>Third-Party SNT</th>
-            <th>First-Party SNT</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Who funds it?</td>
-            <td>Parent, grandparent, anyone except the beneficiary</td>
-            <td>The beneficiary themselves (their own assets)</td>
-          </tr>
-          <tr>
-            <td>Medicaid payback at death?</td>
-            <td>No — assets pass to remainder beneficiaries</td>
-            <td>Yes — state Medicaid reimbursed first</td>
-          </tr>
-          <tr>
-            <td>Age limit for creation?</td>
-            <td>None</td>
-            <td>Beneficiary must be under 65</td>
-          </tr>
-          <tr>
-            <td>Best for Bitcoin planning?</td>
-            <td>Yes — primary vehicle for Bitcoin inheritance</td>
-            <td>Only if beneficiary already holds Bitcoin directly</td>
-          </tr>
-          <tr>
-            <td>Remainder at death?</td>
-            <td>Named beneficiaries (children, charity, etc.)</td>
-            <td>Medicaid payback, then named beneficiaries</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p>
-        For the vast majority of Bitcoin estate planning situations — a parent or grandparent who holds Bitcoin and wants to provide for a disabled child or grandchild — the <strong>third-party SNT</strong> is the right vehicle. The rest of this article focuses primarily on the third-party structure.
-      </p>
-
-      <!-- ── SECTION 4 ── -->
-      <h2>Bitcoin-Specific SNT Design: The Four Hard Questions</h2>
-
-      <p>
-        A conventional SNT holds stocks, bonds, mutual funds, and cash. Adding Bitcoin to the SNT ecosystem creates four design challenges that require deliberate answers before the trust is drafted.
-      </p>
-
-      <h3>1. Who Holds the Keys?</h3>
-      <p>
-        The trustee of an SNT has a fiduciary duty to manage trust assets prudently. For Bitcoin, this means the trustee must be capable of either: (a) directly safeguarding the private keys in a secure, recoverable manner, or (b) delegating that function to a qualified sub-custodian.
-      </p>
-      <p>
-        Most individual trustees — even sophisticated, well-intentioned family members — are not equipped to custody significant Bitcoin holdings on behalf of a trust with an indefinite life span and a vulnerable beneficiary. A hardware wallet held by an individual trustee creates a single point of failure: if the trustee dies, becomes incapacitated, or simply loses the seed phrase, the trust's Bitcoin may be permanently inaccessible.
-      </p>
-      <p>
-        Better options for SNT Bitcoin custody:
-      </p>
-      <ul>
-        <li><strong>Qualified Bitcoin custodian as sub-custodian:</strong> The trustee delegates custody to a regulated Bitcoin custodian (such as Anchorage Digital, BitGo, or Coinbase Custody) that can hold Bitcoin on behalf of trusts with proper titling. The trustee retains investment authority; the custodian holds the keys.</li>
-        <li><strong>Directed trust structure:</strong> The trust document separates custodial authority from distribution authority. A Bitcoin-literate investment advisor or directed trustee handles custody and investment decisions; a separate administrative trustee handles distributions, record-keeping, and benefits compliance. This division of labor is well-established in directed trust states (South Dakota, Nevada, Delaware, Alaska).</li>
-        <li><strong>Multi-signature structure:</strong> For larger positions, a 2-of-3 or 3-of-5 <a href="/blog/bitcoin-multisig-inheritance" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">multisig</a> arrangement with keys held by different trusted parties (trustee, successor trustee, custodian) ensures no single point of failure and no single individual can unilaterally move funds.</li>
-      </ul>
-
-      <h3>2. Can the SNT HODL Bitcoin? The Prudent Investor Duty</h3>
-      <p>
-        Every trustee in the United States is subject to the Uniform Prudent Investor Act (or its state equivalent), which requires trustees to invest and manage trust assets with the care, skill, prudence, and diligence that a prudent investor would exercise. The default standard includes a diversification requirement — a trustee who concentrates 100% of trust assets in a single volatile asset is exposed to personal liability if the trust suffers losses.
-      </p>
-      <p>
-        For a Bitcoin SNT, this creates a tension: the grantor may intend for the trust to hold Bitcoin as its primary asset indefinitely, but the trustee's fiduciary duty could be read to require diversification. The resolution is a <strong>written Investment Policy Statement (IPS)</strong> that explicitly:
-      </p>
-      <ul>
-        <li>Authorizes the trustee to hold a concentrated Bitcoin position</li>
-        <li>Articulates the rationale (long-term appreciation potential, inflation hedge, the grantor's intent)</li>
-        <li>Defines acceptable volatility parameters and liquidity requirements for distributions</li>
-        <li>Relieves the trustee of personal liability for maintaining the Bitcoin allocation as directed, provided the trustee acts in good faith</li>
-      </ul>
-      <p>
-        This IPS should be incorporated by reference into the trust document, so it has legal force. The grantor — who presumably understands Bitcoin's risk profile — should draft it in consultation with the estate planning attorney and ensure the trustee's acceptance is documented.
-      </p>
-      <p>
-        Some states allow a trust instrument to override the default prudent investor diversification requirement with an explicit direction from the grantor. South Dakota, Nevada, and Delaware are particularly favorable. If the family's SNT is sited in a directed trust state, the grantor's Bitcoin concentration instruction carries greater legal weight.
-      </p>
-
-      <h3>3. Distribution Standards: What Can the Trust Pay For?</h3>
-      <p>
-        An SNT's distributions must <em>supplement</em> government benefits, not replace them. The trustee must avoid making distributions for items or services that would be counted as "in-kind support and maintenance" (ISM) under SSI rules — primarily food and shelter. ISM distributions reduce SSI payments dollar-for-dollar (up to one-third of the SSI benefit plus $20).
-      </p>
-      <p>
-        Distributions from a Bitcoin SNT that are generally permissible:
-      </p>
-      <ul>
-        <li>Education, vocational training, and technology (computers, tablets, communication devices)</li>
-        <li>Transportation (vehicle, ride services, adapted vehicles)</li>
-        <li>Recreation, entertainment, and cultural experiences</li>
-        <li>Medical and dental services not covered by Medicaid</li>
-        <li>Personal care attendants beyond what Medicaid provides</li>
-        <li>Home modifications not funded by state programs</li>
-        <li>Legal fees and advocacy services</li>
-        <li>Pre-paid funeral and burial arrangements</li>
-      </ul>
-      <p>
-        The trustee must document every distribution carefully — both the purpose and the relationship to the beneficiary's government benefit eligibility. This record-keeping discipline is especially important when distributions are funded by Bitcoin liquidations, which generate capital gains inside the trust.
-      </p>
-
-      <h3>4. Bitcoin Liquidation and Tax Inside the Trust</h3>
-      <p>
-        When the trustee liquidates Bitcoin to fund a distribution, the trust recognizes a capital gain (assuming the Bitcoin has appreciated). Trusts reach the top capital gains tax rate (23.8%, including NIIT) at very low income thresholds — approximately $15,000 of taxable income in 2024. A trust holding appreciated Bitcoin that makes regular distributions may face substantial annual tax liability.
-      </p>
-      <p>
-        Strategies to manage this:
-      </p>
-      <ul>
-        <li><strong>Distribute income to the beneficiary</strong> when appropriate — trust income distributed to the beneficiary is taxed at their individual rate (often 0% if they have no other income), not the trust rate. However, SNT distributions require careful analysis to ensure they don't trigger ISM rules.</li>
-        <li><strong>Plan liquidations strategically</strong> — use years of lower Bitcoin price appreciation (or temporary price dips) for planned liquidations, reducing the embedded gain recognized in any single year.</li>
-        <li><strong>Maintain a cash reserve</strong> within the trust for near-term distributions, reducing the frequency of Bitcoin liquidations and improving the trustee's ability to choose favorable liquidation timing.</li>
-      </ul>
-
-      <!-- AM Mining Callout -->
-      <div class="am-callout">
-        <div class="am-label">Tax Strategy Resource</div>
-        <h3>Mining Income Creates High-Basis Bitcoin for SNT Contributions</h3>
-        <p>
-          Bitcoin mined through a hosted mining operation is received with a basis equal to its fair market value at time of receipt. Contributing freshly mined Bitcoin to an SNT minimizes embedded capital gains inside the trust — reducing the tax drag when the trustee eventually liquidates for distributions. Mining also generates significant tax deductions for the grantor.
-        </p>
-        <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" class="btn btn-primary">Explore Mining Tax Strategy →</a>
-      </div>
-
-      <!-- ── SECTION 5 ── -->
-      <h2>Naming an SNT as Beneficiary on Life Insurance and Retirement Accounts</h2>
-
-      <p>
-        One of the most practical ways to fund a Bitcoin SNT — especially for families who hold Bitcoin in taxable accounts or <a href="/blog/bitcoin-cold-storage-estate-planning" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">cold storage</a> rather than IRAs — is to use the SNT as the beneficiary on life insurance policies or retirement accounts, while holding the Bitcoin directly in the trust during the grantor's lifetime.
-      </p>
-      <p>
-        <strong>Life insurance → SNT:</strong> Name the SNT as the beneficiary on a life insurance policy. The death benefit passes to the trust income-tax-free and immediately available for the beneficiary's supplemental needs. This is a clean structure with no income tax complications. The trust receives the policy proceeds as principal (not income), which avoids the trust income tax issue entirely.
-      </p>
-      <p>
-        <strong>Retirement account → SNT:</strong> Naming an SNT as beneficiary on an IRA or 401(k) creates complexity. Most SNTs are not "see-through" trusts under IRS rules because they have multiple potential beneficiaries with different life expectancies. This may mean the retirement account must be distributed (and taxed) within 10 years under the SECURE Act's 10-year rule — generating significant trust income that is taxed at punitive trust rates.
-      </p>
-      <p>
-        For this reason, most Bitcoin estate planning attorneys recommend that Bitcoin holders with disabled beneficiaries:
-      </p>
-      <ul>
-        <li>Leave retirement accounts to other beneficiaries (healthy heirs who can use the 10-year rule efficiently at their own tax rates)</li>
-        <li>Leave Bitcoin, real property, and other assets with favorable tax treatment (step-up in basis) to the SNT</li>
-        <li>Fund the SNT with life insurance proceeds or lifetime contributions for the liquidity and distribution needs it serves</li>
-      </ul>
-
-      <!-- ── SECTION 6 ── -->
-      <h2>The ABLE Account: A Partial Alternative for Smaller Amounts</h2>
-
-      <p>
-        Congress created ABLE accounts (Achieving a Better Life Experience, 26 U.S.C. § 529A) in 2014 as a simpler, lower-cost alternative to SNTs for disabled individuals. An ABLE account is a tax-advantaged savings account that does not count against the beneficiary's SSI or Medicaid eligibility — up to $100,000 in the account.
-      </p>
-      <p>
-        ABLE accounts have meaningful limitations compared to a Bitcoin SNT:
-      </p>
-      <ul>
-        <li><strong>$100,000 SSI protection cap.</strong> ABLE account balances above $100,000 count against the SSI asset limit. For a Bitcoin inheritance of any significant size, this cap is quickly reached — particularly as Bitcoin appreciates.</li>
-        <li><strong>Annual contribution limits.</strong> Contributions are capped at the annual gift tax exclusion amount ($18,000 in 2024) per year. You cannot fund an ABLE account with a large lump sum.</li>
-        <li><strong>Cannot hold Bitcoin directly.</strong> ABLE accounts are administered through state-sponsored programs similar to 529 plans. They hold cash and investment options offered by the program — not direct Bitcoin. There is no mechanism to hold self-custodied BTC in an ABLE account.</li>
-        <li><strong>Medicaid payback on death.</strong> Unlike a third-party SNT, remaining ABLE account funds at death are subject to Medicaid payback in most states.</li>
-        <li><strong>Disability onset requirement.</strong> The beneficiary's disability must have begun before age 26 (changing to age 46 beginning in 2026 under SECURE 2.0).</li>
-      </ul>
-      <p>
-        <strong>The practical role of an ABLE account in a Bitcoin estate plan:</strong> ABLE accounts can work alongside a Bitcoin SNT — the SNT holds the Bitcoin position and larger assets, while an ABLE account holds cash for day-to-day supplemental expenses. ABLE accounts offer easier administration and fewer distribution restrictions than a full SNT for routine, smaller purchases. Think of the ABLE account as the operating checking account and the Bitcoin SNT as the long-term wealth vehicle.
-      </p>
-
-      <!-- ── SECTION 7 ── -->
-      <h2>Common Mistakes: How Bitcoin Families Accidentally Harm Disabled Heirs</h2>
-
-      <p>
-        The consequences of getting this wrong are severe and often irreversible. Here are the most common mistakes Bitcoin families make:
-      </p>
-
-      <h3>Mistake 1: Leaving Bitcoin Directly to a Disabled Heir</h3>
-      <p>
-        Naming a disabled beneficiary directly in a will or trust distribution means the Bitcoin passes to them outright at your death. If they receive SSI or Medicaid, this immediately eliminates their benefit eligibility. Depending on their care needs, they may spend down most of the inheritance on care before requalifying for benefits — and the process of requalifying can take months, during which essential services may be interrupted.
-      </p>
-      <p>
-        Fix: Name the Special Needs Trust as the beneficiary in your will, revocable living trust, and any beneficiary designations. The Bitcoin never touches the beneficiary's hands — it passes directly into the SNT.
-      </p>
-
-      <h3>Mistake 2: The "Letter of Intent" That Isn't a Trust</h3>
-      <p>
-        Some parents write detailed instructions in a letter of intent or side letter explaining how they want their disabled child cared for. This letter has enormous emotional value and practical utility for trustees — but it has no legal effect. A letter of intent is not an SNT. Bitcoin left without a formal trust structure will pass outright, regardless of what a letter says.
-      </p>
-
-      <h3>Mistake 3: Funding a First-Party SNT Without Understanding Payback</h3>
-      <p>
-        If a disabled beneficiary directly receives Bitcoin (perhaps before an SNT is in place) and then transfers it to a first-party SNT to preserve benefits, that SNT is subject to Medicaid payback on death. Families sometimes assume that "putting it in a trust" protects the full inheritance for other heirs — but a first-party SNT payback obligation can consume the entire trust balance. Get competent counsel before funding a first-party SNT with appreciated Bitcoin.
-      </p>
-
-      <h3>Mistake 4: Naming the Disabled Beneficiary as Trustee of Their Own SNT</h3>
-      <p>
-        This is a disqualifying structure. The SSI regulations deem assets held in a trust where the beneficiary is also the trustee to be available resources — meaning they count against the $2,000 limit. The trustee of a Special Needs Trust must be someone other than the beneficiary. Options include a parent, sibling, professional trustee, corporate trustee, or nonprofit organization.
-      </p>
-
-      <h3>Mistake 5: Using a Generic Trust Form</h3>
-      <p>
-        An SNT must contain specific language to qualify under federal and state regulations. A generic irrevocable trust form, even one drafted by a competent estate attorney, may not include the SNT-specific provisions required. The cost of using incorrect trust language — benefits disqualification — far exceeds the cost of retaining a qualified special needs planning attorney.
-      </p>
-
-      <div class="callout-warning">
-        <div class="callout-label">Do Not DIY This</div>
-        <p><strong>Special Needs Trusts involve the intersection of trust law, federal benefits law, and Bitcoin custody mechanics.</strong> This is not a document that should be drafted from a template or by a general practice attorney without SNT experience. The stakes — loss of Medicaid for a vulnerable family member — are too high.</p>
-      </div>
-
-      <!-- ── SECTION 8 ── -->
-      <h2>Finding an SNT Attorney with Bitcoin Competency</h2>
-
-      <p>
-        This is one of the rarest skill combinations in the legal profession today: a special needs trust attorney who also understands Bitcoin custody, basis tracking, and the technical aspects of digital asset ownership. You need both skill sets.
-      </p>
-      <p>
-        What to look for when interviewing attorneys:
-      </p>
-      <ul>
-        <li><strong>Active SNT practice.</strong> Ask how many SNTs they have drafted in the last 12 months. This should be a regular part of their practice, not an occasional occurrence. Membership in the Academy of Special Needs Planners (ASNP) is a useful credential.</li>
-        <li><strong>Bitcoin literacy (not just "digital assets" generally).</strong> Ask specifically about Bitcoin custody mechanics — hardware wallets, multisig, on-chain transfers, UTXO management. An attorney who conflates Bitcoin with crypto tokens or who defers entirely to "whatever the custodian recommends" may not have the depth you need.</li>
-        <li><strong>Directed trust experience.</strong> If you want to segregate Bitcoin custody from distribution decisions (the recommended approach), the attorney should be familiar with directed trust structures and the relevant state laws.</li>
-        <li><strong>Experience with trustee instruction documents.</strong> A good SNT attorney will prepare not just the trust instrument but a Letter of Instruction for the trustee covering custody procedures, distribution standards, and benefit compliance protocols.</li>
-        <li><strong>Familiarity with your state's Medicaid rules.</strong> SNT compliance is partly federal and partly state-specific. The attorney should be current on your state's specific Medicaid policies for SNTs — particularly around distribution standards and payback exceptions.</li>
-      </ul>
-      <p>
-        Expect to work with at least two professionals: the SNT attorney for trust drafting and benefits compliance, and a Bitcoin-competent estate planning advisor (or a firm like The <a href="/blog/building-bitcoin-native-family-office" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">Bitcoin <a href="/blog/bitcoin-family-office-vs-wealth-manager" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">family office</a></a>) for <a href="/blog/bitcoin-custody-architecture" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">custody architecture</a>, investment policy, and the technical aspects of Bitcoin integration into the trust structure.
-      </p>
-
-      <!-- ── SECTION 9 ── -->
-      <h2>State-by-State Considerations for Bitcoin SNTs</h2>
-
-      <p>
-        While the core SNT framework is federal, state law significantly affects how a Bitcoin SNT should be structured and administered. Key state-level considerations:
-      </p>
-
-      <h3>State Medicaid Programs and Supplemental Benefits</h3>
-      <p>
-        Many states operate supplemental benefit programs for disabled individuals that layer on top of federal SSI and Medicaid. Some of these state programs — such as California's In-Home Supportive Services (IHSS) or New York's OPWDD programs — have their own asset limits, look-through provisions, and distribution rules that interact differently with SNT assets than the federal programs do. An SNT that is perfectly compliant for federal SSI purposes may create complications for a state supplemental program.
-      </p>
-      <p>
-        Always engage an attorney licensed in the state where the beneficiary resides — not just where the trust is sited.
-      </p>
-
-      <h3>Directed Trust Siting</h3>
-      <p>
-        States like South Dakota, Nevada, Delaware, and Alaska have particularly favorable directed trust statutes that allow clean separation of investment, custody, and distribution functions. For a Bitcoin SNT with a large position, siting the trust in one of these states (using a directed trust structure with an in-state directed trustee) can provide both better Bitcoin custody flexibility and reduced trustee liability exposure.
-      </p>
-      <p>
-        Siting a trust in a non-resident state requires compliance with that state's jurisdictional requirements (typically at least one in-state trustee or trust company), but for significant Bitcoin positions, the planning flexibility may be worth the administrative complexity.
-      </p>
-
-      <h3>State Income Tax on Trust Income</h3>
-      <p>
-        Some states impose income tax on trust income based on the residence of the grantor, trustee, or beneficiary — regardless of where the trust is sited. For a Bitcoin SNT that will recognize capital gains as it liquidates Bitcoin for distributions, the state income tax treatment of trust capital gains is a meaningful planning variable. Work with a CPA who understands both state trust taxation and Bitcoin capital gains to model the tax impact.
-      </p>
-
-      <!-- ── SECTION 10 ── -->
-      <h2>Letter of Instruction for SNT Trustees: What Bitcoin Information They Need</h2>
-
-      <p>
-        A Letter of Instruction (LOI) for an SNT trustee handling Bitcoin is one of the most important documents in a Bitcoin estate plan involving a disabled beneficiary. It should contain practical, operational information that the trustee cannot derive from the trust document alone — and it may be the difference between the trustee managing the Bitcoin competently and accidentally losing access to the funds.
-      </p>
-      <p>
-        The Bitcoin SNT Letter of Instruction should cover:
-      </p>
-      <ol>
-        <li><strong>Custody architecture:</strong> Where is the Bitcoin held? (Custodian name and account number, hardware wallet location and make/model, multisig configuration if applicable.) Who holds keys, seed phrases, or custodian access credentials? Where are the backup seed phrases stored?</li>
-        <li><strong>Access and succession:</strong> Step-by-step instructions for a trustee who has never used the custody system to access and transfer Bitcoin. Contact information for the custodian, sub-custodian, or Bitcoin advisor who can assist the trustee. Successor access procedures if the primary trustee becomes incapacitated.</li>
-        <li><strong>Investment policy summary:</strong> Reminder that the trust is designed to hold Bitcoin as its primary asset; reference to the IPS incorporated into the trust document; instructions for when and how to liquidate for distributions.</li>
-        <li><strong>Distribution compliance guidelines:</strong> A plain-language summary of what distributions are permissible under the SNT without jeopardizing the beneficiary's benefits. Examples of compliant vs. non-compliant distributions. Contact information for the SNT attorney to consult when uncertain.</li>
-        <li><strong>Benefit program contacts:</strong> The Social Security Administration contacts for the beneficiary's SSI case, the state Medicaid agency contacts, and the beneficiary's benefits coordinator or case manager.</li>
-        <li><strong>Cost basis records:</strong> The complete basis history for every Bitcoin lot in the trust — acquisition dates, prices paid, and any adjustments. This information is critical for tax reporting when the trustee liquidates Bitcoin for distributions.</li>
-        <li><strong>Annual review reminder:</strong> A note that the SNT trustee should consult with the SNT attorney annually to confirm that distribution practices remain compliant with any changes in SSI/Medicaid rules, and that Bitcoin custody arrangements remain secure and appropriate.</li>
-      </ol>
-
-      <p>
-        This Letter of Instruction should be updated whenever the trust's custody arrangements change, whenever Bitcoin prices move materially (so context for distribution planning stays current), and at least annually. It should be stored securely but accessibly — the trustee needs to find it when they need it, which may be in an emergency.
-      </p>
-
-      <div class="cta-inline">
-        <h3>Bitcoin Estate Planning for Families with Disabled Beneficiaries</h3>
-        <p>The combination of Special Needs Trust law and Bitcoin custody architecture requires specialized planning. Our complete <a href="/blog/bitcoin-estate-planning-complete-guide" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">estate planning guide</a> covers how to integrate an SNT into a comprehensive Bitcoin wealth transfer strategy.</p>
-        <a href="/blog/bitcoin-estate-planning-guide" class="btn btn-primary">Read the Estate Planning Guide →</a>
-        <a href="/blog/bitcoin-trust-for-minors" class="btn btn-secondary">Bitcoin Trusts for Minors</a>
-      </div>
-
-      <!-- ── SECTION 11 ── -->
-      <h2>Summary: Protecting a Disabled Beneficiary's Bitcoin Inheritance</h2>
-
-      <p>
-        The stakes in Bitcoin Special Needs Trust planning are higher than in almost any other area of Bitcoin estate planning. A mistake doesn't just mean your heirs pay more tax — it can eliminate a vulnerable family member's access to the medical care and support services they depend on to live.
-      </p>
-      <p>
-        The framework:
-      </p>
-      <ul>
-        <li><strong>Never leave Bitcoin directly to a disabled beneficiary who receives means-tested benefits.</strong> At $95,000/BTC, it takes 0.021 BTC to breach the SSI asset limit. Use a properly drafted third-party SNT.</li>
-        <li><strong>Structure the trust for Bitcoin custody.</strong> Use a directed trust structure that separates Bitcoin custody (sub-custodian or investment advisor) from administrative duties (distributions, benefits compliance). Don't burden a single trustee with both technical custody and benefits administration.</li>
-        <li><strong>Write an Investment Policy Statement.</strong> Authorizing the trustee to maintain a concentrated Bitcoin position in the face of the prudent investor rule requires documented justification. The IPS provides that protection and should be incorporated into the trust document.</li>
-        <li><strong>Understand the Medicaid payback rules.</strong> Third-party SNTs have no payback. First-party SNTs do. If the beneficiary's own Bitcoin must go into a trust, understand exactly what the payback obligation means for the heirs.</li>
-        <li><strong>Don't name the beneficiary as trustee.</strong> A self-trusteed SNT is not an SNT — it's a countable resource that eliminates benefit eligibility.</li>
-        <li><strong>Use an ABLE account for supplemental day-to-day expenses</strong> alongside the SNT for larger, long-term Bitcoin holdings. The ABLE account reduces friction for small distributions; the SNT preserves the Bitcoin position.</li>
-        <li><strong>Find attorneys with both SNT and Bitcoin competency.</strong> They exist. The cost of their expertise is trivially small compared to the lifetime value of the benefits they'll help preserve.</li>
-        <li><strong>Write a thorough Letter of Instruction for the trustee.</strong> Your trustee needs to be able to access the Bitcoin without you present. Give them the information they need before they need it.</li>
-      </ul>
-
-      <!-- Services CTA -->
-      <div class="services-cta">
-        <h3>Special Needs Bitcoin Planning — Work With Us</h3>
-        <p>The Bitcoin Family Office advises families with disabled beneficiaries on SNT design, Bitcoin custody architecture, investment policy statements, and trustee instruction documents. Schedule a consultation to discuss your specific situation.</p>
-        <a href="/services/" class="btn btn-primary">View Our Services →</a>
-      </div>
-
-      <!-- Author Box -->
-      <div class="author-box">
-        <div class="author-avatar">HT</div>
-        <div class="author-info">
-          <div class="author-name">Hal Turner</div>
-          <div class="author-title">The Bitcoin Family Office</div>
-          <p class="author-bio">Hal Turner advises Bitcoin-native families on estate planning, wealth preservation, and multi-generational transfer strategies. The Bitcoin Family Office focuses exclusively on the intersection of Bitcoin ownership and long-term family wealth planning.</p>
-        </div>
-      </div>
-
-      <!-- Disclaimer -->
-      <div class="disclaimer">
-        <strong>Disclaimer:</strong> This article is for informational and educational purposes only and does not constitute legal, tax, financial, or benefits planning advice. Special Needs Trust law is complex and highly state-specific. Federal benefit program rules — including SSI asset limits, Medicaid policies, and ABLE account rules — are subject to change. Nothing in this article should be relied upon as advice regarding any individual's specific circumstances or benefit eligibility. Consult a qualified special needs planning attorney licensed in the relevant state, a CPA with experience in trust taxation, and an advisor with Bitcoin custody expertise before making any planning decisions. The rules referenced herein reflect the author's understanding as of early 2026 and may have since changed.
-      </div>
-
-    </div>
-  </article>
-</main>
-
-<!-- ── FOOTER ── -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/" class="footer-logo">The Bitcoin Family Office</a>
-        <p class="footer-tagline">Institutional-grade estate planning and wealth preservation strategies for Bitcoin-native families.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Insights</h4>
-        <ul>
-          <li><a href="/blog/bitcoin-estate-planning-guide">Estate Planning Guide</a></li>
-          <li><a href="/blog/bitcoin-special-needs-trust">Special Needs Trust</a></li>
-          <li><a href="/blog/bitcoin-trust-for-minors">Bitcoin Trust for Minors</a></li>
-          <li><a href="/blog/bitcoin-irrevocable-trust">Irrevocable Trusts</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Tools</h4>
-        <ul>
-          <li><a href="/tools/estate-tax-calculator">Estate Tax Calculator</a></li>
-          <li><a href="/tools/bitcoin-letter-of-instruction">Letter of Instruction</a></li>
-          <li><a href="/tools/bitcoin-wealth-dashboard">Wealth Dashboard</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/services/">Services</a></li>
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href="/privacy/">Privacy Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="footer-copyright">© 2026 The Bitcoin Family Office. All rights reserved.</p>
-      <div class="footer-legal">
-        <a href="/privacy/">Privacy</a>
-        <a href="/terms/">Terms</a>
-        <a href="/disclaimer/">Disclaimer</a>
-      </div>
-    </div>
+  <div class="warning-box">
+    <p><strong>The core danger in one sentence:</strong> If a disabled person who receives SSI or Medicaid inherits Bitcoin — or any other asset — directly, the value of that inheritance counts as a "countable resource," which can immediately disqualify them from their benefits until the asset is spent down to the applicable limit (typically $2,000 for an individual).</p>
   </div>
+
+  <h2>Why Government Benefits Are So Fragile</h2>
+
+  <p>To understand the planning problem, you first have to understand the programs at stake. SSI and Medicaid are means-tested — eligibility depends on having resources below strict thresholds. These programs are fundamentally different from Social Security Disability Insurance (SSDI), which is based on work history and is not means-tested.</p>
+
+  <h3>Supplemental Security Income (SSI)</h3>
+  <p>SSI is the federal program that provides monthly cash payments — currently up to $943 per month for an individual in 2026 — to people who are aged, blind, or disabled and who have limited income and resources. The resource limit is $2,000 for an individual and $3,000 for a couple. These limits have not meaningfully increased in decades despite inflation. Bitcoin at even the most modest valuation can blow through these limits in an instant.</p>
+
+  <p>Any countable resource above the limit triggers disqualification. The beneficiary has a narrow window to "spend down" the excess to regain eligibility, but during the period of disqualification, they lose both their cash payment and — more importantly — their Medicaid linkage.</p>
+
+  <h3>Medicaid</h3>
+  <p>Medicaid provides health coverage and, critically, long-term care services (group homes, supported living, day programs, in-home support) that can cost tens of thousands of dollars per year — services that private pay would exhaust most estates. Medicaid eligibility is also means-tested. Many states tie SSI eligibility directly to Medicaid: lose SSI, lose Medicaid automatically. For a disabled person with significant support needs, losing Medicaid can be catastrophic.</p>
+
+  <p>The lifetime cost of care for someone with a significant intellectual or developmental disability often exceeds $2–3 million. Medicaid coverage of that care is the single most valuable asset most disabled individuals will ever have access to. An inheritance that disqualifies them from Medicaid can be worth far less than it appears on paper.</p>
+
+  <h2>What Counts as a "Countable Resource"?</h2>
+
+  <p>Under SSI rules, a countable resource is any asset the individual owns and can convert to cash to use for food or shelter. Bitcoin is unambiguously a countable resource. It has market value, it is liquid, and it can be sold. If your disabled heir inherits even a fraction of a Bitcoin — worth, at time of writing, tens of thousands of dollars — they will be over the resource limit the moment the asset is legally theirs.</p>
+
+  <p>The SSA has issued guidance confirming that virtual currency is treated as a financial instrument and counted as a resource based on its fair market value. There is no exception for cryptocurrency volatility, no averaging period, and no grace window. The moment of transfer is the moment of disqualification risk.</p>
+
+  <div class="compare-box">
+    <h4>Countable vs. Excluded Resources Under SSI</h4>
+    <ul>
+      <li><strong>Countable:</strong> Bitcoin, bank accounts, stocks, bonds, second real estate, vehicles beyond one, cash</li>
+      <li><strong>Excluded:</strong> Primary home, one vehicle, household goods, burial funds up to limits, and — crucially — assets held in a properly structured Special Needs Trust</li>
+      <li><strong>Key rule:</strong> Resources held in a third-party SNT are not counted as the beneficiary's resources because the beneficiary does not own or control them</li>
+      <li><strong>ABLE accounts:</strong> Excluded up to $100,000 from SSI resource counting (with conditions)</li>
+    </ul>
+  </div>
+
+  <h2>The Special Needs Trust: The Core Tool</h2>
+
+  <p>A Special Needs Trust — sometimes called a supplemental needs trust — is a legal structure designed specifically to hold assets for the benefit of a disabled individual without those assets counting as the beneficiary's resources for Medicaid and SSI purposes. The legal basis is 42 U.S.C. § 1396p(d)(4) and related federal regulations, and every state has implementing law.</p>
+
+  <p>The fundamental mechanism is that the trust <em>owns</em> the assets — not the beneficiary. The trustee controls distributions. Because the beneficiary does not have legal ownership or control over the trust assets, those assets are not counted in the beneficiary's resource calculation. The trust supplements government benefits; it does not replace them.</p>
+
+  <div class="pull-quote">"A properly structured Special Needs Trust lets Bitcoin's appreciation work for your disabled heir over decades — without ever threatening the Medicaid or SSI eligibility that makes their daily life possible."</div>
+
+  <h3>What Can the SNT Pay For?</h3>
+  <p>The SNT trustee can make distributions for "supplemental" expenses — things that Medicaid and SSI do not cover. This is where the trust's value becomes clear. With proper management, SNT funds can pay for:</p>
+  <ul>
+    <li>Private therapy, specialists, and medical treatments not covered by Medicaid</li>
+    <li>Adaptive technology, communication devices, wheelchairs, and equipment</li>
+    <li>Education, vocational training, and job coaching</li>
+    <li>Recreation, entertainment, travel, and vacations</li>
+    <li>Personal care attendants beyond what Medicaid covers</li>
+    <li>Housing modifications, transportation, and accessible vehicles</li>
+    <li>Legal and financial advocacy services</li>
+    <li>Funeral and burial costs</li>
+  </ul>
+
+  <p>What the SNT generally should <em>not</em> pay for, without careful analysis, is cash directly to the beneficiary or items classified as "food and shelter." These can trigger an "in-kind support and maintenance" (ISM) reduction in SSI payments. A knowledgeable SNT trustee navigates these rules precisely — ideally with ongoing guidance from a benefits counselor.</p>
+
+  <h2>First-Party vs. Third-Party Special Needs Trusts</h2>
+
+  <p>There are two fundamentally different types of SNTs, and understanding the distinction is critical for Bitcoin estate planning. The type you need depends on whose money is funding the trust.</p>
+
+  <h3>Third-Party Special Needs Trusts</h3>
+  <p>A third-party SNT is funded with assets that belong to someone <em>other than</em> the beneficiary — a parent, grandparent, sibling, or any other person. This is the primary tool for Bitcoin estate planning. When you, the Bitcoin holder, create and fund a trust for your disabled heir using your Bitcoin, that is a third-party SNT.</p>
+
+  <p>The critical advantage of a third-party SNT: <strong>there is no Medicaid payback requirement</strong>. When the disabled beneficiary dies, the remaining trust assets pass to whoever the trust document designates — other family members, other heirs, charitable organizations — without the state having any claim to reimbursement for Medicaid costs paid during the beneficiary's lifetime.</p>
+
+  <p>A third-party SNT can be set up as a standalone trust document, or it can be a sub-trust within your revocable living trust that "springs into existence" and becomes irrevocable when you die. For Bitcoin holders, the standalone or sub-trust approach in your revocable trust is the most common and flexible structure.</p>
+
+  <h3>First-Party Special Needs Trusts (d4A Trusts)</h3>
+  <p>A first-party SNT — formally called a "(d)(4)(A) trust" — is funded with assets belonging to the disabled person themselves. This arises when a disabled individual receives assets directly: an inheritance left without planning, a personal injury settlement, or other windfall. The trust "rescues" those assets from counting as resources.</p>
+
+  <p>The critical restriction: first-party SNTs require a Medicaid payback provision. When the beneficiary dies, the state must be reimbursed for all Medicaid expenditures made on the beneficiary's behalf before any remaining assets pass to other heirs. In many cases — particularly for individuals with decades of Medicaid support — this payback obligation can consume the entire trust.</p>
+
+  <p>First-party SNTs also have restrictions on who can establish them: the disabled individual, a parent, grandparent, legal guardian, or court. And the beneficiary must be under 65 when the trust is established (with some exceptions for pooled trusts).</p>
+
+  <div class="compare-box">
+    <h4>First-Party vs. Third-Party SNT — Quick Comparison</h4>
+    <ul>
+      <li><strong>Funding source:</strong> First-party = beneficiary's own assets | Third-party = other person's assets</li>
+      <li><strong>Medicaid payback:</strong> First-party = required | Third-party = none</li>
+      <li><strong>Who can create:</strong> First-party = limited | Third-party = anyone (typically parents/grandparents)</li>
+      <li><strong>Age limit:</strong> First-party = must be under 65 at creation | Third-party = no age limit</li>
+      <li><strong>Remainder beneficiaries:</strong> First-party = state first, then family | Third-party = family/charity directly</li>
+      <li><strong>Estate planning tool:</strong> Third-party is the primary tool for Bitcoin holders planning ahead</li>
+    </ul>
+  </div>
+
+  <h2>The Bitcoin-Specific Complications</h2>
+
+  <p>Standard SNT drafting and administration practice was built around traditional assets: brokerage accounts, real estate, cash. Bitcoin introduces several layers of complexity that demand careful attention.</p>
+
+  <h3>Custody and Key Management</h3>
+  <p>When Bitcoin is held in a trust, the trust entity owns it — but Bitcoin ownership is controlled by private keys, not by legal title documents. The trustee must be capable of taking actual custody of the Bitcoin in a way that reflects the trust's legal ownership. This means the trustee needs to either:</p>
+  <ul>
+    <li>Hold keys on hardware wallets maintained in the trustee's name in a secure facility, or</li>
+    <li>Use a qualified custodian that can hold Bitcoin in a custody account titled to the trust, or</li>
+    <li>Establish a multi-signature arrangement where the trustee controls the required signing threshold</li>
+  </ul>
+
+  <p>Critically: <strong>the seed phrase for any Bitcoin held in a trust should never be recorded in the trust document itself, in a will, or in any probate filing</strong>. These documents become public record. Seed phrases belong in a separately secured, encrypted format — a hardware wallet, a fireproof vault, or a properly structured inheritance protocol — with instructions for the trustee on how to access the custody arrangement, not the keys themselves.</p>
+
+  <h3>Volatility and Trustee Duty</h3>
+  <p>A trustee has a fiduciary duty to administer the trust prudently for the beneficiary's benefit. Holding 100% of trust assets in a single volatile asset — Bitcoin — may create tension with the Uniform Prudent Investor Act, which governs trustee investment duties in most states. Some states have adopted digital asset trust statutes that clarify this (Wyoming is the leading example). The trust document should explicitly authorize Bitcoin as a permitted investment and address the trustee's authority to hold, convert, or hedge the position.</p>
+
+  <p>An SNT trustee who diversifies Bitcoin into a more conservative portfolio may be acting prudently — but may also be doing the beneficiary a disservice if Bitcoin continues its long-run appreciation trajectory. These competing considerations should be addressed explicitly in the trust document's investment policy provisions, and the grantor (you) should memorialize your intent regarding the trustee's discretion over the Bitcoin position.</p>
+
+  <h3>Valuation for SSI Purposes</h3>
+  <p>Even properly structured trust assets are not literally invisible to the SSA. If an SNT is drafted or administered improperly, the SSA can re-characterize the assets as available to the beneficiary. Annual documentation that the trust complies with applicable law, that distributions are consistent with supplemental purposes, and that the beneficiary has no direct access or control over the trust assets is essential. The trustee should maintain detailed records and work with an SNT-specialist attorney to ensure ongoing compliance.</p>
+
+  <h3>Liquidation for Distributions</h3>
+  <p>When the trustee needs to make a distribution — pay for therapy, a vacation, or specialized equipment — if the trust holds only Bitcoin, the trustee must sell Bitcoin to generate the necessary cash. This creates a taxable event at the trust level. SNTs pay taxes at the trust rate, which reaches the top bracket quickly. Many SNT trustees maintain a cash reserve (equivalent to one to two years of projected distributions) so that Bitcoin need not be liquidated in a down market or for small routine expenses. The investment policy should address this explicitly.</p>
+
+  <h2>How to Fund Your SNT with Bitcoin</h2>
+
+  <p>The timing and method of funding a third-party SNT with Bitcoin matters significantly.</p>
+
+  <h3>Funding at Death: Testamentary SNT</h3>
+  <p>The most common approach for Bitcoin holders who are not yet ready to give up control of their Bitcoin is a <strong>testamentary SNT</strong> — a trust created through your will or pour-over will that receives Bitcoin after your death. Your Bitcoin passes to the trust rather than directly to your disabled heir.</p>
+
+  <p>For self-custodied Bitcoin, this requires an inheritance plan that allows the trustee to access the Bitcoin after your death. This typically involves a multi-signature wallet where the trustee holds a key, or a secure inheritance protocol (such as a custodial arrangement with a co-signing institution) that releases control to the trustee upon verified death. Merely writing the seed phrase on a piece of paper inside an envelope in your safe is not a sufficient plan — it relies on physical access in a specific window and creates security risks.</p>
+
+  <p>For Bitcoin held in an exchange or custody account, the account can be designated to transfer to the trust at death through a Transfer on Death (TOD) designation or through beneficiary designation to the trust itself (where the institution allows). This is simpler but introduces exchange custody risk.</p>
+
+  <h3>Funding During Life: Inter Vivos SNT</h3>
+  <p>Some parents prefer to fund the SNT while alive — either to remove assets from their taxable estate, to test the trust administration, or to begin supplementing their disabled family member's life now. Transferring Bitcoin to a third-party SNT during your lifetime is a completed gift for gift tax purposes. The transfer uses your lifetime gift and estate tax exemption.</p>
+
+  <p>In 2026, the federal lifetime estate and gift tax exemption is currently $13.99 million per individual (indexed for inflation). Transfers within this exemption incur no gift or estate tax. Transfers above it are taxed at 40%. If your Bitcoin position is significant, a lifetime SNT funding strategy should be evaluated alongside other wealth transfer tools (GRATs, irrevocable trusts, dynasty trusts) with qualified tax counsel.</p>
+
+  <p>Bitcoin transferred to an inter vivos SNT carries over your original cost basis — there is no step-up in basis on lifetime gifts. The trust will owe capital gains tax (at trust rates) when it eventually sells Bitcoin. This is a meaningful disadvantage compared to testamentary transfers, which receive a stepped-up basis at death. The decision to fund the trust during life versus at death involves weighing estate tax exposure against basis step-up opportunity.</p>
+
+  <h2>Choosing the Right Trustee</h2>
+
+  <p>The trustee of an SNT carrying significant Bitcoin holdings must bring together capabilities that rarely coexist: deep familiarity with SSI and Medicaid compliance rules, investment management competence, digital asset custody capability, and genuine commitment to the beneficiary's quality of life. This is a demanding combination.</p>
+
+  <h3>Individual Trustees</h3>
+  <p>Many families appoint a sibling, other family member, or trusted friend as trustee. The advantages are personal knowledge of the beneficiary's needs and lower cost. The risks are that individual trustees may lack SSI/Medicaid expertise, may have conflicts of interest, and — for Bitcoin — may not be equipped to handle custody and ongoing compliance. An individual trustee for a Bitcoin-heavy SNT should be required by the trust document to engage an SNT-specialist attorney and a qualified digital asset custodian, at trust expense.</p>
+
+  <h3>Corporate Trustees</h3>
+  <p>Corporate trustees (trust companies and bank trust departments) offer professional fiduciary service, but most have limited Bitcoin capability. A handful of trust companies — primarily in Wyoming, South Dakota, and Nevada, states with favorable digital asset trust laws — can hold Bitcoin in custody for trusts. This is a rapidly evolving space. If Bitcoin is a material portion of the trust, a corporate trustee with demonstrated digital asset custody infrastructure is worth the higher cost.</p>
+
+  <h3>Co-Trustee Structure</h3>
+  <p>A common solution is a co-trustee structure: a family member who knows the beneficiary serves as distribution co-trustee (making day-to-day benefit decisions), while a professional or corporate co-trustee handles investments and compliance. For Bitcoin specifically, a digital asset custodian can hold the Bitcoin on behalf of the trust without being a full trustee, freeing the human trustee to focus on the beneficiary's life while the custody infrastructure handles key management.</p>
+
+  <h2>ABLE Accounts: The Complementary Tool</h2>
+
+  <p>ABLE accounts — Achieving a Better Life Experience accounts, authorized under 26 U.S.C. § 529A — are tax-advantaged savings accounts for individuals with disabilities whose disability began before age 26 (expanded from age 26 to birth-before-age-46 beginning in 2026 under ABLE Age Adjustment Act provisions). They are simpler than SNTs and can work alongside a trust as a complementary tool.</p>
+
+  <h3>Key ABLE Account Features</h3>
+  <ul>
+    <li><strong>Contribution limit:</strong> $19,000 per year in 2026 (the annual gift exclusion amount), with additional contributions allowed for working beneficiaries</li>
+    <li><strong>SSI exclusion:</strong> ABLE account balances up to $100,000 are excluded from SSI resource counting; balances above $100,000 suspend (but do not terminate) SSI</li>
+    <li><strong>Medicaid payback:</strong> Required at death (unlike third-party SNTs), but only for state Medicaid expenditures after the account was opened</li>
+    <li><strong>Investment growth:</strong> Tax-free if used for "qualified disability expenses" (a broad category including housing, transportation, education, healthcare, and more)</li>
+    <li><strong>Control:</strong> Unlike an SNT, the beneficiary can often control their own ABLE account, enabling more autonomy</li>
+  </ul>
+
+  <h3>Bitcoin in an ABLE Account?</h3>
+  <p>ABLE accounts are administered through state programs that offer limited investment options — typically mutual funds and similar vehicles. Bitcoin is not currently a direct investment option in any state ABLE program. However, Bitcoin-related ETFs or funds may be available as investment options in some programs. The ABLE account and the SNT serve different functions: the ABLE account can offer the beneficiary more spending autonomy for day-to-day expenses, while the SNT holds larger capital and is trustee-managed for major supplemental needs.</p>
+
+  <h3>SNT-to-ABLE Transfers</h3>
+  <p>Third-party SNTs can transfer funds directly to a beneficiary's ABLE account. This is a useful mechanism for getting smaller amounts into the beneficiary's control without triggering ISM concerns or SSI cash payment reductions. The transfer counts against the ABLE annual contribution limit. Many well-designed SNTs include an explicit provision authorizing ABLE account contributions.</p>
+
+  <h2>Common Planning Mistakes That Bitcoin Holders Make</h2>
+
+  <p>Understanding what not to do is as important as knowing the right structure.</p>
+
+  <h3>1. Leaving Bitcoin Directly to a Disabled Heir in a Will</h3>
+  <p>The most common and most damaging mistake. A will bequest to a disabled beneficiary — even with instructions to "use it for their care" — transfers legal ownership of the asset to that person. They inherit the Bitcoin, it becomes a countable resource, and they can lose SSI and Medicaid until the asset is spent down. No amount of well-meaning language in a will fixes this.</p>
+
+  <h3>2. Naming a Disabled Person as Beneficiary on Accounts</h3>
+  <p>Transfer-on-death designations and beneficiary designations on exchange accounts that name a disabled SSI/Medicaid recipient directly create the same problem as a will bequest — a direct transfer that bypasses any protective structure. Beneficiary designations for Bitcoin holdings should name the SNT, not the disabled individual personally.</p>
+
+  <h3>3. Relying on "Sibling Will Handle It"</h3>
+  <p>Some families plan to leave everything to a non-disabled sibling with an informal understanding that the sibling will "take care of" the disabled family member. This arrangement has no legal force, depends entirely on the sibling's goodwill and financial health, creates gift tax issues for the sibling when they make transfers, and means the disabled person has no enforceable rights to the funds. A properly drafted SNT is legally binding, enforceable, and durable across decades.</p>
+
+  <h3>4. Funding an SNT with Bitcoin but Ignoring Custody</h3>
+  <p>An SNT that legally "owns" Bitcoin but has no clear mechanism for the trustee to actually access and control the private keys is an SNT that may not function when it needs to. The legal ownership on paper must be matched by practical, secure custody infrastructure. This requires planning before the trustee ever needs to act.</p>
+
+  <h3>5. Failing to Update the SNT as Bitcoin Value Changes</h3>
+  <p>An SNT that held $50,000 of Bitcoin at funding may now hold $500,000. The investment policy, trustee compensation, co-trustee arrangements, and distribution strategy that made sense at $50,000 may need revision at $500,000. Review your SNT and its administration annually or whenever Bitcoin's value changes materially.</p>
+
+  <h2>The "Letter of Intent" for Bitcoin SNT Beneficiaries</h2>
+
+  <p>Alongside the legal documents, one of the most valuable things a Bitcoin-holding parent can create for their disabled beneficiary is a detailed Letter of Intent — sometimes called a Letter of Instruction — that communicates to future trustees who the beneficiary is, what their life looks like, and how you want the Bitcoin to support them.</p>
+
+  <p>This document has no legal force but provides invaluable guidance. For a Bitcoin-heavy SNT, the Letter of Intent should cover:</p>
+  <ul>
+    <li>The beneficiary's daily routine, preferences, and support needs</li>
+    <li>Your intent regarding the Bitcoin position (hold long-term? diversify? liquidate to fund specific life needs?)</li>
+    <li>The custody infrastructure and who holds keys or manages the custodial relationship</li>
+    <li>The names of trusted advisors (attorneys, benefits counselors, financial advisors)</li>
+    <li>A clear description of what supplemental distributions you would prioritize</li>
+    <li>Your philosophy about quality of life vs. asset preservation</li>
+  </ul>
+
+  <p>The Letter of Intent should be stored alongside trust documents and updated regularly. Unlike the trust itself, it can be amended without legal formality.</p>
+
+  <h2>State Law Variations and Jurisdiction Considerations</h2>
+
+  <p>Federal law establishes the framework for SSI and Medicaid, but SNT law also involves significant state-level variation. States differ in how they implement Medicaid payback rules, pooled trust regulations, and trustee duties. Wyoming, South Dakota, Nevada, and Delaware have particularly favorable trust and digital asset statutes. If your Bitcoin holdings are significant and you have flexibility in trust siting, the choice of governing law — often separate from where you live — can matter.</p>
+
+  <p>A Wyoming trust, for example, benefits from Wyoming's comprehensive digital asset statute (Wyoming Stat. § 34-29-101 et seq.) that explicitly addresses trustees' authority and duties with respect to digital assets, and from Wyoming's favorable self-settled trust and dynasty trust laws. The trust can be governed by Wyoming law even if you and your beneficiary live in another state, subject to proper structuring.</p>
+
+  <h2>Medicaid Planning and the SNT Interaction</h2>
+
+  <p>For beneficiaries who will need significant Medicaid-funded long-term care over their lifetime, the interaction between the SNT and Medicaid planning rules requires careful ongoing management. Distributions from an SNT that cover Medicaid-coverable services can reduce Medicaid's obligation — which might seem helpful but can actually be counterproductive if it depletes trust assets that could have covered truly supplemental needs. An experienced SNT administrator knows the line between supplemental and replacement care funding and stays on the right side of it.</p>
+
+  <h2>The Estate Tax Overlay</h2>
+
+  <p>For Bitcoin holders with estates that approach or exceed the federal exemption ($13.99 million per individual in 2026), the SNT interacts with estate planning in ways worth noting. Assets that pass into a third-party SNT at your death are included in your gross estate for estate tax purposes — they were yours when you died. The marital deduction, charitable deduction, and lifetime exemption apply in the usual way. If you fund the SNT during your lifetime, the gift uses your lifetime exemption and removes future appreciation from your estate.</p>
+
+  <p>For very large Bitcoin positions — where significant estate tax exposure is a real concern — an SNT can be combined with other structures: an irrevocable life insurance trust (ILIT) to fund estate taxes without depleting the SNT, or a dynasty trust for non-disabled heirs alongside the SNT for the disabled beneficiary. These structures require coordination among your estate attorney, tax advisor, and SNT specialist.</p>
+
+  <hr>
+
+  <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
+    <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:700;">Bitcoin Mining: A Tax Strategy That Supports Special Needs Families</p>
+    <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">Parents building wealth to fund a Special Needs Trust face a dual challenge: growing their Bitcoin position while managing the tax drag of a high-income household. Bitcoin mining offers one of the most powerful current-year tax strategies available — equipment depreciation, bonus depreciation, and operating expense deductions that reduce taxable income today, building the capital that eventually funds the SNT. Abundant Mines has compiled the complete Bitcoin mining tax strategy playbook in one place.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies &rarr;</a>
+  </div>
+
+</article>
+
+<div style="max-width:var(--max-w);margin:0 auto 2rem;padding:0 1.5rem;">
+  <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem;">Related Reading</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
+    <a href="/blog/bitcoin-dynasty-trust.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+      <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Trusts</p>
+      <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:700;line-height:1.4;margin:0;">Bitcoin Dynasty Trust: Multigenerational Wealth Preservation</p>
+    </a>
+    <a href="/blog/bitcoin-charitable-remainder-trust.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+      <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Trusts</p>
+      <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:700;line-height:1.4;margin:0;">Bitcoin Charitable Remainder Trust: Give Bitcoin, Keep Income</p>
+    </a>
+    <a href="/blog/bitcoin-blended-family-estate-planning.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+      <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Estate Planning</p>
+      <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:700;line-height:1.4;margin:0;">Bitcoin Blended Family Estate Planning</p>
+    </a>
+  </div>
+</div>
+
+<div style="max-width:var(--max-w);margin:0 auto 2rem;padding:1.5rem 2rem;background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;display:flex;gap:1.5rem;align-items:flex-start;">
+  <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:1rem;color:var(--accent);">&#x20BF;</div>
+  <div>
+    <p style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">Hal Turner &mdash; Bitcoin Estate Planning Analyst</p>
+    <p style="font-family:var(--serif);font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin:0;">Hal Turner focuses on Bitcoin estate planning, trust structuring, and multigenerational wealth strategy for high-net-worth Bitcoin families. He does not advise on altcoins or traditional financial products. <a href="/about/" style="color:var(--accent);text-decoration:none;">About &rarr;</a></p>
+  </div>
+</div>
+
+<div class="services-cta">
+  <h3>Build a Special Needs Plan That Protects Both the Inheritance and the Benefits</h3>
+  <p>A Bitcoin Special Needs Trust requires expertise that sits at the intersection of digital asset custody, government benefits law, and estate planning. We connect Bitcoin families with attorneys, SNT specialists, and trust structures purpose-built for this complexity.</p>
+  <a href="/services/">Explore Our Services</a>
+</div>
+
+<section class="related">
+  <div class="related-label">Continue Reading</div>
+  <div class="related-links">
+    <a href="/blog/bitcoin-estate-planning-complete-guide.html">Bitcoin Estate Planning: The Complete Guide for High-Net-Worth Families</a>
+    <a href="/blog/bitcoin-dynasty-trust.html">Bitcoin Dynasty Trust: Preserving Wealth Across Generations</a>
+    <a href="/blog/bitcoin-cold-storage-estate-planning.html">Bitcoin Cold Storage and Estate Planning: Keeping Your Heirs Out of the Cold</a>
+  </div>
+</section>
+
+<div style="margin-top:3rem;padding:1.5rem 1.75rem;border-top:1px solid var(--border);background:var(--bg-elevated);border-radius:0 0 4px 4px;">
+  <p style="font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.6rem;">Important Disclosure</p>
+  <p style="font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);line-height:1.75;margin:0;">This content is for <strong style="color:var(--text-secondary);">educational purposes only</strong> and does not constitute legal, tax, financial, or investment advice. It should not be relied upon as a substitute for consultation with qualified legal, tax, financial, or other professional advisers. Laws, regulations, and tax rules referenced herein are subject to change and may differ by jurisdiction. SSI and Medicaid eligibility rules are complex, vary by state, and change frequently. Special Needs Trusts must be individually drafted and reviewed by a qualified special needs planning attorney in your state. Individual circumstances vary significantly — strategies appropriate for one person may be inappropriate or harmful for another. <strong style="color:var(--text-secondary);">The Bitcoin Family Office does not provide legal, tax, or investment advisory services.</strong></p>
+</div>
+
+<footer>
+  <div class="footer-mark">The <span>Bitcoin</span> Family Office</div>
+  <div class="footer-links">
+    <a href="/">Home</a><a href="/blog/">Blog</a><a href="/services/">Services</a><a href="/faq/">FAQ</a><a href="/disclosures">Disclosures</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 The Bitcoin Family Office. All rights reserved.</p>
 </footer>
 
 <script>
-  // Hamburger menu
-  var hamburger = document.getElementById('hamburger');
-  var navMobile = document.getElementById('nav-mobile');
-  hamburger.addEventListener('click', function() {
-    var isOpen = navMobile.classList.toggle('open');
-    hamburger.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', isOpen);
-  });
+function toggleMenu(){var n=document.getElementById('navLinks'),h=document.getElementById('hamburger');n.classList.toggle('open');h.classList.toggle('open');}
+function closeMenu(){var n=document.getElementById('navLinks'),h=document.getElementById('hamburger');n.classList.remove('open');h.classList.remove('open');}
 </script>
-
 </body>
 </html>
