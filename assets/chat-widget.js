@@ -190,12 +190,35 @@
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
+  function stripMarkdown(text) {
+    return text
+      .replace(/\*\*(.+?)\*\*/g, '$1')
+      .replace(/\*(.+?)\*/g, '$1')
+      .replace(/^#{1,6}\s+/gm, '')
+      .replace(/^[-*+]\s+/gm, '')
+      .replace(/`(.+?)`/g, '$1')
+      .replace(/\[(.+?)\]\(.+?\)/g, '$1')
+      .trim();
+  }
+
+  function linkify(text) {
+    // Make bare URLs clickable
+    return text.replace(/(https?:\/\/[^\s]+|thebitcoinfamilyoffice\.com\/[^\s]+)/g, function(url) {
+      const href = url.startsWith('http') ? url : 'https://' + url;
+      return `<a href="${href}" target="_blank" rel="noopener" style="color:${ACCENT};text-decoration:underline;">${url}</a>`;
+    });
+  }
+
   function addMessage(role, content, ts) {
     const wrap = document.createElement('div');
     wrap.className = `bfo-msg ${role}`;
     const bubble = document.createElement('div');
     bubble.className = 'bfo-bubble';
-    bubble.textContent = content;
+    if (role === 'assistant') {
+      bubble.innerHTML = linkify(stripMarkdown(content));
+    } else {
+      bubble.textContent = content;
+    }
     const time = document.createElement('div');
     time.className = 'bfo-msg-time';
     time.textContent = formatTime(ts);
