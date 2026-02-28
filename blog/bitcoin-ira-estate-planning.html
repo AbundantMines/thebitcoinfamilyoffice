@@ -20,10 +20,10 @@
   "@type": "Article",
   "headline": "Bitcoin IRA Estate Planning: What Happens to Your Bitcoin IRA When You Die",
   "description": "Your Bitcoin IRA follows different inheritance rules than self-custodied Bitcoin. Understand RMDs, the 10-year rule, beneficiary designations, and why your IRA may be the worst asset to pass to heirs.",
-  "author": {"@type": "Person", "name": "Hal Franklin"},
+  "author": {"@type": "Person", "name": "Hal Franklin", "jobTitle": "Bitcoin Wealth Strategist"},
   "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-ira-estate-planning",
   "datePublished": "2026-02-25",
-  "dateModified": "2026-02-25",
+  "dateModified": "2026-02-28",
   "publisher": {"@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"}
 }
 </script>
@@ -35,6 +35,19 @@
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebitcoinfamilyoffice.com"},
     {"@type": "ListItem", "position": 2, "name": "Research", "item": "https://thebitcoinfamilyoffice.com/blog/"},
     {"@type": "ListItem", "position": 3, "name": "Bitcoin IRA Estate Planning", "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-ira-estate-planning"}
+  ]
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Does a Bitcoin IRA avoid estate tax?","acceptedAnswer":{"@type":"Answer","text":"No — a Bitcoin IRA is included in your taxable estate at death, potentially subject to federal estate tax at 40% for estates above the exemption. Traditional IRAs also carry deferred income tax that beneficiaries will owe when they take distributions — creating a 'double taxation' problem for large IRA estates: 40% estate tax plus ordinary income tax on the full account value. Roth IRAs avoid the income tax portion, making them more estate-tax-efficient than Traditional IRAs for large Bitcoin holders."}},
+    {"@type":"Question","name":"Can I leave a Bitcoin SDIRA to my children?","acceptedAnswer":{"@type":"Answer","text":"Yes — you can designate any beneficiary on a self-directed IRA. Non-spouse beneficiaries (including children) must comply with the SECURE Act 2.0's 10-year rule: the entire inherited IRA must be distributed within 10 years of the original owner's death. Some beneficiaries (disabled, chronically ill, minors) qualify for different treatment. This means a $1M Bitcoin SDIRA inherited by an adult child must be distributed — and taxed — within 10 years, even if the Bitcoin continues to appreciate."}},
+    {"@type":"Question","name":"What is the double taxation problem with Bitcoin IRAs?","acceptedAnswer":{"@type":"Answer","text":"Traditional Bitcoin IRA assets face two layers of taxation at death: (1) Federal estate tax at 40% if the estate exceeds the exemption; (2) Ordinary income tax on all distributions to non-spouse beneficiaries. A $2M Bitcoin Traditional IRA could face 40% estate tax plus 37% income tax on distributions, leaving heirs with significantly less than face value. Roth IRAs eliminate the income tax component (qualified distributions are tax-free), making them much more efficient for large inherited Bitcoin positions."}},
+    {"@type":"Question","name":"Should I use a Bitcoin IRA or hold Bitcoin directly for estate planning?","acceptedAnswer":{"@type":"Answer","text":"Both serve different purposes. Bitcoin in a Roth IRA: tax-free growth, no RMDs during owner's life, qualified distributions tax-free for heirs — ideal for accumulation and passing wealth. Direct Bitcoin in a taxable account: step-up in basis at death (eliminates capital gains for heirs), immediate liquidity, self-custody option. Most sophisticated Bitcoin estate plans include both: IRA for tax-advantaged accumulation and Roth conversion strategy; direct Bitcoin in taxable accounts or trusts for step-up basis and estate planning flexibility."}},
+    {"@type":"Question","name":"What happens to a Bitcoin SDIRA in a trust?","acceptedAnswer":{"@type":"Answer","text":"You cannot transfer IRA assets directly into a trust — an IRA must be held in an individual's name (or an entity the IRS treats as an individual). However, you can name a trust as the beneficiary of an IRA, which controls how distributions are made to heirs. This requires careful drafting: the trust must qualify as a 'see-through' trust under IRS rules, or the 5-year distribution rule applies. Consult a tax attorney before naming a trust as IRA beneficiary to avoid unintended tax acceleration."}}
   ]
 }
 </script>
@@ -183,7 +196,21 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>This article covers the mechanics of inheriting a Bitcoin IRA: the custodial structure that separates you from your private keys, required <a href="/blog/bitcoin-family-office-minimum">Bitcoin family office minimum requirements</a> distributions and the SECURE Act 2.0's compressed timeline for heirs, how to properly name beneficiaries, the compounded tax burden that makes a traditional IRA the worst asset to pass to non-spouse heirs, and the structural advantages that self-custodied Bitcoin holds over any IRA wrapper for long-term family <a href="/blog/bitcoin-wealth-transfer-complete-guide">complete guide to Bitcoin wealth transfer</a>.</p>
 
-  <h2>Your Bitcoin IRA Is Not Self-Custody</h2>
+  <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+    <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted,#6b6660);margin-bottom:1rem;">In This Guide</div>
+    <ol style="margin:0 0 0 1.25rem;">
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#not-self-custody" style="color:var(--text-secondary);">Your Bitcoin IRA Is Not Self-Custody</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#rmds" style="color:var(--text-secondary);">RMDs, SECURE Act 2.0, and the 10-Year Rule</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#beneficiaries" style="color:var(--text-secondary);">How to Designate Beneficiaries for a Bitcoin SDIRA</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#estate-tax" style="color:var(--text-secondary);">Estate Tax: The Double Taxation Problem</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#roth-conversion" style="color:var(--text-secondary);">Roth vs. Traditional IRA for Bitcoin</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#self-custody-advantage" style="color:var(--text-secondary);">The Self-Custody Bitcoin Advantage</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#checklist" style="color:var(--text-secondary);">Practical Checklist for Bitcoin IRA Holders</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <h2 id="not-self-custody">Your Bitcoin IRA Is Not Self-Custody</h2>
 
   <p>The term "Bitcoin IRA" is widely used but frequently misunderstood. When you open a self-directed IRA (SDIRA) through a custodian like Kingdom Trust, BitcoinIRA, Alto, or similar platforms, you are not holding Bitcoin in the conventional sense. The IRA custodian holds the Bitcoin on your behalf — they are the legal owner of the account assets. You control the investment decisions, but you do not control the private keys.</p>
 
@@ -204,7 +231,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
     </ul>
   </div>
 
-  <h2>RMDs, the SECURE Act 2.0, and the 10-Year Rule for Inherited Bitcoin IRAs</h2>
+  <h2 id="rmds">RMDs, the SECURE Act 2.0, and the 10-Year Rule</h2>
 
   <p>During your lifetime, a traditional IRA — including a <a href="/blog/bitcoin-self-directed-ira-complete-guide">Bitcoin SDIRA</a> — requires you to begin taking Required Minimum Distributions (RMDs) at age 73 under current law. SECURE Act 2.0 increased this threshold from 72 to 73 beginning in 2023, with a further increase to 75 scheduled for those born in 1960 or later. Each year, you must withdraw a minimum amount calculated by dividing your IRA balance by an IRS life expectancy factor. For a Bitcoin IRA, this creates a unique problem: if Bitcoin's price is down in December, you are still required to liquidate and distribute a calculated amount, potentially selling at the worst possible time.</p>
 
@@ -218,7 +245,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>Surviving spouses are treated differently and more favorably. A spouse who inherits an IRA can roll it over into their own IRA, defer distributions to their own RMD age, and in some cases elect to treat the inherited IRA as their own. This is the only category of beneficiary for whom the old "stretch" logic still applies in meaningful form.</p>
 
-  <h2>How to Designate Beneficiaries for a Bitcoin SDIRA</h2>
+  <h2 id="beneficiaries">How to Designate Beneficiaries for a Bitcoin SDIRA</h2>
 
   <p>One of the most overlooked aspects of Bitcoin IRA estate planning is the beneficiary designation itself. Unlike a will or trust, your IRA passes by beneficiary designation — outside of probate and outside the reach of your estate plan documents, unless you specifically direct it that way. The designation on file with your IRA custodian controls, regardless of what your will says.</p>
 
@@ -230,7 +257,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>Naming a trust as the IRA beneficiary is possible, but the mechanics are complex and the rules are strict. The IRS distinguishes between two <a href="/blog/bitcoin-trust-types-guide">complete guide to Bitcoin trust types</a> for this purpose.</p>
 
-  <p>A <strong>conduit trust</strong> requires that any RMD or distribution received by the trust be immediately passed through to the trust beneficiaries. This "look-through" structure allows the IRS to treat the trust's individual beneficiaries as the designated beneficiaries for distribution timing purposes. A conduit trust can be approp<a href="/blog/bitcoin-family-office-vs-ria">Bitcoin family office vs. RIA comparison</a>te if you want to ensure that distributions are received directly by named individuals while adding a layer of oversight or spendthrift protection.</p>
+  <p>A <strong>conduit trust</strong> requires that any RMD or distribution received by the trust be immediately passed through to the trust beneficiaries. This "look-through" structure allows the IRS to treat the trust's individual beneficiaries as the designated beneficiaries for distribution timing purposes. A conduit trust can be appropriate if you want to ensure that distributions are received directly by named individuals while adding a layer of oversight or spendthrift protection.</p>
 
   <p>An <strong>accumulation trust</strong> allows the trustee to retain distributions inside the trust rather than passing them through immediately. This offers greater asset protection and control — particularly useful if a beneficiary has creditor issues or lacks financial discipline — but it does not qualify for look-through treatment unless specific requirements are met, and the distribution timing rules that apply are based on the oldest trust beneficiary's life expectancy, which may compress the payout window significantly.</p>
 
@@ -238,7 +265,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
     <p><strong>Never name your estate as IRA beneficiary.</strong> When no named individual beneficiary survives you, your IRA defaults to your estate. The account loses all stretch provisions and must be fully distributed within five years (if you died before your RMD start date) or within the remaining years on your life expectancy table. Probate also applies, creating delay, cost, and public exposure. This is one of the most costly and easily avoided mistakes in IRA estate planning.</p>
   </div>
 
-  <h2>Estate Tax Implications: The Double Taxation Problem</h2>
+  <h2 id="estate-tax">Estate Tax Implications: The Double Taxation Problem</h2>
 
   <p>For high-net-worth Bitcoin IRA holders, there is a structural problem that no amount of careful beneficiary designation can fully resolve: traditional IRAs are among the most tax-inefficient assets to pass to non-spouse heirs.</p>
 
@@ -259,7 +286,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
     <li><strong>Use IRA assets for charitable giving.</strong> A Qualified Charitable Distribution (QCD) allows IRA holders over 70½ to direct up to $105,000 per year (indexed) from a traditional IRA directly to a qualified charity, satisfying RMD obligations without the funds entering your taxable income. Charities receive IRA assets tax-free. This effectively removes the most tax-burdened assets from your estate in a tax-efficient manner.</li>
   </ul>
 
-  <h2>Roth IRA vs. Traditional IRA for Bitcoin: The Conversion Case</h2>
+  <h2 id="roth-conversion">Roth IRA vs. Traditional IRA for Bitcoin</h2>
 
   <p>The Roth IRA is structurally superior for Bitcoin estate planning in almost every respect. The core differences are significant.</p>
 
@@ -289,7 +316,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
     </ul>
   </div>
 
-  <h2>The Self-Custody Bitcoin Advantage in Estate Planning</h2>
+  <h2 id="self-custody-advantage">The Self-Custody Bitcoin Advantage</h2>
 
   <p>The step-up in basis is one of the most powerful tools in American estate law, and it is completely unavailable to IRA assets. When you hold Bitcoin directly — in self-custody, in a revocable trust, in a family LLC — and you die, your heirs inherit that Bitcoin with a cost basis equal to its fair market value on your date of death. All the capital gains accumulated during your lifetime are permanently erased.</p>
 
@@ -299,11 +326,32 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>For Bitcoin positions with very high appreciation, the long-term after-tax outcome of self-custody plus a <a href="/blog/bitcoin-dynasty-trust-complete-guide">dynasty trust</a> often materially exceeds the outcome of an IRA, even accounting for the tax benefits received during the accumulation phase. The IRA provides a deduction or tax-free contribution upfront; self-custody provides step-up treatment at death. For an asset that may appreciate 10x, 50x, or 100x over a lifetime, the back-end benefit of the step-up frequently outweighs the front-end benefit of the IRA deduction.</p>
 
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <div style="margin: 2rem 0;">
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Does a Bitcoin IRA avoid estate tax?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">No — included in taxable estate at death at 40% for estates above the exemption. Traditional IRAs also carry deferred income tax beneficiaries owe on distributions — creating double taxation. Roth IRAs avoid the income tax portion, making them more estate-tax-efficient for large Bitcoin holders.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Can I leave a Bitcoin SDIRA to my children?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Yes — name any beneficiary on a SDIRA. Non-spouse beneficiaries must comply with SECURE Act 2.0's 10-year rule: entire inherited IRA distributed (and taxed) within 10 years of original owner's death. A $1M Bitcoin SDIRA inherited by an adult child must be fully distributed within 10 years regardless of continued appreciation.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the double taxation problem with Bitcoin IRAs?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Traditional Bitcoin IRA at death: (1) federal estate tax at 40% if estate exceeds exemption; (2) ordinary income tax on all distributions to non-spouse beneficiaries. A $2M Traditional Bitcoin IRA could leave heirs with substantially less than face value after both tax layers. Roth IRAs eliminate layer 2.</p>
+    </div>
+    <div>
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Should I use a Bitcoin IRA or hold Bitcoin directly for estate planning?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Both. Roth IRA: tax-free growth, qualified distributions tax-free for heirs. Direct Bitcoin in taxable accounts: step-up in basis at death (eliminates capital gains), immediate liquidity, self-custody option. Most sophisticated estate plans include both: IRA for tax-advantaged accumulation; direct Bitcoin in taxable accounts or trusts for step-up basis and estate planning flexibility.</p>
+    </div>
+  </div>
+  <hr>
   <div class="am-callout">
     <p><strong>Tax strategy note:</strong> Bitcoin mining is one of the most powerful tax strategies available to high-net-worth Bitcoin holders — creating deductible business expenses, depreciation on equipment, and the ability to acquire Bitcoin at a tax-advantaged cost basis. If you're evaluating how to hold and accumulate Bitcoin in the most tax-efficient structure, see <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener">Abundant Mines' Bitcoin mining tax strategy resources</a> for an analysis of how mining fits alongside IRA and self-custody planning.</p>
   </div>
 
-  <h2>Practical Checklist for Bitcoin IRA Holders</h2>
+  <h2 id="checklist">Practical Checklist for Bitcoin IRA Holders</h2>
 
   <p>If you hold Bitcoin inside a self-directed IRA — or are considering opening one — the following steps reflect the minimum planning required to ensure your IRA does not become an unintended tax trap for your heirs.</p>
 
@@ -349,10 +397,10 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 <div class="related">
   <div class="related-label">Further Research</div>
   <div class="related-links">
-    <a href="/blog/bitcoin-dynasty-trust-vs-revocable-trust.html">Bitcoin Dynasty Trust vs. Revocable Trust: Which Structure Preserves More Wealth?</a>
-    <a href="/blog/bitcoin-direct-ownership-vs-etf-tax.html">Bitcoin Direct Ownership vs. ETF: The Tax Case for Holding the Real Thing</a>
-    <a href="/blog/bitcoin-charitable-remainder-trust.html">Bitcoin <a href="/blog/bitcoin-charitable-giving-complete-guide">Charitable Remainder Trust</a>: Give Appreciated Bitcoin, Keep Income</a>
-    <a href="/blog/bitcoin-custody-architecture.html">Bitcoin Custody Architecture for Family Offices and High-Net-Worth Holders</a>
+    <a href="/blog/bitcoin-dynasty-trust-vs-revocable-trust">Bitcoin Dynasty Trust vs. Revocable Trust: Which Structure Preserves More Wealth?</a>
+    <a href="/blog/bitcoin-direct-ownership-vs-etf-tax">Bitcoin Direct Ownership vs. ETF: The Tax Case for Holding the Real Thing</a>
+    <a href="/blog/bitcoin-charitable-remainder-trust">Bitcoin <a href="/blog/bitcoin-charitable-giving-complete-guide">Charitable Remainder Trust</a>: Give Appreciated Bitcoin, Keep Income</a>
+    <a href="/blog/bitcoin-custody-architecture">Bitcoin Custody Architecture for Family Offices and High-Net-Worth Holders</a>
   </div>
 </div>
 
