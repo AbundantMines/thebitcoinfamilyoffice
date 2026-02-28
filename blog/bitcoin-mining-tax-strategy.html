@@ -21,10 +21,10 @@
   "@type": "Article",
   "headline": "Bitcoin Mining Tax Strategy: Section 179, Bonus Depreciation, and Entity Structure",
   "description": "Of all the ways to acquire Bitcoin, mining may have the most favorable tax treatment — if structured correctly. Section 179, bonus depreciation, entity structure, and the interaction with family office frameworks.",
-  "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
+  "author": {"@type": "Person", "name": "Hal Franklin", "jobTitle": "Bitcoin Wealth Strategist"},
   "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-mining-tax-strategy",
   "datePublished": "2026-02-25",
-  "dateModified": "2026-02-25",
+  "dateModified": "2026-02-28",
   "publisher": {
     "@type": "Organization",
     "name": "The Bitcoin Family Office",
@@ -48,6 +48,54 @@
 
 
 <!-- Google Analytics -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Bitcoin mining income taxed as ordinary income or capital gains?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bitcoin mining income is taxed as ordinary income at the time of receipt, valued at the fair market value of the Bitcoin on the date mined. This is the IRS position established in Revenue Ruling 2023-14. If the mined Bitcoin is later sold at a higher price, the appreciation between the income recognition date and the sale date is a separate taxable event — short-term capital gain if held less than one year, long-term if held more than one year. If sold at a loss, the loss is a capital loss from the fair market value at receipt (your cost basis), not from your original fiat cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Bitcoin mining hardware be fully deducted in year one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — for qualifying tax years, Bitcoin mining hardware (ASICs, GPUs used for mining, networking equipment) may be eligible for Section 179 expensing or bonus depreciation, allowing the full cost of qualifying equipment to be deducted in the year placed in service rather than depreciated over time. The bonus depreciation percentage has been phasing down (80% in 2023, 60% in 2024, 40% in 2025) and Section 179 has annual dollar limits. Consult a tax professional for current year rules and entity-specific limitations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best entity structure for a Bitcoin mining operation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most family office mining operations, a Wyoming LLC taxed as an S-Corporation provides the optimal combination: Wyoming's strong LLC statutes (charging order protection, digital asset property rights) with S-Corp tax treatment (mining income taxed as wages up to reasonable compensation, excess passes through as distributions not subject to self-employment tax). Very small operations may use a sole proprietorship or disregarded entity for simplicity, but the SE tax exposure grows significantly with scale. Family limited partnerships are sometimes used to shift income to lower-bracket family members."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are electricity costs deductible for Bitcoin mining?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — electricity is the single largest operating expense for most mining operations and is fully deductible as a business expense when mining is operated as a trade or business. The same applies to cooling costs, facility rent, maintenance contracts, internet connectivity, and other ordinary and necessary business expenses. Documentation is critical: maintain records showing business use of electricity and allocating household or commercial electricity costs between mining and non-mining use."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the cost basis of Bitcoin mined and then sold?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The cost basis of mined Bitcoin is its fair market value at the time of receipt — the same amount recognized as ordinary income when the Bitcoin was mined. If you mine 0.1 BTC when Bitcoin trades at $60,000, your cost basis in that 0.1 BTC is $6,000. If you later sell it for $8,000, you have a $2,000 capital gain. If you sell it for $4,000, you have a $2,000 capital loss from the $6,000 basis — regardless of how much you spent in electricity and equipment to produce it (those are separate business deductions)."
+      }
+    }
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
 <script>
@@ -188,11 +236,26 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>This article explains the tax mechanics of Bitcoin mining from first principles: how mining income is taxed, how the depreciation rules work, how entity structure affects the outcome, and how mining operations fit within broader <a href="/blog/bitcoin-family-office-vs-wealth-manager" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">family office</a> <a href="/blog/bitcoin-tax-strategy-hub">Bitcoin tax strategy hub</a> frameworks.</p>
 
-  <h2>How Bitcoin Mining Income Is Taxed</h2>
+  <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+    <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted,#6b6660);margin-bottom:1rem;">In This Guide</div>
+    <ol style="margin:0 0 0 1.25rem;">
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#mining-income-tax" style="color:var(--text-secondary);">How Bitcoin Mining Income Is Taxed</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#depreciation" style="color:var(--text-secondary);">Section 179 and Bonus Depreciation</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#entity-structure" style="color:var(--text-secondary);">Entity Structure for Mining Operations</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#cost-basis" style="color:var(--text-secondary);">Cost Basis on Mined Bitcoin</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#operating-expenses" style="color:var(--text-secondary);">Electricity and Operating Expenses</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#family-office-interaction" style="color:var(--text-secondary);">Interaction with Family Office Structures</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#structuring" style="color:var(--text-secondary);">Structuring from the Start</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#depreciation-table" style="color:var(--text-secondary);">Bonus Depreciation Quick-Reference Table</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <h2 id="mining-income-tax">How Bitcoin Mining Income Is Taxed</h2>
 
   <p>The IRS treats Bitcoin as property, not currency. This classification has specific consequences that are different from both traditional asset purchases and traditional business income.</p>
 
-  <p>When miners produce Bitcoin, the IRS takes the position — <a href="/blog/bitcoin-family-office-setup-guide">how to set up a Bitcoin family office</a>ed in Revenue Ruling 2023-14 and consistent with prior guidance — that mined Bitcoin is gross income at the time of receipt, valued at its fair market value on the date received. This is <strong>ordinary income, not capital gains</strong>. The distinction matters significantly.</p>
+  <p>When miners produce Bitcoin, the IRS takes the position — established in Revenue Ruling 2023-14 and consistent with prior guidance — that mined Bitcoin is gross income at the time of receipt, valued at its fair market value on the date received. This is <strong>ordinary income, not capital gains</strong>. The distinction matters significantly.</p>
 
   <p>If you purchase Bitcoin on an exchange, no taxable event occurs at acquisition. Your cost basis equals the purchase price, and you owe no tax until you dispose of the Bitcoin. If you mine Bitcoin, the fair market value at the time of receipt is recognized as ordinary income immediately — regardless of whether you sell the Bitcoin or hold it. You owe ordinary income tax on that value in the year the Bitcoin is mined, even if the Bitcoin is still in your wallet at year-end.</p>
 
@@ -203,7 +266,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
     <p>Bitcoin mining income typically accrues through pool mining, where small amounts of Bitcoin are credited to your pool account continuously as your machines contribute to solving blocks. The taxable event is when the Bitcoin is credited to you — not when you withdraw it from the pool. Many miners inadvertently defer income tracking to the withdrawal date, which creates a recordkeeping mismatch with the IRS's position. Use cost basis tracking software that records pool credits at the time they are received.</p>
   </div>
 
-  <h2>The Section 179 and Bonus Depreciation Advantage</h2>
+  <h2 id="depreciation">The Section 179 and Bonus Depreciation Advantage</h2>
 
   <p>The favorable tax treatment of Bitcoin mining comes primarily from the capital expenditure side, not the income side. ASIC mining hardware qualifies as five-year property under MACRS (the Modified Accelerated Cost Recovery System), which would normally allow 20% annual depreciation over a five-year recovery period. Two provisions accelerate this significantly:</p>
 
@@ -223,19 +286,19 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <div class="pull-quote">The equipment deduction converts pre-tax dollars into mining capacity. That capacity then produces Bitcoin with a cost basis set by market value at time of receipt — a fundamentally different economic structure than market acquisition.</div>
 
-  <h2>Entity Structure for Mining Operations</h2>
+  <h2 id="entity-structure">Entity Structure for Mining Operations</h2>
 
   <p>The entity structure for a Bitcoin mining operation affects the self-employment tax, state tax exposure, income pass-through characteristics, and how the operation interacts with the family's broader legal and tax architecture. There is no universal answer — the optimal structure depends on scale, income profile, and the family's existing structure.</p>
 
-  <p><strong>Sole proprietorship / single-member LLC (disregarded entity).</strong> The simplest structure. All mining income flows directly to the individual's Schedule C, subject to self-employment tax (15.3% on the first $160,200 of net earnings in 2024, 2.9% above that). Self-employment tax applies to net mining income — revenue minus deductible expenses, but before the depreciation that may zero out the income in year one. In subsequent years when the hardware is no longer depreciable, the full net mining income is subject to SE tax. This structure is approp<a href="/blog/bitcoin-family-office-vs-ria">Bitcoin family office vs. RIA comparison</a>te for very small operations or initial testing, but carries meaningful SE tax exposure at scale.</p>
+  <p><strong>Sole proprietorship / single-member LLC (disregarded entity).</strong> The simplest structure. All mining income flows directly to the individual's Schedule C, subject to self-employment tax (15.3% on the first $160,200 of net earnings in 2024, 2.9% above that). Self-employment tax applies to net mining income — revenue minus deductible expenses, but before the depreciation that may zero out the income in year one. In subsequent years when the hardware is no longer depreciable, the full net mining income is subject to SE tax. This structure is appropriate for very small operations or initial testing, but carries meaningful SE tax exposure at scale.</p>
 
   <p><strong>S-Corporation.</strong> An S-Corp allows the owner to split compensation between a reasonable salary (subject to payroll taxes) and a distribution (not subject to SE tax). For a mining operation producing significant income, this can meaningfully reduce SE tax relative to sole proprietorship operation. The owner-operator receives a salary commensurate with the services actually performed, with remaining profits distributed without payroll tax exposure. S-Corps have restrictions on ownership structure (limited to 100 shareholders, no foreign shareholders, no non-individual shareholders) that may conflict with complex family <a href="/tools/bitcoin-trust-selector">Bitcoin Trust Type Selector tool</a>s.</p>
 
   <p><strong>C-Corporation.</strong> For very large mining operations where substantial reinvestment is planned, a C-Corp may be advantageous. Mining income retained in the corporation is taxed at the 21% flat corporate rate — significantly below the top individual ordinary income rate for high earners. Retained earnings can be reinvested in hardware purchases with the favorable depreciation treatment at the corporate level. The disadvantage is double taxation when profits are ultimately distributed as dividends. C-Corp structure is most logical when the intention is to grow the mining operation rather than extract cash flow, and when the scale justifies the additional administrative complexity.</p>
 
-  <p><strong>Wyoming LLC with appropriate tax election.</strong> Wyoming LLCs are often the preferred legal entity for Bitcoin mining operations, independent of the tax election. Wyoming's LLC statutes provide strong charging order protection, clear digital asset property rights, and business-friendly administration. The Wyoming LLC can be taxed as a disregarded entity, partnership, S-Corp, or C-Corp depending on the election made — the legal entity and the tax classification are separate decisions. For most family office mining operations, a Wyoming LLC taxed as an S-Corp combines the legal advantages of Wyoming's entity law with the SE tax efficiency of S-Corp status. See our analysis of <a href="/blog/bitcoin-wyoming-trust-llc.html">Wyoming trusts and LLCs for Bitcoin families</a> for the full structural framework.</p>
+  <p><strong>Wyoming LLC with appropriate tax election.</strong> Wyoming LLCs are often the preferred legal entity for Bitcoin mining operations, independent of the tax election. Wyoming's LLC statutes provide strong charging order protection, clear digital asset property rights, and business-friendly administration. The Wyoming LLC can be taxed as a disregarded entity, partnership, S-Corp, or C-Corp depending on the election made — the legal entity and the tax classification are separate decisions. For most family office mining operations, a Wyoming LLC taxed as an S-Corp combines the legal advantages of Wyoming's entity law with the SE tax efficiency of S-Corp status. See our analysis of <a href="/blog/bitcoin-wyoming-trust-llc">Wyoming trusts and LLCs for Bitcoin families</a> for the full structural framework.</p>
 
-  <h2>Cost Basis on Mined Bitcoin</h2>
+  <h2 id="cost-basis">Cost Basis on Mined Bitcoin</h2>
 
   <p>Basis tracking for mined Bitcoin is operationally demanding and legally significant. Getting it wrong creates both tax risk and audit exposure.</p>
 
@@ -253,7 +316,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>The practical implication: the long-term tax optimization strategy for mined Bitcoin is to hold it for at least one year from each production date before disposal, converting future appreciation from ordinary income treatment to long-term capital gains treatment. The combination of ordinary income treatment at mining and long-term capital gains treatment on subsequent appreciation is one of the most favorable tax structures available for Bitcoin accumulation.</p>
 
-  <h2>Electricity and Operating Expenses as Deductible Business Costs</h2>
+  <h2 id="operating-expenses">Electricity and Operating Expenses as Deductible Business Costs</h2>
 
   <p>In addition to hardware depreciation, all legitimate operating expenses of the mining business are deductible against mining income. For a hosted mining arrangement, this primarily means:</p>
 
@@ -266,7 +329,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>For self-operated mining (where the family controls the physical infrastructure), electricity costs are the largest operating expense and fully deductible. At scale, the difference between $0.04/kWh and $0.07/kWh power can be the difference between a profitable operation and a break-even one — and all of those electricity costs flow through as business deductions.</p>
 
-  <h2>The Interaction with Family Office Structures</h2>
+  <h2 id="family-office-interaction">The Interaction with Family Office Structures</h2>
 
   <p>Bitcoin mining operations exist within a broader family legal and tax architecture, and the way they interact with that architecture requires careful planning.</p>
 
@@ -278,19 +341,103 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>If you are evaluating hosted mining as part of your Bitcoin operations, the due diligence process for your hosting relationship requires the same systematic rigor as the legal and tax structuring:</p>
 
+
+  <h2 id="depreciation-table">Bitcoin Mining Tax Strategy: Bonus Depreciation Quick-Reference</h2>
+
+  <p>Bonus depreciation rules have changed significantly and continue to phase down. Use this table as a quick-reference for the current landscape:</p>
+
+  <div style="overflow-x:auto;margin:1.5rem 0;">
+  <table style="width:100%;border-collapse:collapse;font-family:var(--sans);font-size:0.82rem;">
+    <thead>
+      <tr>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Tax Year</th>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Bonus Depreciation %</th>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Sec. 179 Limit (approx.)</th>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">ASIC Hardware Eligible?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">2022</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">100%</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">~$1.08M</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Yes</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">2023</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#e8a020;">80%</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">~$1.16M</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Yes</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">2024</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#e8a020;">60%</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">~$1.22M</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Yes</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">2025</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#e05252;">40%</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">~$1.25M (est.)</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Yes</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">2026</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#e05252;">20% (unless extended by legislation)</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">TBD</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Yes</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">2027+</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#e05252;">0% (unless extended)</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">TBD</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#e8a020;">Sec. 179 only</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-family:var(--sans);font-size:0.75rem;color:var(--text-muted);margin-top:-0.5rem;"><em>Note: Consult a qualified tax professional for current year rules. Congressional action may extend or modify bonus depreciation rates. Amounts are approximate and subject to phase-out rules.</em></p>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div style="margin: 2rem 0;">
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Is Bitcoin mining income taxed as ordinary income or capital gains?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Ordinary income at fair market value on the date received — IRS position established in Revenue Ruling 2023-14. Subsequent appreciation from that date is a separate capital gain event (short-term < 1 year, long-term > 1 year).</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Can Bitcoin mining hardware be fully deducted in year one?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Yes for qualifying years: Section 179 or bonus depreciation allows full-cost deduction in the year placed in service. Bonus depreciation has phased from 100% (2022) to 60% (2024) to 40% (2025) — and continues declining unless Congress extends it. Consult a tax professional for current year rules.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the best entity structure for a Bitcoin mining operation?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Wyoming LLC taxed as an S-Corp for most family office mining operations: combines Wyoming's strong LLC statutes (charging order protection, digital asset property rights) with S-Corp's SE tax efficiency (wages up to reasonable compensation; excess income passes as distributions not subject to SE tax).</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Are electricity costs deductible for Bitcoin mining?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Yes — electricity is the largest mining operating expense and fully deductible as a business expense. Same applies to cooling, facility rent, maintenance, and internet. Keep records allocating electricity between mining and non-mining use when partially shared.</p>
+    </div>
+    <div>
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the cost basis of mined Bitcoin when sold later?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Fair market value on the date mined — the same amount included as ordinary income. If you mine 0.1 BTC at $60K/coin, your basis is $6,000. Sell at $80K/coin: $2,000 long-term capital gain. Sell at $40K/coin: $2,000 capital loss from the $6,000 basis. Equipment/electricity costs are separate business deductions, not basis adjustments.</p>
+    </div>
+  </div>
+
+  <hr>
+
   <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
     <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Evaluating a Mining Host?</p>
     <p style="font-family:var(--serif);font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">The due diligence process for a mining hosting relationship is distinct from standard vendor evaluation. Abundant Mines publishes a 36-question framework covering the questions every family should ask before committing capital to a mining host — from power contract terms to custody of mined coins.</p>
     <a href="http://44134802.hs-sites.com/abundant-mines-36-questions" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Download the 36-Question Due Diligence Guide →</a>
   </div>
 
-  <h2>Structuring from the Start</h2>
+  <h2 id="structuring">Structuring from the Start</h2>
 
   <p>Bitcoin mining's tax advantages are real. The combination of first-year equipment deductions, ongoing operating expense deductibility, and the cost basis treatment that converts subsequent appreciation to long-term capital gains creates a tax profile that is genuinely superior to market acquisition for the right taxpayer profile.</p>
 
   <p>But those advantages require proper structure from the beginning. Retroactive restructuring of a mining operation — changing entity type, reallocating ownership, or changing the tax accounting method after operations have begun — introduces complexity and risk that proper initial planning avoids entirely. The entity structure, basis tracking methodology, and tax accounting elections should all be in place before the first machine is deployed.</p>
 
-  <p>For the comprehensive framework on entity structures for Bitcoin families, see our analysis of <a href="/blog/bitcoin-wyoming-trust-llc.html">Wyoming trusts and LLCs</a>. For broader Bitcoin tax planning across all acquisition methods, see our guide to <a href="/blog/bitcoin-tax-optimization-high-net-worth.html">Bitcoin tax optimization for high-net-worth families</a>. For how mining fits within total family office cost and structure, see our analysis of <a href="/blog/bitcoin-family-office-cost.html">Bitcoin family office costs</a>.</p>
+  <p>For the comprehensive framework on entity structures for Bitcoin families, see our analysis of <a href="/blog/bitcoin-wyoming-trust-llc">Wyoming trusts and LLCs</a>. For broader Bitcoin tax planning across all acquisition methods, see our guide to <a href="/blog/bitcoin-tax-optimization-high-net-worth">Bitcoin tax optimization for high-net-worth families</a>. For how mining fits within total family office cost and structure, see our analysis of <a href="/blog/bitcoin-family-office-cost">Bitcoin family office costs</a>.</p>
 
   <hr>
 
@@ -301,15 +448,15 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 <div style="max-width:var(--max-w);margin:0 auto 2rem;padding:0 1.5rem;">
   <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem;">Related Reading</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
-    <a href="/blog/bitcoin-custody-architecture.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/bitcoin-custody-architecture" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Custody</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Custody Architecture for Family Offices</p>
     </a>
-    <a href="/blog/complete-guide-bitcoin-family-offices.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/complete-guide-bitcoin-family-offices" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Overview</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">The Complete Guide to Bitcoin Family Offices</p>
     </a>
-    <a href="/blog/bitcoin-estate-planning-complete-guide.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/bitcoin-estate-planning-complete-guide" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Estate Planning</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Estate Planning: The Complete Guide</p>
     </a>
@@ -333,10 +480,10 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 <section class="related">
   <div class="related-label">Continue Reading</div>
   <div class="related-links">
-    <a href="/blog/bitcoin-wyoming-trust-llc.html">Bitcoin, Wyoming Trusts, and LLCs: The Gold Standard Jurisdiction</a>
-    <a href="/blog/bitcoin-tax-optimization-high-net-worth.html">Bitcoin Tax Optimization for High-Net-Worth Families</a>
-    <a href="/blog/bitcoin-family-office-cost.html">How Much Does a Bitcoin Family Office Cost? A Complete Analysis</a>
-    <a href="/blog/bitcoin-mining-family-office.html">Bitcoin Mining and the Family Office: When Self-Mining Makes Strategic Sense</a>
+    <a href="/blog/bitcoin-wyoming-trust-llc">Bitcoin, Wyoming Trusts, and LLCs: The Gold Standard Jurisdiction</a>
+    <a href="/blog/bitcoin-tax-optimization-high-net-worth">Bitcoin Tax Optimization for High-Net-Worth Families</a>
+    <a href="/blog/bitcoin-family-office-cost">How Much Does a Bitcoin Family Office Cost? A Complete Analysis</a>
+    <a href="/blog/bitcoin-mining-family-office">Bitcoin Mining and the Family Office: When Self-Mining Makes Strategic Sense</a>
   </div>
 </section>
 
