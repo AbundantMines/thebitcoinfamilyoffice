@@ -29,7 +29,20 @@
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
 
   <!-- Google Analytics GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What happens to Bitcoin if you die without a will?","acceptedAnswer":{"@type":"Answer","text":"Bitcoin passes through intestate succession — your state's default inheritance law, which divides assets among a surviving spouse, children, parents, and siblings in a priority order determined by statute, not by your wishes. However, Bitcoin has a unique additional problem that other assets don't: intestate succession requires your family to find, access, and transfer the Bitcoin — and if no one knows your hardware wallet location, exchange accounts, or seed phrases, the Bitcoin is effectively lost regardless of who legally inherits it. A will alone isn't sufficient for Bitcoin; you also need documented access instructions that your heirs can actually use."}},
+    {"@type":"Question","name":"Can a court require someone to hand over Bitcoin in intestate succession?","acceptedAnswer":{"@type":"Answer","text":"A court can order someone to hand over assets they received outside of the legal inheritance process — but Bitcoin presents a practical enforcement problem. If the only copy of a private key or seed phrase was on a hardware wallet that the deceased kept secret, no court order can recover that Bitcoin. If Bitcoin was transferred to a hardware wallet solely controlled by the deceased, and no one else has the seed phrase, the Bitcoin is simply inaccessible — regardless of court orders. This is why documented Bitcoin succession planning is not optional: it's the only way heirs can actually receive the inheritance a court awards them."}},
+    {"@type":"Question","name":"Does a beneficiary designation on an exchange account override intestate succession?","acceptedAnswer":{"@type":"Answer","text":"In most states, beneficiary designations on accounts pass outside of probate and override intestate succession laws — but most major Bitcoin exchanges (Coinbase, Kraken, Gemini) do not currently offer beneficiary designation features equivalent to bank accounts or brokerage accounts. Bitcoin on an exchange typically becomes part of the estate and passes through probate or the will. Bitcoin in self-custody on a hardware wallet has no beneficiary designation mechanism at all — it goes to whoever can access the seed phrase, legal inheritance rules notwithstanding."}},
+    {"@type":"Question","name":"What is the minimum viable plan to avoid Bitcoin intestate succession?","acceptedAnswer":{"@type":"Answer","text":"Minimum viable plan: (1) Execute a will specifically naming your Bitcoin holdings and identifying who should receive them; (2) Create a Letter of Instruction (not part of the will, not public in probate) that documents: exchange account locations, hardware wallet locations, the trusted person who can access seed phrases, and any recovery process; (3) Store seed phrases in a way your named beneficiary can access after death — typically a fireproof safe or safety deposit box with access granted; (4) Tell at least one trusted person that you own Bitcoin and where the documentation is. This minimum setup takes a few hours and costs nothing beyond legal fees if you use an attorney for the will."}},
+    {"@type":"Question","name":"What are the three dangerous assumptions Bitcoin holders make about intestate succession?","acceptedAnswer":{"@type":"Answer","text":"The three dangerous assumptions: (1) 'My family knows I have Bitcoin' — often false; spouses and adult children are frequently unaware of the full extent of holdings, especially self-custody wallets established before a relationship began; (2) 'My family will figure it out' — the practical barrier to accessing Bitcoin without documented instructions is enormous; exchange accounts require death certificates, probate authority, and account recovery processes that take months; self-custody Bitcoin without a seed phrase is permanently lost; (3) 'My estate is too small for this to matter' — for anyone with meaningful Bitcoin appreciation, the estate tax, family disputes, and access problems are the same whether the Bitcoin is worth $100,000 or $10 million."}}
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -72,7 +85,7 @@
         "description": "If you die without a will, your Bitcoin follows state intestacy laws — but your heirs still can't access it without your private keys. Learn what happens and how to protect your estate.",
         "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-intestate-succession",
         "datePublished": "2026-02-25",
-        "dateModified": "2026-02-25",
+        "dateModified": "2026-02-28",
         "author": {
           "@type": "Person",
           "name": "Hal Franklin",
@@ -706,7 +719,21 @@
 
       <p>This article explains exactly what happens to your Bitcoin when you die without a will — from the moment of death through the probate process — and why the legal framework of intestate succession, while well-intentioned, solves only one of the two problems your family will face.</p>
 
-      <h2>What "Intestate" Means</h2>
+      <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+        <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted,#6b6660);margin-bottom:1rem;">In This Guide</div>
+        <ol style="margin:0 0 0 1.25rem;">
+          <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#what-intestate-means" style="color:var(--text-secondary);">What "Intestate" Means</a></li>
+          <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#bitcoin-problem" style="color:var(--text-secondary);">The Bitcoin-Specific Problem With Intestate Succession</a></li>
+          <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#probate-process" style="color:var(--text-secondary);">How the Probate Process Works for an Intestate Bitcoin Estate</a></li>
+          <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#discovery-problem" style="color:var(--text-secondary);">The Discovery Problem</a></li>
+          <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#dangerous-assumptions" style="color:var(--text-secondary);">The Three Dangerous Assumptions</a></li>
+          <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#viable-plan" style="color:var(--text-secondary);">What Actually Needs to Happen: The Minimum Viable Plan</a></li>
+          <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#bottom-line" style="color:var(--text-secondary);">The Bottom Line</a></li>
+          <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+        </ol>
+      </div>
+
+      <h2 id="what-intestate-means">What "Intestate" Means</h2>
 
       <p>Intestate simply means dying without a valid will. A will is a legally executed document that expresses your wishes about who receives your property, names an executor to carry out those wishes, and — if you have children — names a guardian for minors. When you die without one, the state steps in and makes those decisions for you according to its intestacy statutes.</p>
 
@@ -745,7 +772,7 @@
 
       <p>The law treats Bitcoin as property — personal property, specifically. That means it flows through the intestacy hierarchy just like a bank account, a car, or a piece of real estate. If you die without a will, the state will determine who is entitled to your Bitcoin. But determining entitlement and actually delivering the asset are two different problems entirely.</p>
 
-      <h2>The Bitcoin-Specific Problem With Intestate Succession</h2>
+      <h2 id="bitcoin-problem">The Bitcoin-Specific Problem With Intestate Succession</h2>
 
       <p>Here is the critical distinction that most people miss: <strong>legal inheritance rights and operational access to self-custodied Bitcoin are completely independent.</strong></p>
 
@@ -758,7 +785,7 @@
 
       <p>In a traditional probate, an administrator (the intestate equivalent of an executor) has legal authority to liquidate assets and distribute them to heirs. For a bank account, they present a court order and the bank cooperates. For a brokerage account, the same. For self-custodied Bitcoin, the administrator has legal authority to nothing — because legal authority doesn't open a hardware wallet, and a court order doesn't reveal a seed phrase.</p>
 
-      <h2>How the Probate Process Works for an Intestate Bitcoin Estate</h2>
+      <h2 id="probate-process">How the Probate Process Works for an Intestate Bitcoin Estate</h2>
 
       <p>When someone dies intestate, the probate process begins when a court is petitioned — typically by a surviving family member — to open an estate. Here's what that process looks like when Bitcoin is involved:</p>
 
@@ -779,7 +806,7 @@
         <p>An intestate Bitcoin estate worth $500,000 at time of death could cost $15,000–$35,000 in probate fees, take two years to settle, and potentially lose most or all of the Bitcoin value if no access documentation exists. A will, a trust, and a Letter of Instruction together cost a fraction of that.</p>
       </div>
 
-      <h2>The Discovery Problem: What Your Family Doesn't Know to Look For</h2>
+      <h2 id="discovery-problem">The Discovery Problem: What Your Family Doesn't Know to Look For</h2>
 
       <p>One of the most underappreciated problems in an intestate Bitcoin estate is the discovery gap. Intestate estates are, by definition, unplanned. There is no Letter of Instruction because the deceased never thought to write one. There is no executor who was briefed on the Bitcoin. There is no trusted contact at an attorney's office who knows the estate plan.</p>
 
@@ -791,7 +818,7 @@
         <li><strong>Hardware wallets without context are often worthless.</strong> A Ledger or Trezor found in a drawer is unidentifiable to most people. Even if a family member recognizes it as a hardware wallet, the device itself requires a PIN, and without the seed phrase, a lost PIN means a lost device. Most administrators are not Bitcoin-literate enough to navigate this without professional help.</li>
       </ul>
 
-      <h2>The Three Dangerous Assumptions</h2>
+      <h2 id="dangerous-assumptions">The Three Dangerous Assumptions</h2>
 
       <p>Most intestate Bitcoin estates result from one of three common rationalizations. Understanding them is the first step to avoiding them.</p>
 
@@ -810,7 +837,7 @@
         </div>
       </div>
 
-      <h2>What Actually Needs to Happen: The <a href="/blog/bitcoin-family-office-minimum">Bitcoin family office minimum requirements</a> Viable Plan</h2>
+      <h2 id="viable-plan">What Actually Needs to Happen: The Minimum Viable Plan</h2>
 
       <p>You don't need a complex <a href="/tools/bitcoin-trust-selector">Bitcoin Trust Type Selector tool</a> or an expensive team of attorneys to protect your Bitcoin from intestacy risk. What you need is the minimum viable documentation — and the discipline to do it now rather than later.</p>
 
@@ -841,7 +868,28 @@
         <a href="/tools/bitcoin-letter-of-instruction" class="cta-btn cta-btn-outline">Start With the LOI Builder</a>
       </div>
 
-      <!-- Mining Tax Callout -->
+      
+      <h2 id="faq">Frequently Asked Questions</h2>
+      <div style="margin: 2rem 0;">
+        <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+          <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What happens to Bitcoin if you die without a will?</h3>
+          <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">It passes through intestate succession — your state's default law — to spouse, children, parents, or siblings in statutory priority. But Bitcoin has an additional problem: your family must also find, access, and transfer it. Without documented hardware wallet locations and seed phrases, the Bitcoin is effectively lost regardless of who legally inherits it.</p>
+        </div>
+        <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+          <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Can a court order someone to hand over Bitcoin?</h3>
+          <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">A court can issue the order — but if the only seed phrase was known only to the deceased, no court order can recover that Bitcoin. It's permanently inaccessible. This is why documented succession planning isn't optional: it's the only way heirs can actually receive what a court awards them.</p>
+        </div>
+        <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+          <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the minimum viable plan to avoid intestate succession problems?</h3>
+          <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">(1) Execute a will naming your Bitcoin holdings; (2) Create a Letter of Instruction documenting exchange accounts, hardware wallet locations, and seed phrase access; (3) Store seed phrases where your named beneficiary can access them after death; (4) Tell at least one trusted person you own Bitcoin and where the documentation is. Takes a few hours and minimal cost.</p>
+        </div>
+        <div>
+          <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What are the three dangerous assumptions Bitcoin holders make?</h3>
+          <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">(1) "My family knows I have Bitcoin" — often false, especially for self-custody wallets; (2) "My family will figure it out" — the practical barrier without documentation is enormous; exchange recovery takes months, self-custody without seed phrase is permanent loss; (3) "My estate is too small for this to matter" — access problems and family disputes are the same at $100K as at $10M.</p>
+        </div>
+      </div>
+      <hr>
+<!-- Mining Tax Callout -->
       <div class="mining-callout">
         <div class="mining-label">Related Strategy</div>
         <h4>Bitcoin Mining as an Estate Planning Tax Tool</h4>
@@ -849,7 +897,7 @@
         <a href="https://abundantmines.com/tax-strategy/" class="mining-link" target="_blank" rel="noopener">Explore the Bitcoin Mining Tax Strategy →</a>
       </div>
 
-      <h2>The Bottom Line</h2>
+      <h2 id="bottom-line">The Bottom Line</h2>
 
       <p>Intestate succession law was designed for a world where assets are held by institutions — banks, brokerages, real estate titles. Those institutions cooperate with probate courts. Bitcoin doesn't. The blockchain doesn't know or care about legal succession orders, and the cryptographic keys that control your coins are utterly indifferent to what a court decides.</p>
 

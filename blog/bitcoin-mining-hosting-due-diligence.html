@@ -24,7 +24,7 @@
   "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
   "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-mining-hosting-due-diligence",
   "datePublished": "2026-02-25",
-  "dateModified": "2026-02-25",
+  "dateModified": "2026-02-28",
   "publisher": {
     "@type": "Organization",
     "name": "The Bitcoin Family Office",
@@ -48,6 +48,19 @@
 
 
 <!-- Google Analytics -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is the most important due diligence question to ask a Bitcoin mining host?","acceptedAnswer":{"@type":"Answer","text":"The single most important question is: 'Who owns the power contract, and what happens to my machines if you default on it?' Power is the host's primary cost and primary default risk. A host that doesn't own its power infrastructure is dependent on a landlord who has no relationship with you. If the host defaults, your machines may be without power immediately — with no legal claim against the underlying power provider. Ask for the power contract structure, the counterparty, the term, and what happens to client equipment in any default scenario."}},
+    {"@type":"Question","name":"What are the biggest red flags in a Bitcoin mining hosting contract?","acceptedAnswer":{"@type":"Answer","text":"Critical red flags: (1) Hosting fee in USD with no BTC payment option — exposes you to currency risk and indicates the host may not be a Bitcoin-native operation; (2) No clear bailment provision — if the contract doesn't state that your machines are your property and not assets of the host, they may be treated as collateral in a bankruptcy; (3) No uptime SLA or penalty provisions — hosts with nothing on the line for downtime have no incentive to maintain it; (4) Unrealistically low power rates ($0.04–$0.05/kWh) without explanation of how they achieve it — often sign of financial instability or misrepresentation; (5) Refusal to allow site visits."}},
+    {"@type":"Question","name":"What insurance should a Bitcoin mining host carry?","acceptedAnswer":{"@type":"Answer","text":"A serious Bitcoin mining host should carry: (1) Property insurance covering client equipment under their care, custody, and control — ask for a certificate naming you as additional insured; (2) General liability insurance; (3) Business interruption insurance; (4) Cyber liability insurance covering data breach and security incidents. Ask for certificates of insurance with your name as additional insured. A host that doesn't carry CCC (care, custody, and control) property insurance exposes you to full equipment loss in a fire, flood, or theft."}},
+    {"@type":"Question","name":"How do I verify a Bitcoin mining host's claimed uptime and hashrate?","acceptedAnswer":{"@type":"Answer","text":"Before signing: (1) Request references from current clients — not testimonials from the host's website, but direct contacts you can call independently; (2) Check pool data — if the host will tell you which pool they use, you can often verify approximate total hashrate from pool statistics; (3) Request access to monitoring infrastructure — ASIC management software typically has dashboards showing machine status; (4) Ask for 90-day historical uptime reports with documentation; (5) Do a site visit. A host that refuses a site visit is disqualifying."}},
+    {"@type":"Question","name":"What is a fair hosting contract term for a Bitcoin miner?","acceptedAnswer":{"@type":"Answer","text":"Typical hosting contracts run 12–24 months with options to renew. Avoid contracts longer than 24 months without clear exit provisions — Bitcoin mining economics change rapidly with hashrate difficulty and BTC price, and a hosting relationship that made sense at $30,000 BTC may not at $80,000. Look for: (1) Termination for convenience with 30–60 day notice and equipment removal rights; (2) Force majeure provisions that allow exit if power costs increase beyond a threshold; (3) Price escalation caps limiting how much the hosting fee can increase at renewal."}}
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
 <script>
@@ -188,21 +201,36 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>This is not about finding the "best" host in the abstract. It is about ensuring that whatever host you choose, you understand the specific risks and have received specific answers to specific questions before committing capital.</p>
 
-  <h2>The Stakes of Getting Hosting Wrong</h2>
+  <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+    <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted,#6b6660);margin-bottom:1rem;">In This Guide</div>
+    <ol style="margin:0 0 0 1.25rem;">
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#stakes" style="color:var(--text-secondary);">The Stakes of Getting Hosting Wrong</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#power" style="color:var(--text-secondary);">Power Infrastructure</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#security" style="color:var(--text-secondary);">Physical Security and Insurance</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#transparency" style="color:var(--text-secondary);">Operational Transparency</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#legal-terms" style="color:var(--text-secondary);">Commercial and Legal Terms</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#checklist" style="color:var(--text-secondary);">The Full Due Diligence Checklist</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#red-flags" style="color:var(--text-secondary);">Red Flags to Walk Away From</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#partnership" style="color:var(--text-secondary);">The Right Hosting Relationship</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <h2 id="stakes">The Stakes of Getting Hosting Wrong</h2>
 
   <p>Understanding why due diligence matters requires understanding what has gone wrong in real hosting relationships. The failure modes are not hypothetical.</p>
 
   <p><strong>Facility closure.</strong> Mining facilities operate on thin margins tied to power costs and Bitcoin price. When the economics deteriorate — power prices spike, Bitcoin price drops significantly, or operational costs exceed expectations — undercapitalized facilities close, sometimes without adequate notice. Client machines may be stranded, access may be restricted, and retrieval logistics can be expensive and time-consuming.</p>
 
-  <p><strong>Equipment disputes.</strong> In facility bankruptcy or default, the legal status of client equipment depends entirely on the hosting contract and applicable state law. If the contract doesn't clearly <a href="/blog/bitcoin-family-office-setup-guide">how to set up a Bitcoin family office</a> that client machines are bailment property — not assets of the facility — they may be caught up in bankruptcy proceedings or become subject to creditor claims. The resolution can take months or years while your machines sit idle.</p>
+  <p><strong>Equipment disputes.</strong> In facility bankruptcy or default, the legal status of client equipment depends entirely on the hosting contract and applicable state law. If the contract doesn't clearly establish that client machines are bailment property — not assets of the facility — they may be caught up in bankruptcy proceedings or become subject to creditor claims. The resolution can take months or years while your machines sit idle.</p>
 
-  <p><strong>Custody disputes over mined Bitcoin.</strong> Some facilities hold mined Bitcoin until periodic payouts. If a dispute arises or the facility becomes insolvent, Bitcoin held in the facility's payout queue may be frozen or lost. The question of who holds mined Bitcoin — and when it transfers to the client — is not a technicality; it is a mate<a href="/blog/bitcoin-family-office-vs-ria">Bitcoin family office vs. RIA comparison</a>l economic and legal risk.</p>
+  <p><strong>Custody disputes over mined Bitcoin.</strong> Some facilities hold mined Bitcoin until periodic payouts. If a dispute arises or the facility becomes insolvent, Bitcoin held in the facility's payout queue may be frozen or lost. The question of who holds mined Bitcoin — and when it transfers to the client — is not a technicality; it is a material economic and legal risk.</p>
 
   <p><strong>Operational underperformance.</strong> Uptime guarantees that look compelling on paper may be measured in ways that systematically understate actual downtime. Power curtailment — when miners are turned off during peak demand periods — may or may not be included in uptime calculations. The difference between reported and actual uptime can be significant over a multi-year relationship.</p>
 
   <div class="pull-quote">A hosting contract signed without thorough due diligence is not a business relationship — it is an unsecured bet on an operator you don't understand, in a facility you may never visit.</div>
 
-  <h2>Power Infrastructure</h2>
+  <h2 id="power">Power Infrastructure</h2>
 
   <p>Power is the primary operating cost of Bitcoin mining and the most important factor in the long-term economics of any hosting relationship. Power questions deserve detailed, documented answers — not verbal assurances.</p>
 
@@ -216,7 +244,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p><strong>Rate escalation clauses.</strong> In pass-through power arrangements, review any clauses governing rate escalation. Is there a cap on how much the hosting rate can increase? What notice is provided before rate changes take effect? What are your exit rights if rates increase beyond a defined threshold?</p>
 
-  <h2>Physical Security and Insurance</h2>
+  <h2 id="security">Physical Security and Insurance</h2>
 
   <p>Your ASIC miners are valuable physical assets in a building you don't control. Physical security and insurance coverage are not marketing details — they are the protection layer between your capital and a variety of loss scenarios.</p>
 
@@ -233,7 +261,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p><strong>Disaster recovery.</strong> What is the recovery plan for facility-level events: fire, flood, major power failure, or natural disaster? Does the facility have relationships with backup hosting locations where client machines could be transferred? What is the expected timeline and process for equipment retrieval in a catastrophic scenario?</p>
 
-  <h2>Operational Transparency</h2>
+  <h2 id="transparency">Operational Transparency</h2>
 
   <p>Uptime and performance are the operational metrics that determine your mining economics. Transparency in reporting these metrics — and your ability to independently verify them — is a critical due diligence dimension.</p>
 
@@ -245,7 +273,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p><strong>Audit rights.</strong> Does the hosting agreement grant you the right to conduct site visits and operational audits? Can you verify, physically, that your machines are present and operational? Facilities that refuse site visits or audit rights are a significant red flag — covered in more detail below.</p>
 
-  <h2>Commercial and Legal Terms</h2>
+  <h2 id="legal-terms">Commercial and Legal Terms</h2>
 
   <p>The commercial and legal terms of the hosting agreement govern your rights in every scenario — normal operations, disputes, and facility failure. These terms deserve the same careful review as any significant commercial contract, which typically means qualified legal counsel with experience in mining hosting agreements.</p>
 
@@ -257,7 +285,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p><strong>Custody of mined Bitcoin.</strong> Who holds your mined Bitcoin between production and payout, and when does it transfer to your custody? In the best arrangements, mined Bitcoin is automatically swept to a client-controlled custody address daily or more frequently. In less favorable arrangements, the facility holds an accumulated payout balance in its own custody until periodic settlement — creating a counterparty exposure for your Bitcoin in addition to your hardware. Understand the specific custody flow and minimize the time your Bitcoin spends in the facility's custody.</p>
 
-  <h2>The Full Due Diligence Checklist</h2>
+  <h2 id="checklist">The Full Due Diligence Checklist</h2>
 
   <p>The categories above translate into a structured checklist for evaluating any hosting relationship. Organized by domain:</p>
 
@@ -275,7 +303,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
     <a href="http://44134802.hs-sites.com/abundant-mines-36-questions" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Download the 36-Question Due Diligence Guide →</a>
   </div>
 
-  <h2>Red Flags to Walk Away From</h2>
+  <h2 id="red-flags">Red Flags to Walk Away From</h2>
 
   <p>Some patterns in hosting relationships are sufficiently correlated with poor outcomes that they warrant walking away, regardless of how compelling the other terms appear.</p>
 
@@ -291,18 +319,39 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p><strong>Pressure to commit quickly.</strong> Legitimate hosting relationships are long-term arrangements that benefit both parties. A facility creating artificial urgency — "this rate is only available for the next 48 hours" — is either poorly run or using pressure tactics to prevent you from completing adequate due diligence. Neither is a good sign.</p>
 
-  <h2>The Right Hosting Relationship Is a Long-Term Partnership</h2>
+  <h2 id="partnership">The Right Hosting Relationship Is a Long-Term Partnership</h2>
 
   <p>The purpose of thorough due diligence is not to find reasons to walk away — it is to find a hosting partner with whom a long-term, aligned relationship is possible. The best hosting relationships involve operators who welcome detailed due diligence because it establishes the foundation for a relationship built on transparency rather than opaque terms that benefit one party at the expense of the other.</p>
 
   <p>Operators who can answer every question in this framework clearly, specifically, and in writing are the ones worth working with. Operators who resist the process are revealing something important about how they would handle the relationship when things get difficult.</p>
 
-  <p>For the foundational strategic context on whether mining belongs in your Bitcoin strategy at all, see our guide to <a href="/blog/bitcoin-mining-family-office.html">Bitcoin mining and the <a href="/blog/bitcoin-family-office-vs-wealth-manager" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">family office</a></a>. For the custody architecture that should govern where your mined Bitcoin goes after production, see our analysis of <a href="/blog/bitcoin-custody-architecture.html">Bitcoin custody architecture</a>. For the broader wealth preservation framework, see our <a href="/blog/bitcoin-wealth-preservation-strategy.html">Bitcoin wealth preservation strategy</a>.</p>
+  <p>For the foundational strategic context on whether mining belongs in your Bitcoin strategy at all, see our guide to <a href="/blog/bitcoin-mining-family-office">Bitcoin mining and the <a href="/blog/bitcoin-family-office-vs-wealth-manager" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">family office</a></a>. For the custody architecture that should govern where your mined Bitcoin goes after production, see our analysis of <a href="/blog/bitcoin-custody-architecture">Bitcoin custody architecture</a>. For the broader wealth preservation framework, see our <a href="/blog/bitcoin-wealth-preservation-strategy">Bitcoin wealth preservation strategy</a>.</p>
 
   <hr>
 
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <div style="margin: 2rem 0;">
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the most important due diligence question for a Bitcoin mining host?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">"Who owns the power contract, and what happens to my machines if you default on it?" Power is the host's primary cost and default risk. If the host doesn't own its power infrastructure, your machines may lose power immediately if the host defaults — with no legal claim against the underlying power provider.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What are the biggest red flags in a mining hosting contract?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Hosting fee in USD only (no BTC option); no bailment provision; no uptime SLA or penalties; unrealistically low power rates without explanation; refusal to allow site visits. Any one of these should prompt serious scrutiny. More than two should end the conversation.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What insurance should a Bitcoin mining host carry?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">At minimum: property insurance covering client equipment under care, custody, and control (CCC) — you as additional insured; general liability; cyber liability. Ask for insurance certificates. A host without CCC property coverage exposes you to full equipment loss in a fire, flood, or theft.</p>
+    </div>
+    <div>
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is a fair hosting contract term?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">12–24 months with renewal options. Avoid longer without clear exit provisions — mining economics change rapidly. Look for: termination for convenience with 30–60 day notice and equipment removal rights; force majeure exit if power costs spike; price escalation caps at renewal.</p>
+    </div>
+  </div>
+  <hr>
     <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
-    <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful <a href="/blog/bitcoin-tax-strategy-hub">Bitcoin tax strategy hub</a> Available</p>
+    <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful Tax Strategy Available</p>
     <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">For high-net-worth Bitcoin holders, mining is the only strategy that simultaneously generates yield, accumulates BTC, and creates significant tax offsets — through equipment depreciation, operating expense deductions, and bonus depreciation on capital investments. Most family offices overlook mining entirely. Abundant Mines has compiled every major Bitcoin mining tax strategy in one place.</p>
     <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a>
   </div>
@@ -313,15 +362,15 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 <div style="max-width:var(--max-w);margin:0 auto 2rem;padding:0 1.5rem;">
   <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem;">Related Reading</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
-    <a href="/blog/bitcoin-custody-architecture.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/bitcoin-custody-architecture" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Custody</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Custody Architecture for Family Offices</p>
     </a>
-    <a href="/blog/complete-guide-bitcoin-family-offices.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/complete-guide-bitcoin-family-offices" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Overview</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">The Complete Guide to Bitcoin Family Offices</p>
     </a>
-    <a href="/blog/bitcoin-estate-planning-complete-guide.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/bitcoin-estate-planning-complete-guide" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Estate Planning</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Estate Planning: The Complete Guide</p>
     </a>
@@ -345,9 +394,9 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 <section class="related">
   <div class="related-label">Continue Reading</div>
   <div class="related-links">
-    <a href="/blog/bitcoin-mining-family-office.html">Bitcoin Mining and the Family Office: When Self-Mining Makes Strategic Sense</a>
-    <a href="/blog/bitcoin-custody-architecture.html">Bitcoin Custody Architecture: A Technical Deep Dive for Family Offices</a>
-    <a href="/blog/bitcoin-wealth-preservation-strategy.html">Bitcoin Wealth Preservation Strategy: A First-Principles Framework</a>
+    <a href="/blog/bitcoin-mining-family-office">Bitcoin Mining and the Family Office: When Self-Mining Makes Strategic Sense</a>
+    <a href="/blog/bitcoin-custody-architecture">Bitcoin Custody Architecture: A Technical Deep Dive for Family Offices</a>
+    <a href="/blog/bitcoin-wealth-preservation-strategy">Bitcoin Wealth Preservation Strategy: A First-Principles Framework</a>
   </div>
 </section>
 
