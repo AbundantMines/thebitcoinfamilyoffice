@@ -20,7 +20,7 @@
     var _sd=0;window.addEventListener('scroll',function(){var p=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);if(p>_sd&&p%25===0){gtag('event','hm_scroll',{depth:p});_sd=p;}},{passive:true});
   </script>
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Bitcoin Estate Planning After a Liquidity Event: Startup Exit, IPO, and Acquisition Guide","author":{"@type":"Person","name":"Hal Franklin","email":"hal@thebitcoinfamilyoffice.com"},"publisher":{"@type":"Organization","name":"The Bitcoin Family Office","url":"https://thebitcoinfamilyoffice.com"},"datePublished":"2026-02-26","dateModified":"2026-02-26","url":"https://thebitcoinfamilyoffice.com/blog/bitcoin-liquidity-event-estate-planning","image":"https://thebitcoinfamilyoffice.com/assets/og-image.png"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Bitcoin Estate Planning After a Liquidity Event: Startup Exit, IPO, and Acquisition Guide","author":{"@type":"Person","name":"Hal Franklin","jobTitle":"Bitcoin Wealth Strategist","email":"hal@thebitcoinfamilyoffice.com"},"publisher":{"@type":"Organization","name":"The Bitcoin Family Office","url":"https://thebitcoinfamilyoffice.com"},"datePublished":"2026-02-26","dateModified":"2026-02-28","url":"https://thebitcoinfamilyoffice.com/blog/bitcoin-liquidity-event-estate-planning","image":"https://thebitcoinfamilyoffice.com/assets/og-image.png"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://thebitcoinfamilyoffice.com/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://thebitcoinfamilyoffice.com/blog/"},{"@type":"ListItem","position":3,"name":"Bitcoin Liquidity Event Estate Planning","item":"https://thebitcoinfamilyoffice.com/blog/bitcoin-liquidity-event-estate-planning"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When should I set up estate planning after a startup exit?","acceptedAnswer":{"@type":"Answer","text":"Immediately — ideally before the liquidity event closes. Once proceeds hit your personal account, your options narrow. Pre-closing is the window for the most powerful structures: GRAT locks in the pre-appreciation base; charitable remainder trust can eliminate capital gains; <a href="/blog/bitcoin-dynasty-trust-complete-guide">dynasty trust</a> removes future appreciation from your estate before it grows. After closing, you're working with already-taxed wealth."}},{"@type":"Question","name":"What are the most important estate planning steps after a Bitcoin liquidity event?","acceptedAnswer":{"@type":"Answer","text":"In order: (1) secure custody architecture for the new position (multi-sig minimum); (2) review and update estate documents — your old will may not reflect current wealth; (3) establish a dynasty trust or irrevocable trust to remove future appreciation from your estate; (4) fund an ILIT if estate tax exposure is significant; (5) set up annual gifting to reduce estate over time; (6) update beneficiary designations on all accounts."}},{"@type":"Question","name":"How do I convert startup proceeds to Bitcoin in a tax-efficient way?","acceptedAnswer":{"@type":"Answer","text":"If proceeds are already cash (post-tax): you purchase BTC at cost basis = purchase price; no additional immediate tax. The estate planning question is what structure holds the BTC. If BTC appreciates in a dynasty trust or irrevocable trust you've already established, that appreciation is outside your taxable estate. If it appreciates in your personal account, it's fully estate-taxable. The timing: set up the trust before you buy Bitcoin — not after."}},{"@type":"Question","name":"Does a Qualified Opportunity Zone investment work for Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"QOZ investments defer capital gains tax from the underlying sale, but the investment itself must go into a Qualified Opportunity Fund (QOF) investing in businesses or property in designated census tracts. You cannot invest in Bitcoin directly through a QOF. However, QOZ deferral can apply to capital gains from selling the startup — freeing up more after-tax cash to purchase Bitcoin outside the QOF. The capital gain deferral reduces your immediate tax burden."}},{"@type":"Question","name":"Should I hold Bitcoin in my own name or through a trust after a liquidity event?","acceptedAnswer":{"@type":"Answer","text":"Almost never in your own name for significant amounts. Personal holdings are fully in your taxable estate, subject to probate, visible to creditors, and create succession complexity. The right structure: an LLC layer (for liability protection) inside a dynasty trust or irrevocable trust (for estate tax protection). The trust owns the LLC, the LLC operationally manages the Bitcoin. This gives you liability protection, estate tax optimization, and clean generational transfer."}}]}</script>
   <style>
@@ -110,7 +110,117 @@
 
   <p>This guide is for entrepreneurs who have had a liquidity event — or who see one coming — and want to integrate Bitcoin into a proper generational wealth structure before, during, or shortly after the close.</p>
 
-  <h2>Why Timing Is Everything: The Pre-Close Window</h2>
+  <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+    <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted,#6b6660);margin-bottom:1rem;">In This Guide</div>
+    <ol style="margin:0 0 0 1.25rem;">
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#timing" style="color:var(--text-secondary);">Why Timing Is Everything: The Pre-Close Window</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#exit-types" style="color:var(--text-secondary);">Exit Type Comparison: Bitcoin Implications</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#post-close" style="color:var(--text-secondary);">The Immediate Post-Close Checklist</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#structure" style="color:var(--text-secondary);">Holding Structure Decision</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#tax-timing" style="color:var(--text-secondary);">Tax Timing Strategies After Purchase</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#qsbs" style="color:var(--text-secondary);">The QSBS Angle</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#mining" style="color:var(--text-secondary);">Bitcoin Mining as Post-Exit Tax Strategy</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#family-office" style="color:var(--text-secondary);">Building a Family Office After Exit</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#mistakes" style="color:var(--text-secondary);">Common Mistakes Founders Make</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#90-day" style="color:var(--text-secondary);">90-Day Post-Exit Action Plan</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+
+  <h2 id="exit-types">Exit Type Comparison: Bitcoin Estate Planning Implications</h2>
+
+  <p>The type of liquidity event determines both your immediate tax situation and the estate planning strategies available to you. Each exit type has different timing, tax treatment, and Bitcoin acquisition pathways:</p>
+
+  <div style="overflow-x:auto;margin:1.5rem 0;">
+  <table style="width:100%;border-collapse:collapse;font-family:var(--sans);font-size:0.82rem;">
+    <thead>
+      <tr>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Exit Type</th>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Tax Treatment</th>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Bitcoin Timing Strategy</th>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Key Pre-Close Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">All-cash acquisition</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Capital gains on full proceeds; QSBS exclusion if eligible</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Establish trust before close; buy Bitcoin into trust post-close</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Fund dynasty trust; engage Bitcoin estate attorney</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">IPO (lock-up period)</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Tax deferred until shares sold; lock-up 90–180 days</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Use lock-up period to establish trust; diversify gradually into Bitcoin</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">GRAT with pre-IPO shares before public price known</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">Stock-for-stock merger</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Tax-free reorganization if structured correctly; deferred gain</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Convert acquirer shares to Bitcoin strategically as shares vest or unlock</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Review acquirer stock RSU vest schedule; layer Bitcoin purchases</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">Secondary sale (pre-IPO)</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Ordinary income if shares held < 1 year; long-term cap gains if ≥ 1 yr</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Plan holding period carefully; purchase Bitcoin with after-tax proceeds</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Verify qualifying disposition; confirm QSBS eligibility</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">Asset sale</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Complex: ordinary income + capital gains depending on asset type; depreciation recapture</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Installment sale spreads gain over years; purchase Bitcoin gradually with each installment</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Installment note negotiation; CRT for appreciated assets</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="90-day">90-Day Post-Exit Action Plan</h2>
+
+  <p>The first 90 days after a liquidity event are the highest-leverage period in a Bitcoin holder's estate planning timeline. The following timeline is calibrated for exits resulting in $5M+ of capital to deploy into Bitcoin:</p>
+
+  <div style="overflow-x:auto;margin:1.5rem 0;">
+  <table style="width:100%;border-collapse:collapse;font-family:var(--sans);font-size:0.82rem;">
+    <thead>
+      <tr>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Timeframe</th>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Priority Actions</th>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--accent);font-weight:500;">Days 1–7</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Secure custody: 2-of-3 multisig hardware wallets, geographic key distribution, written recovery protocol</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">All else is irrelevant if custody fails. Do this before structuring anything.</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--accent);font-weight:500;">Days 7–14</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Engage Bitcoin estate attorney + Bitcoin CPA; review preliminary estate tax exposure</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Specialists — not generalists. Know your exact tax exposure before any structural decisions.</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--accent);font-weight:500;">Days 14–30</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Draft and execute dynasty trust or irrevocable trust; select Wyoming or South Dakota as situs</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Every day Bitcoin appreciates in your personal name is appreciation that stays in your estate.</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--accent);font-weight:500;">Days 30–60</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Fund trust with Bitcoin; execute Wyoming LLC if not already; update estate documents (will, POA, beneficiary designations)</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Existing estate documents were written for a different wealth level. Update everything.</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--accent);font-weight:500;">Days 60–90</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Set up annual gifting program; evaluate ILIT for estate tax liquidity; begin family governance discussion if multiple heirs</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Build recurring tax reduction systems. Annual gifts compound dramatically over time.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="timing">Why Timing Is Everything: The Pre-Close Window</h2>
 
   <p>The most valuable estate planning window for founders is <strong>before the liquidity event closes</strong>. This is when several uniquely powerful strategies are available:</p>
 
@@ -125,7 +235,7 @@
     <p><strong>Critical timing rule:</strong> Once proceeds hit your personal bank account, the most powerful strategies are no longer available. QSBS stacking, pre-exit GRATs, and charitable transfer elections all require action before the deal closes. If you have a term sheet in hand, call your estate attorney today — not after signing.</p>
   </div>
 
-  <h2>The Immediate Post-Close Checklist</h2>
+  <h2 id="post-close">The Immediate Post-Close Checklist</h2>
 
   <p>If you've already received proceeds and are now holding Bitcoin or cash, here's the priority sequence:</p>
 
@@ -181,7 +291,7 @@
     </div>
   </div>
 
-  <h2>Holding Structure Decision: Where Does the Bitcoin Live?</h2>
+  <h2 id="structure">Holding Structure Decision: Where Does the Bitcoin Live?</h2>
 
   <p>The holding structure question is the most consequential decision post-exit. Your options:</p>
 
@@ -236,7 +346,7 @@
 
   <p>For most founders with post-exit Bitcoin positions above $5M, the optimal structure is: <strong>Wyoming LLC (operational holding) inside a Wyoming Dynasty Trust (legal ownership)</strong>. The LLC provides liability protection and operational flexibility (you can still manage the BTC as manager of the LLC). The dynasty trust removes all future BTC appreciation from your taxable estate permanently.</p>
 
-  <h2>Tax Timing Strategies After a Bitcoin Purchase</h2>
+  <h2 id="tax-timing">Tax Timing Strategies After a Bitcoin Purchase</h2>
 
   <p>Once you've purchased Bitcoin with post-exit proceeds, your tax basis is the purchase price — you've already paid income or capital gains tax on the proceeds. The remaining tax questions are:</p>
 
@@ -254,7 +364,7 @@
   <h3><a href="/blog/bitcoin-step-up-in-basis-complete-guide">Step-Up in Basis</a>: The Hold-Forever Strategy</h3>
   <p>Bitcoin receives a step-up in cost basis to fair market value at the date of death (like all appreciated assets). If your heirs hold Bitcoin you pass to them, their capital gains basis resets to the value at your death — eliminating all unrealized gains accumulated during your lifetime. For long-term Bitcoin holders who don't need the liquidity, this is the most tax-efficient exit: hold forever, step-up at death. <a href="/blog/bitcoin-step-up-basis-guide">Full step-up in basis guide →</a></p>
 
-  <h2>The Qualified Small Business Stock (QSBS) Angle</h2>
+  <h2 id="qsbs">The Qualified Small Business Stock (QSBS) Angle</h2>
 
   <p>If your startup was a C-corporation and you held shares for over five years, you may qualify for the Section 1202 QSBS exclusion — one of the most valuable tax provisions for founders. Under current law, qualifying founders can exclude up to $10M in capital gains (or 10× their adjusted basis) from federal income tax entirely.</p>
 
@@ -262,7 +372,7 @@
 
   <p>This requires planning before the sale closes. If QSBS applies to your situation and you haven't explored this with a specialist, this is the highest-value phone call you can make today.</p>
 
-  <h2>Bitcoin Mining as a Post-Exit Tax Strategy</h2>
+  <h2 id="mining">Bitcoin Mining as a Post-Exit Tax Strategy</h2>
 
   <p>Many founders who convert exit proceeds to Bitcoin are unaware that Bitcoin mining offers some of the most powerful tax advantages in the entire US tax code. For a high-income year (the year of your liquidity event), mining-related deductions — depreciation, bonus depreciation, OpEx deductions — can dramatically offset ordinary income.</p>
 
@@ -272,7 +382,7 @@
     <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener">Explore Bitcoin Mining Tax Strategy →</a>
   </div>
 
-  <h2>Building a Family Office After Exit: The Threshold Decision</h2>
+  <h2 id="family-office">Building a Family Office After Exit: The Threshold Decision</h2>
 
   <p>Post-exit founders with significant Bitcoin positions are the primary client profile for a Bitcoin family office. The question is whether to build a dedicated structure or use a professional team approach.</p>
 
@@ -280,7 +390,7 @@
 
   <p>For exits resulting in $10M+ of Bitcoin: a more complete family office structure — with formal investment policy, governance framework, and potentially institutional custody elements — becomes both justified and necessary. See our guide to <a href="/blog/bitcoin-family-office-minimum">Bitcoin family office minimums and thresholds →</a></p>
 
-  <h2>Common Mistakes Founders Make After a Bitcoin Liquidity Event</h2>
+  <h2 id="mistakes">Common Mistakes Founders Make After a Bitcoin Liquidity Event</h2>
 
   <ol>
     <li><strong>Waiting to plan</strong> — every month of Bitcoin appreciation in your personal name is appreciation that stays in your taxable estate</li>
@@ -293,7 +403,7 @@
     <li><strong>Missing the GRAT window</strong> — GRAT funded before BTC appreciation is the most powerful transfer tool; funded after, the advantage shrinks</li>
   </ol>
 
-  <h2>FAQ: Bitcoin Estate Planning After a Liquidity Event</h2>
+  <h2 id="faq">FAQ: Bitcoin Estate Planning After a Liquidity Event</h2>
 
   <div class="faq-section">
     <div class="faq-item">
@@ -323,7 +433,7 @@
   </div>
 
   <div class="author-box">
-    <div class="author-avatar">H</div>
+    <div class="author-avatar" style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:#0a0a0a;">HF</div>
     <div class="author-info">
       <div class="author-name">Hal Franklin | The Bitcoin Family Office</div>
       <div class="author-title">Estate planning research for significant Bitcoin holders and founders. <a href="mailto:hal@thebitcoinfamilyoffice.com">hal@thebitcoinfamilyoffice.com</a></div>
