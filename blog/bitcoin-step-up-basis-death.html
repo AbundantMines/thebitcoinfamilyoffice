@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bitcoin <a href="/blog/bitcoin-step-up-in-basis-complete-guide">Step-Up in Basis</a> at Death: The Tax Benefit Most Holders Miss | The Bitcoin Family Office</title>
-  <meta name="description" content="When you die holding Bitcoin, your heirs inherit it at current market value — permanently erasing all embedded capital gains. How to use this to protect generational wealth.">
+  <title>Bitcoin Step-Up in Basis at Death: The Tax Benefit Most Holders Miss | The Bitcoin Family Office</title>
+  <meta name="description" content="When you die holding Bitcoin, your heirs inherit it at current market value — permanently erasing all embedded capital gains. How the step-up in basis works, what it's worth in dollars, HIFO strategy, trust structure implications, and how to plan around IRC §1014.">
   <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-step-up-basis-death">
-  <meta property="og:title" content="Bitcoin Step-Up in Basis at Death — The Bitcoin Family Office">
+  <meta property="og:title" content="Bitcoin Step-Up in Basis at Death: The Tax Benefit Most Holders Miss">
   <meta property="og:description" content="The step-up in basis at death erases every dollar of capital gain on your Bitcoin. How it works, what it's worth, and how to plan around it.">
   <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
   <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-step-up-basis-death">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=EB+Garamond:wght@400;500&family=EB+Garamond:ital@1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -22,32 +25,41 @@
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
-    {"@type":"Article","headline":"Bitcoin Step-Up in Basis at Death: The Tax Benefit Most Holders Miss","datePublished":"2026-02-25","dateModified":"2026-02-25","author":{"@type":"Person","name":"Hal Franklin","worksFor":{"@type":"Organization","name":"The Bitcoin Family Office"}},"publisher":{"@type":"Organization","name":"The Bitcoin Family Office","url":"https://thebitcoinfamilyoffice.com"}},
+    {"@type":"Article","headline":"Bitcoin Step-Up in Basis at Death: The Tax Benefit Most Holders Miss","datePublished":"2026-02-25","dateModified":"2026-02-27","author":{"@type":"Person","name":"Hal Franklin","jobTitle":"Bitcoin Wealth Strategist","worksFor":{"@type":"Organization","name":"The Bitcoin Family Office"}},"publisher":{"@type":"Organization","name":"The Bitcoin Family Office","url":"https://thebitcoinfamilyoffice.com"},"url":"https://thebitcoinfamilyoffice.com/blog/bitcoin-step-up-basis-death"},
     {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://thebitcoinfamilyoffice.com"},{"@type":"ListItem","position":2,"name":"Research","item":"https://thebitcoinfamilyoffice.com/blog/"},{"@type":"ListItem","position":3,"name":"Bitcoin Step-Up in Basis","item":"https://thebitcoinfamilyoffice.com/blog/bitcoin-step-up-basis-death"}]}
   ]}
   </script>
   <style>
-    :root{--bg:#0a0a0a;--bg-elevated:#111111;--bg-card:#141414;--border:#1e1e1e;--text:#e8e0d0;--text-secondary:#8a8070;--accent:#c9a84c;--accent-border:rgba(201,168,76,0.3);--display:'Playfair Display',Georgia,serif;--serif:'EB Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;}
+    :root{--bg:#0a0a0a;--bg-elevated:#111111;--bg-card:#141414;--border:#1e1e1e;--text:#e8e0d0;--text-secondary:#8a8070;--text-muted:#6b6660;--accent:#c9a84c;--accent-dim:rgba(201,168,76,0.10);--accent-border:rgba(201,168,76,0.3);--display:'Playfair Display',Georgia,serif;--serif:'EB Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--max-w:720px;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{background:var(--bg);color:var(--text);font-family:var(--serif);font-size:1.05rem;line-height:1.8;}
-    nav{background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;}
+    html{font-size:18px;scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--serif);font-size:1.05rem;line-height:1.8;-webkit-font-smoothing:antialiased;}
+    a{color:var(--accent);text-decoration:none;}a:hover{opacity:0.8;}
+    ::selection{background:var(--accent-dim);color:var(--accent);}
+    nav{background:rgba(10,10,10,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;}
     .nav-logo{font-family:var(--display);font-size:1.05rem;color:var(--text);text-decoration:none;}.nav-logo span{color:var(--accent);}
-    .nav-links{display:flex;gap:2rem;list-style:none;}.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;}.nav-links a:hover{color:var(--accent);}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}.hamburger span{display:block;width:24px;height:2px;background:var(--text);}
-    .nav-mobile{display:none;position:fixed;top:60px;left:0;right:0;background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:1.5rem 2rem;flex-direction:column;gap:1rem;z-index:99;}.nav-mobile.open{display:flex;}.nav-mobile a{color:var(--text-secondary);text-decoration:none;font-size:0.85rem;padding:0.5rem 0;border-bottom:1px solid var(--border);}
-    @media(max-width:768px){.nav-links{display:none;}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);align-items:center;justify-content:center;gap:2.5rem;z-index:150;}.hamburger{display:flex;}}
-    .wrap{max-width:760px;margin:0 auto;padding:0 2rem;}
-    .breadcrumb{padding:1.25rem 0 0;font-size:0.72rem;color:var(--text-secondary);}
-    .breadcrumb a{color:var(--text-secondary);text-decoration:none;}.breadcrumb a:hover{color:var(--accent);}
+    .nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;}.nav-links a:hover{color:var(--accent);}
+    .nav-cta{color:var(--accent)!important;border:1px solid var(--accent-border);padding:0.3rem 0.8rem;border-radius:2px;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}.hamburger span{display:block;width:24px;height:1px;background:var(--text-secondary);transition:all 0.3s;}
+    @media(max-width:768px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:150;}.nav-links.open{display:flex;}.nav-links a{font-size:1rem;}.hamburger{display:flex;}}
+    .wrap{max-width:var(--max-w);margin:0 auto;padding:0 2rem;}
+    .breadcrumb{padding:1.25rem 0 0;font-family:var(--sans);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);}
+    .breadcrumb a{color:var(--text-muted);text-decoration:none;}.breadcrumb a:hover{color:var(--accent);}
     .article-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;margin-top:2.5rem;display:block;}
-    h1{font-family:var(--display);font-size:clamp(1.9rem,3.5vw,2.6rem);color:var(--text);line-height:1.2;margin-bottom:1rem;}
-    .article-meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-family:var(--sans);font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.5rem;}
-    .article-intro{font-size:1.12rem;color:var(--text-secondary);line-height:1.85;border-left:2px solid var(--accent-border);padding-left:1.25rem;margin-bottom:2.5rem;}
-    h2{font-family:var(--display);font-size:1.55rem;color:var(--text);margin:2.5rem 0 1rem;line-height:1.3;}
-    h3{font-family:var(--sans);font-size:1rem;font-weight:600;color:var(--text);margin:1.75rem 0 0.6rem;}
-    p{margin-bottom:1.1rem;}
-    a{color:var(--accent);text-decoration:none;}
+    h1{font-family:var(--display);font-size:clamp(1.9rem,3.5vw,2.6rem);color:var(--text);line-height:1.2;margin-bottom:1rem;font-weight:400;}
+    .article-meta{display:flex;gap:1.5rem;flex-wrap:wrap;font-family:var(--sans);font-size:0.72rem;color:var(--text-secondary);margin-bottom:1.5rem;letter-spacing:0.05em;text-transform:uppercase;}
+    .article-intro{font-size:1.1rem;color:var(--text-secondary);line-height:1.85;border-left:2px solid var(--accent-border);padding-left:1.25rem;margin-bottom:2rem;}
+    .toc{background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.5rem 1.75rem;margin:1.5rem 0 2.5rem;}
+    .toc h4{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem;}
+    .toc ol{margin:0 0 0 1.25rem;}.toc li{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);margin-bottom:0.35rem;}.toc a{color:var(--text-secondary);}.toc a:hover{color:var(--accent);opacity:1;}
+    h2{font-family:var(--display);font-size:1.55rem;color:var(--text);margin:2.5rem 0 1rem;line-height:1.3;font-weight:400;}
+    h3{font-family:var(--sans);font-size:0.88rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-secondary);margin:2rem 0 0.75rem;}
+    p{margin-bottom:1.2rem;}
     strong{font-weight:600;color:var(--text);}
+    em{font-style:italic;color:var(--text-secondary);}
+    ul,ol{margin:0 0 1.2rem 1.5rem;}li{margin-bottom:0.5rem;font-size:1.02rem;}
+    .pull-quote{font-family:var(--display);font-style:italic;font-size:1.25rem;line-height:1.55;color:var(--text-secondary);border-left:2px solid var(--accent);padding:1.25rem 1.75rem;margin:2rem 0;}
+    hr{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
     .example-box{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:1.5rem 1.75rem;margin:1.5rem 0;}
     .example-box .ex-label{font-family:var(--sans);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
     .example-box table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:0.85rem;}
@@ -55,194 +67,359 @@
     .example-box td{padding:0.4rem 0;color:var(--text-secondary);}
     .example-box td:last-child{text-align:right;color:var(--text);}
     .example-box .highlight td{color:var(--accent);font-weight:600;}
-    .info-box{background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin:1.5rem 0;}
-    .strategy-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin:0.75rem 0;}
-    .strategy-card h4{font-family:var(--sans);font-size:0.85rem;font-weight:600;color:var(--text);margin-bottom:0.4rem;}
-    .strategy-card p{font-size:0.88rem;color:var(--text-secondary);font-family:var(--sans);margin:0;}
+    .strategy-card{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--accent-border);border-radius:0 4px 4px 0;padding:1.25rem 1.5rem;margin:0.75rem 0;}
+    .strategy-card h4{font-family:var(--sans);font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:0.4rem;letter-spacing:0.03em;}
+    .strategy-card p{font-size:0.88rem;color:var(--text-secondary);font-family:var(--sans);margin:0;line-height:1.6;}
+    .warning-box{background:rgba(201,168,76,0.05);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 4px 4px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+    .warning-box p{margin:0;font-family:var(--sans);font-size:0.88rem;color:var(--text-secondary);line-height:1.6;}
+    .warning-box strong{color:var(--text);}
+    .compare-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-family:var(--sans);font-size:0.82rem;}
+    .compare-table th{background:var(--bg-elevated);color:var(--accent);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;padding:0.7rem 0.9rem;text-align:left;border-bottom:1px solid var(--accent-border);}
+    .compare-table td{padding:0.7rem 0.9rem;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.5;vertical-align:top;}
+    .compare-table td:first-child{color:var(--text);font-weight:500;}
+    .compare-table tr:last-child td{border-bottom:none;}
+    .compare-table tr:hover td{background:var(--bg-elevated);}
+    .checklist{list-style:none;margin:0 0 1.5rem;padding:0;}
+    .checklist li{display:flex;gap:0.75rem;align-items:flex-start;padding:0.6rem 0;border-bottom:1px solid var(--border);font-family:var(--sans);font-size:0.88rem;color:var(--text-secondary);line-height:1.5;}
+    .checklist li:last-child{border-bottom:none;}
+    .checklist li::before{content:'□';color:var(--accent);font-size:1rem;flex-shrink:0;margin-top:0.05rem;}
+    .checklist li strong{color:var(--text);}
     .cta-inline{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.25rem 1.5rem;margin:2rem 0;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
     .cta-inline p{margin:0;font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);flex:1;}
-    .cta-inline a{font-family:var(--sans);font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1rem;border-radius:2px;white-space:nowrap;}
-    .related{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.5rem;margin:2rem 0;}
-    .related h4{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem;}
-    .related ul{list-style:none;padding:0;}.related li{margin-bottom:0.4rem;}.related a{font-family:var(--sans);font-size:0.82rem;}
-    .author-box{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.5rem;margin:2.5rem 0;}
-    .author-box .author-name{font-family:var(--display);font-size:1rem;color:var(--text);margin-bottom:0.25rem;}
-    .author-box p{font-size:0.82rem;color:var(--text-secondary);font-family:var(--sans);margin:0;}
+    .cta-inline a{font-family:var(--sans);font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1rem;border-radius:2px;white-space:nowrap;text-decoration:none;}
+    .author-box{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.5rem;margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start;}
+    .author-avatar{flex-shrink:0;width:48px;height:48px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:1rem;color:var(--accent);}
     .services-cta{background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:6px;padding:2rem;text-align:center;margin:2rem 0;}
-    .services-cta h3{font-family:var(--display);font-size:1.2rem;margin-bottom:0.6rem;}
-    .services-cta p{font-size:0.9rem;color:var(--text-secondary);margin-bottom:1.25rem;font-family:var(--sans);}
-    .services-cta a{display:inline-block;background:var(--accent);color:var(--bg);font-family:var(--sans);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem 1.75rem;border-radius:2px;text-decoration:none;}
-    .disclaimer{font-size:0.78rem;color:var(--text-secondary);font-family:var(--sans);line-height:1.7;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2rem;}
-    footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;margin-top:2rem;}
-    .footer-logo{font-family:var(--display);font-size:1rem;color:var(--text);margin-bottom:1.25rem;}.footer-logo span{color:var(--accent);}
-    .footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:1.5rem;margin-bottom:1.5rem;}.footer-links a{font-size:0.72rem;color:var(--text-secondary);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;}.footer-links a:hover{color:var(--accent);}
-    .footer-legal{font-size:0.7rem;color:var(--text-secondary);max-width:480px;margin:0 auto;line-height:1.7;}
+    .services-cta h3{font-family:var(--display);font-size:1.2rem;margin-bottom:0.6rem;font-weight:400;}
+    .services-cta p{font-size:0.88rem;color:var(--text-secondary);margin-bottom:1.25rem;font-family:var(--sans);line-height:1.6;}
+    .services-cta a{display:inline-block;font-family:var(--sans);font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.6rem 1.4rem;border-radius:2px;text-decoration:none;}
+    .disclaimer{font-size:0.72rem;color:var(--text-muted);font-family:var(--sans);line-height:1.75;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2rem;}
+    footer{border-top:1px solid var(--border);padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:2rem;}
+    .footer-logo{font-family:var(--display);font-size:0.85rem;color:var(--text-secondary);letter-spacing:0.05em;}.footer-logo span{color:var(--accent);}
+    .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}.footer-links a{font-size:0.65rem;color:var(--text-muted);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;}.footer-links a:hover{color:var(--accent);}
+    .footer-copy{font-size:0.63rem;color:var(--text-muted);}
+    @media(max-width:640px){html{font-size:16px;}.wrap{padding:0 1.25rem;}footer{flex-direction:column;gap:0.75rem;text-align:center;}.footer-links{justify-content:center;}.compare-table{font-size:0.75rem;}.compare-table th,.compare-table td{padding:0.5rem 0.6rem;}}
   </style>
 </head>
 <body>
+
 <nav>
   <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
   <div class="nav-links" id="navLinks">
-      <a href="/" onclick="closeMenu()">Home</a>
-      <a href="/services/" onclick="closeMenu()">Services</a>
-      <a href="/blog/" onclick="closeMenu()">Research</a>
-      <a href="/news/" onclick="closeMenu()">News</a>
-      <a href="/monitor/" onclick="closeMenu()">Estate Watch</a>
-      <a href="/faq/" onclick="closeMenu()">FAQ</a>
-      <a href="/monitor/signup" class="nav-cta" onclick="closeMenu()">Get Started</a>
-    </div>
+    <a href="/">Home</a>
+    <a href="/services/">Services</a>
+    <a href="/blog/">Research</a>
+    <a href="/news/">News</a>
+    <a href="/monitor/">Estate Watch</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/monitor/signup" class="nav-cta">Get Started</a>
+  </div>
   <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </button>
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="wrap">
   <nav class="breadcrumb">
     <a href="/">Home</a> <span style="margin:0 0.4rem;">›</span>
     <a href="/blog/">Research</a> <span style="margin:0 0.4rem;">›</span>
-    <span style="color:var(--text);">Bitcoin Step-Up in Basis</span>
+    <span style="color:var(--text);">Bitcoin Step-Up in Basis at Death</span>
   </nav>
 
-  <span class="article-label">Tax Planning</span>
+  <span class="article-label">Tax Planning · IRC §1014</span>
   <h1>Bitcoin Step-Up in Basis at Death: The Tax Benefit Most Holders Miss</h1>
   <div class="article-meta">
-    <span>By Hal Franklin</span>
-    <span>February 25, 2026</span>
-    <span>~2,200 words</span>
+    <span>Hal Franklin</span>
+    <span>February 2026</span>
+    <span>Updated 2026-02-27</span>
+    <span>~20 min read</span>
   </div>
-  <p class="article-intro">If you've held Bitcoin since 2015, you're sitting on a gain of roughly 8,000%. When you sell, you'll owe capital gains tax on every dollar of that appreciation. When you die, your heirs inherit at current market value — and owe nothing. This is the step-up in basis, and for long-term Bitcoin holders, it may be the single most valuable tax planning tool available. Most holders either don't know about it, or don't understand how to use it strategically.</p>
 
-  <div class="article-body">
+  <p class="article-intro">If you've held Bitcoin since 2015, you're sitting on a gain of roughly 8,000%. When you sell, you'll owe capital gains tax on every dollar of that appreciation. When you die, your heirs inherit at current market value — and owe nothing on the appreciation that occurred during your lifetime. This is the step-up in basis under IRC §1014, and for long-term Bitcoin holders, it may be the single most valuable tax planning tool available. Most holders either don't know about it, or don't understand how to use it strategically — and the cost of that ignorance, at Bitcoin's appreciation rate, can run into the millions.</p>
 
-    <h2>What the Step-Up in Basis Actually Is</h2>
-
-    <p>Under IRC Section 1014, assets transferred at death receive a new cost basis equal to the fair market value on the date of death. This is called the "step-up in basis" (or more precisely, the "stepped-up basis" — because the basis steps up to current market value, erasing all embedded appreciation).</p>
-
-    <p>For Bitcoin, the mechanics are straightforward:</p>
-
-    <div class="example-box">
-      <div class="ex-label">Example: 5 BTC purchased 2016–2020</div>
-      <table>
-        <thead><tr><th>Item</th><th>Value</th></tr></thead>
-        <tbody>
-          <tr><td>Average purchase price (basis)</td><td>$8,000/BTC</td></tr>
-          <tr><td>Total cost basis (5 BTC)</td><td>$40,000</td></tr>
-          <tr><td>Current market price</td><td>$95,000/BTC</td></tr>
-          <tr><td>Current market value (5 BTC)</td><td>$475,000</td></tr>
-          <tr><td>Embedded capital gain (if sold today)</td><td>$435,000</td></tr>
-          <tr><td>Capital gains tax if sold today (23.8%)</td><td>~$103,530</td></tr>
-          <tr class="highlight"><td>Capital gains tax if inherited at death</td><td>$0</td></tr>
-          <tr class="highlight"><td>Heir's new cost basis</td><td>$475,000</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p>The $435,000 gain your heirs would have owed tax on — permanently eliminated. The heir who inherits these 5 BTC can sell immediately at $95,000 each and pay zero capital gains tax. Or they can hold, and their new basis is $95,000 — they only owe capital gains on appreciation above $95,000 per BTC from that point forward.</p>
-
-    <h2>Why This Matters More for Bitcoin Than Almost Any Other Asset</h2>
-
-    <p>The step-up in basis applies to all appreciated property — stocks, real estate, art, business interests. But it matters more for Bitcoin for one specific reason: the magnitude of appreciation is unlike anything else in the investment universe. Bitcoin has appreciated roughly 150,000% since 2012. A holder who bought 10 BTC at $100 each in 2013 has a $1,000 cost basis in assets worth $950,000. The embedded gain is $949,000. The capital gains tax on that gain, at long-term rates, is approximately $190,000-$226,000.</p>
-
-    <p>If that holder dies with the Bitcoin still in their possession, that entire $949,000 gain disappears. Their heirs inherit with a $950,000 cost basis. The government never taxes the appreciation that occurred during the holder's lifetime.</p>
-
-    <h2>The Planning Implication: Think Twice Before Selling Low-Basis Bitcoin</h2>
-
-    <p>The step-up in basis creates a powerful planning principle: <strong>low-basis Bitcoin is best held until death</strong>. Every year you hold without selling, you defer capital gains. At death, those deferred gains are permanently forgiven — not merely deferred. This changes the calculus for older holders with large Bitcoin positions acquired early.</p>
-
-    <div class="strategy-card">
-      <h4>Hold Low-Basis Bitcoin; Spend/Gift High-Basis Bitcoin</h4>
-      <p>If you have a mix of old Bitcoin (low basis) and recently acquired Bitcoin (high basis), prioritize spending or gifting the high-basis coins. The low-basis coins are the most valuable at death because the step-up eliminates the largest tax liab<a href="/blog/bitcoin-life-insurance-trust">Bitcoin Irrevocable Life Insurance Trust</a>y. When you gift Bitcoin during life, the recipient takes your original basis — the step-up is lost. Don't gift your oldest, most appreciated Bitcoin.</p>
-    </div>
-
-    <div class="strategy-card">
-      <h4>Use HIFO While Alive; Let the Rest Accumulate for the Step-Up</h4>
-      <p>When you do sell Bitcoin to fund living expenses or rebalance, use the HIFO (Highest In, First Out) cost basis method — it sells your highest-basis coins first, minimizing current gains. Your lowest-basis coins (the ones acquired earliest, with the largest embedded gains) accumulate and will receive the step-up at death. HIFO is an election — you must be using proper Bitcoin tax software (CoinTracker, Koinly, TaxBit) and consistently applying HIFO across all transactions.</p>
-    </div>
-
-    <div class="strategy-card">
-      <h4>Spend IRA Assets Before Self-Custodied Bitcoin</h4>
-      <p>Bitcoin held in a traditional IRA does NOT receive a step-up in basis at death. Every dollar distributed from a traditional IRA is taxable as ordinary income — including all the appreciation. By contrast, Bitcoin held in a taxable account (hardware wallet, exchange) DOES receive the step-up. The optimal spending sequence for older holders: spend traditional IRA assets first (take RMDs, then additional distributions in low-income years), preserve self-custodied Bitcoin for heirs who will receive the step-up.</p>
-    </div>
-
-    <h2>Step-Up and Community Property: The Double Benefit</h2>
-
-    <p>For married couples in community property states (California, Arizona, Nevada, Washington, Idaho, Louisiana, <a href="/blog/bitcoin-family-office-texas">Bitcoin family office in Texas</a>, New Mexico, Wisconsin), the step-up in basis at the first spouse's death applies to the <em>entire</em> community property — not just the deceased spouse's half.</p>
-
-    <div class="example-box">
-      <div class="ex-label">Community Property vs. Common Law Step-Up Comparison</div>
-      <table>
-        <thead><tr><th>State Type</th><th>Bitcoin Basis Before Death</th><th>Step-Up on Death of First Spouse</th><th>New Total Basis</th></tr></thead>
-        <tbody>
-          <tr><td>Common Law (NY, PA, FL, etc.)</td><td>$40,000 total (2 BTC at $20K avg)</td><td>Only on deceased's 50% share</td><td>$40K + $55K step-up on half = ~$95,000</td></tr>
-          <tr class="highlight"><td>Community Property (CA, WA, TX, etc.)</td><td>$40,000 total (2 BTC at $20K avg)</td><td>On ENTIRE community property interest</td><td>Full $190,000 step-up on entire position</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p>In a community property state, Bitcoin acquired during mar<a href="/blog/bitcoin-family-office-vs-ria">Bitcoin family office vs. RIA comparison</a>ge that receives a full double step-up at the first spouse's death can result in dramatically lower lifetime capital gains for the surviving spouse. This is a significant planning advantage worth discussing with a Bitcoin-literate estate attorney, especially for California, Washington, and Texas holders.</p>
-
-    <h2>What the Step-Up Doesn't Cover</h2>
-
-    <p>The step-up in basis has limits that are important to understand:</p>
-
-    <h3>Bitcoin in IRAs: No Step-Up</h3>
-    <p>Traditional IRA, Roth IRA, and SDIRA (<a href="/blog/bitcoin-self-directed-ira-complete-guide">Self-Directed IRA</a>) assets do not receive a step-up in basis at death. The IRA structure removes the asset from the step-up rules. For a traditional IRA, heirs pay ordinary income tax on every dollar distributed. Even for a Roth IRA (which passes tax-free), the basis question is moot because Roth distributions are already tax-free — but the key point is that you're not getting an additional step-up benefit.</p>
-
-    <h3>Gifted Bitcoin: Basis Transfers, No Step-Up</h3>
-    <p>When you gift Bitcoin during life, the recipient takes your original cost basis. If you give your child 1 BTC that you bought at $10,000 when it's worth $95,000, they inherit your $10,000 basis. If they sell at $95,000, they owe capital gains on $85,000. The step-up that would have occurred at your death is gone. This is why gifting your oldest, most appreciated Bitcoin is usually a poor strategy from a tax perspective — save those for the step-up.</p>
-
-    <h3>Carried Interest and Income Tax Items</h3>
-    <p>The step-up applies to capital gains embedded in an asset. It does not eliminate ordinary income items — for example, if you were a Bitcoin miner, the FMV of Bitcoin at the time of mining was already taxable income. The step-up erases capital gains appreciation that occurred after the asset entered your estate, not income that was already taxable during your lifetime.</p>
-
-    <h2>Planning for the Step-Up: What to Do Now</h2>
-
-    <p>If you hold Bitcoin acquired more than a few years ago at prices significantly below current market value, the step-up is part of your estate plan whether you've formalized it or not. Here is how to plan around it:</p>
-
-    <ol style="padding-left:1.5rem;margin-bottom:1.5rem;">
-      <li style="margin-bottom:0.75rem;font-family:var(--sans);font-size:0.9rem;color:var(--text-secondary);"><strong style="color:var(--text);">Inventory your cost basis by acquisition date.</strong> Know which coins are "old" (large embedded gain) and which are "new" (small or no gain). Your Bitcoin tax software can produce a lot-by-lot report.</li>
-      <li style="margin-bottom:0.75rem;font-family:var(--sans);font-size:0.9rem;color:var(--text-secondary);"><strong style="color:var(--text);">Apply HIFO when you sell.</strong> Sell your highest-basis lots first; preserve your lowest-basis lots for the step-up at death.</li>
-      <li style="margin-bottom:0.75rem;font-family:var(--sans);font-size:0.9rem;color:var(--text-secondary);"><strong style="color:var(--text);">Document everything for your executor.</strong> The date-of-death value must be captured accurately for your heirs' new basis. Your executor needs to know about all wallets and the price on the exact date of death.</li>
-      <li style="margin-bottom:0.75rem;font-family:var(--sans);font-size:0.9rem;color:var(--text-secondary);"><strong style="color:var(--text);">Hold Bitcoin outside of IRAs for the step-up.</strong> Direct self-custody or exchange accounts qualify; IRAs do not.</li>
-      <li style="margin-bottom:0.75rem;font-family:var(--sans);font-size:0.9rem;color:var(--text-secondary);"><strong style="color:var(--text);">Brief your estate attorney and CPA.</strong> The step-up interacts with estate tax, GRAT strategy, <a href="/blog/bitcoin-charitable-giving-complete-guide">charitable giving</a>, and gifting decisions in complex ways. It should be part of your comprehensive estate plan, not an afterthought.</li>
+  <div class="toc">
+    <h4>In This Article</h4>
+    <ol>
+      <li><a href="#what-it-is">What the Step-Up in Basis Actually Is</a></li>
+      <li><a href="#magnitude">The Dollar Magnitude: What's Actually at Stake</a></li>
+      <li><a href="#planning-principle">The Core Planning Principle: Hold Low-Basis Bitcoin</a></li>
+      <li><a href="#hifo">HIFO Strategy: Sell High-Basis, Hold Low-Basis</a></li>
+      <li><a href="#community-property">Community Property vs. Common Law: The Double Step-Up</a></li>
+      <li><a href="#trust-interaction">Trust Structure Interaction: Which Trusts Preserve the Step-Up</a></li>
+      <li><a href="#ira-exception">The IRA Exception: Why IRAs Miss the Step-Up</a></li>
+      <li><a href="#gift-trap">The Gifting Trap: When Generosity Has a Tax Cost</a></li>
+      <li><a href="#legislative-risk">Legislative Risk: Could the Step-Up Be Eliminated?</a></li>
+      <li><a href="#executor-checklist">Executor Checklist: Documentation for the Step-Up</a></li>
     </ol>
+  </div>
 
-    <div class="cta-inline">
-      <p>See how your estate tax exposure and step-up value interact at current BTC price.</p>
-      <a href="/tools/bitcoin-estate-tax-calculator">Run the Calculator →</a>
-    </div>
+  <h2 id="what-it-is">What the Step-Up in Basis Actually Is</h2>
 
-    <!-- AM Tax CTA -->
-    <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
-      <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful <a href="/blog/bitcoin-tax-strategy-hub">Bitcoin tax strategy hub</a> Available</p>
-      <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">For high-net-worth Bitcoin holders, mining is the only strategy that simultaneously generates yield, accumulates BTC, and creates significant tax offsets. Abundant Mines has compiled every major Bitcoin mining tax strategy in one place.</p>
-      <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a>
-    </div>
+  <p>Under IRC Section 1014, assets transferred at death receive a new cost basis equal to the fair market value on the date of death. This is called the "step-up in basis" — because the basis steps up from the decedent's original purchase price to the current market value, permanently erasing all embedded capital gains appreciation that occurred during the decedent's lifetime.</p>
 
-    <div class="related">
-      <h4>Related Reading</h4>
-      <ul>
-        <li><a href="/blog/bitcoin-ira-estate-planning">Bitcoin IRA Estate Planning</a> — Why IRAs miss the step-up and what to do about it</li>
-        <li><a href="/blog/bitcoin-charitable-giving-estate-planning">Bitcoin Charitable Giving</a> — Combining step-up strategy with charitable deductions</li>
-        <li><a href="/blog/how-to-avoid-estate-tax-bitcoin">How to Avoid Estate Tax on Bitcoin</a> — 7 strategies, including step-up optimization</li>
-        <li><a href="/blog/bitcoin-estate-planning-guide.html">Bitcoin Estate Planning Guide</a> — The complete planning reference</li>
-        <li><a href="/tools/bitcoin-grat-optimizer">GRAT Optimizer</a> — Model GRAT outcomes vs. holding for the step-up</li>
-      </ul>
-    </div>
+  <p>For Bitcoin, the mechanics are straightforward:</p>
 
-    <div class="author-box">
-      <div class="author-name">Hal Franklin</div>
-      <p>Editor, The Bitcoin Family Office. Research and educational resources on Bitcoin estate planning, tax strategy, and wealth preservation for high-net-worth holders.</p>
-    </div>
+  <div class="example-box">
+    <div class="ex-label">Example: 5 BTC purchased 2016–2020</div>
+    <table>
+      <thead><tr><th>Item</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Average purchase price (basis)</td><td>$8,000/BTC</td></tr>
+        <tr><td>Total cost basis (5 BTC)</td><td>$40,000</td></tr>
+        <tr><td>Current market price</td><td>$95,000/BTC</td></tr>
+        <tr><td>Current market value (5 BTC)</td><td>$475,000</td></tr>
+        <tr><td>Embedded capital gain (if sold today)</td><td>$435,000</td></tr>
+        <tr><td>Capital gains tax if sold today (20% + 3.8% NIIT)</td><td>~$104,400</td></tr>
+        <tr class="highlight"><td>Capital gains tax if inherited at death</td><td>$0</td></tr>
+        <tr class="highlight"><td>Heir's new cost basis after death</td><td>$475,000</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="services-cta">
-      <h3>Ready to Optimize Your Bitcoin Estate Plan?</h3>
-      <p>The step-up in basis is one piece of a comprehensive Bitcoin estate strategy. The Bitcoin Family Office advises a selective group of families on custody, <a href="/tools/bitcoin-trust-selector">Bitcoin Trust Type Selector tool</a>, and tax optimization — including step-up and HIFO strategy for large, long-held Bitcoin positions.</p>
-      <a href="/services/">Explore Our Services</a>
-    </div>
+  <p>The $435,000 gain that would have been taxable during the holder's lifetime is permanently eliminated. The heir who inherits these 5 BTC can sell immediately at $95,000 each and pay zero capital gains tax. Or they can hold — their new basis is $95,000 per coin, meaning they only owe capital gains on appreciation above $95,000 from that point forward. And because inherited assets automatically receive long-term capital gains treatment regardless of the heir's holding period, any future sale is taxed at the preferential 0%, 15%, or 20% rate.</p>
 
-    <div class="disclaimer">
-      <strong>Disclaimer.</strong> This article is for educational purposes only and does not constitute legal, tax, or financial advice. Tax laws change; cost basis rules and step-up provisions may be modified by future legislation. Always consult a licensed CPA and qualified <a href="/blog/bitcoin-estate-planning-attorneys-guide">estate planning attorney</a> before making decisions about Bitcoin tax strategy or estate planning. The Bitcoin Family Office is not a law firm or tax advisory firm.
+  <h2 id="magnitude">The Dollar Magnitude: What's Actually at Stake</h2>
+
+  <p>The step-up in basis applies to all appreciated capital assets — stocks, real estate, business interests, art. But it matters more for Bitcoin than almost any other asset for a simple reason: the magnitude of appreciation is unlike anything else in the modern investment universe.</p>
+
+  <div class="example-box">
+    <div class="ex-label">Step-Up Tax Savings by Acquisition Year (5 BTC, Current Price $95,000)</div>
+    <table>
+      <thead><tr><th>Year Purchased</th><th>Avg. Price</th><th>Cost Basis (5 BTC)</th><th>Embedded Gain</th><th>Tax If Sold (23.8%)</th><th>Tax Eliminated at Death</th></tr></thead>
+      <tbody>
+        <tr><td>2013</td><td>$200</td><td>$1,000</td><td>$474,000</td><td>~$112,812</td><td><strong style="color:var(--accent);">$112,812</strong></td></tr>
+        <tr><td>2016</td><td>$700</td><td>$3,500</td><td>$471,500</td><td>~$112,217</td><td><strong style="color:var(--accent);">$112,217</strong></td></tr>
+        <tr><td>2019</td><td>$7,500</td><td>$37,500</td><td>$437,500</td><td>~$104,125</td><td><strong style="color:var(--accent);">$104,125</strong></td></tr>
+        <tr><td>2020</td><td>$11,000</td><td>$55,000</td><td>$420,000</td><td>~$99,960</td><td><strong style="color:var(--accent);">$99,960</strong></td></tr>
+        <tr><td>2022</td><td>$28,000</td><td>$140,000</td><td>$335,000</td><td>~$79,730</td><td><strong style="color:var(--accent);">$79,730</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>These numbers are for a modest 5 BTC position. For a holder with 50 BTC acquired in 2016–2017, the step-up at death eliminates over $1 million in capital gains tax. For a holder with 200 BTC acquired in 2013–2015, the figure exceeds $4 million in tax permanently eliminated. This is not a marginal benefit. It is one of the largest wealth transfer mechanisms available to high-net-worth Bitcoin families — and it requires no planning beyond simply holding the Bitcoin until death.</p>
+
+  <div class="pull-quote">For a Bitcoin holder with 50 BTC acquired in 2017, the step-up in basis at death eliminates over $1 million in capital gains tax. No trust structure produces this result more cleanly.</div>
+
+  <h2 id="planning-principle">The Core Planning Principle: Hold Low-Basis Bitcoin</h2>
+
+  <p>The step-up in basis creates a powerful planning principle that is counterintuitive for most investors: <strong>your lowest-basis Bitcoin is your most valuable Bitcoin at death.</strong> Every year you hold without selling, you defer capital gains. At death, those deferred gains are not merely deferred further — they are permanently forgiven. This fundamentally changes the calculus for older holders with large Bitcoin positions acquired early.</p>
+
+  <p>The financial planning framework that follows from this principle:</p>
+
+  <ul>
+    <li><strong>Hold your oldest, most appreciated Bitcoin for death.</strong> Coins with the largest gap between original cost and current FMV generate the biggest step-up benefit. These are your most valuable estate planning assets — treat them accordingly.</li>
+    <li><strong>Spend or give your newest Bitcoin first.</strong> Recently acquired Bitcoin with a cost basis near current market value has minimal embedded gain. If you need liquidity or want to make gifts, these are the coins to move.</li>
+    <li><strong>Use IRA distributions for living expenses.</strong> Bitcoin held in traditional IRAs does not receive a step-up (see below). Drain your traditional IRA first for living expenses, preserving self-custodied Bitcoin for the step-up.</li>
+    <li><strong>Don't gift your lowest-basis coins.</strong> When you give Bitcoin, the recipient takes your original cost basis — they inherit the tax liability along with the asset. The step-up that would have occurred at your death is permanently lost on gifted coins.</li>
+  </ul>
+
+  <h2 id="hifo">HIFO Strategy: Sell High-Basis, Hold Low-Basis</h2>
+
+  <p>For holders who do need to sell some Bitcoin during their lifetime — to fund living expenses, rebalance, make charitable gifts, or meet other financial needs — the Highest In, First Out (HIFO) cost basis method is the optimal strategy when combined with the step-up planning principle.</p>
+
+  <p>HIFO is an IRS-accepted cost basis accounting method for cryptocurrency that allows you to designate which specific lots you are selling when you execute a transaction. By selling your highest-basis lots first, you minimize current taxable gains while preserving your lowest-basis lots (the ones with the largest embedded appreciation) for the step-up at death.</p>
+
+  <h3>HIFO in Practice</h3>
+
+  <p>Consider a holder with the following Bitcoin lots:</p>
+  <ul>
+    <li>5 BTC purchased 2015 at $300 each (basis: $1,500 total)</li>
+    <li>3 BTC purchased 2019 at $8,000 each (basis: $24,000 total)</li>
+    <li>2 BTC purchased 2022 at $42,000 each (basis: $84,000 total)</li>
+  </ul>
+
+  <p>If they need to sell 2 BTC today at $95,000 each ($190,000 proceeds), the tax outcome varies dramatically by lot selection:</p>
+  <ul>
+    <li><strong>FIFO (sell oldest first):</strong> Sell 2015 lots → gain of $189,700 per coin → ~$90,000 in capital gains tax</li>
+    <li><strong>HIFO (sell highest basis first):</strong> Sell 2022 lots → gain of $53,000 per coin → ~$25,000 in capital gains tax</li>
+    <li><strong>Tax saved by HIFO vs FIFO:</strong> ~$65,000 in this single transaction</li>
+  </ul>
+
+  <p>And by preserving the 2015 lots for the step-up at death, the holder eliminates the $189,700 per coin embedded gain entirely when they die — saving another ~$90,000 per coin in capital gains tax. Over a portfolio of 10–100 BTC, HIFO combined with step-up planning produces life-changing tax savings.</p>
+
+  <p><strong>Implementation requirements:</strong> HIFO is only available if you are tracking your Bitcoin on a lot-by-lot basis using qualified crypto tax software (CoinTracker, Koinly, TaxBit, or similar) and consistently specifying lot identification when you sell. The default method used by most exchanges — FIFO — is the worst choice for holders with old, low-basis Bitcoin. Switching to HIFO requires your tax advisor's involvement and consistent recordkeeping going forward.</p>
+
+  <h2 id="community-property">Community Property vs. Common Law: The Double Step-Up</h2>
+
+  <p>For married couples, the state of domicile significantly affects how the step-up in basis works — specifically whether one or both spouses' share of jointly held assets receives a step-up at the first death.</p>
+
+  <div class="example-box">
+    <div class="ex-label">Step-Up at First Spouse's Death: Community Property vs. Common Law</div>
+    <table>
+      <thead><tr><th>State Type</th><th>Bitcoin Acquired</th><th>Basis Before Death</th><th>Step-Up at First Death</th><th>New Basis After</th></tr></thead>
+      <tbody>
+        <tr><td>Common Law (FL, NY, PA…)</td><td>Jointly ($40K total)</td><td>$40,000 (2 BTC at $20K avg)</td><td>Only decedent's 50% share stepped up</td><td>~$115,000 (partial)</td></tr>
+        <tr class="highlight"><td>Community Property (CA, TX, WA…)</td><td>Jointly ($40K total)</td><td>$40,000 (2 BTC at $20K avg)</td><td>ENTIRE community property steps up</td><td>$190,000 (full, both BTC)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>In California, Washington, Texas, Arizona, Nevada, Idaho, Louisiana, New Mexico, and Wisconsin (community property states), both spouses' halves of community property receive a full step-up to fair market value at the first spouse's death. This means a married couple in California who bought 10 BTC at $10,000 each ($100,000 total basis) can, at the first spouse's death, reset the entire cost basis of all 10 BTC to the current price — regardless of which spouse actually bought it.</p>
+
+  <p>In common law states — including Florida, New York, and most of the rest — only the decedent's share of jointly held assets steps up. The surviving spouse's half retains its original basis. This is a meaningful difference worth discussing with a Bitcoin-literate estate attorney, especially for California and Washington holders with large, long-held positions.</p>
+
+  <h3>Relocators: When Community Property Character Follows You</h3>
+
+  <p>If you acquired Bitcoin as community property in California or another community property state and then relocated to Florida or another common law state, that Bitcoin generally retains its community property character — meaning it still qualifies for the full double step-up even though you now live in a non-community-property state. Proper documentation of the community property character of those specific lots is essential to claim this benefit. See our <a href="/blog/bitcoin-estate-planning-attorney-florida">Bitcoin estate planning attorney Florida guide</a> for more on the relocation planning considerations.</p>
+
+  <h2 id="trust-interaction">Trust Structure Interaction: Which Trusts Preserve the Step-Up</h2>
+
+  <p>One of the most important — and most commonly misunderstood — aspects of Bitcoin estate planning is how different trust structures interact with the step-up in basis. The wrong trust structure can inadvertently eliminate the step-up benefit that would otherwise automatically apply.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Trust Type</th>
+        <th>Step-Up at Death?</th>
+        <th>In Grantor's Estate?</th>
+        <th>Estate Tax Exposure?</th>
+        <th>Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Revocable Living Trust</td>
+        <td>✅ Yes — full step-up</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Probate avoidance; step-up preservation; below-exemption estates</td>
+      </tr>
+      <tr>
+        <td>Grantor Trust (IDGT)</td>
+        <td>✅ Yes — if structured correctly</td>
+        <td>Depends on structure</td>
+        <td>Reduced (assets removed from estate)</td>
+        <td>Tax-free growth + step-up combo (complex planning)</td>
+      </tr>
+      <tr>
+        <td>Irrevocable Trust (non-grantor)</td>
+        <td>❌ No — carryover basis</td>
+        <td>No</td>
+        <td>No (assets outside estate)</td>
+        <td>Estate tax elimination when exemption exceeded</td>
+      </tr>
+      <tr>
+        <td>Dynasty Trust</td>
+        <td>❌ No — carryover basis inside trust</td>
+        <td>No</td>
+        <td>No</td>
+        <td>Multi-generational estate tax elimination</td>
+      </tr>
+      <tr>
+        <td>GRAT (Grantor Retained Annuity Trust)</td>
+        <td>Partial — annuity returns get step-up</td>
+        <td>Partially</td>
+        <td>Reduced on appreciation above §7520 rate</td>
+        <td>Transferring appreciation with minimal gift tax cost</td>
+      </tr>
+      <tr>
+        <td>Charitable Remainder Trust</td>
+        <td>N/A — trust sells, no gain to beneficiaries</td>
+        <td>Partially</td>
+        <td>Charitable deduction offsets</td>
+        <td>Diversifying from Bitcoin while generating income</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The critical insight: <strong>the step-up and estate tax elimination are generally in tension</strong>. Structures that remove Bitcoin from the taxable estate (irrevocable trusts, dynasty trusts) eliminate estate tax exposure — but they also eliminate the step-up in basis for the assets inside the trust. Structures that preserve the step-up (revocable trusts, direct ownership) keep Bitcoin in the taxable estate and expose it to estate tax at death.</p>
+
+  <p>For Bitcoin families below the federal exemption threshold (currently ~$13.99 million per person, $27.98 million for a married couple with portability), this tension is moot — there is no estate tax to eliminate, so the optimal strategy is simply to hold Bitcoin in a revocable trust, preserve the step-up, and pass everything to heirs tax-free. For families above the exemption, the calculus is more complex and requires analysis of the expected estate tax liability versus the expected capital gains tax savings from the step-up.</p>
+
+  <h2 id="ira-exception">The IRA Exception: Why IRAs Miss the Step-Up</h2>
+
+  <p>Bitcoin held in any IRA structure — traditional IRA, Roth IRA, or self-directed IRA (SDIRA) — does not receive a step-up in basis at death. IRAs are treated as "income in respect of a decedent" (IRD) under IRC §691 — income that was earned by the decedent but not yet taxed at death. IRD is specifically excluded from the step-up provisions of IRC §1014.</p>
+
+  <p>The practical consequence: every dollar withdrawn from an inherited traditional Bitcoin IRA is taxable as ordinary income at the heir's marginal rate — there is no capital gains benefit, no step-up, and no permanent tax forgiveness. An heir who inherits $500,000 in a traditional Bitcoin IRA pays ordinary income tax (potentially 32–37%) on every distribution, rather than the 0–20% capital gains rate they would pay on directly inherited Bitcoin.</p>
+
+  <p>This asymmetry — step-up for directly held Bitcoin, ordinary income for IRA-held Bitcoin — is one of the most powerful arguments for holding Bitcoin directly rather than in traditional IRAs, at least for the portion of a Bitcoin portfolio intended to be passed to heirs. See our detailed comparison of <a href="/blog/bitcoin-self-directed-ira-vs-etf">Bitcoin self-directed IRA vs. Bitcoin ETF</a> for the full tax structure analysis.</p>
+
+  <p>The optimal multi-vehicle strategy for many holders: hold Bitcoin for living expenses in a taxable account (using HIFO to minimize current gains), hold Bitcoin for Roth IRA growth in a Roth SDIRA (where distributions are tax-free), and hold the oldest, most appreciated Bitcoin directly (in a revocable trust or personal name) for the step-up at death.</p>
+
+  <h2 id="gift-trap">The Gifting Trap: When Generosity Has a Tax Cost</h2>
+
+  <p>When you give Bitcoin to someone during your lifetime, the recipient takes your original cost basis — not the current market value. This is called "carryover basis," and it means the recipient inherits not just the Bitcoin but also the embedded tax liability.</p>
+
+  <p>The step-up that would have applied at your death is permanently lost on gifted Bitcoin. This makes outright lifetime gifting of low-basis Bitcoin the worst possible tax outcome for donors with heavily appreciated positions — the gain is not eliminated, it is simply transferred to the recipient along with the gift.</p>
+
+  <h3>When Lifetime Gifting Still Makes Sense</h3>
+
+  <p>Despite the carryover basis issue, lifetime Bitcoin gifting can still be optimal in specific circumstances:</p>
+  <ul>
+    <li><strong>Annual exclusion gifts to lower-bracket heirs:</strong> If the recipient is in the 0% capital gains bracket (income below ~$47,000 for single filers in 2026), they can sell gifted Bitcoin with zero federal capital gains tax — effectively converting your high-rate liability into their zero-rate advantage.</li>
+    <li><strong>Recently acquired Bitcoin near current market value:</strong> Bitcoin with a basis close to FMV has minimal embedded gain. The step-up benefit is small; gifting costs little in carryover liability.</li>
+    <li><strong>Charitable gifting:</strong> Donating appreciated Bitcoin to a qualified charity eliminates capital gains entirely and generates a charitable deduction for the full FMV. This is often the optimal strategy for donors who want to give and are charitably inclined — better tax outcome than selling and donating cash. See our <a href="/blog/bitcoin-charitable-giving-complete-guide">Bitcoin charitable giving guide</a>.</li>
+    <li><strong>Estate tax reduction via annual exclusion:</strong> For estates above the federal exemption threshold, annual exclusion gifts ($18,000 per recipient in 2026) reduce the taxable estate by $18,000 per year per recipient — and the step-up on that $18,000 would have been modest. For large estates, the estate tax savings from gifting may outweigh the lost step-up benefit.</li>
+  </ul>
+
+  <h2 id="legislative-risk">Legislative Risk: Could the Step-Up Be Eliminated?</h2>
+
+  <p>The step-up in basis has been a target of legislative reform proposals for decades, and this risk is not purely theoretical. The Biden Administration proposed eliminating the step-up and replacing it with recognition of gain at death — in effect, treating death as a taxable sale — in both the 2021 and 2022 budget proposals. These proposals were not enacted, but they illustrate a genuine political risk that Bitcoin families must account for in long-term planning.</p>
+
+  <p>The current political environment — with a Republican administration focused on extending TCJA provisions — makes near-term step-up elimination unlikely. However, the step-up's long-term durability cannot be assumed, and estate plans should be designed with some legislative sensitivity.</p>
+
+  <div class="warning-box">
+    <p><strong>Planning posture:</strong> Do not plan as if the step-up will definitely exist 20–30 years from now. For Bitcoin families with very long time horizons and large positions, a diversified approach — combining step-up planning for near-to-medium term, with dynasty trust / irrevocable trust structures for longer-term transfer — provides resilience against legislative change. If the step-up is eliminated, the irrevocable trust structures preserve more value (since they remove the asset from a taxable sale at death).</p>
+  </div>
+
+  <h2 id="executor-checklist">Executor Checklist: Documentation for the Step-Up</h2>
+
+  <p>The step-up in basis requires proper documentation to substantiate the date-of-death fair market value. Executors and estate administrators handling Bitcoin must complete the following:</p>
+
+  <ul class="checklist">
+    <li><strong>Identify all Bitcoin wallets and holdings:</strong> Locate all hardware wallets, exchange accounts, SDIRA holdings, and any other Bitcoin custody arrangements. The decedent's Letter of Instruction should provide this inventory — if none exists, the executor must reconstruct it from financial records and device access.</li>
+    <li><strong>Capture date-of-death FMV:</strong> Document Bitcoin's fair market value on the exact date of death using a reputable exchange price (Coinbase, Kraken, Gemini). The IRS accepts the average of the high and low prices on the date of death. Screenshot and preserve timestamped records from multiple sources.</li>
+    <li><strong>Account for each lot:</strong> The stepped-up basis applies to all Bitcoin held at death, regardless of when or at what price it was acquired. The entire holding steps up to the date-of-death price, making individual lot tracking irrelevant for inherited Bitcoin (though the heir should track from the new basis forward).</li>
+    <li><strong>File Form 706 if required:</strong> If the estate exceeds the filing threshold, the executor must file a federal estate tax return (Form 706) and report the FMV of all assets including Bitcoin. The estate must also issue Form 8971 to beneficiaries, establishing their stepped-up basis.</li>
+    <li><strong>Notify heirs of their new basis:</strong> Even if no Form 706 is required, communicate the stepped-up basis clearly to each heir — including the date-of-death price used and the number of Bitcoin inherited — so they can maintain accurate records for future tax filings.</li>
+    <li><strong>Coordinate with a CPA and estate attorney:</strong> Bitcoin estates with significant value should have a qualified CPA prepare the estate tax return and establish the stepped-up basis, and an estate attorney to guide the asset transfer process.</li>
+  </ul>
+
+  <div class="cta-inline">
+    <p>Use our estate tax calculator to see how the step-up value and estate tax exposure interact at current BTC prices.</p>
+    <a href="/tools/estate-tax-calculator">Run the Calculator →</a>
+  </div>
+
+  <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
+    <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: Tax Benefits You Can Use Today</p>
+    <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">The step-up is powerful at death — Bitcoin mining offers tax advantages you can use now. Equipment depreciation, operating expense deductions, and bonus depreciation create significant current-year tax offsets. Abundant Mines has compiled every major Bitcoin mining tax strategy in one place.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a>
+  </div>
+
+  <div style="margin:2rem 0;padding:1.5rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;">
+    <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;">Related Reading</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem;">
+      <a href="/blog/bitcoin-step-up-in-basis-at-death" style="display:block;padding:1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:4px;text-decoration:none;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+        <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem;">For Heirs</p>
+        <p style="font-family:var(--display);font-size:0.95rem;color:var(--text);margin:0;line-height:1.4;">Bitcoin Step-Up: What Heirs Need to Know</p>
+      </a>
+      <a href="/blog/bitcoin-estate-planning-guide" style="display:block;padding:1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:4px;text-decoration:none;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+        <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem;">Complete Guide</p>
+        <p style="font-family:var(--display);font-size:0.95rem;color:var(--text);margin:0;line-height:1.4;">Bitcoin Estate Planning: The Complete Guide</p>
+      </a>
+      <a href="/blog/bitcoin-self-directed-ira-vs-etf" style="display:block;padding:1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:4px;text-decoration:none;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+        <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem;">Retirement</p>
+        <p style="font-family:var(--display);font-size:0.95rem;color:var(--text);margin:0;line-height:1.4;">Bitcoin SDIRA vs. ETF: Why IRAs Miss the Step-Up</p>
+      </a>
     </div>
+  </div>
+
+  <div class="author-box">
+    <div class="author-avatar">&#x20BF;</div>
+    <div>
+      <p style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">Hal Franklin · Bitcoin Wealth Strategist</p>
+      <p style="font-family:var(--serif);font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin:0;">Hal Franklin focuses exclusively on Bitcoin wealth management for high-net-worth individuals and families — estate planning, custody architecture, trust structures, and tax strategy for concentrated Bitcoin positions. <a href="/services/">Work with us →</a></p>
+    </div>
+  </div>
+
+  <div class="services-cta">
+    <h3>Optimize Your Bitcoin Estate Plan Around the Step-Up</h3>
+    <p>The step-up in basis is automatic — but maximizing it requires an estate plan that is structured deliberately. We coordinate Bitcoin-literate attorneys, tax advisors, and custody specialists for families with $5M+ in Bitcoin holdings.</p>
+    <a href="/services/">Explore Our Services</a>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclosure.</strong> This article is for educational purposes only and does not constitute legal, tax, or financial advice. Tax laws change; IRC §1014 step-up provisions may be modified by future legislation. Always consult a licensed CPA and qualified estate planning attorney before making decisions about Bitcoin tax strategy or estate planning. The Bitcoin Family Office is not a law firm or tax advisory firm. Past performance and projections are not indicative of future results.
   </div>
 </div>
 
@@ -250,10 +427,18 @@
   <div class="footer-logo">The Bitcoin <span>Family Office</span></div>
   <nav class="footer-links">
     <a href="/">Home</a><a href="/services/">Services</a><a href="/blog/">Research</a>
-    <a href="/tools/">Tools</a><a href="/about/">About</a><a href="/faq/">FAQ</a><a href="/disclosures/">Disclosures</a>
+    <a href="/tools/">Tools</a><a href="/faq/">FAQ</a><a href="/disclosures/">Disclosures</a>
   </nav>
-  <p class="footer-legal">The Bitcoin Family Office provides educational content for high-net-worth Bitcoin holders. Nothing on this site constitutes legal, tax, financial, or investment advice. &copy; 2026 The Bitcoin Family Office.</p>
+  <p class="footer-copy">© 2026 The Bitcoin Family Office. All rights reserved.</p>
 </footer>
-  <script defer src="/assets/chat-widget.js"></script>
+
+<script defer src="/assets/chat-widget.js"></script>
+<script>
+function toggleMenu(){
+  var n=document.getElementById('navLinks'),h=document.getElementById('hamburger');
+  n.classList.toggle('open');h.classList.toggle('open');
+  document.body.style.overflow=n.classList.contains('open')?'hidden':'';
+}
+</script>
 </body>
 </html>
