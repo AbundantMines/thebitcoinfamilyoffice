@@ -23,7 +23,7 @@
   "headline": "Bitcoin Estate Planning for Blended Families: Protecting Everyone's Interests",
   "description": "Blended families face unique Bitcoin estate planning risks. This guide covers QTIP trusts, SLAT dynamics, prenuptial agreements, key control during a surviving spouse's lifetime, and how to structure a Bitcoin estate plan that protects both a surviving spouse and biological children.",
   "datePublished": "2026-02-25",
-  "dateModified": "2026-02-25",
+  "dateModified": "2026-02-28",
   "author": {
     "@type": "Person",
     "name": "Hal Franklin",
@@ -54,6 +54,19 @@
 </script>
 
 <!-- GA4 -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What makes Bitcoin estate planning especially complex for blended families?","acceptedAnswer":{"@type":"Answer","text":"Bitcoin's binary ownership creates a unique problem for blended families: whoever controls the private key controls all the Bitcoin. In a typical stock portfolio, you can leave specific percentages to different beneficiaries and a custodian will enforce the allocation. With self-custody Bitcoin, the hardware wallet goes to someone — and that person can spend or transfer the entire position. Without a trust structure that holds the Bitcoin as a trustee-controlled asset with specific beneficiary allocations, blended family Bitcoin estates are prone to bitter disputes, accidental disinheritance, and allegations of improper access."}},
+    {"@type":"Question","name":"What is a QTIP trust and why is it powerful for blended families with Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"A Qualified Terminable Interest Property (QTIP) trust is an irrevocable trust that provides income to the surviving spouse during their lifetime, with the principal passing to the decedent's designated beneficiaries (e.g., children from a prior marriage) at the surviving spouse's death. For Bitcoin families: the QTIP holds the Bitcoin, provides income or distributions to the surviving spouse (the income beneficiary), and at the surviving spouse's death, passes the remaining Bitcoin to the decedent's children. This solves the blended family's central problem: the surviving spouse is provided for, but the decedent's children from a prior marriage inherit the Bitcoin principal."}},
+    {"@type":"Question","name":"Can stepchildren inherit Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"Stepchildren do not automatically inherit from a stepparent. Under intestate succession laws in all 50 states, stepchildren are not recognized as legal heirs — only biological or legally adopted children are. If a Bitcoin holder dies without a will, their stepchildren receive nothing. If there is a will, stepchildren receive only what the will specifically provides. If Bitcoin is in a trust, stepchildren receive only what the trust document specifies. For blended families with stepchildren the Bitcoin holder wants to provide for, explicit trust provisions or will bequests are essential."}},
+    {"@type":"Question","name":"What should a Bitcoin prenuptial agreement address?","acceptedAnswer":{"@type":"Answer","text":"A prenuptial agreement for a Bitcoin holder in a blended family situation should address: (1) Separate property classification — Bitcoin held before marriage is typically separate property; the prenup confirms this and establishes rules for appreciation; (2) No commingling provisions — Bitcoin that is separate property should not be mixed with community funds; (3) Custody succession — the prenup references (without containing) the private key succession plan and establishes who manages Bitcoin on the holder's incapacity or death; (4) Beneficiary allocation — how Bitcoin is allocated between the surviving spouse and children from prior relationships; (5) Specific trust provisions — reference to the trust structure that will hold the Bitcoin and govern its distribution."}},
+    {"@type":"Question","name":"How does community property law affect Bitcoin in a blended family?","acceptedAnswer":{"@type":"Answer","text":"In community property states (California, Arizona, Nevada, Washington, Texas, Wisconsin, Idaho, Louisiana, New Mexico): Bitcoin purchased with income earned during the marriage is community property — each spouse owns 50% by default. For a blended family: the surviving spouse automatically owns their 50% community Bitcoin; the other 50% passes under the deceased spouse's estate plan. Without careful planning, children from a prior marriage may find that the surviving stepparent owns 50% of the Bitcoin outright, while the remainder that should go to them is disputed or contested. A QTIP trust over the entire Bitcoin position (treating both halves as trust property) is the cleanest solution."}}
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -219,9 +232,22 @@
 
 <p>This guide addresses the specific structures, tools, and strategies that work for blended family Bitcoin holders — and the mistakes that routinely destroy family wealth and relationships.</p>
 
-<h2>The Blended Family Problem: Bitcoin's Binary Ownership</h2>
+  <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+    <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted,#6b6660);margin-bottom:1rem;">In This Guide</div>
+    <ol style="margin:0 0 0 1.25rem;">
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#binary-ownership" style="color:var(--text-secondary);">The Blended Family Problem: Bitcoin's Binary Ownership</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#intestacy-risk" style="color:var(--text-secondary);">The Intestacy Risk in Community Property States</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#qtip" style="color:var(--text-secondary);">The QTIP Trust: The Blended Family's Most Powerful Tool</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#slats" style="color:var(--text-secondary);">Spousal Lifetime Access Trusts (SLATs) in Blended Families</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#prenup" style="color:var(--text-secondary);">Pre-Nuptial Agreements and Bitcoin for Blended Families</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#stepchildren" style="color:var(--text-secondary);">Stepchildren vs. Biological Children: Default Rules and Trust Solutions</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
 
-<p>Consider a scenario that plays out more frequently than most estate attorneys will admit. A Bitcoin holder in a second mar<a href="/blog/bitcoin-family-office-vs-ria">Bitcoin family office vs. RIA comparison</a>ge has three children from his first marriage and two stepchildren from his current wife's prior relationship. He dies with 15 BTC on a hardware wallet, the seed phrase stored in his home safe. His surviving spouse knows the safe combination — they live together, after all. His will leaves everything to her, intending that she provide for all five children. His biological children from the first marriage were supposed to receive a specific bequest of 5 BTC. There is no trust. There is no separate key succession plan.</p>
+<h2 id="binary-ownership">The Blended Family Problem: Bitcoin's Binary Ownership</h2>
+
+<p>Consider a scenario that plays out more frequently than most estate attorneys will admit. A Bitcoin holder in a second marriage has three children from his first marriage and two stepchildren from his current wife's prior relationship. He dies with 15 BTC on a hardware wallet, the seed phrase stored in his home safe. His surviving spouse knows the safe combination — they live together, after all. His will leaves everything to her, intending that she provide for all five children. His biological children from the first marriage were supposed to receive a specific bequest of 5 BTC. There is no trust. There is no separate key succession plan.</p>
 
 <p>His wife is not a villain. But she is now the sole person on earth with access to 15 BTC worth several million dollars. She has two biological children of her own to think about. The will says one thing; the keys say another. The keys win.</p>
 
@@ -231,7 +257,7 @@
   <p><strong>The core principle for blended family Bitcoin planning:</strong> The person who holds the keys at your death controls the Bitcoin. Every trust, will, and legal document only matters insofar as it controls who holds the keys. Design your key succession plan first; build the legal structure around it.</p>
 </div>
 
-<h2>The Intestacy Risk in Community Property States</h2>
+<h2 id="intestacy-risk">The Intestacy Risk in Community Property States</h2>
 
 <p>If you die without a will — "intestate" — your Bitcoin is distributed according to your state's default intestacy rules. In community property states, those rules can be catastrophic for blended families.</p>
 
@@ -241,7 +267,7 @@
 
 <p>Litigation to recover Bitcoin from a surviving spouse who has key access is expensive, emotionally devastating, and uncertain. Courts can issue orders, but courts cannot generate private keys. By the time litigation concludes, the Bitcoin may have been moved, sold, or lost. The intestacy rules provide a theoretical right; key control determines the practical reality.</p>
 
-<h2>The QTIP Trust: The Blended Family's Most Powerful Tool</h2>
+<h2 id="qtip">The QTIP Trust: The Blended Family's Most Powerful Tool</h2>
 
 <p>A Qualified Terminable Interest Property (QTIP) trust is the foundational structure for blended family Bitcoin estate planning. It solves the core tension — providing for a surviving spouse while protecting biological children's inheritance — through a two-stage design.</p>
 
@@ -259,7 +285,7 @@
 
 <p>If the surviving spouse is the trustee — even with fiduciary duties and legal restrictions — she has practical key access. Fiduciary duties are enforced by courts; courts require litigation to invoke. An independent institutional trustee, a professional trust company, or a co-trustee structure (surviving spouse + independent co-trustee) provides meaningful operational separation between the surviving spouse's interests and the biological children's eventual inheritance.</p>
 
-<h2>Spousal Lifetime Access Trusts (SLATs) in Blended Families</h2>
+<h2 id="slats">Spousal Lifetime Access Trusts (SLATs) in Blended Families</h2>
 
 <p>A Spousal Lifetime Access Trust (SLAT) is an <a href="/blog/bitcoin-irrevocable-trust" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">irrevocable trust</a> you fund during your lifetime, naming your spouse as a beneficiary — typically for income or distributions at trustee discretion — while removing the assets from your taxable estate. For Bitcoin holders, SLATs are attractive because they can move Bitcoin out of the estate while the grantor's spouse retains access to distributions.</p>
 
@@ -269,19 +295,19 @@
 
 <p>Additionally, a SLAT that benefits the surviving spouse without explicit protections for biological children's remainder interest may allow the surviving spouse's creditors to reach trust assets, reducing what passes to biological children at her death. Blended family SLATs should include spendthrift provisions and clear remainder beneficiary designations to biological children.</p>
 
-<h2>Pre-Nuptial Agreements and Bitcoin for Blended Families</h2>
+<h2 id="prenup">Pre-Nuptial Agreements and Bitcoin for Blended Families</h2>
 
 <p>A Bitcoin-specific prenuptial agreement is not merely useful for blended families — it is essential. For a full analysis of what a Bitcoin prenup must cover, see our <a href="/blog/bitcoin-estate-planning-prenuptial-agreement">Bitcoin prenuptial agreement guide</a>. For blended families specifically, the prenup should address:</p>
 
 <ul>
   <li><strong>Pre-marriage Bitcoin as separate property:</strong> All Bitcoin held by either spouse before the marriage is declared separate property, including all future appreciation. This prevents a surviving spouse from claiming a community property interest in pre-marital Bitcoin that was always intended to pass to biological children.</li>
-  <li><strong>Key succession upon death:</strong> The prenup should reference — without containing — the key succession plan, <a href="/blog/bitcoin-family-office-setup-guide">how to set up a Bitcoin family office</a>ing the legal framework that governs who receives cryptographic access credentials.</li>
+  <li><strong>Key succession upon death:</strong> The prenup should reference — without containing — the key succession plan, establishing the legal framework that governs who receives cryptographic access credentials.</li>
   <li><strong>Waiver of elective share rights:</strong> In common law states, a surviving spouse typically has a right to claim a statutory "elective share" of the decedent's estate regardless of what the will says. For Bitcoin holders with significant holdings, a surviving spouse's elective share claim could disrupt a carefully constructed trust plan. The prenup should include a mutual waiver of elective share rights, or specify that the QTIP trust satisfies the elective share requirement.</li>
   <li><strong>Stepchild inheritance:</strong> Explicitly addressing whether stepchildren are intended beneficiaries — and to what degree — prevents ambiguity that courts and mediators will otherwise fill with default rules.</li>
   <li><strong>Bitcoin acquired during marriage:</strong> Specify whether Bitcoin acquired during the marriage is community property, separate property, or how it will be classified based on the source of funds.</li>
 </ul>
 
-<h2>Stepchildren vs. Biological Children: Default Rules and Trust Solutions</h2>
+<h2 id="stepchildren">Stepchildren vs. Biological Children: Default Rules and Trust Solutions</h2>
 
 <p>Absent an express provision in a will or trust, stepchildren have no inheritance rights in any U.S. state under intestacy law. They are not "children" for intestacy purposes unless legally adopted. This creates an asymmetric risk in blended families:</p>
 
@@ -400,6 +426,27 @@
 </div>
 
 <!-- AUTHOR BOX -->
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <div style="margin: 2rem 0;">
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What makes Bitcoin estate planning especially complex for blended families?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Bitcoin's binary ownership: whoever controls the private key controls all the Bitcoin. Without a trust structure, you can't leave percentages to different beneficiaries — the hardware wallet goes to someone, and that person can spend the entire position. Blended family Bitcoin estates without trusts are prone to disputes, accidental disinheritance, and improper access allegations.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is a QTIP trust and why is it powerful for blended Bitcoin families?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">A Qualified Terminable Interest Property trust provides income/distributions to the surviving spouse during their lifetime, with Bitcoin principal passing to the decedent's children at the surviving spouse's death. Solves the central blended family problem: surviving spouse is provided for; prior children inherit the Bitcoin principal.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Can stepchildren inherit Bitcoin?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Not automatically — stepchildren are not legal heirs under intestate succession in any state. Only biological or legally adopted children are recognized. Without a will or trust explicitly including them, stepchildren receive nothing. Explicit trust provisions or will bequests are essential for blended families who want to provide for stepchildren.</p>
+    </div>
+    <div>
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">How does community property law affect Bitcoin in a blended family?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">In community property states, Bitcoin bought with marital income is 50/50. For blended families: surviving stepparent automatically owns their 50% community Bitcoin; the other 50% passes under the estate plan. Without careful planning, children from a prior marriage may find the stepparent controls half their inheritance. A QTIP trust over the full position is the cleanest solution.</p>
+    </div>
+  </div>
+  <hr>
 <div class="author-box">
   <div class="author-avatar">HT</div>
   <div class="author-info">
