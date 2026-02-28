@@ -29,7 +29,20 @@
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
 
   <!-- Google Analytics GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is the Buy, Borrow, Die strategy for Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"Buy, Borrow, Die (BBD) is a three-step wealth accumulation and transfer strategy: (1) Buy Bitcoin and hold it without selling — no capital gains tax triggered; (2) Borrow against the Bitcoin using it as collateral — loan proceeds are not income and are not taxable; (3) Die holding the Bitcoin — heirs receive a step-up in basis to FMV at death, all pre-death capital gains are erased, and the loan is repaid from the estate while heirs keep the stepped-up Bitcoin. The strategy allows you to access liquidity from Bitcoin appreciation without ever paying capital gains tax during your lifetime."}},
+    {"@type":"Question","name":"What is the liquidation risk of borrowing against Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"The primary risk is margin call / forced liquidation. Bitcoin collateral lending has strict LTV (loan-to-value) ratios — typically 30–50% of Bitcoin value. If Bitcoin's price drops significantly (30–50%+), the lender may issue a margin call requiring you to: (1) deposit additional collateral; (2) repay part of the loan; or (3) accept forced liquidation of your Bitcoin at the worst possible price. For a strategy designed to avoid selling, forced liquidation is the worst outcome. Mitigation: borrow conservatively (20–30% LTV maximum), maintain a significant cash buffer to absorb calls, use multiple lenders with staggered liquidation triggers, and never borrow more than you could repay from other assets if BTC drops 70%."}},
+    {"@type":"Question","name":"Who are the main Bitcoin collateral lenders?","acceptedAnswer":{"@type":"Answer","text":"The Bitcoin collateral lending landscape has consolidated significantly following the 2022 crypto credit crisis (BlockFi, Celsius, Voyager all failed). Remaining major options: (1) Unchained Capital — Bitcoin-native, multi-sig collaborative custody, conservative LTV ratios; (2) Ledn — Bitcoin-backed loans with institutional backing; (3) Coinbase — retail-focused, requires exchange custody; (4) Some private banks and family offices for high-net-worth clients ($1M+ positions) — terms are typically more favorable and custody is more flexible. For significant positions, use lenders who allow self-custody or multi-sig custody arrangements rather than requiring you to hand over your Bitcoin to the lender."}},
+    {"@type":"Question","name":"How do outstanding Bitcoin loans affect estate settlement?","acceptedAnswer":{"@type":"Answer","text":"Outstanding loans at death create complexity for heirs. The correct order: (1) Inherit the Bitcoin estate (step-up in basis applies at death); (2) Determine the outstanding loan balance and lender contact information from the estate documentation; (3) The lender will typically liquidate sufficient collateral to repay the loan if the estate does not have other funds available — but the order of operations matters for tax purposes; (4) Remaining Bitcoin after loan repayment passes to heirs with zero capital gains tax. Estate planning: include loan documentation in your Bitcoin Letter of Instruction so heirs can immediately contact lenders and understand the order of operations."}},
+    {"@type":"Question","name":"Is Buy, Borrow, Die appropriate for everyone with significant Bitcoin gains?","acceptedAnswer":{"@type":"Answer","text":"No. BBD is appropriate only for holders who: (1) have strong conviction in long-term Bitcoin appreciation; (2) have a high tolerance for Bitcoin's volatility (willing to hold through 40–60% drawdowns while carrying loan obligations); (3) have other liquid assets to meet margin calls without forced Bitcoin sales; (4) are comfortable with the complexity of collateral lending agreements; (5) have a planning horizon of 10+ years. It is not appropriate for: anyone who would be forced to sell Bitcoin on a bad day to meet living expenses; anyone who cannot absorb margin calls from other assets; or Bitcoin holders using borrowed funds for speculative investments that could lose value simultaneously with Bitcoin."}}
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -72,7 +85,7 @@
         "description": "The Buy, Borrow, Die strategy lets Bitcoin holders access liquidity without selling—eliminating capital gains tax entirely at death. Learn the math, the risks, and how to structure it properly.",
         "image": "https://thebitcoinfamilyoffice.com/assets/og-image.png",
         "datePublished": "2026-02-25",
-        "dateModified": "2026-02-25",
+        "dateModified": "2026-02-28",
         "author": {
           "@type": "Person",
           "name": "Hal Franklin",
@@ -864,9 +877,24 @@
 
     <p>The wealthiest families in America rarely sell their appreciating assets. They never have. The Rockefellers didn't sell Standard Oil shares to fund their lifestyle. The Waltons don't sell Walmart stock every time they need cash. They borrow against their holdings, live on the loan proceeds, and when they eventually die, their heirs inherit a stepped-up cost basis that erases a lifetime of untaxed gains.</p>
 
-    <p>This strategy — called <strong>Buy, Borrow, Die</strong> — is now fully available to Bitcoin holders. And for long-term holders sitting on life-changing gains, it may be the single most powerful <a href="/blog/bitcoin-tax-strategy-hub">Bitcoin tax strategy hub</a> available to you today.</p>
+    <p>This strategy — called <strong>Buy, Borrow, Die</strong> — is now fully available to Bitcoin holders. And for long-term holders sitting on life-changing gains, it may be the single most powerful tax strategy available to you today.</p>
 
-    <h2>What Is Buy, Borrow, Die (BBD)?</h2>
+    <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+      <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted,#6b6660);margin-bottom:1rem;">In This Guide</div>
+      <ol style="margin:0 0 0 1.25rem;">
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#what-is-bbd" style="color:var(--text-secondary);">What Is Buy, Borrow, Die (BBD)?</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#how-it-works" style="color:var(--text-secondary);">How Buy, Borrow, Die Works for Bitcoin</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#math" style="color:var(--text-secondary);">The Math: A Concrete Example</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#lenders" style="color:var(--text-secondary);">Bitcoin Collateral Lending: Who Offers It?</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#risks" style="color:var(--text-secondary);">The Risks You Must Understand</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#who-is-it-for" style="color:var(--text-secondary);">Who Is BBD Right For?</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#estate-integration" style="color:var(--text-secondary);">Estate Planning Integration</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#pal" style="color:var(--text-secondary);">Alternative: Pledged Asset Lines (PAL)</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+      </ol>
+    </div>
+
+    <h2 id="what-is-bbd">What Is Buy, Borrow, Die (BBD)?</h2>
 
     <p>Buy, Borrow, Die is a three-step wealth preservation strategy employed by ultra-high-net-worth families to hold appreciating assets indefinitely — accumulating wealth across generations — without ever triggering a capital gains tax event.</p>
 
@@ -884,7 +912,7 @@
 
     <p>For traditional assets like real estate and public equities, this strategy has been in use for decades. Bitcoin adds new dimensions — and new risks — that every serious holder needs to understand before implementing it.</p>
 
-    <h2>How Buy, Borrow, Die Works for Bitcoin</h2>
+    <h2 id="how-it-works">How Buy, Borrow, Die Works for Bitcoin</h2>
 
     <h3>Step 1: Buy — Accumulate and Hold</h3>
 
@@ -906,7 +934,7 @@
 
     <p>Your heirs can then sell a portion of the Bitcoin at the new stepped-up basis to repay any outstanding loans, and the net capital gains on that sale are zero. The entire lifetime appreciation evaporates from the tax ledger.</p>
 
-    <h2>The Math: A Concrete Example</h2>
+    <h2 id="math">The Math: A Concrete Example</h2>
 
     <div class="math-box">
       <div class="math-title">📊 BBD vs. Sell — Side-by-Side Comparison</div>
@@ -931,7 +959,7 @@
 
     <p>The break-even analysis depends on how long you live after taking the loan, how much BTC appreciates, and your interest cost. For most long-term Bitcoin holders, the math strongly favors borrowing over selling — particularly as the position size grows.</p>
 
-    <h2>Bitcoin Collateral Lending: Who Offers It?</h2>
+    <h2 id="lenders">Bitcoin Collateral Lending: Who Offers It?</h2>
 
     <p>The Bitcoin-backed lending market has consolidated significantly since the 2022 crypto credit crisis. Several providers remain active, ranging from retail-accessible to institutional-only:</p>
 
@@ -982,7 +1010,7 @@
 
     <p>Interest rates currently range from 8–12% for crypto-native lenders, compared to 5–7% for traditional pledged asset lines from private banks. The premium is the price of not going through a traditional credit underwriting process.</p>
 
-    <h2>The Risks You Must Understand</h2>
+    <h2 id="risks">The Risks You Must Understand</h2>
 
     <p>BBD is not a free lunch. The risks are real and must be actively managed. Executing this strategy poorly can be worse than simply paying the <a href="/blog/bitcoin-capital-gains-tax-guide">capital gains tax on your Bitcoin</a>.</p>
 
@@ -1001,11 +1029,11 @@
       </div>
       <div class="risk-card">
         <h4>⚠ Estate Complications</h4>
-        <p>Outstanding loans at death create complexity. Your heirs need to know the loans exist, have access to loan statements, and understand the order of operations: inherit → <a href="/blog/bitcoin-family-office-setup-guide">how to set up a Bitcoin family office</a> stepped-up basis → sell enough to repay loans → keep the rest. Without proper estate documentation, heirs may inadvertently sell first and repay after — still achieving zero gains, but with unnecessary complexity and potential executor liability.</p>
+        <p>Outstanding loans at death create complexity. Your heirs need to know the loans exist, have access to loan statements, and understand the order of operations: inherit → receive stepped-up basis → sell enough to repay loans → keep the rest. Without proper estate documentation, heirs may inadvertently sell first and repay after — still achieving zero gains, but with unnecessary complexity and potential executor liability.</p>
       </div>
     </div>
 
-    <h2>Who Is BBD Right For?</h2>
+    <h2 id="who-is-it-for">Who Is BBD Right For?</h2>
 
     <p>The Buy, Borrow, Die strategy is not for every Bitcoin holder. It makes the most sense for:</p>
 
@@ -1016,9 +1044,9 @@
       <li><strong>Those who need liquidity without wanting to lose exposure.</strong> If you're bullish on Bitcoin and need cash for a specific purpose — a real estate investment, business funding, or wealth diversification — BBD lets you access liquidity while maintaining full upside participation.</li>
     </ul>
 
-    <p>The strategy is <em>not</em> approp<a href="/blog/bitcoin-family-office-vs-ria">Bitcoin family office vs. RIA comparison</a>te for anyone who lacks the volatility tolerance to hold through 40–60% drawdowns while carrying loan obligations against their position.</p>
+    <p>The strategy is <em>not</em> appropriate for anyone who lacks the volatility tolerance to hold through 40–60% drawdowns while carrying loan obligations against their position.</p>
 
-    <h2>Estate Planning Integration: Getting the Documentation Right</h2>
+    <h2 id="estate-integration">Estate Planning Integration: Getting the Documentation Right</h2>
 
     <p>The stepped-up basis at death is automatic under §1014 — but the loan repayment logistics are not. Proper estate planning documentation is essential to ensure your heirs can actually execute the strategy as intended.</p>
 
@@ -1033,6 +1061,27 @@
 
     <p>If your Bitcoin is held in a <a href="/tools/bitcoin-trust-selector">Bitcoin Trust Type Selector tool</a>, the trustee needs to be explicitly empowered to manage crypto collateral positions and understands the mechanics of the stepped-up basis interaction with trust accounting.</p>
 
+
+    <h2 id="faq">Frequently Asked Questions</h2>
+    <div style="margin: 2rem 0;">
+      <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+        <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the Buy, Borrow, Die strategy?</h3>
+        <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">(1) Buy Bitcoin, hold without selling -- no capital gains tax; (2) Borrow against Bitcoin as collateral -- loan proceeds are not taxable income; (3) Die holding Bitcoin -- heirs receive step-up in basis erasing all pre-death gains, loan is repaid from estate. You access liquidity from Bitcoin appreciation without ever paying capital gains tax during your lifetime.</p>
+      </div>
+      <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+        <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the main risk of borrowing against Bitcoin?</h3>
+        <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Margin call / forced liquidation. LTV ratios are typically 30-50%. If Bitcoin drops significantly, the lender may force liquidation of your collateral at the worst possible price -- the exact outcome BBD is designed to avoid. Mitigation: borrow conservatively (20-30% LTV max), maintain cash reserves to absorb calls, never borrow more than you could repay from other assets if BTC drops 70%.</p>
+      </div>
+      <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+        <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">How do outstanding loans affect estate settlement?</h3>
+        <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Correct order: inherit Bitcoin (step-up in basis applies) → identify outstanding loans from estate documentation → lender liquidates sufficient collateral to repay if no other funds available → remaining Bitcoin passes to heirs with zero capital gains tax. Include loan documentation in your Bitcoin Letter of Instruction so heirs can immediately contact lenders.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Is Buy, Borrow, Die right for everyone with Bitcoin gains?</h3>
+        <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">No. Required: high conviction in long-term Bitcoin appreciation, high volatility tolerance (willing to hold through 40-60% drawdowns while carrying loans), liquid assets to meet margin calls, 10+ year planning horizon. Not for: anyone who might need to sell Bitcoin for living expenses, or who cannot absorb margin calls from other assets.</p>
+      </div>
+    </div>
+    <hr>
     <div class="am-callout">
       <div class="am-callout-icon">⛏</div>
       <div class="am-callout-content">
@@ -1041,7 +1090,7 @@
       </div>
     </div>
 
-    <h2>Alternative: Pledged Asset Lines (PAL)</h2>
+    <h2 id="pal">Alternative: Pledged Asset Lines (PAL)</h2>
 
     <p>For larger Bitcoin holders — particularly those with $2M+ in assets — Pledged Asset Lines (PALs) from regulated financial institutions may offer more stability than pure crypto lenders.</p>
 
