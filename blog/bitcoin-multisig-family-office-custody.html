@@ -21,10 +21,10 @@
   "@type": "Article",
   "headline": "Multi-Signature Bitcoin Custody for Family Offices: Architecture, Trade-offs, and Implementation",
   "description": "Multi-signature custody is the gold standard for institutional Bitcoin holdings. For family offices, the implementation requires balancing security, accessibility, and succession. Here's the definitive framework.",
-  "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
+  "author": {"@type": "Person", "name": "Hal Franklin", "jobTitle": "Bitcoin Wealth Strategist"},
   "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-multisig-family-office-custody",
   "datePublished": "2026-02-25",
-  "dateModified": "2026-02-25",
+  "dateModified": "2026-02-28",
   "publisher": {
     "@type": "Organization",
     "name": "The Bitcoin Family Office",
@@ -47,6 +47,54 @@
 
 
 <!-- Google Analytics -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is multi-signature Bitcoin custody?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multi-signature (multisig) custody requires approval from multiple cryptographic keys before any Bitcoin transaction can be executed. Instead of a single private key controlling the wallet, an M-of-N quorum is required — for example, 2 of 3 keys, or 3 of 5 keys. This eliminates the single point of failure that makes single-key custody dangerous: even if one key is lost, stolen, or destroyed, the Bitcoin remains accessible as long as the quorum of remaining keys can sign. For family offices, multisig is the institutional-grade custody standard."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best multi-signature configuration for a family office?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2-of-3 multisig is the most widely recommended configuration for family offices: three keys with any two required to authorize transactions. One key can be lost or compromised without losing access to the Bitcoin, and any two-party coordination prevents unilateral action. For very large holdings (above $10M+), 3-of-5 provides additional resilience at the cost of operational complexity. Avoid 2-of-2 (either key lost = permanent loss) and single-key (no redundancy)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How should Bitcoin keys be geographically distributed for a family office?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Keys should be stored in physically separate locations in different jurisdictions. For a 2-of-3 configuration, typical distribution: (1) home safe or safety deposit box in primary residence state, (2) safety deposit box in a different state or trusted party in another region, (3) institutional custodian or attorney in a third location. The goal is that no single physical disaster (fire, flood) or physical attack can compromise enough keys to move the Bitcoin. Do not store keys digitally on internet-connected devices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does multi-signature custody work for Bitcoin inheritance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multi-signature custody creates a succession planning challenge: if the key holder dies, the keys must be accessible to the estate without being accessible to thieves during the holder's life. Solutions include: (1) technical succession document in a sealed envelope with the estate attorney, opened only upon death certificate presentation, (2) a 'dead man's switch' protocol through a trusted third party, (3) including key location information in a letter of instruction accompanying the trust documents. The trustee or executor must be able to locate and use the required quorum of keys."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should a family office use a custody provider or manage multisig keys themselves?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both approaches are used by sophisticated family offices. Self-managed multisig (using Coldcard, Trezor, or Jade hardware wallets with a coordinator like Sparrow or Specter Desktop) provides maximum sovereignty but requires technical capability and operational discipline. Custody providers (Unchained Capital, Casa, Anchorage) provide the multisig infrastructure and may hold one key as a recovery key, reducing operational burden while preserving the family's control over the majority of keys. Hybrid approaches — one key with custodian, two keys self-managed — are increasingly common."
+      }
+    }
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
 <script>
@@ -186,7 +234,22 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>This is a detailed, technical discussion intended for family offices that are either building or reviewing their custody architecture. It assumes familiarity with basic Bitcoin concepts but not deep cryptographic expertise. The goal is to provide a practical framework for decision-making, not an exhaustive technical manual.</p>
 
-  <h2>What Multi-Signature Is and How It Works</h2>
+  <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+    <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted,#6b6660);margin-bottom:1rem;">In This Guide</div>
+    <ol style="margin:0 0 0 1.25rem;">
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#what-it-is" style="color:var(--text-secondary);">What Multi-Signature Is and How It Works</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#configuration" style="color:var(--text-secondary);">Choosing a Configuration</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#hardware-wallets" style="color:var(--text-secondary);">Hardware Wallet Selection</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#geographic-distribution" style="color:var(--text-secondary);">Geographic Distribution</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#providers-vs-self" style="color:var(--text-secondary);">Custody Providers vs. Self-Custody</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#inheritance" style="color:var(--text-secondary);">The Inheritance Problem</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#opsec" style="color:var(--text-secondary);">Operational Security</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#governance" style="color:var(--text-secondary);">Integrating With the Governance Framework</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <h2 id="what-it-is">What Multi-Signature Is and How It Works</h2>
 
   <p>Bitcoin's scripting language supports multi-signature transactions natively. A multi-signature (<a href="/blog/bitcoin-multisig-inheritance" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">multisig</a>) wallet is one that requires a <a href="/blog/bitcoin-family-office-minimum">Bitcoin family office minimum requirements</a> number of signatures — from a defined set of keys — to authorize any outgoing transaction. The configuration is specified as an "m-of-n" threshold: m signatures required from a set of n total keys.</p>
 
@@ -202,7 +265,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <div class="pull-quote">Multi-signature custody enforces institutional discipline at the cryptographic layer. It makes collusion or key recovery the prerequisite for any large transaction — not just a policy requirement, but a technical one.</div>
 
-  <h2>Choosing a Configuration</h2>
+  <h2 id="configuration">Choosing a Configuration</h2>
 
   <h3>2-of-3: The Standard Choice</h3>
 
@@ -212,7 +275,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <h3>3-of-5: For Larger Holdings and Greater Resilience</h3>
 
-  <p>For families with very large Bitcoin holdings — where the consequences of a custody failure would be most severe — a 3-of-5 configuration provides additional resilience. Five keys allow for two keys to be lost or compromised without losing access, and require three-party coordination for any transaction. This configuration is more operationally demanding: coordinating three signers for routine transactions introduces friction, and managing five keys with approp<a href="/blog/bitcoin-family-office-vs-ria">Bitcoin family office vs. RIA comparison</a>te geographic distribution and succession planning is substantially more complex than managing three.</p>
+  <p>For families with very large Bitcoin holdings — where the consequences of a custody failure would be most severe — a 3-of-5 configuration provides additional resilience. Five keys allow for two keys to be lost or compromised without losing access, and require three-party coordination for any transaction. This configuration is more operationally demanding: coordinating three signers for routine transactions introduces friction, and managing five keys with appropriate geographic distribution and succession planning is substantially more complex than managing three.</p>
 
   <p>The 3-of-5 configuration is most appropriate when the family has multiple qualified, technically capable principals who can each hold a key, when the geographic distribution of family members provides natural geographic distribution of keys, and when the family's governance structure supports the coordination requirements. For smaller families or those with limited technical sophistication, 3-of-5 may introduce more complexity than it resolves.</p>
 
@@ -220,7 +283,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>The 2-of-2 configuration — two keys, both required — is occasionally proposed as a way to enforce dual-control for maximum security. We generally advise against it for family offices. Its fatal flaw is the elimination of redundancy: if either key is lost, the funds are permanently inaccessible. In a family office context, where key holders may live, change, or become incapacitated over decades, the probability of a single key loss over a multi-decade holding period is not negligible. The 2-of-2 architecture converts that probability into a catastrophic outcome.</p>
 
-  <h2>Hardware Wallet Selection</h2>
+  <h2 id="hardware-wallets">Hardware Wallet Selection</h2>
 
   <p>Each key in a multi-signature arrangement should be held on a dedicated hardware wallet — a purpose-built device that stores the private key in secure hardware and requires physical confirmation of transactions. Hardware wallets ensure that the private key is never exposed to internet-connected devices, dramatically reducing the attack surface for remote theft.</p>
 
@@ -238,9 +301,9 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>We recommend that family offices use different hardware wallet models for different keys in their multi-signature arrangement — not because any particular model is compromised, but because using diverse hardware eliminates the risk of a single firmware vulnerability or supply chain attack affecting all keys simultaneously. This hardware diversity principle is analogous to not keeping all assets at a single institutional custodian.</p>
 
-  <h2>Geographic Distribution</h2>
+  <h2 id="geographic-distribution">Geographic Distribution</h2>
 
-  <p>The security of a multi-signature arrangement depends not just on the cryptographic threshold but on the physical and jurisdictional separation of the keys. A 2-of-3 <a href="/blog/bitcoin-family-office-setup-guide">how to set up a Bitcoin family office</a> where all three keys are held in the same building provides minimal additional security over single-key custody — a physical breach of that location could compromise the entire arrangement.</p>
+  <p>The security of a multi-signature arrangement depends not just on the cryptographic threshold but on the physical and jurisdictional separation of the keys. A 2-of-3 configuration where all three keys are held in the same building provides minimal additional security over single-key custody — a physical breach of that location could compromise the entire arrangement.</p>
 
   <p>Geographic distribution means, at minimum:</p>
 
@@ -253,7 +316,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>The geographic distribution of keys also interacts with the family's governance structure: ideally, the physical separation of keys corresponds to the institutional separation of keyholders. A key held by the family principal at their primary residence, a key held by an independent custodian at their vault facility, and a key in a geographically separate family-controlled location creates both cryptographic separation and institutional separation — reducing the risk of collusion as well as the risk of geographic catastrophe.</p>
 
-  <h2>Custody Providers vs. Self-Custody in a Multi-Signature Context</h2>
+  <h2 id="providers-vs-self">Custody Providers vs. Self-Custody</h2>
 
   <p>One of the most consequential architectural decisions a family office faces is the <a href="/blog/bitcoin-high-net-worth-allocation">Bitcoin allocation strategies for HNW investors</a> of keys between self-custody and institutional custody. The options exist on a spectrum:</p>
 
@@ -261,11 +324,11 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p><strong>Collaborative custody (1-of-3 with a custodian):</strong> The family controls two keys, and a qualified custodian holds one. This is perhaps the most common configuration for sophisticated family offices. The family retains majority control — the custodian cannot move funds unilaterally — but the custodian's key provides redundancy against family-side key loss. The custodian also typically provides coordination services, software interfaces, and institutional continuity that reduce the operational burden on the family.</p>
 
-  <p><strong>Delegated custody:</strong> The family's keys are held by a qualified institutional custodian with appropriate governance controls on transaction authorization. This resembles traditional financial custody more closely and may be appropriate for a portion of holdings when the family prioritizes accessibility over sovereignty. As we discuss in our comprehensive guide to <a href="/blog/bitcoin-custody-solutions-family-offices.html">Bitcoin custody solutions for family offices</a>, delegated custody introduces counterparty risk that self-custody eliminates, but also provides institutional infrastructure that self-custody requires the family to build and maintain independently.</p>
+  <p><strong>Delegated custody:</strong> The family's keys are held by a qualified institutional custodian with appropriate governance controls on transaction authorization. This resembles traditional financial custody more closely and may be appropriate for a portion of holdings when the family prioritizes accessibility over sovereignty. As we discuss in our comprehensive guide to <a href="/blog/bitcoin-custody-solutions-family-offices">Bitcoin custody solutions for family offices</a>, delegated custody introduces counterparty risk that self-custody eliminates, but also provides institutional infrastructure that self-custody requires the family to build and maintain independently.</p>
 
   <p>Our recommendation for most sophisticated family offices is the collaborative model: the family controls the majority of keys, with one key held by a qualified institutional custodian who provides redundancy and coordination services. This balances sovereignty with practical resilience and reduces the family's operational burden while maintaining genuine control.</p>
 
-  <h2>The Inheritance Problem in Multi-Signature Custody</h2>
+  <h2 id="inheritance">The Inheritance Problem in Multi-Signature Custody</h2>
 
   <p>Perhaps the most underappreciated challenge in multi-signature custody is succession. Single-key custody has a straightforward (if still operationally complex) inheritance path: document the key's location and access method in estate planning documents, ensure the executor or trustee can access it. Multi-signature custody is more complex: the successor must not only locate the family's keys, but understand the multi-signature architecture, coordinate with other keyholders, and be technically capable of initiating and signing transactions.</p>
 
@@ -281,7 +344,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <div class="pull-quote">A multi-signature arrangement that cannot be reconstructed by successors provides security without continuity — which is, ultimately, a form of permanent loss.</div>
 
-  <h2>Operational Security</h2>
+  <h2 id="opsec">Operational Security</h2>
 
   <p>The cryptographic security of a well-designed multi-signature arrangement is substantial. The practical security depends on operational discipline. Several principles govern operational security for family office Bitcoin custody:</p>
 
@@ -301,20 +364,48 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>Hardware wallets should be purchased directly from the manufacturer, never from secondary markets. Supply chain attacks — where a device is intercepted and modified before reaching the user — are a real threat. Verify the device's integrity upon receipt according to the manufacturer's instructions.</p>
 
-  <h2>Integrating Multi-Signature With the Governance Framework</h2>
+  <h2 id="governance">Integrating Multi-Signature With the Governance Framework</h2>
 
   <p>Multi-signature custody is a technical implementation of a governance decision: that no single party should control the family's Bitcoin unilaterally. The technical architecture should reflect the governance intent, and vice versa.</p>
 
   <p>The family's governance framework should specify: who holds which key, what transaction authorizations require which keyholders to sign, what process applies when a keyholder is temporarily unavailable, and what events trigger a formal review of the custody architecture. These governance specifications should be documented in the custody policy section of the family's governance framework and reviewed by the Custody Committee on the schedule established in the family governance calendar.</p>
 
-  <p>For families building a comprehensive Bitcoin governance structure, multi-signature custody is the technical foundation on which the broader institutional architecture rests. The governance framework we describe in our work on <a href="/blog/bitcoin-family-office-governance.html">Bitcoin family office governance</a> provides the organizational context within which the custody architecture operates. The two must be designed together, not in isolation.</p>
+  <p>For families building a comprehensive Bitcoin governance structure, multi-signature custody is the technical foundation on which the broader institutional architecture rests. The governance framework we describe in our work on <a href="/blog/bitcoin-family-office-governance">Bitcoin family office governance</a> provides the organizational context within which the custody architecture operates. The two must be designed together, not in isolation.</p>
 
   <p>The family office that designs its multi-signature architecture thoughtfully — with appropriate configuration for its size, proper geographic distribution, clear succession protocols, and integration with its governance framework — has addressed the most consequential custody risk in Bitcoin wealth management. That architecture will require maintenance, periodic review, and eventual updating as the family's circumstances evolve. But it provides the institutional foundation that serious, multigenerational Bitcoin stewardship demands.</p>
 
   <hr>
 
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div style="margin: 2rem 0;">
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is multi-signature Bitcoin custody?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Requires approval from multiple cryptographic keys (M-of-N quorum) before any Bitcoin transaction executes. 2-of-3 means any two of three keys must sign. Eliminates the single point of failure that makes single-key custody dangerous: one key lost, stolen, or destroyed — Bitcoin still accessible. The institutional-grade custody standard for family offices.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the best multisig configuration for a family office?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">2-of-3 for most families: one key can be lost or compromised without losing access; two-party coordination prevents unilateral action. 3-of-5 for very large holdings ($10M+) at the cost of operational complexity. Avoid 2-of-2 (either key lost = permanent loss) and single-key (no redundancy).</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">How should Bitcoin keys be geographically distributed?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Separate physical locations in different jurisdictions. Typical 2-of-3 distribution: (1) home safe/safety deposit in primary residence state, (2) safety deposit in different state or trusted party in another region, (3) institutional custodian or attorney in a third location. Goal: no single physical disaster or attack compromises the quorum. Never store keys digitally on internet-connected devices.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">How does multisig custody work for Bitcoin inheritance?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Requires a technical succession document: key locations sealed with estate attorney (opened on death certificate), or a trusted third-party dead man's switch protocol. The trustee/executor must locate and use the required quorum. Failure to plan for this makes multisig a permanent loss event at death — the most common Bitcoin inheritance failure mode.</p>
+    </div>
+    <div>
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Should a family office use a custody provider or manage multisig themselves?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Both work. Self-managed (Coldcard/Trezor/Jade + Sparrow/Specter) = maximum sovereignty, requires technical discipline. Custody providers (Unchained Capital, Casa, Anchorage) provide infrastructure, may hold one recovery key. Hybrid (one key with custodian, two self-managed) increasingly common. Choose based on technical capability and operational bandwidth.</p>
+    </div>
+  </div>
+
+  <hr>
+
     <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
-    <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful <a href="/blog/bitcoin-tax-strategy-hub">Bitcoin tax strategy hub</a> Available</p>
+    <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful Tax Strategy Available</p>
     <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">For high-net-worth Bitcoin holders, mining is the only strategy that simultaneously generates yield, accumulates BTC, and creates significant tax offsets — through equipment depreciation, operating expense deductions, and bonus depreciation on capital investments. Most family offices overlook mining entirely. Abundant Mines has compiled every major Bitcoin mining tax strategy in one place.</p>
     <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a>
   </div>
@@ -331,15 +422,15 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 <div style="max-width:var(--max-w);margin:0 auto 2rem;padding:0 1.5rem;">
   <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem;">Related Reading</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
-    <a href="/blog/bitcoin-custody-architecture.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/bitcoin-custody-architecture" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Custody</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Custody Architecture for Family Offices</p>
     </a>
-    <a href="/blog/complete-guide-bitcoin-family-offices.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/complete-guide-bitcoin-family-offices" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Overview</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">The Complete Guide to Bitcoin Family Offices</p>
     </a>
-    <a href="/blog/bitcoin-estate-planning-complete-guide.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/bitcoin-estate-planning-complete-guide" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Estate Planning</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Estate Planning: The Complete Guide</p>
     </a>
@@ -357,10 +448,10 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 <section class="related">
   <div class="related-label">Continue Reading</div>
   <div class="related-links">
-    <a href="/blog/bitcoin-custody-solutions-family-offices.html">Bitcoin Custody Solutions for Family Offices</a>
-    <a href="/blog/bitcoin-family-office-governance.html">Bitcoin Family Office Governance: A Framework for Decision-Making at Scale</a>
-    <a href="/blog/building-bitcoin-native-family-office.html">Building a Bitcoin-Native Family Office</a>
-    <a href="/blog/multi-generational-bitcoin-wealth-estate-planning.html">Multi-Generational Bitcoin Wealth &amp; Estate Planning</a>
+    <a href="/blog/bitcoin-custody-solutions-family-offices">Bitcoin Custody Solutions for Family Offices</a>
+    <a href="/blog/bitcoin-family-office-governance">Bitcoin Family Office Governance: A Framework for Decision-Making at Scale</a>
+    <a href="/blog/building-bitcoin-native-family-office">Building a Bitcoin-Native Family Office</a>
+    <a href="/blog/multi-generational-bitcoin-wealth-estate-planning">Multi-Generational Bitcoin Wealth &amp; Estate Planning</a>
   </div>
 </section>
 
