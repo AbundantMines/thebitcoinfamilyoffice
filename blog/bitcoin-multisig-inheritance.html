@@ -88,7 +88,39 @@
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
 
   <!-- Google Analytics GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does multisig work for Bitcoin inheritance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A multisig setup requires multiple private keys to authorize a Bitcoin transaction -- for example, 2 of 3 keys in a 2-of-3 multisig. For inheritance, this means no single key holder can access the Bitcoin alone. Common inheritance setups: (1) You hold one key, your estate attorney holds one key in escrow, your heir holds one key -- at death, attorney + heir can access the Bitcoin without you; (2) 2-of-3 with institutional custodian (Unchained, Casa) holding one key -- at death, custodian + heir unlock the wallet per the inheritance protocol; (3) 3-of-5 with geographically distributed keys for large positions. Multisig eliminates the single point of failure of a seed phrase."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best multisig setup for Bitcoin estate planning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most high-net-worth Bitcoin holders, a 2-of-3 multisig setup with an institutional custodian provides the best balance of security and inheritability: (1) You hold one hardware wallet (operational control); (2) A trusted family member or attorney holds a second hardware wallet (inheritance access); (3) An institutional custodian (Unchained Capital, Casa) holds the third key (recovery). At your death, the family member and custodian can access the Bitcoin using their two keys per an inheritance protocol established in advance. The Bitcoin cannot be moved by any single party alone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I set up multisig for my estate plan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Steps to set up multisig for estate planning: (1) Choose a multisig coordinator (Unchained Capital, Casa, Sparrow Wallet); (2) Acquire the appropriate number of hardware wallets (Ledger, Trezor, Coldcard); (3) Generate and secure each key with its own hardware device and seed phrase stored separately; (4) Document the multisig configuration (public keys, coordinator software, quorum requirement) in a technical document stored separately from the individual seed phrases; (5) Integrate into your estate plan with attorney guidance on trustee authority; (6) Test the setup periodically -- verify that the recovery process works before you actually need it."
+      }
+    }
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
