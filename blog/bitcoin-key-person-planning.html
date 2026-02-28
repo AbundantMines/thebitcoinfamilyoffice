@@ -20,10 +20,10 @@
   "@type": "Article",
   "headline": "Bitcoin Key-Person Planning: What Happens to Your Holdings If You're Incapacitated",
   "description": "Bitcoin incapacity planning: what happens to your holdings if you're incapacitated, how DPOA and revocable trusts protect your family, and how to address the key-person risk in Bitcoin businesses.",
-  "author": {"@type": "Person", "name": "Hal Franklin"},
+  "author": {"@type": "Person", "name": "Hal Franklin", "jobTitle": "Bitcoin Wealth Strategist"},
   "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-key-person-planning",
   "datePublished": "2026-02-25",
-  "dateModified": "2026-02-25",
+  "dateModified": "2026-02-28",
   "publisher": {"@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"}
 }
 </script>
@@ -35,6 +35,19 @@
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebitcoinfamilyoffice.com"},
     {"@type": "ListItem", "position": 2, "name": "Research", "item": "https://thebitcoinfamilyoffice.com/blog/"},
     {"@type": "ListItem", "position": 3, "name": "Bitcoin Key-Person Planning", "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-key-person-planning"}
+  ]
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What happens to Bitcoin if the owner becomes incapacitated?","acceptedAnswer":{"@type":"Answer","text":"If the Bitcoin holder becomes incapacitated with no planning, two problems compound: (1) No one may have legal authority to manage the Bitcoin — a power of attorney is needed but may not have explicit cryptocurrency language; (2) Even with legal authority, no one may have operational access — the seed phrases and hardware wallet locations may be unknown to anyone else. A standard will does nothing during incapacity; it only activates at death. Incapacity planning for Bitcoin requires a durable power of attorney with explicit digital asset provisions and a Letter of Instruction documenting custody access."}},
+    {"@type":"Question","name":"What is a durable power of attorney for Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"A durable power of attorney (DPOA) is a legal document authorizing a designated agent to manage your financial affairs if you become incapacitated. For Bitcoin, the DPOA must include explicit language authorizing the agent to manage digital assets, access cryptocurrency wallets, execute transactions, and manage custody arrangements. Generic DPOAs drafted before 2014 (when Bitcoin became mainstream) or without digital asset language may not provide adequate authority for your agent to act. RUFADAA (adopted in most states) provides a framework for digital asset access — your DPOA should incorporate this explicitly."}},
+    {"@type":"Question","name":"What is a Letter of Instruction for Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"A Letter of Instruction (LOI) is a private, non-legal document that provides your agent or executor with the practical information needed to access your Bitcoin: where the hardware wallet is stored, where the seed phrase is stored, whether a passphrase is used and where it is documented, which exchange accounts exist, how to access them, and step-by-step instructions for transferring the Bitcoin. Unlike a will, an LOI is not filed with the court and does not become public. It should be stored in a secure but accessible location, referenced in the DPOA and will, and updated whenever custody arrangements change."}},
+    {"@type":"Question","name":"How does multisig custody help with incapacity planning?","acceptedAnswer":{"@type":"Answer","text":"A 2-of-3 multisig arrangement can be structured so that: (1) the holder controls two keys during normal operations, (2) a trusted co-signer (spouse, adult child, or attorney) holds a third key, and (3) if incapacity occurs, the agent under the DPOA can coordinate with the co-signer to transact using the agent's key plus the co-signer's key — meeting the 2-of-3 threshold without requiring the incapacitated holder's participation. This is technically more robust than single-key custody with power of attorney, because it doesn't require the agent to have ever been given access to the holder's private key."}},
+    {"@type":"Question","name":"What is the key-person risk in Bitcoin for business owners?","acceptedAnswer":{"@type":"Answer","text":"Key-person risk for Bitcoin businesses means: if the person with custody knowledge or signing authority becomes incapacitated or dies, critical business operations may halt. For Bitcoin mining operations: hash rate may drop, mining rewards may accumulate without withdrawal, hardware may fail without authorized maintenance, and tax obligations may go unmet. Mitigations: separate custody of operating wallet from cold storage treasury; document the operational custody separately; designate a backup authorized operator; include Bitcoin operational provisions in the business continuity plan."}}
   ]
 }
 </script>
@@ -182,7 +195,22 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>This is the <strong>Bitcoin incapacity gap</strong>. And it is a more immediate, more likely threat than death for most holders in middle age. Here is what it looks like, why it matters, and exactly how to close it.</p>
 
-  <h2>The Incapacity Gap: Why Your Will Does Nothing</h2>
+  <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+    <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted,#6b6660);margin-bottom:1rem;">In This Guide</div>
+    <ol style="margin:0 0 0 1.25rem;">
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#incapacity-gap" style="color:var(--text-secondary);">The Incapacity Gap: Why Your Will Does Nothing</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#legal-tools" style="color:var(--text-secondary);">The Two Legal Tools That Actually Work</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#letter-of-instruction" style="color:var(--text-secondary);">The Letter of Instruction</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#key-person-problem" style="color:var(--text-secondary);">The Key-Person Problem</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#multisig-incapacity" style="color:var(--text-secondary);">Multisig as an Incapacity Planning Tool</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#mining-key-person" style="color:var(--text-secondary);">Bitcoin Mining and the Business Key-Person Risk</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#cognitive-decline" style="color:var(--text-secondary);">Planning for Cognitive Decline</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#complete-plan" style="color:var(--text-secondary);">The Complete Bitcoin Incapacity Plan</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <h2 id="incapacity-gap">The Incapacity Gap: Why Your Will Does Nothing</h2>
 
   <p>Estate planning documents are not all created equal. A will only speaks at death — it has no legal effect while you are alive, regardless of how incapacitated you become. If you are hospitalized and cannot manage your affairs, your will does not authorize anyone to access your bank accounts, sell your investments, or move your Bitcoin. It simply does not apply.</p>
 
@@ -197,10 +225,10 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <div class="scenario-box">
     <span class="scenario-label">Consider This Scenario</span>
-    <p>A 52-year-old holder suffers a severe stroke and is hospitalized for three months in a state requiring court-supervised guardianship before anyone can legally manage his affairs. He holds 18 BTC on a hardware wallet. His wife knows the wallet exists but not where the seed phrase is stored. His attorney knows about the Bitcoin but has no access. For ninety days, his family cannot pay the mortgage from the Bitcoin, cannot rebalance the position, and cannot do anything except wait — all while the legal system slowly grinds toward authorizing the wife to act. This scenario is not hypothetical. Va<a href="/blog/bitcoin-family-office-vs-ria">Bitcoin family office vs. RIA comparison</a>nts of it occur regularly.</p>
+    <p>A 52-year-old holder suffers a severe stroke and is hospitalized for three months in a state requiring court-supervised guardianship before anyone can legally manage his affairs. He holds 18 BTC on a hardware wallet. His wife knows the wallet exists but not where the seed phrase is stored. His attorney knows about the Bitcoin but has no access. For ninety days, his family cannot pay the mortgage from the Bitcoin, cannot rebalance the position, and cannot do anything except wait — all while the legal system slowly grinds toward authorizing the wife to act. This scenario is not hypothetical. Variants of it occur regularly.</p>
   </div>
 
-  <h2>The Two Legal Tools That Actually Work During Incapacity</h2>
+  <h2 id="legal-tools">The Two Legal Tools That Actually Work During Incapacity</h2>
 
   <p>Two planning instruments — and only two — provide meaningful legal authority during incapacity. A will is not one of them.</p>
 
@@ -243,7 +271,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>The difference between a DPOA and a trust matters most in one specific scenario: financial institutions. Banks, exchanges, and custodians sometimes refuse to honor a DPOA — particularly an older one — citing institutional policy. A trust, by contrast, gives your successor trustee the legal title to act; there is nothing to refuse. For Bitcoin held on self-custody, both instruments provide legal authority, but only the Letter of Instruction (discussed below) provides operational access.</p>
 
-  <h2>The Letter of Instruction: Bridging Legal Authority and Operational Access</h2>
+  <h2 id="letter-of-instruction">The Letter of Instruction: Bridging Legal Authority and Operational Access</h2>
 
   <p>Legal authority is only half the solution. Your attorney-in-fact or successor trustee also needs to know <em>how</em> to actually access the Bitcoin. This is the function of a <strong>Letter of Instruction (LOI)</strong> — a separate, non-legal document that provides the operational details your agent needs to carry out their authority.</p>
 
@@ -258,14 +286,14 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
     <li>Instructions for any ongoing obligations — scheduled purchases, lending positions, mining operations</li>
   </ul>
 
-  <p>The LOI is a living document. Update it whenever your custody <a href="/blog/bitcoin-family-office-setup-guide">how to set up a Bitcoin family office</a> changes. Store it securely but accessibly — a fireproof safe at home, with a copy in your attorney's files or in a sealed envelope your successor trustee knows to access on incapacity.</p>
+  <p>The LOI is a living document. Update it whenever your custody arrangement changes. Store it securely but accessibly — a fireproof safe at home, with a copy in your attorney's files or in a sealed envelope your successor trustee knows to access on incapacity.</p>
 
   <div class="callout-box">
     <span class="callout-label">Free Resource</span>
     <p>We've built a structured template for creating your Bitcoin Letter of Instruction — covering hardware wallets, seed phrase storage, exchange accounts, and multi-sig setups. <a href="/tools/bitcoin-letter-of-instruction">Download the Bitcoin Letter of Instruction Template →</a></p>
   </div>
 
-  <h2>The Key-Person Problem: When You Are the Only One Who Knows</h2>
+  <h2 id="key-person-problem">The Key-Person Problem: When You Are the Only One Who Knows</h2>
 
   <p>The deepest vulnerability in Bitcoin incapacity planning is not a legal gap — it is a human one. Many Bitcoin holders are the sole custodians of their own keys. The seed phrase lives in their head, or in a location known only to them. This is, in one sense, optimal security: it eliminates single points of failure from trusted third parties. But it creates a different single point of failure: you.</p>
 
@@ -283,7 +311,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>The solution is not to sacrifice security by making your seed phrase widely known. The solution is a <strong>structured, documented custody arrangement</strong> that gives your designated agent both legal authority and the ability to retrieve operational access when needed — without exposing that access to theft under normal circumstances.</p>
 
-  <h2>Multisig as an Incapacity Planning Tool</h2>
+  <h2 id="multisig-incapacity">Multisig as an Incapacity Planning Tool</h2>
 
   <p>For holders with meaningful Bitcoin positions, <strong>multisignature (multisig) custody</strong> offers a technically elegant solution to the key-person incapacity problem. A 2-of-3 multisig arrangement, for example, requires any two of three private keys to authorize a transaction.</p>
 
@@ -310,7 +338,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
     <p>Setting up a multisig arrangement or creating new estate planning documents after cognitive decline has begun is legally risky. Courts can challenge transactions and documents created when someone lacked capacity. The time to plan is before any cognitive symptoms appear — the same principle that applies to prenuptial agreements and asset protection structures. Plan while you are unambiguously competent.</p>
   </div>
 
-  <h2>Bitcoin Mining and the Business Key-Person Risk</h2>
+  <h2 id="mining-key-person">Bitcoin Mining and the Business Key-Person Risk</h2>
 
   <p>For Bitcoin miners and operators of Bitcoin-adjacent businesses, incapacity of the key person is not just an estate planning concern — it is a <strong>business continuity risk</strong>. This is the key-person problem in its most acute form.</p>
 
@@ -345,7 +373,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
     <p>Business owners face additional layers of complexity in Bitcoin estate planning — business succession, custody transfer on sale or dissolution, and tax planning across the business and personal level. See our detailed guide: <a href="/blog/bitcoin-estate-planning-business-owners">Bitcoin Estate Planning for Business Owners →</a></p>
   </div>
 
-  <h2>Planning for Cognitive Decline: The Timing Problem</h2>
+  <h2 id="cognitive-decline">Planning for Cognitive Decline: The Timing Problem</h2>
 
   <p>Sudden incapacity — a stroke, an accident — is a discrete event. Cognitive decline is a process. And that process creates a specific timing challenge: there is a window during which a person is legally capable of executing estate planning documents but functionally compromised in their judgment. That window is where the most costly mistakes happen.</p>
 
@@ -369,7 +397,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>The conversation between a Bitcoin holder and their successor trustee or agent should happen while the holder is sharp, healthy, and capable of walking through every detail. Do not leave this to a deathbed conversation or a confused family member rifling through drawers looking for a seed phrase while the holder lies in an ICU.</p>
 
-  <h2>Putting It All Together: The Complete Bitcoin Incapacity Plan</h2>
+  <h2 id="complete-plan">Putting It All Together: The Complete Bitcoin Incapacity Plan</h2>
 
   <p>A complete Bitcoin incapacity plan has four components, each addressing a different layer of the problem:</p>
 
@@ -387,8 +415,33 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>Start with the DPOA and the Letter of Instruction. Those two documents, properly executed, close the most dangerous gap for most Bitcoin holders. Build from there. But start today — because incapacity, unlike death, can arrive without warning and without a grace period for planning.</p>
 
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <div style="margin: 2rem 0;">
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What happens to Bitcoin if the owner becomes incapacitated?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Two compounding problems: (1) No legal authority — a DPOA with explicit cryptocurrency language is needed; a standard will does nothing during incapacity. (2) No operational access — seed phrases and hardware wallet locations may be unknown. Both must be solved: legal authority (DPOA) + operational access (Letter of Instruction).</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is a durable power of attorney for Bitcoin?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">A legal document authorizing an agent to manage your financial affairs if incapacitated. For Bitcoin: must include explicit language to manage digital assets, access cryptocurrency wallets, execute transactions, and manage custody. Generic DPOAs without digital asset language may not provide adequate authority. Include RUFADAA provisions explicitly.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is a Letter of Instruction for Bitcoin?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">A private, non-legal document with the practical information needed to access Bitcoin: hardware wallet location, seed phrase location, passphrase documentation, exchange accounts, and step-by-step transfer instructions. Unlike a will, it's not filed with courts and remains private. Store securely, reference it in the DPOA and will, update whenever custody changes.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">How does multisig help with incapacity planning?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">2-of-3 multisig can be structured so: (1) holder controls two keys normally, (2) trusted co-signer holds third key, (3) on incapacity, agent under DPOA + co-signer can transact (2-of-3 met) without the incapacitated holder's participation. More robust than single-key custody with DPOA — doesn't require giving the agent access to the holder's private key.</p>
+    </div>
+    <div>
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the key-person risk in Bitcoin for business owners?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">If the person with custody knowledge becomes incapacitated: mining rewards accumulate without withdrawal, hardware fails without authorized maintenance, tax obligations go unmet. Mitigate: separate operational wallet from cold storage treasury; document operational custody separately; designate a backup authorized operator; include Bitcoin provisions in the business continuity plan.</p>
+    </div>
+  </div>
+  <hr>
   <div class="author-box">
-    <div class="author-avatar">HT</div>
+    <div class="author-avatar">HF</div>
     <div class="author-info">
       <div class="author-name">Hal Franklin</div>
       <div class="author-title">The <a href="/blog/building-bitcoin-native-family-office" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">Bitcoin <a href="/blog/bitcoin-family-office-vs-wealth-manager" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">family office</a></a></div>
