@@ -173,8 +173,9 @@
   }
 
   /* ── STRATEGY PIPELINE ── */
-  .pipeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-  @media (max-width: 900px) { .pipeline { grid-template-columns: repeat(2, 1fr); } }
+  .pipeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  @media (max-width: 1200px) { .pipeline { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 900px)  { .pipeline { grid-template-columns: repeat(2, 1fr); } }
 
   .stage-col { }
   .stage-header {
@@ -186,6 +187,7 @@
   .stage-header.paper    { background: rgba(77,157,224,.15); color: var(--blue); }
   .stage-header.research { background: rgba(155,89,182,.15); color: var(--purple); }
   .stage-header.queue    { background: rgba(112,112,160,.15); color: var(--muted); }
+  .stage-header.archived { background: rgba(50,50,70,.4);     color: var(--dim); }
 
   .strategy-chip {
     background: var(--surface);
@@ -738,8 +740,8 @@ function renderPortfolio(d) {
 
 function renderPipeline(d) {
   const strategies = d.strategies || [];
-  const stages = ['live','paper','research','queue'];
-  const stageLabels = { live:'🟢 Live (Automated)', paper:'🔵 Paper Trading', research:'🟣 Research', queue:'⬜ Queue' };
+  const stages = ['live','paper','research','queue','archived'];
+  const stageLabels = { live:'🟢 Live (Automated)', paper:'🔵 Paper Trading', research:'🟣 Research', queue:'⬜ Queue', archived:'🗄 Archived' };
 
   const cols = stages.map(stage => {
     const s = strategies.filter(x => x.stage === stage);
