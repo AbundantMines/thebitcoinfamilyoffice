@@ -48,6 +48,54 @@
 </script>
 
 <!-- GA4 -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the biggest risk to Bitcoin inheritance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lost or inaccessible keys are the primary failure mode. Unlike bank accounts, Bitcoin has no password reset or identity verification recovery. If your heirs cannot find your private keys or seed phrases, the Bitcoin is permanently lost regardless of what your estate plan says. The legal structure and the technical access system must work together — one without the other fails."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a trust protect Bitcoin from being lost at death?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A trust provides legal structure and governance for Bitcoin inheritance, but it does not automatically provide key access. A trust with a well-designed directed trust provision ensures the right person has legal authority to access Bitcoin — but that person still needs the actual private keys or seed phrases. The trust must be paired with a technical succession document that provides step-by-step access instructions, stored in a location the trustee can access."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is multisig custody and why does it matter for inheritance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multi-signature (multisig) custody requires multiple private keys to authorize a Bitcoin transaction — for example, 2-of-3 keys must sign. For inheritance purposes, this means no single lost key results in permanent Bitcoin loss. A 2-of-3 multisig with keys distributed across the holder, a trusted co-signer, and a geographically separate backup means heirs can access Bitcoin even if one key is lost or a key holder dies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a technical succession document for Bitcoin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A technical succession document is a step-by-step guide that allows a designated heir or trustee to access and transfer Bitcoin without the original holder's assistance. It contains: wallet software and version, how to install and set up the wallet, where seed phrases and hardware wallets are stored, the signing threshold for multisig, how to verify addresses before sending, and who to call for technical assistance. It does NOT contain the private keys or seed phrases themselves — those are stored separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should I test my Bitcoin inheritance plan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Annually at minimum. Test your succession plan by having your designated heir or trustee walk through the recovery process — ideally with a small test amount of Bitcoin in a practice wallet. Document the drill results and update your technical succession document to reflect any issues discovered. Also test after any changes: new hardware wallet, new software version, new multisig configuration, or change in key holder roster."
+      }
+    }
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
@@ -166,7 +214,7 @@ footer a:hover{color:var(--accent)}
   <p class="article-breadcrumb">
     <a href="/">Home</a> &rsaquo;
     <a href="/blog/">Research</a> &rsaquo;
-    <a href="/blog/bitcoin-inheritance-planning.html">Bitcoin Inheritance Planning</a>
+    <a href="/blog/bitcoin-inheritance-planning">Bitcoin Inheritance Planning</a>
   </p>
   <h1>How to Protect Bitcoin Inheritance: Multisig, <a href="/tools/bitcoin-trust-selector">Bitcoin Trust Type Selector tool</a>s, and Key Handoff Protocols</h1>
   <p class="article-meta">The Bitcoin Family Office &nbsp;·&nbsp; 11 min read &nbsp;·&nbsp; 2026-02-24</p>
@@ -175,7 +223,7 @@ footer a:hover{color:var(--accent)}
 <article>
 
   <div class="article-author">
-    <div class="author-avatar">₿</div>
+    <div class="author-avatar" style="font-size:0.9rem;font-weight:500;font-family:var(--sans);">HF</div>
     <div class="author-info">
       <strong>The <a href="/blog/building-bitcoin-native-family-office" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">Bitcoin <a href="/blog/bitcoin-family-office-vs-wealth-manager" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">family office</a></a></strong>
       <p>Independent research and advisory for families managing significant Bitcoin wealth. We do not manage assets or sell financial products. Our work is educational and structural — custody architecture, estate planning, <a href="/blog/bitcoin-tax-strategy-hub">Bitcoin tax strategy hub</a>, and governance.</p>
@@ -186,9 +234,26 @@ footer a:hover{color:var(--accent)}
 
   <p>Protecting a Bitcoin inheritance is a different problem from protecting Bitcoin during your lifetime. During your lifetime, the threat is external: theft, phishing, exchange failure, loss. After your death, the threat is internal: structure failure, documentation failure, and heir incapacity. This guide addresses both, with specific attention to the three pillars that actually determine whether your heirs receive your Bitcoin: <strong>multisig custody</strong>, <strong>legal trust structures</strong>, and <strong>documented key handoff protocols</strong>.</p>
 
-  <p>This guide is meant to be shared with your estate attorney. It is not a substitute for legal counsel — it is a framework to make that conversation more precise. Start with the <a href="/blog/bitcoin-inheritance-planning.html">Bitcoin inheritance planning framework</a> for the foundational context.</p>
+  <p>This guide is meant to be shared with your estate attorney. It is not a substitute for legal counsel — it is a framework to make that conversation more precise. Start with the <a href="/blog/bitcoin-inheritance-planning">Bitcoin inheritance planning framework</a> for the foundational context.</p>
 
-  <h2>The Three Failure Modes of Bitcoin Inheritance</h2>
+  <div style="background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+    <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted,#6b6660);margin-bottom:1rem;">In This Guide</div>
+    <ol style="margin:0 0 0 1.25rem;">
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#failure-modes" style="color:var(--text-secondary);">The Three Failure Modes of Bitcoin Inheritance</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#step-1" style="color:var(--text-secondary);">Step 1: Identify Your Threat Model</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#step-2" style="color:var(--text-secondary);">Step 2: Implement Multi-Signature Custody</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#step-3" style="color:var(--text-secondary);">Step 3: Establish a Legal Trust Structure</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#step-4" style="color:var(--text-secondary);">Step 4: Create a Technical Succession Document</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#step-5" style="color:var(--text-secondary);">Step 5: Educate Designated Heirs</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#step-6" style="color:var(--text-secondary);">Step 6: Execute Succession Drills</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#step-7" style="color:var(--text-secondary);">Step 7: Coordinate Legal and Technical Documents</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#custody-comparison" style="color:var(--text-secondary);">Custody Architecture Comparison</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#checklist" style="color:var(--text-secondary);">The Bitcoin Inheritance Protection Checklist</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <h2 id="failure-modes">The Three Failure Modes of Bitcoin Inheritance</h2>
 
   <p>Before designing protections, understand what you're protecting against:</p>
 
@@ -198,7 +263,7 @@ footer a:hover{color:var(--accent)}
 
   <p><strong>Coordination failure</strong> occurs when the legal layer and technical layer don't reference each other. The trust authorizes the trustee to manage Bitcoin. The seed phrase is stored separately. Nobody told the trustee where the seed phrase is. Or the technical document exists but is stored with the attorney, who doesn't know it's there because nobody told them. The solution is explicit cross-referencing and regular coordination reviews.</p>
 
-  <h2>Step 1: Identify Your Threat Model</h2>
+  <h2 id="step-1">Step 1: Identify Your Threat Model</h2>
 
   <div class="step-block">
     <div class="step-number">Step 1 of 7</div>
@@ -219,7 +284,7 @@ footer a:hover{color:var(--accent)}
 
   <p>Rank these threats by probability and severity given your specific situation. The architecture below addresses all of them in varying degrees — your specific design choices should be calibrated to your ranked threat model.</p>
 
-  <h2>Step 2: Implement Multi-Signature Custody</h2>
+  <h2 id="step-2">Step 2: Implement Multi-Signature Custody</h2>
 
   <div class="step-block">
     <div class="step-number">Step 2 of 7</div>
@@ -239,7 +304,7 @@ footer a:hover{color:var(--accent)}
     <li><strong>2-of-3 with time-lock:</strong> An advanced configuration where a backup transaction, pre-signed by the owner, becomes valid after a specified time period has passed without a refresh. Provides automatic inheritance trigger without requiring heirs to initiate legal proceedings.</li>
   </ul>
 
-  <p>See the full <a href="/blog/bitcoin-multisig-family-office-custody.html">multisig custody architecture guide</a> for the detailed technical implementation. For inheritance purposes, the key requirement is that the signing threshold can be met without your participation.</p>
+  <p>See the full <a href="/blog/bitcoin-multisig-family-office-custody">multisig custody architecture guide</a> for the detailed technical implementation. For inheritance purposes, the key requirement is that the signing threshold can be met without your participation.</p>
 
   <h3>Geographic and Institutional Distribution</h3>
 
@@ -253,7 +318,7 @@ footer a:hover{color:var(--accent)}
 
   <p>After your death, Keys 2 and 3 provide the 2-of-3 required to move funds — without needing your key. Your heirs are never locked out as long as the two non-owner keys are accessible per the technical succession document.</p>
 
-  <h2>Step 3: <a href="/blog/bitcoin-family-office-setup-guide">how to set up a Bitcoin family office</a> a Legal Trust Structure</h2>
+  <h2 id="step-3">Step 3: Establish a Legal Trust Structure</h2>
 
   <div class="step-block">
     <div class="step-number">Step 3 of 7</div>
@@ -274,9 +339,9 @@ footer a:hover{color:var(--accent)}
     <li><strong>Estate tax efficiency:</strong> <a href="/blog/bitcoin-irrevocable-trust" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">irrevocable trust</a> structures can remove Bitcoin appreciation from your taxable estate</li>
   </ul>
 
-  <p>For the full trust setup process, see the companion guide: <a href="/blog/how-to-set-up-bitcoin-trust.html">How to Set Up a Bitcoin Trust</a>.</p>
+  <p>For the full trust setup process, see the companion guide: <a href="/blog/how-to-set-up-bitcoin-trust">How to Set Up a Bitcoin Trust</a>.</p>
 
-  <h2>Step 4: Create a Technical Succession Document</h2>
+  <h2 id="step-4">Step 4: Create a Technical Succession Document</h2>
 
   <div class="step-block">
     <div class="step-number">Step 4 of 7</div>
@@ -300,10 +365,10 @@ footer a:hover{color:var(--accent)}
   <p>This document should be stored encrypted, with the decryption instructions (not the key itself) held by your estate attorney or in a sealed envelope with your will. Multiple copies in different locations provide redundancy. Never store the technical succession document in the same location as the private keys it describes.</p>
 
   <div class="callout">
-    <p><strong>Critical principle:</strong> The technical succession document contains access instructions and key locations. It does not contain the private keys or seed phrases themselves. Keep operational documents and cryptographic mate<a href="/blog/bitcoin-family-office-vs-ria">Bitcoin family office vs. RIA comparison</a>l separated at all times.</p>
+    <p><strong>Critical principle:</strong> The technical succession document contains access instructions and key locations. It does not contain the private keys or seed phrases themselves. Keep operational documents and cryptographic material separated at all times.</p>
   </div>
 
-  <h2>Step 5: Educate Designated Heirs</h2>
+  <h2 id="step-5">Step 5: Educate Designated Heirs</h2>
 
   <div class="step-block">
     <div class="step-number">Step 5 of 7</div>
@@ -327,7 +392,7 @@ footer a:hover{color:var(--accent)}
 
   <p>Consider including in your technical succession document a recommendation to engage a <a href="/services/">qualified Bitcoin estate specialist</a> to assist with the initial recovery and transfer process. The cost of professional assistance is trivial compared to the risk of an error that loses access permanently.</p>
 
-  <h2>Step 6: Execute and Document Succession Drills</h2>
+  <h2 id="step-6">Step 6: Execute and Document Succession Drills</h2>
 
   <div class="step-block">
     <div class="step-number">Step 6 of 7</div>
@@ -356,7 +421,7 @@ footer a:hover{color:var(--accent)}
 
   <p>Sign and date a brief memo documenting each drill, keep it with the trust records, and provide a copy to your estate attorney. This creates an administrative trail that demonstrates active maintenance of the succession plan — which can matter in estate administration.</p>
 
-  <h2>Step 7: Coordinate Legal and Technical Documents</h2>
+  <h2 id="step-7">Step 7: Coordinate Legal and Technical Documents</h2>
 
   <div class="step-block">
     <div class="step-number">Step 7 of 7</div>
@@ -376,7 +441,84 @@ footer a:hover{color:var(--accent)}
 
   <p>Review this coordination annually with your estate attorney. Laws change, your personal circumstances change, and the technical standards for Bitcoin custody evolve. A plan that was well-coordinated two years ago may have gaps today.</p>
 
-  <h2>The Bitcoin Inheritance Protection Checklist</h2>
+
+  <h2 id="custody-comparison">Custody Architecture Comparison: Which Is Right for Inheritance?</h2>
+
+  <p>The custody architecture you choose determines not only how Bitcoin is protected while you're alive, but how accessible it is for heirs after your death. Each architecture has different inheritance implications:</p>
+
+  <div style="overflow-x:auto;margin:1.5rem 0;">
+  <table style="width:100%;border-collapse:collapse;font-family:var(--sans);font-size:0.82rem;">
+    <thead>
+      <tr>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Architecture</th>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Security</th>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Inheritance Risk</th>
+        <th style="text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid rgba(201,168,76,0.3);color:var(--accent);font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.7rem;">Recommended?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">Exchange/custodian only</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#e05252;">Low — counterparty risk</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Lower — standard account recovery</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#e05252;">No — not your keys</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">Single-key hardware wallet</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Good — self-custody</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#e05252;">High — single point of failure; if seed lost, BTC lost</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);">Acceptable only with rock-solid seed backup</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">2-of-3 multisig</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Strong — no single point of failure</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Low — heirs need 2 of 3 keys; loss of 1 key not fatal</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Yes — minimum for significant holdings</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">3-of-5 multisig</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Strongest — 2 keys can be lost</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Very low — robust against multiple simultaneous failures</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Yes — preferred for $5M+ positions</td>
+      </tr>
+      <tr>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--text);">Collaborative custody (Unchained, Casa)</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Strong — institutional co-signer</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Low — provider has inheritance recovery process</td>
+        <td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#6aaa6a;">Yes — excellent for families needing technical support</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <hr>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div style="margin: 2rem 0;">
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the biggest risk to Bitcoin inheritance?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Lost or inaccessible keys. Unlike bank accounts, Bitcoin has no password reset or recovery. If heirs can't find your private keys or seed phrases, the Bitcoin is permanently gone regardless of what your estate plan says. The legal structure and the technical access system must work together — one without the other fails.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Does a trust protect Bitcoin from being lost at death?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">A trust provides legal authority and governance but doesn't automatically provide key access. The trust must be paired with a technical succession document — step-by-step instructions stored where the trustee can find them. Legal structure without technical access is incomplete; technical access without legal structure creates governance chaos.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is multisig custody and why does it matter for inheritance?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Multi-signature custody requires multiple private keys to authorize a transaction. A 2-of-3 multisig means no single lost key results in permanent Bitcoin loss — heirs can recover even if one key is gone. This is the most important technical upgrade most Bitcoin holders can make for inheritance protection.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is a technical succession document?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">A step-by-step guide a designated heir or trustee can follow to access and transfer Bitcoin without you. It contains: wallet software and version, setup instructions, where seed phrases and hardware wallets are stored, signing threshold for multisig, how to verify addresses, and technical support contacts. It does NOT contain the private keys themselves — those are stored separately.</p>
+    </div>
+    <div>
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">How often should I test my Bitcoin inheritance plan?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Annually at minimum — and after any changes (new hardware wallet, software upgrade, new multisig config, change in key holders). Have your designated heir walk through the recovery process with a test wallet. Document the drill and update the technical succession document based on what was discovered.</p>
+    </div>
+  </div>
+
+  <h2 id="checklist">The Bitcoin Inheritance Protection Checklist</h2>
 
   <table>
     <thead>
@@ -415,15 +557,15 @@ footer a:hover{color:var(--accent)}
 <div class="related">
   <p class="related-label">Related Reading</p>
   <div class="related-grid">
-    <a href="/blog/how-to-set-up-bitcoin-trust.html" class="related-card">
+    <a href="/blog/how-to-set-up-bitcoin-trust" class="related-card">
       <h4>How to Set Up a Bitcoin Trust</h4>
       <p>Step-by-step guide to establishing a trust that legally governs your Bitcoin — from trust type selection to funding and succession drills.</p>
     </a>
-    <a href="/blog/bitcoin-custody-architecture.html" class="related-card">
+    <a href="/blog/bitcoin-custody-architecture" class="related-card">
       <h4>Bitcoin Custody Architecture</h4>
       <p>Deep-dive technical framework for custody design — hardware selection, geographic distribution, and operational security protocols.</p>
     </a>
-    <a href="/blog/bitcoin-generational-wealth-transfer.html" class="related-card">
+    <a href="/blog/bitcoin-generational-wealth-transfer" class="related-card">
       <h4>Passing Bitcoin Across Generations</h4>
       <p>Comprehensive framework for multi-generational Bitcoin <a href="/blog/bitcoin-wealth-transfer-complete-guide">complete guide to Bitcoin wealth transfer</a> — from annual gifting to <a href="/blog/bitcoin-dynasty-trust-complete-guide">dynasty trust</a>s.</p>
     </a>
