@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NMM Mission Control — Hal</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --bg:       #0a0a0f;
+    --surface:  #12121a;
+    --card:     #1a1a28;
+    --border:   #2a2a3d;
+    --accent:   #f7931a;
+    --green:    #00d68f;
+    --red:      #ff3d71;
+    --yellow:   #ffb547;
+    --blue:     #4d9de0;
+    --purple:   #9b59b6;
+    --text:     #e8e8f0;
+    --muted:    #7070a0;
+    --dim:      #3a3a55;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-left { display: flex; align-items: center; gap: 20px; }
+  .logo { font-size: 16px; font-weight: 700; color: var(--accent); letter-spacing: 2px; }
+  .logo span { color: var(--muted); font-weight: 400; }
+  .daemon-status {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; color: var(--muted);
+  }
+  .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  .refresh-timer { font-size: 11px; color: var(--muted); }
+  .countdown { color: var(--accent); font-weight: 700; }
+
+  /* ── MARKET BAR ── */
+  .market-bar {
+    background: var(--surface);
+    border-bottom: 2px solid var(--accent);
+    padding: 10px 24px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .metric { display: flex; flex-direction: column; }
+  .metric-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .metric-value { font-size: 20px; font-weight: 700; }
+  .metric-value.btc { color: var(--accent); font-size: 26px; }
+  .metric-value.positive { color: var(--green); }
+  .metric-value.negative { color: var(--red); }
+  .metric-value.neutral { color: var(--text); }
+  .metric-sub { font-size: 10px; color: var(--muted); }
+
+  /* Fear & Greed Gauge */
+  .fg-gauge {
+    display: flex; flex-direction: column; align-items: center;
+    position: relative;
+  }
+  .fg-value { font-size: 24px; font-weight: 700; }
+  .fg-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+  .fg-bar {
+    width: 100px; height: 8px; border-radius: 4px;
+    background: linear-gradient(to right, #ff3d71, #ffb547, #00d68f);
+    margin: 4px 0;
+    position: relative;
+  }
+  .fg-pointer {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: white;
+    border: 2px solid var(--bg);
+    position: absolute;
+    top: -1px;
+    transform: translateX(-50%);
+    transition: left 1s ease;
+  }
+
+  /* ── MAIN GRID ── */
+  .main { padding: 16px 24px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  @media (max-width: 1200px) { .main { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 768px)  { .main { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .card.full-width { grid-column: 1 / -1; }
+  .card.two-thirds { grid-column: span 2; }
+
+  .card-header {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-title {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--muted); font-weight: 600;
+  }
+  .card-badge {
+    font-size: 10px; padding: 2px 8px; border-radius: 12px;
+    background: var(--dim); color: var(--text);
+  }
+  .card-body { padding: 14px; }
+
+  /* ── PORTFOLIO SUMMARY ── */
+  .pf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .pf-stat { display: flex; flex-direction: column; gap: 2px; }
+  .pf-stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; }
+  .pf-stat-value { font-size: 18px; font-weight: 700; }
+
+  /* ── OPEN POSITIONS ── */
+  .position-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+  }
+  .position-card.long  { border-left: 3px solid var(--green); }
+  .position-card.short { border-left: 3px solid var(--red); }
+  .pos-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+  .pos-name { font-weight: 700; font-size: 13px; }
+  .pos-pnl { font-size: 16px; font-weight: 700; }
+  .pos-meta { display: flex; gap: 12px; font-size: 11px; color: var(--muted); }
+  .pos-progress { margin-top: 8px; }
+  .prog-bar-bg { background: var(--dim); border-radius: 3px; height: 4px; position: relative; margin-top: 3px; }
+  .prog-bar-fill { height: 4px; border-radius: 3px; transition: width .5s ease; }
+  .prog-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+  /* ── STAGED ORDERS ── */
+  .staged-card {
+    background: rgba(247,147,26,.08);
+    border: 1px solid rgba(247,147,26,.3);
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+  .staged-title { font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .staged-meta { font-size: 11px; color: var(--muted); }
+  .staged-cmd {
+    background: var(--bg); border-radius: 4px; padding: 8px;
+    font-size: 11px; color: var(--text); margin-top: 8px;
+    white-space: pre-wrap;
+  }
+  .go-badge {
+    display: inline-block; padding: 3px 10px; border-radius: 4px;
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    background: rgba(0,214,143,.15); color: var(--green); border: 1px solid var(--green);
+  }
+
+  /* ── STRATEGY PIPELINE ── */
+  .pipeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  @media (max-width: 900px) { .pipeline { grid-template-columns: repeat(2, 1fr); } }
+
+  .stage-col { }
+  .stage-header {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+    padding: 6px 10px; border-radius: 5px 5px 0 0; font-weight: 700;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .stage-header.live     { background: rgba(0,214,143,.15); color: var(--green); }
+  .stage-header.paper    { background: rgba(77,157,224,.15); color: var(--blue); }
+  .stage-header.research { background: rgba(155,89,182,.15); color: var(--purple); }
+  .stage-header.queue    { background: rgba(112,112,160,.15); color: var(--muted); }
+
+  .strategy-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0 0 4px 4px;
+    padding: 8px 10px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .strategy-chip:hover { background: var(--dim); }
+  .chip-name { font-weight: 700; font-size: 12px; }
+  .chip-id { font-size: 10px; color: var(--muted); }
+  .chip-status { font-size: 10px; color: var(--accent); margin-top: 2px; }
+  .chip-pnl { font-size: 11px; font-weight: 700; }
+
+  /* ── TRADES TABLE ── */
+  .trade-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .trade-table th {
+    text-align: left; padding: 4px 8px;
+    color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+  }
+  .trade-table td { padding: 5px 8px; border-bottom: 1px solid rgba(42,42,61,.5); }
+  .trade-table tr:hover td { background: var(--surface); }
+  .win  { color: var(--green); }
+  .lose { color: var(--red); }
+  .neutral { color: var(--muted); }
+
+  /* ── FUNDING RATES ── */
+  .funding-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .funding-row {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 8px 10px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .funding-exchange { font-weight: 700; font-size: 12px; }
+  .funding-rate { font-size: 14px; font-weight: 700; }
+  .funding-ann { font-size: 10px; color: var(--muted); }
+
+  /* ── SIGNAL LOG ── */
+  .signal-log { max-height: 280px; overflow-y: auto; }
+  .signal-entry {
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(42,42,61,.4);
+    font-size: 11px;
+    font-family: 'SF Mono', monospace;
+    color: var(--muted);
+    word-break: break-all;
+  }
+  .signal-entry .ts { color: var(--dim); font-size: 10px; }
+  .signal-entry .content { color: var(--text); }
+  .signal-entry.highlight .content { color: var(--accent); }
+
+  /* ── DATA FRESHNESS ── */
+  .freshness-bar {
+    display: flex; gap: 12px; align-items: center;
+    font-size: 10px; color: var(--muted);
+  }
+  .fresh-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .fresh-dot.live   { background: var(--green); animation: pulse 1.5s infinite; }
+  .fresh-dot.recent { background: var(--yellow); }
+  .fresh-dot.stale  { background: var(--red); }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 2px; }
+
+  /* ── EMPTY STATE ── */
+  .empty { color: var(--muted); font-size: 12px; padding: 16px; text-align: center; }
+
+  /* ── STRATEGY MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.7); z-index: 200;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    max-width: 560px; width: 90%;
+    max-height: 80vh; overflow-y: auto;
+  }
+  .modal-close {
+    cursor: pointer; color: var(--muted); float: right;
+    font-size: 18px; background: none; border: none; color: var(--muted);
+  }
+  .modal h3 { color: var(--accent); margin-bottom: 12px; }
+  .modal-field { margin-bottom: 10px; }
+  .modal-field label { font-size: 10px; color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 2px; }
+  .modal-field p { font-size: 12px; color: var(--text); }
+
+  /* ── LOADING ── */
+  .loading { color: var(--muted); text-align: center; padding: 40px; }
+
+  .tag {
+    display: inline-block; font-size: 9px; padding: 1px 6px; border-radius: 3px;
+    text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-right: 4px;
+  }
+  .tag.live     { background: rgba(0,214,143,.2); color: var(--green); }
+  .tag.paper    { background: rgba(77,157,224,.2); color: var(--blue); }
+  .tag.research { background: rgba(155,89,182,.2); color: var(--purple); }
+  .tag.queue    { background: rgba(112,112,160,.2); color: var(--muted); }
+  .tag.long     { background: rgba(0,214,143,.15); color: var(--green); }
+  .tag.short    { background: rgba(255,61,113,.15); color: var(--red); }
+
+  .last-update { font-size: 10px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <div class="logo">NMM <span>/ Mission Control</span></div>
+    <div class="daemon-status">
+      <div class="pulse" id="daemonDot"></div>
+      <span id="daemonLabel">Daemon loading...</span>
+    </div>
+  </div>
+  <div style="display:flex;gap:20px;align-items:center">
+    <div class="freshness-bar">
+      <div class="fresh-dot live"></div><span>Market: live</span>
+      <div class="fresh-dot" id="stratFreshDot" style="background:var(--muted)"></div><span>Strategy: <span id="stratFreshLabel">loading</span></span>
+    </div>
+    <div class="refresh-timer">Next refresh: <span class="countdown" id="countdown">30</span>s</div>
+  </div>
+</div>
+
+<!-- MARKET BAR -->
+<div class="market-bar">
+  <div class="metric">
+    <div class="metric-label">BTC / USD</div>
+    <div class="metric-value btc" id="btcPrice">—</div>
+    <div class="metric-sub" id="btc24h">24h: loading...</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">24h Range</div>
+    <div class="metric-value neutral" id="btcRange">—</div>
+    <div class="metric-sub" id="btcVol">Vol: loading...</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Fear & Greed</div>
+    <div id="fgContainer">
+      <div class="fg-gauge">
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <div class="fg-value" id="fgValue">—</div>
+          <div class="fg-label" id="fgLabel" style="color:var(--muted)">—</div>
+        </div>
+        <div class="fg-bar"><div class="fg-pointer" id="fgPointer" style="left:50%"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">BTC Funding (8h)</div>
+    <div class="metric-value" id="fundingRate">—</div>
+    <div class="metric-sub" id="fundingAnn">Annualized: loading...</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Market Cap</div>
+    <div class="metric-value neutral" id="btcMcap">—</div>
+    <div class="metric-sub" id="btcDom">Dominance: loading...</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Paper P&amp;L</div>
+    <div class="metric-value" id="paperPnl">—</div>
+    <div class="metric-sub" id="paperWinRate">Win rate: loading...</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Staged Orders</div>
+    <div class="metric-value" id="stagedCount" style="color:var(--accent)">—</div>
+    <div class="metric-sub">awaiting GO</div>
+  </div>
+  <div style="margin-left:auto;text-align:right">
+    <div class="metric-label">Last Data Export</div>
+    <div class="last-update" id="lastExport">—</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:2px">by Hal daemon</div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent">
+  <div class="loading" style="grid-column:1/-1">Loading dashboard data...</div>
+</div>
+
+<!-- STRATEGY DETAIL MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalBox">
+    <button class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('open')">✕</button>
+    <h3 id="modalTitle">Strategy</h3>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────────
+// CONFIG
+// ─────────────────────────────────────────────────────────────
+const DATA_URL    = '/nmm/dashboard-data.json';
+const REFRESH_SEC = 30;
+const MARKET_SEC  = 30;
+let dashData = null;
+let countdown = REFRESH_SEC;
+
+// ─────────────────────────────────────────────────────────────
+// MARKET DATA (client-side, live APIs)
+// ─────────────────────────────────────────────────────────────
+async function fetchMarket() {
+  try {
+    const [cgRes, fgRes] = await Promise.all([
+      fetch('https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&community_data=false&developer_data=false'),
+      fetch('https://api.alternative.me/fng/')
+    ]);
+    const cg = await cgRes.json();
+    const fg = await fgRes.json();
+
+    const md  = cg.market_data;
+    const price = md.current_price.usd;
+    const ch24  = md.price_change_percentage_24h;
+    const high  = md.high_24h.usd;
+    const low   = md.low_24h.usd;
+    const vol   = md.total_volume.usd;
+    const mcap  = md.market_cap.usd;
+    const dom   = md.market_cap_percentage?.btc;
+
+    const el = (id) => document.getElementById(id);
+    el('btcPrice').textContent = '$' + price.toLocaleString('en-US', {maximumFractionDigits:0});
+    el('btcPrice').className   = 'metric-value btc';
+
+    const sign = ch24 >= 0 ? '+' : '';
+    el('btc24h').textContent   = `24h: ${sign}${ch24.toFixed(2)}%`;
+    el('btc24h').style.color   = ch24 >= 0 ? 'var(--green)' : 'var(--red)';
+
+    el('btcRange').textContent = `$${low.toLocaleString()} – $${high.toLocaleString()}`;
+    el('btcVol').textContent   = `Vol: $${(vol/1e9).toFixed(1)}B`;
+    el('btcMcap').textContent  = `$${(mcap/1e12).toFixed(2)}T`;
+    el('btcDom').textContent   = dom ? `Dominance: ${dom.toFixed(1)}%` : '';
+
+    // Update open positions P&L with live price
+    updateLivePnl(price);
+
+    // Fear & Greed
+    const fgData  = fg.data[0];
+    const fgScore = parseInt(fgData.value);
+    const fgText  = fgData.value_classification;
+    el('fgValue').textContent = fgScore;
+    el('fgLabel').textContent = fgText;
+
+    const fgColor = fgScore < 25 ? 'var(--red)' : fgScore < 45 ? 'var(--yellow)' : fgScore < 75 ? 'var(--green)' : 'var(--blue)';
+    el('fgValue').style.color = fgColor;
+    el('fgPointer').style.left = fgScore + '%';
+
+  } catch(e) {
+    console.warn('Market fetch error:', e);
+  }
+
+  // Funding rate from Binance
+  try {
+    const fr = await fetch('https://fapi.binance.com/fapi/v1/fundingRate?symbol=BTCUSDT&limit=1');
+    const frData = await fr.json();
+    if (frData && frData[0]) {
+      const rate = parseFloat(frData[0].fundingRate);
+      const ann  = (rate * 3 * 365 * 100).toFixed(1);
+      const el   = (id) => document.getElementById(id);
+      const sign = rate >= 0 ? '+' : '';
+      el('fundingRate').textContent = `${sign}${(rate*100).toFixed(4)}%`;
+      el('fundingRate').className   = `metric-value ${rate > 0.05 ? 'positive' : rate < -0.01 ? 'negative' : 'neutral'}`;
+      el('fundingAnn').textContent  = `Annualized: ${sign}${ann}%`;
+    }
+  } catch(e) {
+    // Binance geo-blocked in some regions — use daemon state
+    if (dashData?.market?.funding_rate_8h != null) {
+      const rate = dashData.market.funding_rate_8h;
+      const ann  = dashData.market.funding_annualized;
+      document.getElementById('fundingRate').textContent = `+${(rate*100).toFixed(4)}%`;
+      document.getElementById('fundingAnn').textContent  = `Annualized: +${ann}% (cached)`;
+    }
+  }
+}
+
+function updateLivePnl(btcPrice) {
+  // Called after market fetch to mark-to-market open positions
+  document.querySelectorAll('[data-pos-id]').forEach(el => {
+    const entry = parseFloat(el.dataset.entry);
+    const size  = parseFloat(el.dataset.size);
+    const dir   = el.dataset.dir;
+    if (!entry || !size) return;
+    let pnl = dir === 'long'
+      ? (btcPrice - entry) / entry * size
+      : (entry - btcPrice) / entry * size;
+    pnl = Math.round(pnl * 100) / 100;
+    el.textContent = (pnl >= 0 ? '+' : '') + '$' + pnl.toFixed(2);
+    el.className   = 'pos-pnl ' + (pnl >= 0 ? 'win' : 'lose');
+  });
+}
+
+// ─────────────────────────────────────────────────────────────
+// DASHBOARD DATA (from exported JSON, updated every 5 min)
+// ─────────────────────────────────────────────────────────────
+async function fetchDashboard() {
+  try {
+    const res  = await fetch(DATA_URL + '?t=' + Date.now());
+    dashData   = await res.json();
+    renderDashboard(dashData);
+    updateFreshness(dashData.generated_at);
+  } catch(e) {
+    console.warn('Dashboard data fetch error:', e);
+    if (!dashData) {
+      document.getElementById('mainContent').innerHTML = '<div class="empty">Dashboard data unavailable. Daemon export may be starting up.</div>';
+    }
+  }
+}
+
+function updateFreshness(ts) {
+  if (!ts) return;
+  const dt      = new Date(ts);
+  const ageMin  = Math.round((Date.now() - dt.getTime()) / 60000);
+  const dot     = document.getElementById('stratFreshDot');
+  const label   = document.getElementById('stratFreshLabel');
+  label.textContent = ageMin < 1 ? 'just now' : `${ageMin}m ago`;
+  dot.className = 'fresh-dot ' + (ageMin < 8 ? 'live' : ageMin < 20 ? 'recent' : 'stale');
+  document.getElementById('lastExport').textContent = dt.toLocaleTimeString();
+}
+
+// ─────────────────────────────────────────────────────────────
+// RENDER
+// ─────────────────────────────────────────────────────────────
+function renderDashboard(d) {
+  const el = document.getElementById;
+
+  // Header stats
+  const pf  = d.portfolio || {};
+  const pnl = pf.total_paper_pnl_usd || 0;
+  document.getElementById('paperPnl').textContent  = (pnl >= 0 ? '+$' : '-$') + Math.abs(pnl).toFixed(2);
+  document.getElementById('paperPnl').className    = 'metric-value ' + (pnl >= 0 ? 'positive' : 'negative');
+  document.getElementById('paperWinRate').textContent = `Win rate: ${pf.win_rate_pct || 0}% (${pf.wins||0}W/${pf.losses||0}L)`;
+  document.getElementById('stagedCount').textContent  = (d.staged_orders||[]).length;
+
+  // Daemon status
+  if (d.daemon_started) {
+    const since = new Date(d.daemon_started);
+    const hours = Math.round((Date.now() - since.getTime()) / 3600000);
+    document.getElementById('daemonLabel').textContent = `Daemon up ${hours}h | ${d.signals_fired_total||0} signals fired`;
+    document.getElementById('daemonDot').style.background = 'var(--green)';
+  }
+
+  // Build main content
+  const sections = [];
+
+  // 1. OPEN PAPER POSITIONS
+  sections.push(renderOpenPositions(d));
+
+  // 2. STAGED ORDERS
+  if ((d.staged_orders||[]).length > 0) {
+    sections.push(renderStagedOrders(d));
+  }
+
+  // 3. PORTFOLIO SUMMARY
+  sections.push(renderPortfolio(d));
+
+  // 4. STRATEGY PIPELINE (full width)
+  sections.push(renderPipeline(d));
+
+  // 5. FUNDING RATES
+  sections.push(renderFundingRates(d));
+
+  // 6. CLOSED TRADES
+  sections.push(renderClosedTrades(d));
+
+  // 7. SIGNAL LOG
+  sections.push(renderSignalLog(d));
+
+  document.getElementById('mainContent').innerHTML = sections.join('');
+}
+
+function renderOpenPositions(d) {
+  const positions = d.paper_open || [];
+  const live      = d.live_positions || [];
+  const all       = [...live.map(p => ({...p, _type:'LIVE'})), ...positions.map(p => ({...p, _type:'PAPER'}))];
+
+  if (!all.length) {
+    return `<div class="card">
+      <div class="card-header"><div class="card-title">Open Positions</div><div class="card-badge">0</div></div>
+      <div class="card-body"><div class="empty">No open positions. Watching for setups.</div></div>
+    </div>`;
+  }
+
+  const cards = all.map(p => {
+    const dir    = (p.direction||'long').toLowerCase();
+    const entry  = p.entry_price || 0;
+    const target = p.target_price || 0;
+    const stop   = p.stop_price || 0;
+    const size   = p.size_usd || 0;
+    const pnlUsd = p.live_pnl_usd != null ? p.live_pnl_usd : (p.pnl_usd || 0);
+    const pnlPct = p.live_pnl_pct != null ? p.live_pnl_pct : (p.pnl_pct || 0);
+    const name   = p.name || p.strategy || 'Unknown';
+    const type   = p._type || 'PAPER';
+
+    // Progress bar — how close to target vs stop
+    let progress = 50;
+    if (target && stop && entry) {
+      const range  = Math.abs(target - stop);
+      const curr   = p.live_price || entry;
+      progress = dir === 'long'
+        ? Math.max(0, Math.min(100, (curr - stop) / range * 100))
+        : Math.max(0, Math.min(100, (stop - curr) / range * 100));
+    }
+    const barColor = pnlUsd >= 0 ? 'var(--green)' : 'var(--red)';
+
+    const opened = p.opened_at ? new Date(p.opened_at).toLocaleDateString() : '?';
+    const pnlSign = pnlUsd >= 0 ? '+' : '';
+    const pnlClass = pnlUsd >= 0 ? 'win' : 'lose';
+
+    return `<div class="position-card ${dir}">
+      <div class="pos-header">
+        <div>
+          <span class="tag ${type.toLowerCase()}">${type}</span>
+          <span class="tag ${dir}">${dir.toUpperCase()}</span>
+          <div class="pos-name">${name}</div>
+        </div>
+        <div class="${pnlClass} pos-pnl" data-pos-id="${p.id||''}" data-entry="${entry}" data-size="${size}" data-dir="${dir}">
+          ${pnlSign}$${Math.abs(pnlUsd).toFixed(2)}
+        </div>
+      </div>
+      <div class="pos-meta">
+        <span>Entry: $${entry.toLocaleString()}</span>
+        <span>Target: $${target.toLocaleString()}</span>
+        <span>Stop: $${stop.toLocaleString()}</span>
+        <span>Size: $${size.toLocaleString()}</span>
+        <span>Opened: ${opened}</span>
+      </div>
+      <div class="pos-progress">
+        <div class="prog-bar-bg">
+          <div class="prog-bar-fill" style="width:${progress}%;background:${barColor}"></div>
+        </div>
+        <div class="prog-labels">
+          <span>SL $${stop.toLocaleString()}</span>
+          <span style="color:${pnlPct>=0?'var(--green)':'var(--red)'}">${pnlSign}${pnlPct.toFixed(2)}%</span>
+          <span>TP $${target.toLocaleString()}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  return `<div class="card two-thirds">
+    <div class="card-header">
+      <div class="card-title">Open Positions</div>
+      <div class="card-badge">${all.length}</div>
+    </div>
+    <div class="card-body">${cards}</div>
+  </div>`;
+}
+
+function renderStagedOrders(d) {
+  const orders = d.staged_orders || [];
+  const cards  = orders.map(o => {
+    return `<div class="staged-card">
+      <div class="staged-title">🎯 ${o.strategy || 'Unknown'} — ${o.asset} ${(o.direction||'').toUpperCase()}</div>
+      <div class="staged-meta">
+        Confidence: ${o.confidence || '?'} | R/R: ${o.risk_reward || '?'}:1 | Timeframe: ${o.timeframe || '?'}
+      </div>
+      <div class="staged-meta" style="margin-top:4px;color:var(--text)">${o.rationale || ''}</div>
+      <div class="staged-cmd">${o.manual_cmd || ''}</div>
+      <div style="margin-top:8px;font-size:10px;color:var(--muted)">
+        Staged: ${o.staged_at ? new Date(o.staged_at).toLocaleString() : '?'}
+        &nbsp;&nbsp;<span class="go-badge">AWAITING GO</span>
+      </div>
+    </div>`;
+  }).join('');
+
+  return `<div class="card">
+    <div class="card-header">
+      <div class="card-title" style="color:var(--accent)">⚡ Staged Orders — Awaiting GO</div>
+      <div class="card-badge" style="background:rgba(247,147,26,.2);color:var(--accent)">${orders.length}</div>
+    </div>
+    <div class="card-body">${cards}</div>
+  </div>`;
+}
+
+function renderPortfolio(d) {
+  const pf = d.portfolio || {};
+  const pc = d.pipeline_counts || {};
+
+  return `<div class="card">
+    <div class="card-header"><div class="card-title">Portfolio Scorecard</div></div>
+    <div class="card-body">
+      <div class="pf-grid">
+        <div class="pf-stat">
+          <div class="pf-stat-label">Paper Capital</div>
+          <div class="pf-stat-value" style="color:var(--text)">$${(pf.paper_current_capital||100).toFixed(2)}</div>
+        </div>
+        <div class="pf-stat">
+          <div class="pf-stat-label">Paper P&amp;L</div>
+          <div class="pf-stat-value" style="color:${(pf.total_paper_pnl_usd||0)>=0?'var(--green)':'var(--red)'}">
+            ${(pf.total_paper_pnl_usd||0)>=0?'+':'-'}$${Math.abs(pf.total_paper_pnl_usd||0).toFixed(2)}
+          </div>
+        </div>
+        <div class="pf-stat">
+          <div class="pf-stat-label">Win Rate</div>
+          <div class="pf-stat-value" style="color:${(pf.win_rate_pct||0)>55?'var(--green)':'var(--yellow)'}">
+            ${pf.win_rate_pct||0}%
+          </div>
+        </div>
+        <div class="pf-stat">
+          <div class="pf-stat-label">W / L</div>
+          <div class="pf-stat-value" style="font-size:14px">
+            <span style="color:var(--green)">${pf.wins||0}W</span> /
+            <span style="color:var(--red)">${pf.losses||0}L</span>
+          </div>
+        </div>
+        <div class="pf-stat">
+          <div class="pf-stat-label">Live Capital</div>
+          <div class="pf-stat-value" style="color:var(--text)">$${(pf.live_capital_deployed||0).toFixed(2)}</div>
+        </div>
+        <div class="pf-stat">
+          <div class="pf-stat-label">Live Trades</div>
+          <div class="pf-stat-value" style="color:var(--muted)">${pf.live_trades_closed||0}</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:12px">
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:8px">Strategy Pipeline</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div style="text-align:center">
+            <div style="font-size:20px;font-weight:700;color:var(--green)">${pc.live||0}</div>
+            <div style="font-size:10px;color:var(--muted)">Live</div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:20px;font-weight:700;color:var(--blue)">${pc.paper||0}</div>
+            <div style="font-size:10px;color:var(--muted)">Paper</div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:20px;font-weight:700;color:var(--purple)">${pc.research||0}</div>
+            <div style="font-size:10px;color:var(--muted)">Research</div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:20px;font-weight:700;color:var(--muted)">${pc.queue||0}</div>
+            <div style="font-size:10px;color:var(--muted)">Queue</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderPipeline(d) {
+  const strategies = d.strategies || [];
+  const stages = ['live','paper','research','queue'];
+  const stageLabels = { live:'🟢 Live (Automated)', paper:'🔵 Paper Trading', research:'🟣 Research', queue:'⬜ Queue' };
+
+  const cols = stages.map(stage => {
+    const s = strategies.filter(x => x.stage === stage);
+    const chips = s.length ? s.map(st => {
+      const pnlColor = !st.pnl || st.pnl.includes('N/A') ? 'var(--muted)'
+                     : st.pnl.includes('-') ? 'var(--red)' : 'var(--green)';
+      return `<div class="strategy-chip" onclick="showStrategy(${JSON.stringify(JSON.stringify(st))})">
+        <div class="chip-id" style="color:var(--muted)">${st.id}</div>
+        <div class="chip-name">${st.name}</div>
+        ${st.status_note ? `<div class="chip-status">${st.status_note.substring(0,60)}</div>` : ''}
+        ${st.pnl ? `<div class="chip-pnl" style="color:${pnlColor}">${st.pnl}</div>` : ''}
+      </div>`;
+    }).join('')
+    : `<div class="empty" style="padding:10px;font-size:11px">—</div>`;
+
+    return `<div class="stage-col">
+      <div class="stage-header ${stage}">${stageLabels[stage]} <span>${s.length}</span></div>
+      ${chips}
+    </div>`;
+  }).join('');
+
+  return `<div class="card full-width">
+    <div class="card-header">
+      <div class="card-title">Strategy Pipeline</div>
+      <div class="card-badge">${strategies.length} total</div>
+    </div>
+    <div class="card-body">
+      <div class="pipeline">${cols}</div>
+    </div>
+  </div>`;
+}
+
+function renderFundingRates(d) {
+  // Static known data — live data fetched by fetchMarket()
+  const fr = d.market?.funding_rate_8h || 0;
+  const ann = d.market?.funding_annualized || 0;
+
+  return `<div class="card">
+    <div class="card-header"><div class="card-title">Funding Rates (BTC Perp)</div></div>
+    <div class="card-body">
+      <div class="funding-grid">
+        <div class="funding-row">
+          <div>
+            <div class="funding-exchange">Binance</div>
+            <div class="funding-ann" id="bnbFundAnn">Loading...</div>
+          </div>
+          <div class="funding-rate" id="bnbFund">—</div>
+        </div>
+        <div class="funding-row">
+          <div>
+            <div class="funding-exchange">OKX</div>
+            <div class="funding-ann" id="okxFundAnn">via daemon</div>
+          </div>
+          <div class="funding-rate" id="okxFund">${fr ? '+' + (fr*100).toFixed(4) + '%' : '—'}</div>
+        </div>
+        <div class="funding-row" style="grid-column:1/-1">
+          <div>
+            <div class="funding-exchange" style="color:var(--muted)">Daemon (cached)</div>
+            <div class="funding-ann">8h rate from state</div>
+          </div>
+          <div>
+            <div class="funding-rate" style="font-size:13px">${fr ? (fr > 0 ? '+' : '') + (fr*100).toFixed(4) + '%' : '—'}/8h</div>
+            <div class="funding-ann">${ann ? ann + '%/yr' : ''}</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:11px;color:var(--muted)">
+        💡 S03 (Basis Trade) activates when funding > 0.05%/8h (${ann > 50 ? '<span style="color:var(--green)">ACTIVE ZONE</span>' : '<span style="color:var(--muted)">below threshold</span>'})
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderClosedTrades(d) {
+  const trades = d.paper_closed || [];
+  if (!trades.length) {
+    return `<div class="card">
+      <div class="card-header"><div class="card-title">Closed Trades</div><div class="card-badge">0</div></div>
+      <div class="card-body"><div class="empty">No closed trades yet. Building sample set.</div></div>
+    </div>`;
+  }
+
+  const rows = trades.slice(0, 20).map(t => {
+    const pnl   = t.pnl_usd || 0;
+    const cls   = pnl > 0 ? 'win' : 'lose';
+    const dir   = (t.direction||'long').toUpperCase();
+    const strat = t.name || t.strategy || '?';
+    const entry = t.entry_price ? '$' + t.entry_price.toLocaleString() : '?';
+    const exit  = t.exit_price  ? '$' + t.exit_price.toLocaleString()  : '?';
+    const date  = t.closed_at  ? new Date(t.closed_at).toLocaleDateString() : '?';
+    return `<tr>
+      <td style="color:var(--muted)">${date}</td>
+      <td><span class="tag ${dir.toLowerCase()}">${dir}</span></td>
+      <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${strat}</td>
+      <td>${entry}</td>
+      <td>${exit}</td>
+      <td class="${cls}">${pnl > 0 ? '+' : ''}$${pnl.toFixed(2)}</td>
+    </tr>`;
+  }).join('');
+
+  return `<div class="card two-thirds">
+    <div class="card-header">
+      <div class="card-title">Closed Trades</div>
+      <div class="card-badge">${trades.length}</div>
+    </div>
+    <div class="card-body" style="overflow-x:auto">
+      <table class="trade-table">
+        <thead><tr>
+          <th>Date</th><th>Dir</th><th>Strategy</th><th>Entry</th><th>Exit</th><th>P&amp;L</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function renderSignalLog(d) {
+  const signals = d.signal_log || [];
+  if (!signals.length) {
+    return `<div class="card">
+      <div class="card-header"><div class="card-title">Signal Log</div></div>
+      <div class="card-body"><div class="empty">No signals yet.</div></div>
+    </div>`;
+  }
+
+  const entries = signals.slice(0, 25).map(line => {
+    const tsMatch = line.match(/\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\]/);
+    const ts      = tsMatch ? tsMatch[1] : '';
+    const content = line.replace(/\[.*?\]/g, '').trim();
+    const isHL    = line.includes('SIGNAL') || line.includes('ALERT') || line.includes('STAGED');
+    return `<div class="signal-entry${isHL?' highlight':''}">
+      <span class="ts">${ts}</span>
+      <span class="content"> ${content.substring(0, 120)}</span>
+    </div>`;
+  }).join('');
+
+  return `<div class="card">
+    <div class="card-header">
+      <div class="card-title">Signal Log</div>
+      <div class="card-badge">${d.signals_fired_total||0} total</div>
+    </div>
+    <div class="card-body">
+      <div class="signal-log">${entries}</div>
+    </div>
+  </div>`;
+}
+
+// ─────────────────────────────────────────────────────────────
+// STRATEGY MODAL
+// ─────────────────────────────────────────────────────────────
+function showStrategy(jsonStr) {
+  const st = JSON.parse(jsonStr);
+  document.getElementById('modalTitle').textContent = `${st.id} — ${st.name}`;
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-field"><label>Stage</label><p><span class="tag ${st.stage}">${st.stage.toUpperCase()}</span></p></div>
+    <div class="modal-field"><label>Thesis</label><p>${st.thesis || '—'}</p></div>
+    <div class="modal-field"><label>Backtest</label><p>${st.backtest || '—'}</p></div>
+    <div class="modal-field"><label>Kill Condition</label><p>${st.kill || '—'}</p></div>
+    <div class="modal-field"><label>Paper P&L</label><p>${st.pnl || '—'}</p></div>
+    <div class="modal-field"><label>Closed Trades</label><p>${st.closed || '—'}</p></div>
+    <div class="modal-field"><label>Win Rate</label><p>${st.win_rate || '—'}</p></div>
+    ${st.status_note ? `<div class="modal-field"><label>Current Status</label><p style="color:var(--accent)">${st.status_note}</p></div>` : ''}
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) {
+    document.getElementById('modalOverlay').classList.remove('open');
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// BINANCE FUNDING (live)
+// ─────────────────────────────────────────────────────────────
+async function fetchBinanceFunding() {
+  try {
+    const res  = await fetch('https://fapi.binance.com/fapi/v1/premiumIndex?symbol=BTCUSDT');
+    const data = await res.json();
+    if (data.lastFundingRate != null) {
+      const rate = parseFloat(data.lastFundingRate);
+      const ann  = (rate * 3 * 365 * 100).toFixed(1);
+      const sign = rate >= 0 ? '+' : '';
+      document.getElementById('bnbFund').textContent    = `${sign}${(rate*100).toFixed(4)}%`;
+      document.getElementById('bnbFundAnn').textContent = `${sign}${ann}%/yr`;
+    }
+  } catch(e) { /* geo-blocked */ }
+}
+
+// ─────────────────────────────────────────────────────────────
+// COUNTDOWN & REFRESH LOOP
+// ─────────────────────────────────────────────────────────────
+function startCountdown() {
+  countdown = REFRESH_SEC;
+  const tick = setInterval(() => {
+    countdown--;
+    document.getElementById('countdown').textContent = countdown;
+    if (countdown <= 0) {
+      clearInterval(tick);
+      fetchMarket();
+      fetchBinanceFunding();
+      fetchDashboard();
+      startCountdown();
+    }
+  }, 1000);
+}
+
+// ─────────────────────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────────────────────
+(async () => {
+  await fetchDashboard();
+  await fetchMarket();
+  await fetchBinanceFunding();
+  startCountdown();
+})();
+</script>
+</body>
+</html>
