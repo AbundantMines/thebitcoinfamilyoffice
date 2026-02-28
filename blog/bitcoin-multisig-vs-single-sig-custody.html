@@ -21,10 +21,10 @@
   "@type": "Article",
   "headline": "Multi-Signature vs. Single-Signature Bitcoin Custody: The Family Office Decision Framework",
   "description": "A first-principles comparison of multisig and single-sig Bitcoin custody for family offices — covering threat models, operational requirements, inheritance implications, and institutional standards.",
-  "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
+  "author": {"@type": "Person", "name": "Hal Franklin", "jobTitle": "Bitcoin Wealth Strategist"},
   "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-multisig-vs-single-sig-custody",
   "datePublished": "2026-02-25",
-  "dateModified": "2026-02-25",
+  "dateModified": "2026-02-28",
   "publisher": {"@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"}
 }
 </script>
@@ -41,6 +41,54 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should I use multisig or single-sig Bitcoin custody?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For holdings above $250,000, multisig is strongly recommended. Single-signature custody has a single point of failure — loss or compromise of one key means permanent loss of all funds. Multisig (e.g., 2-of-3) allows any two of three keys to sign, so one key can be lost without losing funds. For holdings under $100,000 or operational liquidity wallets, single-signature may be acceptable due to lower operational complexity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a 2-of-3 multisig Bitcoin wallet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 2-of-3 multisig wallet requires 2 of 3 cryptographic keys to authorize any Bitcoin transaction. Three keys are created and distributed to different locations or parties. Any two can sign. If one key is lost, stolen, or destroyed, the remaining two can still authorize transactions — the Bitcoin is not lost. This is the most common multisig configuration for family offices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is collaborative custody for Bitcoin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Collaborative custody is a multisig arrangement where the family holds most of the keys (typically 2 of 3) and a professional custodian holds one key used only for co-signing when the family initiates transactions. This provides institutional-grade multisig security with a professional recovery path if the family loses keys, while preserving meaningful family control. Providers include Unchained Capital, Casa, and Theya."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does multisig Bitcoin custody work for estate planning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — multisig is superior to single-signature for estate planning. In a 2-of-3 multisig, one key can be held by the primary owner, one by a family trustee, and one by an estate attorney. After death, the trustee and attorney can co-sign to transfer funds to heirs — no single party has unilateral access. This aligns custody architecture with legal governance structures at the protocol level."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Taproot multisig and legacy multisig?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Legacy P2SH multisig transactions are identifiable on the Bitcoin blockchain — any observer can see that funds are held in a multisig arrangement. Taproot-based multisig (using MuSig2 or similar Schnorr aggregation) produces transactions that are indistinguishable from standard single-signature transactions on-chain. This privacy improvement makes Taproot multisig preferable for families concerned about chain analysis and targeted surveillance."
+      }
+    }
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
 <script>
@@ -159,7 +207,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 <header class="article-header">
   <span class="article-tag">Custody Architecture &amp; Security</span>
   <h1>Multi-Signature vs. Single-Signature Bitcoin Custody: The Family Office Decision Framework</h1>
-  <div class="article-meta">The Bitcoin Family Office &nbsp;·&nbsp; February 2026 &nbsp;·&nbsp; 13 min read</div>
+  <div class="article-meta">Hal Franklin, Bitcoin Wealth Strategist &nbsp;·&nbsp; February 2026 &nbsp;·&nbsp; 20 min read</div>
 </header>
 
 <article class="article-body">
@@ -167,14 +215,30 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
   <p class="article-breadcrumb" style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
     <a href="/" style="color:var(--text-muted);text-decoration:none;">Home</a> <span style="margin:0 0.5rem;">&#x203A;</span>
     <a href="/blog/" style="color:var(--text-muted);text-decoration:none;">Research</a> <span style="margin:0 0.5rem;">&#x203A;</span>
-    <span style="color:var(--text-secondary);">Bitcoin <a href="/blog/bitcoin-multisig-inheritance" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">multisig</a> vs. Single-Sig Custody</span>
+    <span style="color:var(--text-secondary);">Bitcoin Multisig vs. Single-Sig Custody</span>
   </p>
+
+  <div style="background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+    <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;">In This Guide</div>
+    <ol style="margin:0 0 0 1.25rem;">
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#comparison" style="color:var(--text-secondary);">At a Glance: Multisig vs. Single-Sig Comparison</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#single-sig" style="color:var(--text-secondary);">What Single-Signature Custody Actually Means</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#multisig" style="color:var(--text-secondary);">What Multi-Signature Custody Actually Means</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#threat-model" style="color:var(--text-secondary);">The Threat Model: How Custody Affects Security</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#configurations" style="color:var(--text-secondary);">Multisig Configurations for Family Offices</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#inheritance" style="color:var(--text-secondary);">Inheritance and Succession Planning</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#operations" style="color:var(--text-secondary);">Operational Requirements and Practical Tradeoffs</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#taproot" style="color:var(--text-secondary);">Taproot and On-Chain Privacy</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#key-management" style="color:var(--text-secondary);">Key Management Protocol: What to Document</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
 
   <p>The custody decision — how a family actually holds and controls its Bitcoin — is not a one-size-fits-all technical problem. It is a risk management decision that depends on the threat model, the size of the holding, the operational capabilities of the family, the time horizon, and the inheritance architecture already in place. Both single-signature and multi-signature custody are legitimate approaches at different scales and circumstances. What matters is understanding the specific failure modes of each and choosing deliberately.</p>
 
-  <p>For most family offices managing Bitcoin positions measured in millions of dollars or more, multi-signature custody is not optional — it is the institutional standard. But for smaller holdings, or for families in early stages of building their Bitcoin custody infrastructure, single-signature <a href="/blog/bitcoin-family-office-setup-guide">how to set up a Bitcoin family office</a>s may be the practical starting point. This analysis provides the framework for making that decision correctly.</p>
+  <p>For most family offices managing Bitcoin positions measured in millions of dollars or more, multi-signature custody is not optional — it is the institutional standard. But for smaller holdings, or for families in early stages of building their Bitcoin custody infrastructure, single-signature setups may be the practical starting point. This analysis provides the framework for making that decision correctly.</p>
 
-  <h2>At a Glance: Multisig vs. Single-Sig for Family Offices</h2>
+  <h2 id="comparison">At a Glance: Multisig vs. Single-Sig for Family Offices</h2>
 
   <table class="comparison-table">
     <thead>
@@ -233,15 +297,15 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
     </tbody>
   </table>
 
-  <h2>What Single-Signature Custody Actually Means</h2>
+  <h2 id="single-sig">What Single-Signature Custody Actually Means</h2>
 
   <p>Single-signature custody means that one cryptographic private key controls access to a Bitcoin address. Whoever possesses that key — or the seed phrase that generates it — can move all the Bitcoin associated with that address. This is the simplest possible custody model: one key, one device, one process for signing transactions.</p>
 
   <p>The risk profile of single-signature custody is determined entirely by the security of that one key. If the key is stored on a hardware wallet that is lost, destroyed, or stolen — and there is no backup — the Bitcoin is permanently inaccessible. If the seed phrase is discovered by a malicious actor, all funds can be swept in a single transaction. There is no recovery path, no dispute resolution mechanism, no second check. The key is the Bitcoin.</p>
 
-  <p>This simplicity has real advantages for small holdings or operational wallets. Single-signature setups require one device, one process, and one set of backup procedures. For a family managing a modest Bitcoin position — say, under $100,000 — or maintaining a liquid operational wallet for routine transactions, single-signature is approp<a href="/blog/bitcoin-family-office-vs-ria">Bitcoin family office vs. RIA comparison</a>te and efficient. The operational overhead of multisig is not justified at that scale.</p>
+  <p>This simplicity has real advantages for small holdings or operational wallets. Single-signature setups require one device, one process, and one set of backup procedures. For a family managing a modest Bitcoin position — say, under $100,000 — or maintaining a liquid operational wallet for routine transactions, single-signature is appropriate and efficient. The operational overhead of multisig is not justified at that scale.</p>
 
-  <h2>What Multi-Signature Custody Actually Means</h2>
+  <h2 id="multisig">What Multi-Signature Custody Actually Means</h2>
 
   <p>Multi-signature (multisig) custody requires M-of-N keys to authorize a transaction — for example, 2 of 3 keys, or 3 of 5 keys. The Bitcoin is locked to a script that enforces this requirement at the protocol level: no transaction can be broadcast to the network without the required number of valid signatures. This is not a software policy or an institutional rule — it is a cryptographic constraint enforced by the Bitcoin network itself.</p>
 
@@ -263,7 +327,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
     <li><strong>Insider attack:</strong> For family offices with staff or advisors, single-sig with shared device access is catastrophically vulnerable to insider theft. Multisig requires collusion among multiple key holders.</li>
   </ul>
 
-  <h2>Multisig Configurations for Family Offices</h2>
+  <h2 id="configurations">Multisig Configurations for Family Offices</h2>
 
   <h3>2-of-3: The Standard Starting Point</h3>
 
@@ -275,28 +339,83 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <h3>Collaborative Custody</h3>
 
-  <p>Several institutional-grade Bitcoin custody providers offer collaborative custody: the family holds two of three keys (or three of five), and the custodian holds one key that is used for co-signing only when the family initiates a transaction. This provides the security of multisig with professional oversight and a recovery path if the family loses keys. This model is increasingly the standard for family offices that want true self-sovereignty without bearing the full operational burden of pure self-custody. Our detailed guide to <a href="/blog/bitcoin-multisig-family-office-custody.html">multi-signature Bitcoin custody for family offices</a> covers the collaborative custody model and provider selection in depth.</p>
+  <p>Several institutional-grade Bitcoin custody providers offer collaborative custody: the family holds two of three keys (or three of five), and the custodian holds one key that is used for co-signing only when the family initiates a transaction. This provides the security of multisig with professional oversight and a recovery path if the family loses keys. This model is increasingly the standard for family offices that want true self-sovereignty without bearing the full operational burden of pure self-custody. Our detailed guide to <a href="/blog/bitcoin-multisig-family-office-custody">multi-signature Bitcoin custody for family offices</a> covers the collaborative custody model and provider selection in depth.</p>
 
-  <h2>Inheritance and Succession Planning</h2>
+  <h2 id="inheritance">Inheritance and Succession Planning</h2>
 
   <p>Custody architecture is inseparable from inheritance planning. A single-signature wallet creates a binary inheritance problem: either heirs have the key (and full, immediate access), or they do not (and the Bitcoin is permanently inaccessible). There is no middle ground, no partial access, no time-delayed release, and no role for legal structures in mediating access.</p>
 
   <p>Multi-signature wallets allow inheritance to be designed into the custody architecture. In a 2-of-3 setup, for example, one key can be held by the primary owner, one by a trusted family member or trustee, and one by an estate attorney. Upon the owner's death, the family member and attorney can co-sign to move funds to the estate distribution. No single party has unilateral access — but the right combination of parties can reconstruct the authorization after death.</p>
 
-  <p>This architectural advantage of multisig is not just operationally convenient — it aligns custody design with legal structures. A Bitcoin trust, for example, can specify that the trustee holds one key, an investment advisor holds a second key, and a <a href="/blog/bitcoin-trust-protector" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">trust protector</a> holds a third. The multisig structure enforces the governance rules of the trust at the protocol level, not just through legal obligation. For more on integrating custody with estate planning, see our guide to <a href="/blog/bitcoin-inheritance-planning.html">Bitcoin inheritance planning</a>.</p>
+  <p>This architectural advantage of multisig is not just operationally convenient — it aligns custody design with legal structures. A Bitcoin trust, for example, can specify that the trustee holds one key, an investment advisor holds a second key, and a <a href="/blog/bitcoin-trust-protector" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">trust protector</a> holds a third. The multisig structure enforces the governance rules of the trust at the protocol level, not just through legal obligation. For more on integrating custody with estate planning, see our guide to <a href="/blog/bitcoin-inheritance-planning">Bitcoin inheritance planning</a>.</p>
 
-  <h2>Operational Requirements and Practical Tradeoffs</h2>
+  <h2 id="operations">Operational Requirements and Practical Tradeoffs</h2>
 
   <p>Multisig custody has real operational costs. Signing a transaction requires coordinating multiple devices and potentially multiple parties — it cannot be done instantaneously from a single device. For families that need to move Bitcoin quickly (operational liquidity), multisig vaults may be supplemented with a single-signature hot wallet for smaller, routine transactions. The vault architecture handles the primary holding; the operational wallet handles day-to-day needs.</p>
 
   <p>Setup complexity is also higher. Creating a multisig wallet requires generating multiple keys on separate devices, coordinating backup procedures for each, testing the signing process, and documenting the full setup for recovery and inheritance purposes. This should be done with professional guidance — the consequences of errors in multisig setup range from operational friction to permanent loss of funds if the backup documentation is incorrect.</p>
 
-  <p>For the family office taking Bitcoin seriously as a long-term generational asset, the operational complexity of multisig is not a reason to avoid it — it is a reason to invest in setting it up correctly once, with professional support, and then operating it consistently. The families that will lose Bitcoin across generations are not those who set up multisig; they are those who kept everything on a single hardware wallet because the alternative seemed complicated. For a comprehensive technical view of custody architecture, see our <a href="/blog/bitcoin-custody-architecture.html">technical deep dive on Bitcoin custody architecture</a>.</p>
+  <p>For the family office taking Bitcoin seriously as a long-term generational asset, the operational complexity of multisig is not a reason to avoid it — it is a reason to invest in setting it up correctly once, with professional support, and then operating it consistently. The families that will lose Bitcoin across generations are not those who set up multisig; they are those who kept everything on a single hardware wallet because the alternative seemed complicated. For a comprehensive technical view of custody architecture, see our <a href="/blog/bitcoin-custody-architecture">technical deep dive on Bitcoin custody architecture</a>.</p>
+
+
+  <h2 id="taproot">Taproot and On-Chain Privacy for Multisig Wallets</h2>
+
+  <p>Legacy multisig Bitcoin transactions (P2SH and P2WSH) are identifiable on the public blockchain. Any observer running chain analysis can see that funds are locked in a multisig arrangement — the transaction output reveals the script structure. For high-net-worth families, this on-chain visibility creates a potential privacy and security concern: a sophisticated adversary could identify large multisig holdings and their spending patterns.</p>
+
+  <p>Bitcoin's Taproot upgrade (activated November 2021) introduced a fundamental improvement to multisig privacy. Taproot-based multisig using Schnorr signatures — specifically the MuSig2 protocol — produces transactions that are indistinguishable from standard single-signature transactions on the blockchain. An external observer cannot determine that a Taproot multisig address requires multiple signatures to spend. The multisig structure is enforced at the cryptographic level but invisible on the blockchain.</p>
+
+  <p>Practical implications for family offices:</p>
+  <ul>
+    <li><strong>New multisig setups should use Taproot:</strong> For families establishing multisig custody from scratch, Taproot-compatible hardware wallets and signing coordinators (such as recent versions of Sparrow Wallet or Nunchuk) are now widely available. The privacy improvement is significant for large holdings.</li>
+    <li><strong>Key aggregation reduces fees:</strong> Schnorr signatures allow multiple signatures to be aggregated into a single signature — reducing on-chain transaction size and lowering fee costs. For families making regular distributions from multisig vaults, this efficiency compounds over time.</li>
+    <li><strong>Existing P2SH/P2WSH wallets still secure:</strong> Legacy multisig remains cryptographically secure. The privacy disadvantage is a concern, not a security vulnerability. Families do not need to immediately migrate existing multisig setups — but should use Taproot for all new vault creation.</li>
+    <li><strong>Hardware wallet support varies:</strong> Not all hardware wallets support Taproot multisig as of early 2026. Coldcard, Ledger (via updated firmware), and Trezor Safe 3 support Taproot multisig; verify your specific hardware model and firmware version before relying on Taproot features.</li>
+  </ul>
+
+  <h2 id="key-management">Key Management Protocol: What Every Multisig Family Must Document</h2>
+
+  <p>A multisig setup is only as secure and recoverable as its documentation. The most common multisig failure mode is not cryptographic — it is documentation failure. Families who set up multisig correctly but fail to document the setup adequately find that heirs or successor trustees cannot reconstruct the signing quorum after the primary holder's death or incapacitation.</p>
+
+  <p>Every multisig family should maintain a Key Management Document (separate from the estate plan and stored in at least two secure locations) covering:</p>
+
+  <ul>
+    <li><strong>Wallet descriptor (output script descriptor):</strong> The complete wallet descriptor string (a standardized format like <code style="font-family:monospace;font-size:0.85em;background:var(--bg-card);padding:0.1em 0.3em;border-radius:2px;">wsh(multi(2,xpub1...,xpub2...,xpub3...))</code>) uniquely defines the multisig wallet. Without this descriptor, even possessing all keys does not guarantee the ability to reconstruct the wallet. Store it as text in multiple secure locations alongside the seed phrases.</li>
+    <li><strong>Per-key information for each keyholder:</strong> Hardware wallet model, firmware version at setup, derivation path used (e.g., m/48'/0'/0'/2'), and the xpub/fingerprint for that key's contribution to the multisig. This enables any keyholder to verify their device's relationship to the multisig without exposing the seed phrase.</li>
+    <li><strong>Signing coordinator software:</strong> The software used to coordinate signing (Sparrow Wallet, Nunchuk, Unchained's platform, etc.) and its version. Signing coordinator software updates sometimes break compatibility with specific hardware wallet firmware; documenting the working version ensures recovery is possible.</li>
+    <li><strong>Test transaction record:</strong> A record of at least one successful test transaction — the wallet address, the amount sent, the txid, and the date — confirms the wallet was operational and the signing process worked. This provides a starting point for diagnosing issues during recovery.</li>
+    <li><strong>Emergency contact protocol:</strong> Who to call if the signing process fails — the custodian's emergency line (if using collaborative custody), the estate attorney, and a Bitcoin technical specialist. Include 24/7 contact information, not just business hours.</li>
+    <li><strong>Annual drill confirmation:</strong> Date of last successful signing test, who participated, and any changes made to hardware, software, or key distribution since the last drill. A multisig that has not been tested in two years may have silent failures that only emerge under pressure.</li>
+  </ul>
 
   <hr>
 
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div style="margin: 2rem 0;">
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Should I use multisig or single-sig Bitcoin custody?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">For holdings above $250,000, multisig is strongly recommended. Single-signature has a single point of failure — one key compromised or lost means permanent loss of all funds. Multisig (2-of-3) allows any two of three keys to sign; one key can be lost without losing Bitcoin. For holdings under $100,000 or operational liquidity wallets, single-signature may be acceptable.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is a 2-of-3 multisig Bitcoin wallet?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">A 2-of-3 multisig wallet requires 2 of 3 cryptographic keys to authorize any Bitcoin transaction. Three keys are created and distributed to different locations or parties. Any two can sign. If one is lost, stolen, or destroyed, the remaining two can still authorize transactions — the Bitcoin is not lost. This is the most common configuration for family offices.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is collaborative custody for Bitcoin?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Collaborative custody is a multisig arrangement where the family holds most of the keys (typically 2 of 3) and a professional custodian holds one key used only for co-signing. This provides institutional-grade multisig security with a professional recovery path if the family loses keys, while preserving meaningful family control. Providers include Unchained Capital, Casa, and Theya.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Does multisig Bitcoin custody work for estate planning?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Yes — multisig is superior to single-signature for estate planning. One key held by the primary owner, one by a family trustee, one by an estate attorney: after death, trustee and attorney co-sign to transfer funds to heirs. No single party has unilateral access. This aligns custody architecture with legal governance structures at the protocol level.</p>
+    </div>
+    <div>
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the difference between Taproot multisig and legacy multisig?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Legacy P2SH multisig transactions are identifiable on the Bitcoin blockchain. Taproot-based multisig (using Schnorr/MuSig2) produces transactions indistinguishable from standard single-signature on-chain — providing meaningful privacy for large holdings. Taproot also reduces transaction fees via signature aggregation. New multisig setups should use Taproot; existing setups remain secure but visible on-chain.</p>
+    </div>
+  </div>
+
   <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
-    <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful <a href="/blog/bitcoin-tax-strategy-hub">Bitcoin tax strategy hub</a> Available</p>
+    <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Powerful Tax Strategy Available</p>
     <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">For high-net-worth Bitcoin holders, mining is the only strategy that simultaneously generates yield, accumulates BTC, and creates significant tax offsets — through equipment depreciation, operating expense deductions, and bonus depreciation on capital investments. Most family offices overlook mining entirely. Abundant Mines has compiled every major Bitcoin mining tax strategy in one place.</p>
     <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a>
   </div>
@@ -314,15 +433,15 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 <div style="max-width:var(--max-w);margin:0 auto 2rem;padding:0 1.5rem;">
   <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem;">Related Reading</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
-    <a href="/blog/bitcoin-multisig-family-office-custody.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/bitcoin-multisig-family-office-custody" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Custody</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Multi-Signature Bitcoin Custody for Family Offices</p>
     </a>
-    <a href="/blog/bitcoin-custody-architecture.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/bitcoin-custody-architecture" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Technical Deep Dive</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Custody Architecture for Family Offices</p>
     </a>
-    <a href="/blog/bitcoin-inheritance-planning.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/bitcoin-inheritance-planning" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Inheritance</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Inheritance Planning: A Practical Framework</p>
     </a>
@@ -330,10 +449,10 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 </div>
 
 <div class="author-box" style="max-width:var(--max-w);margin:0 auto 2rem;padding:1.5rem 2rem;background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;display:flex;gap:1.5rem;align-items:flex-start;">
-  <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:1rem;color:var(--accent);">&#x20BF;</div>
+  <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--accent);">HF</div>
   <div>
-    <p style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">The <a href="/blog/building-bitcoin-native-family-office" style="color:var(--accent,#c9a84c);text-decoration:underline;text-decoration-color:rgba(201,168,76,0.3);">Bitcoin family office</a> Research Team</p>
-    <p style="font-family:var(--serif);font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin:0;">Our research team focuses exclusively on Bitcoin wealth management — custody architecture, estate planning, tax strategy, and multi-generational stewardship. We do not advise on altcoins or fiat instruments. <a href="/about/" style="color:var(--accent);text-decoration:none;">About us →</a></p>
+    <p style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">Hal Franklin &mdash; Bitcoin Wealth Strategist</p>
+    <p style="font-family:var(--serif);font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin:0;">Hal Franklin focuses on Bitcoin custody architecture, estate planning, and multigenerational wealth strategy for high-net-worth Bitcoin families. He does not advise on altcoins or traditional financial products. <a href="/about/" style="color:var(--accent);text-decoration:none;">About →</a></p>
   </div>
 </div>
 
