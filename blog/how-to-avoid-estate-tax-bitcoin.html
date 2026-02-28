@@ -30,7 +30,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <!-- GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How do you legally avoid estate tax on Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"Legal estate tax avoidance strategies for Bitcoin include: (1) Irrevocable trusts -- GRATs, SLATs, and dynasty trusts remove Bitcoin from the taxable estate while potentially retaining some economic benefit; (2) Annual exclusion gifting -- $18,000 per recipient per year (2024) removes Bitcoin without using lifetime exemption; (3) Lifetime exemption gifting -- using the current high exemption to give appreciated Bitcoin to an irrevocable trust before any future exemption reduction; (4) Charitable lead or remainder trusts -- removes Bitcoin from the estate while providing income or charitable benefit; (5) Family limited partnerships or LLCs -- enables valuation discounts (20-35%) on transferred interests. All of these strategies require an estate attorney and CPA for proper implementation."}},
+    {"@type":"Question","name":"What is the estate tax rate on Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"The federal estate tax rate on Bitcoin is 40% on the amount above the exemption. For 2024, the federal estate tax exemption is approximately $13.61 million per individual ($27.22 million for married couples using portability). Bitcoin above those thresholds is taxed at 40%. Additionally, 18 states plus DC impose their own estate or inheritance taxes, often with much lower exemptions (Maine's is $6.41 million; Massachusetts and Oregon: $2 million; Hawaii: $5.49 million). Bitcoin holders in those states face both state and federal estate tax."}},
+    {"@type":"Question","name":"Is a GRAT effective for Bitcoin estate planning?","acceptedAnswer":{"@type":"Answer","text":"A Grantor Retained Annuity Trust (GRAT) is particularly effective for Bitcoin due to Bitcoin's high volatility and growth potential. The grantor transfers Bitcoin into the GRAT, retains an annuity payment for a fixed term, and any appreciation above the IRS hurdle rate (Section 7520 rate) passes to beneficiaries estate-tax-free. For Bitcoin with historically high growth rates, a GRAT funded at a price trough can transfer substantial wealth with minimal gift tax cost. GRATs require careful timing and legal structuring -- mortality risk during the GRAT term means the strategy fails if the grantor dies before the term ends."}},
+    {"@type":"Question","name":"What is the best estate tax strategy for Bitcoin held in self-custody?","acceptedAnswer":{"@type":"Answer","text":"For self-custody Bitcoin, the cleanest estate tax reduction structure is: (1) Form a Wyoming LLC that holds the Bitcoin; (2) Transfer LLC membership interests to an irrevocable trust (GRAT, SLAT, or dynasty trust) using lifetime exemption or annual exclusion; (3) The trust is the beneficial owner of the LLC interests (and thus indirectly the Bitcoin); (4) The grantor retains no ownership of the transferred interests. This structure achieves estate tax removal while maintaining a clear custody and succession structure. The LLC's operating agreement governs who has signing authority over the Bitcoin, and the trust document governs who benefits from it."}}
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -73,7 +85,7 @@
     "headline": "How to Avoid Estate Tax on Bitcoin: 7 Legal Strategies",
     "description": "7 legal strategies to reduce or avoid estate tax on Bitcoin holdings — GRATs, Dynasty Trusts, SLATs, annual gifting, portability, and more.",
     "datePublished": "2026-02-25",
-    "dateModified": "2026-02-25",
+    "dateModified": "2026-02-28",
     "author": {
       "@type": "Person",
       "name": "Hal Franklin",
@@ -898,15 +910,28 @@
   <!-- ARTICLE BODY -->
   <main class="article-body" id="main-content">
 
-    <h2>First: What "Avoid" Actually Means</h2>
+    <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+      <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted,#6b6660);margin-bottom:1rem;">In This Guide</div>
+      <ol style="margin:0 0 0 1.25rem;">
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#what-avoid-means" style="color:var(--text-secondary);">First: What "Avoid" Actually Means</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#the-math" style="color:var(--text-secondary);">The Math: Who Actually Has a Problem</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#seven-strategies" style="color:var(--text-secondary);">The 7 Strategies</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#comparison" style="color:var(--text-secondary);">Strategy Comparison</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#exemption-warning" style="color:var(--text-secondary);">Warning: Exemption Amounts</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#btc-complications" style="color:var(--text-secondary);">Bitcoin-Specific Complications</a></li>
+        <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+      </ol>
+    </div>
 
-    <p>When people search "how to avoid estate tax on Bitcoin," they're asking a legitimate question — and one that deserves a serious answer. "Avoid" in the legal sense means structuring your estate through authorized channels so the tax burden is minimized or eliminated entirely. It does not mean hiding assets, failing to disclose holdings, or anything approaching evasion. The strategies in this guide are used by sophisticated families and their attorneys every day. They're well-<a href="/blog/bitcoin-family-office-setup-guide">how to set up a Bitcoin family office</a>ed in the tax code and upheld by the IRS.</p>
+    <h2 id="what-avoid-means">First: What "Avoid" Actually Means</h2>
+
+    <p>When people search "how to avoid estate tax on Bitcoin," they're asking a legitimate question — and one that deserves a serious answer. "Avoid" in the legal sense means structuring your estate through authorized channels so the tax burden is minimized or eliminated entirely. It does not mean hiding assets, failing to disclose holdings, or anything approaching evasion. The strategies in this guide are used by sophisticated families and their attorneys every day. They're well-established in the tax code and upheld by the IRS.</p>
 
     <p>Bitcoin, however, introduces complications that traditional estate planning tools were not designed for. Bitcoin is anonymous-adjacent but fully traceable on-chain. It cannot be easily valued at a discount (unlike a private business interest). It requires technical custody knowledge to transfer safely. And it tends to appreciate dramatically — which is precisely why getting the planning right matters so much.</p>
 
     <p>The goal isn't to evade. It's to use the law intelligently before it's too late to do so.</p>
 
-    <h2>The Math: Who Actually Has a Problem</h2>
+    <h2 id="the-math">The Math: Who Actually Has a Problem</h2>
 
     <p>The federal estate tax applies to estates that exceed the applicable exemption <a href="/blog/bitcoin-family-office-minimum">Bitcoin family office minimum requirements</a>. In recent years that threshold has been approximately $13–$14 million per individual ($26–$28 million for married couples using portability). However, 2025 legislation may have modified these amounts — confirm current figures with your estate attorney before planning.</p>
 
@@ -919,7 +944,7 @@
       <p><strong>Planning now — while values are lower and options are open — is always better than planning under time pressure after a taxable event.</strong> The best estate tax strategies require years to season and are most effective when initiated before appreciation, not after.</p>
     </div>
 
-    <h2>The 7 Strategies</h2>
+    <h2 id="seven-strategies">The 7 Strategies</h2>
 
     <div class="strategy-card">
       <div class="strategy-number">01</div>
@@ -949,7 +974,7 @@
     <div class="strategy-card">
       <div class="strategy-number">04</div>
       <h3>Spousal Lifetime Access Trust (SLAT)</h3>
-      <p>A SLAT is an irrevocable trust that one spouse creates for the benefit of the other. Funding the SLAT with Bitcoin removes it from the grantor-spouse's taxable estate. But the beneficiary-spouse retains access to distributions — providing indirect access to the funds during mar<a href="/blog/bitcoin-family-office-vs-ria">Bitcoin family office vs. RIA comparison</a>ge.</p>
+      <p>A SLAT is an irrevocable trust that one spouse creates for the benefit of the other. Funding the SLAT with Bitcoin removes it from the grantor-spouse's taxable estate. But the beneficiary-spouse retains access to distributions — providing indirect access to the funds during marriage.</p>
       <p>This is the primary strategy for married couples who need to reduce estate exposure but aren't comfortable fully giving up access to the asset. The beneficiary-spouse can receive distributions from the trust; those distributions benefit the household. Bitcoin held inside the SLAT appreciates outside both spouses' estates.</p>
       <p><strong>Trade-off:</strong> If the marriage ends in divorce or the beneficiary-spouse predeceases the grantor, the benefits disappear. Many estate attorneys recommend "reciprocal SLAT" structures, where each spouse establishes a SLAT for the other — but these must be carefully structured to avoid IRS reciprocal trust doctrine challenges.</p>
     </div>
@@ -980,13 +1005,13 @@
     </div>
 
     <div class="am-callout">
-      <div class="am-label"><a href="/blog/bitcoin-tax-strategy-hub">Bitcoin tax strategy hub</a> Spotlight</div>
+      <div class="am-label">Bitcoin Mining Tax Strategy Spotlight</div>
       <h4>Bitcoin Mining as a Tax Strategy</h4>
       <p>Beyond estate planning, Bitcoin mining offers powerful income-tax advantages that can fund your estate planning strategies — depreciation deductions, operating expense write-offs, and bonus depreciation on equipment. Reducing current-year tax liability frees capital for trust funding, premium payments, and other planning vehicles.</p>
       <a href="https://abundantmines.com/tax-strategy/" class="am-link" target="_blank" rel="noopener">Explore Mining Tax Strategy →</a>
     </div>
 
-    <h2>Strategy Comparison: Which Works for Your Situation</h2>
+    <h2 id="comparison">Strategy Comparison: Which Works for Your Situation</h2>
 
     <div class="table-wrap">
       <table>
@@ -1053,13 +1078,13 @@
       </table>
     </div>
 
-    <h2>A Critical Warning on Exemption Amounts</h2>
+    <h2 id="exemption-warning">A Critical Warning on Exemption Amounts</h2>
 
     <p>The federal estate tax exemption has shifted significantly in recent years. The Tax Cuts and Jobs Act of 2017 roughly doubled the exemption temporarily, with a scheduled sunset. Subsequent legislation — including potential changes in 2025 — may have further modified the applicable amounts. Do not rely on figures from articles written before the most recent legislative session.</p>
 
     <p>This is not a technicality. Whether your estate is above or below the exemption threshold changes which strategies are relevant and how urgently they need to be implemented. Before taking any action described in this article, <strong>consult a qualified estate attorney and CPA who can confirm the current applicable exemption for your situation</strong> — including any state-level considerations.</p>
 
-    <h2>The Bitcoin-Specific Complications</h2>
+    <h2 id="btc-complications">The Bitcoin-Specific Complications</h2>
 
     <p>Beyond the standard estate planning mechanics, Bitcoin introduces unique operational challenges that must be addressed in your plan:</p>
 
