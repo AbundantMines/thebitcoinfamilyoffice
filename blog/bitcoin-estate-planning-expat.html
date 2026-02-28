@@ -24,7 +24,7 @@
   "author": {"@type": "Person", "name": "Hal Franklin"},
   "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-estate-planning-expat",
   "datePublished": "2026-02-25",
-  "dateModified": "2026-02-25",
+  "dateModified": "2026-02-28",
   "publisher": {
     "@type": "Organization",
     "name": "The Bitcoin Family Office",
@@ -46,6 +46,19 @@
 </script>
 
 <!-- Google Analytics -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Are US citizens abroad subject to US estate tax on Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"Yes — US citizens and permanent residents (green card holders) are subject to US estate tax on their worldwide assets regardless of where they live. Bitcoin held in self-custody on a hardware wallet in Singapore, on a Swiss exchange, in a Colombian bank account — all of it is US taxable estate. The IRS does not grant territorial exceptions based on physical location of the asset or the holder. The only way to eliminate US estate tax exposure as a US citizen is to renounce citizenship — and even that triggers an exit tax that treats your assets as sold the day before expatriation."}},
+    {"@type":"Question","name":"Does holding Bitcoin on a foreign exchange avoid US estate tax?","acceptedAnswer":{"@type":"Answer","text":"No. Bitcoin held on a foreign exchange is still a US taxable asset for a US citizen or permanent resident. The exchange's jurisdiction does not determine the tax treatment of the account holder's assets. Additionally, foreign financial accounts holding Bitcoin above $10,000 may trigger FBAR reporting requirements (FinCEN 114), and FATCA reporting may also apply to accounts above $50,000–$200,000 depending on filing status and location. Non-compliance with these reporting requirements can result in significant penalties — up to $10,000–$100,000 per willful violation."}},
+    {"@type":"Question","name":"What is the exit tax for US citizens who renounce citizenship with Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"The expatriation tax (IRC §877A) treats a covered expatriate's assets as sold at fair market value on the day before expatriation. For Bitcoin: if you renounce citizenship with $5M in Bitcoin with a $500K cost basis, the IRS treats you as having sold $5M in Bitcoin, triggering $4.5M in capital gains recognition. The exit tax applies to covered expatriates — those with average annual net income tax over $190,000 for the 5 preceding years, net worth over $2 million at time of expatriation, or who fail to certify 5 years of tax compliance. Plan carefully before assuming renunciation is a Bitcoin tax strategy."}},
+    {"@type":"Question","name":"What is a QDOT trust and why do expat Bitcoin families need it?","acceptedAnswer":{"@type":"Answer","text":"A Qualified Domestic Trust (QDOT) is required to claim the unlimited marital deduction for assets passed to a non-citizen surviving spouse. Without a QDOT, assets passing to a non-citizen spouse at the US citizen's death are not entitled to the unlimited marital deduction — estate tax is due immediately on the full estate value. For expat Bitcoin families with a non-citizen spouse: a properly structured QDOT allows the Bitcoin to pass to the surviving spouse at death without immediate estate tax, with tax deferred until distributions from the QDOT or until the surviving spouse's death."}},
+    {"@type":"Question","name":"What estate planning documents does a US expat with Bitcoin need?","acceptedAnswer":{"@type":"Answer","text":"US expats with Bitcoin need: (1) US-law will that addresses Bitcoin specifically, incorporating RUFADAA digital asset provisions; (2) DPOA (Durable Power of Attorney) with explicit digital asset authority — critical given timezone and travel distances involved in expat life; (3) QDOT trust if the surviving spouse is not a US citizen; (4) Letter of Instruction for Bitcoin custody — especially important for expats whose Bitcoin may be in multiple jurisdictions; (5) Healthcare directive compliant with the state of US domicile; (6) FBAR and FATCA reporting current; (7) Beneficiary designations reviewed for US retirement accounts."}}
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
 <script>
@@ -193,17 +206,31 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>For the bitcoin estate planning expat, this creates a thicket of compliance obligations, structural traps, and planning requirements that are genuinely more complex than those facing US-resident Bitcoin families. This guide addresses the most important of them.</p>
 
-  <h2>The Foundational Rule: Worldwide Taxation of US Citizens</h2>
+  <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+    <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted,#6b6660);margin-bottom:1rem;">In This Guide</div>
+    <ol style="margin:0 0 0 1.25rem;">
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#worldwide-tax" style="color:var(--text-secondary);">The Foundational Rule: Worldwide Taxation of US Citizens</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#fbar-fatca" style="color:var(--text-secondary);">FBAR and FATCA: Reporting Bitcoin Held Abroad</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#exit-tax" style="color:var(--text-secondary);">Renouncing Citizenship: The Exit Tax and Bitcoin</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#qdot" style="color:var(--text-secondary);">QDOT: The Non-Citizen Spouse Problem</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#treaties" style="color:var(--text-secondary);">Estate Tax Treaty Considerations and Bitcoin Situs</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#strategies" style="color:var(--text-secondary);">Planning Strategies for Expat Bitcoin Families</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#self-custody" style="color:var(--text-secondary);">Self-Custody Abroad: The IRS Doesn't Care Where the Device Is</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <h2 id="worldwide-tax">The Foundational Rule: Worldwide Taxation of US Citizens</h2>
 
   <p>The US federal estate tax applies to the worldwide assets of every US citizen, regardless of domicile. If you are a US citizen living in Lisbon, Chiang Mai, or Buenos Aires, your Bitcoin holdings — wherever they are custodied, whatever exchange or wallet you use, in whatever legal structure you hold them — are fully included in your US taxable estate at death.</p>
 
-  <p>The physical location of your hardware wallet is irrelevant. The jurisdiction of the exchange on which your Bitcoin is held is irrelevant. Whether your Bitcoin is titled in a foreign trust, a foreign LLC, or held directly on a Ledger device in a safe in your apartment in Medellín — it is US taxable estate. The IRS does not grant territo<a href="/blog/bitcoin-family-office-vs-ria">Bitcoin family office vs. RIA comparison</a>l exceptions based on where you choose to live.</p>
+  <p>The physical location of your hardware wallet is irrelevant. The jurisdiction of the exchange on which your Bitcoin is held is irrelevant. Whether your Bitcoin is titled in a foreign trust, a foreign LLC, or held directly on a Ledger device in a safe in your apartment in Medellín — it is US taxable estate. The IRS does not grant territorial exceptions based on where you choose to live.</p>
 
   <p>This is the foundational tax trap for the bitcoin digital nomad: the sense that physical distance from the US creates distance from US tax obligations. It does not. The only way to exit US worldwide estate tax exposure is to relinquish US citizenship — and as we will discuss, that process itself carries a potentially enormous tax cost for Bitcoin-wealthy individuals.</p>
 
   <div class="pull-quote">A hardware wallet in a safe in Medellín is still US taxable estate. The IRS does not grant territorial exceptions based on where you live. Geography changes nothing.</div>
 
-  <h2>FBAR and FATCA: Reporting Bitcoin Held Abroad</h2>
+  <h2 id="fbar-fatca">FBAR and FATCA: Reporting Bitcoin Held Abroad</h2>
 
   <p>Beyond estate planning, US expats holding Bitcoin on foreign exchanges or in foreign trusts face ongoing annual reporting requirements that carry severe penalties for noncompliance.</p>
 
@@ -223,7 +250,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
     <p><strong>Practical Note:</strong> FBAR and FATCA penalties are cumulative with tax liabilities — not substitutes for them. The IRS can assess both the tax owed on an unreported foreign account <em>and</em> the FBAR/FATCA penalties simultaneously. Self-custody Bitcoin held in a personal hardware wallet (not through a foreign financial institution) may not trigger FBAR/FATCA under current guidance, but the IRS has not issued definitive rules, and the landscape is evolving.</p>
   </div>
 
-  <h2>Renouncing Citizenship: The Exit Tax and Bitcoin</h2>
+  <h2 id="exit-tax">Renouncing Citizenship: The Exit Tax and Bitcoin</h2>
 
   <p>For US citizens who have concluded that the permanent worldwide tax nexus of US citizenship is incompatible with their long-term wealth planning, renunciation may eventually be considered. The US permits citizens to relinquish citizenship — but it imposes a significant financial cost on those who have accumulated meaningful wealth: the exit tax under IRC § 877A.</p>
 
@@ -247,7 +274,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>Expatriation while holding a large, low-basis Bitcoin position requires extraordinarily careful planning — including considering whether to realize gains over multiple years before expatriation, whether to use <a href="/blog/bitcoin-charitable-giving-complete-guide">charitable giving</a> strategies to reduce basis exposure, and what the long-term net benefit of renunciation actually is after accounting for the exit tax cost.</p>
 
-  <h2>QDOT: The Non-Citizen Spouse Problem</h2>
+  <h2 id="qdot">QDOT: The Non-Citizen Spouse Problem</h2>
 
   <p>The unlimited marital deduction — which allows unlimited transfers between spouses free of estate and gift tax — does not apply when the surviving spouse is not a US citizen. This is one of the most consequential and frequently overlooked issues in bitcoin estate planning expat situations, particularly for American digital nomads who have married foreign nationals.</p>
 
@@ -263,7 +290,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>The annual gift tax exclusion for transfers to non-citizen spouses is significantly higher than the standard annual exclusion: $185,000 in 2024, indexed for inflation (compared to $18,000 for US citizen spouses). This elevated annual exclusion creates an efficient lifetime gifting channel for expat couples. A US citizen with a large Bitcoin position can gift Bitcoin worth up to $185,000 per year to a non-citizen spouse gift-tax-free, gradually reducing the US citizen's taxable estate over time.</p>
 
-  <h2>Estate Tax Treaty Considerations and Bitcoin Situs</h2>
+  <h2 id="treaties">Estate Tax Treaty Considerations and Bitcoin Situs</h2>
 
   <p>The United States has estate tax treaties with a limited number of countries — including Australia, Austria, Canada, Denmark, Finland, France, Germany, Greece, Ireland, Italy, Japan, the Netherlands, Norway, South Africa, Sweden, Switzerland, and the United Kingdom. These treaties generally allocate estate taxing rights between the US and the treaty country, and may affect how Bitcoin is taxed for expats domiciled in treaty countries.</p>
 
@@ -273,7 +300,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>Under estate tax treaties, the situs determination may follow different rules. Some treaties provide that intangible property is taxable only by the country of domicile; others allocate specific categories differently. The interaction between treaty situs rules and Bitcoin's novel nature as an intangible, borderless asset is not fully settled. For expats domiciled in treaty countries, the treaty analysis should be a specific component of the estate planning review — there may be significant deductions, credits, or outright exemptions available that are not available without treaty analysis.</p>
 
-  <h2>Planning Strategies for Expat Bitcoin Families</h2>
+  <h2 id="strategies">Planning Strategies for Expat Bitcoin Families</h2>
 
   <h3>Wyoming or South Dakota Trust Siting</h3>
 
@@ -295,7 +322,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <p>Beyond the elevated annual exclusion for non-citizen spouses, US expat Bitcoin families should implement systematic annual gifting programs consistent with their overall estate plan. The $18,000 annual exclusion (2024) applies per recipient — a couple with three adult children can gift $108,000 of Bitcoin annually free of gift tax, regardless of which country the children reside in. Over a decade, that is $1.08 million of Bitcoin removed from the taxable estate. Combined with appreciation on the gifted Bitcoin, the estate tax savings compound significantly.</p>
 
-  <h2>Self-Custody Abroad: The IRS Doesn't Care Where the Device Is</h2>
+  <h2 id="self-custody">Self-Custody Abroad: The IRS Doesn't Care Where the Device Is</h2>
 
   <p>Many expat Bitcoin holders assume — incorrectly — that holding their Bitcoin in self-custody on a hardware wallet located outside the United States places the asset outside the reach of the US estate tax. This assumption is false.</p>
 
@@ -311,15 +338,36 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
     <li><strong>Dual-jurisdiction background:</strong> Experience practicing in, or at minimum advising on the law of, both the US jurisdiction where the estate plan is anchored and the country of the client's current domicile. This is especially important for QDOT planning, which requires coordination between US estate counsel and local advisors regarding the spouse's nationality and the foreign trust law implications.</li>
     <li><strong>QDOT experience:</strong> Not all US estate attorneys have drafted QDOTs. A QDOT for a Bitcoin-heavy estate is a specialized document. Confirm that the attorney has specific QDOT experience, not just general estate planning credentials.</li>
     <li><strong>Expat tax background:</strong> The attorney should be conversant with FBAR/FATCA compliance, the exit tax mechanics of IRC § 877A, and the Foreign Earned Income Exclusion — or work closely with a CPA who specializes in expat taxation. The estate plan cannot be designed in isolation from the income and reporting obligations it intersects with.</li>
-    <li><strong>Digital asset fluency:</strong> The attorney should understand how Bitcoin is held in self-custody versus exchange custody, the technical architecture of multi-signature <a href="/blog/bitcoin-family-office-setup-guide">how to set up a Bitcoin family office</a>s, and how to draft fiduciary access provisions that are technically operable — not just legally authorized.</li>
+    <li><strong>Digital asset fluency:</strong> The attorney should understand how Bitcoin is held in self-custody versus exchange custody, the technical architecture of multi-signature setups, and how to draft fiduciary access provisions that are technically operable — not just legally authorized.</li>
     <li><strong>Treaty analysis capability:</strong> If you are domiciled in a treaty country, the attorney should be able to conduct or commission a treaty analysis, not simply default to domestic US estate planning rules without considering whether the treaty changes the analysis.</li>
   </ul>
 
   <hr>
 
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <div style="margin: 2rem 0;">
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Are US citizens abroad subject to US estate tax on Bitcoin?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Yes — US citizens and permanent residents are subject to US estate tax on worldwide assets regardless of location. Bitcoin on a Singapore hardware wallet, Swiss exchange, or Colombian bank: all US taxable estate. No territorial exceptions. The only exit is citizenship renunciation — which triggers an exit tax treating assets as sold the day before expatriation.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the exit tax for US citizens who renounce with Bitcoin?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">IRC §877A treats covered expatriates as having sold all assets at FMV the day before expatriation. $5M Bitcoin with $500K basis = $4.5M capital gains recognized on the spot. Covered expatriate criteria: average net income tax over $190K for 5 preceding years OR net worth over $2M. Plan carefully before treating renunciation as a Bitcoin tax strategy.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is a QDOT trust for expat Bitcoin families?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">A Qualified Domestic Trust required when passing assets to a non-citizen surviving spouse. Without QDOT, the unlimited marital deduction is unavailable — estate tax is due immediately at death. QDOT allows Bitcoin to pass to the non-citizen spouse without immediate estate tax, deferred until distributions or the surviving spouse's death.</p>
+    </div>
+    <div>
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Does holding Bitcoin on a foreign exchange avoid US estate tax?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">No. Foreign exchange jurisdiction does not determine tax treatment of a US citizen's assets. Foreign accounts above $10,000 also trigger FBAR reporting (FinCEN 114). FATCA may apply to accounts above $50K–$200K depending on filing status. Willful FBAR violations: penalties up to $100,000 per violation.</p>
+    </div>
+  </div>
+  <hr>
   <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0;">
     <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin Mining: The Most Tax-Efficient Strategy for Expats Building Wealth</p>
-    <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">For US expats with Bitcoin, the income tax and estate tax pressure is compounded over time. Bitcoin mining through a properly structured entity creates significant operational expense deductions and bonus depreciation that reduce taxable income annually — while accumulating BTC. For expats in low-income years using the FEIE, combining mining deductions with Roth conversion creates a powerful tax compression strategy. Abundant Mines has compiled every major Bitcoin mining <a href="/blog/bitcoin-tax-strategy-hub">Bitcoin tax strategy hub</a> in one resource.</p>
+    <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">For US expats with Bitcoin, the income tax and estate tax pressure is compounded over time. Bitcoin mining through a properly structured entity creates significant operational expense deductions and bonus depreciation that reduce taxable income annually — while accumulating BTC. For expats in low-income years using the FEIE, combining mining deductions with Roth conversion creates a powerful tax compression strategy. Abundant Mines has compiled every major Bitcoin mining tax strategy in one resource.</p>
     <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Explore Bitcoin Mining Tax Strategies →</a>
   </div>
 
@@ -346,21 +394,21 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 </div>
 
 <div style="max-width:var(--max-w);margin:0 auto 2rem;padding:0 2rem;">
-  <p style="font-family:var(--sans);font-size:0.75rem;color:var(--text-muted);">See how your state compares to all 50: <a href="/blog/bitcoin-estate-planning-all-50-states.html" style="color:var(--accent);">Bitcoin Estate Planning: Complete 50-State Guide →</a></p>
+  <p style="font-family:var(--sans);font-size:0.75rem;color:var(--text-muted);">See how your state compares to all 50: <a href="/blog/bitcoin-estate-planning-all-50-states" style="color:var(--accent);">Bitcoin Estate Planning: Complete 50-State Guide →</a></p>
 </div>
 
 <div style="max-width:var(--max-w);margin:0 auto 2rem;padding:0 1.5rem;">
   <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem;">Related Reading</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
-    <a href="/blog/bitcoin-estate-planning-wyoming.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/bitcoin-estate-planning-wyoming" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Jurisdiction</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Estate Planning in Wyoming</p>
     </a>
-    <a href="/blog/bitcoin-custody-architecture.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/bitcoin-custody-architecture" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Custody</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Custody Architecture for Family Offices</p>
     </a>
-    <a href="/blog/bitcoin-estate-planning-all-50-states.html" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
+    <a href="/blog/bitcoin-estate-planning-all-50-states" style="display:block;padding:1.25rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent-border)'" onmouseout="this.style.borderColor='var(--border)'">
       <p style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Research</p>
       <p style="font-family:var(--display);font-size:1rem;color:var(--text);font-weight:400;line-height:1.4;margin:0;">Bitcoin Estate Planning: Complete 50-State Guide</p>
     </a>
@@ -376,10 +424,10 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 <section class="related">
   <div class="related-label">Continue Reading</div>
   <div class="related-links">
-    <a href="/blog/bitcoin-estate-planning-complete-guide.html">Bitcoin Estate Planning: The Complete Guide for High-Net-Worth Families</a>
-    <a href="/blog/bitcoin-dynasty-trust-vs-revocable-trust.html">Bitcoin Dynasty Trust vs. Revocable Trust: Which Structure Is Right?</a>
-    <a href="/blog/bitcoin-cold-storage-estate-planning.html">Bitcoin Cold Storage and Estate Planning: What Your Heirs Need to Know</a>
-    <a href="/blog/multi-generational-bitcoin-wealth-estate-planning.html">Multi-Generational Bitcoin Wealth &amp; Estate Planning</a>
+    <a href="/blog/bitcoin-estate-planning-complete-guide">Bitcoin Estate Planning: The Complete Guide for High-Net-Worth Families</a>
+    <a href="/blog/bitcoin-dynasty-trust-vs-revocable-trust">Bitcoin Dynasty Trust vs. Revocable Trust: Which Structure Is Right?</a>
+    <a href="/blog/bitcoin-cold-storage-estate-planning">Bitcoin Cold Storage and Estate Planning: What Your Heirs Need to Know</a>
+    <a href="/blog/multi-generational-bitcoin-wealth-estate-planning">Multi-Generational Bitcoin Wealth &amp; Estate Planning</a>
   </div>
 </section>
 
