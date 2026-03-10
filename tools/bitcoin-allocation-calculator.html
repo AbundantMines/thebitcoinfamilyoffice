@@ -1,589 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bitcoin Allocation Calculator: Find Your Optimal Portfolio Weight | The Bitcoin Family Office</title>
-<meta name="description" content="Use our Bitcoin allocation calculator to find your optimal portfolio weight based on net worth, risk tolerance, time horizon, and estate planning goals. Free, private, runs in your browser.">
-<meta name="keywords" content="bitcoin allocation calculator, bitcoin portfolio allocation, how much bitcoin to own, bitcoin portfolio weight, optimal bitcoin allocation">
-<link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-allocation-calculator.html">
-<meta property="og:title" content="Bitcoin Allocation Calculator: Find Your Optimal Portfolio Weight">
-<meta property="og:description" content="Interactive calculator: enter your net worth, risk tolerance, and time horizon — get your recommended Bitcoin allocation percentage and dollar targets.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-allocation-calculator.html">
-<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
-
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-
-<!-- Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
-
-<!-- Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebApplication",
-      "name": "Bitcoin Allocation Calculator",
-      "url": "https://thebitcoinfamilyoffice.com/tools/bitcoin-allocation-calculator.html",
-      "description": "Interactive calculator to find your optimal Bitcoin portfolio weight based on net worth, risk tolerance, time horizon, and estate planning goals.",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Any",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-      "publisher": {"@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"}
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How much Bitcoin should a high-net-worth investor hold?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "There is no universal answer, but most institutional allocation frameworks suggest 1–5% for conservative portfolios, 5–15% for growth-oriented portfolios, and higher concentrations only for investors with deep Bitcoin conviction, long time horizons, and custody infrastructure in place. The most important variables are time horizon, liquidity needs, estate planning complexity, and tax situation."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does this Bitcoin allocation calculator work?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The calculator uses four inputs — total investable net worth, current Bitcoin holdings, risk tolerance profile, and time horizon — to derive a recommended allocation percentage. The base allocation is set by risk tolerance (Conservative 2%, Moderate 5%, Aggressive 10%, Bitcoin-Native 50%), then adjusted by time horizon (shorter horizons reduce the recommendation by 20%; longer horizons increase it by 20%, capped at 100%). It then compares your current allocation against the recommendation and shows the gap in both percentage points and dollar terms."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Should estate planning concerns affect my Bitcoin allocation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, significantly. High Bitcoin concentrations (above 20–25% of net worth) can create estate planning complexity: federal estate tax exposure, illiquidity for executors, heir readiness gaps, and concentration risk that undermines the estate's overall stability. If you have estate planning concerns and the calculator recommends an allocation above 20%, it flags a concentration risk warning and recommends reviewing your planning structure with a qualified advisor."
-          }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitcoin Allocation Calculator: Find Your Optimal Portfolio Weight | The Bitcoin Family Office</title>
+  <meta name="description" content="Calculate your optimal Bitcoin allocation based on net worth, risk tolerance, and time horizon. Built for serious holders with $1M+ in assets." />
+  <meta property="og:title" content="Bitcoin Allocation Calculator: Find Your Optimal Portfolio Weight" />
+  <meta property="og:description" content="Interactive tool: enter your net worth, risk tolerance, and time horizon to find your optimal Bitcoin allocation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/tools/bitcoin-allocation-calculator.html" />
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/tools/bitcoin-allocation-calculator.html" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the right Bitcoin allocation for a high-net-worth investor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There is no single correct answer — it depends on risk tolerance, time horizon, and existing wealth. Conservative HNWI allocations typically range from 1–3%, moderate from 3–7%, and aggressive from 7–15%. Bitcoin-native investors who understand the asset deeply often hold 25–100%. Estate planning concerns, liquidity needs, and tax position should all inform the decision."
         }
-      ]
-    }
-  ]
-}
-</script>
-
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --bg:#0a0a0a;--bg-elevated:#111111;--bg-card:#141414;
-  --accent:#c9a84c;--accent-dim:rgba(201,168,76,0.10);--accent-border:rgba(201,168,76,0.3);
-  --text:#e8e0d0;--text-secondary:#8a8070;--text-muted:#6b6660;
-  --border:#1e1e1e;
-  --serif:'EB Garamond',Georgia,serif;
-  --display:'Playfair Display',Georgia,serif;
-  --sans:'Inter',-apple-system,sans-serif;
-  --max-w:720px;
-  --green:#4caf74;--green-dim:rgba(76,175,116,0.12);--green-border:rgba(76,175,116,0.3);
-  --red:#c94c4c;--red-dim:rgba(201,76,76,0.12);--red-border:rgba(201,76,76,0.3);
-  --yellow:#c9a84c;--yellow-dim:rgba(201,168,76,0.12);--yellow-border:rgba(201,168,76,0.3);
-}
-html{font-size:18px;scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:var(--serif);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-a{color:var(--accent);text-decoration:none;}a:hover{opacity:0.8;}
-
-nav{position:sticky;top:0;z-index:100;padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
-.nav-mark{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary);}
-.nav-mark span{color:var(--accent);}
-.nav-links{display:flex;gap:2rem;align-items:center;}
-.nav-links a{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);}
-.nav-links .nav-cta{color:var(--accent)!important;border:1px solid var(--accent-border);padding:0.35rem 0.8rem;border-radius:2px;}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:1px;background:var(--text-muted);}
-.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
-.mobile-menu.open{display:flex;}
-.mobile-menu .close-btn{position:absolute;top:1.5rem;right:2rem;color:var(--text-muted);cursor:pointer;}
-@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
-
-.article-header{padding:7rem 2rem 4rem;border-bottom:1px solid var(--border);text-align:center;position:relative;}
-.article-header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:5rem;background:linear-gradient(to bottom,transparent,var(--accent-border));}
-.article-tag{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:block;}
-.article-header h1{font-family:var(--display);font-weight:400;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.25;color:var(--text);max-width:800px;margin:0 auto 1.5rem;}
-.article-meta{font-family:var(--sans);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);}
-.article-body{max-width:var(--max-w);margin:0 auto;padding:4rem 2rem 6rem;}
-.article-body h2{font-family:var(--display);font-weight:400;font-size:1.6rem;line-height:1.3;color:var(--text);margin:3rem 0 1.25rem;}
-.article-body h3{font-family:var(--sans);font-weight:500;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-secondary);margin:2rem 0 0.75rem;}
-.article-body p{margin-bottom:1.5rem;font-size:1.05rem;color:var(--text);}
-.article-body ul,.article-body ol{margin:0 0 1.5rem 1.5rem;}
-.article-body li{margin-bottom:0.5rem;font-size:1.05rem;}
-.pull-quote{font-family:var(--display);font-style:italic;font-size:1.3rem;line-height:1.5;color:var(--text-secondary);border-left:2px solid var(--accent);padding:1.5rem 2rem;margin:2.5rem 0;}
-.article-body strong{color:var(--text);font-weight:500;}
-hr{border:none;border-top:1px solid var(--border);margin:3rem 0;}
-.callout-box{background:var(--bg-card);border:1px solid var(--accent-border);border-radius:4px;padding:1.5rem 1.75rem;margin:2rem 0;}
-.callout-box .callout-label{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;display:block;}
-.callout-box p{font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:0;}
-.callout-box a{color:var(--accent);}
-.cta-block{background:var(--bg-card);border:1px solid var(--accent-border);border-radius:4px;padding:2rem;text-align:center;margin:3rem 0;}
-.cta-block h3{font-family:var(--display);font-weight:400;font-size:1.4rem;color:var(--text);margin-bottom:0.75rem;}
-.cta-block p{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);margin-bottom:1.25rem;}
-.cta-btn{display:inline-block;background:var(--accent);color:#0a0a0a;font-family:var(--sans);font-size:0.7rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.8rem 1.75rem;border-radius:2px;}
-footer{padding:3rem 2rem;border-top:1px solid var(--border);text-align:center;}
-footer p{font-family:var(--sans);font-size:0.65rem;letter-spacing:0.08em;color:var(--text-muted);line-height:1.8;}
-footer a{color:var(--text-muted);}
-
-/* ── Calculator Styles ── */
-.calc-wrapper{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin:2rem 0 3rem;}
-.calc-header{padding:1.5rem 2rem;border-bottom:1px solid var(--border);}
-.calc-header h2{font-family:var(--display);font-weight:400;font-size:1.3rem;color:var(--text);margin:0;}
-.calc-header p{font-family:var(--sans);font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;}
-.calc-body{padding:1.75rem 2rem;}
-.form-group{margin-bottom:1.5rem;}
-.form-label{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-secondary);display:block;margin-bottom:0.5rem;}
-.form-input{width:100%;background:#0f0f0f;border:1px solid var(--border);border-radius:3px;padding:0.65rem 0.9rem;color:var(--text);font-family:var(--sans);font-size:0.85rem;outline:none;transition:border-color 0.2s;}
-.form-input:focus{border-color:var(--accent-border);}
-.radio-group{display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem;}
-@media(max-width:480px){.radio-group{grid-template-columns:1fr;}}
-.radio-opt{position:relative;}
-.radio-opt input{position:absolute;opacity:0;width:0;height:0;}
-.radio-opt label{display:block;background:#0f0f0f;border:1px solid var(--border);border-radius:3px;padding:0.65rem 0.9rem;font-family:var(--sans);font-size:0.78rem;color:var(--text-muted);cursor:pointer;transition:all 0.15s;text-align:center;}
-.radio-opt input:checked + label{border-color:var(--accent-border);color:var(--accent);background:var(--accent-dim);}
-.radio-opt label:hover{border-color:rgba(201,168,76,0.2);color:var(--text-secondary);}
-.toggle-row{display:flex;gap:0.5rem;}
-.toggle-row .radio-opt{flex:1;}
-.calc-btn{width:100%;background:var(--accent);color:#0a0a0a;font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:0.9rem;border:none;border-radius:3px;cursor:pointer;margin-top:0.5rem;transition:opacity 0.2s;}
-.calc-btn:hover{opacity:0.88;}
-
-/* ── Results ── */
-.results-panel{display:none;border-top:1px solid var(--border);padding:1.75rem 2rem;}
-.results-panel.visible{display:block;}
-.results-label{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;display:block;}
-.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:1.5rem;}
-@media(max-width:500px){.metrics-grid{grid-template-columns:1fr 1fr;}}
-.metric-card{background:#0f0f0f;border:1px solid var(--border);border-radius:4px;padding:1rem;}
-.metric-card .m-label{font-family:var(--sans);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.35rem;}
-.metric-card .m-value{font-family:var(--display);font-size:1.25rem;color:var(--text);line-height:1.2;}
-.metric-card .m-sub{font-family:var(--sans);font-size:0.7rem;color:var(--text-muted);margin-top:0.2rem;}
-.status-bar{border-radius:3px;padding:1rem 1.25rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
-.status-bar.under{background:var(--green-dim);border:1px solid var(--green-border);}
-.status-bar.over{background:var(--red-dim);border:1px solid var(--red-border);}
-.status-bar.at{background:var(--yellow-dim);border:1px solid var(--yellow-border);}
-.status-icon{font-size:1.2rem;}
-.status-text{font-family:var(--sans);font-size:0.78rem;color:var(--text-secondary);line-height:1.5;}
-.status-text strong{color:var(--text);font-weight:500;}
-.commentary{background:#0f0f0f;border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;}
-.commentary p{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.7;margin:0;}
-.warning-box{background:var(--red-dim);border:1px solid var(--red-border);border-radius:4px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;display:none;}
-.warning-box.visible{display:block;}
-.warning-box .warn-label{font-family:var(--sans);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:0.4rem;display:block;}
-.warning-box p{font-family:var(--sans);font-size:0.8rem;color:var(--text-secondary);line-height:1.65;margin:0;}
-.disclaimer-sm{font-family:var(--sans);font-size:0.67rem;color:var(--text-muted);line-height:1.6;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);}
-
-/* Comparison Bar */
-.bar-section{margin-bottom:1.5rem;}
-.bar-title{font-family:var(--sans);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.65rem;}
-.bar-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;}
-.bar-row-label{font-family:var(--sans);font-size:0.72rem;color:var(--text-secondary);width:6rem;flex-shrink:0;}
-.bar-track{flex:1;height:6px;background:#1a1a1a;border-radius:3px;overflow:visible;position:relative;}
-.bar-fill{height:100%;border-radius:3px;transition:width 0.5s ease;position:relative;}
-.bar-fill.current{background:#4a4038;}
-.bar-fill.recommended{background:var(--accent);}
-.bar-pct{font-family:var(--sans);font-size:0.7rem;color:var(--text-secondary);width:3rem;text-align:right;flex-shrink:0;}
-
-/* FAQ */
-.faq-section{margin-top:3rem;}
-.faq-item{border-top:1px solid var(--border);padding:1.25rem 0;}
-.faq-item:last-child{border-bottom:1px solid var(--border);}
-.faq-q{font-family:var(--display);font-weight:400;font-size:1.05rem;color:var(--text);margin-bottom:0.75rem;}
-.faq-a{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.7;}
-
-.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1.5rem;}
-.related-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:1.25rem;}
-.related-card .tag{font-family:var(--sans);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;display:block;}
-.related-card h4{font-family:var(--display);font-weight:400;font-size:0.95rem;line-height:1.4;color:var(--text);}
-</style>
+      },
+      {
+        "@type": "Question",
+        "name": "How does estate planning change Bitcoin allocation decisions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When Bitcoin represents more than 20% of a taxable estate, the illiquidity risk, key custody complexity, and concentration at death become significant. Heirs may face a locked asset with no way to pay estate taxes without selling at a distressed price. Families with large Bitcoin positions should structure trusts and document custody procedures well in advance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I rebalance my Bitcoin allocation as the price changes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Disciplined rebalancing — trimming back to target when Bitcoin appreciates significantly — is prudent for most investors. Bitcoin-native investors may prefer to hold without a hard ceiling. The key is having a written policy: either a fixed percentage with annual rebalancing, or an explicit decision to hold without rebalancing and understanding the tax and estate implications of doing so."
+        }
+      }
+    ]
+  }
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    :root{--bg:#0a0a0a;--bg-elevated:#111111;--bg-card:#141414;--accent:#c9a84c;--accent-dim:rgba(201,168,76,0.10);--accent-border:rgba(201,168,76,0.3);--text:#e8e0d0;--text-secondary:#8a8070;--text-muted:#6b6660;--border:#1e1e1e;--serif:'EB Garamond',Georgia,serif;--display:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;--max-w:760px;}
+    html{font-size:18px;scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--serif);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+    a{color:var(--accent);text-decoration:none;}a:hover{opacity:0.8;}
+    ::selection{background:var(--accent-dim);color:var(--accent);}
+    nav{position:sticky;top:0;z-index:100;padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+    .nav-mark{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary);}
+    .nav-mark span{color:var(--accent);}
+    .nav-links{display:flex;gap:2rem;align-items:center;}
+    .nav-links a{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);transition:color 0.2s;}
+    .nav-links a:hover{color:var(--text);opacity:1;}
+    .nav-links .nav-cta{color:var(--accent)!important;border:1px solid var(--accent-border);padding:0.35rem 0.8rem;border-radius:2px;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+    .hamburger span{display:block;width:22px;height:1px;background:var(--text-muted);}
+    .mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-family:var(--sans);font-size:0.9rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary);}
+    .mobile-menu .close-btn{position:absolute;top:1.5rem;right:2rem;font-family:var(--sans);font-size:1.2rem;color:var(--text-muted);cursor:pointer;}
+    @media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+    .tool-header{padding:6rem 2rem 3rem;border-bottom:1px solid var(--border);text-align:center;position:relative;}
+    .tool-header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:5rem;background:linear-gradient(to bottom,transparent,var(--accent-border));}
+    .tool-tag{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;display:block;}
+    .tool-header h1{font-family:var(--display);font-weight:400;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.25;color:var(--text);max-width:700px;margin:0 auto 1rem;}
+    .tool-header p{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);max-width:560px;margin:0 auto;}
+    .tool-wrap{max-width:var(--max-w);margin:0 auto;padding:3rem 2rem 5rem;}
+    .calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:2.5rem;margin-bottom:2rem;}
+    .calc-card h2{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;}
+    .field-group{margin-bottom:1.75rem;}
+    .field-group label{display:block;font-family:var(--sans);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.5rem;}
+    .field-group input[type="number"]{width:100%;background:#0d0d0d;border:1px solid var(--border);border-radius:3px;padding:0.75rem 1rem;color:var(--text);font-family:var(--sans);font-size:0.9rem;outline:none;transition:border-color 0.2s;}
+    .field-group input[type="number"]:focus{border-color:var(--accent-border);}
+    .field-group input[type="number"]::placeholder{color:var(--text-muted);}
+    .radio-group{display:flex;flex-wrap:wrap;gap:0.5rem;}
+    .radio-group label{display:flex;align-items:center;gap:0.5rem;font-family:var(--sans);font-size:0.78rem;color:var(--text-secondary);background:#0d0d0d;border:1px solid var(--border);border-radius:3px;padding:0.5rem 0.9rem;cursor:pointer;transition:all 0.15s;}
+    .radio-group input[type="radio"]{display:none;}
+    .radio-group input[type="radio"]:checked + span{color:var(--accent);}
+    .radio-group label:has(input:checked){border-color:var(--accent-border);background:var(--accent-dim);}
+    .calc-btn{display:block;width:100%;background:var(--accent);color:#0a0a0a;font-family:var(--sans);font-size:0.72rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;padding:1rem;border:none;border-radius:3px;cursor:pointer;margin-top:2rem;transition:opacity 0.2s;}
+    .calc-btn:hover{opacity:0.85;}
+    .result-card{background:var(--bg-card);border:1px solid var(--accent-border);border-radius:6px;padding:2rem;display:none;}
+    .result-card.visible{display:block;}
+    .result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;}
+    @media(max-width:560px){.result-grid{grid-template-columns:1fr;}}
+    .result-stat{text-align:center;padding:1rem;background:#0d0d0d;border-radius:4px;}
+    .result-stat .stat-label{font-family:var(--sans);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.4rem;}
+    .result-stat .stat-val{font-family:var(--display);font-size:1.6rem;font-weight:400;color:var(--accent);}
+    .result-stat .stat-sub{font-family:var(--sans);font-size:0.72rem;color:var(--text-secondary);margin-top:0.2rem;}
+    .gap-indicator{text-align:center;padding:0.75rem;border-radius:4px;margin-bottom:1.5rem;font-family:var(--sans);font-size:0.82rem;font-weight:500;}
+    .gap-under{background:rgba(201,168,76,0.08);border:1px solid var(--accent-border);color:var(--accent);}
+    .gap-at{background:rgba(40,160,80,0.08);border:1px solid rgba(40,160,80,0.3);color:#4aba6f;}
+    .gap-over{background:rgba(200,60,60,0.08);border:1px solid rgba(200,60,60,0.3);color:#e05a5a;}
+    .result-commentary{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.7;padding-top:1rem;border-top:1px solid var(--border);}
+    .warn-box{background:rgba(200,60,60,0.06);border:1px solid rgba(200,60,60,0.25);border-radius:4px;padding:1rem 1.25rem;margin-top:1rem;}
+    .warn-box p{font-family:var(--sans);font-size:0.78rem;color:#e05a5a;line-height:1.6;margin:0;}
+    .content-section{padding:3rem 0;}
+    .content-section h2{font-family:var(--display);font-weight:400;font-size:1.5rem;line-height:1.3;color:var(--text);margin:2.5rem 0 1rem;}
+    .content-section h3{font-family:var(--sans);font-weight:500;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-secondary);margin:2rem 0 0.75rem;}
+    .content-section p{margin-bottom:1.4rem;font-size:1rem;color:var(--text);}
+    .content-section strong{color:var(--text);font-weight:500;}
+    .pull-quote{font-family:var(--display);font-style:italic;font-size:1.2rem;line-height:1.5;color:var(--text-secondary);border-left:2px solid var(--accent);padding:1.25rem 1.75rem;margin:2rem 0;}
+    .callout-box{background:var(--bg-card);border:1px solid var(--accent-border);border-radius:4px;padding:1.5rem 1.75rem;margin:2rem 0;}
+    .callout-box .callout-label{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;display:block;}
+    .callout-box p{font-family:var(--sans);font-size:0.82rem;color:var(--text-secondary);line-height:1.7;margin-bottom:0;}
+    .callout-box a{color:var(--accent);}
+    .disclaimer{font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);line-height:1.6;border-top:1px solid var(--border);padding-top:2rem;margin-top:2rem;}
+    footer{padding:3rem 2rem;border-top:1px solid var(--border);text-align:center;}
+    footer p{font-family:var(--sans);font-size:0.65rem;letter-spacing:0.08em;color:var(--text-muted);line-height:1.8;}
+    footer a{color:var(--text-muted);}
+  </style>
 </head>
 <body>
-
 <nav>
   <a href="/" class="nav-mark">The <span>Bitcoin</span> Family Office</a>
   <div class="nav-links">
-    <a href="/blog/">Insights</a><a href="/tools/">Tools</a><a href="/services/">Services</a>
+    <a href="/blog/">Insights</a>
+    <a href="/tools/">Tools</a>
+    <a href="/services/">Services</a>
     <a href="/services/" class="nav-cta">Get Started</a>
   </div>
-  <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')"><span></span><span></span><span></span></div>
+  <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 <div class="mobile-menu">
   <span class="close-btn" onclick="document.querySelector('.mobile-menu').classList.remove('open')">✕</span>
   <a href="/">Home</a><a href="/blog/">Insights</a><a href="/tools/">Tools</a><a href="/services/">Services</a>
+  <a href="/services/" style="color:var(--accent)">Get Started</a>
 </div>
 
-<header class="article-header">
-  <span class="article-tag">Portfolio Tool</span>
-  <h1>Bitcoin Allocation Calculator: Find Your Optimal Portfolio Weight</h1>
-  <p class="article-meta">Free · Runs in browser · No data transmitted</p>
-</header>
+<div class="tool-header">
+  <span class="tool-tag">Portfolio Tool</span>
+  <h1>Bitcoin Allocation Calculator</h1>
+  <p>Find your optimal Bitcoin portfolio weight based on net worth, risk tolerance, time horizon, and estate planning needs.</p>
+</div>
 
-<div class="article-body">
+<div class="tool-wrap">
+  <div class="calc-card">
+    <h2>Your Inputs</h2>
 
-  <!-- Calculator -->
-  <div class="calc-wrapper">
-    <div class="calc-header">
-      <h2>Bitcoin Allocation Calculator</h2>
-      <p>Enter your financial profile below to receive a personalized Bitcoin allocation recommendation.</p>
-    </div>
-    <div class="calc-body">
-
-      <div class="form-group">
-        <label class="form-label" for="netWorth">Total Investable Net Worth ($)</label>
-        <input class="form-input" type="number" id="netWorth" placeholder="e.g. 2500000" min="0">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="currentBtc">Current Bitcoin Holdings ($)</label>
-        <input class="form-input" type="number" id="currentBtc" placeholder="e.g. 150000" min="0">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Risk Tolerance</label>
-        <div class="radio-group">
-          <div class="radio-opt">
-            <input type="radio" name="risk" id="risk-conservative" value="conservative">
-            <label for="risk-conservative">Conservative</label>
-          </div>
-          <div class="radio-opt">
-            <input type="radio" name="risk" id="risk-moderate" value="moderate">
-            <label for="risk-moderate">Moderate</label>
-          </div>
-          <div class="radio-opt">
-            <input type="radio" name="risk" id="risk-aggressive" value="aggressive">
-            <label for="risk-aggressive">Aggressive</label>
-          </div>
-          <div class="radio-opt">
-            <input type="radio" name="risk" id="risk-native" value="native">
-            <label for="risk-native">Bitcoin-Native</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Investment Time Horizon</label>
-        <div class="radio-group">
-          <div class="radio-opt">
-            <input type="radio" name="horizon" id="h-short" value="short">
-            <label for="h-short">1–3 Years</label>
-          </div>
-          <div class="radio-opt">
-            <input type="radio" name="horizon" id="h-mid" value="mid">
-            <label for="h-mid">3–7 Years</label>
-          </div>
-          <div class="radio-opt" style="grid-column:1/-1;">
-            <input type="radio" name="horizon" id="h-long" value="long">
-            <label for="h-long">7+ Years</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Estate Planning Concern?</label>
-        <div class="toggle-row">
-          <div class="radio-opt">
-            <input type="radio" name="estate" id="estate-yes" value="yes">
-            <label for="estate-yes">Yes</label>
-          </div>
-          <div class="radio-opt">
-            <input type="radio" name="estate" id="estate-no" value="no">
-            <label for="estate-no">No</label>
-          </div>
-        </div>
-      </div>
-
-      <button class="calc-btn" onclick="calculate()">Calculate My Recommended Allocation</button>
+    <div class="field-group">
+      <label>Total Investable Net Worth ($)</label>
+      <input type="number" id="netWorth" placeholder="e.g. 5000000" min="0" />
     </div>
 
-    <!-- Results Panel -->
-    <div class="results-panel" id="resultsPanel">
-      <span class="results-label">Your Allocation Analysis</span>
+    <div class="field-group">
+      <label>Current Bitcoin Holdings ($)</label>
+      <input type="number" id="btcHoldings" placeholder="e.g. 500000" min="0" />
+    </div>
 
-      <!-- Status bar -->
-      <div class="status-bar" id="statusBar">
-        <span class="status-icon" id="statusIcon"></span>
-        <div class="status-text" id="statusText"></div>
+    <div class="field-group">
+      <label>Risk Tolerance</label>
+      <div class="radio-group">
+        <label><input type="radio" name="risk" value="conservative" /><span>Conservative</span></label>
+        <label><input type="radio" name="risk" value="moderate" checked /><span>Moderate</span></label>
+        <label><input type="radio" name="risk" value="aggressive" /><span>Aggressive</span></label>
+        <label><input type="radio" name="risk" value="bitcoin-native" /><span>Bitcoin-Native</span></label>
       </div>
+    </div>
 
-      <!-- Comparison Bars -->
-      <div class="bar-section">
-        <div class="bar-title">Portfolio Visualization</div>
-        <div class="bar-row">
-          <span class="bar-row-label">Current</span>
-          <div class="bar-track"><div class="bar-fill current" id="barCurrent" style="width:0%"></div></div>
-          <span class="bar-pct" id="barCurrentPct">0%</span>
-        </div>
-        <div class="bar-row">
-          <span class="bar-row-label">Recommended</span>
-          <div class="bar-track"><div class="bar-fill recommended" id="barRec" style="width:0%"></div></div>
-          <span class="bar-pct" id="barRecPct">0%</span>
-        </div>
+    <div class="field-group">
+      <label>Time Horizon</label>
+      <div class="radio-group">
+        <label><input type="radio" name="horizon" value="short" /><span>1–3 Years</span></label>
+        <label><input type="radio" name="horizon" value="medium" checked /><span>3–7 Years</span></label>
+        <label><input type="radio" name="horizon" value="long" /><span>7+ Years</span></label>
       </div>
+    </div>
 
-      <!-- Metrics -->
-      <div class="metrics-grid">
-        <div class="metric-card">
-          <div class="m-label">Current Allocation</div>
-          <div class="m-value" id="mCurrent">—</div>
-          <div class="m-sub" id="mCurrentDollar">—</div>
-        </div>
-        <div class="metric-card">
-          <div class="m-label">Recommended</div>
-          <div class="m-value" id="mRec">—</div>
-          <div class="m-sub" id="mRecDollar">—</div>
-        </div>
-        <div class="metric-card">
-          <div class="m-label">Gap</div>
-          <div class="m-value" id="mGap">—</div>
-          <div class="m-sub" id="mGapDollar">—</div>
-        </div>
+    <div class="field-group">
+      <label>Estate Planning Concern?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="estate" value="yes" /><span>Yes</span></label>
+        <label><input type="radio" name="estate" value="no" checked /><span>No</span></label>
       </div>
+    </div>
 
-      <!-- Warning (concentration risk) -->
-      <div class="warning-box" id="warningBox">
-        <span class="warn-label">⚠ Concentration Risk Warning</span>
-        <p id="warningText"></p>
+    <button class="calc-btn" onclick="calculate()">Calculate My Allocation →</button>
+  </div>
+
+  <div class="result-card" id="results">
+    <div class="result-grid">
+      <div class="result-stat">
+        <div class="stat-label">Current Allocation</div>
+        <div class="stat-val" id="currentPct">—</div>
+        <div class="stat-sub" id="currentAmt"></div>
       </div>
-
-      <!-- Commentary -->
-      <div class="commentary">
-        <p id="commentaryText"></p>
+      <div class="result-stat">
+        <div class="stat-label">Recommended</div>
+        <div class="stat-val" id="recPct">—</div>
+        <div class="stat-sub" id="recAmt"></div>
       </div>
-
-      <p class="disclaimer-sm">This tool is for educational purposes only and does not constitute financial or legal advice. Consult a qualified financial advisor before making allocation decisions.</p>
+      <div class="result-stat">
+        <div class="stat-label">Gap</div>
+        <div class="stat-val" id="gapAmt">—</div>
+        <div class="stat-sub" id="gapLabel"></div>
+      </div>
+    </div>
+    <div class="gap-indicator" id="gapIndicator"></div>
+    <div class="result-commentary" id="commentary"></div>
+    <div class="warn-box" id="estateWarn" style="display:none;">
+      <p>⚠ <strong>Estate Planning Alert:</strong> A Bitcoin allocation above 20% of net worth creates significant estate risk — illiquidity at death, key recovery complexity, and potential forced sale to cover estate taxes. Consider irrevocable trust structures and documented custody procedures. <a href="/blog/bitcoin-estate-planning-guide.html">Read the guide →</a></p>
     </div>
   </div>
 
-  <!-- Editorial Content -->
-  <h2>How We Calculate Your Optimal Bitcoin Allocation</h2>
+  <div class="content-section">
+    <h2>How to Think About Bitcoin Allocation</h2>
 
-  <p>Determining how much Bitcoin to hold is not a one-size-fits-all question. Unlike fixed-income or equity allocations, where decades of actuarial and academic data exist to guide portfolio construction, Bitcoin is a young, volatile, non-correlated asset with a unique risk/return profile. Any responsible allocation framework must account for your personal financial circumstances — not just a general rule of thumb.</p>
+    <p>The question of how much Bitcoin to hold is one of the most consequential financial decisions a serious investor can make — and one of the most poorly addressed in conventional wealth management. Most financial advisors default to 1–2% as a "safe" number. Bitcoin-native thinkers view anything below 20% as underweight. Neither camp is wrong; they're optimizing for different things.</p>
 
-  <p>This calculator uses four primary inputs to derive a recommended allocation: your total investable net worth, your existing Bitcoin position, your risk tolerance, and your time horizon. Together, these produce a percentage recommendation grounded in principles used by family office practitioners who work with serious Bitcoin holders.</p>
+    <p>The framework this calculator uses starts from first principles: what risk can you absorb without changing your life, over what time horizon, and what does your estate look like if Bitcoin either goes to zero or to $500,000?</p>
 
-  <h3>Risk Tolerance Baseline</h3>
+    <h3>The Allocation Spectrum</h3>
 
-  <p>The foundation of the calculation is your risk tolerance profile, which sets a base allocation percentage:</p>
+    <p><strong>Conservative (1–3%):</strong> Designed for investors who want Bitcoin exposure without material impact on their overall financial position if it drops 80%. At 2% of a $5M portfolio, a complete wipeout costs $100,000 — painful but not life-altering. This is the allocation that lets you participate in upside without lying awake at night.</p>
 
-  <ul>
-    <li><strong>Conservative (2%)</strong> — Appropriate for investors who prioritize capital preservation, have near-term liquidity needs, or are primarily concerned about downside risk. A 2% Bitcoin allocation provides meaningful exposure without threatening portfolio stability in a severe drawdown scenario.</li>
-    <li><strong>Moderate (5%)</strong> — The most common recommendation from institutional allocation research. Sufficient to generate meaningful portfolio-level impact in a bull cycle while limiting drawdown exposure to a tolerable range for most investors.</li>
-    <li><strong>Aggressive (10%)</strong> — Appropriate for growth-oriented investors with higher volatility tolerance and no near-term liquidity needs. At 10%, Bitcoin has historically had a material positive impact on long-run portfolio performance, while drawdowns remain within institutional risk limits.</li>
-    <li><strong>Bitcoin-Native (50%)</strong> — For investors with deep conviction in Bitcoin's long-term value proposition, existing infrastructure for self-custody, and a multi-decade time horizon. This is not a traditional portfolio allocation — it reflects a worldview.</li>
-  </ul>
+    <p><strong>Moderate (3–7%):</strong> The allocation range most institutional advisors now consider responsible for clients who understand Bitcoin as an asset. A 5% position in a $5M portfolio is $250,000 — meaningful upside if Bitcoin appreciates, manageable downside if it doesn't.</p>
 
-  <h3>Time Horizon Adjustment</h3>
+    <p><strong>Aggressive (7–15%):</strong> For investors who have done the work, understand Bitcoin's monetary properties, and are willing to accept the volatility in exchange for asymmetric upside. At 10%, a 10x in Bitcoin doubles the portfolio. This requires genuine conviction and a long time horizon.</p>
 
-  <p>Bitcoin's volatility diminishes over longer holding periods. Our framework applies a time horizon multiplier to the base allocation:</p>
+    <p><strong>Bitcoin-Native (25%+):</strong> For those who have concluded that Bitcoin is the hardest money ever created and that the opportunity to accumulate it at current prices is finite. These investors aren't diversifying away from Bitcoin — they're diversifying into it. This allocation requires full self-custody competence and careful estate planning.</p>
 
-  <ul>
-    <li><strong>1–3 year horizon:</strong> multiply base by 0.8. Shorter horizons mean less time to recover from a drawdown, warranting a conservative reduction.</li>
-    <li><strong>3–7 year horizon:</strong> no adjustment. The base allocation reflects this middle-range scenario.</li>
-    <li><strong>7+ year horizon:</strong> multiply base by 1.2 (capped at 100%). Longer time horizons allow for more aggressive positioning, as Bitcoin's historical record across multi-year periods is significantly stronger.</li>
-  </ul>
+    <div class="pull-quote">"The right allocation isn't the one that looks defensible at a cocktail party. It's the one you'll hold through a 70% drawdown without panic-selling — and that your heirs can actually recover when you're gone."</div>
 
-  <h3>Estate Planning Considerations</h3>
+    <h3>Time Horizon Changes Everything</h3>
 
-  <p>When estate planning is a concern and the recommended allocation exceeds 20% of investable net worth, this calculator flags a concentration risk warning. High Bitcoin concentrations create specific estate planning challenges: federal estate tax exposure on appreciated assets, potential illiquidity for executors who cannot access digital assets, heir readiness gaps, and structural complexity that generic estate documents do not address.</p>
+    <p>Bitcoin's volatility is front-loaded. Over 1–3 year windows, drawdowns of 50–80% are historically common. Over 7+ year windows, every four-year cycle has ended higher than the last. A shorter time horizon compresses your ability to recover from volatility, which justifies a lower allocation. A longer horizon allows more concentration because you have more cycles to absorb shocks.</p>
 
-  <p>This does not mean you should reduce your allocation. It means you should ensure the appropriate legal and custody structures are in place — a revocable living trust with digital asset provisions, a Bitcoin Letter of Instruction, and an heir education component. See our <a href="/blog/bitcoin-estate-planning-guide.html">Bitcoin Estate Planning Guide</a> for a full framework.</p>
+    <h3>The Estate Planning Variable</h3>
 
-  <h3>What This Calculator Does Not Model</h3>
+    <p>When Bitcoin represents more than 20% of a taxable estate, the calculus changes materially. Unlike publicly traded securities, Bitcoin is illiquid in ways that matter at death: keys must be accessible to executors, custody documentation must be complete, and heirs may face a forced sale to cover estate taxes on an asset they can't easily liquidate. Proper structures — irrevocable trusts, documented multisig setups, and clear succession plans — are not optional at this concentration level. Read our <a href="/blog/bitcoin-estate-planning-guide.html">comprehensive Bitcoin estate planning guide</a> and the <a href="/blog/high-net-worth-bitcoin-guide.html">high net worth Bitcoin wealth management guide</a> for the full framework.</p>
 
-  <p>No calculator can replace a qualified financial advisor. This tool does not account for tax-loss harvesting opportunities, existing illiquid assets (real estate, private equity), specific income streams or liquidity requirements, state-level estate and inheritance tax, or the psychological dimension of holding a volatile asset through a 70–80% drawdown. Use this as a starting point for a conversation with your advisor — not as a final recommendation.</p>
+    <h3>Rebalancing Discipline</h3>
 
-  <p>If you hold more than $1 million in Bitcoin, we recommend reviewing our <a href="/blog/high-net-worth-bitcoin-guide.html">High Net Worth Bitcoin Wealth Management Guide</a> and our <a href="/blog/bitcoin-tax-optimization-high-net-worth.html">Bitcoin Tax Optimization guide</a> before making any allocation decisions.</p>
+    <p>Bitcoin's appreciation can rapidly push a 5% position to 20–30% of a portfolio without any new purchases. Having a written rebalancing policy — whether that's trimming annually back to target, or explicitly choosing not to rebalance and understanding why — is more important than the initial allocation number. For <a href="/blog/bitcoin-tax-optimization-high-net-worth.html">tax optimization strategies</a> around rebalancing, see our dedicated guide.</p>
 
-  <hr>
+    <div class="callout-box">
+      <span class="callout-label">Ready to Structure Your Bitcoin Wealth?</span>
+      <p>This calculator provides a starting framework. For families with $1M+ in Bitcoin, the real work is structuring — trusts, custody, tax strategy, and succession planning. <a href="/services/">Speak with our advisory team →</a></p>
+    </div>
 
-  <!-- FAQ -->
-  <div class="faq-section">
     <h2>Frequently Asked Questions</h2>
 
-    <div class="faq-item">
-      <div class="faq-q">How much Bitcoin should a high-net-worth investor hold?</div>
-      <div class="faq-a">There is no universal answer, but most institutional allocation frameworks suggest 1–5% for conservative portfolios, 5–15% for growth-oriented portfolios, and higher concentrations only for investors with deep Bitcoin conviction, long time horizons, and proper custody infrastructure. The most important variables are time horizon, liquidity needs, estate planning complexity, and tax situation. Our calculator personalizes this recommendation to your specific inputs.</div>
-    </div>
+    <h3>What is the right Bitcoin allocation for a high-net-worth investor?</h3>
+    <p>There is no single correct answer — it depends on risk tolerance, time horizon, and existing wealth. Conservative HNWI allocations typically range from 1–3%, moderate from 3–7%, and aggressive from 7–15%. Bitcoin-native investors who understand the asset deeply often hold 25–100%. Estate planning concerns, liquidity needs, and tax position should all inform the decision.</p>
 
-    <div class="faq-item">
-      <div class="faq-q">How does this Bitcoin allocation calculator work?</div>
-      <div class="faq-a">The calculator uses four inputs — total investable net worth, current Bitcoin holdings, risk tolerance profile, and time horizon — to derive a recommended allocation percentage. The base allocation is set by risk tolerance (Conservative 2%, Moderate 5%, Aggressive 10%, Bitcoin-Native 50%), then adjusted by time horizon (shorter horizons reduce by 20%; longer horizons increase by 20%, capped at 100%). It then compares your current allocation against the recommendation and shows the gap in both percentage points and dollar terms. All computation runs locally in your browser — no data is transmitted.</div>
-    </div>
+    <h3>How does estate planning change Bitcoin allocation decisions?</h3>
+    <p>When Bitcoin represents more than 20% of a taxable estate, the illiquidity risk, key custody complexity, and concentration at death become significant. Heirs may face a locked asset with no way to pay estate taxes without selling at a distressed price. Families with large Bitcoin positions should structure irrevocable trusts and document custody procedures well in advance.</p>
 
-    <div class="faq-item">
-      <div class="faq-q">Should estate planning concerns affect my Bitcoin allocation?</div>
-      <div class="faq-a">Yes, significantly. High Bitcoin concentrations — above 20–25% of net worth — create estate planning complexity: federal estate tax exposure, illiquidity for executors, heir readiness gaps, and structural risks that generic estate documents do not address. If you have estate planning concerns and the calculator recommends an allocation above 20%, it flags a concentration risk warning. This is not a reason to reduce your Bitcoin position necessarily, but it is a strong signal to ensure you have proper trust structures, a Bitcoin Letter of Instruction, and an heir education plan in place. <a href="/blog/bitcoin-estate-planning-guide.html">Our estate planning guide</a> covers these structures in detail.</div>
-    </div>
+    <h3>Should I rebalance my Bitcoin allocation as the price changes?</h3>
+    <p>Disciplined rebalancing — trimming back to target when Bitcoin appreciates significantly — is prudent for most investors. Bitcoin-native investors may prefer to hold without a hard ceiling. The key is having a written investment policy: either a fixed percentage with annual rebalancing, or an explicit decision to hold without rebalancing and understanding the tax and estate implications.</p>
+
+    <p class="disclaimer">This tool is for educational purposes only and does not constitute financial or investment advice. Consult a qualified financial advisor before making allocation decisions. Past performance of Bitcoin does not guarantee future results.</p>
   </div>
-
-  <hr>
-
-  <div class="cta-block">
-    <h3>Ready for a Personalized Review?</h3>
-    <p>The calculator gives you a framework. For a complete allocation and custody strategy review — specific to your holdings, tax situation, and estate structure — our advisory process starts with a discovery consultation.</p>
-    <a href="/services/" class="cta-btn">Explore Advisory Services</a>
-  </div>
-
-  <!-- Related -->
-  <div style="border-top:1px solid var(--border);padding-top:2.5rem;margin-top:1rem;">
-    <h3>Related Resources</h3>
-    <div class="related-grid">
-      <div class="related-card">
-        <span class="tag">Estate Planning</span>
-        <h4><a href="/blog/bitcoin-estate-planning-guide.html">The Complete Bitcoin Estate Planning Guide</a></h4>
-      </div>
-      <div class="related-card">
-        <span class="tag">Wealth Management</span>
-        <h4><a href="/blog/high-net-worth-bitcoin-guide.html">High Net Worth Bitcoin: Complete Wealth Management Guide</a></h4>
-      </div>
-      <div class="related-card">
-        <span class="tag">Tax Strategy</span>
-        <h4><a href="/blog/bitcoin-tax-optimization-high-net-worth.html">Bitcoin Tax Optimization for High Net Worth Holders</a></h4>
-      </div>
-      <div class="related-card">
-        <span class="tag">Services</span>
-        <h4><a href="/services/">Family Office Advisory Services</a></h4>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 <footer>
-  <p>© 2026 The Bitcoin Family Office · <a href="/blog/">Insights</a> · <a href="/tools/">Tools</a> · <a href="/services/">Services</a> · <a href="/disclosures/">Disclosures</a></p>
-  <p style="margin-top:0.5rem;">This tool is for educational purposes only and does not constitute financial or legal advice. Consult a qualified financial advisor before making allocation decisions.</p>
+  <p>
+    <a href="/">The Bitcoin Family Office</a> &nbsp;·&nbsp;
+    <a href="/blog/">Insights</a> &nbsp;·&nbsp;
+    <a href="/tools/">Tools</a> &nbsp;·&nbsp;
+    <a href="/services/">Services</a> &nbsp;·&nbsp;
+    <a href="/disclosures.html">Disclosures</a><br>
+    © 2026 The Bitcoin Family Office. For informational purposes only. Not legal, tax, or financial advice.
+  </p>
 </footer>
 
 <script>
-function fmt(n){
-  if(n>=1e6) return '$'+(n/1e6).toFixed(2)+'M';
-  if(n>=1e3) return '$'+(n/1e3).toFixed(1)+'K';
-  return '$'+n.toFixed(0);
-}
-function fmtPct(n){return n.toFixed(1)+'%';}
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+function fmtPct(n){return (Math.round(n*10)/10)+'%';}
 
 function calculate(){
-  var nw = parseFloat(document.getElementById('netWorth').value)||0;
-  var btc = parseFloat(document.getElementById('currentBtc').value)||0;
-  var riskEl = document.querySelector('input[name="risk"]:checked');
-  var horizonEl = document.querySelector('input[name="horizon"]:checked');
-  var estateEl = document.querySelector('input[name="estate"]:checked');
+  var nw=parseFloat(document.getElementById('netWorth').value)||0;
+  var btc=parseFloat(document.getElementById('btcHoldings').value)||0;
+  var risk=document.querySelector('input[name="risk"]:checked').value;
+  var horizon=document.querySelector('input[name="horizon"]:checked').value;
+  var estate=document.querySelector('input[name="estate"]:checked').value;
 
-  if(!nw||nw<=0){alert('Please enter your total investable net worth.');return;}
-  if(!riskEl){alert('Please select a risk tolerance.');return;}
-  if(!horizonEl){alert('Please select a time horizon.');return;}
-  if(!estateEl){alert('Please indicate whether you have estate planning concerns.');return;}
+  if(nw<=0){alert('Please enter your net worth.');return;}
 
-  var risk = riskEl.value;
-  var horizon = horizonEl.value;
-  var estate = estateEl.value;
+  // Base recommendation
+  var base={'conservative':2,'moderate':5,'aggressive':10,'bitcoin-native':50}[risk];
+  // Time horizon modifier
+  var mod={'short':0.8,'medium':1.0,'long':1.2}[horizon];
+  var rec=Math.min(base*mod,100);
 
-  // Base allocation
-  var base = {conservative:2, moderate:5, aggressive:10, native:50}[risk];
+  var currentPct=(nw>0?(btc/nw*100):0);
+  var recAmt=nw*(rec/100);
+  var gap=recAmt-btc;
 
-  // Horizon multiplier
-  var mult = {short:0.8, mid:1.0, long:1.2}[horizon];
-  var recPct = Math.min(base * mult, 100);
+  // Display
+  document.getElementById('currentPct').textContent=fmtPct(currentPct);
+  document.getElementById('currentAmt').textContent=fmt(btc);
+  document.getElementById('recPct').textContent=fmtPct(rec);
+  document.getElementById('recAmt').textContent=fmt(recAmt);
+  document.getElementById('gapAmt').textContent=fmt(Math.abs(gap));
 
-  var currentPct = (btc / nw) * 100;
-  var recDollar = nw * recPct / 100;
-  var gapPct = recPct - currentPct;
-  var gapDollar = recDollar - btc;
-
-  // Render results
-  document.getElementById('resultsPanel').classList.add('visible');
-
-  // Bar visualization — scale so 100% fills bar
-  var maxPct = Math.max(currentPct, recPct, 1);
-  var scale = Math.min(100 / maxPct, 100);
-  document.getElementById('barCurrent').style.width = Math.min(currentPct * scale, 100) + '%';
-  document.getElementById('barRec').style.width = Math.min(recPct * scale, 100) + '%';
-  document.getElementById('barCurrentPct').textContent = fmtPct(currentPct);
-  document.getElementById('barRecPct').textContent = fmtPct(recPct);
-
-  // Metrics
-  document.getElementById('mCurrent').textContent = fmtPct(currentPct);
-  document.getElementById('mCurrentDollar').textContent = fmt(btc);
-  document.getElementById('mRec').textContent = fmtPct(recPct);
-  document.getElementById('mRecDollar').textContent = fmt(recDollar);
-
-  if(Math.abs(gapPct) < 0.5){
-    document.getElementById('mGap').textContent = 'On Target';
-    document.getElementById('mGapDollar').textContent = '≈ at target';
-  } else if(gapDollar > 0){
-    document.getElementById('mGap').textContent = '+' + fmtPct(gapPct);
-    document.getElementById('mGapDollar').textContent = 'Add ' + fmt(gapDollar);
+  var ind=document.getElementById('gapIndicator');
+  var gapLbl=document.getElementById('gapLabel');
+  if(Math.abs(gap)<nw*0.005){
+    ind.textContent='✓ You are near your target allocation';
+    ind.className='gap-indicator gap-at';
+    gapLbl.textContent='on target';
+  } else if(gap>0){
+    ind.textContent='↑ You are under-allocated by '+fmt(gap);
+    ind.className='gap-indicator gap-under';
+    gapLbl.textContent='to add';
   } else {
-    document.getElementById('mGap').textContent = fmtPct(gapPct);
-    document.getElementById('mGapDollar').textContent = 'Trim ' + fmt(Math.abs(gapDollar));
-  }
-
-  // Status bar
-  var sb = document.getElementById('statusBar');
-  var si = document.getElementById('statusIcon');
-  var st = document.getElementById('statusText');
-  sb.className = 'status-bar';
-  if(Math.abs(gapPct) < 0.5){
-    sb.classList.add('at');
-    si.textContent = '◎';
-    st.innerHTML = '<strong>On Target.</strong> Your current Bitcoin allocation is within range of your recommended target.';
-  } else if(gapDollar > 0){
-    sb.classList.add('under');
-    si.textContent = '↑';
-    st.innerHTML = '<strong>Under-Allocated.</strong> You are ' + fmtPct(Math.abs(gapPct)) + ' below your target. Consider adding ' + fmt(gapDollar) + ' to reach your recommended weight.';
-  } else {
-    sb.classList.add('over');
-    si.textContent = '↓';
-    st.innerHTML = '<strong>Over-Allocated.</strong> You are ' + fmtPct(Math.abs(gapPct)) + ' above your target. Consider trimming ' + fmt(Math.abs(gapDollar)) + ' or increasing other asset classes.';
-  }
-
-  // Estate warning
-  var wb = document.getElementById('warningBox');
-  var wt = document.getElementById('warningText');
-  if(estate === 'yes' && recPct > 20){
-    wb.classList.add('visible');
-    wt.textContent = 'Your recommended allocation exceeds 20% of investable net worth. With estate planning concerns noted, this concentration level warrants immediate attention: ensure you have a Bitcoin-specific trust structure, a Letter of Instruction for your executor, and an heir education plan. A concentration above 20% can significantly complicate estate administration and create avoidable estate tax exposure. Consult a qualified estate planning attorney before proceeding.';
-  } else {
-    wb.classList.remove('visible');
+    ind.textContent='↓ You are over-allocated by '+fmt(Math.abs(gap));
+    ind.className='gap-indicator gap-over';
+    gapLbl.textContent='to trim';
   }
 
   // Commentary
-  var ct = document.getElementById('commentaryText');
-  var lines = [];
+  var comments={
+    'conservative':'A conservative allocation keeps Bitcoin as a small but meaningful position. At '+fmtPct(rec)+' of your portfolio, you capture significant upside if Bitcoin appreciates while limiting downside impact on your overall wealth.',
+    'moderate':'A moderate allocation reflects growing institutional consensus. At '+fmtPct(rec)+', Bitcoin can move the needle on your portfolio without dominating it. This is where most sophisticated family offices are positioning.',
+    'aggressive':'An aggressive allocation signals conviction in Bitcoin\'s long-term monetary thesis. At '+fmtPct(rec)+', Bitcoin\'s performance will materially influence your overall returns. Ensure your custody and estate structures are commensurate with this exposure.',
+    'bitcoin-native':'A Bitcoin-native allocation reflects a fundamental view that Bitcoin is the hardest money ever created. At '+fmtPct(rec)+', your financial life is denominated in Bitcoin. This requires world-class custody, comprehensive estate planning, and the psychological constitution to hold through severe drawdowns.'
+  };
+  document.getElementById('commentary').textContent=comments[risk];
 
-  // Risk commentary
-  var riskLabels = {conservative:'conservative', moderate:'moderate', aggressive:'aggressive', native:'Bitcoin-native'};
-  lines.push('Based on your ' + riskLabels[risk] + ' risk profile and a ' + {short:'1–3 year',mid:'3–7 year',long:'7+ year'}[horizon] + ' time horizon, a ' + fmtPct(recPct) + ' Bitcoin allocation is your recommended portfolio weight.');
+  // Estate warning
+  var warn=document.getElementById('estateWarn');
+  warn.style.display=(estate==='yes'&&rec>20)?'block':'none';
 
-  if(horizon === 'long'){
-    lines.push('Your long time horizon is a meaningful advantage — Bitcoin\'s historical return distribution improves substantially over periods exceeding seven years, reducing the probability of being underwater at your liquidity horizon.');
-  } else if(horizon === 'short'){
-    lines.push('With a 1–3 year horizon, capital preservation takes priority. The 20% reduction from your base allocation reflects the higher probability of holding through a volatility event without the benefit of a long recovery window.');
-  }
-
-  if(gapDollar > 100000){
-    lines.push('Your gap of ' + fmt(gapDollar) + ' suggests a meaningful rebalancing opportunity. Consider deploying in tranches rather than a lump sum to reduce timing risk.');
-  } else if(gapDollar < -100000){
-    lines.push('You are meaningfully over-allocated relative to this framework. Trimming back and rebalancing into other asset classes may reduce portfolio volatility without sacrificing meaningful Bitcoin upside.');
-  }
-
-  ct.textContent = lines.join(' ');
-
-  // Scroll to results
-  document.getElementById('resultsPanel').scrollIntoView({behavior:'smooth', block:'nearest'});
-
-  // GA event
-  if(typeof gtag !== 'undefined'){
-    gtag('event','calculator_used',{tool:'bitcoin_allocation',risk:risk,horizon:horizon,result_pct:recPct.toFixed(1)});
-  }
+  document.getElementById('results').classList.add('visible');
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 </script>
-
+<script>
+(function(){
+  if(typeof gtag!=='function') return;
+  document.addEventListener('click',function(e){var el=e.target;var tag=el.tagName+(el.id?'#'+el.id:el.className?' .'+String(el.className).trim().split(' ')[0]:'');gtag('event','hm_click',{'page':location.pathname,'cx':Math.round(e.clientX/window.innerWidth*100),'cy':Math.round((e.clientY+window.scrollY)/Math.max(document.body.scrollHeight,1)*100),'el':tag.substring(0,40)});});
+  var _sd=0;window.addEventListener('scroll',function(){var pct=Math.round((window.scrollY+window.innerHeight)/Math.max(document.body.scrollHeight,1)*100);var milestone=Math.floor(pct/25)*25;if(milestone>_sd){_sd=milestone;gtag('event','hm_scroll',{'page':location.pathname,'depth':_sd});}},{passive:true});
+})();
+</script>
 </body>
 </html>
