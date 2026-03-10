@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitcoin Irrevocable Trust: The Definitive Guide to Permanent BTC Estate Protection | The Bitcoin Family Office</title>
+  <meta name="description" content="Everything serious Bitcoin holders need to know about irrevocable trusts: ILIT, SLAT, DAPT, IDGT — how each works with BTC, grantor trust rules, custody mechanics, trustee selection, and when irrevocable beats revocable or dynasty trust." />
+  <meta name="keywords" content="bitcoin irrevocable trust, irrevocable trust bitcoin, bitcoin estate planning, SLAT bitcoin, DAPT bitcoin, IDGT bitcoin, bitcoin ILIT, bitcoin trust estate protection" />
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-irrevocable-trust-guide" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Bitcoin Irrevocable Trust: The Definitive Guide to Permanent BTC Estate Protection" />
+  <meta property="og:description" content="The four irrevocable trust types that matter for Bitcoin holders — ILIT, SLAT, DAPT, IDGT — with custody mechanics, grantor trust rules, funding strategy, and trustee selection criteria." />
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-irrevocable-trust-guide" />
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png" />
+  <meta property="og:site_name" content="The Bitcoin Family Office" />
+  <meta property="article:published_time" content="2026-03-10" />
+  <meta property="article:author" content="Hal Franklin" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bitcoin Irrevocable Trust: The Definitive Guide to Permanent BTC Estate Protection" />
+  <meta name="twitter:description" content="ILIT, SLAT, DAPT, IDGT — the four irrevocable trust types for Bitcoin holders. Grantor trust rules, custody mechanics, trustee selection, and when to use each." />
+  <meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('a, button');
+      if (el) {
+        gtag('event', 'hm_click', {
+          element_text: el.innerText ? el.innerText.trim().substring(0, 100) : '',
+          element_href: el.href || '',
+          page_path: window.location.pathname
+        });
+      }
+    });
+
+    var scrollMarks = {25: false, 50: false, 75: false, 90: false};
+    window.addEventListener('scroll', function() {
+      var scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      Object.keys(scrollMarks).forEach(function(mark) {
+        if (!scrollMarks[mark] && scrolled >= mark) {
+          scrollMarks[mark] = true;
+          gtag('event', 'hm_scroll', { scroll_depth: parseInt(mark), page_path: window.location.pathname });
+        }
+      });
+    });
+  </script>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a Bitcoin irrevocable trust?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Bitcoin irrevocable trust is a legal entity that permanently holds Bitcoin outside the grantor's taxable estate. Unlike a revocable trust, once funded, the grantor relinquishes ownership and control. The Bitcoin is no longer part of the grantor's estate for federal estate tax purposes, grows free of estate tax, and is protected from most creditor claims after applicable lookback periods. Common forms include the ILIT, SLAT, DAPT, and IDGT — each offering different tradeoffs in access, tax treatment, and asset protection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I still benefit from Bitcoin in an irrevocable trust?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It depends on the trust type. A SLAT (Spousal Lifetime Access Trust) benefits your spouse, who can receive distributions that indirectly benefit your household. A DAPT (Domestic Asset Protection Trust) can include you as a discretionary beneficiary while still providing creditor protection. A standard IDGT or Dynasty Trust typically does not permit the grantor to benefit — but the grantor does pay income tax on trust income, which is itself a wealth-transfer benefit since those tax payments reduce the grantor's estate without consuming gift tax exemption."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the gift tax implications of funding an irrevocable trust with Bitcoin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Transferring Bitcoin into an irrevocable trust is a taxable gift valued at the fair market price on the date of transfer. The transfer consumes your lifetime gift and estate tax exemption (currently approximately $13.99 million per individual in 2026 — confirm current figures with your attorney). Amounts above the exemption are subject to 40% gift tax. The key planning opportunity: transferring at lower Bitcoin prices consumes less exemption per coin, and all future appreciation escapes estate taxation entirely."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who should be trustee of a Bitcoin irrevocable trust?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The trustee must have both fiduciary competence and Bitcoin technical literacy — or the trust must use a directed trust structure to separate these roles. Wyoming and South Dakota permit directed trusts that split the investment trustee role (managing custody) from the administrative trustee role (distributions and compliance). This allows a qualified Bitcoin custodian to handle key management while a family attorney or trust company handles administration. The grantor cannot be sole trustee of their own irrevocable trust without risking estate inclusion."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can an irrevocable trust be modified or revoked after it is set up?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not unilaterally — but it is not as permanent as it sounds. Several mechanisms allow modification: (1) Decanting — the trustee pours assets from the old trust into a new trust with updated terms, available in most states; (2) Non-judicial modification agreements — beneficiaries and trustees agree to modify terms, permitted in many states; (3) Trust protector provisions — if drafted into the original document, a trust protector can amend terms, change trustees, or adapt to new tax law. Proper drafting at inception should build in these flexibility mechanisms."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bitcoin Irrevocable Trust: The Definitive Guide to Permanent BTC Estate Protection",
+    "description": "Everything serious Bitcoin holders need to know about irrevocable trusts: ILIT, SLAT, DAPT, IDGT — how each works with BTC, grantor trust rules, custody mechanics, trustee selection, and when irrevocable beats revocable or dynasty trust.",
+    "datePublished": "2026-03-10",
+    "dateModified": "2026-03-10",
+    "author": {
+      "@type": "Person",
+      "name": "Hal Franklin",
+      "jobTitle": "Founder",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "The Bitcoin Family Office"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Bitcoin Family Office",
+      "url": "https://thebitcoinfamilyoffice.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://thebitcoinfamilyoffice.com/assets/og-image.png"
+      }
+    },
+    "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-irrevocable-trust-guide",
+    "image": "https://thebitcoinfamilyoffice.com/assets/og-image.png",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://thebitcoinfamilyoffice.com/blog/bitcoin-irrevocable-trust-guide"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://thebitcoinfamilyoffice.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://thebitcoinfamilyoffice.com/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Bitcoin Irrevocable Trust: The Definitive Guide",
+        "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-irrevocable-trust-guide"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #111111;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --text: #e8e0d0;
+      --text-secondary: #8a8070;
+      --accent: #c9a84c;
+      --accent-dim: rgba(201,168,76,0.12);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'EB Garamond', Georgia, serif;
+      --font-ui: 'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--text); letter-spacing: 0.01em; text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: var(--font-ui); font-size: 0.875rem; font-weight: 500; color: var(--text-secondary); letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; text-decoration: none; }
+    .nav-links a:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); transition: all 0.3s; }
+    .mobile-menu { display: none; background: var(--bg-elevated); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .mobile-menu a { font-family: var(--font-ui); font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; }
+    .mobile-menu a:hover { color: var(--accent); }
+    @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } }
+
+    .breadcrumb-nav { background: var(--bg-elevated); border-bottom: 1px solid var(--border); padding: 0.65rem 1.5rem; }
+    .breadcrumb-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .breadcrumb-inner a { font-family: var(--font-ui); font-size: 0.78rem; color: var(--text-secondary); text-decoration: none; }
+    .breadcrumb-inner a:hover { color: var(--accent); }
+    .breadcrumb-inner .sep { font-size: 0.78rem; color: var(--border); }
+    .breadcrumb-inner .current { font-family: var(--font-ui); font-size: 0.78rem; color: var(--text-secondary); }
+
+    .article-hero { padding: 4rem 1.5rem 3rem; max-width: 800px; margin: 0 auto; }
+    .article-tag { display: inline-block; font-family: var(--font-ui); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(201,168,76,0.3); border-radius: 2px; padding: 0.3rem 0.75rem; margin-bottom: 1.5rem; }
+    .article-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.2; color: var(--text); margin-bottom: 1.25rem; }
+    .article-subtitle { font-family: var(--font-body); font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; font-style: italic; }
+    .article-meta { display: flex; align-items: center; gap: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+    .meta-author { font-family: var(--font-ui); font-size: 0.85rem; color: var(--text-secondary); }
+    .meta-author strong { color: var(--text); font-weight: 600; }
+    .meta-date { font-family: var(--font-ui); font-size: 0.85rem; color: var(--text-secondary); }
+    .meta-read { font-family: var(--font-ui); font-size: 0.85rem; color: var(--text-secondary); }
+
+    .article-body { max-width: 800px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+    .article-body h2 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 600; color: var(--text); margin: 3rem 0 1rem; line-height: 1.3; }
+    .article-body h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; color: var(--text); margin: 2rem 0 0.75rem; }
+    .article-body p { margin-bottom: 1.4rem; color: var(--text); }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.4rem 1.5rem; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body strong { color: var(--text); font-weight: 600; }
+
+    .callout { background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 4px; padding: 1.25rem 1.5rem; margin: 2rem 0; }
+    .callout-label { font-family: var(--font-ui); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .callout p { margin-bottom: 0; font-size: 1rem; color: var(--text-secondary); }
+    .callout p strong { color: var(--text); }
+
+    .am-callout { background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, rgba(20,20,20,1) 60%); border: 1px solid rgba(201,168,76,0.25); border-radius: 6px; padding: 1.5rem 1.75rem; margin: 2.5rem 0; }
+    .am-callout .am-label { font-family: var(--font-ui); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    .am-callout h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: 0.6rem; }
+    .am-callout p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
+    .am-callout a.am-link { display: inline-block; font-family: var(--font-ui); font-size: 0.82rem; font-weight: 600; color: var(--accent); border: 1px solid rgba(201,168,76,0.4); border-radius: 3px; padding: 0.4rem 1rem; text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .am-callout a.am-link:hover { background: var(--accent); color: #0a0a0a; }
+
+    .strategy-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 1.75rem; margin: 2rem 0; position: relative; }
+    .strategy-number { position: absolute; top: 1.25rem; right: 1.25rem; font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: rgba(201,168,76,0.12); line-height: 1; }
+    .strategy-card h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--accent); margin-bottom: 0.75rem; margin-top: 0; padding-right: 3rem; }
+    .strategy-card p { font-size: 1rem; color: var(--text-secondary); margin-bottom: 0; }
+    .strategy-card p + p { margin-top: 0.75rem; }
+    .strategy-card p strong { color: var(--text); }
+    .strategy-card ul { margin: 0.5rem 0 0 1.25rem; }
+    .strategy-card li { font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.4rem; }
+
+    .table-wrap { overflow-x: auto; margin: 2rem 0; border-radius: 6px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: 0.88rem; }
+    thead { background: var(--bg-elevated); }
+    th { padding: 0.85rem 1rem; text-align: left; color: var(--text-secondary); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+    td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
+    .check { color: #5aa469; }
+    .dash { color: var(--text-secondary); }
+
+    .author-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 1.75rem; margin: 3rem 0 2rem; display: flex; gap: 1.25rem; align-items: flex-start; }
+    .author-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-dim); border: 2px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+    .author-info h4 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+    .author-info .author-title { font-family: var(--font-ui); font-size: 0.8rem; color: var(--accent); margin-bottom: 0.6rem; }
+    .author-info p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0; }
+
+    .cta-block { background: var(--bg-card); border: 1px solid var(--border); border-top: 3px solid var(--accent); border-radius: 6px; padding: 2rem; margin: 2.5rem 0; text-align: center; }
+    .cta-block h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text); margin-bottom: 0.75rem; }
+    .cta-block p { font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.25rem; }
+    .cta-buttons { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-block; font-family: var(--font-ui); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; color: #0a0a0a; background: var(--accent); border: 1px solid var(--accent); border-radius: 3px; padding: 0.65rem 1.5rem; text-decoration: none; transition: opacity 0.2s; }
+    .btn-primary:hover { opacity: 0.88; text-decoration: none; }
+    .btn-secondary { display: inline-block; font-family: var(--font-ui); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; color: var(--accent); background: transparent; border: 1px solid rgba(201,168,76,0.4); border-radius: 3px; padding: 0.65rem 1.5rem; text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .btn-secondary:hover { background: var(--accent); color: #0a0a0a; text-decoration: none; }
+
+    .disclaimer { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 1.25rem 1.5rem; margin: 2.5rem 0; }
+    .disclaimer p { font-family: var(--font-ui); font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.6; }
+    .disclaimer-label { font-family: var(--font-ui); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.4rem; }
+
+    .related-articles { margin: 3rem 0 2rem; }
+    .related-articles h3 { font-family: var(--font-ui); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 1rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 1.25rem; text-decoration: none; transition: border-color 0.2s; }
+    .related-card:hover { border-color: rgba(201,168,76,0.3); text-decoration: none; }
+    .related-card .related-tag { font-family: var(--font-ui); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+    .related-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--text); line-height: 1.35; }
+
+    @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+
+    .site-footer { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 3rem 1.5rem 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand .brand-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.75rem; }
+    .footer-brand .brand-name span { color: var(--accent); }
+    .footer-brand p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+    .footer-col h4 { font-family: var(--font-ui); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul li a { font-family: var(--font-ui); font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--accent); }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom p { font-family: var(--font-ui); font-size: 0.78rem; color: var(--text-secondary); }
+    .footer-disclaimer { font-family: var(--font-ui); font-size: 0.72rem; color: var(--text-secondary); opacity: 0.7; max-width: 600px; line-height: 1.5; }
+    @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
+    @media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } .author-box { flex-direction: column; } .article-title { font-size: 1.75rem; } }
+
+    .divider { height: 1px; background: var(--border); margin: 3rem 0; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / NAV -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">The Bitcoin <span>Family Office</span></a>
+      <nav aria-label="Main navigation">
+        <div class="nav-links" id="navLinks">
+          <a href="/" onclick="closeMenu()">Home</a>
+          <a href="/services/" onclick="closeMenu()">Services</a>
+          <a href="/blog/" onclick="closeMenu()">Research</a>
+          <a href="/news/" onclick="closeMenu()">News</a>
+          <a href="/monitor/" onclick="closeMenu()">Estate Watch</a>
+          <a href="/faq/" onclick="closeMenu()">FAQ</a>
+          <a href="/monitor/signup" class="nav-cta" onclick="closeMenu()">Get Started</a>
+        </div>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/blog/">Insights</a></li>
+        <li><a href="/tools/">Tools</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="breadcrumb-inner">
+      <a href="/">Home</a>
+      <span class="sep">›</span>
+      <a href="/blog/">Insights</a>
+      <span class="sep">›</span>
+      <span class="current">Bitcoin Irrevocable Trust: The Definitive Guide</span>
+    </div>
+  </nav>
+
+  <!-- ARTICLE HERO -->
+  <div class="article-hero">
+    <div class="article-tag">Estate Planning · Trust Architecture</div>
+    <h1 class="article-title">Bitcoin Irrevocable Trust: The Definitive Guide to Permanent BTC Estate Protection</h1>
+    <p class="article-subtitle">Irrevocability is not a flaw in the design. It is the point. For Bitcoin holders serious about multigenerational wealth transfer, understanding why permanence is the feature — and how to structure around it — is the most important estate planning decision you will make.</p>
+    <div class="article-meta">
+      <div class="meta-author">By <strong>Hal Franklin</strong> · The Bitcoin Family Office</div>
+      <div class="meta-date">March 10, 2026</div>
+      <div class="meta-read">18 min read</div>
+    </div>
+  </div>
+
+  <!-- ARTICLE BODY -->
+  <main class="article-body" id="main-content">
+
+    <p>Most people treat irrevocability as a sacrifice — you give up control, lose flexibility, and lock yourself into a structure you can never change. That framing gets the analysis exactly backwards. For wealthy Bitcoin holders, irrevocability is precisely what makes a trust useful for estate planning. It is the mechanism that removes assets permanently from your taxable estate, creates creditor protection that revocable trusts cannot provide, and ensures that future appreciation accrues to your heirs rather than being consumed by a 40% estate tax at your death.</p>
+
+    <p>A revocable living trust is administratively useful. It avoids probate, consolidates asset titling, and simplifies successor trustee administration. But it accomplishes nothing from an estate tax, gift tax, or asset protection standpoint. Because you can revoke it at any time, the IRS treats it as if it doesn't exist — the assets remain in your taxable estate as if the trust were never created.</p>
+
+    <p>An irrevocable trust is categorically different. Once Bitcoin enters the structure, it is no longer yours for estate tax purposes. The future appreciation, the generational compounding, the eventual transfer to heirs — all of it happens outside the estate tax system. The price you pay for that benefit is control. Whether that trade is worth it depends on your wealth level, family situation, and long-term intent. This guide gives you the tools to make that judgment clearly.</p>
+
+    <h2>Revocable vs. Irrevocable: Why "Permanent" Is Actually the Point</h2>
+
+    <p>The distinction between revocable and irrevocable trust structures is foundational, and it runs through every estate planning decision you will make with significant Bitcoin holdings.</p>
+
+    <p>A <strong>revocable trust</strong> is an estate administration tool. You create it, you can change it, you can dissolve it. During your lifetime, it functions essentially as an extension of you — the IRS disregards it, creditors can generally reach through it, and it remains fully included in your taxable estate. The moment you die, it becomes irrevocable (you can no longer change it), assets pass to beneficiaries according to its terms, and probate is avoided. But none of the assets escape estate tax.</p>
+
+    <p>An <strong>irrevocable trust</strong> takes effect during your lifetime. From the moment you fund it, you have made a completed gift. The assets are no longer part of your estate. You generally cannot reach back and retrieve them. Future appreciation belongs to the trust beneficiaries, not to you. In exchange, you receive the full arsenal of estate planning benefits: estate tax exclusion, creditor protection (depending on structure), and the ability to direct how Bitcoin is held and distributed across generations.</p>
+
+    <div class="callout">
+      <div class="callout-label">The Core Trade</div>
+      <p><strong>Control for permanence. You give up access and ownership; you receive estate tax exclusion, asset protection, and generational continuity.</strong> For Bitcoin holders with positions above the estate tax threshold, this trade is often not even close. A 40% estate tax on highly appreciated Bitcoin is a far worse outcome than surrendering direct control to a well-structured trust.</p>
+    </div>
+
+    <p>The timing question matters enormously for Bitcoin. When you fund an irrevocable trust, the gift is valued at today's price. Every dollar of future appreciation occurs inside the trust, outside your estate, free of estate tax. If Bitcoin doubles after you transfer it, that doubled value belongs to the trust — not to your estate. The IRS gets no incremental estate tax on the appreciation. This is the fundamental arithmetic that makes irrevocable trusts such powerful planning vehicles for volatile, appreciating assets.</p>
+
+    <h2>What Happens to Your BTC Inside an Irrevocable Trust</h2>
+
+    <p>Once Bitcoin enters an irrevocable trust, three significant things change: its tax treatment, who controls it, and who can claim it.</p>
+
+    <h3>Estate Tax Treatment</h3>
+
+    <p>Bitcoin held in a properly structured irrevocable trust is excluded from the grantor's taxable estate. At death, the trustee does not list the trust Bitcoin on the estate tax return as a grantor asset. It belongs to the trust, which belongs to the beneficiaries. The 40% federal estate tax does not apply to it — nor do state estate taxes in most cases. Future appreciation, which in Bitcoin's case can be substantial, escapes the estate tax system entirely.</p>
+
+    <h3>Income Tax Treatment</h3>
+
+    <p>This depends on whether the trust is a "grantor trust" for income tax purposes — a concept we'll explore in depth shortly. If it is (as most IDGTs are deliberately structured to be), the grantor — you — continues to pay income tax on trust income as if the trust assets were still yours. If it is a non-grantor trust, the trust itself pays income tax on earnings, often at compressed trust tax rates that reach the top bracket quickly.</p>
+
+    <h3>Control</h3>
+
+    <p>The grantor cannot serve as sole trustee of their own irrevocable trust without triggering estate inclusion under Internal Revenue Code Section 2036 or 2038. Control must be genuinely transferred to an independent trustee (or a carefully structured combination). This is not a technicality — it's the mechanism that makes the estate exclusion work. A trust you control for your own benefit is treated as your property, regardless of what the documents say.</p>
+
+    <h3>Creditor Protection</h3>
+
+    <p>A fully irrevocable trust — one in which the grantor has no retained interest and cannot be a beneficiary — provides robust protection from the grantor's creditors. Future creditors (those who arise after the transfer) generally cannot reach assets in the trust. Past creditors who can prove fraudulent transfer within the applicable lookback period may have recourse, but that window closes over time. This protection is categorical: revocable trusts provide none of it.</p>
+
+    <h2>The Four Trust Types That Matter for Bitcoin Holders</h2>
+
+    <p>Not all irrevocable trusts are identical. Four structures appear most frequently in Bitcoin estate planning, each with a different set of trade-offs in access, tax treatment, asset protection, and complexity.</p>
+
+    <div class="strategy-card">
+      <div class="strategy-number">1</div>
+      <h3>Irrevocable Life Insurance Trust (ILIT)</h3>
+      <p><strong>Primary use:</strong> Removing life insurance death benefit from the taxable estate while keeping insurance proceeds available to heirs — or funding the trust with Bitcoin to pay premiums and then receiving insurance proceeds free of estate tax.</p>
+      <p><strong>How it works with Bitcoin:</strong> You fund the ILIT with Bitcoin (or cash derived from Bitcoin). The trustee purchases a life insurance policy on your life. Premiums are paid from trust assets. At your death, the insurance proceeds flow into the trust and are distributed to beneficiaries according to trust terms — completely outside your estate.</p>
+      <p><strong>The Bitcoin angle:</strong> If you hold significant Bitcoin with large embedded capital gains and don't want to sell, you can fund an ILIT with Bitcoin. The trust sells the Bitcoin (a taxable event — the trust pays capital gains), uses proceeds for premium payments, and provides your heirs with an estate-tax-free life insurance benefit. Alternatively, you can make annual gifts of BTC to the ILIT within the annual exclusion ($19,000 per beneficiary per year) to fund premiums without touching your lifetime exemption.</p>
+      <p><strong>Custody consideration:</strong> The ILIT trustee must be able to receive and liquidate Bitcoin. Choose a trustee with cryptocurrency custodial capability, or use a directed trust structure to appoint a qualified Bitcoin custodian as investment trustee.</p>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strategy-number">2</div>
+      <h3>Spousal Lifetime Access Trust (SLAT)</h3>
+      <p><strong>Primary use:</strong> Removing Bitcoin from your taxable estate while preserving household access to the capital through your spouse's ability to receive trust distributions.</p>
+      <p><strong>How it works:</strong> You (the grantor) fund an irrevocable trust for the benefit of your spouse (and often children). The Bitcoin exits your estate permanently. Your spouse can receive discretionary distributions from the trust — for health, education, maintenance, and support (HEMS standard) or more broadly, depending on trust terms. Because you can benefit indirectly through your spouse's distributions, many couples find SLATs more comfortable than fully access-free structures.</p>
+      <p><strong>Critical risks:</strong> If your spouse dies before you, access to the SLAT ends. Reciprocal SLATs — where each spouse funds a trust for the other — must be carefully structured to avoid the IRS reciprocal trust doctrine, which can collapse both trusts if they're considered economic equivalents. Work with experienced counsel.</p>
+      <p><strong>Bitcoin mechanics:</strong> Bitcoin is transferred into the SLAT at current market price. The trustee holds custody (or appoints a custody-capable investment trustee). Future appreciation stays in the trust. Any distributions your spouse receives are not taxable income if properly structured.</p>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strategy-number">3</div>
+      <h3>Domestic Asset Protection Trust (DAPT)</h3>
+      <p><strong>Primary use:</strong> Creditor protection while retaining some access — the grantor can be a discretionary beneficiary of their own trust.</p>
+      <p><strong>How it works:</strong> DAPTs are established in jurisdictions that permit self-settled asset protection trusts: Nevada, Wyoming, South Dakota, Alaska, and a handful of others. The grantor transfers assets into the trust and may be included as a discretionary beneficiary — meaning the trustee can (but is not required to) make distributions to the grantor. Because the trustee has discretion, the grantor has no guaranteed right to distributions, which (combined with the irrevocability) provides asset protection that standard revocable trusts cannot achieve.</p>
+      <p><strong>Bitcoin advantage:</strong> Wyoming DAPTs are particularly well-suited to Bitcoin. Wyoming has no state income tax on trust income, strong directed-trust legislation, and a sophisticated legal framework for digital asset custody. You can fund a Wyoming DAPT with Bitcoin, remain a discretionary beneficiary, and obtain meaningful creditor protection — while keeping the asset outside your estate.</p>
+      <p><strong>Important limitation:</strong> DAPTs are not recognized universally. Federal bankruptcy law may allow creditors to reach DAPT assets in certain circumstances. Estate inclusion risks exist if you retain too much control or benefit. The creditor protection is meaningful but not absolute. See the fraudulent transfer section for the timing rules that govern when protection actually kicks in.</p>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strategy-number">4</div>
+      <h3>Irrevocable Grantor Trust / Intentionally Defective Grantor Trust (IDGT)</h3>
+      <p><strong>Primary use:</strong> The most powerful and most commonly used irrevocable trust for Bitcoin estate planning. Combines estate tax exclusion with grantor income tax treatment — turning the income tax obligation into an additional tax-free transfer mechanism.</p>
+      <p><strong>How it works:</strong> An IDGT is irrevocable for estate tax purposes (assets exit the estate) but intentionally structured as a grantor trust for income tax purposes (the grantor continues to pay income tax on trust earnings). This "defect" is created deliberately — typically by giving a non-adverse party a power to swap trust assets for assets of equivalent value, or by giving the grantor a power over trust income in a carefully limited way.</p>
+      <p><strong>The Bitcoin IDGT opportunity:</strong> You sell Bitcoin to the IDGT in exchange for a promissory note. The sale is not a taxable event for income tax purposes (because you and your own grantor trust are disregarded from each other). The IDGT now holds the Bitcoin. You hold the note. The Bitcoin's appreciation accrues to the trust. You pay income tax on trust earnings using assets outside the trust — which is itself a tax-free transfer (you're reducing your estate by paying tax without consuming gift exemption). When the note matures and is paid off, the IDGT retains all of the appreciation above the note interest rate.</p>
+    </div>
+
+    <h2>The Grantor Trust Rules: Why Paying Income Tax Is a Feature</h2>
+
+    <p>This is the counterintuitive concept that separates sophisticated Bitcoin estate planning from amateur planning: paying income tax on trust assets that are no longer in your estate is one of the most powerful transfer techniques available.</p>
+
+    <p>Under Internal Revenue Code Sections 671–678, a trust is a "grantor trust" if the grantor retains certain powers or interests specified in the code. When those provisions are triggered, the grantor — not the trust — pays income tax on the trust's income. For most people, this sounds like a disadvantage. You've given away the asset but you're still paying the tax on it. Why would you want that?</p>
+
+    <p>The answer requires thinking about it as a transfer mechanism. When you pay income tax on trust earnings, you are:</p>
+
+    <ul>
+      <li>Reducing your taxable estate by the amount of the tax payment — without that payment being treated as a taxable gift to the trust beneficiaries.</li>
+      <li>Allowing the trust assets to compound tax-free (from the trust's perspective) — since the grantor absorbs the income tax, the trust never writes a check to the IRS, and the full pre-tax return compounds inside the trust.</li>
+      <li>Effectively transferring wealth to the trust beneficiaries equal to the income tax you pay each year — completely outside the gift tax system.</li>
+    </ul>
+
+    <div class="callout">
+      <div class="callout-label">The Grantor Trust Math</div>
+      <p><strong>If a Bitcoin IDGT generates $500,000 in capital gains in a given year and the grantor pays $200,000 in capital gains tax on those gains from personal assets outside the trust, the trust beneficiaries have effectively received a $200,000 gift — tax-free, with no gift tax return required and no exemption consumed.</strong> The grantor's estate has been reduced by $200,000. The trust has compounded as if no tax was owed. This is not a loophole — it is the explicit design of the grantor trust rules as they currently exist.</p>
+    </div>
+
+    <p>For Bitcoin, which can generate large capital gains when the trust sells or rebalances, this grantor tax absorption can be a significant wealth transfer mechanism in its own right. The IDGT structure is specifically designed to maximize this benefit while keeping the assets firmly outside the estate.</p>
+
+    <h2>Funding an Irrevocable Trust with BTC: Gift Tax and Timing</h2>
+
+    <p>Transferring Bitcoin into an irrevocable trust is a taxable gift. The gift is valued at fair market value on the date of transfer — the closing price of Bitcoin on that day, or the average of the day's high and low if the closing price is not available. You will need a qualified appraisal or documentation of the price used, because the IRS will want to confirm the valuation if the gift is large enough to require a Form 709 filing.</p>
+
+    <h3>Using the Lifetime Exemption</h3>
+
+    <p>Every U.S. person has a lifetime gift and estate tax exemption — a combined amount you can transfer during life and at death without triggering federal gift or estate tax. As of 2026, this amount is approximately $13.99 million per individual ($27.98 million for married couples who have made no prior taxable gifts). Confirm current figures with your estate attorney, as exemption amounts are subject to legislative change.</p>
+
+    <p>When you fund an irrevocable trust with Bitcoin, the transfer consumes your lifetime exemption to the extent it exceeds your available annual exclusions. Once the exemption is consumed, transfers above that amount trigger a 40% gift tax. The strategic implication: fund irrevocable trusts when Bitcoin prices are lower, because lower prices mean more coins transferred per dollar of exemption consumed.</p>
+
+    <h3>The IDGT Sale Alternative</h3>
+
+    <p>If your Bitcoin position is too large to gift within available exemption, an installment sale to an IDGT is often the superior technique. You sell Bitcoin to the trust in exchange for a promissory note bearing interest at the IRS Applicable Federal Rate (AFR). The note is not a taxable gift. The trust now holds the Bitcoin; you hold the note. The Bitcoin's appreciation above the AFR transfers to the trust completely free of gift and estate tax. This technique allows massive wealth transfers with minimal exemption consumption — the only "gift" is the initial seed capital (typically 10% of the sale amount) needed to fund the trust before the sale.</p>
+
+    <h3>Annual Exclusion Gifting to the Trust</h3>
+
+    <p>You can also fund an irrevocable trust using the annual gift tax exclusion ($19,000 per beneficiary per year in 2026) if the trust contains Crummey withdrawal powers — provisions that give beneficiaries a temporary right to withdraw newly contributed assets, converting the contribution into a present interest gift eligible for the exclusion. Without Crummey powers, annual exclusion contributions to most irrevocable trusts don't qualify as present interest gifts. This is a drafting requirement, not an afterthought.</p>
+
+    <div class="am-callout">
+      <div class="am-label">Tax Strategy Intersection</div>
+      <h4>Mining Income and Irrevocable Trust Funding</h4>
+      <p>Bitcoin mining generates ordinary income — taxed when mined at fair market value. But mining businesses also generate substantial deductions: equipment depreciation (including bonus depreciation), operating expenses, facility costs, and management fees. If structured correctly, mining income can be largely offset by these deductions, producing a stream of Bitcoin with minimal current tax cost. That Bitcoin can then fund an irrevocable trust, consuming exemption at lower effective cost. Mining is the most tax-efficient way to accumulate BTC for trust funding — and the deductions themselves reduce the grantor's estate simultaneously.</p>
+      <a href="https://abundantmines.com/tax-strategy/" class="am-link" target="_blank" rel="noopener">Explore Bitcoin Mining Tax Strategy →</a>
+    </div>
+
+    <h2>Trustee Selection for Bitcoin: The Most Overlooked Decision</h2>
+
+    <p>The trustee of a Bitcoin irrevocable trust carries both fiduciary duties and technical responsibilities that most trust companies and attorneys are not equipped to handle simultaneously. This is the most commonly underestimated challenge in Bitcoin estate planning — and the one most likely to result in asset loss if ignored.</p>
+
+    <h3>What a Bitcoin Trustee Must Be Able to Do</h3>
+
+    <ul>
+      <li><strong>Custody Bitcoin securely:</strong> The trustee must be able to hold private keys (or coordinate with a qualified custodian who does), sign transactions, manage hardware wallets or multisig setups, and protect against both external theft and internal mismanagement.</li>
+      <li><strong>Execute transactions:</strong> When distributions are authorized, the trustee must be able to send Bitcoin to beneficiaries — which requires functional access to the private keys, not just knowledge that the Bitcoin exists.</li>
+      <li><strong>Maintain records:</strong> Proper cost basis tracking, transaction logs, and valuation documentation are required for both income tax reporting and potential future estate tax audits.</li>
+      <li><strong>Manage succession:</strong> If the trustee dies, becomes incapacitated, or resigns, the successor trustee must be able to access the Bitcoin. This requires documented custody protocols, not just a reference to "the hardware wallet in the safe deposit box."</li>
+    </ul>
+
+    <h3>The Directed Trust Solution</h3>
+
+    <p>Wyoming and South Dakota permit directed trust structures that solve the competency mismatch elegantly. In a directed trust, the trust document separates investment management authority from administrative trustee authority. The investment trustee (or "investment advisor" in some jurisdictions) makes all decisions about the trust's investments — in this case, holding and managing Bitcoin. The administrative trustee handles distributions, compliance, tax reporting, and beneficiary relations.</p>
+
+    <p>This structure allows you to appoint a qualified Bitcoin custodian — Coinbase Custody, Anchorage, Fidelity Digital Assets, or a similarly credentialed institution — as investment trustee, while a family office or trust company handles the administrative side. Neither party needs to be competent in the other's domain. The Bitcoin is held properly. The trust is administered properly. The grantor cannot be sole trustee of the trust, but can often serve as investment advisor with authority to direct the investment trustee — a meaningful form of retained influence that stops short of control for estate tax purposes.</p>
+
+    <h2>The Fraudulent Transfer Lookback: When Protection Actually Kicks In</h2>
+
+    <p>Asset protection from irrevocable trusts is not instant. Every state has fraudulent transfer statutes — laws that allow creditors to unwind transfers made with actual or constructive fraudulent intent. The question is not whether you intended to defraud — it is whether you were insolvent at the time of transfer or made the transfer while a lawsuit was pending or foreseeable.</p>
+
+    <p>For self-settled trusts (DAPTs where the grantor is a beneficiary), most states impose a lookback period of 2–4 years. Nevada: 2 years. Wyoming and South Dakota: 2 years. Alaska: 4 years. Federal bankruptcy law has its own 10-year lookback for self-settled trusts, which is a significant consideration for anyone at risk of insolvency-level financial distress.</p>
+
+    <p>For non-self-settled trusts (where the grantor is not a beneficiary), the state fraudulent transfer lookback applies — typically 4 years under the Uniform Voidable Transactions Act, though the period varies by state. After that period, the transfer is generally beyond challenge, and the creditor protection is robust.</p>
+
+    <div class="callout">
+      <div class="callout-label">Practical Implication</div>
+      <p><strong>Fund irrevocable trust structures well in advance of any creditor risk — ideally years before any business or personal liability materializes.</strong> A Bitcoin DAPT funded the week before a lawsuit is filed provides essentially no protection. The same trust funded four years before a lawsuit is filed is generally beyond reach. Proactive planning, not reactive planning, is what actually works.</p>
+    </div>
+
+    <h2>Modifying or Decanting an Irrevocable Trust: Less Permanent Than It Sounds</h2>
+
+    <p>"Irrevocable" does not mean "unchangeable forever." Several mechanisms exist to modify trust terms after the fact, and sophisticated trust drafting builds flexibility in from the start.</p>
+
+    <h3>Decanting</h3>
+
+    <p>Decanting is the process by which a trustee pours the assets of an existing irrevocable trust into a new trust with updated terms. Most states permit decanting under specific statutory procedures. The new trust can update administrative provisions, change distribution standards, extend the trust term, or add flexibility that the original document lacked. Decanting can be used to shift Bitcoin from an older trust structure to a Wyoming directed trust, to add a trust protector, or to update custody provisions that were drafted before modern Bitcoin custody standards existed.</p>
+
+    <h3>Non-Judicial Modification Agreements</h3>
+
+    <p>In many states, all beneficiaries and trustees can agree to modify trust terms without court approval, provided no beneficiary's interest is adversely affected. This is particularly useful for administrative updates — changing the trustee succession provisions, updating the investment policy statement, or adding cryptocurrency-specific custody protocols.</p>
+
+    <h3>Trust Protector Powers</h3>
+
+    <p>A trust protector is a third party — named in the trust document — with specific powers to modify certain trust terms. A well-drafted Bitcoin irrevocable trust should include a trust protector with authority to: change trustees, change the trust's governing jurisdiction, modify administrative provisions in response to changes in tax law, and add or remove beneficiaries within defined limits. The trust protector provides a mechanism for adapting to change without going to court — and without giving the grantor direct control that would trigger estate inclusion.</p>
+
+    <h2>The Comparison Framework: Irrevocable vs. Dynasty vs. Revocable</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Revocable Trust</th>
+            <th>Irrevocable Trust</th>
+            <th>Dynasty Trust</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Estate tax exclusion</td>
+            <td><span class="dash">✗ None</span></td>
+            <td><span class="check">✓ Yes</span></td>
+            <td><span class="check">✓ Yes (perpetual)</span></td>
+          </tr>
+          <tr>
+            <td>Creditor protection</td>
+            <td><span class="dash">✗ None</span></td>
+            <td><span class="check">✓ After lookback</span></td>
+            <td><span class="check">✓ After lookback</span></td>
+          </tr>
+          <tr>
+            <td>Grantor access</td>
+            <td><span class="check">✓ Full</span></td>
+            <td><span class="dash">Limited (SLAT/DAPT only)</span></td>
+            <td><span class="dash">✗ None for grantor</span></td>
+          </tr>
+          <tr>
+            <td>Probate avoidance</td>
+            <td><span class="check">✓ Yes</span></td>
+            <td><span class="check">✓ Yes</span></td>
+            <td><span class="check">✓ Yes</span></td>
+          </tr>
+          <tr>
+            <td>Generation-skipping</td>
+            <td><span class="dash">✗ No</span></td>
+            <td><span class="dash">Limited</span></td>
+            <td><span class="check">✓ Yes (perpetual)</span></td>
+          </tr>
+          <tr>
+            <td>Flexibility</td>
+            <td><span class="check">✓ High</span></td>
+            <td><span class="dash">Moderate (decanting/protector)</span></td>
+            <td><span class="dash">Moderate (decanting/protector)</span></td>
+          </tr>
+          <tr>
+            <td>Setup complexity</td>
+            <td>Low</td>
+            <td>Medium–High</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td>Ongoing admin burden</td>
+            <td>Low</td>
+            <td>Medium</td>
+            <td>Medium–High</td>
+          </tr>
+          <tr>
+            <td>Best for</td>
+            <td>Probate avoidance, below-threshold estates</td>
+            <td>Near/above-threshold, creditor protection, access needed</td>
+            <td>Multigenerational, large positions, maximum estate tax efficiency</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>When Irrevocable Beats Revocable</h3>
+
+    <p>Use an irrevocable trust structure when your estate is at or above the estate tax threshold — federal or state. For Oregon residents, that threshold is $1 million; for federal purposes, currently approximately $13.99 million per individual. If your Bitcoin position, combined with other assets, exceeds your applicable threshold, a revocable trust is providing administrative convenience at the cost of a massive tax inefficiency at death.</p>
+
+    <h3>When Irrevocable Beats Dynasty Trust</h3>
+
+    <p>A dynasty trust is itself an irrevocable trust — the distinction is typically duration and generation-skipping tax treatment. A standard irrevocable trust with a defined term (say, until the youngest child reaches age 35) may be appropriate when you have a specific distribution goal and don't need perpetual trust administration. Dynasty trusts are designed to exist indefinitely — suitable for families with a genuine multigenerational vision for Bitcoin wealth. If that's you, the dynasty trust wins on every dimension except complexity and cost. If you're solving a more bounded problem, a conventional irrevocable trust with a defined term may be simpler and equally effective.</p>
+
+    <h2>The Action Sequence: How to Get Started</h2>
+
+    <p>The planning steps are relatively straightforward once the structural decision is made:</p>
+
+    <ol>
+      <li><strong>Determine your estate tax exposure.</strong> Confirm your total taxable estate value at current Bitcoin prices, including all asset classes. Identify whether federal or state estate tax applies at your wealth level.</li>
+      <li><strong>Select the trust type.</strong> SLAT if you need spousal access. DAPT if creditor protection with personal access is the priority. IDGT if you're doing an installment sale of a large position. ILIT if life insurance is a component. Dynasty Trust if multigenerational is the explicit goal.</li>
+      <li><strong>Select your jurisdiction.</strong> Wyoming and South Dakota offer the most favorable combination of directed trust legislation, asset protection law, and no state income tax on trust income. Nevada and Alaska are also strong choices. Your estate attorney will guide you here.</li>
+      <li><strong>Select your trustee.</strong> Identify an independent trustee with Bitcoin competence, or structure a directed trust with separate investment and administrative trustees. Do not leave the trustee selection until after the documents are drafted.</li>
+      <li><strong>Fund at current prices.</strong> Lower Bitcoin prices mean less exemption consumed per coin transferred, and more future appreciation that escapes estate taxation. The best time to fund an irrevocable trust is when prices are below peak.</li>
+      <li><strong>Document the custody setup.</strong> Ensure the trustee has a fully documented protocol for holding, transacting, and eventually distributing Bitcoin — including key storage, signing authority, and successor procedures.</li>
+    </ol>
+
+    <!-- Estate Watch CTA -->
+    <div class="cta-block">
+      <h3>Monitor Your Bitcoin Estate Tax Exposure in Real Time</h3>
+      <p>As Bitcoin's price changes, your estate tax position changes with it. Estate Watch tracks your holdings and alerts you when exposure crosses key thresholds — so you know exactly when to act on trust funding, GRAT resets, or gifting windows.</p>
+      <div class="cta-buttons">
+        <a href="/monitor/" class="btn-primary">Activate Estate Watch</a>
+        <a href="/services/" class="btn-secondary">Advisory Services →</a>
+      </div>
+    </div>
+
+    <!-- Author Box -->
+    <div class="author-box">
+      <div class="author-avatar">H</div>
+      <div class="author-info">
+        <h4>Hal Franklin</h4>
+        <div class="author-title">Founder, The Bitcoin Family Office</div>
+        <p>Hal works with serious Bitcoin holders at the intersection of digital asset wealth and multigenerational planning — estate structuring, trust architecture, tax strategy, and custody frameworks for long-term holders who treat Bitcoin as a generational asset.</p>
+      </div>
+    </div>
+
+    <!-- Related Articles -->
+    <div class="related-articles">
+      <h3>Related Insights</h3>
+      <div class="related-grid">
+        <a href="/blog/bitcoin-tax-strategy-high-net-worth.html" class="related-card">
+          <div class="related-tag">Tax Strategy</div>
+          <h4>Bitcoin Tax Strategy for High-Net-Worth Individuals: The Complete 2026 Playbook</h4>
+        </a>
+        <a href="/blog/bitcoin-trust-estate-planning" class="related-card">
+          <div class="related-tag">Trust Planning</div>
+          <h4>Bitcoin Trust Estate Planning: Which Trust Structure Is Right for Your Holdings?</h4>
+        </a>
+        <a href="/blog/how-to-avoid-estate-tax-bitcoin.html" class="related-card">
+          <div class="related-tag">Estate Planning</div>
+          <h4>How to Avoid Estate Tax on Bitcoin: 7 Legal Strategies</h4>
+        </a>
+        <a href="/monitor/" class="related-card">
+          <div class="related-tag">Tool</div>
+          <h4>Estate Watch: Real-Time Bitcoin Estate Tax Exposure Monitoring</h4>
+        </a>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+      <div class="disclaimer-label">Disclaimer</div>
+      <p>This article is for educational and informational purposes only and does not constitute legal, tax, financial, or investment advice. Trust structures, tax rules, and exemption amounts are complex and subject to change through legislation or regulatory guidance. Nothing in this article should be relied upon without consultation with qualified estate planning attorneys and tax professionals familiar with your specific circumstances and jurisdiction. Nothing in this article creates an attorney-client, advisor-client, or fiduciary relationship.</p>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-name">The Bitcoin <span>Family Office</span></div>
+          <p>Multigenerational Bitcoin wealth planning for serious long-term holders. Estate strategy, trust architecture, tax optimization, and custody frameworks.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/services/">Overview</a></li>
+            <li><a href="/services/#estate">Estate Planning</a></li>
+            <li><a href="/services/#tax">Tax Strategy</a></li>
+            <li><a href="/services/#custody">Custody Architecture</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Tools</h4>
+          <ul>
+            <li><a href="/tools/bitcoin-estate-tax-calculator">Estate Tax Calculator</a></li>
+            <li><a href="/tools/bitcoin-grat-optimizer">GRAT Optimizer</a></li>
+            <li><a href="/tools/bitcoin-wealth-dashboard">Wealth Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/blog/">Insights</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 The Bitcoin Family Office. All rights reserved.</p>
+        <p class="footer-disclaimer">Not legal, tax, or financial advice. For informational purposes only. Consult qualified professionals before acting on any information presented here.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById('mobileMenu');
+      if (menu) menu.classList.toggle('open');
+    }
+    function closeMenu() {
+      var menu = document.getElementById('mobileMenu');
+      if (menu) menu.classList.remove('open');
+    }
+  </script>
+  <script defer src="/assets/chat-widget.js"></script>
+</body>
+</html>
