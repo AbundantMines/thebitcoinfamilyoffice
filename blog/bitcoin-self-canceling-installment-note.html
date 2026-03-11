@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Self-Canceling Installment Note (SCIN): Estate Planning Strategy | The Bitcoin Family Office</title>
+  <meta name="description" content="A SCIN lets you sell Bitcoin to heirs now and removes the unpaid balance from your estate if you die early. Learn how SCINs work, the risk premium calculation, SCIN vs IDGT installment sale, and when this strategy makes sense for Bitcoin holders.">
+  <meta property="og:title" content="Bitcoin Self-Canceling Installment Note (SCIN): Estate Planning Strategy">
+  <meta property="og:description" content="A SCIN lets you sell Bitcoin to heirs now and removes the unpaid balance from your estate if you die early. Learn how SCINs work, the risk premium calculation, SCIN vs IDGT installment sale, and when this strategy makes sense for Bitcoin holders.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-self-canceling-installment-note.html">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-self-canceling-installment-note.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a0a; color: #e8e0d0; font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.75; }
+    a { color: #c9a84c; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { background: #0d0d0d; border-bottom: 1px solid #1e1e1e; padding: 0 2rem; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #e8e0d0; letter-spacing: 0.02em; }
+    .logo span { color: #c9a84c; }
+    nav a { color: #a09880; font-size: 0.875rem; margin-left: 2rem; transition: color 0.2s; }
+    nav a:hover { color: #c9a84c; text-decoration: none; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #a09880; border-radius: 2px; transition: all 0.3s; }
+    @media(max-width:768px) { .hamburger { display: flex; } nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: #0d0d0d; border-bottom: 1px solid #1e1e1e; padding: 1.5rem 2rem; flex-direction: column; gap: 1.25rem; } nav.open { display: flex; } nav a { margin-left: 0; font-size: 1rem; } }
+    main { max-width: 780px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+    .breadcrumb { font-size: 0.8rem; color: #5a5040; margin-bottom: 2.5rem; }
+    .breadcrumb a { color: #5a5040; }
+    .breadcrumb a:hover { color: #c9a84c; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.2; color: #f0e8d8; margin-bottom: 1.5rem; }
+    .meta { font-size: 0.8rem; color: #5a5040; margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .intro { font-family: 'EB Garamond', serif; font-size: 1.2rem; line-height: 1.7; color: #c8b896; margin-bottom: 3rem; border-left: 3px solid #c9a84c; padding-left: 1.5rem; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #f0e8d8; margin: 3rem 0 1rem; }
+    h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #d4c4a0; margin: 2rem 0 0.75rem; }
+    p { margin-bottom: 1.25rem; }
+    ul, ol { margin: 1rem 0 1.25rem 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    .highlight-box { background: #111; border: 1px solid #2a2215; border-left: 4px solid #c9a84c; padding: 1.5rem 1.75rem; margin: 2rem 0; border-radius: 2px; }
+    .highlight-box p { margin-bottom: 0; }
+    .highlight-box strong { color: #c9a84c; }
+    .warning-box { background: #140f0a; border: 1px solid #3a2a1a; border-left: 4px solid #e07040; padding: 1.5rem 1.75rem; margin: 2rem 0; border-radius: 2px; }
+    .warning-box strong { color: #e07040; }
+    table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.9rem; }
+    th { background: #161412; color: #c9a84c; text-align: left; padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #2a2215; }
+    td { padding: 0.75rem 1rem; border-bottom: 1px solid #1a1812; color: #c0b090; vertical-align: top; }
+    tr:nth-child(even) td { background: #0d0c0a; }
+    .cta-box { background: linear-gradient(135deg, #0f0e0c 0%, #141210 100%); border: 1px solid #2a2215; padding: 2rem 2.25rem; margin: 3rem 0; border-radius: 4px; }
+    .cta-box h3 { color: #c9a84c; margin-top: 0; font-size: 1.1rem; }
+    .cta-box p { font-size: 0.95rem; color: #a09880; margin-bottom: 1rem; }
+    .cta-btn { display: inline-block; background: #c9a84c; color: #0a0a0a; font-weight: 600; font-size: 0.875rem; padding: 0.7rem 1.5rem; border-radius: 2px; text-decoration: none; }
+    .cta-btn:hover { background: #d4b862; text-decoration: none; }
+    footer { background: #0d0d0d; border-top: 1px solid #1e1e1e; padding: 3rem 2rem; text-align: center; color: #3a3228; font-size: 0.8rem; }
+    footer a { color: #3a3228; }
+    footer a:hover { color: #c9a84c; }
+  </style>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+</head>
+<body>
+<header>
+  <div class="nav-inner">
+    <a href="/" class="logo">The Bitcoin <span>Family Office</span></a>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+    <nav>
+      <a href="/blog/">Insights</a>
+      <a href="/services/">Services</a>
+      <a href="/tools/">Tools</a>
+      <a href="/faq/">FAQ</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/blog/">Insights</a> &rsaquo; Bitcoin SCIN Estate Planning
+  </div>
+
+  <h1>Bitcoin Self-Canceling Installment Note (SCIN): Transfer Wealth Without the Estate Inclusion Risk</h1>
+  <div class="meta">By The Bitcoin Family Office &nbsp;|&nbsp; Updated March 2026 &nbsp;|&nbsp; Advanced Estate Planning &nbsp;&bull;&nbsp; Tax Strategy</div>
+
+  <p class="intro">A self-canceling installment note lets you sell Bitcoin to your heirs today, receive installment payments over time, and — if you die before the note matures — have the remaining balance vanish from your estate entirely. No gift tax on the sale. No estate inclusion on the cancelled balance. All future Bitcoin appreciation transferred at the sale price.</p>
+
+  <p>The SCIN is one of the more technically precise estate planning instruments available to Bitcoin-wealthy families. It exploits the fact that a properly structured note with a cancellation-at-death provision is a legitimate sale — not a gift — which means it consumes none of your lifetime exemption. The price for this feature is a risk premium built into the note terms: higher interest, higher principal, or both. Done correctly, the economics strongly favor the family.</p>
+
+  <p>Done incorrectly — at the wrong price, without adequate consideration, or in the wrong health context — the IRS recharacterizes the SCIN as either a disguised gift (triggering gift tax) or includes the note balance in the estate anyway. This is a strategy for experienced advisors. But understanding how it works is the starting point.</p>
+
+  <h2>The Core Mechanic</h2>
+
+  <p>A SCIN is a promissory note between a seller (typically the senior generation) and a buyer (heirs or a trust for their benefit). The note has one distinguishing feature: a clause specifying that if the seller dies before the note is fully paid, the remaining installment obligations are cancelled automatically.</p>
+
+  <p>The transaction proceeds as follows:</p>
+
+  <ol>
+    <li>You sell Bitcoin to an irrevocable trust (or directly to an heir) at fair market value — no gift, no gift tax, no exemption consumed.</li>
+    <li>The trust issues a promissory note back to you: principal equal to the Bitcoin's value, plus interest, payable in installments over a fixed term.</li>
+    <li>The note contains the self-canceling provision: death extinguishes remaining payments.</li>
+    <li>Because cancellation on death is a feature with actuarial value, the note must include a risk premium — additional compensation to you for accepting the cancellation risk.</li>
+    <li>The trust owns the Bitcoin and all future appreciation above the sale price. You receive installment payments (taxable as capital gains and interest) during your lifetime.</li>
+    <li>If you die before the term ends: remaining balance is cancelled, not included in your estate, and no income tax is owed on the forgiven amount (it is treated as a return of basis under the installment sale rules).</li>
+  </ol>
+
+  <div class="highlight-box">
+    <p><strong>The estate planning prize:</strong> Bitcoin sold at today's price transfers all future appreciation above that price to heirs — outside your estate, outside gift tax, without consuming exemption. If you die before the note matures, the unpaid balance also escapes estate tax. The SCIN transforms a potentially $10M estate inclusion problem into a series of installment payments and a cancelled balance.</p>
+  </div>
+
+  <h2>Why Bitcoin Makes This Strategy Particularly Powerful</h2>
+
+  <p>The SCIN's power comes from the spread between the sale price (today's FMV) and the eventual value of the transferred asset. For Bitcoin, that spread can be enormous over a 10–15 year installment term.</p>
+
+  <p>Consider a family that sells 10 Bitcoin to a dynasty trust at $100,000 per coin ($1,000,000 total) via a 10-year SCIN. The trust pays installments over 10 years. If Bitcoin reaches $500,000 per coin by year 10, the trust holds $5,000,000 in Bitcoin — but the seller only ever received payments on a $1,000,000 note. The $4,000,000 appreciation occurred inside the trust, outside the estate, with no additional gift or estate tax.</p>
+
+  <p>This is the same principle behind a <a href="bitcoin-grat-strategy.html">GRAT</a> or an <a href="bitcoin-idgt-installment-sale.html">IDGT installment sale</a> — freeze the value for estate purposes, let all future growth escape. The SCIN adds one more feature: if the seller dies early, the unpaid balance cancels rather than reverting to or remaining in the estate.</p>
+
+  <h2>The Risk Premium: What You Pay for the Cancellation Feature</h2>
+
+  <p>A SCIN cannot be priced the same as an ordinary installment note. The cancellation-at-death feature has actuarial value to the buyer — if the seller dies before term, the buyer gets to keep the Bitcoin without paying the remaining balance. For the sale to be treated as a legitimate arm's-length transaction (and not a gift), the seller must receive adequate compensation for this risk.</p>
+
+  <p>There are two acceptable methods for incorporating the risk premium, per IRS guidance and Tax Court decisions:</p>
+
+  <h3>Method 1: Principal Premium</h3>
+  <p>The note face value is set above the Bitcoin's FMV. Example: Bitcoin is worth $1,000,000, but the note face value is $1,100,000. The buyer pays more principal to compensate the seller for the cancellation risk. The excess principal ($100,000) is not a gift — it is the risk premium for the cancellation feature.</p>
+
+  <h3>Method 2: Interest Rate Premium</h3>
+  <p>The note carries a higher-than-market interest rate. Example: if the AFR (Applicable Federal Rate) is 4.5%, the SCIN interest rate might be 7.5% — the additional 3% compensates the seller for accepting the cancellation risk. Each interest payment includes a component that compensates for mortality risk.</p>
+
+  <p>Both methods require actuarial calculation based on the seller's age, health, the note term, and current interest rate assumptions. The IRS uses the Section 7520 rate (120% of the AFR) and actuarial tables from Publication 1457 as benchmarks. Courts have upheld SCINs where the premium was calculated using recognized actuarial methods and the seller was in normal health.</p>
+
+  <div class="warning-box">
+    <p><strong>⚠️ Terminal illness disqualifies the SCIN.</strong> If the seller is terminally ill at the time of the note's creation — defined as having a more than 50% probability of dying within one year — the IRS will disregard the actuarial tables and may treat the entire transaction as a sham or recharacterize the cancellation as an includable bequest. The SCIN only works as designed when the seller has a normal life expectancy. Ironically, it is most attractive to sellers who are older (shorter life expectancy = higher risk premium, but also more likelihood of early death) but still in good health.</p>
+  </div>
+
+  <h2>Income Tax Treatment of SCIN Payments</h2>
+
+  <p>During the seller's lifetime, each installment payment received has two components, both taxable:</p>
+
+  <ul>
+    <li><strong>Capital gains component:</strong> Each payment includes a pro-rata return of basis and capital gain. If you sold Bitcoin with a $100,000 cost basis for a $1,000,000 SCIN, each payment is 10% return of basis (not taxable) and 90% long-term capital gain (taxed at 0/15/20% + 3.8% NIIT depending on income).</li>
+    <li><strong>Interest component:</strong> Interest on the outstanding balance is ordinary income, taxable at federal rates up to 37%.</li>
+  </ul>
+
+  <p>The capital gains are spread over the installment term — a major advantage over an outright sale where the entire gain is recognized in year one. A $900,000 gain spread over 10 years averages $90,000/year, which may keep the seller in lower capital gains brackets than a lump-sum sale.</p>
+
+  <p>If the seller dies before the note matures:</p>
+
+  <ul>
+    <li>The cancelled balance is not income to the seller's estate (it is treated as a return of the seller's remaining basis under the installment sale rules, not a forgiveness of debt).</li>
+    <li>The buyer (trust or heir) has no income on the cancellation — it is not a forgiveness of indebtedness because the cancellation was a feature of the original contract, not a post-hoc forgiveness.</li>
+    <li>The seller's estate does not include the note balance — the self-canceling provision removes it from gross estate calculation.</li>
+  </ul>
+
+  <div class="highlight-box">
+    <p><strong>The tax trifecta at early death:</strong> (1) Capital gain on payments received to date was spread over the installment term at lower rates. (2) Remaining balance cancels — no estate inclusion. (3) Trust keeps the Bitcoin with no additional tax owed on the cancellation. Bitcoin appreciation above the sale price: entirely outside the taxable estate, no gift tax paid.</p>
+  </div>
+
+  <h2>SCIN vs. IDGT Installment Sale: What's the Difference?</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>SCIN</th>
+        <th>IDGT Installment Sale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Cancellation at death</td>
+        <td>✅ Yes — note cancels, balance excluded from estate</td>
+        <td>❌ No — note balance remains in estate at death</td>
+      </tr>
+      <tr>
+        <td>Risk premium required</td>
+        <td>✅ Yes — higher principal or rate compensates seller</td>
+        <td>❌ No — standard AFR interest rate</td>
+      </tr>
+      <tr>
+        <td>Installment sale capital gains treatment</td>
+        <td>✅ Yes — gains spread over term</td>
+        <td>✅ Yes — gains spread over term</td>
+      </tr>
+      <tr>
+        <td>Interest income to seller</td>
+        <td>✅ Yes — ordinary income each period</td>
+        <td>❌ No — IDGT is a grantor trust; interest payments not taxable to grantor</td>
+      </tr>
+      <tr>
+        <td>Gift tax on sale</td>
+        <td>❌ None — sale at FMV (with premium)</td>
+        <td>❌ None — sale at FMV (with seed gift ~10%)</td>
+      </tr>
+      <tr>
+        <td>Exemption consumed</td>
+        <td>❌ None (sale, not gift)</td>
+        <td>Small amount for seed gift (~10% of sale price)</td>
+      </tr>
+      <tr>
+        <td>Estate inclusion if seller survives term</td>
+        <td>Nothing — balance fully paid</td>
+        <td>Nothing — balance fully paid</td>
+      </tr>
+      <tr>
+        <td>Estate inclusion if seller dies during term</td>
+        <td>❌ None — cancels automatically</td>
+        <td>⚠️ Note balance at death included in estate</td>
+      </tr>
+      <tr>
+        <td>IRS scrutiny level</td>
+        <td>High — must document actuarial premium</td>
+        <td>Moderate — established technique, well-litigated</td>
+      </tr>
+      <tr>
+        <td>Best for</td>
+        <td>Older sellers in good health; high estate tax exposure; shorter life expectancy</td>
+        <td>Younger sellers; long note terms; want tax-free interest payments</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The IDGT installment sale has one advantage the SCIN does not: because the grantor trust is disregarded for income tax, interest payments from the trust back to the grantor are not taxable to either party — effectively interest-free financing. With a SCIN, the interest is always taxable to the seller as ordinary income, making the after-tax cost of the risk premium higher.</p>
+
+  <p>For older Bitcoin holders facing significant estate tax exposure, the SCIN's cancellation feature is often worth this tradeoff. For younger sellers with decades until likely death, the IDGT structure typically wins on economics.</p>
+
+  <h2>SCIN vs. Private Annuity</h2>
+
+  <p>The private annuity is the SCIN's closest cousin. In a private annuity, you also sell Bitcoin to a trust or heir in exchange for payments — but the payments are tied to your life, not a fixed term. The annuity ends at your death, and no balance is includable in your estate.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>SCIN</th>
+        <th>Private Annuity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Payment structure</td>
+        <td>Fixed term installments; balance cancels at death</td>
+        <td>Lifetime payments only; stop at death</td>
+      </tr>
+      <tr>
+        <td>Estate inclusion of unpaid balance</td>
+        <td>None (self-canceling)</td>
+        <td>None (annuity ends at death)</td>
+      </tr>
+      <tr>
+        <td>Payment obligation if seller lives longer than expected</td>
+        <td>Payments end when note is paid off (fixed term)</td>
+        <td>Payments continue for life — potential "windfall" to seller</td>
+      </tr>
+      <tr>
+        <td>Capital gains recognition</td>
+        <td>Spread over installment term</td>
+        <td>Spread over life expectancy (calculated at sale)</td>
+      </tr>
+      <tr>
+        <td>Installment sale treatment</td>
+        <td>✅ Yes — §453 applies</td>
+        <td>❌ No — Rev. Rul. 2012-4 eliminated installment reporting; gain accelerated</td>
+      </tr>
+      <tr>
+        <td>IRS scrutiny</td>
+        <td>High</td>
+        <td>Very high — limited to non-commercial annuities; annuity company disqualifies</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>A key distinction: after Revenue Ruling 2012-4, private annuities can no longer use installment sale reporting. All realized gain must be recognized in the year of sale — the entire capital gain is taxable immediately, even though payments are received over time. This significantly diminished the private annuity's attractiveness for high-basis-spread assets like Bitcoin.</p>
+
+  <p>The SCIN retains installment sale treatment and spreads capital gains over the note term. For Bitcoin holders with large embedded gains, this makes the SCIN significantly more tax-efficient than the private annuity in most scenarios.</p>
+
+  <h2>Combining SCIN with a Grantor Trust</h2>
+
+  <p>The most powerful SCIN structure for Bitcoin holders pairs the note with an intentionally defective grantor trust (IDGT):</p>
+
+  <ol>
+    <li>You establish an irrevocable trust and seed it with a modest gift (10–15% of the intended sale price) — this creates the trust's initial equity cushion required for the installment sale to not be treated as a gift.</li>
+    <li>You sell Bitcoin to the grantor trust via a SCIN.</li>
+    <li>The trust is structured as an "intentionally defective" grantor trust — treated as a grantor trust for income tax purposes, but not for estate tax purposes.</li>
+    <li>Result: the trust's Bitcoin transactions are attributed to you for income tax (Bitcoin grows tax-free inside the trust). The trust is outside your estate for estate tax.</li>
+    <li>You receive SCIN payments; the interest component is technically owed by the trust to you, but because the trust is a grantor trust, you are paying interest to yourself — it nets to zero for income tax purposes.</li>
+  </ol>
+
+  <div class="highlight-box">
+    <p><strong>The grantor trust tax arbitrage:</strong> You pay the income tax on the trust's Bitcoin gains — reducing your taxable estate further, while the trust's Bitcoin grows without being eroded by tax. Every dollar of income tax you pay on the trust's behalf is an additional tax-free gift to the trust beneficiaries. The SCIN + IDGT combination leverages both effects simultaneously.</p>
+  </div>
+
+  <h2>IRS Scrutiny: The Key Court Cases</h2>
+
+  <p>The SCIN has been litigated extensively. The Tax Court has upheld SCINs when properly structured and rejected them when the terms weren't actuarially sound or the seller was terminally ill at execution.</p>
+
+  <p><strong>Est. of Moss v. Commissioner (1995):</strong> Tax Court upheld a SCIN as a valid installment sale. The court found the self-canceling feature was adequately priced through a risk premium, and the balance was properly excluded from the estate at the seller's death.</p>
+
+  <p><strong>Est. of Costanza v. Commissioner (2001):</strong> Tax Court recharacterized a SCIN-like arrangement as a gift because the payments were not commercially reasonable and the seller had a terminal illness. The key lesson: fair market value, actuarially sound terms, and seller health are non-negotiable.</p>
+
+  <p><strong>PLR 9310006:</strong> IRS private letter ruling confirming that when a properly structured SCIN is cancelled at death, the unpaid balance is not included in the gross estate under §2033.</p>
+
+  <p>The consistent pattern: SCINs survive IRS challenge when (1) the sale is at FMV with an actuarially calculated risk premium, (2) the seller is in normal health at execution, and (3) payments are actually made according to the note schedule during the seller's lifetime.</p>
+
+  <h2>Practical Structuring Checklist</h2>
+
+  <ol>
+    <li><strong>Confirm seller health.</strong> Document the seller's health status with medical records at time of sale. The actuarial tables assume normal health — deviation must be disclosed and may affect pricing.</li>
+    <li><strong>Obtain an independent appraisal of the Bitcoin.</strong> The sale must be at FMV. For a large Bitcoin position, a qualified appraisal (or documented market price at a specific timestamp) establishes the baseline.</li>
+    <li><strong>Calculate the risk premium actuarially.</strong> Use §7520 rates and IRS Publication 1457 mortality tables. Have an actuary or estate planning attorney confirm the premium adequately compensates for cancellation risk given the seller's age and note term.</li>
+    <li><strong>Choose between principal premium and interest rate premium.</strong> Each has different income tax implications for both parties. Model both scenarios before selecting.</li>
+    <li><strong>Document the arm's-length nature of the transaction.</strong> The trust should have independent trustees; the note terms should mirror what an unrelated lender would demand.</li>
+    <li><strong>Make all scheduled payments on time.</strong> Courts have penalized arrangements where payments were inconsistent or ignored. The trust must actually pay the SCIN installments as structured.</li>
+    <li><strong>Retain the self-canceling provision in writing.</strong> The clause must be explicit in the note document — not implied. Boilerplate installment note templates do not include this provision.</li>
+  </ol>
+
+  <h2>The Estate Tax Math</h2>
+
+  <p>For a Bitcoin holder with a $10M position and a $15M estate tax exemption (2026 OBBBA), the SCIN may seem unnecessary — they're under the exemption. But consider two scenarios:</p>
+
+  <p><strong>Scenario A — No planning:</strong> Bitcoin grows from $10M to $40M by time of death. Total estate: $50M. After $15M exemption: $35M taxable at 40% = $14M estate tax. Net to heirs: $36M.</p>
+
+  <p><strong>Scenario B — SCIN executed today:</strong> Bitcoin sold to dynasty trust at $10M via SCIN. Trust owns Bitcoin; all $30M appreciation occurs inside the trust, outside the estate. Seller's estate at death: installment payments received ($10M over 10 years, after tax) + other assets. Bitcoin appreciation: $30M, entirely in the trust, entirely outside estate and gift tax. Net to family: dramatically higher — the trust's $40M passes to heirs with no estate tax on the appreciation component.</p>
+
+  <div class="cta-box">
+    <h3>Evaluate Bitcoin Mining Alongside the SCIN</h3>
+    <p>Bitcoin mining creates depreciation deductions that directly offset capital gains recognized on SCIN installment payments. A mining investment in the year of SCIN execution may significantly reduce the year-one and ongoing tax cost of this strategy.</p>
+    <a href="https://abundantmines.com/tax-strategy/" class="cta-btn" target="_blank" rel="noopener">Explore the Bitcoin Mining Tax Strategy →</a>
+  </div>
+
+  <h2>When the SCIN Makes Sense — and When It Doesn't</h2>
+
+  <h3>Best fit for the SCIN:</h3>
+  <ul>
+    <li>Seller is older (60s–70s) but in good health — shorter life expectancy increases the probability of cancellation benefit, which is the point</li>
+    <li>Large Bitcoin position with significant embedded gain — the installment sale capital gains spreading is valuable</li>
+    <li>Estate above or approaching the federal exemption threshold — estate tax exposure makes the cancelled balance exclusion impactful</li>
+    <li>The family has sufficient cash flow to service SCIN payments from the trust — the trust needs income or liquid assets to make installment payments</li>
+    <li>Seller wants to retain an income stream — SCIN payments replace the investment income the seller was receiving from the Bitcoin position</li>
+  </ul>
+
+  <h3>Poor fit for the SCIN:</h3>
+  <ul>
+    <li>Seller is terminally ill — IRS will disregard actuarial tables; transaction likely recharacterized</li>
+    <li>Seller is very young — the risk premium required to compensate for cancellation is high; IDGT installment sale or GRAT is usually better economics</li>
+    <li>Estate is well under the exemption — if there is no estate tax exposure, the cancellation feature provides no benefit; an ordinary installment sale or simple gift achieves similar results with less complexity</li>
+    <li>Trust lacks resources to service payments — if the trust cannot make SCIN payments from Bitcoin (or other trust assets), the arrangement may be challenged as a sham</li>
+  </ul>
+
+  <div class="cta-box">
+    <h3>Structure This Correctly the First Time</h3>
+    <p>A SCIN executed without actuarial documentation or with a terminally ill seller can result in full estate inclusion of the cancelled balance — the opposite of the intended result. The Bitcoin Family Office connects families with estate planning counsel experienced in Bitcoin-specific installment structures.</p>
+    <a href="/services/" class="cta-btn">Explore Our Services →</a>
+  </div>
+
+  <h2>Key Takeaways</h2>
+
+  <ul>
+    <li>A SCIN is an installment sale of Bitcoin to heirs or a trust, with a note provision that cancels the remaining balance at the seller's death — excluding it from the gross estate.</li>
+    <li>The seller must receive a risk premium (higher principal or interest rate) for the cancellation feature — calculated actuarially based on age, health, and note term.</li>
+    <li>Capital gains on the sale are spread over the note term under §453 installment sale rules — a major advantage over private annuities, which lost this treatment after Rev. Rul. 2012-4.</li>
+    <li>Pairing a SCIN with an intentionally defective grantor trust creates a second layer of benefit: grantor trust income tax arbitrage on top of the estate freeze and cancellation feature.</li>
+    <li>The strategy is invalidated if the seller is terminally ill at execution. Document health status with medical records at the time the note is signed.</li>
+    <li>The SCIN is most powerful for older, healthy Bitcoin holders with significant estate tax exposure and large embedded capital gains — a combination that is common among early Bitcoin accumulators now entering estate planning age.</li>
+  </ul>
+
+  <p><em>This content is educational and does not constitute legal or tax advice. The Bitcoin Family Office works with families navigating Bitcoin wealth planning at the institutional level. <a href="/services/">Learn more about our services</a>.</em></p>
+</main>
+<footer>
+  <p>&copy; 2026 The Bitcoin Family Office &nbsp;|&nbsp; <a href="/disclosures.html">Disclosures</a> &nbsp;|&nbsp; <a href="/privacy.html">Privacy</a></p>
+  <p style="margin-top: 0.5rem;">Not legal or tax advice. For informational purposes only.</p>
+</footer>
+<script>
+  document.querySelector('.hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('nav').classList.toggle('open');
+  });
+</script>
+</body>
+</html>
