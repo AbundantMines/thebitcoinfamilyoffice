@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QSBS for Bitcoin Mining Companies: The $10M Tax Exclusion Most Founders Miss | The Bitcoin Family Office</title>
+  <meta name="description" content="IRC §1202 lets founders of qualified small businesses exclude up to $10M in gains from federal capital gains tax. Bitcoin mining companies structured as C-corps may qualify. Here's how to plan it.">
+  <meta property="og:title" content="QSBS for Bitcoin Mining Companies: The $10M Tax Exclusion Most Founders Miss">
+  <meta property="og:description" content="IRC §1202 lets founders of qualified small businesses exclude up to $10M in gains from federal capital gains tax. Bitcoin mining companies structured as C-corps may qualify. Here's how to plan it.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-qsbs-section-1202-mining-company.html">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-qsbs-section-1202-mining-company.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a0a; color: #e8e0d0; font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.75; }
+    a { color: #c9a84c; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { background: #0d0d0d; border-bottom: 1px solid #1e1e1e; padding: 0 2rem; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #e8e0d0; letter-spacing: 0.02em; }
+    .logo span { color: #c9a84c; }
+    nav a { color: #a09880; font-size: 0.875rem; margin-left: 2rem; transition: color 0.2s; }
+    nav a:hover { color: #c9a84c; text-decoration: none; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #a09880; border-radius: 2px; transition: all 0.3s; }
+    @media(max-width:768px) { .hamburger { display: flex; } nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: #0d0d0d; border-bottom: 1px solid #1e1e1e; padding: 1.5rem 2rem; flex-direction: column; gap: 1.25rem; } nav.open { display: flex; } nav a { margin-left: 0; font-size: 1rem; } }
+    .hero { background: linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 100%); border-bottom: 1px solid #1a1a1a; padding: 4rem 2rem 3rem; text-align: center; }
+    .hero-inner { max-width: 800px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: #1a1400; border: 1px solid #c9a84c44; color: #c9a84c; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.5rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: #f0e8d8; line-height: 1.2; margin-bottom: 1.25rem; }
+    .hero-meta { font-size: 0.875rem; color: #6a6050; }
+    .hero-meta span { color: #a09880; }
+    main { max-width: 780px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.65rem; font-weight: 700; color: #f0e8d8; margin: 3rem 0 1rem; line-height: 1.3; }
+    h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #e0d8c8; margin: 2rem 0 0.75rem; }
+    p { font-family: 'EB Garamond', serif; font-size: 1.15rem; margin-bottom: 1.25rem; color: #d0c8b8; }
+    ul, ol { font-family: 'EB Garamond', serif; font-size: 1.15rem; margin: 0 0 1.25rem 1.75rem; color: #d0c8b8; }
+    li { margin-bottom: 0.5rem; }
+    .callout { background: #141414; border: 1px solid #1e1e1e; border-left: 3px solid #c9a84c; border-radius: 6px; padding: 1.5rem 1.75rem; margin: 2rem 0; }
+    .callout-warn { border-left-color: #e05c3a; }
+    .callout-tip { border-left-color: #4a9e6b; }
+    .callout h4 { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #c9a84c; margin-bottom: 0.6rem; }
+    .callout-warn h4 { color: #e05c3a; }
+    .callout-tip h4 { color: #4a9e6b; }
+    .callout p, .callout ul, .callout li { font-size: 1rem; color: #c0b8a8; }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-family: 'Inter', sans-serif; font-size: 0.9rem; }
+    th { background: #141414; color: #c9a84c; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #2a2a2a; }
+    td { padding: 0.75rem 1rem; border-bottom: 1px solid #1a1a1a; color: #c0b8a8; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #0f0f0f; }
+    .cta-box { background: #0f0e0a; border: 1px solid #c9a84c33; border-radius: 8px; padding: 2rem; margin: 3rem 0; text-align: center; }
+    .cta-box h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #f0e8d8; margin-bottom: 0.75rem; }
+    .cta-box p { font-size: 1rem; color: #a09880; margin-bottom: 1.5rem; }
+    .btn { display: inline-block; background: #c9a84c; color: #0a0a0a; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; padding: 0.7rem 1.75rem; border-radius: 4px; text-decoration: none; transition: background 0.2s; margin: 0.3rem; }
+    .btn:hover { background: #e0be5a; text-decoration: none; }
+    .btn-outline { background: transparent; border: 1px solid #c9a84c; color: #c9a84c; }
+    .btn-outline:hover { background: #c9a84c; color: #0a0a0a; }
+    .disclaimer { background: #0e0e0e; border: 1px solid #1e1e1e; border-radius: 6px; padding: 1.25rem 1.5rem; margin: 3rem 0 1rem; }
+    .disclaimer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #5a5040; line-height: 1.6; margin-bottom: 0; }
+    .disclaimer strong { color: #7a7060; }
+    .breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #5a5040; margin-bottom: 2.5rem; }
+    .breadcrumb a { color: #6a6050; }
+    .breadcrumb a:hover { color: #c9a84c; }
+    footer { background: #080808; border-top: 1px solid #161616; padding: 3rem 2rem; text-align: center; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1rem; color: #5a5040; margin-bottom: 1rem; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .footer-links a { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #5a5040; }
+    .footer-links a:hover { color: #c9a84c; text-decoration: none; }
+    .footer-copy { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #3a3028; }
+    .faq-item { border-bottom: 1px solid #1a1a1a; padding: 1.25rem 0; }
+    .faq-q { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: #f0e8d8; margin-bottom: 0.5rem; }
+    .faq-a { font-family: 'EB Garamond', serif; font-size: 1.1rem; color: #b0a898; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "QSBS for Bitcoin Mining Companies: The $10M Tax Exclusion Most Founders Miss",
+        "description": "IRC §1202 lets founders of qualified small businesses exclude up to $10M in gains from federal capital gains tax. Bitcoin mining companies structured as C-corps may qualify. Here's how to plan it.",
+        "author": { "@type": "Organization", "name": "The Bitcoin Family Office" },
+        "publisher": { "@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com" },
+        "datePublished": "2026-03-11",
+        "dateModified": "2026-03-11",
+        "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-qsbs-section-1202-mining-company.html",
+        "mainEntityOfPage": "https://thebitcoinfamilyoffice.com/blog/bitcoin-qsbs-section-1202-mining-company.html"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebitcoinfamilyoffice.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://thebitcoinfamilyoffice.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "QSBS Bitcoin Mining Company", "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-qsbs-section-1202-mining-company.html" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does a Bitcoin mining company qualify for the QSBS exclusion under IRC §1202?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Potentially yes, if structured correctly. A Bitcoin mining company organized as a domestic C-corporation with gross assets at or below $50 million at the time of stock issuance may qualify as a Qualified Small Business. Mining is not among the excluded service industries under §1202(e)(3). However, qualification depends on the specific facts, activities, and structure of each company. The IRS has not issued specific guidance on Bitcoin mining companies, so careful tax counsel is essential." }
+          },
+          {
+            "@type": "Question",
+            "name": "How much can I exclude under the QSBS exclusion?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Per taxpayer, per issuer: the greater of $10 million or 10 times your adjusted basis in the stock. Stock acquired after September 27, 2010 is eligible for 100% federal exclusion. If you paid $500,000 for QSBS that grows to $5.5 million, all $5 million of gain is federally excluded — zero capital gains tax. State exclusion varies; most states do not conform to the federal QSBS exclusion." }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the main requirements to qualify as QSBS?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The five core requirements: (1) Domestic C-corporation; (2) Gross assets did not exceed $50 million at or after stock issuance; (3) Stock was acquired at original issue in exchange for money, property, or services; (4) Company was an active business in a qualified trade; (5) You held the stock for more than 5 years. LLCs, S-corps, and partnerships do not issue QSBS. Converting an LLC to C-corp restarts the 5-year holding period clock." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I transfer QSBS to family members to multiply the exclusion?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes — this is one of the most powerful QSBS planning strategies. QSBS transferred by gift retains its QSBS status in the hands of the donee. Since each taxpayer has a separate $10M exclusion, gifting QSBS to a spouse, children, or trusts (certain types) effectively multiplies the exclusion. A family of four could each qualify for $10M exclusion, protecting $40M in gains. This gifting should occur before any sale is negotiated — transfers after a binding commitment to sell generally do not work." }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens to QSBS when the founder dies?",
+            "acceptedAnswer": { "@type": "Answer", "text": "QSBS retains its status when transferred at death. Heirs inherit both the QSBS status and — importantly — the stepped-up basis under IRC §1014. This is a powerful planning opportunity: if the founder dies holding QSBS, heirs get a new stepped-up basis equal to the date-of-death value and a fresh holding period is not required for §1202 purposes (the inherited shares are treated as held for more than 5 years as long as the decedent held them for more than 5 years). Heirs can then sell and potentially exclude the post-death appreciation, while the pre-death appreciation is eliminated by the step-up." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do states honor the federal QSBS exclusion?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Most states do not conform to the federal QSBS exclusion and will tax the full gain at the state level. California specifically taxes QSBS gains in full (9.3%–13.3% depending on income). States that do provide at least partial conformity include Massachusetts, New York (partial), and others. Zero income tax states (Wyoming, Nevada, Texas, Florida, Washington, South Dakota) are ideal for QSBS founders — no state tax on any gain." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <a href="/" class="logo">The Bitcoin <span>Family Office</span></a>
+      <div class="hamburger" onclick="this.nextElementSibling.classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
+      <nav>
+        <a href="/blog/">Insights</a>
+        <a href="/tools/">Tools</a>
+        <a href="/services/">Services</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/services/#waitlist" style="color:#c9a84c;">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">Business &amp; Tax Strategy</div>
+      <h1>QSBS for Bitcoin Mining Companies: The $10M Tax Exclusion Most Founders Miss</h1>
+      <p class="hero-meta">
+        <span>The Bitcoin Family Office</span> &nbsp;·&nbsp; March 11, 2026 &nbsp;·&nbsp; 13 min read
+      </p>
+    </div>
+  </div>
+
+  <main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> › <a href="/blog/">Insights</a> › QSBS Bitcoin Mining Company
+    </nav>
+
+    <div class="callout">
+      <h4>💡 The Opportunity</h4>
+      <p>Bitcoin mining companies structured as C-corporations may qualify for the IRC §1202 Qualified Small Business Stock exclusion — potentially shielding up to $10 million per taxpayer (or 10x basis) from federal capital gains tax on a future sale. Most mining founders have never heard of it.</p>
+    </div>
+
+    <p>There is a provision in the Internal Revenue Code so powerful that venture capitalists have structured entire investment theses around it. Section 1202 — the Qualified Small Business Stock exclusion — allows founders, early employees, and investors in qualifying small businesses to exclude up to $10 million of gain from federal capital gains tax entirely. Zero. For stock acquired after September 27, 2010 and held for more than five years, the 100% exclusion applies.</p>
+
+    <p>In the Bitcoin mining world, this provision is nearly unknown. That is a significant gap. Mining operators who have built C-corporation entities, taken on capital, and are now sitting on appreciated stock may be holding some of the most valuable tax-advantaged equity in the private market — and not know it.</p>
+
+    <p>This guide explains what QSBS is, whether Bitcoin mining companies can qualify, how the exclusion works mathematically, and the estate planning strategies — including family exclusion stacking — that can multiply the benefit across an entire family.</p>
+
+    <h2>What Is QSBS? The IRC §1202 Basics</h2>
+
+    <p>Qualified Small Business Stock was created by Congress in 1993 to incentivize investment in small, high-growth businesses. The exclusion has been expanded several times, with the most significant change in 2010 raising the exclusion to 100% for stock acquired after September 27, 2010.</p>
+
+    <p>The core benefit: if you hold QSBS for more than five years and the stock qualifies, you pay zero federal capital gains tax on the excluded amount — up to the greater of $10 million or 10 times your adjusted basis in the stock. This applies per taxpayer, per issuing company.</p>
+
+    <p>To illustrate the magnitude: a mining company founder who invested $1 million in their C-corp at formation and sells for $11 million — a $10 million gain — could owe zero federal capital gains tax on the entire gain if all QSBS requirements are met. At the 20% long-term capital gains rate plus 3.8% net investment income tax, that's $2.38 million in federal tax savings on a single transaction.</p>
+
+    <p>And the exclusion can be stacked across family members.</p>
+
+    <h2>Can a Bitcoin Mining Company Qualify as a QSB?</h2>
+
+    <p>This is the threshold question, and the answer is: potentially yes — with important caveats.</p>
+
+    <p>IRC §1202 defines a "qualified small business" as a domestic C-corporation whose aggregate gross assets did not exceed $50 million at the time of or immediately after the stock issuance. The corporation must also be an active business in a "qualified trade or business."</p>
+
+    <p>The law defines "qualified trade or business" by exclusion — meaning all businesses qualify except those in specific excluded categories. The excluded industries are:</p>
+
+    <ul>
+      <li>Services in the fields of health, law, engineering, architecture, accounting, actuarial science, performing arts, consulting, athletics, financial services, or brokerage services</li>
+      <li>Banking, insurance, financing, leasing, investing, or similar businesses</li>
+      <li>Farming</li>
+      <li>Mining or extraction of natural resources (oil, gas, mineral extraction)</li>
+      <li>Any trade or business operating a hotel, motel, restaurant, or similar business</li>
+    </ul>
+
+    <div class="callout callout-warn">
+      <h4>⚠️ The "Mining" Exclusion — Does It Apply?</h4>
+      <p>Section 1202(e)(3)(B) excludes "any trade or business involving the performance of services in the field of... any trade or business where the principal asset of such trade or business is the reputation or skill of 1 or more of its employees." The statute's general "mining" exclusion covers extraction of natural resources — oil, gas, coal, minerals — not Bitcoin mining. Bitcoin mining is the computational process of verifying blockchain transactions using specialized hardware (ASICs). The IRS has not issued specific guidance on Bitcoin mining's classification under §1202. Many tax practitioners believe Bitcoin mining is more analogous to technology manufacturing than natural resource extraction. This is a fact-specific analysis requiring qualified tax counsel.</p>
+    </div>
+
+    <p>The critical distinction: traditional resource extraction companies are excluded because they extract physical natural resources from the ground. Bitcoin mining companies operate specialized computing equipment to solve cryptographic hash functions — the economic activity is computational, not extractive. The "principal asset" of a well-run mining operation is its infrastructure, energy contracts, and proprietary operational systems — not the reputation or skill of any individual employee.</p>
+
+    <p>This is an unsettled area of tax law. The IRS has not issued a ruling or revenue procedure specifically addressing Bitcoin mining under §1202. That means the exclusion is potentially available — but also that it carries audit risk, and the cost of getting it wrong is significant. Qualified tax counsel with specific §1202 experience is essential before relying on this exclusion.</p>
+
+    <h2>The Five QSBS Requirements</h2>
+
+    <p>Even if a Bitcoin mining company could qualify as a QSB, the <em>stock</em> itself must also meet specific requirements to be "qualified small business stock":</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Requirement</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>C-corporation only</strong></td>
+          <td>The issuer must be a domestic C-corporation at the time of issuance AND when the stock is sold. LLCs, S-corps, and partnerships cannot issue QSBS.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>$50M gross asset test</strong></td>
+          <td>Aggregate gross assets (cash plus aggregate adjusted basis of other assets) cannot exceed $50M at or immediately after stock issuance. Assets are measured at the company level, aggregating all subsidiaries and brother-sister entities.</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>Original issuance</strong></td>
+          <td>Stock must be acquired directly from the corporation in exchange for money, property, or services. Shares purchased in a secondary market transaction do not qualify (with limited exceptions for certain partnership interests converted to stock).</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>Active business test</strong></td>
+          <td>At least 80% of the corporation's assets (by value) must be used in the active conduct of a qualified trade or business during substantially all of the taxpayer's holding period.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>5-year holding period</strong></td>
+          <td>Shares must be held for more than 5 years to qualify for the exclusion. Shares held 1–5 years may be eligible for partial benefits or §1045 rollover treatment.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>The Math: How Much Can Be Excluded?</h2>
+
+    <p>The exclusion cap is the greater of:</p>
+    <ul>
+      <li>$10 million, OR</li>
+      <li>10 times the taxpayer's adjusted basis in the stock on the date of sale</li>
+    </ul>
+
+    <p>Scenarios for a mining company founder who invested $500K at formation:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Sale Price</th>
+          <th>Gain</th>
+          <th>QSBS Cap (10x basis)</th>
+          <th>Excluded Gain</th>
+          <th>Tax Saved (23.8%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>$5M</td>
+          <td>$4.5M</td>
+          <td>$5M (10x)</td>
+          <td>$4.5M (100%)</td>
+          <td>~$1.07M</td>
+        </tr>
+        <tr>
+          <td>$10M</td>
+          <td>$9.5M</td>
+          <td>$5M (10x)</td>
+          <td>$5M / $4.5M taxable</td>
+          <td>~$1.19M</td>
+        </tr>
+        <tr>
+          <td>$10.5M</td>
+          <td>$10M</td>
+          <td>$10M ($10M floor applies)</td>
+          <td>$10M (100%)</td>
+          <td>~$2.38M</td>
+        </tr>
+        <tr>
+          <td>$20M</td>
+          <td>$19.5M</td>
+          <td>$10M</td>
+          <td>$10M / $9.5M taxable</td>
+          <td>~$2.38M</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The $10M floor becomes the operative cap for most founders. The 10x rule matters most for founders who paid very little for their shares (e.g., $100K basis → $1M exclusion only under 10x rule; but $10M floor applies, so they get the full $10M exclusion regardless).</p>
+
+    <h2>Family Exclusion Stacking: Multiplying the Benefit</h2>
+
+    <p>Here is where QSBS becomes extraordinary for estate planning. The $10 million exclusion is <em>per taxpayer, per issuing company</em>. Each member of your family who holds QSBS in the same company gets their own separate $10 million exclusion.</p>
+
+    <p>The strategy:</p>
+    <ol>
+      <li><strong>Founder forms C-corp at inception</strong>, acquires QSBS in exchange for capital and services.</li>
+      <li><strong>Before any sale is negotiated</strong>, founder gifts QSBS shares to spouse, children, and/or an irrevocable trust (certain grantor trusts).</li>
+      <li><strong>Donee receives QSBS with QSBS status intact.</strong> Under §1202(h)(2), QSBS transferred by gift retains its qualified status in the hands of the donee. The donee also inherits the donor's holding period — so if the founder held for 5 years before gifting, the donee also satisfies the 5-year requirement.</li>
+      <li><strong>At sale, each family member has their own $10M exclusion.</strong></li>
+    </ol>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Family Structure</th>
+          <th>Taxpayers Holding QSBS</th>
+          <th>Total Federal Exclusion</th>
+          <th>Tax Saved at 23.8%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Founder only</td>
+          <td>1</td>
+          <td>$10M</td>
+          <td>$2.38M</td>
+        </tr>
+        <tr>
+          <td>Founder + spouse</td>
+          <td>2</td>
+          <td>$20M</td>
+          <td>$4.76M</td>
+        </tr>
+        <tr>
+          <td>Founder + spouse + 3 children</td>
+          <td>5</td>
+          <td>$50M</td>
+          <td>$11.9M</td>
+        </tr>
+        <tr>
+          <td>Founder + spouse + 3 children + 2 non-grantor trusts</td>
+          <td>7</td>
+          <td>$70M</td>
+          <td>$16.66M</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-warn">
+      <h4>⚠️ Critical Timing Warning</h4>
+      <p>Any gifts of QSBS must occur <strong>before a binding commitment to sell</strong> the company. If a letter of intent or term sheet has been signed, gifting shares likely won't work — the IRS and courts will apply the assignment of income doctrine and attribute the gain back to the original holder. Gift QSBS early, when the company is still years from a sale.</p>
+    </div>
+
+    <h2>QSBS and Estate Planning: The Death + Step-Up Intersection</h2>
+
+    <p>QSBS creates a rare double-planning opportunity at death: both the QSBS status and the stepped-up basis under IRC §1014 can benefit heirs simultaneously.</p>
+
+    <p>When a QSBS holder dies:</p>
+    <ul>
+      <li>The QSBS status transfers to the heirs under §1202(h)(2)(A) — the stock remains qualified</li>
+      <li>Heirs receive a stepped-up basis equal to the date-of-death fair market value under IRC §1014</li>
+      <li>The inherited holding period is treated as more than 5 years (if the decedent held for 5+ years), satisfying the §1202 holding period requirement</li>
+    </ul>
+
+    <p>Practical result: heirs can sell the QSBS after inheriting it and potentially exclude up to $10M each from federal capital gains tax — on a stock basis that has already been stepped up. The pre-death appreciation is eliminated by the step-up; the post-death appreciation is potentially excluded by §1202. This is one of the most favorable intersections in the tax code.</p>
+
+    <p>For mining company founders who are also holding significant Bitcoin outside the company, the combined planning picture — QSBS on the company stock, stepped-up basis on the Bitcoin — creates an extraordinarily tax-efficient generational transfer when planned correctly.</p>
+
+    <h2>LLC → C-Corp Conversion: Can You Create QSBS from an Existing Mining Operation?</h2>
+
+    <p>Many mining operators formed LLCs, not C-corps. LLCs cannot issue QSBS. But an LLC can be converted to a C-corporation, after which the founders receive C-corp stock that can qualify as QSBS — if all requirements are met at the time of conversion and stock issuance.</p>
+
+    <p>Key conversion considerations:</p>
+    <ul>
+      <li><strong>The 5-year clock restarts on conversion.</strong> Pre-conversion holding period does not count. A founder must hold the C-corp stock for 5+ years after conversion to benefit.</li>
+      <li><strong>The $50M gross asset test applies at conversion.</strong> If the LLC has grown beyond $50M in gross assets, the resulting C-corp stock will not qualify at issuance.</li>
+      <li><strong>Conversion method matters.</strong> A tax-free F reorganization or check-the-box election to be taxed as a C-corp are common paths. Each has different consequences for the asset basis, built-in gain, and S-corp restrictions.</li>
+      <li><strong>Timing:</strong> Converting a mining operation that is still in the $5–$30M range and then holding for 5 years while the company grows to $50M+ creates a QSBS position with significant exclusion potential.</li>
+    </ul>
+
+    <p>For mining operators who started as LLCs and are planning a 5–7 year horizon to a liquidity event, a conversion now could preserve a significant QSBS exclusion at exit.</p>
+
+    <h2>State Tax Trap: California and Most States Don't Conform</h2>
+
+    <p>The §1202 exclusion is a federal benefit only. State tax conformity varies dramatically:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>QSBS Conformity</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Wyoming</td>
+          <td>✅ No state income tax</td>
+          <td>Best state for QSBS founders — zero state tax on any gain</td>
+        </tr>
+        <tr>
+          <td>Texas, Nevada, Florida, Washington, S. Dakota</td>
+          <td>✅ No state income tax</td>
+          <td>Full federal benefit captures; no state capital gains</td>
+        </tr>
+        <tr>
+          <td>California</td>
+          <td>❌ Does not conform</td>
+          <td>Full 9.3–13.3% state tax on QSBS gain, regardless of federal exclusion</td>
+        </tr>
+        <tr>
+          <td>New York</td>
+          <td>⚠️ Partial</td>
+          <td>Limited exclusion for some taxpayers; consult state counsel</td>
+        </tr>
+        <tr>
+          <td>Oregon</td>
+          <td>❌ Does not conform</td>
+          <td>Full 9.9% state capital gains tax applies to excluded federal gain</td>
+        </tr>
+        <tr>
+          <td>Massachusetts</td>
+          <td>⚠️ Partial</td>
+          <td>Conforms for some tax years; verify with current guidance</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Mining operators in California or Oregon who exit via QSBS will still owe state capital gains tax on the excluded federal gain — a significant leakage on large exits. For operators planning a liquidity event and willing to relocate, establishing domicile in a no-income-tax state before sale captures the full exclusion.</p>
+
+    <h2>Interaction With Bitcoin Held Outside the Company</h2>
+
+    <p>Most mining founders hold two distinct asset pools: the C-corp equity (potentially QSBS) and personal Bitcoin accumulated from mining proceeds, salary, or direct purchase. These require separate planning frameworks that must be coordinated.</p>
+
+    <ul>
+      <li><strong>Bitcoin held personally in taxable accounts:</strong> Gets stepped-up basis at death. Pass to heirs intact or use lifetime transfer strategies (GRAT, IDGT, dynasty trust). Do not put in HSA.</li>
+      <li><strong>C-corp equity (QSBS):</strong> Gift to family members before any sale discussion. Coordinate with §2503(c) minors' trusts or irrevocable grantor trusts to multiply the exclusion without triggering gift tax.</li>
+      <li><strong>Mining income (ordinary income):</strong> Shelter via Solo 401(k), SEP-IRA, or depreciation deductions on mining hardware. See our guide on <a href="/blog/bitcoin-solo-401k-estate-planning.html">Solo 401(k) planning for miners</a>.</li>
+      <li><strong>Depreciation recapture on mining equipment:</strong> When the company sells, §1245 depreciation recapture on ASIC hardware is ordinary income — not excluded by §1202. Plan the equipment depreciation schedule with exit timing in mind.</li>
+    </ul>
+
+    <div class="cta-box">
+      <h3>Bitcoin Mining: The Most Powerful Tax Strategy Available</h3>
+      <p>Depreciation, bonus depreciation, §1202 planning, and OpEx deductions create a tax profile unique to mining operations. Abundant Mines works with high-net-worth families and operators who want to maximize every dollar of their mining economics.</p>
+      <a href="https://abundantmines.com/tax-strategy/" class="btn" target="_blank" rel="noopener">Explore the Mining Tax Strategy</a>
+      <a href="http://44134802.hs-sites.com/abundant-mines-36-questions" class="btn btn-outline" target="_blank" rel="noopener">36 Hosting Due Diligence Questions</a>
+    </div>
+
+    <h2>Section 1045 Rollover: When You Must Sell Before 5 Years</h2>
+
+    <p>If circumstances force a sale of QSBS before the 5-year holding period expires, §1045 may provide a partial solution. Section 1045 allows a non-corporate taxpayer to roll over gain from the sale of QSBS held for more than 6 months (but less than 5 years) into new QSBS purchased within 60 days.</p>
+
+    <p>The gain is not excluded — it is deferred into the new QSBS. If the new QSBS is then held to the 5-year threshold, the deferred gain (along with any new appreciation) may qualify for the full §1202 exclusion. This is a useful planning tool for operators who exit early in a recapitalization or internal restructuring but expect to invest in another qualifying company.</p>
+
+    <h2>Practical Steps: QSBS Checklist for Mining Founders</h2>
+
+    <ol>
+      <li><strong>Verify C-corp structure.</strong> If operating as an LLC, evaluate whether conversion makes sense given exit timeline and gross asset levels.</li>
+      <li><strong>Document original issuance.</strong> Stock certificates, equity agreements, and cap table records establishing original issuance and basis must be preserved. The IRS requires contemporaneous documentation.</li>
+      <li><strong>Confirm the $50M gross asset test was met at issuance.</strong> This is measured at the company level, including all subsidiaries. If the company has grown past $50M since you received stock, that doesn't retroactively disqualify already-issued QSBS — but new shares issued after the $50M threshold won't qualify.</li>
+      <li><strong>Engage a §1202-experienced tax attorney now</strong> — before any sale discussion begins. Once an LOI is signed, most planning options close.</li>
+      <li><strong>Design a gifting plan to family members.</strong> Identify how many family members can receive QSBS gifts to maximize the stacked exclusion without triggering gift tax (use the lifetime exemption, now approximately $15M per individual under OBBBA projections).</li>
+      <li><strong>Evaluate state residency.</strong> If you or key family members reside in California or Oregon, model the after-tax proceeds with and without relocation to a no-income-tax state before sale.</li>
+      <li><strong>Coordinate Bitcoin and company equity planning.</strong> Your personal Bitcoin estate plan (trusts, step-up, Roth conversions) and your company exit plan should be designed as a unified strategy — not two separate conversations.</li>
+    </ol>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Does a Bitcoin mining company qualify for the QSBS exclusion under IRC §1202?</div>
+      <div class="faq-a">Potentially yes, if structured as a domestic C-corporation with gross assets at or below $50 million. Mining is not explicitly excluded under §1202(e)(3) — which bars traditional natural resource extraction but has not been extended to Bitcoin mining by IRS guidance. This is unsettled law requiring qualified tax counsel.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much can I exclude under the QSBS exclusion?</div>
+      <div class="faq-a">The greater of $10 million or 10 times your adjusted basis in the stock, per taxpayer per issuer. For stock acquired after September 27, 2010 and held 5+ years, the exclusion is 100% federal — zero capital gains tax on the excluded amount.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I transfer QSBS to family members to multiply the exclusion?</div>
+      <div class="faq-a">Yes. QSBS gifted to family members retains its qualified status and the donor's holding period transfers. Each family member has their own $10M exclusion. A family of five could stack $50M in federal exclusions — but gifts must occur before any binding commitment to sell.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens to QSBS when the founder dies?</div>
+      <div class="faq-a">QSBS status transfers to heirs with a stepped-up basis. Heirs inherit both the QSBS status and the 5-year holding period (if the decedent held for 5+ years), and get a new stepped-up basis — potentially the most favorable intersection of §1202 and §1014 in the tax code.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do states honor the federal QSBS exclusion?</div>
+      <div class="faq-a">Most states do not. California taxes the full gain despite the federal exclusion. Wyoming, Texas, Nevada, Florida, Washington, and South Dakota have no income tax and therefore no state capital gains tax. Oregon does not conform. State domicile planning before exit can save millions.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What are the main requirements to qualify as QSBS?</div>
+      <div class="faq-a">Five requirements: (1) Domestic C-corporation; (2) Gross assets ≤$50M at issuance; (3) Stock acquired at original issue; (4) Active business in a qualified trade; (5) Held for more than 5 years. LLCs, S-corps, and partnerships cannot issue QSBS. Conversion restarts the 5-year clock.</div>
+    </div>
+
+    <h2>Working With an Advisor on QSBS Planning</h2>
+
+    <p>QSBS planning requires coordination among your CPA, estate planning attorney, and corporate counsel. The stakes — potentially $10M+ in excluded gains per family member — justify the investment in specialized advice.</p>
+
+    <p>The Bitcoin Family Office connects mining operators and Bitcoin-wealthy families with advisors who understand the intersection of digital asset estate planning, business exit planning, and tax law. <a href="/services/">Learn about our services.</a></p>
+
+    <p>For the broader estate planning framework, see our <a href="/blog/bitcoin-estate-planning-guide.html">complete Bitcoin estate planning guide</a>. For business owners passing the mining operation itself, see our <a href="/blog/bitcoin-succession-plan.html">Bitcoin succession planning guide</a>. For managing mining income from a tax perspective, see our guide on <a href="/blog/bitcoin-solo-401k-estate-planning.html">Solo 401(k) planning for miners</a> and the <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener">Abundant Mines mining tax strategy resource</a>.</p>
+
+    <div class="disclaimer">
+      <p><strong>Legal &amp; Tax Disclaimer:</strong> This article is for educational purposes only and does not constitute legal, tax, financial, or investment advice. IRC §1202 is complex and the application to Bitcoin mining companies is an unsettled area of law — the IRS has not issued specific guidance. Tax laws change frequently. Do not rely on this article as the basis for QSBS qualification, gifting strategy, or exit planning. Consult a qualified tax attorney and CPA with specific §1202 experience before making any decisions. The information here is a general educational overview only.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">The Bitcoin Family Office</div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Insights</a>
+        <a href="/tools/">Tools</a>
+        <a href="/services/">Services</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/disclosures.html">Disclosures</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+      <div class="footer-copy">© 2026 The Bitcoin Family Office. Educational purposes only. Not legal or financial advice.</div>
+    </div>
+  </footer>
+</body>
+</html>
