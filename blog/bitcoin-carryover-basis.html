@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Carryover Basis: The Gift Tax Trap Most Families Miss | The Bitcoin Family Office</title>
+  <meta name="description" content="When you gift Bitcoin, the recipient inherits your cost basis — not the current value. The carryover basis trap can leave heirs paying tax on appreciation they never benefited from. How to identify which lots to gift vs hold vs hold until death, and when carryover basis is actually a planning advantage.">
+  <meta property="og:title" content="Bitcoin Carryover Basis: The Gift Tax Trap Most Families Miss">
+  <meta property="og:description" content="Gifting low-basis Bitcoin doesn't erase the embedded gain — it transfers it to your recipient. Complete guide to IRC §1015 carryover basis, the step-up vs carryover choice, lot selection strategy, basis step-down rules for loss property, and when holding until death beats gifting every time.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-carryover-basis.html">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-carryover-basis.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bitcoin Carryover Basis: The Gift Tax Trap Most Families Miss",
+    "description": "IRC §1015 carryover basis mechanics for gifted Bitcoin, the step-up vs carryover trade-off, basis step-down for loss property, lot selection strategy (which lots to gift vs hold till death), when carryover basis is advantageous, intra-family loan vs gift for basis reasons, and the complete decision framework for Bitcoin basis planning.",
+    "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
+    "publisher": {"@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"},
+    "datePublished": "2026-03-13",
+    "dateModified": "2026-03-13",
+    "mainEntityOfPage": "https://thebitcoinfamilyoffice.com/blog/bitcoin-carryover-basis.html"
+  }
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --gold: #C9A84C; --gold-light: #E8C97A; --dark: #0D0D0D; --dark-2: #141414; --dark-3: #1C1C1C; --dark-4: #242424; --text: #E8E3D8; --text-muted: #9E9888; --border: #2A2A2A; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--dark); color: var(--text); font-family: 'EB Garamond', serif; font-size: 18px; line-height: 1.8; }
+    nav { background: var(--dark-2); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--gold); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-muted); transition: 0.3s; }
+    @media (max-width: 768px) { .hamburger { display: flex; } .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--dark-2); flex-direction: column; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); gap: 1.2rem; } .nav-links.open { display: flex; } }
+    header { max-width: 800px; margin: 0 auto; padding: 4rem 2rem 2rem; }
+    .label { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--text); margin-bottom: 1.5rem; }
+    .subtitle { font-size: 1.15rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem; font-style: italic; }
+    .meta { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.05em; }
+    .article-body { max-width: 800px; margin: 0 auto; padding: 2rem 2rem 4rem; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.65rem; color: var(--gold-light); margin: 3rem 0 1rem; line-height: 1.3; }
+    h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--text); margin: 2rem 0 0.75rem; }
+    p { margin-bottom: 1.4rem; }
+    a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+    a:hover { border-bottom-color: var(--gold); }
+    ul, ol { margin: 0 0 1.4rem 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    strong { color: var(--text); font-weight: 600; }
+    em { font-style: italic; }
+    .callout { background: var(--dark-3); border-left: 3px solid var(--gold); padding: 1.2rem 1.5rem; margin: 2rem 0; border-radius: 0 4px 4px 0; }
+    .callout p { margin-bottom: 0; }
+    .callout strong { color: var(--gold); }
+    .warning { background: #1a1208; border-left: 3px solid #C9A84C; padding: 1.2rem 1.5rem; margin: 2rem 0; border-radius: 0 4px 4px 0; }
+    .warning p { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-family: 'Inter', sans-serif; font-size: 0.85rem; }
+    th { background: var(--dark-3); color: var(--gold); padding: 0.75rem 1rem; text-align: left; font-weight: 600; border-bottom: 1px solid var(--border); }
+    td { padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
+    tr:nth-child(even) td { background: var(--dark-2); }
+    .checklist { background: var(--dark-3); border: 1px solid var(--border); padding: 2rem; border-radius: 6px; margin: 3rem 0; }
+    .checklist h3 { color: var(--gold); margin-top: 0; margin-bottom: 1rem; font-size: 1.1rem; }
+    .checklist li { list-style: none; padding-left: 1.8rem; position: relative; margin-bottom: 0.6rem; }
+    .checklist li::before { content: "☐"; position: absolute; left: 0; color: var(--gold); }
+    .cta-box { background: linear-gradient(135deg, var(--dark-3) 0%, #1a1508 100%); border: 1px solid var(--gold); border-radius: 8px; padding: 2.5rem; margin: 3rem 0; text-align: center; }
+    .cta-box h3 { font-family: 'Playfair Display', serif; color: var(--gold-light); margin-bottom: 0.75rem; font-size: 1.3rem; margin-top: 0; }
+    .cta-box p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .cta-btn { display: inline-block; background: var(--gold); color: var(--dark); padding: 0.8rem 2rem; border-radius: 4px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; border-bottom: none; transition: background 0.2s; }
+    .cta-btn:hover { background: var(--gold-light); border-bottom: none; }
+    .disclaimer { background: var(--dark-3); border: 1px solid var(--border); padding: 1.5rem 2rem; border-radius: 6px; margin: 3rem 0 2rem; font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+    footer { background: var(--dark-2); border-top: 1px solid var(--border); padding: 3rem 2rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--text-muted); }
+    footer a { color: var(--text-muted); }
+    .highlight-row td { background: #1a1508 !important; color: var(--gold-light); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://thebitcoinfamilyoffice.com" class="nav-logo">The Bitcoin Family Office</a>
+  <div class="hamburger" onclick="this.classList.toggle('active');document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="https://thebitcoinfamilyoffice.com">Home</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/services/">Services</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/">Research</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/tools/">Tools</a></li>
+  </ul>
+</nav>
+
+<header>
+  <p class="label">Tax Planning · Estate Strategy · Gift Basis · 2026</p>
+  <h1>Bitcoin Carryover Basis: The Gift Tax Trap Most Families Miss</h1>
+  <p class="subtitle">When you gift Bitcoin, the recipient doesn't inherit its current value as their cost basis — they inherit yours. A $5,000 basis on $200,000 of Bitcoin follows the coin, not the price. Understanding when to gift, when to hold until death, and which lots to choose is the foundation of intelligent Bitcoin basis planning.</p>
+  <p class="meta">The Bitcoin Family Office · March 2026 · 11 min read</p>
+</header>
+
+<div class="article-body">
+
+  <p>The most expensive misunderstanding in Bitcoin gifting is believing that giving Bitcoin to a family member resets the tax clock. It does not. Under IRC §1015, the recipient of a gift takes the donor's cost basis — exactly, to the penny. The embedded gain travels with the coin. The taxman follows.</p>
+
+  <p>A parent who bought Bitcoin at $5,000 and gifts it at $200,000 has transferred $195,000 in embedded taxable gain to their child. The child will owe capital gains tax on that $195,000 when they eventually sell — even though they never experienced the appreciation themselves. This is the carryover basis trap, and it operates silently in thousands of Bitcoin estate plans that were never designed with it in mind.</p>
+
+  <p>The good news: basis planning is entirely legal, well-understood, and highly actionable. The decision framework for which Bitcoin lots to gift, sell, or hold until death is one of the highest-leverage tax planning decisions a Bitcoin family can make.</p>
+
+  <div class="callout">
+    <p><strong>The Core Rule — IRC §1015:</strong> When property is transferred by gift, the recipient's basis for determining gain is the donor's adjusted basis at the time of the gift. For loss purposes, the recipient's basis is the lower of: (1) the donor's basis, or (2) the fair market value at the date of the gift. There is no step-up to current value at the time of a gift — that only happens at death under IRC §1014.</p>
+  </div>
+
+  <h2>Carryover Basis vs. Stepped-Up Basis: The Single Most Important Distinction</h2>
+
+  <p>The entire architecture of Bitcoin basis planning rests on one comparison:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Transfer Method</th>
+        <th>Basis Rule</th>
+        <th>Embedded Gain at Transfer</th>
+        <th>Capital Gains Tax for Recipient</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Gift during donor's lifetime</strong></td>
+        <td>IRC §1015: Carryover basis (donor's basis transfers)</td>
+        <td>Travels with the Bitcoin to recipient</td>
+        <td>On all appreciation from donor's original basis — including pre-gift appreciation recipient never realized</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>Inheritance at death (§1014 step-up)</strong></td>
+        <td>IRC §1014: Basis = FMV on date of death</td>
+        <td>Permanently eliminated at death</td>
+        <td>Zero on pre-death appreciation; only on post-inheritance appreciation</td>
+      </tr>
+      <tr>
+        <td><strong>Sale during donor's lifetime</strong></td>
+        <td>N/A — donor pays capital gains tax</td>
+        <td>Donor pays tax now; recipient receives cash</td>
+        <td>Recipient has fresh basis if they use proceeds to repurchase</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The step-up at death is the most powerful basis tool in the tax code. A Bitcoin position held until death gets a new basis equal to the fair market value on the date of death — permanently eliminating all pre-death appreciation from the capital gains calculation. That $195,000 embedded gain that would follow a gift simply disappears at death.</p>
+
+  <p>This creates the fundamental tension in Bitcoin basis planning: gifting removes assets from the estate (reducing estate tax) but preserves embedded gain (increasing income tax for recipients). Holding until death eliminates the embedded gain (step-up) but leaves assets in the estate (potentially subject to estate tax). The optimal strategy depends on the relative size of the estate, the applicable estate tax rate, and the recipient's expected tax rate.</p>
+
+  <h2>The Numbers: Carryover Basis in Practice</h2>
+
+  <p>Consider two scenarios for the same Bitcoin position — 5 BTC purchased at $10,000/coin, now worth $80,000/coin ($400,000 total value, $350,000 embedded gain):</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Scenario</th>
+        <th>Recipient's Basis</th>
+        <th>If Recipient Sells at $80,000/coin</th>
+        <th>Capital Gain</th>
+        <th>Tax (23.8% federal)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Gift during parent's life</td>
+        <td>$50,000 (parent's basis)</td>
+        <td>$400,000 − $50,000</td>
+        <td>$350,000</td>
+        <td>$83,300</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Inherited at death (§1014)</td>
+        <td>$400,000 (FMV at death)</td>
+        <td>$400,000 − $400,000</td>
+        <td>$0</td>
+        <td>$0</td>
+      </tr>
+      <tr>
+        <td>Parent sells, gifts cash</td>
+        <td>N/A — parent paid $83,300 in tax</td>
+        <td>Recipient has $316,700 cash</td>
+        <td>$0 (on cash received)</td>
+        <td>$0 (already paid by parent)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The inheritance path delivers $400,000 to the recipient with $0 in capital gains tax. The gift path delivers $400,000 in Bitcoin but transfers $83,300 in future tax liability along with it. The "net" value of the gifted Bitcoin is not $400,000 — it is approximately $316,700 in after-tax terms.</p>
+
+  <p>This does not mean gifting is always wrong. It means <em>low-basis Bitcoin should almost never be gifted</em> — and high-basis Bitcoin can be gifted strategically.</p>
+
+  <h2>The Basis Step-Down: A Hidden Risk for Loss Property</h2>
+
+  <p>The carryover basis rule has an asymmetric modification for property where the fair market value at the date of gift is <em>lower</em> than the donor's basis. This is the "basis step-down" rule:</p>
+
+  <ul>
+    <li><strong>For gains:</strong> Recipient's basis = donor's basis (carryover)</li>
+    <li><strong>For losses:</strong> Recipient's basis = fair market value at date of gift (lower of donor's basis or FMV)</li>
+  </ul>
+
+  <p>If a parent bought Bitcoin at $80,000 and gifts it when the price is $50,000 (currently underwater), the recipient's basis is:</p>
+  <ul>
+    <li>For gain purposes: $80,000 (donor's basis) — but there's no gain if they sell below $80,000</li>
+    <li>For loss purposes: $50,000 (FMV at gift) — the recipient cannot deduct the $30,000 pre-gift decline</li>
+  </ul>
+
+  <p>If the Bitcoin later recovers to $80,000 and the recipient sells, they have neither a gain nor a loss — the gain basis ($80,000) and loss basis ($50,000) create a "no man's land" between $50,000 and $80,000 where no tax consequence occurs on sale. Above $80,000 is a gain; below $50,000 is a loss. Between is nothing.</p>
+
+  <div class="warning">
+    <p><strong>The Underwater Gift Trap:</strong> Gifting Bitcoin at a loss to a family member is almost never beneficial — the donor cannot claim the loss themselves (gifts are not deductions), and the recipient gets a stepped-down basis that eliminates the ability to claim the pre-gift decline. If you want to capture a Bitcoin loss, <em>you</em> should sell the Bitcoin (realize the loss for your own return), then gift the cash. The recipient can then repurchase Bitcoin at the current lower price with a fresh, stepped-up basis.</p>
+  </div>
+
+  <h2>Which Bitcoin Lots to Gift — The Decision Framework</h2>
+
+  <p>Not all Bitcoin lots are equal from a gifting perspective. The decision of which lots to gift should be driven by the interaction between basis, the recipient's tax rate, and the donor's overall estate plan.</p>
+
+  <h3>Lots Best Suited for Gifting</h3>
+
+  <p><strong>High-basis lots (recent purchases near current price):</strong> If you bought Bitcoin last year at $70,000 and it's now $80,000, the embedded gain is only $10,000. Gifting this lot transfers only $10,000 in embedded gain — a modest future tax liability for the recipient. High-basis lots are the cleanest gifts.</p>
+
+  <p><strong>Lots going to recipients in the 0% LTCG bracket:</strong> A child or grandchild with modest earned income may fall into the 0% long-term capital gains bracket (under ~$48,350 single / $96,700 MFJ for 2026). If the recipient's income is low enough, they can sell the gifted Bitcoin — even with low carryover basis — at zero federal capital gains tax. The embedded gain is realized tax-free. This is an extremely powerful planning strategy: parents gift low-basis Bitcoin to adult children in low-income years; children realize the gain at 0%.</p>
+
+  <h3>Lots That Should Never Be Gifted (Hold Until Death)</h3>
+
+  <p><strong>Low-basis lots (early purchases far below current price):</strong> Bitcoin purchased in 2012–2017 at prices of $500–$8,000 represents enormous embedded gain relative to current prices. These lots should be held until death whenever possible. The §1014 step-up permanently eliminates the embedded gain — the most powerful tax outcome available. Gifting these lots transfers a massive tax liability to the recipient for no estate planning benefit that couldn't be achieved with higher-basis lots.</p>
+
+  <p><strong>Lots you intend to hold forever (die with it):</strong> If your conviction is that Bitcoin will continue to appreciate and you have no need for liquidity, holding until death and allowing the step-up to eliminate the entire lifetime gain is the single most tax-efficient outcome for high-basis Bitcoin holders. No capital gains, ever — on any lot held until death.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Lot Type</th>
+        <th>Best Action</th>
+        <th>Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>High-basis (recent, near current price)</td>
+        <td>Gift to family member</td>
+        <td>Minimal embedded gain transferred; annual exclusion friendly</td>
+      </tr>
+      <tr>
+        <td>Any basis — recipient in 0% bracket</td>
+        <td>Gift to low-income recipient</td>
+        <td>Recipient realizes gain at $0 federal tax</td>
+      </tr>
+      <tr>
+        <td>Mid-basis — in your estate</td>
+        <td>Sell for 0% bracket harvest (if you qualify)</td>
+        <td>Realize your own gain at 0%; reset basis to current price</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Low-basis (early purchases, 90%+ gain)</td>
+        <td>Hold until death (§1014 step-up)</td>
+        <td>Step-up eliminates ALL embedded gain permanently — never gift or sell these</td>
+      </tr>
+      <tr>
+        <td>Underwater lots (below your basis)</td>
+        <td>Sell (you claim the loss); gift cash</td>
+        <td>You capture loss deduction; recipient gets fresh cash basis for repurchase</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>The 0% Bracket Gift Strategy: Turbocharging Carryover Basis</h2>
+
+  <p>When a recipient is in the 0% long-term capital gains bracket, carryover basis becomes an advantage rather than a burden. The strategy:</p>
+
+  <ol>
+    <li>Identify a family member (adult child, grandchild, sibling) with low taxable income in a given year — ideally below the 0% LTCG threshold (~$48,350 single / $96,700 MFJ in 2026)</li>
+    <li>Gift them Bitcoin lots with any basis (even low-basis lots)</li>
+    <li>Recipient sells the Bitcoin in the same year — realizing the entire embedded gain</li>
+    <li>At 0% federal LTCG rate, all capital gains — including the pre-gift appreciation the recipient never benefited from — are tax-free</li>
+    <li>Recipient immediately repurchases Bitcoin, establishing a new, higher basis equal to current market price</li>
+  </ol>
+
+  <p>This strategy requires careful coordination: the recipient's total income including the Bitcoin gain must remain below the 0% threshold, the Bitcoin must have been held (by the donor) for more than 12 months for long-term treatment (holding period tacks from donor to recipient under IRC §1223(2)), and the gift must be genuine (not a prearranged sale by the donor dressed as a gift).</p>
+
+  <p><strong>Warning on kiddie tax (IRC §1(g)):</strong> Children under age 19 (or full-time students under 24) pay the "kiddie tax" — their unearned income above $2,600 is taxed at the <em>parent's</em> marginal rate, not the child's. This eliminates the 0% bracket strategy for younger dependents. The 0% bracket gift strategy works best with adult children who are financially independent or in genuinely low-income years (early career, graduate school, career transition, sabbatical).</p>
+
+  <h2>Carryover Basis Inside Trusts</h2>
+
+  <p>When Bitcoin is gifted into an irrevocable trust, the same carryover basis rules apply. The trust takes the donor's basis. If the trust later sells the Bitcoin, the embedded gain is realized — either at the grantor's rate (if a grantor trust) or at trust rates (if non-grantor, potentially hitting 23.8% LTCG at just $15,650 of income as described in our <a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-trust-taxes.html">Bitcoin Trust Taxes guide</a>).</p>
+
+  <p><strong>The IDGT advantage for basis:</strong> An Intentionally Defective Grantor Trust that receives a gift of Bitcoin takes carryover basis — but all gains are taxed at the grantor's individual rates (not compressed trust rates), and the grantor's payment of those taxes is a tax-free additional gift to the trust. The trust's basis follows the carryover rule, but the tax burden stays at individual rates — avoiding the compressed bracket trap entirely.</p>
+
+  <p><strong>Intra-family loan vs. gift for basis reasons:</strong> When a trust purchases Bitcoin with an intra-family loan (rather than receiving a gift), the trust pays the market price for the Bitcoin. The trust's basis is therefore the full purchase price — not carryover basis. This is a significant advantage over a gift: the trust has a fresh, high basis on the purchased Bitcoin, and all future appreciation above that price is the trust's gain with no embedded pre-purchase appreciation to worry about.</p>
+
+  <h2>The Holding Period: Tacking from Donor to Recipient</h2>
+
+  <p>When you gift Bitcoin, the recipient "tacks" your holding period under IRC §1223(2). If you held the Bitcoin for 18 months before gifting, the recipient is treated as having held it for 18 months from day one — immediately qualifying for long-term capital gains rates (over 12 months) if they sell.</p>
+
+  <p>This is almost always beneficial: the recipient does not need to wait an additional 12 months after receiving the gift to qualify for LTCG rates. The donor's holding period transfers with the coin, just as the basis does.</p>
+
+  <p><strong>Exception for loss property:</strong> If the Bitcoin was worth less than the donor's basis at the time of gift (the basis step-down scenario), and the recipient sells at a loss below the FMV at gift date, the holding period for loss purposes begins fresh — from the date of the gift. This rarely matters in practice for appreciating assets but is worth knowing.</p>
+
+  <h2>Annual Exclusion Gifting and Basis: The Right Approach</h2>
+
+  <p>Many families use the annual gift tax exclusion ($19,000 per recipient in 2026; $38,000 with gift-splitting) to systematically transfer Bitcoin each year. To maximize efficiency:</p>
+
+  <ul>
+    <li><strong>Gift high-basis lots for annual exclusion gifts.</strong> Recent purchases near current price minimize the embedded gain transferred to recipients.</li>
+    <li><strong>Use the annual exclusion for education of recipient.</strong> Recipients who understand their carryover basis can plan their own tax year — potentially realizing the gain in a low-income year at 0% or 15%.</li>
+    <li><strong>Document the basis of each gifted lot.</strong> The donor's basis documentation becomes the recipient's basis documentation. Provide a written record of cost basis, acquisition date, and holding period with every Bitcoin gift.</li>
+    <li><strong>Consider gifting into a 529 account.</strong> Superfunding a 529 with cash (from sold Bitcoin) gives the recipient qualified education investment without a capital gains burden — the donor pays the tax on the sale; the 529 compounds tax-free.</li>
+  </ul>
+
+  <h2>When Carryover Basis Is a Planning Feature, Not a Bug</h2>
+
+  <p>Carryover basis is not always a problem. In these scenarios, it is actually the right outcome:</p>
+
+  <ul>
+    <li><strong>Recipient in a permanently lower tax bracket:</strong> A child who works in a low-paying career or is permanently in the 0–15% LTCG bracket will pay less tax on the same embedded gain than the donor would have. Transferring the gain to a lower-bracket taxpayer is the intended strategy.</li>
+    <li><strong>Recipient holds until their own death:</strong> If the recipient plans to hold the Bitcoin until death, their heirs will receive a step-up at the recipient's death — permanently eliminating the embedded gain. The carryover basis was intermediate and ultimately irrelevant.</li>
+    <li><strong>Dynasty trust with step-up at distribution:</strong> Some dynasty trust structures include provisions for basis step-up on distribution to beneficiaries — check your specific trust document with counsel.</li>
+    <li><strong>Charitable gifts:</strong> When Bitcoin is gifted to a qualified charity or DAF, the charity's tax-exempt status means the carryover basis is irrelevant — the charity pays no capital gains tax on sale. The donor gets a deduction for the full FMV, pays zero capital gains tax on the donation, and the embedded gain vanishes into the charity's tax-exempt universe.</li>
+  </ul>
+
+  <div class="cta-box">
+    <h3>Bitcoin Mining: A Fresh-Basis Strategy</h3>
+    <p>Bitcoin mined is treated as ordinary income at the time of mining — establishing a cost basis equal to the fair market value at that moment. Mined Bitcoin starts with a full, fresh basis — no carryover, no embedded pre-acquisition gain. For families building Bitcoin positions for the next generation, mining provides a structurally clean basis from day one.</p>
+    <a href="https://abundantmines.com/tax-strategy/" class="cta-btn">Explore Bitcoin Mining Tax Strategy →</a>
+  </div>
+
+  <p>Mining also offers the most powerful combined depreciation and income deduction structure available for Bitcoin wealth builders. For institutional-quality mining host evaluation: <a href="http://44134802.hs-sites.com/abundant-mines-36-questions">36 questions every Bitcoin mining host should answer</a>.</p>
+
+  <div class="checklist">
+    <h3>8-Item Bitcoin Basis Planning Checklist</h3>
+    <ul>
+      <li>Inventory all Bitcoin lots by purchase date and cost basis — know which lots carry the largest embedded gains before making any gifting decisions</li>
+      <li>Never gift low-basis lots (early accumulation, 90%+ gain) — hold until death for §1014 step-up that permanently eliminates the gain</li>
+      <li>For annual exclusion gifts: select high-basis lots (recent purchases near current price) to minimize embedded gain transferred</li>
+      <li>Identify family members in the 0% LTCG bracket — gift any basis lot, recipient sells at 0% federal tax, repurchases at fresh basis</li>
+      <li>Check for kiddie tax (under 19, or full-time student under 24) — 0% bracket strategy does NOT work for dependents subject to kiddie tax</li>
+      <li>For underwater lots: sell yourself (capture the loss deduction), gift the cash proceeds — never gift underwater Bitcoin (recipient loses the loss)</li>
+      <li>Document basis, acquisition date, and holding period for every Bitcoin gifted — provide written record to recipient at time of gift</li>
+      <li>Consider intra-family loan to trust instead of gift — trust gets fresh purchase-price basis, not carryover, while appreciation still transfers outside the estate</li>
+    </ul>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Educational Disclaimer:</strong> This article is for informational purposes only and does not constitute legal, tax, or financial advice. Basis rules depend on individual circumstances, holding periods, state law, and IRS regulations. The 0% bracket strategy requires careful income planning and should be reviewed annually with a qualified CPA. Consult qualified legal and tax counsel before implementing any gifting strategy.
+  </div>
+
+  <h2>Related Articles</h2>
+  <ul>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-stepped-up-basis-estate-planning-guide.html">Bitcoin Stepped-Up Basis: The §1014 Strategy</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-gifting-strategy.html">Bitcoin Gifting Strategy: Annual Exclusion & Beyond</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-long-term-capital-gains.html">Bitcoin Long-Term Capital Gains: 0% Bracket Harvesting</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-cost-basis-methods.html">Bitcoin Cost Basis Methods: FIFO, HIFO, Specific ID</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-intra-family-loan.html">Bitcoin Intra-Family Loan: §7872 AFR Strategy</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-trust-taxes.html">Bitcoin Trust Taxes: Grantor vs Non-Grantor Treatment</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-tax-loss-harvesting.html">Bitcoin Tax-Loss Harvesting Guide</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-year-end-tax-planning.html">Bitcoin Year-End Tax Planning Checklist</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-estate-planning-guide.html">The Complete Bitcoin Estate Planning Guide</a></li>
+  </ul>
+
+</div>
+
+<footer>
+  <p style="margin-bottom:0.5rem"><a href="https://thebitcoinfamilyoffice.com">The Bitcoin Family Office</a> · <a href="https://thebitcoinfamilyoffice.com/disclosures.html">Disclosures</a> · <a href="https://thebitcoinfamilyoffice.com/blog/">Research</a></p>
+  <p style="font-size:0.72rem; margin-top:0.5rem">© 2026 The Bitcoin Family Office. Educational content only — not legal, tax, or financial advice.</p>
+</footer>
+
+</body>
+</html>
