@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Cost Basis Tracking: The Complete Guide for Serious Holders | The Bitcoin Family Office</title>
+  <meta name="description" content="Your cost basis determines every capital gain or loss on every Bitcoin sale. How to track it across multiple wallets and exchanges, which lot ID method to use, the 1099-DA gap for self-custody, and what your heirs need from your records.">
+  <meta property="og:title" content="Bitcoin Cost Basis Tracking: The Complete Guide for Serious Holders">
+  <meta property="og:description" content="FIFO, LIFO, HIFO, specific identification — how to track Bitcoin cost basis across exchanges and wallets, the 1099-DA noncovered security gap, taxable vs non-taxable events, record-keeping best practices, and the estate planning connection your heirs depend on.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-cost-basis-tracking-guide.html">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-cost-basis-tracking-guide.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bitcoin Cost Basis Tracking: The Complete Guide for Serious Holders",
+    "description": "Complete guide to Bitcoin cost basis tracking — lot identification methods (FIFO, LIFO, HIFO, specific ID), taxable and non-taxable events, the 1099-DA noncovered security gap for self-custody holders, DCA record-keeping, multi-wallet complexity, record retention, and the estate planning connection.",
+    "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
+    "publisher": {"@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"},
+    "datePublished": "2026-03-13",
+    "dateModified": "2026-03-13",
+    "mainEntityOfPage": "https://thebitcoinfamilyoffice.com/blog/bitcoin-cost-basis-tracking-guide.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Bitcoin cost basis and why does it matter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cost basis is the original value of your Bitcoin for tax purposes — typically the purchase price plus any fees paid to acquire it. When you sell, exchange, or spend Bitcoin, your taxable gain or loss is calculated as the sale proceeds minus your cost basis. If you paid $20,000 for 1 BTC and sell it for $72,000, your capital gain is $52,000. Without accurate cost basis records, you cannot correctly report gains, you may overpay taxes (if you can't document your actual purchase price, the IRS may assume a $0 basis), and you cannot execute tax-loss harvesting or 0% bracket harvesting strategies that depend on lot-level tracking."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best cost basis method for Bitcoin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HIFO (Highest In, First Out) minimizes capital gains taxes in most scenarios by selling the highest-cost lots first, leaving lower-cost lots (with larger embedded gains) for later. However, for tax-loss harvesting, 0% bracket gain harvesting, or estate planning purposes, Specific Identification is optimal — it gives you complete control over which lots are sold, allowing you to select exactly the lots that achieve your current-year tax objective. FIFO (First In, First Out) is the default if no method is elected; it typically generates the largest gains because it sells the oldest (usually lowest-cost) lots first. Consult a CPA to select the right method for your situation — the election must be made consistently and documented at the time of sale."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the 1099-DA report my Bitcoin cost basis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Starting in 2026, brokers (exchanges like Coinbase, Kraken, Gemini) are required to report Bitcoin sales on Form 1099-DA, including cost basis for 'covered' securities — Bitcoin purchased on that exchange after January 1, 2026 (the implementation date for basis reporting). Bitcoin purchased before that date, or Bitcoin held in self-custody (hardware wallets, software wallets) and later transferred to an exchange for sale, is a 'noncovered' security — the broker reports the proceeds but NOT the cost basis. You are responsible for documenting your own cost basis for all noncovered lots. This gap affects millions of long-term holders who bought Bitcoin before 2026 or use self-custody."
+        }
+      }
+    ]
+  }
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--gold:#C9A84C;--gold-light:#E8C97A;--dark:#0D0D0D;--dark-2:#141414;--dark-3:#1C1C1C;--dark-4:#242424;--text:#E8E3D8;--text-muted:#9E9888;--border:#2A2A2A;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:var(--dark);color:var(--text);font-family:'EB Garamond',serif;font-size:18px;line-height:1.8;}
+    nav{background:var(--dark-2);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);text-decoration:none;}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{color:var(--text-muted);text-decoration:none;font-family:'Inter',sans-serif;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;transition:color .2s;}
+    .nav-links a:hover{color:var(--gold);}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text-muted);}
+    @media(max-width:768px){.hamburger{display:flex;}.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--dark-2);flex-direction:column;padding:1.5rem 2rem;border-bottom:1px solid var(--border);gap:1.2rem;}.nav-links.open{display:flex;}}
+    header{max-width:800px;margin:0 auto;padding:4rem 2rem 2rem;}
+    .label{font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;line-height:1.2;color:var(--text);margin-bottom:1.5rem;}
+    .subtitle{font-size:1.15rem;color:var(--text-muted);line-height:1.7;margin-bottom:2rem;font-style:italic;}
+    .meta{font-family:'Inter',sans-serif;font-size:.8rem;color:var(--text-muted);letter-spacing:.05em;}
+    .article-body{max-width:800px;margin:0 auto;padding:2rem 2rem 4rem;}
+    h2{font-family:'Playfair Display',serif;font-size:1.65rem;color:var(--gold-light);margin:3rem 0 1rem;line-height:1.3;}
+    h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--text);margin:2rem 0 .75rem;}
+    p{margin-bottom:1.4rem;}
+    a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;}
+    a:hover{border-bottom-color:var(--gold);}
+    ul,ol{margin:0 0 1.4rem 1.5rem;}
+    li{margin-bottom:.5rem;}
+    strong{color:var(--text);font-weight:600;}
+    .callout{background:var(--dark-3);border-left:3px solid var(--gold);padding:1.2rem 1.5rem;margin:2rem 0;border-radius:0 4px 4px 0;}
+    .callout p{margin-bottom:0;}
+    .callout strong{color:var(--gold);}
+    .warning{background:#1a1208;border-left:3px solid #eb5757;padding:1.2rem 1.5rem;margin:2rem 0;border-radius:0 4px 4px 0;}
+    .warning p{margin-bottom:0;}
+    table{width:100%;border-collapse:collapse;margin:2rem 0;font-family:'Inter',sans-serif;font-size:.85rem;}
+    th{background:var(--dark-4);color:var(--gold);padding:.75rem 1rem;text-align:left;font-weight:600;letter-spacing:.03em;border-bottom:2px solid var(--border);}
+    td{padding:.7rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;}
+    tr:nth-child(even) td{background:var(--dark-2);}
+    .green{color:#6fcf97;font-weight:600;}
+    .red{color:#eb5757;font-weight:600;}
+    .highlight{color:var(--gold-light);font-weight:600;}
+    .checklist{list-style:none;margin-left:0;}
+    .checklist li{padding-left:2rem;position:relative;margin-bottom:.75rem;}
+    .checklist li::before{content:"□";position:absolute;left:0;color:var(--gold);font-size:1.1rem;}
+    .lead-magnet{background:var(--dark-3);border:1px solid var(--border);padding:1.5rem 2rem;margin:2.5rem 0;border-radius:4px;}
+    .lead-magnet h4{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);margin-bottom:.5rem;}
+    .lead-magnet p{margin-bottom:.75rem;font-size:.95rem;color:var(--text-muted);}
+    .lead-magnet a{color:var(--gold-light);font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;}
+    .toc{background:var(--dark-3);border:1px solid var(--border);padding:1.5rem 2rem;margin:2rem 0;border-radius:4px;}
+    .toc h4{font-family:'Inter',sans-serif;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;}
+    .toc ol{margin:0 0 0 1.2rem;}
+    .toc li{margin-bottom:.4rem;font-size:.9rem;}
+    .toc a{color:var(--text-muted);border-bottom:none;}
+    .toc a:hover{color:var(--gold);}
+    .disclaimer{background:var(--dark-3);border:1px solid var(--border);padding:1.2rem 1.5rem;margin:3rem 0 0;border-radius:4px;font-family:'Inter',sans-serif;font-size:.78rem;color:var(--text-muted);line-height:1.6;}
+    footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-family:'Inter',sans-serif;font-size:.8rem;color:var(--text-muted);}
+    footer a{color:var(--text-muted);border-bottom:none;}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="/">The Bitcoin Family Office</a>
+  <div class="hamburger" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/">Articles</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/tools/">Tools</a></li>
+  </ul>
+</nav>
+
+<header>
+  <p class="label">Tax Records · Cost Basis</p>
+  <h1>Bitcoin Cost Basis Tracking: The Complete Guide for Serious Holders</h1>
+  <p class="subtitle">Every Bitcoin sale, exchange, and transfer triggers a tax calculation. That calculation depends entirely on your cost basis — what you paid, when you paid it, and which specific coins you're selling. Get it wrong and you either overpay taxes or invite an IRS audit. Get it right and you unlock tax-loss harvesting, 0% bracket strategies, and clean estate records your heirs can actually use.</p>
+  <p class="meta">By The Bitcoin Family Office &nbsp;·&nbsp; March 13, 2026 &nbsp;·&nbsp; 14 min read</p>
+</header>
+
+<div class="article-body">
+
+  <div class="toc">
+    <h4>Contents</h4>
+    <ol>
+      <li><a href="#what-is-basis">What Is Cost Basis and Why It Determines Every Tax Bill</a></li>
+      <li><a href="#taxable-events">Taxable vs. Non-Taxable Events: What Creates a New Lot</a></li>
+      <li><a href="#lot-methods">The Four Lot Identification Methods Compared</a></li>
+      <li><a href="#hifo-vs-specific">HIFO vs. Specific ID: When to Use Each</a></li>
+      <li><a href="#1099-da-gap">The 1099-DA Gap: Why Self-Custody Holders Must Track Their Own Basis</a></li>
+      <li><a href="#dca-complexity">The DCA Complexity Problem</a></li>
+      <li><a href="#multi-wallet">Multi-Wallet and Multi-Exchange Tracking</a></li>
+      <li><a href="#estate-connection">The Estate Planning Connection: Records Your Heirs Need</a></li>
+      <li><a href="#checklist">8-Item Cost Basis Hygiene Checklist</a></li>
+    </ol>
+  </div>
+
+  <h2 id="what-is-basis">What Is Cost Basis and Why It Determines Every Tax Bill</h2>
+
+  <p>Cost basis is the tax value assigned to an asset at acquisition — for Bitcoin, it is the fair market value in US dollars on the date you received it, plus any fees paid to acquire it. Every subsequent sale, exchange, or disposal is a taxable event where your gain or loss is computed as:</p>
+
+  <p><strong>Capital Gain (or Loss) = Sale Proceeds − Cost Basis</strong></p>
+
+  <p>If you bought 0.5 BTC at $40,000 total ($80,000/BTC) and sell it at $72,000/BTC ($36,000 proceeds), your capital loss is $4,000. If you bought that same 0.5 BTC at $5,000 total ($10,000/BTC) and sell at $72,000/BTC ($36,000 proceeds), your capital gain is $31,000.</p>
+
+  <p>The holding period determines the rate: held more than one year = long-term rates (0%, 15%, or 20%). Held one year or less = short-term rates (ordinary income, up to 37%). Both the basis amount and the holding period are tracked per lot — each individual purchase is a separate lot with its own basis and acquisition date.</p>
+
+  <div class="warning">
+    <p><strong>The zero-basis default:</strong> If you cannot document your cost basis, the IRS may assume your basis is $0 — meaning 100% of the sale proceeds are taxable as a gain. A long-term holder who bought Bitcoin in 2017 and cannot produce purchase records could face tax on the entire current value even if they reinvested earlier gains. Documentation is not optional.</p>
+  </div>
+
+  <h2 id="taxable-events">Taxable vs. Non-Taxable Events: What Creates a New Lot</h2>
+
+  <p>Understanding which events are taxable — and which create new lots requiring their own basis tracking — is foundational to accurate record-keeping.</p>
+
+  <h3>Taxable Events (Require Gain/Loss Calculation)</h3>
+
+  <table>
+    <tr>
+      <th>Event</th>
+      <th>Tax Treatment</th>
+      <th>Basis of New Asset</th>
+    </tr>
+    <tr>
+      <td>Sell BTC for fiat (USD)</td>
+      <td>Capital gain or loss</td>
+      <td>N/A — asset disposed</td>
+    </tr>
+    <tr>
+      <td>Exchange BTC for another crypto</td>
+      <td>Capital gain or loss on BTC disposed</td>
+      <td>FMV of received crypto at exchange date</td>
+    </tr>
+    <tr>
+      <td>Pay for goods/services with BTC</td>
+      <td>Capital gain or loss on BTC used</td>
+      <td>N/A — asset disposed</td>
+    </tr>
+    <tr>
+      <td>Receive BTC as mining income</td>
+      <td>Ordinary income at FMV on receipt date</td>
+      <td>FMV on receipt date (new lot created)</td>
+    </tr>
+    <tr>
+      <td>Receive BTC as payment for services</td>
+      <td>Ordinary income at FMV on receipt date</td>
+      <td>FMV on receipt date (new lot created)</td>
+    </tr>
+    <tr>
+      <td>Receive BTC as a gift</td>
+      <td>No tax at receipt; gain/loss when you sell</td>
+      <td>Donor's original basis (carryover basis)</td>
+    </tr>
+    <tr>
+      <td>Receive BTC as inheritance</td>
+      <td>No income tax at receipt (stepped-up basis)</td>
+      <td class="green">FMV at date of decedent's death (step-up)</td>
+    </tr>
+    <tr>
+      <td>Airdrop or hard fork</td>
+      <td>Ordinary income at FMV when received and under dominion and control</td>
+      <td>FMV on receipt date (new lot created)</td>
+    </tr>
+  </table>
+
+  <h3>Non-Taxable Events (No Gain/Loss; May Still Require Tracking)</h3>
+
+  <ul>
+    <li><strong>Buying BTC with fiat:</strong> Creates a new lot at the purchase price. Not a taxable event — no gain or loss realized at purchase.</li>
+    <li><strong>Transferring BTC between your own wallets:</strong> Moving BTC from a Coinbase account to a Ledger hardware wallet — or from one personal wallet to another — is not a taxable event. The lot carries its original basis and acquisition date through the transfer. <em>However:</em> you must track which lots moved to which wallet for future lot-level identification.</li>
+    <li><strong>Opening or closing a Lightning channel (generally):</strong> Channel open/close transactions are generally treated as wallet-to-wallet transfers if no economic gain is realized and the same amount (minus fees) is recovered. Fees paid are potentially deductible as investment expenses (though IRS guidance is not definitive).</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>The transfer tracking requirement:</strong> Even though wallet-to-wallet transfers aren't taxable, you must track them. When you later sell Bitcoin from wallet B that was originally purchased in wallet A, your lot (with its original basis and date) must be matched to the sale. If you don't track transfers, you cannot perform specific lot identification on subsequent sales — you're stuck with FIFO or HIFO at the account level, not the true lot level.</p>
+  </div>
+
+  <h2 id="lot-methods">The Four Lot Identification Methods Compared</h2>
+
+  <p>When you sell Bitcoin and have multiple lots at different prices, you must choose which lots are being sold. The IRS permits four methods for Bitcoin:</p>
+
+  <table>
+    <tr>
+      <th>Method</th>
+      <th>How It Works</th>
+      <th>Tax Impact</th>
+      <th>Best For</th>
+    </tr>
+    <tr>
+      <td><strong>FIFO</strong> (First In, First Out)</td>
+      <td>Sells oldest lots first</td>
+      <td>Usually highest gains (oldest lots = lowest cost)</td>
+      <td>Default if no method elected; rarely optimal for long-term holders</td>
+    </tr>
+    <tr>
+      <td><strong>LIFO</strong> (Last In, First Out)</td>
+      <td>Sells most recently purchased lots first</td>
+      <td>Lower gains if recent purchases were at higher prices</td>
+      <td>Useful in declining markets where recent lots are highest cost</td>
+    </tr>
+    <tr>
+      <td><strong>HIFO</strong> (Highest In, First Out)</td>
+      <td>Sells highest-cost lots first regardless of date</td>
+      <td>Minimizes current-year gains; defers low-cost lots</td>
+      <td>General tax minimization; most widely recommended default</td>
+    </tr>
+    <tr>
+      <td><strong>Specific Identification</strong></td>
+      <td>You designate exactly which lots are sold at the time of sale</td>
+      <td>Fully flexible — can optimize for any objective</td>
+      <td>Tax-loss harvesting, 0% bracket harvesting, holding period management</td>
+    </tr>
+  </table>
+
+  <p>Note: LIFO is not explicitly listed in IRS crypto guidance but is generally accepted as a form of specific identification. Confirm with your CPA before using LIFO.</p>
+
+  <h2 id="hifo-vs-specific">HIFO vs. Specific ID: When to Use Each</h2>
+
+  <p>HIFO and Specific Identification are the two most tax-efficient methods — but they serve different objectives.</p>
+
+  <p><strong>Use HIFO when:</strong> Your only goal is minimizing current-year capital gains. HIFO automatically selects the highest-cost lots (largest basis, smallest gain), leaving your lowest-cost lots (largest embedded gain) for last — or ideally for the §1014 step-up at death.</p>
+
+  <p><strong>Use Specific ID when:</strong> You need precise control for a specific strategy:</p>
+  <ul>
+    <li><strong>Tax-loss harvesting:</strong> Select the specific lots with unrealized losses (below your purchase price) to realize those losses as deductions. HIFO won't select these automatically if higher-cost lots exist.</li>
+    <li><strong>0% bracket harvesting:</strong> Select specific long-term lots whose gain exactly fills your available 0% bracket room — no more, no less.</li>
+    <li><strong>Holding period management:</strong> If a lot is 11 months old and you want to sell but prefer to wait for long-term treatment, Specific ID lets you sell a different lot that already qualifies as long-term.</li>
+    <li><strong>Estate planning:</strong> Keep specific low-basis, long-held lots intact for the §1014 step-up. Sell only lots with modest embedded gains that won't benefit from step-up.</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>The Specific ID requirement:</strong> To use Specific Identification, you must identify the specific lot at or before the time of sale — not retroactively. For exchange-based sales, this typically means selecting the specific lot in your crypto tax software before or at the moment of sale, or providing written notice to the exchange. Keep documentation: date of sale, exchange/wallet, lot originally acquired on [date] at [price], confirmation the lot was specifically identified. This is what you show an IRS examiner.</p>
+  </div>
+
+  <h2 id="1099-da-gap">The 1099-DA Gap: Why Self-Custody Holders Must Track Their Own Basis</h2>
+
+  <p>Starting in tax year 2026, exchanges and brokers are required to issue Form 1099-DA reporting Bitcoin sales — the first time Bitcoin sales have been subject to mandatory third-party reporting at this scale. The 1099-DA reports gross proceeds from sales and, for "covered" securities, cost basis.</p>
+
+  <p>However, there is a critical gap that affects most long-term Bitcoin holders:</p>
+
+  <h3>What 1099-DA Covers</h3>
+  <ul>
+    <li>Bitcoin purchased on the reporting exchange <strong>on or after January 1, 2026</strong> (the broker cost basis reporting implementation date) — these are "covered" securities with basis reported</li>
+    <li>Sale proceeds for all Bitcoin sold through the exchange</li>
+  </ul>
+
+  <h3>What 1099-DA Does NOT Cover</h3>
+  <ul>
+    <li>Bitcoin purchased before January 1, 2026 — these are "noncovered" securities; the exchange reports proceeds but NOT basis</li>
+    <li>Bitcoin that originated outside the exchange (transferred in from a personal wallet, another exchange, or received as mining income) — noncovered regardless of when transferred</li>
+    <li>Bitcoin held in self-custody (hardware wallets, software wallets) and sold through a DEX or peer-to-peer transaction</li>
+    <li>Basis from Bitcoin received as mining income, staking, airdrops, or hard forks</li>
+  </ul>
+
+  <p>The practical implication: the vast majority of long-term Bitcoin holders — the people most likely to have large embedded gains — are in the "noncovered" category for most or all of their Bitcoin. Their 1099-DA will show proceeds on one line and leave the basis column blank. The IRS will see a large proceed with no corresponding basis report. The holder is responsible for documenting their own basis — and if they can't, the IRS may treat basis as $0.</p>
+
+  <h3>The Self-Custody Holder's Documentation Burden</h3>
+
+  <p>For Bitcoin held in self-custody:</p>
+  <ul>
+    <li>Every purchase must have a documented receipt: exchange confirmation email, transaction record, bank statement showing the purchase price in dollars on the acquisition date</li>
+    <li>Every wallet-to-wallet transfer must be traceable: the same Bitcoin (by lot) must be followable from original purchase to eventual sale</li>
+    <li>Mining income must be recorded at the daily FMV on each date received — each day's mining reward is a new lot with basis equal to that day's price</li>
+    <li>These records must be retained for at least 3 years after the tax return due date (statute of limitations), and 6 years if substantial understatement risk exists, and indefinitely if the IRS suspects fraud</li>
+  </ul>
+
+  <h2 id="dca-complexity">The DCA Complexity Problem</h2>
+
+  <p>Dollar-cost averaging — buying fixed dollar amounts of Bitcoin on a recurring schedule — creates a large number of small lots over time. A holder who has bought $500 of Bitcoin weekly for five years has created approximately 260 separate lots, each with its own acquisition date, dollar amount, Bitcoin quantity, and price. Managing these lots for tax purposes is complex but essential.</p>
+
+  <p>The DCA cost basis record looks like this in practice:</p>
+
+  <table>
+    <tr>
+      <th>Purchase Date</th>
+      <th>USD Amount</th>
+      <th>BTC Price</th>
+      <th>BTC Acquired</th>
+      <th>Cost Basis</th>
+    </tr>
+    <tr>
+      <td>Jan 3, 2022</td>
+      <td>$500</td>
+      <td>$46,200</td>
+      <td>0.01082 BTC</td>
+      <td>$500.00</td>
+    </tr>
+    <tr>
+      <td>Jan 10, 2022</td>
+      <td>$500</td>
+      <td>$41,800</td>
+      <td>0.01196 BTC</td>
+      <td>$500.00</td>
+    </tr>
+    <tr>
+      <td>Jan 17, 2022</td>
+      <td>$500</td>
+      <td>$42,500</td>
+      <td>0.01176 BTC</td>
+      <td>$500.00</td>
+    </tr>
+    <tr>
+      <td colspan="3" style="text-align:right"><em>...258 more weekly rows...</em></td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+  </table>
+
+  <p>Managing 260+ lots manually in a spreadsheet is possible but error-prone. The practical solution for DCA holders: use crypto tax software (Koinly, CoinTracker, TaxBit, or similar) that imports exchange transaction history directly and maintains the lot ledger automatically. Most platforms integrate with major exchanges via API and can reconstruct historical transaction records going back years if the exchange data is available.</p>
+
+  <p>For exchanges that no longer exist or that don't provide historical API access, you'll need original transaction confirmation emails, CSV exports, or bank records showing purchase prices by date.</p>
+
+  <h2 id="multi-wallet">Multi-Wallet and Multi-Exchange Tracking</h2>
+
+  <p>The most common basis tracking problem for sophisticated Bitcoin holders: assets spread across multiple exchanges and personal wallets, with transfers between them over many years.</p>
+
+  <h3>The "Universal Lot Ledger" Approach</h3>
+
+  <p>The correct framework: maintain a single unified lot ledger that tracks every Bitcoin lot from its original acquisition to its eventual disposal, regardless of which wallet or exchange currently holds it. When Bitcoin moves from Coinbase to a Ledger hardware wallet, the lot doesn't change — it just changes location. The same lot ID, acquisition date, and basis follow the Bitcoin through the transfer.</p>
+
+  <p>Practical requirements for this approach:</p>
+  <ul>
+    <li>Every wallet address you own must be identified and included in your tax software</li>
+    <li>Every transfer between addresses must be tagged as a personal transfer (not a taxable disposal) in your tax software</li>
+    <li>If you've used crypto tax software, export a complete lot report annually and store it with your tax records — don't rely solely on the software platform (companies close, subscriptions lapse)</li>
+  </ul>
+
+  <h3>The "Lost Records" Problem for Early Holders</h3>
+
+  <p>Holders who bought Bitcoin before 2016 often face a documentation problem: the exchanges they used no longer exist (Mt. Gox, early altcoin exchanges), transaction records were never preserved, or purchases were made via peer-to-peer trades with no formal records.</p>
+
+  <p>If you cannot document a specific purchase price, you have several options:</p>
+  <ul>
+    <li><strong>Reconstruct from bank records:</strong> Wire transfer receipts, credit card statements, or PayPal records that show a dollar amount on a specific date — matched to historical Bitcoin price data — can establish approximate basis</li>
+    <li><strong>Use contemporaneous records:</strong> Forum posts, emails, or messages from around the time of purchase that reference the price or amount paid</li>
+    <li><strong>Claim a reasonable estimated basis:</strong> Some practitioners take a conservative but defensible estimated basis rather than $0, with documentation of the estimation methodology</li>
+    <li><strong>Consider the §1014 step-up strategy:</strong> If you cannot document basis and the gain would be catastrophic, holding until death — where the step-up resets basis to date-of-death value — eliminates the documentation problem entirely for the heirs</li>
+  </ul>
+
+  <h2 id="estate-connection">The Estate Planning Connection: Records Your Heirs Need</h2>
+
+  <p>Your Bitcoin cost basis records are not just a tax document — they are a critical estate administration asset. When you die, your executor and heirs need to:</p>
+
+  <ol>
+    <li><strong>Value your Bitcoin for estate tax purposes</strong> — the date-of-death fair market value determines estate tax inclusion. For Bitcoin, this is the FMV on the date of death, available from public market data. But your executor needs to know how much Bitcoin exists and where.</li>
+    <li><strong>Access the Bitcoin</strong> — without private keys, seed phrases, or custodian account access, the Bitcoin cannot be retrieved. Your estate records must include access documentation, not just basis records.</li>
+    <li><strong>Determine stepped-up basis for income tax purposes</strong> — heirs who inherit Bitcoin receive a stepped-up basis equal to the date-of-death value (under current law). They need to know the date-of-death price to correctly compute their own basis for future sales.</li>
+    <li><strong>Identify all lots across all wallets and exchanges</strong> — if your estate holds Bitcoin in 6 different places and your executor doesn't know about 3 of them, those assets may be lost or go unreported.</li>
+  </ol>
+
+  <div class="callout">
+    <p><strong>The estate records requirement:</strong> Your Bitcoin records should include: (1) complete lot ledger with original purchase dates and prices, (2) list of all wallets and exchanges where Bitcoin is held, (3) access instructions for each wallet (in a secure format — not the private keys themselves in an unsecured document), (4) identity of any custodian accounts and account numbers, (5) contact information for your crypto tax software account. These records should be updated annually and stored with your estate documents — not only on your personal computer or a password-protected drive that your executor can't access.</p>
+  </div>
+
+  <div class="lead-magnet">
+    <h4>Bitcoin Mining Tax Strategy Resource</h4>
+    <p>For Bitcoin mining operators, cost basis tracking is complicated by daily income recognition at varying prices, equipment depreciation lots, and the interaction between mining basis and estate planning. Abundant Mines' tax strategy guide covers the complete mining cost basis picture.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener">Download the Mining Tax Strategy Guide →</a>
+  </div>
+
+  <h2 id="checklist">8-Item Cost Basis Hygiene Checklist</h2>
+
+  <ul class="checklist">
+    <li><strong>Consolidate all transaction history into one tax software platform.</strong> Connect every exchange account via API and manually import any exchange that doesn't have API support. Tag all personal wallet addresses. Reconcile until your software shows zero unmatched transactions.</li>
+    <li><strong>Elect and document your lot identification method.</strong> Decide whether you will use HIFO (default tax minimization) or Specific Identification (strategic control) and apply it consistently. Document the method in your tax records and confirm your crypto tax software supports it. Your CPA should note the election on your tax return.</li>
+    <li><strong>Tag all wallet-to-wallet transfers as personal transfers.</strong> Every move of Bitcoin between your own wallets or accounts must be tagged as a non-taxable transfer — not a sale. Untagged transfers generate phantom gains in most tax software. Audit your transfer history annually.</li>
+    <li><strong>Record mining income at daily FMV on receipt.</strong> If you mine Bitcoin, each day's reward is a new lot with basis equal to that day's closing price. Most mining pool software provides detailed payout history — import it into your tax software regularly, not just at year-end.</li>
+    <li><strong>Export and store annual lot reports.</strong> At the end of each tax year, export a complete lot-level report from your crypto tax software showing every open lot's acquisition date, basis, and current location. Store this as a PDF with your tax returns. Do not rely solely on a SaaS subscription that could lapse.</li>
+    <li><strong>Reconcile the 1099-DA you receive with your records.</strong> For tax year 2026 and forward, compare the proceeds reported on your 1099-DA to your own records. The noncovered lots — where basis is blank — require you to supply the basis documentation. Flag any discrepancies for your CPA before filing.</li>
+    <li><strong>Maintain source documents for at least 7 years.</strong> Keep exchange confirmation emails, bank statements showing Bitcoin purchases, and any other original records for at least 6 years (3 years base statute of limitations, plus buffer for substantial understatement). For lots you plan to hold indefinitely (or until death), keep records forever — the basis documentation is needed whenever the lot is eventually disposed of.</li>
+    <li><strong>Create an estate records package for your executor.</strong> Compile a document listing: all wallet addresses and their contents, all exchange accounts with login information stored securely, access instructions for hardware wallets, contact for your crypto tax software account, and a copy of your most recent lot ledger export. Update this annually. Tell your executor or estate attorney where it is.</li>
+  </ul>
+
+  <h2>The Bottom Line</h2>
+
+  <p>Cost basis tracking is unglamorous work. It doesn't generate returns or directly save taxes in the current year. But without it, every tax-optimization strategy in this guide — tax-loss harvesting, 0% bracket harvesting, specific ID for estate planning, HIFO for gain deferral — is unavailable. You're flying blind, overpaying taxes, and creating serious documentation risk.</p>
+
+  <p>The 1099-DA era makes accurate tracking more urgent, not less. Brokers now report proceeds — and the IRS will compare those proceeds to your return. If the basis is blank (noncovered) and you can't supply it, the default is $0 basis and 100% gain. The people most exposed are exactly the long-term holders with the largest gains — the people for whom accurate basis documentation matters most.</p>
+
+  <p>Build the habit now: consolidated tax software, annual lot export, estate records package updated yearly. The work is a few hours a year. The consequence of not doing it is measured in hundreds of thousands of dollars of avoidable tax.</p>
+
+  <p>See also: <a href="/blog/bitcoin-tax-loss-harvesting.html">Bitcoin Tax-Loss Harvesting</a> · <a href="/blog/bitcoin-zero-percent-capital-gains-strategy.html">Bitcoin 0% Capital Gains Strategy</a> · <a href="/blog/bitcoin-cost-basis-methods-estate-planning.html">Bitcoin Cost Basis Methods: FIFO, HIFO, Specific ID</a> · <a href="/blog/form-1099-da-bitcoin-estate-planning-2026.html">Form 1099-DA: What Bitcoin Families Must Do Now</a> · <a href="/blog/bitcoin-year-end-tax-planning.html">Bitcoin Year-End Tax Planning Checklist</a></p>
+
+  <div class="disclaimer">
+    <strong>Disclosure:</strong> This content is for educational purposes only and does not constitute tax, legal, or investment advice. Cost basis methods, record retention requirements, and 1099-DA reporting rules depend on applicable IRS guidance and may change. The lot identification method election must be made consistently and documented at the time of sale; consult a CPA before selecting or changing your method. The Bitcoin Family Office does not provide tax preparation services.
+  </div>
+
+</div>
+
+<footer>
+  <p><a href="/">The Bitcoin Family Office</a> &nbsp;·&nbsp; <a href="/blog/">Articles</a> &nbsp;·&nbsp; <a href="/services/">Services</a> &nbsp;·&nbsp; <a href="/disclosures.html">Disclosures</a></p>
+</footer>
+</body>
+</html>
