@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Trust Taxes: How Trusts Are Taxed on Bitcoin Income & Gains | The Bitcoin Family Office</title>
+  <meta name="description" content="How different trusts are taxed on Bitcoin gains and income — grantor trusts vs non-grantor trusts, the 37% compressed bracket trap, Form 1041, K-1 reporting, IDGT defective elections, and distribution planning to avoid trust-level taxation.">
+  <meta property="og:title" content="Bitcoin Trust Taxes: How Trusts Are Taxed on Bitcoin Income & Gains">
+  <meta property="og:description" content="Trusts holding Bitcoin face a compressed tax bracket: 37% federal rate kicks in at just $15,650 of income. Complete guide to grantor trust vs non-grantor trust taxation, IDGT elections, Form 1041, K-1 reporting for LLC-held Bitcoin, distribution planning, and the CRT four-tier rule.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-trust-taxes.html">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-trust-taxes.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bitcoin Trust Taxes: How Trusts Are Taxed on Bitcoin Income & Gains",
+    "description": "Complete guide to trust taxation for Bitcoin holdings: grantor trust (all income taxed to grantor at individual rates), non-grantor trust (compressed brackets — 37% at $15,650), IDGT defective election mechanics, Form 1041 filing requirements, K-1 reporting for LLC-held Bitcoin, distribution planning to shift income to lower-bracket beneficiaries, and CRT four-tier income characterization.",
+    "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
+    "publisher": {"@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"},
+    "datePublished": "2026-03-13",
+    "dateModified": "2026-03-13",
+    "mainEntityOfPage": "https://thebitcoinfamilyoffice.com/blog/bitcoin-trust-taxes.html"
+  }
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --gold: #C9A84C; --gold-light: #E8C97A; --dark: #0D0D0D; --dark-2: #141414; --dark-3: #1C1C1C; --dark-4: #242424; --text: #E8E3D8; --text-muted: #9E9888; --border: #2A2A2A; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--dark); color: var(--text); font-family: 'EB Garamond', serif; font-size: 18px; line-height: 1.8; }
+    nav { background: var(--dark-2); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--gold); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-muted); transition: 0.3s; }
+    @media (max-width: 768px) { .hamburger { display: flex; } .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--dark-2); flex-direction: column; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); gap: 1.2rem; } .nav-links.open { display: flex; } }
+    header { max-width: 800px; margin: 0 auto; padding: 4rem 2rem 2rem; }
+    .label { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--text); margin-bottom: 1.5rem; }
+    .subtitle { font-size: 1.15rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem; font-style: italic; }
+    .meta { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.05em; }
+    .article-body { max-width: 800px; margin: 0 auto; padding: 2rem 2rem 4rem; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.65rem; color: var(--gold-light); margin: 3rem 0 1rem; line-height: 1.3; }
+    h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--text); margin: 2rem 0 0.75rem; }
+    p { margin-bottom: 1.4rem; }
+    a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+    a:hover { border-bottom-color: var(--gold); }
+    ul, ol { margin: 0 0 1.4rem 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    strong { color: var(--text); font-weight: 600; }
+    em { font-style: italic; }
+    .callout { background: var(--dark-3); border-left: 3px solid var(--gold); padding: 1.2rem 1.5rem; margin: 2rem 0; border-radius: 0 4px 4px 0; }
+    .callout p { margin-bottom: 0; }
+    .callout strong { color: var(--gold); }
+    .warning { background: #1a1208; border-left: 3px solid #C9A84C; padding: 1.2rem 1.5rem; margin: 2rem 0; border-radius: 0 4px 4px 0; }
+    .warning p { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-family: 'Inter', sans-serif; font-size: 0.85rem; }
+    th { background: var(--dark-3); color: var(--gold); padding: 0.75rem 1rem; text-align: left; font-weight: 600; border-bottom: 1px solid var(--border); }
+    td { padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
+    tr:nth-child(even) td { background: var(--dark-2); }
+    .checklist { background: var(--dark-3); border: 1px solid var(--border); padding: 2rem; border-radius: 6px; margin: 3rem 0; }
+    .checklist h3 { color: var(--gold); margin-top: 0; margin-bottom: 1rem; font-size: 1.1rem; }
+    .checklist li { list-style: none; padding-left: 1.8rem; position: relative; margin-bottom: 0.6rem; }
+    .checklist li::before { content: "☐"; position: absolute; left: 0; color: var(--gold); }
+    .cta-box { background: linear-gradient(135deg, var(--dark-3) 0%, #1a1508 100%); border: 1px solid var(--gold); border-radius: 8px; padding: 2.5rem; margin: 3rem 0; text-align: center; }
+    .cta-box h3 { font-family: 'Playfair Display', serif; color: var(--gold-light); margin-bottom: 0.75rem; font-size: 1.3rem; margin-top: 0; }
+    .cta-box p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .cta-btn { display: inline-block; background: var(--gold); color: var(--dark); padding: 0.8rem 2rem; border-radius: 4px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; border-bottom: none; transition: background 0.2s; }
+    .cta-btn:hover { background: var(--gold-light); border-bottom: none; }
+    .disclaimer { background: var(--dark-3); border: 1px solid var(--border); padding: 1.5rem 2rem; border-radius: 6px; margin: 3rem 0 2rem; font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+    footer { background: var(--dark-2); border-top: 1px solid var(--border); padding: 3rem 2rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--text-muted); }
+    footer a { color: var(--text-muted); }
+    .highlight-row td { background: #1a1508 !important; color: var(--gold-light); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://thebitcoinfamilyoffice.com" class="nav-logo">The Bitcoin Family Office</a>
+  <div class="hamburger" onclick="this.classList.toggle('active');document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="https://thebitcoinfamilyoffice.com">Home</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/services/">Services</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/">Research</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/tools/">Tools</a></li>
+  </ul>
+</nav>
+
+<header>
+  <p class="label">Trust Taxation · Estate Planning · 2026 Guide</p>
+  <h1>Bitcoin Trust Taxes: How Trusts Are Taxed on Bitcoin Income and Gains</h1>
+  <p class="subtitle">The tax treatment of Bitcoin inside a trust depends entirely on trust type — and the difference between getting it right and wrong can be the difference between your individual 23.8% rate and a trust's 37% rate on the same gain. Here is what every trustee, settlor, and beneficiary needs to know.</p>
+  <p class="meta">The Bitcoin Family Office · March 2026 · 12 min read</p>
+</header>
+
+<div class="article-body">
+
+  <p>Moving Bitcoin into a trust is one of the most powerful tools in the estate planning toolkit — but it introduces a tax complexity that catches many families off guard. Trusts are not taxed the way individuals are. A non-grantor trust holding Bitcoin that sells a position and retains the proceeds hits a 37% federal rate at just $15,650 of taxable income. An individual reaches 37% only at $626,350 (single) or $751,600 (married filing jointly).</p>
+
+  <p>The compressed bracket is one of the most counterproductive surprises in Bitcoin estate planning. Understanding trust taxation — and structuring trusts correctly from the start — is the difference between an elegant multigenerational structure and an inadvertent 37% tax trap.</p>
+
+  <div class="callout">
+    <p><strong>The Single Most Important Rule:</strong> Whether a trust or the grantor/beneficiaries pay tax on Bitcoin income depends on whether the trust is a <em>grantor trust</em> or a <em>non-grantor trust</em>. Getting this classification right — and building in the right distribution mechanics for non-grantor trusts — determines your effective tax rate on every Bitcoin transaction inside the trust.</p>
+  </div>
+
+  <h2>Grantor Trust vs. Non-Grantor Trust: The Core Distinction</h2>
+
+  <p>The Internal Revenue Code distinguishes between two fundamental trust tax regimes:</p>
+
+  <h3>Grantor Trusts (IRC §§671–679)</h3>
+  <p>A grantor trust is one where the grantor (the person who created and funded the trust) retains certain powers or interests that cause the trust to be treated as owned by the grantor for income tax purposes. All income, gains, deductions, and credits of a grantor trust flow through to the grantor's personal tax return — as if the trust did not exist for income tax purposes.</p>
+
+  <p><strong>Bitcoin in a grantor trust:</strong> When the trust sells Bitcoin, the gain is reported on the grantor's Form 1040, taxed at the grantor's individual rates. If the grantor is in the 23.8% LTCG bracket, the Bitcoin gains are taxed at 23.8% — regardless of the fact that the money is inside an irrevocable trust. No compressed bracket. No trust-level tax.</p>
+
+  <p><strong>Common grantor trust powers (IRC §§673–677) that create grantor trust status:</strong></p>
+  <ul>
+    <li>Power to substitute assets of equivalent value (§675(4)(C)) — the most commonly used "defective" power in IDGTs</li>
+    <li>Power to borrow trust corpus without adequate interest or security (§675(2))</li>
+    <li>Power to revoke the trust (§676) — revocable living trusts are grantor trusts</li>
+    <li>Retention of income by grantor (§677)</li>
+    <li>Spousal beneficial interest that gives grantor constructive ownership (§677)</li>
+  </ul>
+
+  <h3>Non-Grantor Trusts</h3>
+  <p>A non-grantor trust is a separate tax entity. It files its own tax return (Form 1041) and pays income tax at trust tax rates — which are dramatically compressed compared to individual rates.</p>
+
+  <p><strong>2026 Trust Tax Brackets (estimated with inflation adjustment):</strong></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Trust Taxable Income</th>
+        <th>Ordinary Income Rate</th>
+        <th>LTCG Rate</th>
+        <th>NIIT Threshold</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>$0 – $3,150</td>
+        <td>10%</td>
+        <td>0%</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>$3,150 – $11,450</td>
+        <td>24%</td>
+        <td>0%</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>$11,450 – $15,650</td>
+        <td>35%</td>
+        <td>15%</td>
+        <td>—</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Above $15,650</td>
+        <td>37%</td>
+        <td>20%</td>
+        <td>NIIT applies above $15,650</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Note the NIIT threshold for trusts: $15,650. An individual NIIT threshold is $200,000 (single) or $250,000 (MFJ). A non-grantor trust hit 3.8% NIIT at $15,650 of income — meaning the effective rate on retained Bitcoin LTCG at the trust level is 20% + 3.8% = <strong>23.8%</strong> — the same as the top individual LTCG rate. But ordinary income inside the trust hits 37% at just $15,650, versus $626,350 for an individual.</p>
+
+  <div class="warning">
+    <p><strong>The Dynasty Trust Trap:</strong> A South Dakota dynasty trust structured as a non-grantor trust that sells Bitcoin and retains the proceeds will pay 23.8% on capital gains and 37% on any ordinary income above $15,650 — at the trust level, not the beneficiary level. The solution is either (1) make the dynasty trust a grantor trust (IDGT), or (2) distribute income to beneficiaries in lower tax brackets before year-end to shift the tax burden out of the trust and onto individual returns.</p>
+  </div>
+
+  <h2>The IDGT: Intentionally Defective Grantor Trust</h2>
+
+  <p>The <strong>Intentionally Defective Grantor Trust (IDGT)</strong> is the most powerful trust structure for Bitcoin holdings. It is "defective" in the sense that it is deliberately designed to be a grantor trust for income tax purposes while being irrevocable and outside the grantor's estate for estate tax purposes.</p>
+
+  <p>The word "defective" refers only to the income tax treatment — the trust is defective from the IRS's income-tax perspective (it must look through the trust to the grantor). It is perfectly designed from an estate tax perspective (assets outside the estate, protected from creditors, managed for beneficiaries).</p>
+
+  <h3>How the IDGT Creates the Best of Both Worlds</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tax Purpose</th>
+        <th>IDGT Treatment</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Estate tax</td>
+        <td>Irrevocable — outside grantor's estate</td>
+        <td>Assets not taxed in estate at death ✅</td>
+      </tr>
+      <tr>
+        <td>Income tax</td>
+        <td>Grantor trust — income taxed to grantor personally</td>
+        <td>No compressed trust brackets; individual rates apply ✅</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Grantor pays trust income tax</td>
+        <td>Rev. Rul. 2004-64: paying another entity's taxes = not a taxable gift</td>
+        <td>Grantor's estate further depleted — additional tax-free wealth transfer ✅</td>
+      </tr>
+      <tr>
+        <td>Sales between grantor and IDGT</td>
+        <td>Rev. Rul. 85-13: grantor is the trust for income tax purposes</td>
+        <td>Intra-family loan or installment sale to IDGT = no gain recognized ✅</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The grantor's payment of income taxes on IDGT income is a hidden superpower. Under Rev. Rul. 2004-64, the grantor's payment of taxes on behalf of the trust is treated as a gift by the IRS — but it is a gift that does not use lifetime exemption. The grantor is effectively making additional tax-free transfers to the trust each year in the amount of the tax liability, further depleting the taxable estate while the trust's assets compound untouched.</p>
+
+  <h3>Revoking Grantor Trust Status</h3>
+  <p>Many IDGTs include a "toggle" provision allowing the trustee (typically an independent trustee) to release or modify the defective power, converting the IDGT from a grantor trust to a non-grantor trust. This toggle is useful if:</p>
+  <ul>
+    <li>The grantor's income drops (and the trust income tax burden becomes a gift from beneficiaries' perspective at lower rates)</li>
+    <li>The grantor dies (grantor trust status terminates automatically — the trust becomes non-grantor going forward)</li>
+    <li>Tax law changes make non-grantor trust status more advantageous</li>
+  </ul>
+
+  <h2>Form 1041: The Trust Income Tax Return</h2>
+
+  <p>Any non-grantor trust with gross income of $600 or more during the year must file Form 1041 (U.S. Income Tax Return for Estates and Trusts). Key mechanics for Bitcoin-holding trusts:</p>
+
+  <h3>Schedule D on the Trust Return</h3>
+  <p>Bitcoin capital gains and losses are reported on Schedule D of Form 1041, the same as on an individual Form 1040. The trust identifies lots using Specific Identification (or FIFO if no election is made), calculates short-term vs. long-term character, and nets gains and losses. The resulting net capital gain is then either retained in the trust (taxed at trust rates) or distributed to beneficiaries (taxed at beneficiary rates — see below).</p>
+
+  <h3>The Distribution Deduction (IRC §651/§661)</h3>
+  <p>A non-grantor trust can deduct amounts distributed to beneficiaries as a "distribution deduction" on Form 1041 — shifting the income from the trust to the beneficiary's return. The beneficiary receives a Schedule K-1 showing their share of the distributed income, which they report on their personal Form 1040.</p>
+
+  <p>This is the primary tool for avoiding the compressed trust bracket: distribute income to beneficiaries in lower tax brackets before December 31 of each year. A beneficiary in the 15% LTCG bracket paying 15% on distributed Bitcoin gains is dramatically better than the trust retaining those gains and paying 23.8%.</p>
+
+  <h3>65-Day Rule (IRC §663(b))</h3>
+  <p>A trust can elect to treat distributions made within the first 65 days of the new tax year as having been made in the prior tax year (the "65-day rule"). This gives trustees a small grace window to make year-end distribution decisions — practically speaking, they can wait until February 28 of the following year and still treat the distribution as a prior-year event for tax purposes. File the election on Form 1041.</p>
+
+  <h3>Undistributed Net Investment Income Tax (NIIT on Trust)</h3>
+  <p>The trust-level NIIT (3.8%) applies to the lesser of: (1) the trust's undistributed net investment income, or (2) the excess of adjusted gross income over $15,650. Distributions to beneficiaries remove income from the trust's NIIT calculation — another reason to distribute rather than accumulate.</p>
+
+  <h2>K-1 Reporting: Bitcoin in an LLC Held by a Trust</h2>
+
+  <p>The most common structure for Bitcoin-holding trusts involves holding Bitcoin through an LLC (typically a Wyoming LLC), which is then owned by the trust. This adds one layer of pass-through reporting:</p>
+
+  <ol>
+    <li>The LLC sells Bitcoin or receives Bitcoin income</li>
+    <li>The LLC is a pass-through entity (single-member LLC disregarded, or multi-member LLC taxed as partnership)</li>
+    <li>Income/gains flow to the trust via Schedule K-1 (for partnership LLCs) or directly (for disregarded LLCs)</li>
+    <li>The trust reports the K-1 income on Form 1041</li>
+    <li>If the trust is a grantor trust, all K-1 income flows to the grantor's Form 1040</li>
+    <li>If non-grantor, trust reports and pays tax (or distributes to beneficiaries)</li>
+  </ol>
+
+  <p><strong>Disregarded vs. Partnership classification matters:</strong> A single-member LLC owned 100% by a trust is disregarded — the LLC's Bitcoin activity is treated as if held directly by the trust. A multi-member LLC (e.g., owned 99% by trust + 1% by another entity) is a partnership for tax purposes, filing Form 1065 and issuing K-1s to all members. Partnership reporting adds complexity but allows flexible economic allocations between members.</p>
+
+  <h2>Revocable Living Trusts: Tax Treatment</h2>
+
+  <p>The most common trust — the revocable living trust (RLT) — is a grantor trust by definition. The grantor can revoke it at any time. All income, gains, and deductions are reported directly on the grantor's personal Form 1040 throughout the grantor's lifetime. There is no trust-level Form 1041 during the grantor's lifetime (unless the RLT becomes irrevocable upon incapacity, per some trust designs).</p>
+
+  <p>At the grantor's death, the RLT becomes irrevocable. Going forward, it is a non-grantor trust — subject to compressed brackets on retained income. The trustee should consider whether distributing Bitcoin gains to beneficiaries in the first year after the grantor's death is more tax-efficient than retaining them in the trust.</p>
+
+  <h2>Charitable Remainder Trusts: The Four-Tier Rule</h2>
+
+  <p>A <a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-charitable-remainder-trust.html">Charitable Remainder Trust (CRT)</a> is its own unique tax entity with specialized income characterization rules. Income distributed from a CRT to the non-charitable beneficiary is taxed under the "four-tier system" (IRC §664(b)):</p>
+
+  <ol>
+    <li><strong>Tier 1: Ordinary income</strong> — distributed first, taxed as ordinary income at beneficiary's rate</li>
+    <li><strong>Tier 2: Capital gains (short-term, then long-term)</strong> — distributed second; LT gains taxed at 23.8% maximum</li>
+    <li><strong>Tier 3: Tax-exempt income</strong> — distributed third; not taxable</li>
+    <li><strong>Tier 4: Return of corpus</strong> — distributed last; not taxable</li>
+  </ol>
+
+  <p>The strategic implication for Bitcoin: a CRT that sells high-appreciation Bitcoin and has no ordinary income will distribute all gains as Tier 2 capital gains — taxed at 23.8% when distributed over the annuity term. If the CRT has ordinary income (e.g., interest, dividends, mining income), that is distributed first at ordinary rates. Structure the CRT's investment strategy to minimize Tier 1 ordinary income and maximize Tier 2 LTCG characterization.</p>
+
+  <h2>Grantor Retained Annuity Trusts (GRATs): Tax Treatment</h2>
+
+  <p>A <a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-grat-grantor-retained-annuity-trust.html">GRAT</a> is a grantor trust during the annuity term. All GRAT income and gains are taxed to the grantor personally — no compressed trust brackets. The grantor reports all Bitcoin gains from the GRAT on their personal Form 1040 regardless of whether the GRAT distributed the gains or retained them.</p>
+
+  <p>After the GRAT term ends and assets pass to the remainder beneficiaries (typically into a dynasty trust), the trust becomes irrevocable and the tax classification depends on how the receiving trust is structured. If the remainder passes to an IDGT, it remains a grantor trust. If it passes to a simple non-grantor trust, compressed brackets apply going forward — and the trustee should plan for annual distributions to beneficiaries.</p>
+
+  <h2>Dynasty Trusts: Long-Term Tax Planning</h2>
+
+  <p>A <a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-dynasty-trust.html">South Dakota dynasty trust</a> is typically structured as one of two things:</p>
+
+  <ul>
+    <li><strong>Grantor trust (IDGT) during the grantor's lifetime:</strong> All income taxed to grantor personally. This maximizes the trust's growth (the trust is not depleted by tax payments) and creates additional tax-free wealth transfer. Most effective during the grantor's highest-income years when the trust's income tax burden is being absorbed by the grantor's estate depletion.</li>
+    <li><strong>Non-grantor trust after the grantor's death:</strong> The trust becomes a taxpaying entity. The trustee must decide annually whether to retain income in the trust (at compressed rates) or distribute to beneficiaries (taxed at beneficiary rates). For multi-generational structures, distributing to lower-bracket beneficiaries (adult grandchildren in early career years with modest income) is almost always more tax-efficient than retaining.</li>
+  </ul>
+
+  <p>South Dakota has no state income tax on trust income — meaning the trust itself (if non-grantor) and the beneficiaries (if distributed and they live in no-tax states) can both minimize their overall tax burden. A dynasty trust beneficiary living in Wyoming receiving a distribution of Bitcoin LTCG pays 23.8% — identical to the top individual rate. A dynasty trust that retains the same gain also pays 23.8%. The distribution decision is therefore primarily driven by the beneficiary's individual income level for that year.</p>
+
+  <h2>Practical Distribution Planning for Bitcoin-Holding Trusts</h2>
+
+  <p>For non-grantor trusts holding Bitcoin, year-end distribution planning is as important as year-end tax planning is for individuals. The trustee should:</p>
+
+  <ol>
+    <li><strong>By November:</strong> Run a trust-level income projection. Calculate estimated ordinary income and capital gains for the year. Identify whether the trust will have retained income above the 37%/23.8% threshold.</li>
+    <li><strong>By mid-December:</strong> Review each beneficiary's personal tax situation. Identify who is in the lowest marginal bracket. Determine the optimal distribution amount to each beneficiary to shift income from trust brackets to beneficiary brackets.</li>
+    <li><strong>By December 31:</strong> Execute distributions (or document the decision to use the 65-day election). Ensure distributions are properly funded — a distribution of Bitcoin itself (in-kind distribution) is not a taxable event for the trust; a distribution of cash after selling Bitcoin is.</li>
+    <li><strong>By February 28 (if using 65-day election):</strong> Execute distributions that will be treated as prior-year for tax purposes. File the 663(b) election on the trust's Form 1041.</li>
+    <li><strong>File Form 1041</strong> by April 15 (or September 15 with extension). Issue Schedule K-1s to each beneficiary by that date.</li>
+  </ol>
+
+  <div class="cta-box">
+    <h3>Bitcoin Mining: The Active Income Advantage Inside Trusts</h3>
+    <p>Mining income earned by a trust-owned mining business may qualify as active income — potentially avoiding trust-level NIIT and providing depreciation deductions against other trust income. The most tax-efficient trust structures combine Bitcoin holdings with active mining operations.</p>
+    <a href="https://abundantmines.com/tax-strategy/" class="cta-btn">Explore Bitcoin Mining Tax Strategy →</a>
+  </div>
+
+  <p>Before placing mining capital into a trust structure or choosing a mining hosting partner, institutional-grade due diligence matters. The <a href="http://44134802.hs-sites.com/abundant-mines-36-questions">36 questions every Bitcoin mining host should answer</a> provides the complete evaluation framework for vetting operators, facilities, and custody arrangements.</p>
+
+  <div class="checklist">
+    <h3>8-Item Bitcoin Trust Tax Checklist</h3>
+    <ul>
+      <li>Classify your trust: grantor or non-grantor? — determines whether you or the trust pays tax on Bitcoin gains</li>
+      <li>For IDGTs: confirm the "defective power" (typically §675(4)(C) swap power) is in the trust document and functional</li>
+      <li>For non-grantor dynasty trusts: run December income projection and plan distributions to lower-bracket beneficiaries before Dec 31</li>
+      <li>For LLC-held Bitcoin: confirm whether LLC is disregarded (single-member) or partnership (multi-member) — different K-1 reporting flows</li>
+      <li>For CRTs: track four-tier income buckets annually; minimize Tier 1 ordinary income in CRT investment strategy</li>
+      <li>For revocable living trusts: remember post-death transition to non-grantor — beneficiary distribution planning needed in year of death</li>
+      <li>File Form 1041 by April 15 (or September 15 with extension); issue K-1s to all beneficiaries by same date</li>
+      <li>Consider 65-day election if year-end distributions are missed — allows February 28 distribution treated as prior-year</li>
+    </ul>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Educational Disclaimer:</strong> This article is for informational purposes only and does not constitute legal, tax, or financial advice. Trust tax classification and reporting requirements depend on specific trust document terms, state law, and IRS regulations that vary by situation. Consult a qualified estate attorney and CPA who specialize in trust administration before making any decisions regarding trust taxation.
+  </div>
+
+  <h2>Related Articles</h2>
+  <ul>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-estate-planning-guide.html">The Complete Bitcoin Estate Planning Guide</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-dynasty-trust.html">Bitcoin Dynasty Trust: Eliminate Estate Taxes Across Generations</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-idgt-installment-sale.html">Bitcoin IDGT Installment Sale: Estate Freeze Strategy</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-grat-grantor-retained-annuity-trust.html">Bitcoin GRAT: Grantor Retained Annuity Trust Guide</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-charitable-remainder-trust.html">Bitcoin Charitable Remainder Trust Guide</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-intra-family-loan.html">Bitcoin Intra-Family Loan: §7872 AFR Strategy</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-net-investment-income-tax.html">Bitcoin NIIT: The 3.8% Trust Bracket Trap Explained</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-year-end-tax-planning.html">Bitcoin Year-End Tax Planning Checklist</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/bitcoin-south-dakota-family-office.html">South Dakota Bitcoin Family Office: The Premier Trust Jurisdiction</a></li>
+    <li><a href="https://thebitcoinfamilyoffice.com/blog/how-to-set-up-bitcoin-family-office.html">How to Set Up a Bitcoin Family Office</a></li>
+  </ul>
+
+</div>
+
+<footer>
+  <p style="margin-bottom:0.5rem"><a href="https://thebitcoinfamilyoffice.com">The Bitcoin Family Office</a> · <a href="https://thebitcoinfamilyoffice.com/disclosures.html">Disclosures</a> · <a href="https://thebitcoinfamilyoffice.com/blog/">Research</a></p>
+  <p style="font-size:0.72rem; margin-top:0.5rem">© 2026 The Bitcoin Family Office. Educational content only — not legal, tax, or financial advice.</p>
+</footer>
+
+</body>
+</html>
