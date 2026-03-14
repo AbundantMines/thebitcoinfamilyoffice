@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin & Controlled Foreign Corporations: CFC Rules, Subpart F, and GILTI | The Bitcoin Family Office</title>
+  <meta name="description" content="How CFC rules, Subpart F income, and GILTI apply to Bitcoin held in offshore corporations. What every US investor with foreign entities needs to know before the IRS does.">
+  <meta name="keywords" content="bitcoin controlled foreign corporation, CFC bitcoin tax, subpart F bitcoin, GILTI bitcoin mining, bitcoin offshore corporation, bitcoin foreign entity tax">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-controlled-foreign-corporation-cfc-guide.html">
+  <meta property="og:title" content="Bitcoin & Controlled Foreign Corporations: CFC Rules, Subpart F, and GILTI">
+  <meta property="og:description" content="How CFC rules, Subpart F income, and GILTI apply to Bitcoin held in offshore corporations. What every US investor with foreign entities needs to know before the IRS does.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-controlled-foreign-corporation-cfc-guide.html">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+  </script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --bg: #0A0A0B;
+      --bg-card: #111113;
+      --bg-card2: #16161A;
+      --border: #2A2A30;
+      --text: #E8E6E1;
+      --text-muted: #9A9890;
+      --text-dim: #6B6965;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'EB Garamond', Georgia, serif; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,11,0.96); border-bottom: 1px solid var(--border); backdrop-filter: blur(8px); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--gold); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 600; background: var(--gold); color: #000; padding: 0.5rem 1.25rem; border-radius: 4px; text-decoration: none; letter-spacing: 0.04em; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--gold-light); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-muted); border-radius: 2px; transition: all 0.3s; }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(10,10,11,0.98); flex-direction: column; padding: 1.5rem 2rem; gap: 1.25rem; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .nav-cta { display: none; }
+    }
+
+    /* HERO */
+    .hero { max-width: 780px; margin: 0 auto; padding: 5rem 2rem 3rem; }
+    .hero-tag { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1.25rem; }
+    .hero-sub { font-size: 1.15rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 2rem; }
+    .hero-meta { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 1.25rem; }
+    .hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* ARTICLE */
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2rem 2rem 6rem; }
+    .article-wrap h2 { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: #fff; margin: 3rem 0 1rem; padding-top: 1rem; }
+    .article-wrap h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--gold-light); margin: 2rem 0 0.75rem; }
+    .article-wrap p { margin-bottom: 1.25rem; color: var(--text); }
+    .article-wrap ul, .article-wrap ol { margin: 0.75rem 0 1.25rem 1.5rem; color: var(--text); }
+    .article-wrap li { margin-bottom: 0.5rem; line-height: 1.7; }
+    .article-wrap a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+    .article-wrap a:hover { border-bottom-color: var(--gold); }
+    .article-wrap strong { color: #fff; font-weight: 600; }
+
+    /* CALLOUT */
+    .callout { background: var(--bg-card); border-left: 3px solid var(--gold); padding: 1.25rem 1.5rem; border-radius: 0 6px 6px 0; margin: 2rem 0; }
+    .callout.warning { border-left-color: #E05252; }
+    .callout.tip { border-left-color: #52A0E0; }
+    .callout-title { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .callout.warning .callout-title { color: #E05252; }
+    .callout.tip .callout-title { color: #52A0E0; }
+    .callout p { margin: 0; font-size: 0.97rem; color: var(--text-muted); }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; margin: 2rem 0; border-radius: 8px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-family: 'Inter', sans-serif; font-size: 0.84rem; }
+    thead { background: var(--bg-card2); }
+    thead th { padding: 0.85rem 1rem; text-align: left; color: var(--gold); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.75rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--bg-card2); }
+    tbody td { padding: 0.85rem 1rem; color: var(--text); vertical-align: top; }
+    .good { color: #52C87A; font-weight: 600; }
+    .bad { color: #E05252; font-weight: 600; }
+    .neutral { color: var(--gold); font-weight: 600; }
+
+    /* LEAD MAGNET */
+    .lead-magnet { background: linear-gradient(135deg, #1A1500 0%, #0F0E00 100%); border: 1px solid #3A2E00; border-radius: 10px; padding: 2rem 2.25rem; margin: 3rem 0; }
+    .lead-magnet h3 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 0.75rem; }
+    .lead-magnet p { color: var(--text-muted); font-size: 0.97rem; margin-bottom: 1.25rem; }
+    .lead-magnet a.btn { display: inline-block; background: var(--gold); color: #000; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; padding: 0.7rem 1.5rem; border-radius: 5px; text-decoration: none; letter-spacing: 0.04em; transition: background 0.2s; }
+    .lead-magnet a.btn:hover { background: var(--gold-light); border-bottom: none; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: #fff; margin-bottom: 0.75rem; }
+    .faq-a { color: var(--text-muted); font-size: 0.97rem; line-height: 1.7; }
+
+    /* ACTION STEPS */
+    .action-steps { counter-reset: steps; list-style: none; margin: 0; padding: 0; }
+    .action-steps li { counter-increment: steps; display: flex; gap: 1.25rem; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+    .action-steps li:last-child { border-bottom: none; }
+    .action-steps li::before { content: counter(steps); display: flex; align-items: center; justify-content: center; min-width: 2rem; height: 2rem; background: var(--gold); color: #000; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 700; border-radius: 50%; }
+    .action-steps p { margin: 0; font-size: 0.97rem; }
+
+    /* FOOTER */
+    footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 3rem 2rem; text-align: center; }
+    .footer-inner { max-width: 780px; margin: 0 auto; }
+    .footer-logo { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; margin-bottom: 1rem; }
+    footer p { color: var(--text-dim); font-family: 'Inter', sans-serif; font-size: 0.8rem; line-height: 1.7; }
+    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .footer-links a { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--text-muted); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 3rem 1.25rem 2rem; }
+      .article-wrap { padding: 1.5rem 1.25rem 4rem; }
+      .article-wrap h2 { font-size: 1.45rem; }
+      table { font-size: 0.78rem; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bitcoin & Controlled Foreign Corporations: CFC Rules, Subpart F, and GILTI",
+    "description": "How CFC rules, Subpart F income, and GILTI apply to Bitcoin held in offshore corporations. What every US investor with foreign entities needs to know.",
+    "datePublished": "2026-03-13",
+    "dateModified": "2026-03-13",
+    "author": {
+      "@type": "Organization",
+      "name": "The Bitcoin Family Office"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Bitcoin Family Office",
+      "url": "https://thebitcoinfamilyoffice.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://thebitcoinfamilyoffice.com/blog/bitcoin-controlled-foreign-corporation-cfc-guide.html"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a Controlled Foreign Corporation (CFC) for Bitcoin purposes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A CFC is any foreign corporation in which US shareholders (each owning at least 10% by vote or value) collectively own more than 50% of the total vote or value. If you hold Bitcoin in a Cayman Islands, BVI, or Panamanian company and US persons collectively own >50%, it's likely a CFC subject to Subpart F and GILTI rules."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are Bitcoin capital gains inside a foreign corporation taxed immediately?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, in most cases. Bitcoin capital gains inside a CFC are classified as Foreign Personal Holding Company Income (FPHCI) under IRC §954(c)—a category of Subpart F income. This means US shareholders must include their pro-rata share of CFC gains in US gross income in the year earned, regardless of whether any cash is distributed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does GILTI apply to Bitcoin mining profits in a foreign corporation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Possibly. GILTI under §951A captures a CFC's 'net tested income' minus a 10% return on Qualified Business Asset Investment (QBAI). Mining operations with significant ASIC equipment may have substantial QBAI, reducing GILTI inclusion. But electricity-heavy, equipment-light offshore mining operations with minimal fixed assets may have most income swept into GILTI. Individual US shareholders get no §250 deduction, making offshore mining structures particularly punishing for individuals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the check-the-box election and how does it help?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The check-the-box election (Form 8832) allows a foreign eligible entity to be treated as a US tax-transparent entity—a disregarded entity or partnership—for US federal tax purposes. A single-member foreign LLC that checks the box becomes a disregarded entity, eliminating both CFC and PFIC treatment entirely. Income and gains flow directly to the US owner on Schedule C or Schedule E, and the §1014 step-up applies normally to the owner's interest at death."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is §1248 and why does it matter when selling CFC stock?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IRC §1248 recharacterizes what would otherwise be capital gain on CFC stock sale as ordinary dividend income to the extent of the CFC's untaxed earnings and profits (E&P). This is a significant trap: you might expect capital gains rates (0-23.8%) on a CFC exit but find a substantial portion taxed as ordinary income (up to 37%) or qualified dividends (0-23.8% if conditions met). Proper planning—including distributing E&P before sale or using §338(g) elections—is essential."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the §1014 step-up apply to CFC stock?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes—the step-up applies to the CFC stock itself (an asset in the estate), which eliminates capital gain on the appreciation of the stock. However, previously taxed earnings and profits (PTEP) inside the CFC do not get a step-up—they retain their character as income in respect of decedent (IRD). Subpart F inclusions and GILTI already included in the shareholder's income during life create PTEP that can be distributed tax-free, but the IRD rules require careful analysis of what E&P remains untaxed at death."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">The Bitcoin Family Office</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/tools/">Tools</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/faq/">FAQ</a></li>
+    </ul>
+    <a href="/services/" class="nav-cta">Work With Us</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <p class="hero-tag">International Tax &amp; Offshore Structures</p>
+  <h1>Bitcoin &amp; Controlled Foreign Corporations: CFC Rules, Subpart F, and GILTI</h1>
+  <p class="hero-sub">Holding Bitcoin in a foreign corporation doesn't make US taxes disappear—it often makes them worse. Here's what US shareholders in offshore entities must know about Subpart F, GILTI, §1248, and the check-the-box escape hatch.</p>
+  <div class="hero-meta">
+    <span>📅 March 13, 2026</span>
+    <span>⏱ 17 min read</span>
+    <span>🏷 CFC · Subpart F · GILTI · Offshore Structures</span>
+  </div>
+</header>
+
+<article class="article-wrap">
+
+  <p>The appeal is intuitive: park Bitcoin in a Cayman Islands entity, let it appreciate in a zero-tax jurisdiction, and defer—or eliminate—US capital gains tax. It sounds elegant. The IRS saw this coming decades ago.</p>
+
+  <p>Controlled Foreign Corporation (CFC) rules, enacted in 1962 and continuously expanded, were designed precisely to stop US taxpayers from using foreign corporate shells to defer US tax on passive income. Bitcoin capital gains fit squarely within the targeted income categories. In many offshore structures, US shareholders owe tax on Bitcoin gains <em>in the year earned</em>—even if not a single dollar leaves the foreign entity.</p>
+
+  <p>This guide covers everything a US person with (or considering) an offshore Bitcoin entity needs to know: the CFC ownership test, Subpart F income, GILTI, the §1248 exit trap, previously taxed earnings (PTEP), the check-the-box escape hatch, and how estate planning interacts with all of it.</p>
+
+  <div class="callout warning">
+    <p class="callout-title">⚠️ High Complexity Warning</p>
+    <p>CFC rules are among the most complex provisions in the Internal Revenue Code. This guide provides a framework for understanding how the rules apply to Bitcoin; it is not a substitute for advice from a qualified international tax attorney and CPA who specialize in US persons with offshore structures.</p>
+  </div>
+
+  <h2>1. What Is a Controlled Foreign Corporation?</h2>
+
+  <p>A <strong>Controlled Foreign Corporation (CFC)</strong> is defined under IRC §957(a) as any foreign corporation in which <strong>US shareholders</strong> own more than 50% of the total combined voting power or total value of all classes of stock.</p>
+
+  <h3>US Shareholder Threshold</h3>
+  <p>A <strong>US shareholder</strong> for CFC purposes is a US person who owns at least <strong>10% of the total combined voting power or value</strong> of the foreign corporation. Ownership includes direct, indirect, and constructive ownership under §958 attribution rules.</p>
+
+  <p>The constructive ownership rules are broad and often surprising:</p>
+  <ul>
+    <li><strong>Family attribution:</strong> Stock owned by a spouse, children, grandchildren, or parents is attributed to you</li>
+    <li><strong>Entity attribution:</strong> Stock owned by a partnership, estate, or trust flows proportionally to partners/beneficiaries</li>
+    <li><strong>Downward attribution:</strong> Post-2017 TCJA changes made downward attribution from foreign parents to US subsidiaries more aggressive</li>
+  </ul>
+
+  <div class="callout">
+    <p class="callout-title">💡 Key Point</p>
+    <p>You don't need majority ownership to be a US shareholder. Owning 10% or more of a foreign corporation that is collectively >50% US-owned makes you a US shareholder of a CFC—with all the associated reporting obligations and income inclusions.</p>
+  </div>
+
+  <h3>The Ownership Test in Practice</h3>
+  <p>Scenario: A family sets up a Cayman Islands company to hold Bitcoin. The parents own 60%, their US-citizen adult children own 40%. Total US ownership: 100%. The company is a CFC. Both parents and children are US shareholders with Subpart F and GILTI inclusion obligations.</p>
+
+  <p>Scenario 2: A fund structure where US investors collectively own 55% (each owning 8%). No individual meets the 10% threshold—so technically, no individual is a "US shareholder" under §951, and Subpart F/GILTI may not apply. However, PFIC rules under §1297 would likely still apply. CFC and PFIC exist on a spectrum: if CFC rules don't apply, PFIC rules often pick up the slack. (See Section 7 on the CFC/PFIC overlap.)</p>
+
+  <h2>2. Subpart F Income: The Immediate Tax Trap</h2>
+
+  <p>The core mechanism of CFC taxation is <strong>Subpart F income</strong> under IRC §951-§965. US shareholders of a CFC must include their pro-rata share of the CFC's Subpart F income in gross income for the year in which the CFC earns it—whether or not any cash is distributed.</p>
+
+  <h3>The Six Categories of Subpart F Income</h3>
+  <p>Subpart F income consists of several categories, but for Bitcoin investors the critical one is:</p>
+
+  <p><strong>Foreign Personal Holding Company Income (FPHCI)</strong> under §954(c), which includes:</p>
+  <ul>
+    <li>Dividends, interest, royalties, rents</li>
+    <li><strong>Gains from sale or exchange of property</strong> that generates (or would generate) dividends, interest, rents, or royalties</li>
+    <li><strong>Gains from commodities transactions</strong> not from active commodity business</li>
+    <li>Foreign currency gains</li>
+    <li>Income from notional principal contracts</li>
+  </ul>
+
+  <div class="callout warning">
+    <p class="callout-title">⚠️ Bitcoin Capital Gains = Subpart F Income</p>
+    <p>Bitcoin is property under IRS Notice 2014-21. Capital gains from selling Bitcoin inside a CFC are almost universally classified as FPHCI—a category of Subpart F income. US shareholders owe US tax on those gains <em>in the year the CFC earns them</em>, at ordinary income rates (not the preferred 20% LTCG rate that applies to individual Bitcoin sales directly held). There is no deferral advantage to the offshore structure.</p>
+  </div>
+
+  <h3>The Tax Rate Disadvantage</h3>
+  <p>Here's a critical point many offshore advisors gloss over: Subpart F inclusions are taxed as <strong>ordinary income</strong>—not at capital gains rates. A US individual holding Bitcoin directly for more than one year pays 20% LTCG + 3.8% NIIT = 23.8% max. The same Bitcoin gains earned inside a CFC come through as Subpart F ordinary income at up to <strong>37%</strong>.</p>
+
+  <p>The offshore structure doesn't just fail to defer the tax—it makes the rate worse.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Holding Structure</th>
+          <th>Tax Rate (LTCG)</th>
+          <th>Deferral</th>
+          <th>Complexity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Direct individual ownership (1yr+ hold)</td>
+          <td class="good">23.8% max</td>
+          <td>None (tax at sale)</td>
+          <td class="good">Low</td>
+        </tr>
+        <tr>
+          <td>CFC (Subpart F — Bitcoin gains)</td>
+          <td class="bad">Up to 37%</td>
+          <td class="bad">None</td>
+          <td class="bad">Very High</td>
+        </tr>
+        <tr>
+          <td>Domestic corporation (C-Corp)</td>
+          <td class="neutral">21% at entity + LTCG on dividend</td>
+          <td>Some (if retained)</td>
+          <td>High</td>
+        </tr>
+        <tr>
+          <td>Trust (grantor trust)</td>
+          <td class="good">23.8% max (flows to grantor)</td>
+          <td>None (same as individual)</td>
+          <td>Medium</td>
+        </tr>
+        <tr>
+          <td>Partnership / LLC (transparent)</td>
+          <td class="good">23.8% max (flows to partners)</td>
+          <td>None</td>
+          <td class="good">Low-Medium</td>
+        </tr>
+        <tr>
+          <td>CFC (check-the-box, transparent)</td>
+          <td class="good">23.8% max</td>
+          <td>None</td>
+          <td class="good">Low (after election)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>3. GILTI: The Active Income Trap for Offshore Bitcoin Mining</h2>
+
+  <p>The <strong>Global Intangible Low-Taxed Income (GILTI)</strong> regime under §951A, enacted by TCJA 2017, created a second mandatory inclusion for US shareholders of CFCs—this time targeting <em>active</em> business income that doesn't qualify as Subpart F but earns above-normal returns.</p>
+
+  <h3>How GILTI Works</h3>
+  <p>A US shareholder must include in gross income their pro-rata share of <strong>net tested income</strong>—roughly, the CFC's total income minus Subpart F income, minus a <strong>10% return on Qualified Business Asset Investment (QBAI)</strong>.</p>
+
+  <p><strong>QBAI</strong> = tangible depreciable business assets (averaged over 4 quarters). For a mining operation with substantial ASIC rigs, QBAI can be significant, reducing GILTI inclusion.</p>
+
+  <div class="callout warning">
+    <p class="callout-title">⚠️ The Individual GILTI Problem</p>
+    <p>US corporations that are CFC shareholders get a 50% §250 deduction on GILTI, and can claim 80% of foreign tax credits—bringing effective GILTI rate down significantly. <strong>Individual US shareholders get none of this.</strong> Individuals include 100% of GILTI in ordinary income with no deduction and limited FTC. This makes offshore mining structures through CFCs exceptionally punishing for individual owners. S-Corps with §962 elections can partially mitigate this.</p>
+  </div>
+
+  <h3>Mining Income: Subpart F or GILTI?</h3>
+  <p>Mining income from Bitcoin is generally <em>active</em> business income—not FPHCI—so it would not be Subpart F. But it would be swept into GILTI as net tested income. Bitcoin gains from selling mined Bitcoin inside the CFC may be Subpart F (FPHCI). The distinction matters for timing and rate, but both inclusions are immediate and taxed at ordinary rates for individuals.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>CFC Income Type</th>
+          <th>Classification</th>
+          <th>Inclusion Timing</th>
+          <th>Rate (Individual)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bitcoin capital gains (sale inside CFC)</td>
+          <td class="bad">Subpart F (FPHCI)</td>
+          <td class="bad">Year earned</td>
+          <td class="bad">Up to 37%</td>
+        </tr>
+        <tr>
+          <td>Bitcoin mining income (active)</td>
+          <td class="bad">GILTI (net tested income)</td>
+          <td class="bad">Year earned</td>
+          <td class="bad">Up to 37%</td>
+        </tr>
+        <tr>
+          <td>Foreign interest income in CFC</td>
+          <td class="bad">Subpart F (FPHCI)</td>
+          <td class="bad">Year earned</td>
+          <td class="bad">Up to 37%</td>
+        </tr>
+        <tr>
+          <td>Active operating business income (non-Bitcoin)</td>
+          <td class="neutral">GILTI (if above 10% QBAI)</td>
+          <td>Year earned</td>
+          <td>Up to 37% (individual)</td>
+        </tr>
+        <tr>
+          <td>Income below 10% QBAI return</td>
+          <td class="good">No inclusion</td>
+          <td class="good">Deferred</td>
+          <td class="good">0% (until distribution)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>4. Previously Taxed Earnings and Profits (PTEP) — Avoiding Double Tax</h2>
+
+  <p>Once a US shareholder pays tax on Subpart F or GILTI inclusions, those earnings become <strong>Previously Taxed Earnings and Profits (PTEP)</strong> under §959. When the CFC eventually distributes those earnings, the shareholder excludes the PTEP amount from income—avoiding double taxation.</p>
+
+  <h3>The PTEP Tracking Burden</h3>
+  <p>PTEP accounting is complex. The IRS requires meticulous tracking of:</p>
+  <ul>
+    <li>Which earnings have been included under Subpart F vs. GILTI</li>
+    <li>Foreign tax credits associated with PTEP distributions</li>
+    <li>Currency exchange effects on PTEP (§986(c) exchange gain/loss)</li>
+    <li>PTEP "accounts" by inclusion year and character</li>
+  </ul>
+
+  <p>The 2023 PTEP proposed regulations (not yet finalized as of this writing) would add further complexity. Any CFC structure requires robust bookkeeping to avoid inadvertent double taxation or incorrect exclusion claims.</p>
+
+  <div class="callout">
+    <p class="callout-title">💡 Silver Lining</p>
+    <p>PTEP is not wasted tax. Earnings already included and taxed can be distributed tax-free (subject to currency rules). The problem is the timing mismatch: you pay tax now, you get the money later—and you've lost the time value of that tax payment.</p>
+  </div>
+
+  <h2>5. The §1248 Exit Trap: Your Capital Gain Becomes Ordinary Income</h2>
+
+  <p>One of the most dangerous CFC provisions for sellers of offshore Bitcoin companies is <strong>IRC §1248</strong>. When a US shareholder sells or exchanges CFC stock, any gain that would otherwise be a capital gain is recharacterized as <strong>ordinary dividend income</strong> to the extent of the CFC's untaxed earnings and profits (E&amp;P) during the period of US shareholder ownership.</p>
+
+  <h3>How §1248 Works</h3>
+  <p>Example: You own 100% of a Cayman Islands company that accumulated $5M in E&amp;P from Bitcoin gains (which were taxed as Subpart F during the accumulation—so they're PTEP). You sell the company stock for $8M. Your outside basis is $1M. Gain = $7M.</p>
+
+  <ul>
+    <li>If the $5M was already taxed (PTEP) → the PTEP portion of E&amp;P reduces the §1248 dividend recharacterization</li>
+    <li>If the CFC accumulated E&amp;P that was NOT previously taxed → §1248 treats those earnings as ordinary income upon stock sale</li>
+    <li>Remaining gain (above E&amp;P) = capital gain (long-term or short-term by holding period)</li>
+  </ul>
+
+  <div class="callout warning">
+    <p class="callout-title">⚠️ Planning Implication</p>
+    <p>If your CFC has accumulated E&amp;P that hasn't been taxed as Subpart F or GILTI (e.g., income below the QBAI threshold that escaped inclusion), selling the CFC stock triggers §1248 recharacterization of those earnings as ordinary income. Distributing accumulated E&amp;P as dividends before the sale—paying dividend tax now rather than ordinary income tax on exit—can result in better rates if qualified dividend treatment applies. Your international tax counsel should model both scenarios before signing any transaction document.</p>
+  </div>
+
+  <h3>§338(g) Election: A Potential Solution</h3>
+  <p>A buyer of CFC stock can make a §338(g) election, treating the stock purchase as an asset purchase for US tax purposes. This can eliminate the CFC's E&amp;P and give the buyer a stepped-up asset basis, eliminating future Subpart F issues. The seller generally cannot force this—it's the buyer's election—but sophisticated buyers of offshore Bitcoin entities will often demand it.</p>
+
+  <h2>6. The §1014 Step-Up and CFC Estate Planning</h2>
+
+  <p>At death, a US shareholder's CFC stock is included in the gross estate at fair market value. The beneficiaries receive a <strong>§1014 step-up</strong> in the basis of the stock itself—eliminating capital gain on the appreciation of the stock's value.</p>
+
+  <p>However, the step-up applies to the stock as an asset—not to the underlying earnings inside the CFC:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>§1014 Step-Up?</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CFC stock (appreciated value)</td>
+          <td class="good">Yes</td>
+          <td>Capital gain eliminated on appreciation</td>
+        </tr>
+        <tr>
+          <td>PTEP inside CFC</td>
+          <td class="bad">No</td>
+          <td>IRD — taxed when distributed to heirs; no §1014 basis reset</td>
+        </tr>
+        <tr>
+          <td>Untaxed E&amp;P inside CFC</td>
+          <td class="neutral">Partial</td>
+          <td>Heirs get stock step-up but §1248 may recharacterize gain on sale</td>
+        </tr>
+        <tr>
+          <td>Bitcoin held directly (not in CFC)</td>
+          <td class="good">Yes — Full Step-Up</td>
+          <td>Basis resets to FMV at death; all pre-death gains eliminated</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warning">
+    <p class="callout-title">⚠️ The IRD Trap in CFC Structures</p>
+    <p>PTEP accumulated inside a CFC is Income in Respect of a Decedent (IRD). Your heirs receive no §1014 step-up on that income—they'll pay ordinary income tax when it's distributed. This is a critical disadvantage versus direct Bitcoin ownership, where the §1014 step-up permanently eliminates all pre-death gains. If your goal is multigenerational wealth transfer, direct Bitcoin ownership inside a properly structured domestic trust almost always beats an offshore CFC from an estate planning perspective.</p>
+  </div>
+
+  <!-- LEAD MAGNET #1 -->
+  <div class="lead-magnet">
+    <h3>📋 36 Questions to Ask Your Bitcoin Mining Host Before Signing</h3>
+    <p>If you're evaluating offshore mining operations for your Bitcoin portfolio, due diligence on your hosting partner is essential—especially given the complex tax treatment of foreign mining income. Our 36-question checklist covers infrastructure, security, pricing, uptime, legal structure, and exit rights.</p>
+    <a href="http://44134802.hs-sites.com/abundant-mines-36-questions" class="btn" target="_blank" rel="noopener">Download the Checklist →</a>
+  </div>
+
+  <h2>7. CFC vs. PFIC: The Overlap Rules</h2>
+
+  <p>When a foreign corporation could qualify as both a CFC and a PFIC, specific rules determine which regime applies:</p>
+
+  <h3>The CFC Exception to PFIC</h3>
+  <p>Under §1297(e), a foreign corporation is generally not treated as a PFIC with respect to a US shareholder during any period in which the shareholder is also subject to CFC Subpart F rules. This prevents a taxpayer from electing PFIC QEF or MTM treatment to avoid the harsher §1291 excess distribution regime—while also escaping Subpart F by claiming PFIC status.</p>
+
+  <h3>The Practical Matrix</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>US Ownership</th>
+          <th>Individual Owns ≥10%?</th>
+          <th>Applicable Regime</th>
+          <th>Bitcoin Gain Treatment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>&gt;50% US-owned, individual owns ≥10%</td>
+          <td class="bad">Yes</td>
+          <td class="bad">CFC</td>
+          <td class="bad">Subpart F (ordinary income)</td>
+        </tr>
+        <tr>
+          <td>&gt;50% US-owned, individual owns &lt;10%</td>
+          <td>No</td>
+          <td class="bad">PFIC (if income/asset tests met)</td>
+          <td class="bad">§1291 excess distribution</td>
+        </tr>
+        <tr>
+          <td>&lt;50% US-owned, individual owns &lt;10%</td>
+          <td>No</td>
+          <td class="bad">PFIC (if tests met)</td>
+          <td class="bad">§1291 excess distribution</td>
+        </tr>
+        <tr>
+          <td>Check-the-box election (disregarded entity)</td>
+          <td>N/A</td>
+          <td class="good">Transparent — no CFC/PFIC</td>
+          <td class="good">LTCG to individual directly</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Note: If you own &lt;10% of a CFC, CFC Subpart F rules don't apply to you—but PFIC rules may. As a minority owner of a foreign Bitcoin fund or vehicle, <a href="bitcoin-pfic-rules-guide.html">PFIC rules</a> deserve separate analysis.</p>
+
+  <h2>8. The Check-the-Box Solution</h2>
+
+  <p>For many offshore Bitcoin structures, the simplest and most powerful planning tool is the <strong>check-the-box election</strong> under Treasury Regulation §301.7701-3.</p>
+
+  <h3>What Check-the-Box Does</h3>
+  <p>An "eligible entity" (most foreign entities that are not per se corporations) can elect to be treated as:</p>
+  <ul>
+    <li><strong>Disregarded entity</strong> (if single member) — transparent for US tax; owner reports income directly</li>
+    <li><strong>Partnership</strong> (if multi-member) — partnership tax rules apply; K-1s issued</li>
+  </ul>
+
+  <p>A foreign LLC or limited company owned by a single US person that files Form 8832 to elect disregarded entity status eliminates both CFC and PFIC treatment entirely. The Bitcoin held inside the entity is treated as directly owned by the US person for all US tax purposes.</p>
+
+  <h3>The Result</h3>
+  <ul>
+    <li>Bitcoin capital gains taxed at preferential LTCG rates (0%, 15%, 20%) if held &gt;1 year</li>
+    <li>No Subpart F inclusion</li>
+    <li>No GILTI inclusion</li>
+    <li>§1014 step-up applies normally at death</li>
+    <li>FBAR/FATCA reporting still required for the foreign account</li>
+  </ul>
+
+  <div class="callout">
+    <p class="callout-title">💡 The Check-the-Box Limitation</p>
+    <p>Check-the-box applies for US tax purposes only. The foreign jurisdiction may still treat the entity as an opaque corporation—potentially triggering withholding taxes or other local issues. More importantly, many foreign jurisdictions will not allow an entity to make a US-only tax election that has no legal effect locally. The structure may also introduce substance requirements (economic substance rules in the Cayman Islands, for example) that are incompatible with a pure holding entity. Confirm with both a US and local tax advisor before relying on this approach.</p>
+  </div>
+
+  <h3>Form 8832 Filing Requirements</h3>
+  <ul>
+    <li>Filed with the IRS, signed by all members</li>
+    <li>Effective date can be up to 75 days before filing or 12 months after</li>
+    <li>Late elections may be available via Rev. Proc. 2009-41 (reasonable cause)</li>
+    <li>Must be filed before the entity has income to classify</li>
+  </ul>
+
+  <h2>9. CFC Reporting Requirements</h2>
+
+  <p>Beyond the tax inclusions, CFC status triggers substantial <strong>annual reporting</strong> obligations:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Form</th>
+          <th>Purpose</th>
+          <th>Who Files</th>
+          <th>Penalty for Failure</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Form 5471</td>
+          <td>Annual CFC information return</td>
+          <td>US shareholders of CFCs</td>
+          <td>$10,000+ per year, per CFC</td>
+        </tr>
+        <tr>
+          <td>Form 8992</td>
+          <td>GILTI calculation</td>
+          <td>CFC shareholders with GILTI</td>
+          <td>Attached to 5471</td>
+        </tr>
+        <tr>
+          <td>Form 8621</td>
+          <td>PFIC elections (if applicable)</td>
+          <td>PFIC shareholders</td>
+          <td>$10,000 per year</td>
+        </tr>
+        <tr>
+          <td>FinCEN 114 (FBAR)</td>
+          <td>Foreign financial accounts &gt;$10K</td>
+          <td>US persons with foreign accounts</td>
+          <td>Up to $10K-$100K+ per violation</td>
+        </tr>
+        <tr>
+          <td>Form 8938 (FATCA)</td>
+          <td>Specified foreign financial assets</td>
+          <td>US persons above thresholds</td>
+          <td>$10,000+ per year</td>
+        </tr>
+        <tr>
+          <td>Form 926</td>
+          <td>Transfer of property to foreign corporation</td>
+          <td>US transferors</td>
+          <td>10% of value transferred</td>
+        </tr>
+        <tr>
+          <td>Form 8832</td>
+          <td>Check-the-box election</td>
+          <td>Entity + owners</td>
+          <td>No election if not filed</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warning">
+    <p class="callout-title">⚠️ Form 5471 Is Non-Trivial</p>
+    <p>Form 5471 can run dozens of pages and requires detailed financial statements, E&amp;P calculations, ownership charts, and transaction disclosures. A single CFC can cost $5,000–$15,000 annually in accounting fees just for the form. Factor this compliance burden into any analysis of offshore structure economics.</p>
+  </div>
+
+  <h2>10. Legitimate Uses of Offshore Structures for Bitcoin</h2>
+
+  <p>Given the complexity and the tax disadvantages for passive Bitcoin holders, when do offshore structures actually make sense?</p>
+
+  <h3>Genuine Business Operations</h3>
+  <p>If you are operating a legitimate Bitcoin mining business or Bitcoin-related technology company with real substance in a low-tax jurisdiction—employees, office space, genuine management—there may be GILTI savings through high QBAI (physical equipment) and foreign tax credits. But this requires real economic substance, not just an offshore holding shell.</p>
+
+  <h3>Non-US Persons</h3>
+  <p>These rules apply to US persons (citizens, green card holders, substantial presence). Non-US persons investing through a foreign corporation may achieve legitimate tax deferral—the Subpart F and GILTI regimes simply don't apply to foreign investors who aren't US shareholders. For international family structures with a mix of US and non-US members, careful structuring can segregate the US taxable income.</p>
+
+  <h3>Asset Protection</h3>
+  <p>Offshore entities can provide asset protection benefits—but US courts have become increasingly aggressive in piercing offshore structures, particularly when the grantor retains control. For pure asset protection, domestic trust structures in Nevada, Wyoming, or South Dakota often achieve comparable protection with far less compliance cost.</p>
+
+  <h3>Estate Planning for Non-Citizen Spouses</h3>
+  <p>In some international family structures, holding Bitcoin through a properly structured foreign entity can facilitate Qualified Domestic Trust (QDOT) planning. See our guide on <a href="bitcoin-estate-planning-non-citizen-spouse.html">Bitcoin estate planning for non-citizen spouses</a> for details.</p>
+
+  <!-- LEAD MAGNET #2 -->
+  <div class="lead-magnet">
+    <h3>⛏️ Bitcoin Mining: The Most Powerful Tax Strategy Available</h3>
+    <p>Mining Bitcoin generates deductions—depreciation, OpEx, bonus depreciation—that can offset income from your entire portfolio, not just mining profits. If you're a high-income investor exploring Bitcoin mining as a tax strategy, this is the resource you need before making any decisions.</p>
+    <a href="https://abundantmines.com/tax-strategy/" class="btn" target="_blank" rel="noopener">Explore the Mining Tax Strategy →</a>
+  </div>
+
+  <h2>11. Practical Action Plan: What to Do If You Have an Offshore Bitcoin Structure</h2>
+
+  <ul class="action-steps">
+    <li>
+      <div>
+        <p><strong>Determine if you have a CFC.</strong> Tally all US ownership (including family attribution and entity attribution) of each foreign entity holding Bitcoin. If US persons collectively own &gt;50% and you individually own ≥10%, you likely have CFC reporting obligations going back to inception.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>Audit your Subpart F inclusions.</strong> Review all years the CFC has been in existence. Bitcoin gains inside the CFC should have been included in your US gross income as Subpart F income in the year earned. Unreported inclusions = underpayment of tax, interest, and possibly penalties. Voluntary disclosure may be appropriate.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>Evaluate the check-the-box election.</strong> For single-member foreign LLCs holding Bitcoin as a passive investment (not active business), filing Form 8832 to elect disregarded entity status eliminates Subpart F/GILTI prospectively. Confirm local law permits the entity to continue operating as a single-member LLC and that no local tax consequences attach to the election.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>Model the exit economics before selling.</strong> If selling the CFC or winding it down, analyze §1248 recharacterization risk on accumulated E&amp;P, PTEP exclusions available, §338(g) election feasibility, and whether distributing E&amp;P as dividends before sale improves after-tax economics.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>Consider domestic alternatives.</strong> For estate planning and wealth preservation goals, direct Bitcoin ownership inside a Wyoming LLC, domestic irrevocable trust, or dynasty trust with professional trustee typically achieves better after-tax outcomes than an offshore CFC—with a fraction of the compliance cost and a full §1014 step-up at death.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>File all required forms retroactively if necessary.</strong> Form 5471, Form 8992, FinCEN 114, and Form 8938 must be filed for every year the CFC (or foreign account) existed. Amended returns and streamlined filing procedures may be available for non-willful omissions. Do not delay—penalties compound quickly and the IRS has been aggressive on offshore compliance.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>Integrate estate planning.</strong> If you're maintaining an offshore structure for legitimate non-tax reasons, ensure your estate plan accounts for CFC stock in your taxable estate, PTEP as IRD (not stepped-up at death), and the beneficiaries' obligation to continue Form 5471 filing if they inherit CFC stock.</p>
+      </div>
+    </li>
+  </ul>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">What is a Controlled Foreign Corporation (CFC) for Bitcoin purposes?</p>
+    <p class="faq-a">A CFC is any foreign corporation in which US shareholders (each owning at least 10% by vote or value) collectively own more than 50% of the total vote or value. If you hold Bitcoin in a Cayman Islands, BVI, or Panamanian company and US persons collectively own >50%, it's likely a CFC subject to Subpart F and GILTI rules—with annual reporting on Form 5471 and current income inclusion on Bitcoin gains.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Are Bitcoin capital gains inside a foreign corporation taxed immediately?</p>
+    <p class="faq-a">Yes, in most cases. Bitcoin capital gains inside a CFC are classified as Foreign Personal Holding Company Income (FPHCI) under IRC §954(c)—a category of Subpart F income. This means US shareholders must include their pro-rata share of CFC gains in US gross income in the year earned, regardless of whether any cash is distributed. Worse, the rate is ordinary income (up to 37%)—not the 23.8% maximum that applies to long-term capital gains on directly held Bitcoin.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Does GILTI apply to Bitcoin mining profits in a foreign corporation?</p>
+    <p class="faq-a">Possibly. GILTI under §951A captures a CFC's "net tested income" minus a 10% return on Qualified Business Asset Investment (QBAI). Mining operations with substantial ASIC equipment may have significant QBAI, reducing GILTI inclusion. But electricity-heavy, equipment-light offshore operations with minimal fixed assets may have most income swept into GILTI. Individual US shareholders get no §250 deduction, making offshore mining through CFCs particularly punishing compared to domestic structures.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What is the check-the-box election and how does it help?</p>
+    <p class="faq-a">The check-the-box election (Form 8832) allows a foreign eligible entity to be treated as tax-transparent for US purposes. A single-member foreign LLC that elects disregarded entity status is ignored for US tax—Bitcoin inside it is treated as directly owned by the US person, with LTCG rates and full §1014 step-up at death. No Subpart F, no GILTI. FBAR/FATCA reporting still applies to the foreign account.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What is §1248 and why does it matter when selling CFC stock?</p>
+    <p class="faq-a">IRC §1248 recharacterizes capital gain on CFC stock sale as ordinary dividend income to the extent of the CFC's untaxed earnings and profits (E&P). This means a CFC exit you expected to be taxed at 23.8% may include a significant ordinary income component at up to 37%. Proper pre-sale planning—including E&P analysis, PTEP accounting, and potentially distributing accumulated E&P before sale—is essential before any CFC transaction.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Does the §1014 step-up apply to CFC stock?</p>
+    <p class="faq-a">Yes—the step-up applies to the CFC stock itself at the decedent's death, eliminating capital gain on stock appreciation. However, PTEP inside the CFC (earnings already taxed as Subpart F/GILTI during life) are IRD—taxed as ordinary income when distributed to heirs, with no step-up. Untaxed E&P inside the CFC may also trigger §1248 recharacterization on sale by heirs. Direct Bitcoin ownership remains superior for estate planning purposes due to the clean, full §1014 step-up with no IRD complication.</p>
+  </div>
+
+  <h2>The Bottom Line: Offshore Bitcoin Structures Are Usually a Tax Mistake</h2>
+
+  <p>The promise of tax deferral—or elimination—through offshore Bitcoin structures collides with a comprehensive US legal framework that has anticipated every angle. Subpart F income, GILTI, §1248 recharacterization, PTEP complexity, Form 5471 compliance costs, and the IRD trap at death combine to make offshore CFCs a net negative for most passive Bitcoin investors.</p>
+
+  <p>The situations where offshore structures genuinely make sense are narrow: real operating businesses with economic substance, non-US persons in the structure, or specific asset protection contexts where domestic alternatives fall short. In nearly every other case, the combination of favorable LTCG rates on directly held Bitcoin and the §1014 step-up at death delivers better after-tax outcomes with radically less complexity.</p>
+
+  <p>If you already have an offshore Bitcoin structure, the priority is compliance first—get all required forms filed, understand your Subpart F/GILTI inclusions and any under-reporting, and evaluate whether the check-the-box election can simplify your structure prospectively. Then, working with qualified international tax and estate planning counsel, model the long-term economics honestly and decide whether the structure's complexity is justified by genuine non-tax benefits.</p>
+
+  <p>For most Bitcoin families, the answer will be: wind it down, hold directly, and let the §1014 step-up do the heavy lifting at generational transition. It's not glamorous. It's just correct.</p>
+
+  <hr style="border: none; border-top: 1px solid var(--border); margin: 3rem 0;">
+
+  <p style="font-size:0.87rem; color:var(--text-dim); line-height:1.65;"><em>This article is for informational purposes only and does not constitute legal, tax, or financial advice. CFC rules, GILTI, Subpart F, and international tax law are complex and highly fact-specific. Always consult a qualified international tax attorney and CPA before structuring any offshore entity or making compliance decisions. Tax law is subject to change; confirm current rules with your advisors.</em></p>
+
+  <h2>Related Reading</h2>
+  <ul>
+    <li><a href="bitcoin-pfic-rules-guide.html">Bitcoin &amp; PFIC Rules: Foreign Investment Company Tax Traps</a></li>
+    <li><a href="bitcoin-foreign-tax-credit.html">Bitcoin &amp; the Foreign Tax Credit (§901)</a></li>
+    <li><a href="bitcoin-foreign-earned-income-exclusion.html">Bitcoin &amp; the Foreign Earned Income Exclusion (§911)</a></li>
+    <li><a href="bitcoin-fbar-fatca-reporting.html">Bitcoin FBAR &amp; FATCA Reporting Requirements</a></li>
+    <li><a href="bitcoin-estate-planning-non-citizen-spouse.html">Bitcoin Estate Planning for Non-Citizen Spouses</a></li>
+    <li><a href="bitcoin-estate-planning-guide.html">The Complete Bitcoin Estate Planning Guide</a></li>
+    <li><a href="bitcoin-long-term-capital-gains.html">Bitcoin Long-Term Capital Gains Tax Guide</a></li>
+    <li><a href="bitcoin-trust-best-state-situs.html">Best States to Domicile a Bitcoin Trust</a></li>
+  </ul>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-logo">The Bitcoin Family Office</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/blog/">Insights</a>
+      <a href="/services/">Services</a>
+      <a href="/tools/">Tools</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/disclosures.html">Disclosures</a>
+    </div>
+    <p>© 2026 The Bitcoin Family Office. For informational purposes only. Not legal, tax, or financial advice. Consult qualified advisors for your specific situation.</p>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
