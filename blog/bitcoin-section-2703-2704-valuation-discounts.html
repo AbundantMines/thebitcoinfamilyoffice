@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section 2703 & 2704: Protecting Bitcoin FLP Valuation Discounts | The Bitcoin Family Office</title>
+  <meta name="description" content="How IRS Sections 2703 and 2704 can strip Bitcoin FLP and LLC valuation discounts — and the precise structuring required to protect them. Buy-sell agreements, lapsing rights, applicable restrictions, and Wyoming LLC strategy." />
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-section-2703-2704-valuation-discounts.html" />
+  <meta property="og:title" content="Section 2703 & 2704: Protecting Bitcoin FLP Valuation Discounts" />
+  <meta property="og:description" content="The IRS has two weapons against FLP valuation discounts: §2703 disregards buy-sell agreements that don't meet a 3-part test, and §2704 disregards liquidation restrictions that exceed default state law. Here's how to structure Bitcoin family entities to survive both." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-section-2703-2704-valuation-discounts.html" />
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#0a0a0a;color:#e8e0d0;font-family:'EB Garamond',serif;font-size:1.15rem;line-height:1.8}
+    a{color:#C9A84C;text-decoration:none}a:hover{text-decoration:underline}
+    nav{background:#0d0d0d;border-bottom:1px solid #222;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:#C9A84C}
+    .nav-links{display:flex;gap:1.5rem;list-style:none}
+    .nav-links a{color:#aaa;font-family:'Inter',sans-serif;font-size:.85rem}
+    .nav-links a:hover{color:#C9A84C}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:22px;height:2px;background:#e8e0d0}
+    @media(max-width:700px){.nav-links{display:none;flex-direction:column;position:absolute;top:56px;left:0;width:100%;background:#0d0d0d;padding:1rem 2rem;gap:1rem;z-index:99}.nav-links.open{display:flex}.hamburger{display:flex}}
+    header.hero{max-width:860px;margin:3rem auto 2rem;padding:0 2rem;border-left:3px solid #C9A84C}
+    header.hero h1{font-family:'Playfair Display',serif;font-size:2.4rem;color:#f0e8d8;line-height:1.25;margin-bottom:.75rem}
+    .meta{font-family:'Inter',sans-serif;font-size:.82rem;color:#888;margin-bottom:1.5rem}
+    .meta span{margin-right:1.2rem}
+    article.content{max-width:860px;margin:0 auto;padding:0 2rem 4rem}
+    h2{font-family:'Playfair Display',serif;font-size:1.75rem;color:#f0e8d8;margin:2.5rem 0 .75rem;border-bottom:1px solid #222;padding-bottom:.4rem}
+    h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:#C9A84C;margin:2rem 0 .5rem}
+    p{margin-bottom:1.2rem}
+    ul,ol{margin:0 0 1.2rem 1.5rem}
+    li{margin-bottom:.45rem}
+    .callout{background:#111;border-left:3px solid #C9A84C;padding:1.2rem 1.5rem;margin:2rem 0;border-radius:0 6px 6px 0}
+    .callout strong{color:#C9A84C}
+    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-family:'Inter',sans-serif;font-size:.88rem}
+    th{background:#161616;color:#C9A84C;padding:.65rem 1rem;text-align:left;border-bottom:2px solid #333}
+    td{padding:.6rem 1rem;border-bottom:1px solid #1e1e1e;vertical-align:top}
+    tr:hover td{background:#0f0f0f}
+    .highlight-box{background:#0f0f0f;border:1px solid #2a2a2a;padding:1.4rem;border-radius:8px;margin:2rem 0}
+    .cta-box{background:linear-gradient(135deg,#111 0%,#161616 100%);border:1px solid #C9A84C;padding:2rem;border-radius:8px;margin:3rem 0;text-align:center}
+    .cta-box h3{color:#C9A84C;margin-bottom:.75rem;font-size:1.25rem}
+    .cta-box p{color:#bbb;font-size:.95rem;margin-bottom:1.25rem}
+    .cta-btn{display:inline-block;background:#C9A84C;color:#000;font-family:'Inter',sans-serif;font-weight:600;font-size:.9rem;padding:.75rem 1.75rem;border-radius:4px;text-decoration:none}
+    .cta-btn:hover{background:#e0b85a;text-decoration:none}
+    .checklist{list-style:none;margin-left:0}
+    .checklist li::before{content:"☐ ";color:#C9A84C}
+    .faq-item{margin-bottom:1.5rem}
+    .faq-q{font-family:'Inter',sans-serif;font-weight:600;color:#f0e8d8;margin-bottom:.4rem}
+    footer{background:#0d0d0d;border-top:1px solid #1a1a1a;padding:2rem;text-align:center;font-family:'Inter',sans-serif;font-size:.8rem;color:#555}
+  </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Section 2703 & 2704: Protecting Bitcoin FLP Valuation Discounts",
+    "description": "How IRS Sections 2703 and 2704 can strip Bitcoin FLP and LLC valuation discounts — and the precise structuring required to protect them.",
+    "datePublished": "2026-03-14",
+    "dateModified": "2026-03-14",
+    "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
+    "publisher": {"@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://thebitcoinfamilyoffice.com/blog/bitcoin-section-2703-2704-valuation-discounts.html"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Section 2703 and how does it affect Bitcoin FLP buy-sell agreements?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Section 2703 requires the IRS to disregard any option, agreement, right, or restriction on the use or disposition of property for estate and gift tax valuation purposes — unless the arrangement meets a three-part test: (1) it is a bona fide business arrangement, (2) it is not a device to transfer property to natural objects of the transferor's bounty for less than full and adequate consideration, and (3) its terms are comparable to similar arrangements entered into by persons in an arm's-length transaction. Buy-sell agreements in Bitcoin family LLCs or FLPs that set below-FMV transfer prices will be disregarded and the Bitcoin valued at full fair market value unless all three prongs are satisfied."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is Section 2704(b) and which LLC restrictions does it disregard?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Section 2704(b) requires the IRS to disregard 'applicable restrictions' when valuing interests in family-controlled entities transferred to family members. An 'applicable restriction' is any restriction that (a) limits the ability of the entity to liquidate, (b) lapses after the transfer, or (c) can be removed by the transferor or the transferor's family after the transfer. However, restrictions that merely replicate what applicable state law would impose in the absence of the restriction are NOT applicable restrictions and are not disregarded. This is why Wyoming LLC law is so powerful for Bitcoin family planning — Wyoming's default law already includes strong restrictions that don't need the operating agreement to impose anything 'extra.'"}
+      },
+      {
+        "@type": "Question",
+        "name": "Does Section 2704 eliminate all FLP and LLC valuation discounts?",
+        "acceptedAnswer": {"@type": "Answer", "text": "No. Section 2704(b) only disregards 'applicable restrictions' — those that exceed default state law. Discounts arising from genuine lack of control and lack of marketability (DLOM) that exist under applicable state law remain fully available. Minority interest discounts (typically 20–35%) and marketability discounts (typically 15–25%) survive §2704 when they reflect real economic limitations rather than artificial agreement restrictions. Courts have repeatedly upheld combined discounts of 35–45% on properly structured family entity interests. The key is that the entity must have genuine economic substance and the restrictions must be consistent with (not more restrictive than) applicable state law."}
+      },
+      {
+        "@type": "Question",
+        "name": "Why is Wyoming the best state for a Bitcoin family LLC to survive Section 2704?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Wyoming's LLC Act imposes default liquidation restrictions by statute that do not require any operating agreement provision to trigger. Because these restrictions exist in state law by default — not by contractual imposition — they are NOT 'applicable restrictions' under §2704(b). They cannot be disregarded by the IRS. Wyoming also allows single-member LLCs with full charging order protection, permits perpetual duration, allows LLC managers nearly unlimited discretion over distributions, and has no state income tax. The combination of strong statutory default restrictions plus favorable charging order law makes Wyoming the leading choice for Bitcoin family LLCs designed to withstand IRS scrutiny."}
+      },
+      {
+        "@type": "Question",
+        "name": "What happened to the 2016 proposed Section 2704 regulations?",
+        "acceptedAnswer": {"@type": "Answer", "text": "In August 2016, Treasury proposed regulations that would have dramatically expanded §2704(b) to disregard virtually all liquidation restrictions imposed by family-controlled entity operating agreements, regardless of state law — effectively eliminating most valuation discounts on family entity interests. The regulations generated massive opposition from the estate planning bar and business community. In October 2017, Treasury withdrew the proposed regulations. However, the underlying statutory authority for such regulations remains, and Treasury could propose new regulations in the future. Families with Bitcoin FLPs should structure for genuine economic substance rather than relying solely on operating agreement restrictions that could be legislatively targeted."}
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">The Bitcoin Family Office</a>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/tools/">Tools</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <h1>Section 2703 &amp; 2704: Protecting Bitcoin FLP Valuation Discounts</h1>
+  <div class="meta">
+    <span>March 14, 2026</span>
+    <span>18 min read</span>
+    <span>Estate Planning · Entity Structuring</span>
+  </div>
+</header>
+
+<article class="content">
+
+  <p>A Bitcoin family limited partnership or LLC can legitimately reduce the taxable value of transferred interests by 35–45% through minority interest and lack-of-marketability discounts. On a $20 million Bitcoin position, that's $7–9 million in estate value that never reaches the taxable calculation — worth $3.5–4.5 million in estate tax savings at the 40% federal rate.</p>
+
+  <p>But the IRS has two targeted weapons specifically designed to strip those discounts: §2703, which can disregard buy-sell agreements and transfer restrictions that don't survive a three-part bona fide test, and §2704, which disregards liquidation restrictions that exceed what applicable state law would impose by default. Together, they represent the primary IRS attack vector against family entity valuation planning.</p>
+
+  <p>Understanding exactly what §2703 and §2704 target — and what they do <em>not</em> reach — is essential for structuring Bitcoin family entities that deliver legitimate, defensible discounts that hold up in court.</p>
+
+  <div class="callout">
+    <strong>The structural reality:</strong> §2703 and §2704 do not eliminate FLP and LLC valuation discounts. They eliminate <em>artificial</em> discounts created by agreement provisions that have no independent economic substance. Genuine minority interest and marketability discounts arising from real economic limitations on FLP/LLC interests — which exist regardless of any agreement — survive both statutes fully intact.
+  </div>
+
+  <h2>Section 2703: Disregarding Buy-Sell Agreements and Transfer Restrictions</h2>
+
+  <p>Section 2703(a) states a broad rule: for estate, gift, and generation-skipping transfer tax purposes, the value of any property shall be determined without regard to:</p>
+
+  <ul>
+    <li>Any option, agreement, or other right to acquire or use property at a price less than fair market value</li>
+    <li>Any restriction on the right to sell or use property</li>
+  </ul>
+
+  <p>This means that if a Bitcoin family LLC operating agreement contains a right of first refusal at a formula price below FMV, or a restriction prohibiting transfers to non-family members, the IRS will ignore that restriction when calculating estate and gift tax. The interest is valued at full fair market value as if the restriction did not exist — unless the arrangement qualifies under the §2703(b) safe harbor.</p>
+
+  <h3>The §2703(b) Three-Part Safe Harbor</h3>
+
+  <p>A buy-sell agreement or transfer restriction will be respected for valuation purposes only if it meets ALL THREE of the following requirements:</p>
+
+  <p><strong>Prong 1 — Bona Fide Business Arrangement.</strong> The restriction must serve a genuine business purpose beyond estate tax reduction. Acceptable purposes include maintaining family ownership and control, preventing hostile third-party acquisition of interests, ensuring management continuity, preserving family harmony in a closely held entity, and complying with regulatory or licensing requirements. Tax motivation alone disqualifies the arrangement. The business purpose must be documented and demonstrable from the entity's formation history, operating history, and contemporaneous records.</p>
+
+  <p><strong>Prong 2 — Not a Device to Transfer to Natural Objects of Bounty.</strong> The restriction cannot be primarily a mechanism to pass property to the transferor's descendants at below-FMV prices. The IRS scrutinizes arrangements where (a) the buy-out price is set significantly below current FMV, (b) the formula price has historically tracked below FMV, or (c) the practical effect of the restriction is to benefit only family members. A restriction that compels sale at a formula price to an entity controlled by the decedent's children, at a price 40% below FMV, fails this test on its face.</p>
+
+  <p><strong>Prong 3 — Arm's-Length Comparability.</strong> The terms of the arrangement must be comparable to arrangements entered into in arm's-length transactions by unrelated parties in similar industries or contexts. This requires actual market evidence — agreements between unrelated business partners, buy-sell agreements in comparable closely-held businesses, or expert testimony about industry-standard transfer restriction terms. Agreements negotiated between family members without external market benchmarking routinely fail this prong.</p>
+
+  <div class="callout">
+    <strong>Practical implication for Bitcoin family LLCs:</strong> Many Bitcoin family LLC operating agreements include "right of first refusal at book value" or "transfer restricted to family members only" provisions designed primarily to maintain family control. If such provisions purport to set a transfer price, the IRS may challenge that price under §2703 unless the three-part test is satisfied. The solution: structure buy-sell provisions for genuine business purposes (e.g., preventing Bitcoin from passing to a divorcing spouse of a family member), price them at fair market value as determined by an independent appraiser, and document the business rationale contemporaneously.
+  </div>
+
+  <h3>What §2703 Does NOT Affect</h3>
+
+  <p>Section 2703 targets restrictions on the <em>transfer or use</em> of property — not the economic characteristics of the underlying interest itself. Minority interest discounts and lack-of-marketability discounts that exist because of genuine economic limitations on LLC interests (limited voting rights, no right to force liquidation, restrictions on outside-entity transfers under state default law) are <em>not</em> restrictions within the meaning of §2703. They are simply the economic reality of the interest being valued. Courts in <em>Holman v. Commissioner</em> and <em>Stone v. Commissioner</em> have confirmed that legitimate DLOM and minority discounts survive §2703 scrutiny when they reflect real economic limitations rather than artificially imposed contractual restrictions.</p>
+
+  <h2>Section 2704: Lapsing Rights and Applicable Restrictions</h2>
+
+  <p>Section 2704 has two operative sub-rules, each targeting a different form of manipulation:</p>
+
+  <h3>§2704(a): Lapsing Rights Are Treated as Transfers</h3>
+
+  <p>If an individual holds a voting or liquidation right in a family-controlled entity and that right lapses at or after the transfer of an interest to a family member, §2704(a) treats the lapse as a taxable transfer. The amount of the transfer equals the excess of: (a) the value of all interests held by the individual immediately before the lapse, over (b) the value of those interests immediately after the lapse.</p>
+
+  <p>The classic trigger: a family LLC operating agreement provides that the manager-member holds broad liquidation authority, but that authority automatically lapses upon the manager's death or upon transfer of a certain percentage of interests. The lapse-at-transfer shifts economic value to other members — §2704(a) taxes that shift as a deemed gift or estate asset.</p>
+
+  <p>For Bitcoin family LLCs, §2704(a) risk arises when:</p>
+  <ul>
+    <li>The founding member holds a special liquidation or conversion right that terminates on death</li>
+    <li>A "super-vote" or veto right lapses when interests are transferred to the next generation</li>
+    <li>A right to demand distributions terminates automatically upon transfer</li>
+    <li>Management authority converts from sole-manager to committee governance upon the founder's death</li>
+  </ul>
+
+  <p>The solution is straightforward: do not include rights that automatically lapse at or after transfer. If a right serves a legitimate purpose (e.g., the founder retains investment discretion over the Bitcoin position), structure it as a lifetime power that is extinguished at death by will or trust rather than by automatic lapse in the LLC agreement. This distinction — discretionary retention vs. automatic lapse — determines whether §2704(a) applies.</p>
+
+  <h3>§2704(b): Applicable Restrictions Are Disregarded</h3>
+
+  <p>Section 2704(b) is the more commonly litigated and structurally significant provision. It requires the IRS to disregard any "applicable restriction" when valuing an interest in a family-controlled entity transferred to a family member. An applicable restriction is:</p>
+
+  <ul>
+    <li>A restriction on the ability of the entity to liquidate, AND</li>
+    <li>The restriction lapses after the transfer, OR can be removed by the transferor or any family member of the transferor after the transfer (either alone or collectively)</li>
+  </ul>
+
+  <p>In other words: if the family collectively controls the entity and could therefore vote to remove or relax a liquidation restriction, that restriction is disregarded. The IRS values the interest as if the restriction did not exist — which typically increases the discount-free valuation and reduces available DLOM.</p>
+
+  <h3>The Critical Exception: State Law Default Restrictions</h3>
+
+  <p>Section 2704(b)(3)(B) carves out a critical exception: a restriction is NOT an "applicable restriction" if it is not more restrictive than the limitations that would apply under applicable state law in the absence of such a restriction. If state law already imposes the restriction by default — without any operating agreement provision needed — then the restriction is not "artificially imposed" and cannot be disregarded under §2704(b).</p>
+
+  <p>This exception is the foundation of why <strong>state law selection is the single most important structural decision</strong> for Bitcoin family LLCs seeking defensible valuation discounts.</p>
+
+  <h2>Why Wyoming LLC Law Is the §2704 Gold Standard</h2>
+
+  <p>Wyoming's LLC Act (Wyoming Statutes §§17-29-101 et seq.) provides default liquidation and withdrawal rules that are among the most restrictive in any U.S. jurisdiction. Under Wyoming default law:</p>
+
+  <ul>
+    <li><strong>No statutory right of withdrawal:</strong> A member of a Wyoming LLC has no default right to withdraw from the LLC or demand a return of their capital contribution. This is a statutory default — it exists even if the operating agreement says nothing.</li>
+    <li><strong>No forced liquidation by minority members:</strong> Minority members cannot force dissolution based solely on economic disagreement. The grounds for judicial dissolution are narrow and require showing actual fraud, oppression, or manifest irreparable harm.</li>
+    <li><strong>Charging order as exclusive remedy:</strong> A judgment creditor of a Wyoming LLC member can only obtain a charging order against the member's distributional interest — the creditor cannot foreclose on the membership interest or force liquidation. This is the exclusive remedy by statute.</li>
+    <li><strong>Manager discretion over distributions:</strong> Unless the operating agreement provides otherwise, distribution timing and amount is entirely at manager discretion. Members have no right to compel distributions.</li>
+  </ul>
+
+  <p>Because these restrictions already exist in Wyoming default law, an operating agreement that simply adopts Wyoming's default rules is not imposing anything "more restrictive" than applicable state law. The restrictions cannot be disregarded under §2704(b) — they survive as the economic reality of a Wyoming LLC membership interest.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>State</th>
+        <th>Default Withdrawal Rights</th>
+        <th>Default Forced Liquidation</th>
+        <th>Charging Order Exclusivity</th>
+        <th>§2704(b) Risk</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Wyoming</strong></td>
+        <td>None (statute)</td>
+        <td>None except fraud/oppression</td>
+        <td>Exclusive by statute</td>
+        <td>🟢 Very low — defaults are restrictive</td>
+      </tr>
+      <tr>
+        <td><strong>South Dakota</strong></td>
+        <td>None (statute)</td>
+        <td>Very limited</td>
+        <td>Exclusive by statute</td>
+        <td>🟢 Very low</td>
+      </tr>
+      <tr>
+        <td><strong>Nevada</strong></td>
+        <td>Limited at-will right</td>
+        <td>Available in some cases</td>
+        <td>Exclusive by statute</td>
+        <td>🟡 Moderate</td>
+      </tr>
+      <tr>
+        <td><strong>Delaware</strong></td>
+        <td>None under DLLCA</td>
+        <td>Limited (Court of Chancery discretion)</td>
+        <td>Exclusive by statute</td>
+        <td>🟢 Low</td>
+      </tr>
+      <tr>
+        <td><strong>California</strong></td>
+        <td>At-will withdrawal right exists</td>
+        <td>Broader dissolution rights</td>
+        <td>Not exclusive</td>
+        <td>🔴 High — default law is permissive</td>
+      </tr>
+      <tr>
+        <td><strong>New York</strong></td>
+        <td>Withdrawal right in some cases</td>
+        <td>Available</td>
+        <td>Not fully exclusive</td>
+        <td>🔴 High — broader member rights</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>The Wyoming advantage in plain terms:</strong> If you form a Bitcoin family LLC in Wyoming and your operating agreement simply reflects Wyoming's default rules, none of those restrictions are "applicable restrictions" under §2704(b). The IRS cannot disregard them. The minority interest and marketability discounts that reflect those restrictions are fully preserved. This is not a loophole — it is the intended operation of §2704(b)(3)(B).
+  </div>
+
+  <!-- AM Lead Magnet: Mining Tax -->
+  <div class="cta-box">
+    <h3>Bitcoin Mining: The Most Powerful Tax Strategy Available</h3>
+    <p>Bitcoin mining creates OpEx deductions and depreciation offsets that directly reduce ordinary income — including the income that flows through your family LLC or FLP. If you're structuring a Bitcoin family entity, mining belongs in the tax strategy conversation.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" class="cta-btn">Explore Bitcoin Mining Tax Strategies →</a>
+  </div>
+
+  <h2>The 2016 Proposed Regulations: A Warning That Hasn't Gone Away</h2>
+
+  <p>In August 2016, Treasury proposed regulations under §2704(b) that would have dramatically expanded the definition of "applicable restrictions" to include virtually any restriction imposed by a family entity's governing documents — regardless of whether state law would impose the same restriction by default. The proposed regulations would have:</p>
+
+  <ul>
+    <li>Created a new category of "disregarded restrictions" in addition to applicable restrictions</li>
+    <li>Required entity interests to be valued as if they could be liquidated at any time for their proportionate share of net asset value</li>
+    <li>Applied to any entity where the family collectively owns more than 50% of the voting interests</li>
+    <li>Effectively eliminated DLOM on the vast majority of family entity interests</li>
+  </ul>
+
+  <p>The proposed regulations generated fierce opposition from the estate planning community, the American Bar Association, the American Institute of CPAs, and small business advocacy groups. In October 2017, Treasury withdrew the proposed regulations entirely as part of a regulatory rollback executive order.</p>
+
+  <p>However — and this is critical — the <em>statutory authority</em> that would support those regulations remains in §2704(b). Treasury can and may propose new regulations in the future, potentially with a more aggressive approach to valuation discounts on family entities. Bitcoin families with large FLP or LLC structures should not treat the 2017 withdrawal as a permanent green light. The correct structural response is to build entities that would survive even aggressive regulatory expansion: genuine economic substance, non-tax business purposes, arm's-length terms, and state law default compliance.</p>
+
+  <h2>The Economic Substance Requirement: The Real §2704 Defense</h2>
+
+  <p>Beyond the specific technical requirements of §2703 and §2704, the most durable protection against IRS challenge to Bitcoin FLP valuations is genuine economic substance. Courts have sustained valuation discounts — and denied IRS challenges — in cases where the entity demonstrated:</p>
+
+  <h3>1. Non-Tax Business Purpose</h3>
+  <p>The entity must have a legitimate business reason beyond estate tax savings. For Bitcoin family offices, strong purposes include: centralized Bitcoin custody management, institutional-grade security protocols, simplified multi-generational transfer (one entity interest vs. thousands of individual UTXOs), family governance and investment policy implementation, management of mining operations, and management of co-investment opportunities. Document these purposes at formation and maintain contemporaneous records showing they are actually pursued.</p>
+
+  <h3>2. Legitimate Contributed Assets and Retained Economics</h3>
+  <p>The IRS scrutinizes "deathbed" or "last-minute" funding of FLPs with no time to develop any real entity purpose. Courts have sustained discounts in entities where the founding member contributed assets years before death and maintained genuine management activity (investment decisions, security upgrades, policy changes, family education). Annual meetings, written investment policy statements, and documented management decisions all support economic substance.</p>
+
+  <h3>3. Consistent Non-Pro-Rata Distribution History</h3>
+  <p>If an FLP or LLC has always made fully pro-rata distributions to all members — effectively treating the entity as a passthrough with no real entity economics — courts have reduced or eliminated valuation discounts. Genuine entity economics mean that distributions are sometimes withheld, reinvested, or timed for tax or cash flow reasons independent of any individual member's preferences.</p>
+
+  <h3>4. Retained Interest Economics Are Real</h3>
+  <p>The founding member's retained majority interest or management authority must actually be exercised. If the founder transferred 99% of the entity to children and retained 1% as "managing member" — with no real management decisions ever made — the economic substance argument collapses. Courts look for evidence that the management structure is real, not nominal.</p>
+
+  <h2>Structuring Bitcoin Family LLCs to Survive §2703/§2704 Challenge</h2>
+
+  <h3>Formation and Governance Checklist</h3>
+
+  <ol>
+    <li><strong>Organize in Wyoming (or South Dakota):</strong> Default state law restrictions survive §2704(b). Do not organize in California, New York, or other states with permissive default member withdrawal rights.</li>
+    <li><strong>Document non-tax business purposes at formation:</strong> Include a "Purposes" section in the operating agreement listing specific business objectives. Back this with a contemporaneous memo prepared by counsel explaining the economic rationale.</li>
+    <li><strong>Avoid automatic lapsing rights:</strong> Do not include any rights that automatically extinguish at the founder's death or upon transfer of interests. If the founder wants to retain investment discretion for life, structure that discretion as a retained right that terminates at death by will/trust, not as a lapsing LLC right.</li>
+    <li><strong>Buy-sell provisions at FMV:</strong> If the agreement includes transfer restrictions or buy-sell provisions, price them at fair market value as determined by independent appraisal — not book value, not cost basis, not any formula that mechanically produces below-FMV prices.</li>
+    <li><strong>Annual meetings and written records:</strong> Hold annual member/manager meetings. Document investment decisions. Maintain written records of Bitcoin custody decisions, security upgrades, key management decisions. This is the paper trail that proves economic substance.</li>
+    <li><strong>Distributions that are actually non-pro-rata or withheld:</strong> Allow distributions to be withheld for genuine business reasons. Document when and why distributions are made or not made. Pro-rata-always distributions undermine the entity's separate economic existence.</li>
+    <li><strong>Do not fund the entity on the deathbed:</strong> Multi-year entity operation history is significantly stronger than a recently formed entity. Families with the luxury of planning should form and fund the entity 5+ years before any anticipated estate event.</li>
+    <li><strong>Obtain a qualified appraisal:</strong> Annual or biennial independent appraisals of LLC interests by a qualified appraiser are essential. The appraisal must apply DLOM and minority discount methodology consistent with Revenue Ruling 59-60 and professional valuation standards (USPAP). A well-supported appraisal from a credentialed appraiser is the primary defense in any IRS audit.</li>
+  </ol>
+
+  <h2>Key Court Cases: What the IRS Has Won and Lost</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Case</th>
+        <th>Outcome</th>
+        <th>Why It Matters</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><em>Holman v. Commissioner</em> (8th Cir. 2010)</td>
+        <td>Discounts allowed (reduced from claimed)</td>
+        <td>Amazon stock in LLC; court sustained DLOM despite family control — genuine economic substance present</td>
+      </tr>
+      <tr>
+        <td><em>Stone v. Commissioner</em> (T.C. 2012)</td>
+        <td>Partial discount allowed</td>
+        <td>Court reduced but did not eliminate DLOM; management substance partially proven but entity activity was thin</td>
+      </tr>
+      <tr>
+        <td><em>Strangi v. Commissioner</em> (5th Cir. 2005)</td>
+        <td>IRS won — §2036 inclusion</td>
+        <td>Deathbed transfer, no real business purpose, founder continued to use assets as personal funds — §2036(a)(1) applied; entity disregarded entirely</td>
+      </tr>
+      <tr>
+        <td><em>Bongard v. Commissioner</em> (T.C. 2005)</td>
+        <td>IRS won — §2036</td>
+        <td>FLP formed 3 weeks before death; sole purpose was tax savings; §2036 bona fide sale exception not met</td>
+      </tr>
+      <tr>
+        <td><em>Estate of Schutt</em> (T.C. 2005)</td>
+        <td>Discounts allowed</td>
+        <td>Centralized management, investment activity, creditor protection — genuine business purpose; full DLOM sustained</td>
+      </tr>
+      <tr>
+        <td><em>Hackl v. Commissioner</em> (7th Cir. 2003)</td>
+        <td>Annual exclusions denied</td>
+        <td>LLC interests were not "present interests" for annual exclusion purposes because of transfer restrictions — a separate §2503 issue, not §2704, but illustrates how restrictions backfire</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The pattern is clear: entities with genuine economic substance, multi-year operating history, documented non-tax purposes, and real management activity consistently sustain valuation discounts. Entities formed immediately before death, used as personal piggy banks, or created with no business purpose beyond tax savings lose to §2036 — often before §2704 is even reached.</p>
+
+  <!-- AM Lead Magnet: 36 Questions -->
+  <div class="cta-box">
+    <h3>36 Questions to Ask Your Bitcoin Mining Host Before Signing</h3>
+    <p>A Bitcoin family LLC that holds mining infrastructure has even stronger economic substance than one holding passive investment Bitcoin — operational activity, vendor relationships, management decisions, and real business purpose all documented and recurring. This checklist helps you evaluate mining partners.</p>
+    <a href="http://44134802.hs-sites.com/abundant-mines-36-questions" target="_blank" rel="noopener" class="cta-btn">Download the Free Checklist →</a>
+  </div>
+
+  <h2>Interaction with §2036: The Greater Threat</h2>
+
+  <p>In practice, §2036 is a more dangerous IRS attack vector than §2703 or §2704 for Bitcoin family entities. Section 2036 pulls FLP and LLC assets back into the estate when the decedent retained the right to the income or beneficial enjoyment of the transferred property. If the IRS successfully applies §2036, the entire entity is disregarded for estate tax purposes — the Bitcoin is included in the estate at full FMV, with zero valuation discount.</p>
+
+  <p>This is more devastating than a §2704 challenge, which only eliminates artificial restrictions while leaving genuine DLOM/minority discounts intact. Bitcoin families that win the §2704 battle but lose the §2036 battle end up with no discounts at all.</p>
+
+  <p>For complete coverage of §2036 structuring requirements — including the on-chain custody requirements for Bitcoin specifically — see the <a href="bitcoin-section-2036-retained-interest-estate-planning.html">§2036 guide</a>. The interaction between §2036 and §2704 means that both structural defenses must be built simultaneously: the entity needs genuine economic substance to avoid §2036 (which also defeats §2704 challenges), <em>and</em> needs Wyoming default law compliance to prevent §2704(b) from disregarding whatever restrictions survive.</p>
+
+  <h2>Action Checklist: §2703 and §2704 Defense for Bitcoin Family Entities</h2>
+
+  <ul class="checklist">
+    <li>Organize Bitcoin family LLC in Wyoming (or South Dakota) — default state law restrictions survive §2704(b) and cannot be disregarded</li>
+    <li>Draft contemporaneous non-tax business purpose memorandum at formation — file with LLC records</li>
+    <li>Remove any rights that automatically lapse at or after transfer — replace with retained lifetime discretion terminating by will/trust</li>
+    <li>Structure buy-sell provisions at fair market value (independent appraisal method), not book value or formula pricing</li>
+    <li>Establish annual member/manager meeting schedule with written minutes — document all material investment and management decisions</li>
+    <li>Obtain qualified independent appraisal of LLC interests annually or biennially — use USPAP-compliant appraiser with closely-held entity experience</li>
+    <li>Avoid deathbed or near-death funding — build multi-year operating history before any anticipated estate event</li>
+    <li>Hold actual Bitcoin on-chain in entity-controlled wallet (not retained personal hardware) — avoid §2036 retained possession argument</li>
+    <li>Ensure entity has genuine cash flow management (distribution timing and amount discretion actually exercised)</li>
+    <li>Maintain records showing entity is operated as a real investment vehicle, not a passthrough conduit for personal use</li>
+  </ul>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">What is Section 2703 and how does it affect Bitcoin FLP buy-sell agreements?</div>
+    <p>Section 2703 requires the IRS to disregard any option, agreement, or restriction on the disposition of property for estate/gift tax valuation purposes — unless the arrangement meets a three-part bona fide test: (1) it is a genuine business arrangement, (2) it is not a device to transfer property to family members at below-FMV prices, and (3) its terms are comparable to arm's-length arrangements between unrelated parties. Buy-sell agreements in Bitcoin family LLCs that set below-FMV transfer prices will be disregarded and the Bitcoin valued at full FMV unless all three prongs are satisfied.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What is Section 2704(b) and which LLC restrictions does it disregard?</div>
+    <p>Section 2704(b) requires the IRS to disregard "applicable restrictions" when valuing transferred family entity interests. An applicable restriction limits liquidation and can be removed by the family after transfer. However, restrictions that merely replicate what applicable state law imposes by default are NOT applicable restrictions and are not disregarded. Wyoming's LLC Act already imposes strong restrictions by default — making Wyoming the leading choice for Bitcoin family LLCs designed to survive §2704 scrutiny.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Does Section 2704 eliminate all FLP and LLC valuation discounts?</div>
+    <p>No. §2704(b) only disregards applicable restrictions — those exceeding default state law. Minority interest discounts (typically 20–35%) and lack-of-marketability discounts (15–25%) reflecting real economic limitations survive §2704. Courts have repeatedly upheld combined discounts of 35–45% on properly structured family entity interests. The key is genuine economic substance and Wyoming (or similar state) organization so default law restrictions are the baseline.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Why is Wyoming the best state for a Bitcoin family LLC to survive Section 2704?</div>
+    <p>Wyoming's LLC Act imposes default liquidation restrictions by statute — no withdrawal rights, limited forced dissolution grounds, exclusive charging order remedy, manager discretion over distributions — without any operating agreement provision required. Because these restrictions exist in state law by default, they are not "applicable restrictions" under §2704(b) and cannot be disregarded. Combined with Wyoming's strong asset protection law and zero state income tax, it's the clear leader for Bitcoin family LLC formation.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What happened to the 2016 proposed Section 2704 regulations?</div>
+    <p>Treasury proposed regulations in August 2016 that would have dramatically expanded §2704(b) to disregard virtually all liquidation restrictions regardless of state law — effectively eliminating most family entity valuation discounts. The regulations were withdrawn in October 2017 after massive opposition. However, the underlying statutory authority remains, and Treasury could propose new regulations in the future. Families should structure for genuine economic substance rather than relying solely on operating agreement restrictions that could be targeted by new rules.</p>
+  </div>
+
+  <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #222;">
+    <p><strong>Related Articles:</strong></p>
+    <ul>
+      <li><a href="bitcoin-family-limited-partnership-estate-planning.html">Bitcoin Family Limited Partnership: Complete Estate Planning Guide</a></li>
+      <li><a href="bitcoin-valuation-discounts-estate-planning.html">Bitcoin Valuation Discounts: Minority Interest and DLOM Explained</a></li>
+      <li><a href="bitcoin-section-2036-retained-interest-estate-planning.html">Section 2036: Retained Interest Rules for Bitcoin FLPs and Trusts</a></li>
+      <li><a href="bitcoin-asset-protection.html">Bitcoin Asset Protection: LLCs, Trusts, and Charging Order Strategies</a></li>
+      <li><a href="bitcoin-trust-best-state-situs.html">Best State Situs for Bitcoin Trusts: Wyoming vs. South Dakota vs. Nevada</a></li>
+      <li><a href="bitcoin-estate-planning-guide.html">The Complete Bitcoin Estate Planning Guide</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<footer>
+  <p>© 2026 The Bitcoin Family Office. All rights reserved. | <a href="/disclosures.html">Disclosures</a></p>
+  <p style="margin-top:.5rem;font-size:.75rem;color:#444;">This content is for informational purposes only and does not constitute legal, tax, or financial advice. Consult qualified counsel before implementing any estate planning strategy. §2703, §2704, and §2036 involve complex factual and legal questions that require individualized professional guidance.</p>
+</footer>
+</body>
+</html>
