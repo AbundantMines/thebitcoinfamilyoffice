@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitcoin Trust Accounting: Income vs. Principal Under UPIA | The Bitcoin Family Office</title>
+  <meta name="description" content="Bitcoin capital gains default to principal — not income — under UPIA. An income beneficiary in a QTIP or marital trust gets nothing from Bitcoin appreciation unless the trust document says otherwise. Complete guide to trust accounting, income/principal allocation, total return unitrust conversion, and DNI mechanics for Bitcoin trusts." />
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-trust-accounting-income-principal.html" />
+  <meta property="og:title" content="Bitcoin Trust Accounting: Income vs. Principal Under UPIA" />
+  <meta property="og:description" content="The biggest hidden flaw in Bitcoin trust planning: capital gains default to principal under UPIA. The surviving spouse in a QTIP trust holding Bitcoin receives nothing from appreciation — unless the trust converts to a total return unitrust or expressly reallocates gains to income." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-trust-accounting-income-principal.html" />
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#0a0a0a;color:#e8e0d0;font-family:'EB Garamond',serif;font-size:1.15rem;line-height:1.8}
+    a{color:#C9A84C;text-decoration:none}a:hover{text-decoration:underline}
+    nav{background:#0d0d0d;border-bottom:1px solid #222;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:#C9A84C}
+    .nav-links{display:flex;gap:1.5rem;list-style:none}
+    .nav-links a{color:#aaa;font-family:'Inter',sans-serif;font-size:.85rem}
+    .nav-links a:hover{color:#C9A84C}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:22px;height:2px;background:#e8e0d0}
+    @media(max-width:700px){.nav-links{display:none;flex-direction:column;position:absolute;top:56px;left:0;width:100%;background:#0d0d0d;padding:1rem 2rem;gap:1rem;z-index:99}.nav-links.open{display:flex}.hamburger{display:flex}}
+    header.hero{max-width:860px;margin:3rem auto 2rem;padding:0 2rem;border-left:3px solid #C9A84C}
+    header.hero h1{font-family:'Playfair Display',serif;font-size:2.4rem;color:#f0e8d8;line-height:1.25;margin-bottom:.75rem}
+    .meta{font-family:'Inter',sans-serif;font-size:.82rem;color:#888;margin-bottom:1.5rem}
+    .meta span{margin-right:1.2rem}
+    article.content{max-width:860px;margin:0 auto;padding:0 2rem 4rem}
+    h2{font-family:'Playfair Display',serif;font-size:1.75rem;color:#f0e8d8;margin:2.5rem 0 .75rem;border-bottom:1px solid #222;padding-bottom:.4rem}
+    h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:#C9A84C;margin:2rem 0 .5rem}
+    p{margin-bottom:1.2rem}
+    ul,ol{margin:0 0 1.2rem 1.5rem}
+    li{margin-bottom:.45rem}
+    .callout{background:#111;border-left:3px solid #C9A84C;padding:1.2rem 1.5rem;margin:2rem 0;border-radius:0 6px 6px 0}
+    .callout strong{color:#C9A84C}
+    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-family:'Inter',sans-serif;font-size:.88rem}
+    th{background:#161616;color:#C9A84C;padding:.65rem 1rem;text-align:left;border-bottom:2px solid #333}
+    td{padding:.6rem 1rem;border-bottom:1px solid #1e1e1e;vertical-align:top}
+    tr:hover td{background:#0f0f0f}
+    .highlight-box{background:#0f0f0f;border:1px solid #2a2a2a;padding:1.4rem;border-radius:8px;margin:2rem 0}
+    .cta-box{background:linear-gradient(135deg,#111 0%,#161616 100%);border:1px solid #C9A84C;padding:2rem;border-radius:8px;margin:3rem 0;text-align:center}
+    .cta-box h3{color:#C9A84C;margin-bottom:.75rem;font-size:1.25rem}
+    .cta-box p{color:#bbb;font-size:.95rem;margin-bottom:1.25rem}
+    .cta-btn{display:inline-block;background:#C9A84C;color:#000;font-family:'Inter',sans-serif;font-weight:600;font-size:.9rem;padding:.75rem 1.75rem;border-radius:4px;text-decoration:none}
+    .cta-btn:hover{background:#e0b85a;text-decoration:none}
+    .checklist{list-style:none;margin-left:0}
+    .checklist li::before{content:"☐ ";color:#C9A84C}
+    .faq-item{margin-bottom:1.5rem}
+    .faq-q{font-family:'Inter',sans-serif;font-weight:600;color:#f0e8d8;margin-bottom:.4rem}
+    footer{background:#0d0d0d;border-top:1px solid #1a1a1a;padding:2rem;text-align:center;font-family:'Inter',sans-serif;font-size:.8rem;color:#555}
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bitcoin Trust Accounting: Income vs. Principal Under UPIA",
+    "description": "Bitcoin capital gains default to principal under UPIA. An income beneficiary in a QTIP or marital trust gets nothing from Bitcoin appreciation unless the trust converts to a total return unitrust or expressly reallocates gains to income.",
+    "datePublished": "2026-03-14",
+    "dateModified": "2026-03-14",
+    "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
+    "publisher": {"@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://thebitcoinfamilyoffice.com/blog/bitcoin-trust-accounting-income-principal.html"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Are Bitcoin capital gains trust income or principal under UPIA?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Under the Uniform Principal and Income Act (UPIA), capital gains — including gains from selling Bitcoin — are classified as principal, not income. This is the default rule in all states that have adopted UPIA. Unless the trust document expressly overrides this default (allocating gains to income) or unless the trust is converted to a total return unitrust, an income beneficiary receives nothing from Bitcoin appreciation. The entire gain is retained in the trust as principal for the benefit of remainder beneficiaries. This creates a significant conflict between income and remainder beneficiaries in Bitcoin-heavy trusts."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is a total return unitrust and how does it solve the Bitcoin income problem?",
+        "acceptedAnswer": {"@type": "Answer", "text": "A total return unitrust (TRUT) pays the income beneficiary a fixed percentage of trust assets (typically 3–5%) calculated annually — regardless of whether the trust actually earned interest, dividends, or capital gains. This converts the trust's payment obligation from 'distributable net income only' to 'total return' (including appreciation), so the income beneficiary participates in Bitcoin's price appreciation rather than receiving zero because Bitcoin generates no dividends. Most states allow existing trusts to convert to unitrust status either by trustee election (without court approval) or by petition to the court. The conversion is especially valuable for Bitcoin-heavy QTIP trusts and marital trusts where the surviving spouse depends on trust distributions."}
+      },
+      {
+        "@type": "Question",
+        "name": "How does income vs. principal allocation affect the DNI calculation for a Bitcoin trust?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Distributable Net Income (DNI) determines how much of a trust distribution is taxable to the beneficiary and how much is a tax-free return of principal. Because capital gains are excluded from DNI by default under IRC §643(a)(3) — unless the trust document allocates gains to income or they are distributed as part of a final distribution — a distribution from a Bitcoin trust that consists entirely of realized capital gains may be largely non-taxable to the beneficiary (it comes out of principal). Paradoxically, the income/principal default that hurts income beneficiaries (by excluding them from gains) also protects them from the tax hit on those gains if they are distributed. Total return unitrust conversions require careful tax analysis to ensure the unitrust payment is characterized correctly for DNI purposes."}
+      },
+      {
+        "@type": "Question",
+        "name": "Can a QTIP trust holding Bitcoin provide adequate income to the surviving spouse?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Not under standard UPIA default rules if the trust holds primarily Bitcoin. A QTIP trust requires all income to be distributed to the surviving spouse annually — but if Bitcoin generates no dividends or interest, there is no 'income' to distribute, and the surviving spouse receives nothing. This defeats the QTIP's marital deduction purpose and leaves the surviving spouse without support. The solution is to draft the QTIP as a total return unitrust from inception, include trust document language expressly allocating capital gains to income (if the marital deduction is not at risk), or include a 'power to convert' provision allowing the trustee to elect unitrust treatment after the first spouse's death."}
+      },
+      {
+        "@type": "Question",
+        "name": "What UPIA income items does a Bitcoin trust actually generate?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Under UPIA default rules, a Bitcoin trust generates trust accounting income only from: interest on Bitcoin-collateralized loans made from trust assets, dividends from Bitcoin ETFs or mining company stock held in trust, staking rewards (if treated as income under applicable state law — varies), and rental income from any real property held in the trust alongside Bitcoin. Bitcoin price appreciation, realized capital gains from selling Bitcoin, and mining proceeds (which are ordinary income at receipt but then become principal) are generally classified as principal. A trust holding only on-chain Bitcoin with no lending, staking, or other yield activity generates essentially zero trust accounting income under UPIA defaults."}
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">The Bitcoin Family Office</a>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/tools/">Tools</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <h1>Bitcoin Trust Accounting: Income vs. Principal Under UPIA</h1>
+  <div class="meta">
+    <span>March 14, 2026</span>
+    <span>17 min read</span>
+    <span>Trust Planning · Tax Strategy</span>
+  </div>
+</header>
+
+<article class="content">
+
+  <p>Here is the silent killer hiding in most Bitcoin trust plans: under the Uniform Principal and Income Act (UPIA), capital gains are principal — not income. This means a surviving spouse named as the income beneficiary of a QTIP trust holding $10 million in Bitcoin receives exactly zero in annual distributions, because Bitcoin generates no interest or dividends. The entire trust appreciation accumulates as principal for the remainder beneficiaries — the children — while the surviving spouse, who was supposed to be supported for life, gets nothing from the asset that is most of the family's wealth.</p>
+
+  <p>This is not an edge case. It is the default outcome for every Bitcoin trust that uses standard UPIA income/principal accounting without specific overriding provisions. Understanding the income/principal distinction, how it interacts with DNI on the trust's tax return, and how to restructure affected trusts is one of the most practically important planning steps for any Bitcoin family with existing trusts or marital planning underway.</p>
+
+  <div class="callout">
+    <strong>The core problem in one sentence:</strong> Bitcoin is a principal asset under UPIA — it generates no income. Income beneficiaries of Bitcoin trusts receive nothing from appreciation under default trust accounting rules, creating a structural conflict between income and remainder beneficiaries that must be resolved at the drafting stage.
+  </div>
+
+  <h2>The Uniform Principal and Income Act: Framework</h2>
+
+  <p>The Uniform Principal and Income Act (UPIA), last significantly revised in 1997 and amended in 2008 and 2018, has been adopted in some form by nearly all U.S. states. It governs how trust receipts and expenses are allocated between the "income account" (for income beneficiaries) and the "principal account" (for remainder beneficiaries).</p>
+
+  <p>The fundamental default rule: a receipt is income if it is a return generated by a principal asset during the period it is held in trust. A receipt is principal if it represents a change in the form of a principal asset. Under this framework:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Receipt Type</th>
+        <th>Income or Principal?</th>
+        <th>Who Benefits?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Cash dividends from stock</td>
+        <td>Income</td>
+        <td>Income beneficiary</td>
+      </tr>
+      <tr>
+        <td>Bond interest</td>
+        <td>Income</td>
+        <td>Income beneficiary</td>
+      </tr>
+      <tr>
+        <td>Rental income from real property</td>
+        <td>Income</td>
+        <td>Income beneficiary</td>
+      </tr>
+      <tr>
+        <td>Capital gain from selling stock or Bitcoin</td>
+        <td>Principal</td>
+        <td>Remainder beneficiary</td>
+      </tr>
+      <tr>
+        <td>Bitcoin price appreciation (unrealized)</td>
+        <td>Principal (retained)</td>
+        <td>Remainder beneficiary</td>
+      </tr>
+      <tr>
+        <td>Bitcoin mining proceeds received by trust</td>
+        <td>Income at receipt (ordinary income); then becomes principal as trust asset</td>
+        <td>Income beneficiary at receipt; then remainder</td>
+      </tr>
+      <tr>
+        <td>Interest on Bitcoin-collateralized trust loan</td>
+        <td>Income</td>
+        <td>Income beneficiary</td>
+      </tr>
+      <tr>
+        <td>Staking rewards (state law varies)</td>
+        <td>Varies — most states treat as income; some as principal</td>
+        <td>Depends on state trust law</td>
+      </tr>
+      <tr>
+        <td>Stock split (including hard fork allocation)</td>
+        <td>Principal</td>
+        <td>Remainder beneficiary</td>
+      </tr>
+      <tr>
+        <td>Return of capital distributions</td>
+        <td>Principal</td>
+        <td>Remainder beneficiary</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The practical result: a trust holding pure Bitcoin with no yield strategy generates essentially zero trust accounting income under UPIA defaults. Every dollar of Bitcoin appreciation, every capital gain from a sale, every hard fork airdrop — all principal. The income beneficiary's account balance from Bitcoin activity is effectively zero.</p>
+
+  <h2>How This Destroys QTIP and Marital Trust Planning</h2>
+
+  <p>A QTIP trust (Qualified Terminable Interest Property trust) requires the trustee to distribute all income to the surviving spouse annually. This mandatory income distribution requirement is what qualifies the trust for the estate tax marital deduction — deferring estate tax on the trust assets until the surviving spouse's death.</p>
+
+  <p>If the trust holds primarily Bitcoin and Bitcoin generates no UPIA income, the trustee literally has no income to distribute. The QTIP requirement is technically satisfied (all income — zero — is distributed), but the surviving spouse receives nothing and may be unable to support themselves. This can create:</p>
+
+  <ul>
+    <li><strong>Marital deduction risk:</strong> If the QTIP fails to provide adequate income because the trustee refuses to distribute or cannot generate income from the assets, the IRS may challenge the marital deduction on the first spouse's estate tax return</li>
+    <li><strong>Spousal support failure:</strong> The surviving spouse may have no access to trust distributions for living expenses despite being the named income beneficiary of what may be the family's largest asset</li>
+    <li><strong>Beneficiary conflict:</strong> The surviving spouse (income beneficiary) has an economic interest in generating trust income (selling Bitcoin to create dividends/interest); the children (remainder beneficiaries) have an economic interest in maximum Bitcoin appreciation (no selling, no income). This is an irreconcilable structural conflict under default UPIA rules</li>
+    <li><strong>HEMS gap:</strong> If the QTIP trustee has discretionary authority to make principal distributions under HEMS, the spouse may receive principal distributions — but these reduce the children's remainder, creating the same conflict through a different mechanism</li>
+  </ul>
+
+  <div class="callout">
+    <strong>The marital deduction trap:</strong> A QTIP holding only Bitcoin, drafted without total return unitrust provisions, may technically qualify for the marital deduction at the first death — but leaves the surviving spouse economically disenfranchised for decades while the children's remainder grows. This is not what the family intended. And if the surviving spouse sues the trustee for inadequate income distributions, the litigation can be catastrophic for family harmony and trust value.
+  </div>
+
+  <h2>DNI and the Capital Gains Exclusion</h2>
+
+  <p>The income/principal distinction has a direct tax consequence through the Distributable Net Income (DNI) calculation. DNI — defined under IRC §643(a) — determines how much of a trust distribution is taxable income to the beneficiary versus a non-taxable return of principal.</p>
+
+  <p>The critical rule for Bitcoin trusts: capital gains are excluded from DNI by default under §643(a)(3), unless:</p>
+  <ul>
+    <li>The gains are <em>allocated to income</em> by the trust instrument (trust document expressly overrides UPIA default)</li>
+    <li>The gains are <em>allocated to income</em> by the trustee's exercise of discretion under applicable state law</li>
+    <li>The gains are <em>paid, credited, or required to be distributed</em> to any beneficiary during the tax year (e.g., as a final distribution that includes principal)</li>
+  </ul>
+
+  <p>The double effect of the default: gains excluded from DNI are (a) not distributed to the income beneficiary (they're principal), and (b) not includable in DNI for tax purposes, so they are taxed at the trust level — hitting the compressed 37% bracket at $15,650 of income — rather than being taxed to beneficiaries at their individual rates. For large Bitcoin positions that generate capital gains inside a non-grantor trust, this compressed bracket is enormously costly.</p>
+
+  <div class="highlight-box">
+    <p><strong>Example — non-grantor trust sells Bitcoin:</strong></p>
+    <p>Trust sells $500,000 of Bitcoin with $400,000 of long-term gain. Under default UPIA/DNI rules:</p>
+    <ul>
+      <li>Gain is principal → not distributed to income beneficiary → not included in DNI</li>
+      <li>Trust pays capital gains tax on $400,000 at trust long-term rate: 20% + 3.8% NIIT = 23.8%</li>
+      <li>Trust tax: ~$95,200 (on a $400,000 gain)</li>
+    </ul>
+    <p style="margin-top:.75rem;"><strong>If trust document allocated gains to income (distributed to beneficiary in 24% bracket):</strong></p>
+    <ul>
+      <li>$400,000 gain distributed as income, included in DNI, taxed to beneficiary</li>
+      <li>Beneficiary's rate: 15% LTCG + 3.8% NIIT = 18.8%</li>
+      <li>Beneficiary tax: ~$75,200</li>
+      <li><strong>Tax savings from income allocation:</strong> $20,000 on a single transaction</li>
+    </ul>
+  </div>
+
+  <p>This tax efficiency argument — combined with the spousal support argument — makes the case for overriding the UPIA capital gains default in virtually every Bitcoin trust that is not a grantor trust (which reports all income at the grantor's individual rates regardless of the income/principal distinction).</p>
+
+  <h2>The Total Return Unitrust: The Primary Solution</h2>
+
+  <p>A total return unitrust (TRUT) — also called a "unitrust conversion" — replaces the standard income/principal distinction with a simple annual payout equal to a fixed percentage of trust assets. Instead of distributing "trust accounting income" (which may be zero for a Bitcoin trust), the trustee distributes the unitrust percentage (typically 3–5%) of the trust's fair market value as of a determination date each year.</p>
+
+  <h3>How the Unitrust Conversion Works</h3>
+
+  <p>Under UPIA §104 (as adopted in most states), a trustee may convert an existing income trust to a unitrust either by:</p>
+  <ul>
+    <li><strong>Trustee election:</strong> In states allowing it, the trustee can elect unitrust treatment without court approval, typically after notice to all beneficiaries and a waiting period (often 63–90 days) during which beneficiaries can object</li>
+    <li><strong>Court petition:</strong> Where trustee election is not available or where beneficiaries object, the trustee petitions the appropriate court for conversion approval</li>
+    <li><strong>Trust document power to convert:</strong> Best practice — include in the original trust document an express trustee power to elect unitrust treatment, eliminating the need for court involvement or beneficiary notice periods</li>
+  </ul>
+
+  <p>Once converted, the trust operates as follows:</p>
+  <ol>
+    <li>Each year, the trust assets are valued as of the determination date (often January 1 or December 31)</li>
+    <li>The unitrust amount is calculated: [trust FMV] × [unitrust percentage]</li>
+    <li>The unitrust amount is distributed to the income beneficiary(ies) as the annual payment</li>
+    <li>The income/principal distinction becomes irrelevant — the beneficiary receives the unitrust percentage regardless of whether it comes from dividends, interest, capital gains, or principal</li>
+  </ol>
+
+  <h3>Setting the Unitrust Percentage for Bitcoin</h3>
+
+  <p>The unitrust percentage must balance the income beneficiary's current support needs against the remainder beneficiaries' long-term growth interest. For Bitcoin specifically, the tension is real: Bitcoin's historical long-run growth rate (compound annual returns exceeding 100% over longer periods, but with multi-year bear markets of 50–85%) makes the "sustainable withdrawal rate" concept difficult to calculate.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Unitrust % Rate</th>
+        <th>Annual Distribution ($10M Trust)</th>
+        <th>Effect on Bitcoin Position</th>
+        <th>Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>3%</td>
+        <td>$300,000/year</td>
+        <td>Minimal impact; trust grows faster than distributions in most bull cycles</td>
+        <td>Maximum remainder growth; young surviving spouse with other income</td>
+      </tr>
+      <tr>
+        <td>4%</td>
+        <td>$400,000/year</td>
+        <td>Moderate; consistent with long-run "total return" convention</td>
+        <td>Balanced marital trust; QTIP with moderate spousal support needs</td>
+      </tr>
+      <tr>
+        <td>5%</td>
+        <td>$500,000/year</td>
+        <td>Higher distribution; trust may not grow as fast but income beneficiary is well-supported</td>
+        <td>Older surviving spouse with greater support needs</td>
+      </tr>
+      <tr>
+        <td>IRS CRUT range (5% minimum)</td>
+        <td>$500,000+/year</td>
+        <td>Required for charitable remainder unitrust qualification</td>
+        <td>CRUTs — different regulatory framework from private unitrust conversion</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>For Bitcoin trusts specifically, a 3–4% unitrust rate is typically appropriate because it provides meaningful support while preserving the majority of the trust's growth potential. Bitcoin's historical performance means even a 4% annual distribution rarely depletes a well-funded trust over a typical 20–30 year trust term — but past performance does not guarantee future results, and unitrust percentages should be set conservatively given Bitcoin's volatility.</p>
+
+  <!-- AM Lead Magnet: Mining Tax -->
+  <div class="cta-box">
+    <h3>Bitcoin Mining: The Most Powerful Tax Strategy Available</h3>
+    <p>Mining income received by a trust is UPIA income — it flows to the income beneficiary annually rather than accumulating as principal. A mining trust generates real trust accounting income, solving the "zero income" problem that plagues pure Bitcoin-holding trusts. Mining is the most powerful tax strategy in Bitcoin — and it solves the income beneficiary problem simultaneously.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" class="cta-btn">Explore Bitcoin Mining Tax Strategies →</a>
+  </div>
+
+  <h2>Trust Document Overrides: Allocating Gains to Income</h2>
+
+  <p>An alternative to the total return unitrust conversion is a specific trust document provision that overrides the UPIA default and allocates capital gains to income. This approach is simpler than a unitrust conversion for trusts where the income beneficiary's interest is purely economic (support during life) and the family is comfortable with the income beneficiary receiving distributed capital gains.</p>
+
+  <p>The override provision typically reads: <em>"Notwithstanding any default rule under applicable state law, the Trustee shall allocate to trust accounting income all capital gains realized from the sale of trust assets, including digital assets, in such amounts as the Trustee determines to be appropriate in the Trustee's reasonable discretion."</em></p>
+
+  <p>The discretionary allocation version — giving the trustee discretion to allocate gains to income rather than mandating it — preserves flexibility. In a year when the income beneficiary is in a high tax bracket, the trustee can decline to allocate gains to income (they remain principal, taxed at the trust level). In a year when the income beneficiary is in a low bracket, the trustee allocates gains to income, they flow through DNI, and are taxed to the beneficiary at their lower rate.</p>
+
+  <h3>Tax Warning: Mandatory Gain Allocation and DNI</h3>
+
+  <p>A trust document provision that <em>mandates</em> allocation of all gains to income affects the DNI calculation: the gains are now included in DNI and must be distributed to the income beneficiary (for a QTIP with mandatory income distributions). The income beneficiary then pays tax on the gains at their individual rate. This shifts the tax burden from the trust (compressed brackets) to the beneficiary — which is usually favorable but must be modeled before implementation. Confirm with the trust's tax advisor that the income beneficiary's expected rate (LTCG + NIIT) is lower than the trust's effective rate before mandating gain allocation.</p>
+
+  <h2>The Income/Principal Conflict in Practice: Other Trust Structures</h2>
+
+  <h3>Bypass Trust (Credit Shelter Trust)</h3>
+
+  <p>In a typical bypass trust funded at the first spouse's death, the surviving spouse is the income beneficiary and the children are the remainder beneficiaries. Under UPIA defaults, the surviving spouse receives nothing from the Bitcoin position inside the bypass trust unless the trust document overrides the income/principal default or the trustee converts to unitrust. This is often acceptable if the surviving spouse has other assets for support — the bypass trust's primary purpose is to shelter the first spouse's exemption amount from the second estate, not necessarily to support the survivor. But if the bypass trust is the primary family asset, the income problem applies identically to the QTIP analysis above.</p>
+
+  <h3>Dynasty Trust</h3>
+
+  <p>Dynasty trusts typically have multiple current beneficiaries (all descendants) who receive both income and principal distributions under discretionary standards. For a dynasty trust, the income/principal distinction is less critical because the trustee typically has broad discretionary authority to distribute either income or principal — and the dynasty trust's purpose is long-term accumulation rather than providing income to a specific life beneficiary. However, the DNI/capital gains exclusion default still applies: gains realized inside the dynasty trust are taxed at the trust's compressed bracket unless the trust document allocates them to income for distribution to beneficiaries.</p>
+
+  <h3>Charitable Remainder Unitrust (CRUT)</h3>
+
+  <p>A CRUT is a specific type of total return trust: the non-charitable income beneficiary receives a fixed percentage (minimum 5%) of trust assets annually, regardless of whether those assets generated income. CRUTs holding Bitcoin work well under this framework — the 5%+ unitrust payment comes from total return (including appreciation) and is taxed to the income beneficiary under the four-tier income ordering rule. The income/principal distinction affects how the payment is characterized for tax (tier 1: ordinary income → tier 2: LTCG → tier 3: other income → tier 4: return of principal) but does not affect whether the payment is made. See the <a href="bitcoin-charitable-remainder-trust.html">CRT guide</a> for complete mechanics.</p>
+
+  <h2>State Law Variations: Digital Asset Provisions</h2>
+
+  <p>Several states have amended their Principal and Income Acts to specifically address digital assets and cryptocurrency. Wyoming, Nevada, and South Dakota have enacted provisions clarifying that digital asset receipts — including staking rewards, hard fork allocations, and airdrop proceeds — are treated as income (rather than principal) when received by the trust. This differs from the UPIA default and provides real income to income beneficiaries from Bitcoin-adjacent activities.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>State</th>
+        <th>Digital Asset Income Treatment</th>
+        <th>Capital Gains Treatment</th>
+        <th>Unitrust Conversion Available?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Wyoming</strong></td>
+        <td>Staking/yield = income by statute</td>
+        <td>Principal (UPIA default)</td>
+        <td>Yes — trustee election</td>
+      </tr>
+      <tr>
+        <td><strong>South Dakota</strong></td>
+        <td>Crypto receipts generally = income under SDCL</td>
+        <td>Principal (UPIA default)</td>
+        <td>Yes — trustee election</td>
+      </tr>
+      <tr>
+        <td><strong>Nevada</strong></td>
+        <td>Digital asset receipts addressed in NRPA</td>
+        <td>Principal (UPIA default)</td>
+        <td>Yes — court or trustee election</td>
+      </tr>
+      <tr>
+        <td><strong>Most other states</strong></td>
+        <td>No specific digital asset provision; income rules unclear</td>
+        <td>Principal (UPIA default)</td>
+        <td>Varies — some trustee election, some court only</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>This is another reason why Wyoming, South Dakota, and Nevada are the preferred situs states for Bitcoin dynasty trusts: their statutes have been modernized to address digital asset accounting in ways that provide income beneficiaries with access to Bitcoin-related receipts beyond pure capital gains.</p>
+
+  <!-- AM Lead Magnet: 36 Questions -->
+  <div class="cta-box">
+    <h3>36 Questions to Ask Your Bitcoin Mining Host Before Signing</h3>
+    <p>Mining income inside a trust flows as UPIA income to income beneficiaries — solving the "zero yield" problem that afflicts pure Bitcoin-holding trusts. Before your trust invests in mining infrastructure, evaluate hosting arrangements thoroughly.</p>
+    <a href="http://44134802.hs-sites.com/abundant-mines-36-questions" target="_blank" rel="noopener" class="cta-btn">Download the Free Checklist →</a>
+  </div>
+
+  <h2>Practical Planning: Building Income/Principal Provisions Into New Trusts</h2>
+
+  <p>The best time to address income/principal allocation is at trust drafting — not after funding when conversion requires notice periods, possible court proceedings, and beneficiary agreement. Every new Bitcoin trust should include:</p>
+
+  <h3>1. Total Return Unitrust Election Power</h3>
+
+  <p>Include an express trustee power to elect unitrust treatment without court approval: <em>"The Trustee may, in the Trustee's sole discretion, convert this trust to a total return unitrust as defined under applicable state law, in which case the Trustee shall pay to the income beneficiary(ies) each year an amount equal to [X]% of the fair market value of the trust assets as of [determination date]."</em> Setting the percentage in the trust document prevents future disputes about what rate is appropriate.</p>
+
+  <h3>2. Discretionary Capital Gains Allocation</h3>
+
+  <p>Include trustee discretion to allocate capital gains to income: <em>"The Trustee is authorized, in the Trustee's sole and absolute discretion, to allocate to trust accounting income any capital gain realized from the sale or exchange of trust assets, including digital assets, to the extent the Trustee deems appropriate to fulfill the purposes of this trust and to satisfy applicable distribution requirements."</em></p>
+
+  <h3>3. Digital Asset Income Provisions</h3>
+
+  <p>In states without clear digital asset income rules, include explicit provisions: <em>"Receipts from digital assets held in trust, including staking rewards, airdrop proceeds, hard fork distributions, and yield from lending digital assets, shall be allocated to trust accounting income unless the Trustee, in the Trustee's discretion, determines that such allocation is not appropriate given the circumstances."</em></p>
+
+  <h3>4. Express QTIP Marital Deduction Protector</h3>
+
+  <p>For QTIP trusts holding Bitcoin, add: <em>"The Trustee shall ensure that the trust produces sufficient income for the surviving spouse's support in a manner consistent with the spouse's accustomed standard of living. If trust assets do not generate sufficient trust accounting income for this purpose, the Trustee is authorized and directed to elect unitrust treatment, to allocate capital gains to income, or to make principal distributions to the surviving spouse under the applicable HEMS standard, as necessary to fulfill this purpose."</em> This protects both the marital deduction and the surviving spouse without rigidly mandating any single approach.</p>
+
+  <h2>Action Checklist: Income/Principal for Bitcoin Trusts</h2>
+
+  <ul class="checklist">
+    <li>Audit all existing Bitcoin trusts for income/principal provisions — identify any trust with an income beneficiary that holds or will hold Bitcoin without unitrust or gain-allocation override</li>
+    <li>For QTIP and bypass trusts: confirm whether the surviving spouse will receive adequate support from trust income under UPIA defaults — if not, initiate unitrust conversion immediately</li>
+    <li>For non-grantor dynasty trusts: confirm whether capital gains are being taxed at compressed trust brackets — if so, evaluate trustee discretionary gain allocation to income beneficiaries in lower brackets</li>
+    <li>Include total return unitrust election power in all new trust instruments — set the unitrust percentage in the document (3–4% for Bitcoin family trusts)</li>
+    <li>Include discretionary capital gains to income allocation authority in all new trusts</li>
+    <li>Confirm trust situs state has favorable digital asset income provisions — Wyoming, South Dakota, and Nevada are preferred</li>
+    <li>Coordinate income/principal provisions with DNI planning — confirm allocation changes are reflected correctly on Form 1041</li>
+    <li>Review QTIP trusts post-first-death for Bitcoin — if the first spouse died and left a QTIP trust now holding Bitcoin with no unitrust provisions, petition court for conversion or seek all-beneficiary consent under nonjudicial settlement agreement</li>
+    <li>For grantor trusts: note that income/principal distinction is largely irrelevant for income tax purposes (all taxed to grantor) but still matters for trustee accounting and distribution rights</li>
+  </ul>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Are Bitcoin capital gains trust income or principal under UPIA?</div>
+    <p>Under UPIA default rules, capital gains — including Bitcoin capital gains — are principal, not income. This means an income beneficiary receives nothing from Bitcoin appreciation under default trust accounting. The entire gain accumulates as principal for remainder beneficiaries. To provide income beneficiaries with access to Bitcoin appreciation, the trust must override this default through a total return unitrust conversion or a trustee discretionary gain-to-income allocation provision.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What is a total return unitrust and how does it solve the Bitcoin income problem?</div>
+    <p>A total return unitrust pays the income beneficiary a fixed percentage (typically 3–5%) of trust assets annually — regardless of whether the trust earned dividends, interest, or capital gains. This converts the trust's payment obligation from "UPIA income only" to total return, so the income beneficiary participates in Bitcoin appreciation. Most states allow conversion by trustee election with beneficiary notice. Best practice: include the power to elect unitrust treatment expressly in the original trust document.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">How does income vs. principal allocation affect the DNI calculation for a Bitcoin trust?</div>
+    <p>Capital gains are excluded from DNI by default under §643(a)(3) unless the trust document allocates them to income. Gains excluded from DNI are taxed at the trust's compressed brackets (37% at $15,650). If the trust document allocates gains to income, they flow through DNI to beneficiaries and are taxed at the beneficiary's individual rate — typically lower. Allocating gains to income both provides distributions to income beneficiaries and shifts the tax burden from the trust's compressed rate to the beneficiary's potentially lower rate.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Can a QTIP trust holding Bitcoin provide adequate income to the surviving spouse?</div>
+    <p>Not under UPIA defaults, since Bitcoin generates no UPIA income. The solution: draft the QTIP as a total return unitrust from inception, or include trustee authority to convert to unitrust treatment after the first spouse's death. Without this, the surviving spouse may be entirely unsupported by what is often the family's largest trust asset — leaving them dependent on HEMS principal distributions, which reduce the children's remainder and create structural family conflict.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What UPIA income items does a Bitcoin trust actually generate?</div>
+    <p>Under UPIA defaults, a Bitcoin trust generates trust accounting income only from: interest on Bitcoin-collateralized trust loans, dividends from Bitcoin ETFs or mining company stock, staking rewards (income in Wyoming/SD/NV by statute; unclear elsewhere), and rental income from any real property held alongside Bitcoin. Pure on-chain Bitcoin with no yield activity generates essentially zero trust accounting income under UPIA defaults — making unitrust conversion or gain allocation essential for income beneficiaries.</p>
+  </div>
+
+  <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid #222;">
+    <p><strong>Related Articles:</strong></p>
+    <ul>
+      <li><a href="bitcoin-qtip-trust.html">Bitcoin QTIP Trust: Marital Deduction and Surviving Spouse Planning</a></li>
+      <li><a href="bitcoin-bypass-trust.html">Bitcoin Bypass Trust: Sheltering Appreciation from the Surviving Spouse's Estate</a></li>
+      <li><a href="bitcoin-trust-fiduciary-income-tax-1041.html">Bitcoin Trust Fiduciary Income Tax: Form 1041 and DNI Mechanics</a></li>
+      <li><a href="bitcoin-charitable-remainder-trust.html">Bitcoin Charitable Remainder Trust (CRT) Complete Guide</a></li>
+      <li><a href="bitcoin-trustee-prudent-investor-rule.html">Bitcoin Trustee Prudent Investor Rule and Total Return Trust Strategy</a></li>
+      <li><a href="bitcoin-trust-best-state-situs.html">Best State Situs for Bitcoin Trusts: Wyoming vs. South Dakota vs. Nevada</a></li>
+      <li><a href="bitcoin-estate-planning-guide.html">The Complete Bitcoin Estate Planning Guide</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<footer>
+  <p>© 2026 The Bitcoin Family Office. All rights reserved. | <a href="/disclosures.html">Disclosures</a></p>
+  <p style="margin-top:.5rem;font-size:.75rem;color:#444;">This content is for informational purposes only and does not constitute legal, tax, or financial advice. Trust income/principal accounting involves complex interactions between state trust law, federal income tax, and trust document provisions. Consult qualified legal and tax counsel before modifying trust accounting provisions or converting to unitrust treatment.</p>
+</footer>
+</body>
+</html>
