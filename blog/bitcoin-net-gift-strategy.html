@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Net Gift Strategy: Shifting Gift Tax to Recipients to Reduce Your Estate | The Bitcoin Family Office</title>
+  <meta name="description" content="A net gift conditions a transfer on the recipient paying the gift tax — reducing the taxable gift, shrinking the estate, and shifting the gift tax burden off the donor. For large Bitcoin positions, the math can produce significant estate tax savings. Complete guide including the Diedrich capital gain trap.">
+  <meta name="keywords" content="bitcoin net gift strategy, net gift estate planning, bitcoin gift tax planning, net gift IRS Rev Rul 71-232, Diedrich bitcoin gift tax, bitcoin estate tax reduction">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-net-gift-strategy.html">
+  <meta property="og:title" content="Bitcoin Net Gift Strategy: Shifting Gift Tax to Recipients to Reduce Your Estate">
+  <meta property="og:description" content="A net gift conditions a transfer on the recipient paying the gift tax — reducing the taxable gift and shifting the gift tax burden. For large Bitcoin positions the math produces significant estate tax savings — but watch the Diedrich capital gain trap.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-net-gift-strategy.html">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C; --gold-light: #E8C96D; --bg: #0a0a0a; --bg-card: #111111;
+      --bg-elevated: #181818; --text: #E8E4D9; --text-muted: #9A9488; --border: #2a2a2a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'EB Garamond', serif; font-size: 20px; line-height: 1.75; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav { background: #000; border-bottom: 1px solid var(--border); padding: 0 2rem; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 64px; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--gold); letter-spacing: 0.05em; }
+    .nav-links { display: flex; gap: 2rem; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-links a { color: var(--text-muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); text-decoration: none; }
+    .nav-cta { background: var(--gold); color: #000; padding: 0.5rem 1.25rem; border-radius: 2px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-cta:hover { background: var(--gold-light); text-decoration: none; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: #000; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); gap: 1.2rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .nav-cta { display: none; }
+    }
+    .article-hero { padding: 4rem 2rem 3rem; text-align: center; border-bottom: 1px solid var(--border); }
+    .article-hero .tag { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+    .article-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.2; max-width: 850px; margin: 0 auto 1.5rem; }
+    .article-hero .lead { font-size: 1.2rem; color: var(--text-muted); max-width: 680px; margin: 0 auto 1.5rem; line-height: 1.6; }
+    .article-meta { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.05em; }
+    .article-body { max-width: 780px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.85rem; font-weight: 700; margin: 3rem 0 1.25rem; color: var(--text); line-height: 1.3; }
+    h3 { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 2.25rem 0 0.75rem; color: var(--gold); letter-spacing: 0.03em; text-transform: uppercase; }
+    p { margin-bottom: 1.4rem; }
+    ul, ol { margin: 1rem 0 1.5rem 1.5rem; }
+    li { margin-bottom: 0.6rem; }
+    strong { color: var(--text); font-weight: 500; }
+    .callout { background: var(--bg-elevated); border-left: 3px solid var(--gold); padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 0 4px 4px 0; }
+    .callout-label { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .callout p { margin: 0; font-size: 0.95rem; color: var(--text-muted); }
+    .table-wrap { overflow-x: auto; margin: 2rem 0; }
+    table { width: 100%; border-collapse: collapse; font-family: 'Inter', sans-serif; font-size: 0.85rem; }
+    thead tr { border-bottom: 2px solid var(--gold); }
+    thead th { padding: 0.75rem 1rem; text-align: left; color: var(--gold); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:hover { background: var(--bg-elevated); }
+    tbody td { padding: 0.75rem 1rem; color: var(--text-muted); vertical-align: top; line-height: 1.5; }
+    tbody td:first-child { color: var(--text); font-weight: 500; }
+    .lead-magnet { background: var(--bg-card); border: 1px solid var(--gold); border-radius: 6px; padding: 2rem; margin: 3rem 0; }
+    .lead-magnet-label { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .lead-magnet h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 0.75rem; }
+    .lead-magnet p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+    .lead-magnet a.btn { display: inline-block; background: var(--gold); color: #000; padding: 0.7rem 1.5rem; border-radius: 3px; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .lead-magnet a.btn:hover { background: var(--gold-light); text-decoration: none; }
+    .checklist { background: var(--bg-elevated); border-radius: 6px; padding: 2rem; margin: 2.5rem 0; }
+    .checklist h3 { margin-top: 0; margin-bottom: 1.25rem; }
+    .checklist ol { margin-left: 1.25rem; }
+    .checklist li { margin-bottom: 0.75rem; font-size: 0.95rem; }
+    .faq-section { margin: 3rem 0; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 1.5rem 0; }
+    .faq-question { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .faq-answer { color: var(--text-muted); font-size: 0.95rem; }
+    footer { background: #000; border-top: 1px solid var(--border); padding: 3rem 2rem; text-align: center; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--gold); margin-bottom: 0.75rem; }
+    .footer-text { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; font-family: 'Inter', sans-serif; font-size: 0.8rem; }
+    .footer-links a { color: var(--text-muted); }
+    .footer-links a:hover { color: var(--gold); text-decoration: none; }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N8PP20VBTV');
+  </script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bitcoin Net Gift Strategy: Shifting Gift Tax to Recipients to Reduce Your Estate",
+    "description": "A net gift conditions a transfer on the recipient paying the gift tax — reducing the taxable gift, shrinking the estate, and shifting the gift tax burden off the donor. For large Bitcoin positions, the math can produce significant estate tax savings.",
+    "datePublished": "2026-03-13",
+    "dateModified": "2026-03-13",
+    "author": { "@type": "Organization", "name": "The Bitcoin Family Office" },
+    "publisher": { "@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://thebitcoinfamilyoffice.com/blog/bitcoin-net-gift-strategy.html" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a net gift in estate planning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A net gift is a gift conditioned on the recipient paying the gift tax that would otherwise be owed by the donor. Under Rev. Rul. 71-232, the gift tax paid by the recipient is treated as consideration received by the donor — reducing the net taxable gift. Because the taxable gift is reduced, the gift tax itself is also reduced (a circular calculation solved iteratively). The donor removes the Bitcoin from their estate, the recipient pays the tax, and the net transfer to the recipient is the Bitcoin's fair market value minus the gift tax they paid."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a net gift trigger capital gains tax for the Bitcoin donor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — this is the critical trap established in Commissioner v. Diedrich, 457 U.S. 191 (1982). When a recipient pays gift tax on behalf of the donor, the IRS treats the gift tax payment as an amount realized by the donor. If the gift tax paid by the recipient exceeds the donor's cost basis in the Bitcoin, the donor recognizes capital gain equal to the excess. For Bitcoin with a very low basis and high current value, the Diedrich gain can be substantial. This must be modeled before executing a net gift."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is the net gift taxable amount calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The net gift calculation is circular: the taxable gift equals the FMV minus the gift tax, but the gift tax is calculated on the net taxable gift. The standard formula resolves this: Net Taxable Gift = FMV ÷ (1 + Gift Tax Rate). For a $1,000,000 Bitcoin gift at a 40% gift tax rate: Net Taxable Gift = $1,000,000 ÷ 1.40 = $714,286. Gift tax (paid by recipient) = $1,000,000 − $714,286 = $285,714. Compare to a regular gift where the donor pays $400,000 in gift tax on the same $1M transfer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who benefits most from a net gift strategy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Net gifts work best when: (1) the donor has a large taxable estate and wants to make substantial gifts but cannot or does not want to pay gift tax out of pocket; (2) the recipient has sufficient liquidity to pay the gift tax and is willing to do so in exchange for receiving the Bitcoin; (3) the Bitcoin being gifted has a relatively high basis (limiting the Diedrich capital gain exposure); and (4) the estate tax rate exceeds the capital gains rate saved by avoiding estate inclusion, making the trade-off worthwhile."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a net gift be made to a trust?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. A net gift can be made to an irrevocable trust, with the trust — funded with other assets or via trustee borrowing — paying the gift tax on the donor's behalf. This allows the net gift strategy to work even when the recipient (an individual beneficiary) doesn't have personal liquidity to pay the gift tax. Trust net gifts require careful drafting to ensure the trust is legally obligated to pay the gift tax and that the payment doesn't constitute an additional gift from the donor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does a net gift compare to a regular outright gift of Bitcoin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A regular outright gift: donor pays gift tax from personal funds (an additional taxable gift if paid within 3 years of death), recipient receives full Bitcoin value with carryover basis, no capital gain to the donor. A net gift: recipient pays the gift tax, donor recognizes Diedrich capital gain if gift tax exceeds basis, but the donor's estate is reduced by the Bitcoin plus the tax burden shifted to the recipient. The net gift is most advantageous when the estate tax cost of keeping the Bitcoin (40%) exceeds the capital gains cost on the Diedrich gain (up to 23.8%)."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">The Bitcoin Family Office</a>
+    <div class="hamburger" onclick="this.nextElementSibling.classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links">
+      <a href="/blog/">Insights</a>
+      <a href="/services/">Services</a>
+      <a href="/tools/">Tools</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/services/" class="nav-cta">Work With Us</a>
+    </div>
+  </div>
+</nav>
+
+<div class="article-hero">
+  <div class="tag">Estate Planning · Gift Tax Strategy</div>
+  <h1>Bitcoin Net Gift Strategy: Shifting Gift Tax to Recipients to Reduce Your Estate</h1>
+  <p class="lead">A net gift is one of estate planning's more elegant maneuvers: condition a Bitcoin transfer on the recipient paying the gift tax, and you've reduced the taxable gift, shifted the tax burden off your estate, and removed the Bitcoin from your gross estate — all in one transaction. But the Diedrich capital gain trap can make it backfire badly on high-basis-to-FMV Bitcoin positions. Here is the complete analysis.</p>
+  <div class="article-meta">March 13, 2026 · 13 min read · The Bitcoin Family Office</div>
+</div>
+
+<div class="article-body">
+
+  <p>In a standard gift, the donor makes a transfer and pays the gift tax. The gift tax is itself a taxable gift if paid within three years of the donor's death — a compounding tax-on-tax problem for large estates.</p>
+
+  <p>In a <strong>net gift</strong>, the donor conditions the transfer on the recipient agreeing to pay the gift tax liability that would otherwise fall on the donor. The IRS recognized this arrangement in Rev. Rul. 71-232, holding that the gift tax paid by the recipient constitutes consideration received by the donor — reducing the net taxable gift below the asset's fair market value.</p>
+
+  <p>For Bitcoin-wealthy families in taxable estate territory (above the applicable exemption), the net gift strategy can meaningfully reduce the estate by shifting the gift tax obligation to the next generation. But it comes with a landmine that the Supreme Court identified in 1982: the donor may recognize capital gain on the transaction. For Bitcoin held at a very low basis relative to current value, that gain can be substantial.</p>
+
+  <p>This guide covers the full net gift framework: the Rev. Rul. 71-232 mechanics, the iterative calculation, the Diedrich capital gain analysis, the break-even math, when the strategy makes sense for Bitcoin holders, and how net gifts interact with trusts and GST exemption allocation.</p>
+
+  <h2>Rev. Rul. 71-232: The Legal Foundation</h2>
+
+  <p>In 1971, the IRS issued Revenue Ruling 71-232, which established the tax treatment of net gifts. The ruling holds:</p>
+
+  <ul>
+    <li>When a donor makes a gift conditioned on the donee paying the resulting gift tax, the gift tax paid by the donee is treated as consideration received by the donor</li>
+    <li>This consideration reduces the amount of the gift for gift tax purposes — the taxable gift equals the fair market value of the transferred property minus the gift tax paid by the donee</li>
+    <li>Because the taxable gift is reduced, the gift tax itself is reduced (it's calculated on the net taxable gift, not the gross FMV)</li>
+    <li>This creates a circular calculation: the taxable gift depends on the gift tax, which depends on the taxable gift</li>
+  </ul>
+
+  <p>The circular calculation resolves with a simple formula:</p>
+
+  <div style="background: var(--bg-elevated); padding: 1.25rem 1.5rem; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 1.5rem 0; text-align: center;">
+    <strong>Net Taxable Gift = FMV of Bitcoin ÷ (1 + Gift Tax Rate)</strong><br>
+    <span style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; display: block;">Gift Tax Paid by Recipient = FMV − Net Taxable Gift</span>
+  </div>
+
+  <h3>Worked Example: $1,000,000 Bitcoin Net Gift</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Regular Gift (Donor Pays Tax)</th>
+          <th>Net Gift (Recipient Pays Tax)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bitcoin FMV transferred</td>
+          <td>$1,000,000</td>
+          <td>$1,000,000</td>
+        </tr>
+        <tr>
+          <td>Taxable gift amount</td>
+          <td>$1,000,000</td>
+          <td>$714,286 ($1M ÷ 1.40)</td>
+        </tr>
+        <tr>
+          <td>Gift tax rate (top federal)</td>
+          <td>40%</td>
+          <td>40%</td>
+        </tr>
+        <tr>
+          <td>Gift tax owed</td>
+          <td>$400,000 (paid by donor)</td>
+          <td>$285,714 (paid by recipient)</td>
+        </tr>
+        <tr>
+          <td>Tax paid by donor</td>
+          <td>$400,000</td>
+          <td>$0</td>
+        </tr>
+        <tr>
+          <td>Total cost to donor (Bitcoin + tax)</td>
+          <td>$1,400,000</td>
+          <td>$1,000,000</td>
+        </tr>
+        <tr>
+          <td>Recipient receives (net)</td>
+          <td>$1,000,000 in Bitcoin</td>
+          <td>$1,000,000 in Bitcoin less $285,714 tax paid = net $714,286</td>
+        </tr>
+        <tr>
+          <td>Donor estate reduction</td>
+          <td>$1,400,000 (Bitcoin + gift tax)</td>
+          <td>$1,000,000 (Bitcoin only)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The net gift transfers the same $1,000,000 in Bitcoin but costs the donor $400,000 less in out-of-pocket gift tax. From the donor's perspective, the estate is reduced by $1,000,000 of Bitcoin without any additional cash outlay. From the recipient's perspective, they receive Bitcoin worth $1,000,000 but pay $285,714 in gift tax, keeping a net value of $714,286.</p>
+
+  <p>Whether this is a good deal for the recipient depends on the context: if they expect the Bitcoin to appreciate significantly from its current $1,000,000 value, paying $285,714 today to receive $1,000,000 in Bitcoin — and all future appreciation — is a rational transaction.</p>
+
+  <h2>The Diedrich Trap: Capital Gain to the Donor</h2>
+
+  <p>This is the analysis that most net gift discussions bury in a footnote. In <em>Commissioner v. Diedrich</em>, 457 U.S. 191 (1982), the Supreme Court held unanimously that when a donee pays gift tax on behalf of the donor, the donor has realized income to the extent the gift tax paid exceeds the donor's basis in the transferred property.</p>
+
+  <p>The reasoning: the gift tax payment by the donee is consideration received by the donor (treating the transaction as partly a sale, partly a gift). The "amount realized" on the sale portion is the gift tax paid. The "cost" basis is the donor's adjusted basis in the Bitcoin. If the amount realized (gift tax paid by donee) exceeds the basis, the excess is a recognized capital gain.</p>
+
+  <h3>The Diedrich Calculation for Bitcoin</h3>
+
+  <p>Bitcoin is typically held at a very low basis relative to current value. A holder who bought Bitcoin at $10,000 and is gifting it when it's worth $1,000,000 has a basis of 1% of current value. The Diedrich gain exposure is significant:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bitcoin FMV gifted</td>
+          <td>$1,000,000</td>
+        </tr>
+        <tr>
+          <td>Donor's original cost basis</td>
+          <td>$10,000</td>
+        </tr>
+        <tr>
+          <td>Gift tax paid by recipient (the "amount realized")</td>
+          <td>$285,714</td>
+        </tr>
+        <tr>
+          <td>Diedrich gain (amount realized minus basis)</td>
+          <td>$285,714 − $10,000 = <strong>$275,714</strong></td>
+        </tr>
+        <tr>
+          <td>Federal capital gains tax on Diedrich gain (23.8%)</td>
+          <td><strong>$65,620</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The donor must recognize $275,714 in capital gain in the year of the net gift and pay approximately $65,620 in federal capital gains tax — even though no cash changed hands from the donor. The donor transferred Bitcoin, the recipient paid $285,714 in gift tax, and the IRS sees the $285,714 as partial sale proceeds to the donor.</p>
+
+  <div class="callout">
+    <div class="callout-label">High-Basis Bitcoin Exception</div>
+    <p>If the donor's basis in the Bitcoin equals or exceeds the gift tax paid by the recipient, there is zero Diedrich gain. This applies to recently purchased Bitcoin (high basis relative to FMV) or Bitcoin inherited with a stepped-up basis at death and then gifted soon after. For Bitcoin purchased at low prices years ago, the Diedrich gain is nearly unavoidable in a net gift — model it explicitly before proceeding.</p>
+  </div>
+
+  <h2>The Break-Even Analysis: When Net Gifts Make Sense</h2>
+
+  <p>The net gift strategy is beneficial when the estate tax saved by removing Bitcoin from the estate (and shifting the gift tax to the recipient) exceeds the capital gains tax triggered by the Diedrich gain. The key variables:</p>
+
+  <ul>
+    <li><strong>Estate tax rate:</strong> Currently 40% for amounts above the applicable exemption (confirm 2026 OBBBA treatment with your advisor)</li>
+    <li><strong>Capital gains rate on Diedrich gain:</strong> Up to 23.8% federal (LTCG + NIIT) plus state</li>
+    <li><strong>Basis ratio:</strong> The lower the basis relative to FMV, the larger the Diedrich gain and the less favorable the net gift becomes</li>
+  </ul>
+
+  <p>The fundamental comparison:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Hold Until Death</th>
+          <th>Regular Gift Now</th>
+          <th>Net Gift Now</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bitcoin FMV</td>
+          <td>$1,000,000</td>
+          <td>$1,000,000</td>
+          <td>$1,000,000</td>
+        </tr>
+        <tr>
+          <td>Estate / gift tax cost</td>
+          <td>$400,000 estate tax at death</td>
+          <td>$400,000 gift tax paid by donor</td>
+          <td>$285,714 gift tax paid by recipient</td>
+        </tr>
+        <tr>
+          <td>Capital gains tax</td>
+          <td>$0 (§1014 step-up)</td>
+          <td>$0 (carryover basis; heirs pay on sale)</td>
+          <td>$65,620 Diedrich gain (donor pays)</td>
+        </tr>
+        <tr>
+          <td>Total tax cost</td>
+          <td>$400,000</td>
+          <td>$400,000 (donor) + heirs' eventual CG</td>
+          <td>$65,620 (donor) + $285,714 (recipient) = $351,334</td>
+        </tr>
+        <tr>
+          <td>Total family wealth preserved</td>
+          <td>$600,000 (after $400K estate tax)</td>
+          <td>$600,000 (donor pays $400K; heirs get full BTC)</td>
+          <td>$648,666 (lower combined tax)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>In this example, the net gift produces the best combined family outcome — $648,666 in net family wealth versus $600,000 under either hold-until-death or regular gift. The difference is $48,666: the net gift strategy saves approximately $48,666 in total combined taxes compared to the alternatives.</p>
+
+  <p>However, this advantage diminishes as the basis ratio falls. If Bitcoin had been purchased at $100 instead of $10,000, the Diedrich gain would be much larger and eat further into the advantage. And crucially: the hold-until-death scenario eliminates capital gains via the §1014 step-up, making it particularly powerful for very low-basis Bitcoin. The net gift does not benefit from the step-up.</p>
+
+  <h2>Net Gift vs. Hold Until Death: The §1014 Trade-Off</h2>
+
+  <p>The fundamental tension for Bitcoin holders is between:</p>
+
+  <ul>
+    <li><strong>Hold until death:</strong> Pay estate tax (40%) but eliminate capital gains via §1014 step-up — heirs inherit at date-of-death FMV with zero embedded gain</li>
+    <li><strong>Net gift now:</strong> Remove Bitcoin from estate (avoiding future estate tax on appreciation), but trigger Diedrich capital gain now and pass carryover basis to heirs (no step-up on the gifted Bitcoin)</li>
+  </ul>
+
+  <p>The net gift is more attractive when:</p>
+  <ul>
+    <li>The estate is large and likely to face estate tax regardless of exemption levels</li>
+    <li>Bitcoin is expected to appreciate significantly from current levels — future appreciation passes to heirs gift/estate-tax-free after the net gift</li>
+    <li>The donor's basis is not extremely low relative to FMV (limiting the Diedrich gain)</li>
+    <li>The recipient has liquidity to pay the gift tax without selling the Bitcoin (which would itself trigger capital gains)</li>
+    <li>The donor does not want to hold the Bitcoin until death (perhaps concerned about regulatory risk, custody issues, or wanting to see the wealth transferred during lifetime)</li>
+  </ul>
+
+  <p>Hold until death is more attractive when:</p>
+  <ul>
+    <li>Bitcoin has an extremely low basis (the §1014 step-up provides a large capital gains benefit that outweighs estate tax)</li>
+    <li>The estate may be below the exemption level by the time of death (no estate tax, full step-up)</li>
+    <li>The donor needs the Bitcoin for spending during their lifetime</li>
+    <li>The recipient does not have liquidity to pay the gift tax</li>
+  </ul>
+
+  <h2>Recipient's Basis After a Net Gift</h2>
+
+  <p>The recipient's cost basis in Bitcoin received via a net gift is <strong>not</strong> the Bitcoin's fair market value at the date of the gift. It is the donor's carryover basis — the same low basis the donor had — plus any Diedrich gain recognized by the donor.</p>
+
+  <p>The basis calculation for the recipient:</p>
+  <ul>
+    <li>Donor's basis in Bitcoin: $10,000</li>
+    <li>Plus: Diedrich gain recognized by donor: $275,714</li>
+    <li>Recipient's adjusted basis: $285,714</li>
+  </ul>
+
+  <p>This makes intuitive sense: the $285,714 represents the gift tax paid by the recipient (treated as partial purchase price) plus the original basis carried over. The recipient now holds $1,000,000 in Bitcoin with a $285,714 basis — an embedded gain of $714,286. If the recipient sells immediately, they owe capital gains tax on $714,286.</p>
+
+  <p>Compare this to an outright gift (no net gift): the recipient receives $1,000,000 in Bitcoin with a $10,000 carryover basis — a $990,000 embedded gain. The net gift actually improves the recipient's basis substantially relative to a pure carryover basis gift.</p>
+
+  <div class="lead-magnet">
+    <div class="lead-magnet-label">Abundant Mines Resource</div>
+    <h4>Bitcoin Mining: The Most Powerful Tax Strategy Available</h4>
+    <p>Mining generates Bitcoin with a cost basis equal to the mining costs — not zero. A mining-based Bitcoin acquisition strategy produces higher basis Bitcoin that is significantly more favorable for net gift planning (lower Diedrich gain exposure) than Bitcoin purchased years ago at prices near zero. Abundant Mines works with families integrating mining into a comprehensive wealth accumulation and transfer strategy.</p>
+    <a href="https://abundantmines.com/tax-strategy/" class="btn" target="_blank" rel="noopener">Explore Bitcoin Mining Tax Strategy →</a>
+  </div>
+
+  <h2>Net Gifts to Trusts</h2>
+
+  <p>A net gift need not be made directly to an individual recipient. It can be made to an irrevocable trust — with the trust obligated to pay the gift tax from trust assets. This structure offers several advantages:</p>
+
+  <ul>
+    <li><strong>Dynasty trust:</strong> A net gift to a properly structured dynasty trust removes Bitcoin from the estate, avoids gift tax (paid by the trust), and positions future appreciation in a perpetual trust that bypasses estate tax at each generation</li>
+    <li><strong>IDGT (Intentionally Defective Grantor Trust):</strong> The net gift to an IDGT funded with sufficient assets to pay the gift tax allows the donor to continue paying income tax on the trust's income (further reducing the estate) while the Bitcoin appreciates inside the trust</li>
+    <li><strong>Trust-funded net gift:</strong> The donor makes a seed gift of cash or other liquid assets to the trust; the trust then uses those assets to pay the gift tax on a subsequent Bitcoin net gift from the donor. Requires careful timing and documentation to avoid substance-over-form arguments</li>
+  </ul>
+
+  <p>Trust net gifts require precise drafting. The trust document must expressly obligate the trustee to pay the gift tax, the obligation must be legally enforceable, and the structure must not be configured in a way that creates an additional gift from the donor to the trust (by funding the trust's ability to pay the gift tax).</p>
+
+  <h2>GST Exemption and Net Gifts</h2>
+
+  <p>When a net gift is made to a trust that skips a generation (e.g., directly to grandchildren or to a dynasty trust with grandchildren as beneficiaries), the Generation-Skipping Transfer (GST) tax is also relevant. The GST tax is an additional 40% tax on transfers that skip a generation.</p>
+
+  <p>GST exemption should be allocated to net gifts that skip generations — just as with any other transfer. The taxable amount for GST purposes is the net taxable gift (after the reduction for gift tax paid by the recipient), not the Bitcoin's gross FMV. This means the GST exemption allocation is more efficient on a net gift than on the same Bitcoin transferred without the net gift structure.</p>
+
+  <p>Allocation of GST exemption occurs on Form 709. For dynasty trust net gifts intended to serve multiple generations, both gift tax and GST analysis require attention from an estate planning attorney experienced in generation-skipping structures.</p>
+
+  <h2>Interaction with the Annual Exclusion</h2>
+
+  <p>The annual gift tax exclusion ($19,000 per donee in 2026, or $38,000 with gift splitting) allows gifts up to the exclusion amount without using the lifetime exemption or paying gift tax. Net gifts below the annual exclusion amount — where no gift tax would be owed regardless — produce no reduction in the taxable gift because there is no gift tax for the recipient to pay. The net gift structure is relevant only for transfers above the annual exclusion that would otherwise generate a taxable gift and potential gift tax.</p>
+
+  <h2>Practical Execution: The Net Gift Agreement</h2>
+
+  <p>A net gift is not self-executing. The following are required:</p>
+
+  <ol>
+    <li><strong>Written net gift agreement:</strong> A formal agreement between donor and recipient (or donor and trustee) specifying that the transfer is conditioned on the recipient paying the gift tax, and documenting the recipient's obligation and agreement</li>
+    <li><strong>Contemporaneous execution:</strong> The agreement should be executed at or before the time of the Bitcoin transfer</li>
+    <li><strong>Form 709 reporting:</strong> The donor reports the net gift on Form 709 using the net taxable gift amount (FMV ÷ (1 + rate)); the recipient's gift tax payment should be documented</li>
+    <li><strong>Capital gain reporting:</strong> The donor reports the Diedrich gain on Schedule D/Form 8949 in the year of the transfer; the amount realized is the gift tax paid by the recipient</li>
+    <li><strong>Recipient's basis documentation:</strong> The recipient should document their adjusted basis (donor's basis + Diedrich gain recognized) for future capital gains reporting when they sell the Bitcoin</li>
+  </ol>
+
+  <div class="lead-magnet">
+    <div class="lead-magnet-label">Abundant Mines Resource</div>
+    <h4>36 Questions to Ask Your Bitcoin Mining Host Before Signing</h4>
+    <p>High-basis Bitcoin from mining operations — where cost basis equals mining operating costs — is significantly more favorable for net gift planning than zero-basis Bitcoin. If you're exploring Bitcoin mining as part of a wealth accumulation and transfer strategy, Abundant Mines' 36-question due diligence checklist is the starting point for evaluating any professional mining relationship.</p>
+    <a href="http://44134802.hs-sites.com/abundant-mines-36-questions" class="btn" target="_blank" rel="noopener">Download the Free Hosting Due Diligence Checklist →</a>
+  </div>
+
+  <div class="checklist">
+    <h3>8-Item Net Gift Planning Checklist for Bitcoin Holders</h3>
+    <ol>
+      <li><strong>Calculate the Diedrich gain before proceeding:</strong> Determine the donor's basis in the specific Bitcoin lots to be gifted; compute the net gift tax (FMV ÷ (1 + rate) × rate); if gift tax exceeds basis, Diedrich gain is unavoidable — model the capital gains tax cost explicitly before proceeding</li>
+      <li><strong>Compare net gift vs. hold-until-death:</strong> Model the §1014 step-up benefit of holding Bitcoin until death (estate tax paid but capital gains eliminated) against the net gift's combined Diedrich gain tax + recipient gift tax payment — determine which produces more total family wealth</li>
+      <li><strong>Confirm recipient liquidity:</strong> The recipient must have sufficient liquidity to pay the gift tax obligation at closing; if the recipient must sell the gifted Bitcoin to pay the tax, the capital gain on that sale (using the low carryover basis) can be substantial — model this carefully</li>
+      <li><strong>Execute a written net gift agreement:</strong> Document the conditioned nature of the transfer before or contemporaneously with the Bitcoin transfer; the recipient's obligation to pay the gift tax must be legally enforceable and clearly documented</li>
+      <li><strong>Allocate GST exemption if trust recipient skips a generation:</strong> Net gifts to dynasty trusts or skip-person recipients require GST exemption allocation on Form 709 — the taxable amount for GST is the net taxable gift amount, making the exemption allocation more efficient than on a gross-FMV transfer</li>
+      <li><strong>Report the Diedrich gain on Schedule D:</strong> The gift tax paid by the recipient is the "amount realized" for the donor; report the gain in the year of transfer on Form 8949/Schedule D; the holding period for the gain follows the donor's holding period in the Bitcoin</li>
+      <li><strong>Document the recipient's adjusted basis:</strong> The recipient's basis is donor's basis plus Diedrich gain recognized by the donor — document this and provide the calculation to the recipient for their future capital gains reporting</li>
+      <li><strong>Consider high-basis Bitcoin from mining:</strong> Bitcoin acquired through mining has a cost basis equal to its FMV at the time of mining — significantly higher than Bitcoin purchased years ago. Mining-based Bitcoin accumulation produces more favorable net gift economics (lower Diedrich gain exposure) than zero-basis legacy Bitcoin</li>
+    </ol>
+  </div>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-section">
+    <div class="faq-item">
+      <div class="faq-question">What is a net gift in estate planning?</div>
+      <div class="faq-answer">A net gift is a transfer conditioned on the recipient paying the resulting gift tax. Under Rev. Rul. 71-232, the gift tax paid by the recipient is treated as consideration — reducing the net taxable gift below the asset's FMV. The taxable gift equals FMV ÷ (1 + gift tax rate). The donor removes the Bitcoin from their estate without paying gift tax out of pocket; the recipient gets the Bitcoin net of the gift tax they paid.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Does a net gift trigger capital gains tax for the Bitcoin donor?</div>
+      <div class="faq-answer">Yes — the Diedrich trap (Commissioner v. Diedrich, 1982). The gift tax paid by the recipient is treated as an "amount realized" by the donor. If that amount exceeds the donor's basis in the Bitcoin, the donor recognizes capital gain. For low-basis Bitcoin (purchased years ago at low prices), this gain can be substantial. Model it explicitly before proceeding.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How is the net gift taxable amount calculated?</div>
+      <div class="faq-answer">Net Taxable Gift = FMV ÷ (1 + Gift Tax Rate). At 40%: $1M ÷ 1.40 = $714,286 taxable gift; recipient pays $285,714 in gift tax. Compare to a regular gift where the donor pays $400,000 on the same $1M transfer.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Who benefits most from a net gift strategy?</div>
+      <div class="faq-answer">Donors with large taxable estates, recipients with liquidity to pay the gift tax, and situations where the Bitcoin has a meaningful basis relative to FMV (limiting Diedrich gain). When the estate tax cost of retaining the Bitcoin exceeds the capital gains cost of the Diedrich gain, the net gift wins.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can a net gift be made to a trust?</div>
+      <div class="faq-answer">Yes. A net gift can be made to an irrevocable trust, with the trust legally obligated to pay the gift tax from trust assets. Dynasty trust net gifts allow removal of Bitcoin from the estate while positioning it for perpetual, estate-tax-free compounding. Requires careful drafting by an estate planning attorney.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How does a net gift compare to a regular outright gift of Bitcoin?</div>
+      <div class="faq-answer">A regular gift: donor pays gift tax, no capital gain to donor, recipient takes carryover basis. A net gift: recipient pays smaller gift tax, donor pays Diedrich capital gain tax, recipient takes higher basis (carryover + Diedrich gain). The net gift produces better combined family economics in most large-estate scenarios, but hold-until-death with the §1014 step-up may be superior for very low-basis Bitcoin.</div>
+    </div>
+  </div>
+
+  <h2>The Bottom Line</h2>
+
+  <p>The net gift strategy is one of estate planning's more surgical tools — it shifts the gift tax burden to the recipient, reduces the taxable gift, and removes Bitcoin from the donor's estate without a cash outlay from the donor. The Diedrich trap is real and unavoidable for low-basis Bitcoin, but at a 23.8% capital gains rate versus a 40% estate tax rate, the math often still favors the net gift for large taxable estates.</p>
+
+  <p>The critical analysis: model the Diedrich gain for your specific Bitcoin lots, model the recipient's liquidity to pay the gift tax without selling the Bitcoin, compare total family tax cost against the alternatives (hold until death for the step-up, regular gift, trust transfer strategies), and ensure the structure is executed with a written agreement and proper Form 709 and Form 8949 reporting.</p>
+
+  <p>For Bitcoin-wealthy families in estate tax territory, the net gift strategy — particularly in combination with dynasty trust structures and GST exemption allocation — is worth exploring as part of a comprehensive Bitcoin estate plan. <a href="/services/">Contact The Bitcoin Family Office</a> to model the net gift strategy alongside your broader transfer planning.</p>
+
+  <p>For the complete gift tax framework that surrounds the net gift strategy, see our guides on <a href="/blog/bitcoin-gift-tax.html">Bitcoin gift tax fundamentals</a>, <a href="/blog/bitcoin-gift-splitting-married-couples.html">gift splitting for married couples</a>, and the <a href="/blog/bitcoin-estate-planning-guide.html">complete Bitcoin estate planning guide</a>.</p>
+
+  <hr style="border: none; border-top: 1px solid var(--border); margin: 3rem 0;">
+  <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.7;"><em>This guide is for educational purposes only and does not constitute tax or legal advice. Gift tax rates, exemption amounts, and estate planning rules are subject to change under current or future legislation. Consult a qualified estate planning attorney and CPA before executing any net gift or wealth transfer strategy.</em></p>
+
+</div>
+
+<footer>
+  <div class="footer-logo">The Bitcoin Family Office</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Insights</a>
+    <a href="/services/">Services</a>
+    <a href="/tools/">Tools</a>
+    <a href="/faq/">FAQ</a>
+  </div>
+  <p class="footer-text">The Bitcoin Family Office provides educational resources on Bitcoin estate planning and tax strategy for high-net-worth families. Nothing on this site constitutes legal, tax, or financial advice. Consult qualified professionals for your specific situation.</p>
+</footer>
+
+</body>
+</html>
