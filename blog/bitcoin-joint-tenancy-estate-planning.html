@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Joint Tenancy and JTWROS: Estate Planning Risks Most Couples Don't See | The Bitcoin Family Office</title>
+  <meta name="description" content="Joint tenancy with right of survivorship (JTWROS) is one of the most common ways couples hold Bitcoin—and one of the most misunderstood from an estate planning perspective. §2040 inclusion rules, the private key succession problem, basis step-up limitations, and when a revocable trust beats JTWROS every time.">
+  <meta name="keywords" content="bitcoin joint tenancy estate planning, bitcoin JTWROS, bitcoin right of survivorship, bitcoin joint ownership estate tax, bitcoin community property estate planning, bitcoin §2040 inclusion, bitcoin tenancy in common estate planning">
+  <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-joint-tenancy-estate-planning.html">
+  <meta property="og:title" content="Bitcoin Joint Tenancy and JTWROS: Estate Planning Risks Most Couples Don't See">
+  <meta property="og:description" content="Holding Bitcoin in joint tenancy seems simple—if one of you dies, the survivor automatically inherits. But §2040 means 100% of the Bitcoin may be in the deceased's taxable estate, only half gets a stepped-up basis, and the private key problem can strand the survivor entirely. Here is what you need to know.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-joint-tenancy-estate-planning.html">
+  <meta property="og:image" content="https://thebitcoinfamilyoffice.com/og-image.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+  <style>
+    :root{--gold:#C9A84C;--gold-light:#E8C97A;--bg:#0d1117;--bg-card:#111113;--bg-card2:#16161A;--border:#2A2A30;--text:#E8E6E1;--text-muted:#9A9890;--text-dim:#6B6965;--orange:#f7931a;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:18px;scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+    nav{position:sticky;top:0;z-index:100;background:rgba(13,17,23,0.96);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);text-decoration:none;}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{color:var(--text-muted);text-decoration:none;font-family:'Inter',sans-serif;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--gold);}
+    .nav-cta{font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:600;background:var(--gold);color:#000;padding:0.5rem 1.25rem;border-radius:4px;text-decoration:none;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text-muted);border-radius:2px;}
+    @media(max-width:768px){.hamburger{display:flex;}.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(13,17,23,0.98);flex-direction:column;padding:1.5rem 2rem;gap:1.25rem;border-bottom:1px solid var(--border);}.nav-links.open{display:flex;}.nav-cta{display:none;}}
+    .hero{max-width:780px;margin:0 auto;padding:5rem 2rem 3rem;}
+    .hero-tag{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:1.25rem;}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.2;color:#fff;margin-bottom:1.25rem;}
+    .hero-sub{font-size:1.15rem;color:var(--text-muted);line-height:1.65;margin-bottom:2rem;}
+    .hero-meta{font-family:'Inter',sans-serif;font-size:0.8rem;color:var(--text-dim);display:flex;flex-wrap:wrap;gap:1.25rem;}
+    .article-wrap{max-width:780px;margin:0 auto;padding:2rem 2rem 6rem;}
+    .article-wrap h2{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:#fff;margin:3rem 0 1rem;padding-top:1rem;}
+    .article-wrap h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--gold-light);margin:2rem 0 0.75rem;}
+    .article-wrap p{margin-bottom:1.25rem;color:var(--text);}
+    .article-wrap ul,.article-wrap ol{margin:0.75rem 0 1.25rem 1.5rem;color:var(--text);}
+    .article-wrap li{margin-bottom:0.5rem;line-height:1.7;}
+    .article-wrap a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s;}
+    .article-wrap a:hover{border-bottom-color:var(--gold);}
+    .article-wrap strong{color:#fff;font-weight:600;}
+    .callout{background:var(--bg-card);border-left:3px solid var(--gold);padding:1.25rem 1.5rem;border-radius:0 6px 6px 0;margin:2rem 0;}
+    .callout.warning{border-left-color:#E05252;}
+    .callout.orange{border-left-color:var(--orange);}
+    .callout-title{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+    .callout.warning .callout-title{color:#E05252;}
+    .callout.orange .callout-title{color:var(--orange);}
+    .callout p{margin:0;font-size:0.97rem;color:var(--text-muted);}
+    .table-wrap{overflow-x:auto;margin:2rem 0;border-radius:8px;border:1px solid var(--border);}
+    table{width:100%;border-collapse:collapse;font-family:'Inter',sans-serif;font-size:0.84rem;}
+    thead{background:var(--bg-card2);}
+    thead th{padding:0.85rem 1rem;text-align:left;color:var(--gold);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;font-size:0.75rem;border-bottom:1px solid var(--border);white-space:nowrap;}
+    tbody tr{border-bottom:1px solid var(--border);transition:background 0.15s;}
+    tbody tr:last-child{border-bottom:none;}
+    tbody tr:hover{background:var(--bg-card2);}
+    tbody td{padding:0.85rem 1rem;color:var(--text);vertical-align:top;}
+    .good{color:#52C87A;font-weight:600;}
+    .bad{color:#E05252;font-weight:600;}
+    .neutral{color:var(--gold);font-weight:600;}
+    .lead-magnet{background:linear-gradient(135deg,#1A1500 0%,#0F0E00 100%);border:1px solid #3A2E00;border-radius:10px;padding:2rem 2.25rem;margin:3rem 0;}
+    .lead-magnet h3{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.2rem;margin-bottom:0.75rem;}
+    .lead-magnet p{color:var(--text-muted);font-size:0.97rem;margin-bottom:1.25rem;}
+    .lead-magnet a.btn{display:inline-block;background:var(--gold);color:#000;font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:700;padding:0.7rem 1.5rem;border-radius:5px;text-decoration:none;letter-spacing:0.04em;}
+    .lead-magnet a.btn:hover{background:var(--gold-light);border-bottom:none;}
+    .checklist{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:2rem 2.25rem;margin:2.5rem 0;}
+    .checklist h3{font-family:'Playfair Display',serif;color:var(--orange);font-size:1.2rem;margin-bottom:1.25rem;}
+    .checklist ol{margin-left:1.25rem;}
+    .checklist li{margin-bottom:0.85rem;color:var(--text);line-height:1.65;}
+    .checklist li strong{color:#fff;}
+    .faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0;}
+    .faq-item:last-child{border-bottom:none;}
+    .faq-q{font-family:'Playfair Display',serif;font-size:1.05rem;color:#fff;margin-bottom:0.75rem;}
+    .faq-a{color:var(--text-muted);font-size:0.97rem;line-height:1.7;}
+    footer{background:var(--bg-card);border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;}
+    .footer-inner{max-width:780px;margin:0 auto;}
+    .footer-logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.1rem;margin-bottom:1rem;}
+    footer p{color:var(--text-dim);font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.7;}
+    footer a{color:var(--text-muted);text-decoration:none;}
+    .footer-links{display:flex;justify-content:center;gap:2rem;margin:1.5rem 0;flex-wrap:wrap;}
+    .footer-links a{font-family:'Inter',sans-serif;font-size:0.8rem;color:var(--text-muted);text-decoration:none;}
+    @media(max-width:600px){.hero{padding:3rem 1.25rem 2rem;}.article-wrap{padding:1.5rem 1.25rem 4rem;}.article-wrap h2{font-size:1.45rem;}table{font-size:0.78rem;}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Bitcoin Joint Tenancy and JTWROS: Estate Planning Risks Most Couples Don't See","description":"Joint tenancy with right of survivorship seems like simple Bitcoin succession planning—but §2040 can include 100% in the estate, only half the basis gets stepped up, and the private key problem can strand the survivor. Complete guide to JTWROS vs. tenancy in common vs. community property vs. revocable trust for Bitcoin.","datePublished":"2026-03-15","dateModified":"2026-03-15","author":{"@type":"Organization","name":"The Bitcoin Family Office"},"publisher":{"@type":"Organization","name":"The Bitcoin Family Office","url":"https://thebitcoinfamilyoffice.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://thebitcoinfamilyoffice.com/blog/bitcoin-joint-tenancy-estate-planning.html"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does §2040 apply to Bitcoin held in joint tenancy?","acceptedAnswer":{"@type":"Answer","text":"Section 2040 determines how much of a jointly held asset is included in the deceased joint tenant's gross estate. The general rule (§2040(a)) includes 100% of the jointly held property in the estate of the first joint tenant to die—unless the executor can prove the surviving joint tenant contributed to the acquisition of the property. For Bitcoin purchased entirely by one spouse, 100% is included in that spouse's estate at death. The exception: married couples (§2040(b)) receive automatic 50/50 treatment regardless of who purchased the Bitcoin—exactly half is included in each spouse's estate, regardless of contribution. The §2040(b) spousal exception is automatic and requires no proof of contribution."}},{"@type":"Question","name":"What basis does a surviving joint tenant get in inherited Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"Under §1014, a surviving joint tenant receives a stepped-up (or stepped-down) basis in the deceased joint tenant's share of the Bitcoin—but only in the portion included in the deceased's estate. For a spousal JTWROS under §2040(b): 50% of the Bitcoin is included in the first spouse's estate and receives a full step-up to date-of-death fair market value; the surviving spouse's 50% retains its original cost basis. Compare to community property: 100% of community property Bitcoin gets a full basis step-up at the first spouse's death under §1014(b)(6), because the entire community property interest is included in the estate—even the surviving spouse's half. This is the single largest basis advantage of community property over common-law JTWROS for Bitcoin held by married couples."}},{"@type":"Question","name":"What happens to Bitcoin private keys when a joint tenant dies?","acceptedAnswer":{"@type":"Answer","text":"This is the critical Bitcoin-specific problem with joint tenancy that no traditional estate planning framework addresses. If Bitcoin is held in a shared wallet—where both joint tenants have copies of the same private key—the surviving joint tenant already has the key and can access the Bitcoin immediately without probate. But if Bitcoin is held by one joint tenant who controls the private key and that joint tenant dies first, the survivor may have no access to the Bitcoin despite being the legal owner under JTWROS. The private key doesn't transfer automatically. Without access instructions, a seed phrase, or a properly documented key management protocol, the surviving joint tenant may be the legal owner of Bitcoin they cannot retrieve. Joint tenancy's automatic succession feature only works if the technical access mechanism is also planned."}},{"@type":"Question","name":"How does joint tenancy Bitcoin compare to a revocable living trust?","acceptedAnswer":{"@type":"Answer","text":"A revocable living trust avoids probate (same as JTWROS), but also: (1) allows the grantor to specify exactly what happens to the Bitcoin after the surviving spouse's death—JTWROS gives the survivor complete freedom to change beneficiaries; (2) does not create §2040 estate inclusion issues—trust assets are included in the grantor's estate under §2036 but with clear control over basis step-up planning; (3) allows a trustee (or successor trustee) to be designated with documented access to private keys in the trust's Letter of Instructions; (4) permits sophisticated tax planning (credit shelter provisions, GST trust shares, marital deduction optimization) that JTWROS cannot accommodate. For any Bitcoin holding above $500K, a revocable trust is almost always the superior vehicle compared to JTWROS."}},{"@type":"Question","name":"Can Bitcoin be held in tenancy in common instead of joint tenancy?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tenancy in common (TIC) is distinct from JTWROS: each co-owner has a defined fractional interest (not necessarily 50/50) that passes through their estate—not automatically to the surviving co-owner. TIC Bitcoin would be included in the deceased co-owner's estate in proportion to their ownership fraction, receive a stepped-up basis on that fraction, and pass under the deceased's will or intestacy laws. TIC lacks the automatic survivorship feature of JTWROS but provides more flexibility in ownership percentages and succession choices. For unrelated Bitcoin co-owners (business partners, investment clubs), TIC is typically the correct form; for couples seeking automatic succession, JTWROS or a joint revocable trust is more appropriate."}},{"@type":"Question","name":"What is the community property advantage for Bitcoin held by married couples?","acceptedAnswer":{"@type":"Answer","text":"In the nine community property states (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, Wisconsin), Bitcoin acquired during marriage with marital funds is community property. Under §1014(b)(6), both the deceased spouse's half AND the surviving spouse's half of community property receive a full stepped-up basis at the first death. This doubles the basis step-up compared to JTWROS in common-law states. For a couple with $2M of Bitcoin purchased at $10,000/BTC, community property means both halves step up to the date-of-death value—potentially eliminating millions in embedded capital gains. Couples in community property states should ensure Bitcoin is properly characterized as community property and held accordingly to preserve this double step-up."}},{"@type":"Question","name":"Does JTWROS Bitcoin avoid probate?","acceptedAnswer":{"@type":"Answer","text":"Yes—the right of survivorship automatically transfers title to the surviving joint tenant at death, without probate. This is JTWROS's primary planning benefit: the Bitcoin transfers immediately and privately to the survivor. However, the probate avoidance benefit comes with trade-offs: the survivor has no control over where the Bitcoin goes after they die (it defaults to their own estate plan), there is no tax planning flexibility, and the automatic transfer still requires the survivor to have technical access to the Bitcoin. A revocable living trust achieves the same probate avoidance with significantly more planning flexibility and tax control."}}]}</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">The Bitcoin Family Office</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/blog/">Insights</a></li>
+      <li><a href="/tools/">Tools</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/faq/">FAQ</a></li>
+    </ul>
+    <a href="/services/" class="nav-cta">Work With Us</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <p class="hero-tag">Joint Ownership · §2040 · Basis Step-Up · Community Property · JTWROS</p>
+  <h1>Bitcoin Joint Tenancy and JTWROS: Estate Planning Risks Most Couples Don't See</h1>
+  <p class="hero-sub">Joint tenancy with right of survivorship is the default way many couples hold Bitcoin: simple, no probate, automatic transfer to the survivor. It also quietly creates 100% estate inclusion, a fractional basis step-up instead of a full one, and a private key problem that can leave the survivor locked out of their own Bitcoin. Here is what joint tenancy actually does to a Bitcoin estate — and when a revocable trust beats it on every dimension.</p>
+  <div class="hero-meta">
+    <span>📅 March 15, 2026</span>
+    <span>⏱ 15 min read</span>
+    <span>🏷 JTWROS · §2040 · §1014 Basis · Community Property · Revocable Trust · Private Keys</span>
+  </div>
+</header>
+
+<article class="article-wrap">
+
+  <h2>What Joint Tenancy With Right of Survivorship Actually Does</h2>
+
+  <p>Joint tenancy with right of survivorship (JTWROS) is a form of co-ownership where two or more people hold title to an asset simultaneously, and when one dies, the surviving co-owner(s) automatically inherit the deceased's interest — without probate, without a will, without court involvement. Title transfers by operation of law at the moment of death.</p>
+
+  <p>For Bitcoin, this typically looks like a shared exchange account (both spouses listed as account holders), a multi-signature wallet where both parties hold keys, or simply informal joint ownership of a single hardware wallet with both names on an account or documented agreement. The intent is clear and sensible: if one of us dies, the other should have the Bitcoin immediately.</p>
+
+  <p>The problem is that JTWROS interacts with four separate areas of tax and estate law in ways that most Bitcoin holders — and many general estate planning attorneys — don't fully anticipate. Each creates a potential outcome that is materially worse than if the couple had simply used a revocable living trust instead.</p>
+
+  <h2>Problem 1: §2040 — More of the Bitcoin May Be in the Taxable Estate Than You Think</h2>
+
+  <p>Section 2040 of the Internal Revenue Code governs how jointly held property is included in the gross estate of the first joint tenant to die. The general rule under §2040(a) is stark: <strong>the entire value of the jointly held property is included in the deceased joint tenant's estate</strong> — unless the executor can prove that the surviving joint tenant contributed to the acquisition of the property.</p>
+
+  <p>If one spouse purchased all the Bitcoin and the other contributed nothing, §2040(a) includes 100% of the Bitcoin in the purchasing spouse's estate at death. The surviving spouse's ownership interest under JTWROS does not reduce the estate inclusion. Estate taxes are paid on the full amount. The marital deduction (§2056) then shelters the transfer from immediate estate tax — but the Bitcoin now sits in the surviving spouse's estate, fully includable in their estate at their later death, with only one person's estate tax exemption having been used at the first death instead of two.</p>
+
+  <h3>The Spousal JTWROS Exception: §2040(b)</h3>
+
+  <p>Congress created a special rule for spouses. Under §2040(b), for JTWROS property held by a husband and wife (and only a husband and wife — not parent/child, not domestic partners in all states), exactly <strong>50% of the property's value is included in the estate of the first spouse to die</strong>, regardless of who contributed the purchase price. This is an automatic rule — no proof of contribution required, no election needed. Exactly half goes into the first estate, and half automatically transfers to the surviving spouse with no estate tax (due to the unlimited marital deduction).</p>
+
+  <p>For non-spousal JTWROS — parent and child holding Bitcoin jointly, siblings, business partners — the general §2040(a) rule applies. The executor must trace contribution to prove anything less than 100% inclusion. Documentation of who purchased the Bitcoin, when, and with what funds becomes critical.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Joint Tenancy Type</th>
+          <th>Estate Inclusion Rule</th>
+          <th>Amount Included</th>
+          <th>Proof Required?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Spousal JTWROS</td>
+          <td>§2040(b)</td>
+          <td class="neutral">50% (automatic)</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Non-spousal JTWROS (equal contribution)</td>
+          <td>§2040(a) with proof</td>
+          <td class="neutral">50% (with documentation)</td>
+          <td class="bad">Yes — contribution records required</td>
+        </tr>
+        <tr>
+          <td>Non-spousal JTWROS (one party funded)</td>
+          <td>§2040(a) — no proof</td>
+          <td class="bad">100% in funder's estate</td>
+          <td class="bad">Yes — no documentation = 100% inclusion</td>
+        </tr>
+        <tr>
+          <td>Tenancy in Common</td>
+          <td>§2033</td>
+          <td class="neutral">Each party's fractional interest</td>
+          <td>No — clear by agreement</td>
+        </tr>
+        <tr>
+          <td>Community Property</td>
+          <td>§2033 + §1014(b)(6)</td>
+          <td class="neutral">50% included, 100% step-up</td>
+          <td>No</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Problem 2: Only Half the Basis Gets Stepped Up</h2>
+
+  <p>Section 1014 provides that inherited property takes a stepped-up (or stepped-down) basis equal to the fair market value on the date of death. For Bitcoin that has appreciated significantly — purchased at $10,000/BTC and now worth $70,000/BTC — the step-up eliminates $60,000 of embedded capital gain per Bitcoin that would otherwise be taxable when the survivor eventually sells.</p>
+
+  <p>Under JTWROS, only the portion of the Bitcoin <em>included in the deceased's estate</em> receives the basis step-up. For spousal JTWROS under §2040(b), that means 50% of the Bitcoin gets a full step-up and 50% retains the original cost basis. The survivor holds:</p>
+
+  <ul>
+    <li>50% of the Bitcoin at the current market price basis (stepped up)</li>
+    <li>50% of the Bitcoin at the original purchase price basis (not stepped up)</li>
+  </ul>
+
+  <p>For a Bitcoin position purchased at $10K/BTC now worth $70K/BTC, the blended basis per coin is $40K — not $70K. If the survivor sells Bitcoin after the step-up, they recognize $30K of gain per coin on the non-stepped-up half that would have been fully eliminated under a full step-up.</p>
+
+  <h3>Why Community Property Beats JTWROS on Basis</h3>
+
+  <p>This is where the nine community property states (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, Wisconsin) have a massive advantage. Under §1014(b)(6), <strong>community property receives a full step-up on both halves</strong> — the deceased spouse's half and the surviving spouse's half — because the entire community property interest is includable in the deceased's estate for step-up purposes, even though only the deceased's half is actually in the gross estate for estate tax purposes.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Ownership Form</th>
+          <th>State Type</th>
+          <th>Basis Step-Up at First Death</th>
+          <th>Capital Gain on $60K Gain/BTC if Sold</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JTWROS (spousal)</td>
+          <td>Common-law</td>
+          <td class="neutral">50% stepped up</td>
+          <td class="bad">$30K/BTC gain remains</td>
+        </tr>
+        <tr>
+          <td>Community property</td>
+          <td>Community property state</td>
+          <td class="good">100% stepped up (both halves)</td>
+          <td class="good">$0 gain — fully eliminated</td>
+        </tr>
+        <tr>
+          <td>Revocable trust (spousal)</td>
+          <td>Either</td>
+          <td class="neutral">Depends on structure</td>
+          <td>Structured for optimal step-up</td>
+        </tr>
+        <tr>
+          <td>Revocable trust (community property)</td>
+          <td>Community property state</td>
+          <td class="good">100% stepped up</td>
+          <td class="good">$0 gain — fully eliminated</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>For a married couple in California, Texas, or Washington holding 10 BTC purchased at $10K/coin, the community property double step-up at first death eliminates $600,000 of capital gain entirely — versus JTWROS which leaves $300,000 of gain intact. This is one of the most compelling reasons to characterize Bitcoin as community property in community property states, and to document that characterization explicitly.</p>
+
+  <h2>Problem 3: The Private Key Succession Problem</h2>
+
+  <p>Traditional joint tenancy works seamlessly for bank accounts and brokerage accounts: the bank sees the death certificate, verifies survivorship, and transfers the account to the survivor within days. For Bitcoin in self-custody, there is no bank. There is no institution to call. There is only the private key.</p>
+
+  <p>JTWROS solves the legal title problem — the survivor is instantly the sole legal owner of all the Bitcoin. It does not solve the technical access problem. If the deceased spouse was the sole custodian of the private keys, seed phrases, and hardware wallets, the surviving spouse may be the legal owner of Bitcoin they cannot access. The law gives them ownership; the cryptography does not give them access.</p>
+
+  <p>This creates three distinct failure scenarios for Bitcoin held in JTWROS:</p>
+
+  <h3>Scenario A: Shared Access (Works, But Has Risks)</h3>
+  <p>Both joint tenants have independent copies of the seed phrase. When one dies, the survivor has immediate access. This works for succession — but creates a security problem during the couple's lifetime. Two people with independent key access means two attack surfaces, two people who can be targeted by social engineering, and two sets of physical security risks for the seed phrases.</p>
+
+  <h3>Scenario B: Single Custodian (Common, Often Catastrophic)</h3>
+  <p>One spouse manages all the Bitcoin, stores the hardware wallet, and keeps the seed phrases. The other spouse knows nothing about the technical details. When the Bitcoin-managing spouse dies unexpectedly, the survivor is the legal owner of potentially millions of dollars of Bitcoin with no ability to access it. The Bitcoin is effectively frozen — not lost (the keys exist somewhere) but inaccessible without locating and recovering the seed phrases from the deceased spouse's belongings.</p>
+
+  <h3>Scenario C: Exchange Account JTWROS (Probate Risk Remains)</h3>
+  <p>Many couples hold Bitcoin on an exchange with both names on the account. This does not automatically function as JTWROS — the exchange's own account terms control the succession. Many exchanges treat joint accounts as tenants in common (requiring estate administration) rather than JTWROS, or impose their own verification procedures that delay access for weeks or months regardless of the legal title arrangement.</p>
+
+  <div class="callout warning">
+    <p class="callout-title">The Private Key Problem With JTWROS</p>
+    <p>JTWROS makes the survivor the legal owner of Bitcoin instantly at death. It does not give them access. If the deceased controlled the private keys and the survivor lacks the seed phrase, the survivor owns Bitcoin they cannot retrieve. Plan for both legal succession AND technical access. A revocable trust with a successor trustee — combined with a detailed Letter of Instructions — solves both in one document framework.</p>
+  </div>
+
+  <h2>Problem 4: The Second-Death Problem — No Tax Planning After First Death</h2>
+
+  <p>JTWROS automatically transfers all Bitcoin to the surviving joint tenant at the first death. This eliminates all planning flexibility for the survivor's estate. The survivor now owns 100% of the Bitcoin outright — no trust, no restriction, no structure. When the survivor later dies, their entire Bitcoin holding (which may have appreciated further) passes through their estate subject to full estate tax.</p>
+
+  <p>The contrast with a revocable trust using a credit shelter (bypass trust) structure is significant. With a properly structured revocable trust, the first death can fund a credit shelter trust with the deceased's estate tax exemption — holding Bitcoin outside the survivor's taxable estate at the second death. The surviving spouse uses the income from the credit shelter trust during their lifetime; the trust corpus passes to children at the second death with no additional estate tax, having used the first spouse's exemption.</p>
+
+  <p>JTWROS gives away this planning opportunity. The moment the Bitcoin automatically transfers to the survivor, the first spouse's estate tax exemption is wasted (applied only to the §2040(b) 50% inclusion, and then sheltered by the marital deduction anyway). The bypass trust funding opportunity — one of the most powerful wealth transfer tools for married couples — is eliminated.</p>
+
+  <div class="callout orange">
+    <p class="callout-title">OBBBA Context</p>
+    <p>With the current $15M OBBBA individual exemption ($30M per couple), many families won't face estate tax at either death regardless of structure. But the OBBBA provisions may not be permanent — if exemptions revert to $5–7M, the credit shelter trust opportunity becomes critical again. Revocable trust structures preserve this flexibility; JTWROS discards it permanently.</p>
+  </div>
+
+  <h2>When Joint Tenancy Makes Sense for Bitcoin</h2>
+
+  <p>JTWROS is not always wrong. There are specific situations where it is a reasonable choice:</p>
+
+  <ul>
+    <li><strong>Small Bitcoin holdings (under $50K)</strong> where the tax and planning consequences are immaterial; simplicity beats the overhead of a trust</li>
+    <li><strong>Both parties are technically competent Bitcoin users</strong> who each independently manage access and security — no single point of failure</li>
+    <li><strong>No children from prior relationships</strong> and no desire to restrict what the survivor does with the Bitcoin after the first death</li>
+    <li><strong>Community property states</strong> where the double basis step-up is achieved by characterizing the Bitcoin as community property rather than JTWROS (though a community property trust or transmutation agreement is often cleaner)</li>
+    <li><strong>Specific exchange accounts</strong> where the primary goal is immediate access for the survivor and the exchange's joint account agreement actually provides JTWROS treatment</li>
+  </ul>
+
+  <h2>The Revocable Trust: What It Fixes and How</h2>
+
+  <p>A revocable living trust addresses every problem that JTWROS creates — and adds planning flexibility JTWROS can never provide:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Issue</th>
+          <th>JTWROS</th>
+          <th>Revocable Trust</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Probate avoidance</td>
+          <td class="good">Yes</td>
+          <td class="good">Yes</td>
+        </tr>
+        <tr>
+          <td>Immediate survivor access</td>
+          <td class="good">Legal title only</td>
+          <td class="good">Successor trustee takes over</td>
+        </tr>
+        <tr>
+          <td>Private key access planning</td>
+          <td class="bad">Not addressed</td>
+          <td class="good">Letter of Instructions to trustee</td>
+        </tr>
+        <tr>
+          <td>§2040 inclusion</td>
+          <td class="bad">50% automatic (married)</td>
+          <td class="good">Structured per plan</td>
+        </tr>
+        <tr>
+          <td>Basis step-up</td>
+          <td class="bad">50% only (common-law)</td>
+          <td class="good">Can structure for 100% with QTIP or community property trust</td>
+        </tr>
+        <tr>
+          <td>Credit shelter trust funding</td>
+          <td class="bad">Not available</td>
+          <td class="good">Built-in at first death</td>
+        </tr>
+        <tr>
+          <td>Surviving spouse's freedom to change beneficiaries</td>
+          <td class="bad">Unrestricted (can disinherit children)</td>
+          <td class="good">Grantor can restrict via trust terms</td>
+        </tr>
+        <tr>
+          <td>Incapacity planning</td>
+          <td class="bad">No — POA or guardianship needed</td>
+          <td class="good">Successor trustee manages during incapacity</td>
+        </tr>
+        <tr>
+          <td>Multi-generational planning</td>
+          <td class="bad">None</td>
+          <td class="good">Dynasty trust provision, GST planning, age restrictions</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>How to Transfer Bitcoin Into a Revocable Trust</h3>
+
+  <p>For exchange-held Bitcoin: update the account title to the trust (e.g., "John Smith and Jane Smith, Trustees of the Smith Family Trust dated January 1, 2025"). Most major exchanges accommodate trust accounts. The successor trustee — named in the trust document — takes over the account immediately upon the grantor's death or incapacity without court involvement.</p>
+
+  <p>For self-custodied Bitcoin: the trust document specifies the trust as the owner of the wallet. A separate Letter of Instructions (kept with or referenced in the trust document, but stored securely) documents the wallet locations, hardware device locations, seed phrase locations, and multi-sig arrangements. The successor trustee accesses the Bitcoin using the information in the Letter of Instructions — a process that can be completed within hours of death, far faster than any probate or exchange account claim process.</p>
+
+  <h2>Non-Spousal Joint Tenancy: The Contribution Tracing Trap</h2>
+
+  <p>For Bitcoin held in JTWROS by non-spouses — parent and adult child, two business partners, two friends — the §2040(a) contribution tracing rule creates specific documentation obligations that most people never fulfill.</p>
+
+  <p>Under §2040(a), the IRS presumes that 100% of the Bitcoin belongs in the first joint tenant's estate unless the executor proves (by "adequate consideration furnished by the other joint tenant") that the surviving joint tenant contributed to the purchase. If two business partners each contributed 50% of the purchase price for a joint Bitcoin position, the surviving partner needs documentation to prove their contribution — wire transfer records, bank statements, exchange trade confirmations — or the IRS will include 100% in the deceased partner's estate.</p>
+
+  <p>For Bitcoin purchased in cash, peer-to-peer, or without clean financial records, this proof may be impossible to produce after the fact. The solution: maintain contemporaneous documentation of each joint owner's contribution at the time of purchase, and consider tenancy in common instead of JTWROS for non-spousal co-ownership.</p>
+
+  <div class="lead-magnet">
+    <h3>Bitcoin Mining: The Most Powerful Tax Strategy Available</h3>
+    <p>Whether Bitcoin is held jointly or in trust, the most powerful tax strategy for Bitcoin holders isn't in how you hold it — it's in how you acquire it. Bitcoin mining generates depreciation deductions, OpEx deductions, and bonus depreciation that can offset income and reduce the after-tax cost of your Bitcoin accumulation strategy.</p>
+    <a href="https://abundantmines.com/tax-strategy/" class="btn" target="_blank" rel="noopener">Explore the Bitcoin Mining Tax Strategy →</a>
+  </div>
+
+  <div class="checklist">
+    <h3>Joint Bitcoin Ownership Action Checklist</h3>
+    <ol>
+      <li><strong>Identify all jointly held Bitcoin</strong> — exchange accounts, shared wallets, multi-sig arrangements; confirm the legal form of ownership for each (JTWROS, TIC, community property, or unclear)</li>
+      <li><strong>Assess your state's property law</strong> — community property state or common-law state? Community property provides double basis step-up at first death; common-law JTWROS provides only 50%</li>
+      <li><strong>Confirm basis records</strong> — identify original purchase price per BTC for every position; this is the amount the step-up will eliminate at death</li>
+      <li><strong>Evaluate transition to revocable trust</strong> — for holdings above $100K, a revocable trust provides superior access planning, basis optimization, and second-death flexibility with minimal ongoing cost</li>
+      <li><strong>Document access instructions for surviving joint tenant</strong> — regardless of ownership structure, a Letter of Instructions specifying wallet locations, seed phrase storage, hardware device locations, and multi-sig arrangements must exist before death; JTWROS does not solve the private key problem</li>
+      <li><strong>Non-spousal JTWROS: document contribution now</strong> — if Bitcoin is jointly held by non-spouses, compile exchange records, bank transfers, and other documentation proving each party's contribution today, not after a death</li>
+      <li><strong>Community property states: confirm Bitcoin characterization</strong> — ensure jointly held Bitcoin purchased during marriage with marital funds is properly characterized as community property, not accidentally treated as separate property; a transmutation agreement or community property trust may be needed</li>
+      <li><strong>Review beneficiary designation vs. trust vs. JTWROS</strong> — some exchanges allow Transfer on Death (TOD) beneficiary designations that achieve probate avoidance without JTWROS's §2040 complications; evaluate which mechanism fits your specific situation</li>
+    </ol>
+  </div>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">How does §2040 apply to Bitcoin held in joint tenancy?</p>
+    <p class="faq-a">Section 2040(a) includes 100% of jointly held property in the deceased joint tenant's estate unless the executor proves the survivor contributed to the acquisition. The spousal exception under §2040(b) is automatic: exactly 50% of JTWROS Bitcoin held by a husband and wife is included in the first spouse's estate, regardless of who purchased it. For non-spousal JTWROS (parent/child, partners), the general §2040(a) rule applies — 100% is included in the funder's estate unless documented contribution to the contrary is proven.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What basis does a surviving joint tenant get in inherited Bitcoin?</p>
+    <p class="faq-a">Under §1014, only the portion of Bitcoin included in the deceased's estate receives a stepped-up basis. For spousal JTWROS, that's 50% — leaving the other 50% at the original cost basis. For community property, §1014(b)(6) provides a full step-up on both halves at the first death. For a Bitcoin position with $60,000 of embedded gain per coin, community property eliminates 100% of the capital gain; JTWROS eliminates only 50%. This is the largest basis planning advantage of community property over JTWROS.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What happens to Bitcoin private keys when a joint tenant dies?</p>
+    <p class="faq-a">JTWROS gives the survivor immediate legal title but no automatic technical access. If the deceased controlled the private keys and seed phrases, the survivor owns Bitcoin they may not be able to retrieve without locating and using the deceased's access materials. Unlike a bank account, there is no institution to call. Planning for both legal succession (JTWROS or trust) and technical access (documented seed phrases, designated successor key-holder, multi-sig arrangements) is essential. A revocable trust with a Letter of Instructions addresses both; JTWROS addresses only the legal title question.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">How does joint tenancy Bitcoin compare to a revocable living trust?</p>
+    <p class="faq-a">Both avoid probate. A revocable trust additionally: (1) lets the grantor control where Bitcoin goes after the survivor's death; (2) can fund a credit shelter trust at first death to use both spouses' exemptions; (3) provides incapacity management via successor trustee; (4) accommodates a Letter of Instructions for private key access; (5) enables community property double step-up if funded with community property and domiciled in a community property state; and (6) allows multi-generational planning (dynasty trust provisions, GST exemption allocation, age restrictions). For Bitcoin holdings above $100K in a married couple's estate, a revocable trust is nearly always the superior vehicle.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Can Bitcoin be held in tenancy in common instead of joint tenancy?</p>
+    <p class="faq-a">Yes. Tenancy in common gives each co-owner a defined fractional interest that passes through their estate under their will or intestacy — no automatic survivorship. Each co-owner's fraction is included in their estate under §2033 and receives a stepped-up basis. TIC is appropriate for non-spousal co-owners (business partners, investment clubs) where each party wants their share to pass to their own heirs rather than the surviving co-owner. JTWROS is typically preferred for married couples seeking automatic succession; TIC for all other co-ownership arrangements.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What is the community property advantage for Bitcoin held by married couples?</p>
+    <p class="faq-a">In the nine community property states (AZ, CA, ID, LA, NV, NM, TX, WA, WI), Bitcoin acquired during marriage with marital funds is community property. Under §1014(b)(6), both halves receive a full stepped-up basis at the first spouse's death — not just the deceased's 50%. This double step-up eliminates 100% of the embedded capital gain on community property Bitcoin, compared to only 50% for JTWROS in common-law states. For Bitcoin with large embedded gains, community property treatment can eliminate hundreds of thousands to millions of dollars in capital gains tax that would otherwise survive the first death under JTWROS.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Does JTWROS Bitcoin avoid probate?</p>
+    <p class="faq-a">For legal title, yes. At death, the surviving joint tenant becomes the sole legal owner automatically — no probate required. But JTWROS does not address technical access to self-custodied Bitcoin (private keys, seed phrases, hardware wallets), exchange account verification procedures (which vary by institution and may delay access regardless of JTWROS), or second-death planning. A revocable trust achieves the same probate avoidance while also addressing access planning, incapacity management, and multi-generational tax planning.</p>
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:3rem 0;">
+  <p style="font-size:0.87rem;color:var(--text-dim);line-height:1.65;"><em>This article is for informational purposes only and does not constitute legal, tax, or financial advice. §2040 inclusion rules, community property characterization, basis step-up calculations, and estate planning structures are highly fact-specific and vary by state law. Consult a qualified estate planning attorney and CPA before changing Bitcoin ownership structures, creating or funding a revocable trust, or making tax-based decisions regarding jointly held Bitcoin.</em></p>
+
+  <h2>Related Reading</h2>
+  <ul>
+    <li><a href="bitcoin-estate-planning-guide.html">The Complete Bitcoin Estate Planning Guide</a></li>
+    <li><a href="bitcoin-community-property-estate-planning.html">Bitcoin Community Property Estate Planning</a></li>
+    <li><a href="bitcoin-stepped-up-basis-estate-planning-guide.html">Bitcoin Stepped-Up Basis: The Complete Guide to IRC §1014</a></li>
+    <li><a href="bitcoin-pour-over-will-letter-of-instructions.html">Bitcoin Pour-Over Will and Letter of Instructions</a></li>
+    <li><a href="bitcoin-revocable-living-trust.html">Bitcoin Revocable Living Trust Guide</a></li>
+    <li><a href="bitcoin-beneficiary-designation.html">Bitcoin Beneficiary Designations: Complete Guide</a></li>
+    <li><a href="bitcoin-estate-planning-strategy-guide-which-structure.html">Which Bitcoin Estate Planning Structure Is Right for You?</a></li>
+  </ul>
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-logo">The Bitcoin Family Office</p>
+    <div class="footer-links">
+      <a href="/">Home</a><a href="/blog/">Insights</a><a href="/services/">Services</a><a href="/tools/">Tools</a><a href="/faq/">FAQ</a><a href="/disclosures.html">Disclosures</a>
+    </div>
+    <p>© 2026 The Bitcoin Family Office. For informational purposes only. Not legal, tax, or financial advice.</p>
+  </div>
+</footer>
+<script>document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('nav-links').classList.toggle('open'));</script>
+</body>
+</html>
