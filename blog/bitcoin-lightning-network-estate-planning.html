@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lightning Network and Estate Planning: Channel Balances, Routing Nodes, and the 2026 Guide</title>
+<meta name="description" content="Lightning Network creates estate planning problems that don't exist on-chain. Channel balances, routing node income, force-close tax implications, and how to plan for all of it in 2026.">
+<meta property="og:title" content="Lightning Network and Estate Planning: Channel Balances, Routing Nodes, and the 2026 Guide">
+<meta property="og:description" content="Lightning channels are bilateral, ephemeral, and invisible on-chain. Here's how to estate plan for them in 2026.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-lightning-network-estate-planning">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lightning Network and Estate Planning: Channel Balances, Routing Nodes, and the 2026 Guide">
+<meta name="twitter:description" content="Lightning channels are bilateral, ephemeral, and invisible on-chain. Here's how to estate plan for them.">
+<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-lightning-network-estate-planning">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Lightning Network and Estate Planning: Channel Balances, Routing Nodes, and the 2026 Guide",
+  "description": "Lightning Network creates estate planning problems that don't exist with on-chain Bitcoin. A comprehensive guide to channel balances, routing nodes, force-close implications, and trust provisions for 2026.",
+  "author": {"@type": "Person", "name": "Hal Franklin", "url": "https://thebitcoinfamilyoffice.com/services/"},
+  "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-lightning-network-estate-planning",
+  "datePublished": "2026-03-16",
+  "dateModified": "2026-03-16",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Bitcoin Family Office",
+    "url": "https://thebitcoinfamilyoffice.com"
+  },
+  "mainEntityOfPage": "https://thebitcoinfamilyoffice.com/blog/bitcoin-lightning-network-estate-planning",
+  "keywords": "lightning network estate planning, bitcoin lightning channel inheritance, lightning node estate plan 2026"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebitcoinfamilyoffice.com"},
+    {"@type": "ListItem", "position": 2, "name": "Research", "item": "https://thebitcoinfamilyoffice.com/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "Lightning Network Estate Planning", "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-lightning-network-estate-planning"}
+  ]
+}
+</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+<script>
+(function(){
+  if(typeof gtag!=='function') return;
+  document.addEventListener('click',function(e){
+    var el=e.target;
+    var tag=el.tagName+(el.id?'#'+el.id:el.className?' .'+String(el.className).trim().split(' ')[0]:'');
+    gtag('event','hm_click',{'page':location.pathname,'cx':Math.round(e.clientX/window.innerWidth*100),'cy':Math.round((e.clientY+window.scrollY)/Math.max(document.body.scrollHeight,1)*100),'el':tag.substring(0,40)});
+  });
+  var _sd=0;
+  window.addEventListener('scroll',function(){
+    var pct=Math.round((window.scrollY+window.innerHeight)/Math.max(document.body.scrollHeight,1)*100);
+    var milestone=Math.floor(pct/25)*25;
+    if(milestone>_sd){_sd=milestone;gtag('event','hm_scroll',{'page':location.pathname,'depth':_sd});}
+  },{passive:true});
+})();
+</script>
+
+<!-- Cloudflare Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0a; --bg-elevated: #111111; --bg-card: #141414; --border: #1e1e1e;
+  --accent: #c9a84c; --accent-dim: rgba(201,168,76,0.10); --accent-border: rgba(201,168,76,0.3);
+  --text: #e8e0d0; --text-secondary: #8a8070; --text-muted: #5a5248;
+  --serif: 'EB Garamond', Georgia, serif;
+  --display: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --max-w: 740px;
+}
+html { font-size: 18px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { opacity: 0.8; }
+::selection { background: var(--accent-dim); color: var(--accent); }
+
+nav { position: sticky; top: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-mark { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); }
+.nav-mark span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); opacity: 1; }
+.nav-links .nav-cta { color: var(--accent) !important; border: 1px solid var(--accent-border); padding: 0.35rem 0.8rem; border-radius: 2px; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 1px; background: var(--text-secondary); transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.article-header { padding: 7rem 2rem 4rem; border-bottom: 1px solid var(--border); text-align: center; position: relative; }
+.article-header::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 5rem; background: linear-gradient(to bottom, transparent, var(--accent-border)); }
+.article-tag { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: block; }
+.article-header h1 { font-family: var(--display); font-weight: 400; font-size: clamp(1.9rem, 4.5vw, 3rem); line-height: 1.2; color: var(--text); max-width: 820px; margin: 0 auto 1.5rem; }
+.article-meta { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+.article-intro { font-family: var(--serif); font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary); max-width: 640px; margin: 2rem auto 0; font-style: italic; }
+
+.article-body { max-width: var(--max-w); margin: 0 auto; padding: 4rem 2rem 6rem; }
+.article-body h2 { font-family: var(--display); font-weight: 400; font-size: 1.7rem; line-height: 1.25; color: var(--text); margin: 3.5rem 0 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+.article-body h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+.article-body h3 { font-family: var(--sans); font-weight: 500; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 2.25rem 0 0.75rem; }
+.article-body p { margin-bottom: 1.5rem; font-size: 1.05rem; color: var(--text); }
+.article-body ul, .article-body ol { margin: 0 0 1.5rem 1.5rem; }
+.article-body li { margin-bottom: 0.6rem; font-size: 1.05rem; line-height: 1.7; }
+.article-body strong { color: var(--text); font-weight: 500; }
+.article-body em { color: var(--text-secondary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+.toc { background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--accent-border); border-radius: 4px; padding: 2rem 2.25rem; margin: 0 0 3rem; }
+.toc-label { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+.toc ol { margin: 0 0 0 1.2rem; }
+.toc li { margin-bottom: 0.55rem; font-family: var(--sans); font-size: 0.8rem; line-height: 1.5; }
+.toc a { color: var(--text-secondary); letter-spacing: 0.01em; }
+.toc a:hover { color: var(--accent); opacity: 1; }
+
+.callout { background: var(--bg-elevated); border: 1px solid var(--border); border-left: 3px solid var(--accent-border); border-radius: 4px; padding: 1.5rem 1.75rem; margin: 2rem 0; }
+.callout-label { font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+.callout p { font-family: var(--sans); font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+.callout p + p { margin-top: 0.75rem; }
+
+.callout-warn { border-left-color: rgba(200,70,60,0.5); }
+.callout-warn .callout-label { color: #c84640; }
+
+.tool-cta { background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 4px; padding: 1.75rem 2rem; margin: 2.5rem 0; display: flex; gap: 1.5rem; align-items: flex-start; }
+.tool-cta-icon { font-size: 1.8rem; flex-shrink: 0; line-height: 1; margin-top: 0.15rem; }
+.tool-cta-body h4 { font-family: var(--display); font-weight: 400; font-size: 1.1rem; color: var(--text); margin-bottom: 0.4rem; }
+.tool-cta-body p { font-family: var(--sans); font-size: 0.78rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 0.9rem; }
+.tool-cta-body a.btn { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-border); padding: 0.45rem 1.1rem; border-radius: 2px; display: inline-block; transition: background 0.2s; }
+.tool-cta-body a.btn:hover { background: var(--accent-dim); opacity: 1; }
+
+.info-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-family: var(--sans); font-size: 0.78rem; }
+.info-table th { text-align: left; padding: 0.65rem 1rem; background: var(--bg-card); border: 1px solid var(--border); color: var(--accent); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.63rem; }
+.info-table td { padding: 0.75rem 1rem; border: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; line-height: 1.65; }
+.info-table tr:nth-child(even) td { background: var(--bg-card); }
+
+.am-callout { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 1.75rem 2rem; margin: 2.5rem 0; position: relative; overflow: hidden; }
+.am-callout::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, transparent, var(--accent-border), transparent); }
+.am-callout-tag { font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+.am-callout h4 { font-family: var(--display); font-weight: 400; font-size: 1.1rem; color: var(--text); margin-bottom: 0.5rem; }
+.am-callout p { font-family: var(--sans); font-size: 0.8rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.9rem; }
+.am-callout a.btn { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-border); padding: 0.45rem 1.1rem; border-radius: 2px; display: inline-block; transition: background 0.2s; }
+.am-callout a.btn:hover { background: var(--accent-dim); opacity: 1; }
+
+.author-box { max-width: var(--max-w); margin: 0 auto 2rem; padding: 1.5rem 1.75rem; background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 4px; display: flex; gap: 1.5rem; align-items: flex-start; }
+.author-avatar { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; background: var(--accent-dim); border: 1px solid var(--accent-border); display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 0.9rem; font-weight: 500; color: var(--accent); }
+.author-tag { font-family: var(--sans); font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+.author-bio { font-family: var(--serif); font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+
+.services-cta { background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 4px; padding: 2.5rem; max-width: var(--max-w); margin: 0 auto 4rem; text-align: center; }
+.services-cta h3 { font-family: var(--display); font-weight: 400; font-size: 1.4rem; color: var(--text); margin-bottom: 0.75rem; }
+.services-cta p { font-family: var(--sans); font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.65; }
+.services-cta a { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-border); padding: 0.6rem 1.4rem; border-radius: 2px; display: inline-block; transition: background 0.2s; }
+.services-cta a:hover { background: var(--accent-dim); opacity: 1; }
+
+footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-mark { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,10,0.97); flex-direction: column; padding: 1.5rem 2rem; gap: 1.25rem; border-bottom: 1px solid var(--border); }
+  .nav-links.open { display: flex; }
+  .hamburger { display: flex; }
+  .article-header { padding: 5rem 1.25rem 3rem; }
+  .article-body { padding: 3rem 1.25rem 4rem; }
+  .tool-cta { flex-direction: column; gap: 1rem; }
+  .author-box { flex-direction: column; }
+  footer { padding: 2rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-mark">The Bitcoin <span>Family Office</span></a>
+  <button class="hamburger" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <a href="/blog/">Research</a>
+    <a href="/services/">Services</a>
+    <a href="/about/">About</a>
+    <a href="/services/" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <span class="article-tag">Lightning Network &bull; Estate Planning</span>
+  <h1>Lightning Network and Estate Planning: Channel Balances, Routing Nodes, and the 2026 Guide</h1>
+  <div class="article-meta">Hal Franklin &nbsp;&middot;&nbsp; March 16, 2026 &nbsp;&middot;&nbsp; 22 min read</div>
+  <p class="article-intro">On-chain Bitcoin estate planning is hard enough. Lightning makes it harder — your wealth exists in bilateral channel states that vanish when your node goes offline. Here is how to plan for it.</p>
+</header>
+
+<article class="article-body">
+
+  <div class="toc">
+    <div class="toc-label">Contents</div>
+    <ol>
+      <li><a href="#how-channels-work">How Lightning Channels Work (For Estate Attorneys)</a></li>
+      <li><a href="#channel-balance-problem">The Channel Balance Problem</a></li>
+      <li><a href="#force-close">Force-Close Implications at Death</a></li>
+      <li><a href="#routing-node-business">Routing Nodes as a Trade or Business</a></li>
+      <li><a href="#lsp-custodial">LSPs and Custodial Lightning Wallets</a></li>
+      <li><a href="#backup-recovery">Backup and Recovery: Static Channel Backups</a></li>
+      <li><a href="#trust-provisions">Trust Provisions for Lightning Operations</a></li>
+      <li><a href="#valuation">Valuation for Estate Tax Purposes</a></li>
+      <li><a href="#privacy">Lightning, Privacy, and Disclosure Obligations</a></li>
+      <li><a href="#watchtower">The Watchtower Problem</a></li>
+      <li><a href="#lightning-businesses">Lightning-Native Business Assets</a></li>
+      <li><a href="#case-study">Case Study: The Nakamoto Node Operator</a></li>
+    </ol>
+  </div>
+
+  <h2 id="how-channels-work">How Lightning Channels Work (For Estate Attorneys)</h2>
+
+  <p>If you already understand <a href="/blog/bitcoin-estate-planning-guide">on-chain Bitcoin estate planning</a>, Lightning adds an entirely different layer of complexity. Here is the simplified version estate attorneys need.</p>
+
+  <p>A Lightning channel is a two-party financial arrangement built on top of Bitcoin. Two participants — call them Alice and Bob — lock bitcoin into a shared on-chain address controlled by a 2-of-2 multisignature arrangement. That on-chain transaction is the "funding transaction." Once confirmed, the channel is open.</p>
+
+  <p>From that point forward, Alice and Bob can send bitcoin back and forth between themselves without touching the blockchain. Each payment updates the "channel state" — a signed but unbroadcast Bitcoin transaction that reflects who owns what portion of the locked funds. If Alice funded the channel with 0.5 BTC, she starts with 0.5 BTC of outbound capacity. As she pays Bob, her balance decreases and Bob's increases. The total never changes — it is always 0.5 BTC — but the split shifts with every payment.</p>
+
+  <p>The critical insight for estate planning: <strong>these intermediate states exist only on the participants' computers.</strong> The blockchain knows that 0.5 BTC is locked in a 2-of-2 multisig address. It has no idea how Alice and Bob have divided it between themselves. That information lives in the channel state files on each node.</p>
+
+  <h3>Inbound and Outbound Capacity</h3>
+
+  <p>Every channel has two numbers that matter: outbound capacity (what you can send) and inbound capacity (what you can receive). A node operator running a routing node might have 8 BTC spread across 50 channels — but only the channel state data reveals how much of that 8 BTC belongs to the operator versus their channel partners.</p>
+
+  <p>An executor looking at the blockchain sees 50 funding transactions. Without the node's channel database, they cannot determine what portion of those funds belongs to the estate. This is the fundamental problem.</p>
+
+  <h2 id="channel-balance-problem">The Channel Balance Problem</h2>
+
+  <p>With on-chain Bitcoin, an executor who has the private keys can see the exact balance on the blockchain. The funds are unambiguous. <a href="/blog/bitcoin-self-custody-inheritance-crisis-2026">Self-custody inheritance</a> is already complicated enough — but at least the balances are transparent.</p>
+
+  <p>Lightning destroys that transparency.</p>
+
+  <p>Consider a decedent who operated a routing node with 8 BTC in total channel capacity. The executor recovers the seed phrase and gains access to the on-chain wallet, which might hold an additional 2 BTC. The executor sees 10 BTC on-chain — the 2 BTC in the hot wallet and the 8 BTC locked in channel funding transactions. But how much of that 8 BTC actually belongs to the estate?</p>
+
+  <p>It could be anywhere from 0 to 8 BTC. If the decedent had routed significant volume and most channels had shifted to high inbound capacity, the estate's actual Lightning balance might be 2 BTC across those 50 channels, with the remaining 6 BTC belonging to channel partners. Only the channel state database — stored on the node itself — reveals the true number.</p>
+
+  <div class="callout callout-warn">
+    <div class="callout-label">Critical Risk</div>
+    <p>If the node hardware is lost, destroyed, or wiped before the executor gains access, the channel state data may be unrecoverable. The estate could lose the ability to prove — or even determine — how much Lightning bitcoin it owns.</p>
+  </div>
+
+  <p>This creates a documentation obligation that does not exist with on-chain holdings. The estate plan must ensure that:</p>
+
+  <ul>
+    <li>The executor knows a Lightning node exists</li>
+    <li>The executor can access the node (physically or remotely)</li>
+    <li>The channel database is preserved and accessible</li>
+    <li>The executor understands that channel balances are separate from on-chain balances</li>
+  </ul>
+
+  <p>Without all four, Lightning bitcoin can become invisible estate assets — wealth that legally belongs to the estate but cannot be recovered because no one knows it exists or how to claim it.</p>
+
+  <h2 id="force-close">Force-Close Implications at Death</h2>
+
+  <p>When a Lightning node goes permanently offline — as it will when the operator dies — channel partners will eventually force-close their channels. This is not malicious. It is the protocol working as designed. A channel partner cannot leave their funds locked in a channel with a counterparty that will never come back online.</p>
+
+  <h3>The Mechanics of Force-Close</h3>
+
+  <p>A force-close broadcasts the most recent commitment transaction to the blockchain. This returns each party's balance to their respective on-chain addresses. But there are several complications for estate planning:</p>
+
+  <p><strong>Timelock delays.</strong> The party initiating the force-close faces a timelock — typically 144 to 2,016 blocks (roughly 1 day to 2 weeks). During this period, their funds are locked. The non-initiating party (in this case, the estate) receives their funds immediately. This is actually favorable for the estate, but only if the estate's node was running the most recent channel state.</p>
+
+  <p><strong>Outdated commitment transactions.</strong> If a channel partner broadcasts an old commitment transaction — one that reflects a higher balance for them than the current state — the estate has a window to broadcast a "penalty transaction" that claims the entire channel balance. But this requires the estate's node to be online and monitoring the blockchain. If the node is offline (because the operator is deceased), the estate cannot execute the penalty. The channel partner gets away with broadcasting the stale state.</p>
+
+  <p>This is not a theoretical risk. It is the exact scenario that occurs when a node operator dies without a succession plan. Every channel partner has a financial incentive to broadcast whichever commitment transaction favors them. The protocol relies on both parties being online to enforce honesty. Death removes one party from that equation entirely.</p>
+
+  <h3>Tax Implications of Force-Close</h3>
+
+  <p>A force-close creates an on-chain transaction. Under current IRS guidance, this is a taxable event — the channel settlement constitutes a disposition of property. The estate must track the cost basis of the bitcoin that was locked in the channel versus the fair market value at the time of force-close.</p>
+
+  <p>If the decedent receives a stepped-up basis at death (under IRC §1014), the force-close occurring after death may result in minimal gain or loss, since the basis resets to fair market value at the date of death. But timing matters: if force-closes occur before the estate is formally opened, the tax treatment becomes ambiguous.</p>
+
+  <p>For estates with significant Lightning holdings, the interaction between <a href="/blog/bitcoin-capital-gains-tax-guide">capital gains rules</a> and channel closures needs careful attention from a tax advisor who understands both Bitcoin and estate law.</p>
+
+  <div class="am-callout">
+    <div class="am-callout-tag">Tax Strategy Resource</div>
+    <h4>Bitcoin Tax Planning Goes Beyond Capital Gains</h4>
+    <p>Lightning routing income, channel force-close events, and node depreciation create tax complexity that most advisors miss. Bitcoin mining offers some of the most powerful tax deductions available — depreciation, operational expenses, and bonus depreciation that can offset Lightning income and more.</p>
+    <a href="https://abundantmines.com/tax-strategy/" class="btn">Download the Bitcoin Tax Strategy Guide →</a>
+  </div>
+
+  <h2 id="routing-node-business">Routing Nodes as a Trade or Business</h2>
+
+  <p>A Lightning routing node that earns fees presents a question the IRS has not directly addressed: is routing fee income a trade or business under IRC §162, or is it passive investment income?</p>
+
+  <h3>The Case for Trade or Business</h3>
+
+  <p>A routing node operator who actively manages channels — opening and closing channels, rebalancing liquidity, adjusting fee rates, maintaining uptime — is conducting an activity with regularity and continuity for the primary purpose of generating income. Under the <em>Commissioner v. Groetzinger</em> standard, this likely qualifies as a trade or business.</p>
+
+  <p>The implications are significant:</p>
+
+  <ul>
+    <li><strong>Ordinary income.</strong> Routing fees are ordinary income, not capital gains. They are taxable when received (in sats), valued at fair market value at the time of receipt.</li>
+    <li><strong>Business deductions.</strong> Node hardware, electricity, internet service, hosting costs, and software subscriptions are deductible under §162. For a serious routing node, these can be meaningful — a dedicated server, UPS backup, and high-availability internet easily run $2,000–$5,000 annually.</li>
+    <li><strong>Qualified Business Income.</strong> If the routing operation qualifies as a trade or business, routing income may be eligible for the §199A QBI deduction — a 20% deduction on qualified business income for pass-through entities. For a routing node earning 2 million sats per month at $100,000/BTC, that is approximately $24,000 per year in gross income, with a potential $4,800 QBI deduction.</li>
+    <li><strong>Self-employment tax.</strong> The flip side: if it is a trade or business, routing income is subject to self-employment tax (15.3% up to the Social Security wage base, 2.9% above). This is a real cost that passive income avoids.</li>
+  </ul>
+
+  <h3>Estate Planning Implications</h3>
+
+  <p>When the node operator dies, the routing business does not automatically terminate. The estate must decide: does the executor continue operating the node (preserving income and channel relationships), or close it down?</p>
+
+  <p>If the <a href="/blog/bitcoin-fiduciary-duty-trustee">trustee or executor</a> lacks the technical ability to operate a routing node, the channels will go offline and eventually force-close. The routing income stream ends. If the estate plan contemplated the node as an ongoing business (perhaps in a revocable trust that becomes irrevocable at death), the trustee needs explicit authority — and technical capability — to continue operations.</p>
+
+  <p>For estates above the $15 million per person federal exemption (2026), a routing node's capitalized value could be relevant for estate tax purposes. A node earning $24,000 annually might be valued at $120,000–$240,000 using a 5–10x income multiple, depending on the stability and growth trajectory of routing fees.</p>
+
+  <h2 id="lsp-custodial">LSPs and Custodial Lightning Wallets</h2>
+
+  <p>Not all Lightning usage involves self-custody. The rise of Lightning Service Providers (LSPs) has created a spectrum of custody arrangements that complicate estate planning differently.</p>
+
+  <h3>Fully Custodial Wallets</h3>
+
+  <p>Wallets like Wallet of Satoshi hold the user's bitcoin entirely on the provider's infrastructure. The user does not control private keys. From an estate planning perspective, these function like bank accounts — the executor needs the account credentials, and recovery depends on the provider's cooperation. There are no channels to close, no node to maintain, and no channel state to preserve.</p>
+
+  <p>The risk is different but real: if the custodial provider goes offline, restricts access, or exits the market, the funds may be unrecoverable. This is counterparty risk, not protocol risk.</p>
+
+  <h3>Semi-Custodial and Non-Custodial LSPs</h3>
+
+  <p>Wallets like Phoenix (from ACINQ) operate a hybrid model. The user holds private keys, but ACINQ manages the Lightning channels. Channel state is backed up to ACINQ's servers. If the user's phone is lost, they can recover using their seed phrase plus ACINQ's backup infrastructure.</p>
+
+  <p>For estate planning, these wallets occupy a middle ground. The executor needs the seed phrase (self-custody inheritance applies), but channel recovery depends on the LSP remaining operational. If ACINQ shuts down, the user can force-close channels using their seed phrase — but only if they (or the executor) know how.</p>
+
+  <p>The estate plan should document: which wallet, which type of custody, where the seed phrase is stored, and what to do if the LSP is no longer available. The procedures for recovering from a Phoenix wallet are materially different from recovering from a Core Lightning routing node. Your <a href="/blog/bitcoin-multisig-estate-planning">multisig estate planning</a> documentation should address Lightning alongside on-chain holdings.</p>
+
+  <h2 id="backup-recovery">Backup and Recovery: Static Channel Backups</h2>
+
+  <p>Lightning node implementations (LND, Core Lightning, Eclair) support Static Channel Backups (SCBs). An SCB does not contain the current channel state — it contains enough information to initiate a cooperative or force-close of all channels, recovering the node's balance to an on-chain address.</p>
+
+  <h3>Why SCBs Matter for Estate Planning</h3>
+
+  <p>If the node hardware fails or becomes inaccessible, an SCB allows recovery of funds without the original channel database. The executor imports the SCB into a new LND instance, the software contacts each channel partner, and initiates a close. The estate's funds return to on-chain addresses controlled by the seed phrase.</p>
+
+  <p>There is a critical limitation: SCBs must be updated after every channel open or close. An outdated SCB may not include channels opened after the backup was created. Those channels' funds could be lost.</p>
+
+  <h3>Automated Backup Strategies</h3>
+
+  <p>Best practice for node operators who are serious about estate planning:</p>
+
+  <ul>
+    <li><strong>Automated SCB export.</strong> Configure the node to automatically copy the SCB file to a secondary location (cloud storage, secondary device, or a USB drive in a safe deposit box) every time a channel is opened or closed.</li>
+    <li><strong>Seed phrase separation.</strong> The seed phrase and SCB should be stored in different locations. Together, they enable full recovery. Separately, neither is sufficient. This mirrors the key separation principles used in <a href="/blog/bitcoin-multisig-inheritance">multisig inheritance setups</a>.</li>
+    <li><strong>Documentation for the executor.</strong> A written procedure — not just the technical artifacts — explaining what the SCB is, where it is stored, and how to use it. Most executors are not Lightning developers.</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-label">Backup Frequency</div>
+    <p>LND automatically updates the channel.backup file in the node's data directory whenever a channel state changes. The estate planning challenge is ensuring this file is replicated somewhere the executor can access it — especially if the node itself becomes unavailable.</p>
+  </div>
+
+  <h2 id="trust-provisions">Trust Provisions for Lightning Operations</h2>
+
+  <p>Standard revocable trust language does not contemplate Lightning Network operations. A trust that grants the trustee authority over "digital assets" or even "cryptocurrency" may not clearly authorize the specific actions required to manage Lightning channels.</p>
+
+  <h3>Specific Authority Needed</h3>
+
+  <p>Trust provisions for a Lightning node operator should explicitly grant the trustee authority to:</p>
+
+  <ul>
+    <li><strong>Operate the Lightning node.</strong> Continue running the node software, maintaining uptime, and managing the underlying hardware or hosting infrastructure.</li>
+    <li><strong>Open and close channels.</strong> This involves committing and recovering on-chain bitcoin — the trustee needs clear authority to deploy trust assets into bilateral channel arrangements.</li>
+    <li><strong>Rebalance channels.</strong> Circular rebalancing and submarine swaps involve moving bitcoin between channels without a net change in holdings, but they do involve transaction fees and counterparty interactions.</li>
+    <li><strong>Set and adjust routing fees.</strong> This is a business decision that affects income — the trustee needs discretion to manage fee rates.</li>
+    <li><strong>Execute force-closes.</strong> In adversarial situations (unresponsive channel partners, suspected fraud), the trustee must be able to force-close channels unilaterally.</li>
+    <li><strong>Engage technical service providers.</strong> Unless the trustee is a Lightning developer, they will need to hire one. The trust should authorize payment for technical management of the node.</li>
+  </ul>
+
+  <p>Without these provisions, a trustee managing a Lightning node could face fiduciary liability for actions that fall outside their explicit authority — even if those actions are necessary to preserve trust assets.</p>
+
+  <h3>Successor Node Operator</h3>
+
+  <p>Consider naming a "Lightning successor" — a technically competent individual who can manage the node during the transition period between the grantor's death and the trustee's full assumption of control. This person does not need to be the trustee; they can serve as a technical advisor with limited, defined authority.</p>
+
+  <p>This is analogous to naming a digital executor alongside a traditional executor — a concept that is gaining traction in estate planning for tech-forward families. The <a href="/blog/bitcoin-estate-planning-guide">comprehensive estate planning guide</a> covers the broader framework for digital asset succession.</p>
+
+  <h2 id="valuation">Valuation for Estate Tax Purposes</h2>
+
+  <p>For estates that exceed the $15 million per person federal estate tax exemption in 2026 (or $30 million for a married couple using portability), Lightning holdings must be valued alongside on-chain holdings.</p>
+
+  <h3>Snapshot Timing</h3>
+
+  <p>Estate tax valuation uses the fair market value at the date of death (or the alternate valuation date, six months later). For Lightning channel balances, this requires:</p>
+
+  <ol>
+    <li><strong>Determining the channel state at the date of death.</strong> This requires access to the node's channel database as of that moment. If the node was online at death, the channel database reflects current balances. If it was offline, the last known state applies.</li>
+    <li><strong>Converting sat balances to USD.</strong> Use the BTC/USD price at the date of death (or alternate valuation date). The IRS has not issued specific guidance on which price source to use, but a reasonable approach is the average of high and low prices on a major exchange for the date in question.</li>
+    <li><strong>Aggregating all Lightning balances.</strong> The executor must sum the estate's share across all open channels. This is not the total channel capacity — it is only the local balance in each channel.</li>
+  </ol>
+
+  <h3>Ongoing Channel Activity Post-Death</h3>
+
+  <p>If the node remains online after death (running on automated infrastructure), channel balances will continue to change as payments route through. The valuation date is fixed, but the practical challenge of capturing the exact state at that moment adds complexity. Best practice: take a snapshot of all channel balances immediately upon death, before any post-death routing occurs.</p>
+
+  <p>The $19,000 annual gift exclusion (2026) is also relevant for lifetime planning — gifting routing node interests or channel capacity during life can be a tax-efficient transfer strategy, though the mechanics of transferring a channel (versus closing and re-opening) remain technically constrained.</p>
+
+  <div class="am-callout">
+    <div class="am-callout-tag">Planning Resource</div>
+    <h4>Reduce Your Bitcoin Tax Burden Before It Compounds</h4>
+    <p>Lightning routing income, on-chain capital gains, and estate tax exposure all intersect. The most overlooked strategy in Bitcoin is using mining depreciation to offset income across all three categories. Most holders don't know this exists.</p>
+    <a href="https://abundantmines.com/tax-strategy/" class="btn">Get the Bitcoin Tax Strategy Guide →</a>
+  </div>
+
+  <h2 id="privacy">Lightning, Privacy, and Disclosure Obligations</h2>
+
+  <p>Lightning's onion routing provides meaningful privacy improvements over on-chain Bitcoin. A routing node does not know the origin or final destination of payments — only the immediately preceding and following hops. This makes tracing Lightning payments significantly harder than tracing on-chain transactions. For node operators who value privacy, this is a core feature. For their estates, it is a significant complication.</p>
+
+  <p>On-chain Bitcoin is pseudonymous but traceable. Chain analysis firms can follow the flow of funds across addresses with increasing accuracy. Lightning payments, by contrast, leave almost no public trace. A payment routed through five hops is visible only to each individual hop — no single observer sees the complete path. There is no "Lightning blockchain" an executor can search. The network's topology is partially visible through gossip protocol announcements, but private channels — increasingly common — do not appear in the public graph at all.</p>
+
+  <h3>The Estate Planning Tension</h3>
+
+  <p>Privacy is a feature for the living. For the deceased, it becomes an obstacle. Estate administration requires full disclosure of assets. The executor has a legal obligation to identify and account for all estate property — including assets the decedent may have kept private during life. Lightning's privacy features can make this difficult in several ways:</p>
+
+  <ul>
+    <li><strong>No public ledger of Lightning balances.</strong> Unlike on-chain bitcoin, where a known address reveals its balance on the blockchain, Lightning channel balances are private between the two channel parties.</li>
+    <li><strong>Routing history may reveal income.</strong> A node's routing history (if preserved) shows fees earned — this is taxable income that must be reported on the decedent's final return.</li>
+    <li><strong>Channel partners may not cooperate.</strong> There is no legal framework compelling a channel partner to disclose the other side's balance. The estate must rely on its own node data.</li>
+  </ul>
+
+  <p>The practical solution is disclosure during lifetime. The node operator should maintain a current, accurate record of Lightning holdings as part of their asset inventory. This record should be stored with the estate planning documents and updated regularly — ideally automated through node management software that exports balance reports.</p>
+
+  <h2 id="watchtower">The Watchtower Problem</h2>
+
+  <p>Lightning watchtowers are third-party services that monitor the blockchain for fraudulent channel closures and automatically broadcast penalty transactions on behalf of the channel owner. They exist because not every node can be online 24/7 — and a channel partner who broadcasts an old commitment transaction while the other party is offline can steal funds.</p>
+
+  <h3>Why This Matters at Death</h3>
+
+  <p>When a node operator dies, their node will eventually go offline. Without a watchtower, every channel is vulnerable to fraud during the period between death and the executor taking control of the node. A channel partner could broadcast an outdated commitment transaction — one reflecting a higher balance for themselves — and the estate would have no automated defense.</p>
+
+  <p>Watchtower services solve this by monitoring on the node owner's behalf. But watchtower arrangements create their own estate planning considerations:</p>
+
+  <ul>
+    <li><strong>Continuity of service.</strong> Is the watchtower service paid? By subscription? If the subscription lapses after death, monitoring stops.</li>
+    <li><strong>Access credentials.</strong> The executor needs to know that a watchtower exists, who provides it, and how to maintain the service during estate administration.</li>
+    <li><strong>Self-hosted watchtowers.</strong> Some operators run their own watchtower on separate infrastructure. The estate plan must account for this additional piece of infrastructure and ensure the executor can access or maintain it.</li>
+  </ul>
+
+  <p>The economic analysis is straightforward. A watchtower service costs a small fee — typically nominal or even free for basic monitoring. The potential loss from a single fraudulent channel closure could be the entire channel balance. For a node with 8 BTC across 50 channels, even one successful fraud attempt could cost tens of thousands of dollars at current prices. The watchtower is insurance, and like all insurance, it must remain active after the insured event (death) occurs.</p>
+
+  <p>For serious node operators, a watchtower arrangement should be treated as essential infrastructure — documented in the estate plan alongside the node itself, with payment provisions that survive the operator's death. The trust should explicitly authorize the trustee to maintain watchtower services and include the watchtower provider's contact information and access credentials in the sealed technical addendum.</p>
+
+  <h2 id="lightning-businesses">Lightning-Native Business Assets</h2>
+
+  <p>Beyond routing fees, Lightning enables entirely new categories of income and assets that must be addressed in estate planning.</p>
+
+  <h3>LNURL and Lightning Addresses</h3>
+
+  <p>A Lightning address (user@domain.com format) is a static endpoint for receiving payments. If the decedent operated a Lightning address — whether for a business, for tipping, or for payment processing — incoming payments will continue to arrive after death. These payments are estate assets. The executor must be able to access the underlying infrastructure and either continue receiving payments (if the address serves a business) or redirect/disable it.</p>
+
+  <h3>Nostr Zaps</h3>
+
+  <p>Nostr, the decentralized social protocol, integrates Lightning payments ("zaps") as native tipping. A content creator who earns zaps has Lightning income that flows to a wallet associated with their Nostr identity. The estate must account for: the Nostr private key (which controls the identity), the linked Lightning wallet, and any pending or future zap income.</p>
+
+  <h3>Point of Sale and E-Commerce</h3>
+
+  <p>Businesses accepting Lightning payments via BTCPay Server, LNbits, or similar infrastructure have Lightning funds flowing into channels or custodial wallets continuously. These are business assets with the same estate treatment as any other business revenue — but the technical recovery path is different from recovering a bank account.</p>
+
+  <p>Every Lightning-native income stream should be documented in the estate plan with the same rigor as traditional income sources: what it is, where the funds flow, how to access the underlying system, and who to contact for technical support.</p>
+
+  <h2 id="case-study">Case Study: The Nakamoto Node Operator</h2>
+
+  <p>To illustrate how these issues converge, consider a composite client profile.</p>
+
+  <h3>The Setup</h3>
+
+  <p>Satoshi Nakamoto (obviously a pseudonym) operates a serious Lightning routing node. The numbers:</p>
+
+  <ul>
+    <li>50 open channels with a total capacity of 8 BTC</li>
+    <li>Approximately 5.2 BTC of that capacity belongs to Satoshi (local balance)</li>
+    <li>Routing fees: approximately 2 million sats per month (~$2,000/month at $100,000/BTC)</li>
+    <li>On-chain wallet: 12 BTC in cold storage (multisig)</li>
+    <li>Phoenix wallet: 0.15 BTC for personal spending</li>
+    <li>Nostr account earning zaps: ~100,000 sats/month</li>
+    <li>Total estimated holdings: ~17.35 BTC (~$1,735,000)</li>
+  </ul>
+
+  <p>Satoshi is married, has two children, and lives in a state with no state estate tax. The federal estate is well below the $15 million per person exemption (or $30 million with spousal portability), so federal estate tax is not the primary concern. The primary concern is operational continuity and asset recovery.</p>
+
+  <h3>The Plan</h3>
+
+  <p><strong>Layer 1: On-chain holdings.</strong> The 12 BTC in cold storage is held in a 2-of-3 multisig arrangement. Keys are distributed per the <a href="/blog/bitcoin-multisig-inheritance">multisig inheritance framework</a> — one key with the spouse, one in a safety deposit box, one with the estate attorney. The seed phrases and key locations are documented in the trust.</p>
+
+  <p><strong>Layer 2: Lightning node.</strong> The routing node runs on a dedicated server with UPS backup. The trust provisions explicitly authorize the trustee (Satoshi's spouse) to:</p>
+
+  <ul>
+    <li>Continue operating the routing node for up to 12 months after death</li>
+    <li>Close channels at the trustee's discretion</li>
+    <li>Engage a Lightning technical advisor (identified by name in a sealed addendum)</li>
+    <li>Pay for continued hosting, watchtower services, and technical support from trust assets</li>
+  </ul>
+
+  <p>A technical successor — a trusted friend who also operates a Lightning node — is named as the "Lightning Operations Advisor" with authority to access the node infrastructure, take channel state snapshots, and execute orderly channel closures if the spouse elects not to continue operations.</p>
+
+  <p><strong>Layer 3: SCB and recovery.</strong> Automated static channel backups are replicated to an encrypted cloud storage account and a USB drive in the safety deposit box. The seed phrase for the Lightning node is stored separately from the SCBs, following the same separation-of-concerns principle as the multisig keys.</p>
+
+  <p><strong>Layer 4: LSP wallets.</strong> The Phoenix wallet seed phrase is stored with the estate documents. A note explains that recovery requires installing Phoenix, importing the seed phrase, and waiting for ACINQ's servers to restore the channel state. If ACINQ is no longer available, the note explains how to force-close using the seed phrase directly.</p>
+
+  <p><strong>Layer 5: Income streams.</strong> The Nostr private key is documented (encrypted, stored with the attorney). Instructions explain how to access the linked Lightning wallet and either continue the Nostr identity or disable it. Routing fee income for the current tax year is tracked via automated exports and included in the final tax return.</p>
+
+  <p><strong>Layer 6: Watchtower.</strong> Satoshi runs a self-hosted watchtower on a separate VPS. The VPS credentials are included in the sealed technical addendum. The watchtower subscription (a third-party backup) is paid annually; the trust provisions authorize continued payment.</p>
+
+  <h3>What Happens at Death</h3>
+
+  <ol>
+    <li>The Lightning Operations Advisor is notified immediately and takes a snapshot of all channel states.</li>
+    <li>The watchtower continues monitoring for fraudulent closes.</li>
+    <li>The spouse (as trustee) decides within 30 days whether to continue node operations or begin orderly wind-down.</li>
+    <li>If winding down: channels are cooperatively closed over 2–4 weeks, funds return to on-chain addresses controlled by the trust.</li>
+    <li>If continuing: the technical advisor manages the node under the trustee's direction, routing fees flow to the trust.</li>
+    <li>The estate attorney files the final tax return including routing fee income through the date of death.</li>
+    <li>The stepped-up basis under IRC §1014 applies to all bitcoin holdings (on-chain and Lightning) at the date of death value.</li>
+  </ol>
+
+  <div class="callout">
+    <div class="callout-label">Key Takeaway</div>
+    <p>The Nakamoto plan works because it addresses Lightning as a separate operational layer — not just additional bitcoin holdings. The technical successor, the SCB strategy, the watchtower provisions, and the trustee authority all target problems unique to Lightning that do not exist with on-chain Bitcoin.</p>
+  </div>
+
+  <hr>
+
+  <h2>Building Your Lightning Estate Plan</h2>
+
+  <p>If you operate a Lightning node or hold meaningful funds in Lightning channels, your estate plan is incomplete without addressing these issues. The summary framework:</p>
+
+  <ol>
+    <li><strong>Inventory all Lightning assets.</strong> Channel balances, routing fee income, Lightning addresses, Nostr zaps, custodial wallet balances.</li>
+    <li><strong>Document the technical recovery path.</strong> Seed phrases, SCBs, node access credentials, watchtower arrangements — all stored securely with separation of concerns.</li>
+    <li><strong>Draft Lightning-specific trust provisions.</strong> Trustee authority to operate nodes, close channels, rebalance, engage technical advisors, and pay for infrastructure.</li>
+    <li><strong>Name a technical successor.</strong> Someone who understands Lightning and can act quickly after death to preserve channel states and prevent fraudulent closures.</li>
+    <li><strong>Address tax implications.</strong> Routing income is ordinary income, force-closes are taxable events, and the stepped-up basis at death applies to channel balances.</li>
+    <li><strong>Update regularly.</strong> Channel configurations change constantly. SCBs must be current. The estate plan should be reviewed whenever significant changes occur to the node's channel structure.</li>
+  </ol>
+
+  <p>Lightning is Bitcoin's scaling layer. As adoption grows, more wealth will reside in channels rather than on-chain. The estate planning frameworks that work for on-chain Bitcoin — <a href="/blog/bitcoin-estate-planning-guide">comprehensive as they are</a> — do not capture the bilateral, ephemeral, and technically demanding nature of Lightning. Building a plan that does is not optional for node operators. It is a fiduciary necessity.</p>
+
+</article>
+
+<div class="author-box">
+  <div class="author-avatar">HF</div>
+  <div>
+    <div class="author-tag">About the Author</div>
+    <p class="author-bio">Hal Franklin covers Bitcoin estate planning, tax strategy, and custody architecture for high-net-worth families. This article is educational content and does not constitute legal, tax, or financial advice.</p>
+  </div>
+</div>
+
+<div class="services-cta">
+  <h3>Your Lightning Holdings Need an Estate Plan</h3>
+  <p>Channel balances, routing income, and force-close risk create estate planning complexity that generic crypto plans miss entirely. We help node operators build plans that actually work.</p>
+  <a href="/services/">Explore Our Services</a>
+</div>
+
+<footer>
+  <div class="footer-mark">The Bitcoin Family Office &copy; 2026</div>
+  <div class="footer-links">
+    <a href="/blog/">Research</a>
+    <a href="/disclosures">Disclosures</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+</footer>
+
+</body>
+</html>
