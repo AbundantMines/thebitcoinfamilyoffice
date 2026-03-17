@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Estate Planning for Tech Employees with RSUs and Equity Compensation (2026)</title>
+<meta name="description" content="How tech employees with both Bitcoin and concentrated equity positions (RSUs, ISOs, NSOs, ESPP) should approach estate planning. Covers the double-concentration problem, 10b5-1 plans, 83(b) elections, GRAT timing, and constructive sale rules.">
+<meta property="og:title" content="Bitcoin Estate Planning for Tech Employees with RSUs and Equity Compensation">
+<meta property="og:description" content="The unique challenge of holding both Bitcoin and concentrated equity positions. Covers double-concentration risk, blackout windows, GRAT timing around vesting cliffs, and building liquidity without selling BTC.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bitcoin-tech-employee-rsu-equity-estate-planning">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bitcoin Estate Planning for Tech Employees with RSUs and Equity Compensation">
+<meta name="twitter:description" content="How tech employees with Bitcoin + RSUs should approach estate planning in 2026.">
+<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-tech-employee-rsu-equity-estate-planning">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bitcoin Estate Planning for Tech Employees with RSUs and Equity Compensation (2026)",
+  "description": "How tech employees holding both Bitcoin and concentrated equity positions should approach estate planning. Covers double-concentration risk, 10b5-1 plans, 83(b) elections, GRAT timing, constructive sale rules, and more.",
+  "author": {"@type": "Person", "name": "Hal Franklin", "url": "https://thebitcoinfamilyoffice.com/services/"},
+  "url": "https://thebitcoinfamilyoffice.com/blog/bitcoin-tech-employee-rsu-equity-estate-planning",
+  "datePublished": "2026-03-16",
+  "dateModified": "2026-03-16",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Bitcoin Family Office",
+    "url": "https://thebitcoinfamilyoffice.com"
+  },
+  "mainEntityOfPage": "https://thebitcoinfamilyoffice.com/blog/bitcoin-tech-employee-rsu-equity-estate-planning",
+  "keywords": "bitcoin RSU estate planning, tech employee estate plan, equity compensation bitcoin, RSU trust planning, 83b election bitcoin, GRAT RSU vesting, constructive sale bitcoin"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebitcoinfamilyoffice.com"},
+    {"@type": "ListItem", "position": 2, "name": "Research", "item": "https://thebitcoinfamilyoffice.com/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "Bitcoin Estate Planning for Tech Employees with RSUs", "item": "https://thebitcoinfamilyoffice.com/blog/bitcoin-tech-employee-rsu-equity-estate-planning"}
+  ]
+}
+</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+<script>
+(function(){
+  if(typeof gtag!=='function') return;
+  document.addEventListener('click',function(e){
+    var el=e.target;
+    var tag=el.tagName+(el.id?'#'+el.id:el.className?' .'+String(el.className).trim().split(' ')[0]:'');
+    gtag('event','hm_click',{'page':location.pathname,'cx':Math.round(e.clientX/window.innerWidth*100),'cy':Math.round((e.clientY+window.scrollY)/Math.max(document.body.scrollHeight,1)*100),'el':tag.substring(0,40)});
+  });
+  var _sd=0;
+  window.addEventListener('scroll',function(){
+    var pct=Math.round((window.scrollY+window.innerHeight)/Math.max(document.body.scrollHeight,1)*100);
+    var milestone=Math.floor(pct/25)*25;
+    if(milestone>_sd){_sd=milestone;gtag('event','hm_scroll',{'page':location.pathname,'depth':_sd});}
+  },{passive:true});
+})();
+</script>
+
+<!-- Cloudflare Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0a; --bg-elevated: #111111; --bg-card: #141414; --border: #1e1e1e;
+  --accent: #c9a84c; --accent-dim: rgba(201,168,76,0.10); --accent-border: rgba(201,168,76,0.3);
+  --text: #e8e0d0; --text-secondary: #8a8070; --text-muted: #5a5248;
+  --serif: 'EB Garamond', Georgia, serif;
+  --display: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --max-w: 740px;
+}
+html { font-size: 18px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { opacity: 0.8; }
+::selection { background: var(--accent-dim); color: var(--accent); }
+
+nav { position: sticky; top: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-mark { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); }
+.nav-mark span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); opacity: 1; }
+.nav-links .nav-cta { color: var(--accent) !important; border: 1px solid var(--accent-border); padding: 0.35rem 0.8rem; border-radius: 2px; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 1px; background: var(--text-secondary); transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.article-header { padding: 7rem 2rem 4rem; border-bottom: 1px solid var(--border); text-align: center; position: relative; }
+.article-header::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 5rem; background: linear-gradient(to bottom, transparent, var(--accent-border)); }
+.article-tag { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: block; }
+.article-header h1 { font-family: var(--display); font-weight: 400; font-size: clamp(1.9rem, 4.5vw, 3rem); line-height: 1.2; color: var(--text); max-width: 820px; margin: 0 auto 1.5rem; }
+.article-meta { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+.article-intro { font-family: var(--serif); font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary); max-width: 640px; margin: 2rem auto 0; font-style: italic; }
+
+.article-body { max-width: var(--max-w); margin: 0 auto; padding: 4rem 2rem 6rem; }
+.article-body h2 { font-family: var(--display); font-weight: 400; font-size: 1.7rem; line-height: 1.25; color: var(--text); margin: 3.5rem 0 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+.article-body h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+.article-body h3 { font-family: var(--sans); font-weight: 500; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 2.25rem 0 0.75rem; }
+.article-body p { margin-bottom: 1.5rem; font-size: 1.05rem; color: var(--text); }
+.article-body ul, .article-body ol { margin: 0 0 1.5rem 1.5rem; }
+.article-body li { margin-bottom: 0.6rem; font-size: 1.05rem; line-height: 1.7; }
+.article-body strong { color: var(--text); font-weight: 500; }
+.article-body em { color: var(--text-secondary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+.toc { background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--accent-border); border-radius: 4px; padding: 2rem 2.25rem; margin: 0 0 3rem; }
+.toc-label { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+.toc ol { margin: 0 0 0 1.2rem; }
+.toc li { margin-bottom: 0.55rem; font-family: var(--sans); font-size: 0.8rem; line-height: 1.5; }
+.toc a { color: var(--text-secondary); letter-spacing: 0.01em; }
+.toc a:hover { color: var(--accent); opacity: 1; }
+
+.callout { background: var(--bg-elevated); border: 1px solid var(--border); border-left: 3px solid var(--accent-border); border-radius: 4px; padding: 1.5rem 1.75rem; margin: 2rem 0; }
+.callout-label { font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+.callout p { font-family: var(--sans); font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+.callout p + p { margin-top: 0.75rem; }
+.callout-warn { border-left-color: rgba(200,70,60,0.5); }
+.callout-warn .callout-label { color: #c84640; }
+
+.tool-cta { background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 4px; padding: 1.75rem 2rem; margin: 2.5rem 0; display: flex; gap: 1.5rem; align-items: flex-start; }
+.tool-cta-icon { font-size: 1.8rem; flex-shrink: 0; line-height: 1; margin-top: 0.15rem; }
+.tool-cta-body h4 { font-family: var(--display); font-weight: 400; font-size: 1.1rem; color: var(--text); margin-bottom: 0.4rem; }
+.tool-cta-body p { font-family: var(--sans); font-size: 0.78rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 0.9rem; }
+.tool-cta-body a.btn { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-border); padding: 0.45rem 1.1rem; border-radius: 2px; display: inline-block; transition: background 0.2s; }
+.tool-cta-body a.btn:hover { background: var(--accent-dim); opacity: 1; }
+
+.info-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-family: var(--sans); font-size: 0.78rem; }
+.info-table th { text-align: left; padding: 0.65rem 1rem; background: var(--bg-card); border: 1px solid var(--border); color: var(--accent); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.63rem; }
+.info-table td { padding: 0.75rem 1rem; border: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; line-height: 1.65; }
+.info-table tr:nth-child(even) td { background: var(--bg-card); }
+
+.am-callout { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 1.75rem 2rem; margin: 2.5rem 0; position: relative; overflow: hidden; }
+.am-callout::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, transparent, var(--accent-border), transparent); }
+.am-callout-tag { font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+.am-callout h4 { font-family: var(--display); font-weight: 400; font-size: 1.1rem; color: var(--text); margin-bottom: 0.5rem; }
+.am-callout p { font-family: var(--sans); font-size: 0.8rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.9rem; }
+.am-callout a.btn { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-border); padding: 0.45rem 1.1rem; border-radius: 2px; display: inline-block; transition: background 0.2s; }
+.am-callout a.btn:hover { background: var(--accent-dim); opacity: 1; }
+
+.author-box { max-width: var(--max-w); margin: 0 auto 2rem; padding: 1.5rem 1.75rem; background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 4px; display: flex; gap: 1.5rem; align-items: flex-start; }
+.author-avatar { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; background: var(--accent-dim); border: 1px solid var(--accent-border); display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 0.9rem; font-weight: 500; color: var(--accent); }
+.author-tag { font-family: var(--sans); font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+.author-bio { font-family: var(--serif); font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+
+.services-cta { background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 4px; padding: 2.5rem; max-width: var(--max-w); margin: 0 auto 4rem; text-align: center; }
+.services-cta h3 { font-family: var(--display); font-weight: 400; font-size: 1.4rem; color: var(--text); margin-bottom: 0.75rem; }
+.services-cta p { font-family: var(--sans); font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.65; }
+.services-cta a { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-border); padding: 0.6rem 1.4rem; border-radius: 2px; display: inline-block; transition: background 0.2s; }
+.services-cta a:hover { background: var(--accent-dim); opacity: 1; }
+
+footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-mark { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); }
+.footer-mark span { color: var(--accent); }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); }
+.footer-links a:hover { color: var(--text); }
+.footer-copy { width: 100%; text-align: center; font-family: var(--sans); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.05em; margin-top: 0.5rem; }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.97); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; z-index: 150; }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1rem; }
+  .tool-cta { flex-direction: column; gap: 1rem; }
+  .author-box { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-mark">The <span>Bitcoin</span> Family Office</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="/" onclick="closeMenu()">Home</a>
+    <a href="/services/" onclick="closeMenu()">Services</a>
+    <a href="/blog/" onclick="closeMenu()">Research</a>
+    <a href="/news/" onclick="closeMenu()">News</a>
+    <a href="/monitor/" onclick="closeMenu()">Estate Watch</a>
+    <a href="/faq/" onclick="closeMenu()">FAQ</a>
+    <a href="/monitor/signup" class="nav-cta" onclick="closeMenu()">Get Started</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <span class="article-tag">Equity Compensation &amp; Estate Planning</span>
+  <h1>Bitcoin Estate Planning for Tech Employees with RSUs and Equity Compensation</h1>
+  <p class="article-meta">March 16, 2026 · 22 min read · By Hal Franklin</p>
+  <p class="article-intro">You've spent a decade accumulating Bitcoin on one side and equity compensation on the other. Now your estate plan needs to handle two entirely different species of concentrated wealth — each with its own restrictions, tax treatment, and liquidity timeline. Here's the playbook.</p>
+</header>
+
+<article class="article-body">
+
+<div class="toc">
+  <div class="toc-label">In This Article</div>
+  <ol>
+    <li><a href="#double-concentration">The Double-Concentration Problem</a></li>
+    <li><a href="#equity-types">RSUs, ISOs, NSOs, and ESPP: Estate Planning Implications</a></li>
+    <li><a href="#83b-elections">83(b) Elections and Unvested Equity</a></li>
+    <li><a href="#blackout-windows">10b5-1 Plans, Blackout Windows, and Liquidity Constraints</a></li>
+    <li><a href="#constructive-sale">Constructive Sale Rules: §1259 and Your Bitcoin</a></li>
+    <li><a href="#bitcoin-anti-equity">Bitcoin as the Anti-Equity Hedge</a></li>
+    <li><a href="#funding-trusts">Funding Trusts While Restricted</a></li>
+    <li><a href="#grat-timing">GRAT Timing Around Vesting Cliffs</a></li>
+    <li><a href="#diversification">Diversification Without Triggering Tax</a></li>
+    <li><a href="#key-person-risk">Key-Person Risk and Accelerated Vesting</a></li>
+    <li><a href="#liquidity-runway">Building a Liquidity Runway Without Selling BTC</a></li>
+    <li><a href="#case-study">Case Study: Priya Mehta — Pre-IPO Engineer with 80 BTC</a></li>
+    <li><a href="#action-items">Immediate Action Items</a></li>
+  </ol>
+</div>
+
+<h2 id="double-concentration">The Double-Concentration Problem</h2>
+
+<p>Most wealth advisors talk about concentration risk as if it's a single-axis problem: too much of your net worth in one stock. For tech employees who also hold significant Bitcoin, the problem is fundamentally different. You're concentrated on <em>two</em> axes — a single-company equity position that's governed by SEC rules, blackout windows, and vesting schedules, plus a Bitcoin position that moves independently of every traditional asset class. Your <a href="/blog/bitcoin-estate-planning-guide">estate plan</a> needs to account for both simultaneously.</p>
+
+<p>Here's what makes this treacherous. Your RSUs and ISOs are illiquid on a fixed timeline controlled by your employer. Your Bitcoin is liquid at any moment but selling it triggers capital gains and — if you're a long-term holder — destroys the very position you've been building. One asset you <em>can't</em> sell. The other you <em>won't</em> sell. And both represent existential concentration risk to your estate.</p>
+
+<p>The 2026 estate and gift tax environment adds urgency. The current $15 million per-person exemption (a product of the OBBBA provisions that extended and slightly expanded the TCJA framework) remains historically generous, but its permanence is anything but guaranteed. With Bitcoin trading around $74,000 — roughly 42% below its all-time high — and tech valuations still elevated relative to 2022 lows, the planning window for tech employees with dual concentration is unusually favorable right now.</p>
+
+<div class="callout">
+  <div class="callout-label">Why This Moment Matters</div>
+  <p>Bitcoin at $74K means your BTC position is valued lower for gift and estate tax purposes than it was at the highs. Combined with the $15M exemption, you can move more Bitcoin into irrevocable trusts at a lower taxable value — preserving future upside for heirs outside your estate. Meanwhile, pre-IPO equity is valued at 409A prices that are often substantially below eventual public market values. Both assets are "on sale" for transfer tax purposes.</p>
+</div>
+
+<h2 id="equity-types">RSUs, ISOs, NSOs, and ESPP: Estate Planning Implications</h2>
+
+<p>Not all equity compensation is created equal — and the estate planning treatment varies dramatically depending on which instrument you hold. This matters because the wrong move with the wrong equity type can accelerate taxes, void preferential treatment, or create phantom income for your heirs.</p>
+
+<h3>Restricted Stock Units (RSUs)</h3>
+
+<p>RSUs are the dominant compensation vehicle at large and mid-stage tech companies. They're simple: you receive shares on a vesting schedule, and the fair market value at vesting is taxed as ordinary income. From an estate planning perspective, unvested RSUs are the trickiest because they represent a contractual right to future shares, not shares you currently own. Most RSU agreements include provisions for what happens at death — typically accelerated vesting of some or all unvested units, though the specifics vary enormously by company.</p>
+
+<p>The critical insight: unvested RSUs pass through your estate, but their tax character doesn't change. Your estate (or your heirs) will owe ordinary income tax on the value at vesting, even after your death. There is no step-up in basis for the income recognition portion of RSUs that vest post-mortem. This makes them fundamentally different from Bitcoin for estate planning purposes.</p>
+
+<h3>Incentive Stock Options (ISOs)</h3>
+
+<p>ISOs carry the holy grail of equity compensation: if you meet the holding period requirements (two years from grant, one year from exercise), the spread is taxed as long-term capital gains rather than ordinary income. But ISOs lose their preferential tax status at death. When your estate or heirs exercise ISOs posthumously, they're treated as NSOs — meaning the spread is ordinary income. This makes pre-death planning around ISOs particularly important.</p>
+
+<h3>Non-Qualified Stock Options (NSOs)</h3>
+
+<p>NSOs are straightforward: the spread at exercise is always ordinary income, whether exercised during life or after death. They're transferable in some cases (unlike ISOs), which opens a planning avenue we'll discuss in the trust funding section.</p>
+
+<h3>Employee Stock Purchase Plans (ESPP)</h3>
+
+<p>ESPP shares purchased at a discount have a hybrid tax treatment. The discount portion is ordinary income; appreciation beyond that is capital gain. For estate planning, the key is that ESPP shares are freely transferable once purchased and can be contributed to trusts, used in <a href="/blog/bitcoin-hedging-collar-covered-call-estate-planning">hedging strategies</a>, or included in diversification plans — unlike unvested RSUs or unexercised options.</p>
+
+<h2 id="83b-elections">83(b) Elections and Unvested Equity</h2>
+
+<p>Section 83(b) of the Internal Revenue Code allows you to elect to pay tax on restricted property at the time of grant rather than at vesting. For tech employees with substantial Bitcoin holdings, this election intersects with estate planning in a powerful way.</p>
+
+<p>When you file an 83(b) election within 30 days of receiving restricted stock (not RSUs — this only applies to actual restricted shares subject to vesting), you're electing to pay ordinary income tax on the current value. All subsequent appreciation is then taxed as capital gain. If the shares are in a pre-IPO company at a low 409A valuation, this can be transformative.</p>
+
+<p>The estate planning connection: once you've made an 83(b) election and paid the tax, those shares — even if still unvested — are now property you own for tax purposes. Their future appreciation is capital gain. And if they appreciate significantly and you die, they get a step-up in basis. This is the complete opposite of unvested RSUs, where death triggers ordinary income tax at vesting.</p>
+
+<div class="callout-warn callout">
+  <div class="callout-label">Critical Risk</div>
+  <p>If you file an 83(b) election and then forfeit the shares (you leave the company before vesting), you cannot deduct the tax you already paid. You lose both the shares and the tax. For tech employees also holding Bitcoin, this means your 83(b) decision needs to account for your overall risk budget. You're already concentrated in a volatile asset. Adding binary forfeiture risk on top requires careful analysis of your total financial picture.</p>
+</div>
+
+<p>The 30-day filing deadline for 83(b) elections is absolute and non-negotiable. The IRS has zero tolerance for late filings, and courts have consistently upheld this. If you receive restricted stock (as distinct from RSUs), calendar the deadline the day you receive the grant notice — not when you "get around to it."</p>
+
+<h2 id="blackout-windows">10b5-1 Plans, Blackout Windows, and Liquidity Constraints</h2>
+
+<p>Tech employees at public companies face a unique liquidity paradox: you own valuable equity but can only trade it during specific windows. Blackout periods — typically beginning two weeks before quarter-end and lasting until 48 hours after earnings — block all transactions. For senior employees with access to material non-public information, the restrictions can be even more severe.</p>
+
+<p>Rule 10b5-1 trading plans allow insiders to establish predetermined selling programs during open windows that then execute automatically, even during blackout periods. The 2023 SEC amendments added a mandatory cooling-off period of 90 days (or until the next earnings report, whichever is later) before a new plan can begin executing. Plans must also be entered in good faith and cannot be adopted during a blackout period.</p>
+
+<h3>How This Intersects with Estate Planning</h3>
+
+<p>Your 10b5-1 plan is essentially your equity liquidity engine. It determines when and how you convert restricted equity into cash. For estate planning purposes, this matters because:</p>
+
+<ul>
+  <li><strong>Trust funding timing:</strong> If you want to gift appreciated shares to an irrevocable trust, you can only do so during open trading windows. The transfer itself is a taxable gift valued at fair market value on the date of transfer. Your 10b5-1 plan won't help here — you need a separate strategy for trust contributions.</li>
+  <li><strong>Cash generation for premiums:</strong> If you're using <a href="/blog/bitcoin-grat-grantor-retained-annuity-trust">irrevocable life insurance trusts (ILITs)</a> or other structures requiring premium payments, your 10b5-1 plan's selling schedule needs to align with premium due dates.</li>
+  <li><strong>Diversification pacing:</strong> The SEC's amended rules mean you can't rapidly adjust your 10b5-1 plan in response to market conditions. Once established, you're locked in for at least 90 days. This affects how quickly you can rebalance between equity, cash, and Bitcoin.</li>
+</ul>
+
+<p>For pre-IPO employees, the constraints are even starker. There is no public market. Lock-up periods post-IPO typically run 90-180 days. Secondary market transactions (through platforms like Forge or EquityZen) are limited by company policy and SEC rules. Your equity is essentially frozen until the company provides a liquidity event — and you have zero control over when that happens.</p>
+
+<div class="tool-cta">
+  <div class="tool-cta-icon">⛏️</div>
+  <div class="tool-cta-body">
+    <h4>Bitcoin Tax Strategy for Equity-Heavy Portfolios</h4>
+    <p>When your equity compensation is locked up and your Bitcoin is your primary liquid asset, tax-efficient strategies become essential. Learn how Bitcoin mining creates depreciation deductions that offset ordinary income from RSU vesting — potentially saving six figures annually.</p>
+    <a href="https://abundantmines.com/tax-strategy/" class="btn" target="_blank" rel="noopener">Explore the Strategy →</a>
+  </div>
+</div>
+
+<h2 id="constructive-sale">Constructive Sale Rules: §1259 and Your Bitcoin</h2>
+
+<p>Section 1259 of the Internal Revenue Code is the tripwire that sophisticated investors must navigate carefully. A "constructive sale" occurs when you enter into a transaction that substantially eliminates both risk and opportunity with respect to an appreciated financial position. The tax consequence: immediate recognition of gain as if you'd actually sold the asset.</p>
+
+<p>For Bitcoin holders who also need to manage equity concentration, the <a href="/blog/bitcoin-constructive-sale-section-1259">constructive sale rules</a> create real constraints on hedging strategies. Here's what triggers §1259:</p>
+
+<ul>
+  <li>A short sale of the same or substantially identical property</li>
+  <li>An offsetting notional principal contract with respect to the same property</li>
+  <li>A futures or forward contract to deliver the same or substantially identical property</li>
+  <li>Any other transaction that has the effect of eliminating substantially all of the position's upside and downside</li>
+</ul>
+
+<p>What does <em>not</em> trigger a constructive sale: protective puts (buying downside protection while retaining upside), covered call writing within certain parameters, and collar strategies that maintain enough "spread" between the put and call strike prices. The IRS has not provided bright-line tests for how wide a collar must be, but practitioners generally recommend at least 15-20% spread between strikes.</p>
+
+<p>For Bitcoin specifically, the <a href="/blog/bitcoin-variable-prepaid-forward-contract">variable prepaid forward contract</a> is a powerful tool that walks the constructive sale line carefully. These contracts allow you to receive cash upfront (typically 75-90% of the Bitcoin's current value) while deferring the actual sale — and the tax — to a future date. The variable delivery feature (you deliver fewer Bitcoin if the price rises, more if it falls) provides the IRS with the argument that sufficient risk remains, avoiding §1259.</p>
+
+<h2 id="bitcoin-anti-equity">Bitcoin as the Anti-Equity Hedge</h2>
+
+<p>Here's the framework that most compensation planners miss entirely: Bitcoin isn't just another concentrated position alongside your equity. It's a <em>structural hedge</em> against the very risks embedded in your equity compensation.</p>
+
+<p>Consider the risk profile of a senior tech employee's RSUs:</p>
+
+<ul>
+  <li><strong>Company-specific risk:</strong> Revenue miss, executive departure, regulatory action — all crater your equity value</li>
+  <li><strong>Sector risk:</strong> Tech rotation, rate sensitivity, multiple compression across the sector</li>
+  <li><strong>Employment risk:</strong> Termination forfeits unvested equity. Your largest "asset" disappears</li>
+  <li><strong>Currency risk:</strong> RSUs are denominated in USD equity that correlates with broad market conditions</li>
+  <li><strong>Counterparty risk:</strong> Your equity's value depends on the company's continued solvency and governance</li>
+</ul>
+
+<p>Bitcoin has none of these risk factors. It has its own volatility — significant volatility — but it's structurally uncorrelated with the risks that threaten your equity position. No company can fire your Bitcoin. No earnings miss reduces its supply. No SEC investigation freezes your self-custodied holdings. It doesn't care about your blackout window.</p>
+
+<p>For estate planning purposes, this anti-correlation is profoundly useful. If the tech company fails and your unvested RSUs become worthless, your Bitcoin position remains intact as the foundation of your estate. If Bitcoin experiences a severe drawdown (as it periodically does), your equity vesting continues on schedule, providing income and estate value. The two positions function as natural hedges for estate valuation purposes — you're unlikely to see both go to zero simultaneously.</p>
+
+<p>This is why we counsel tech employees to view their Bitcoin not as "more concentration" but as <em>portfolio insurance against the concentrated equity position they can't diversify</em>.</p>
+
+<h2 id="funding-trusts">Funding Trusts While Restricted</h2>
+
+<p>The practical challenge of estate planning for restricted tech employees: how do you fund irrevocable trusts when your largest assets are either locked up (equity) or something you refuse to sell (Bitcoin)?</p>
+
+<h3>Option 1: Fund with Bitcoin</h3>
+
+<p>Bitcoin is the ideal trust-funding asset for several reasons. It's freely transferable — no blackout windows, no SEC restrictions, no company approval required. The current price of approximately $74,000 (down 42% from the all-time high) means you're transferring at a lower gift tax value, preserving more of your $15 million lifetime exemption. And if Bitcoin appreciates inside the trust, all of that growth occurs outside your taxable estate.</p>
+
+<p>Contributing Bitcoin to a <a href="/blog/bitcoin-dynasty-trust-complete-guide">dynasty trust</a> is particularly powerful. A properly structured dynasty trust in a favorable jurisdiction (South Dakota, Nevada, Delaware) can hold Bitcoin in perpetuity, compounding appreciation across multiple generations entirely free of estate and generation-skipping transfer taxes. Every satoshi of future appreciation is removed from the transfer tax system permanently.</p>
+
+<h3>Option 2: Fund with Vested Shares</h3>
+
+<p>Once RSUs vest and any blackout restrictions clear, you can contribute vested shares to an irrevocable trust. This is a taxable gift at fair market value. The advantage: future appreciation occurs outside your estate. The disadvantage: you're gifting an asset that has potential downside (unlike Bitcoin, which doesn't have an employer that can go bankrupt), and you're using exemption at potentially elevated valuations.</p>
+
+<h3>Option 3: Fund with Cash from 10b5-1 Proceeds</h3>
+
+<p>Use your 10b5-1 plan to systematically sell vested equity, then contribute the cash to trusts. This is the most common approach but the least tax-efficient — you're paying capital gains tax on the sale, then making a gift of after-tax dollars. The math is significantly worse than contributing appreciated Bitcoin directly.</p>
+
+<h3>Option 4: Transferable NSOs</h3>
+
+<p>If your company permits it and your option agreement allows it, NSOs can be transferred to family members or trusts. The gift is valued using Black-Scholes or a similar option pricing model, which typically values the option at far less than the intrinsic spread. This means you can move significant future value using relatively little lifetime exemption. Note: ISOs are never transferable.</p>
+
+<div class="callout">
+  <div class="callout-label">The Bitcoin-First Trust Funding Strategy</div>
+  <p>For tech employees with both Bitcoin and equity, we consistently recommend: fund irrevocable trusts with Bitcoin first, equity second. Bitcoin has no transfer restrictions, no blackout constraints, no SEC filing requirements, and — at current depressed prices — represents the most efficient use of your gift tax exemption. Let the equity vest, sell systematically via 10b5-1, and use the cash for living expenses and tax payments.</p>
+</div>
+
+<h2 id="grat-timing">GRAT Timing Around Vesting Cliffs</h2>
+
+<p>A <a href="/blog/bitcoin-grat-grantor-retained-annuity-trust">Grantor Retained Annuity Trust (GRAT)</a> is the premier tool for transferring appreciated assets to heirs with minimal or zero gift tax cost. The mechanic: you transfer assets into the GRAT, retain an annuity stream for a fixed term (typically 2-3 years), and whatever remains at the end passes to your beneficiaries gift-tax-free. If the assets outperform the IRS §7520 hurdle rate during the GRAT term, value transfers. If they don't, you get your assets back and try again.</p>
+
+<p>For tech employees, GRAT timing around equity vesting cliffs creates a powerful planning opportunity — and a potential trap.</p>
+
+<h3>The Opportunity: Pre-IPO GRAT Funding</h3>
+
+<p>If you have exercised options or hold restricted stock (after an 83(b) election) in a pre-IPO company, funding a GRAT with those shares before a liquidity event can be enormously valuable. The shares enter the GRAT at the current 409A valuation. If the company IPOs during the GRAT term and the shares appreciate to public market valuations — often 3-10x the 409A value — the appreciation passes to your beneficiaries entirely free of gift and estate tax.</p>
+
+<h3>The Trap: RSU Timing Mismatch</h3>
+
+<p>You cannot fund a GRAT with unvested RSUs. RSUs that haven't vested aren't property you own — they're a contractual promise. You need to wait until vesting, then transfer the shares during an open trading window. If your cliff vesting delivers a large block of shares right before an anticipated price catalyst, the timing pressure can be intense. You're racing the clock between the vesting date, the blackout window, and the GRAT funding deadline.</p>
+
+<h3>The Bitcoin GRAT Alternative</h3>
+
+<p>Here's where Bitcoin's flexibility shines. You can fund a GRAT with Bitcoin at any time — no vesting schedule, no blackout window, no company approval. At $74,000 per BTC, the depressed valuation means you're transferring at a lower gift tax cost. If Bitcoin appreciates during the GRAT term (historically probable over 2-3 year periods), the excess appreciation passes to your beneficiaries. And because the current §7520 rate remains moderate, the hurdle your Bitcoin needs to clear is achievable.</p>
+
+<p>Many tech employees we advise run parallel GRATs: one funded with Bitcoin timed to capture potential appreciation, and one funded with equity shares timed around vesting events. This "rolling GRAT" strategy across both asset classes maximizes the probability that at least one GRAT transfers significant value in any given period.</p>
+
+<h2 id="diversification">Diversification Without Triggering Tax</h2>
+
+<p>The concentrated tech employee's eternal dilemma: you know you should diversify, but every sale triggers a taxable event. When you're holding both appreciated Bitcoin and appreciated equity, the tax friction of diversification is doubled.</p>
+
+<h3>Exchange Funds</h3>
+
+<p>Exchange funds (also called swap funds) allow accredited investors to contribute a concentrated stock position into a diversified partnership alongside other investors with their own concentrated positions. You give up your single-stock exposure and receive a proportional interest in the diversified pool. No taxable event at contribution. The catch: you must hold the partnership interest for at least seven years, and the fund typically requires a minimum contribution (usually $500,000+).</p>
+
+<p>Exchange funds work for vested, freely tradable equity. They do not work for Bitcoin (most exchange fund sponsors won't accept cryptocurrency) or unvested equity. But for the vested equity portion of your portfolio, they're one of the most tax-efficient diversification tools available.</p>
+
+<h3>Hedging with Collars and Puts</h3>
+
+<p>A zero-cost collar — buying a put option and selling a call option on your company stock — locks in a floor price while capping your upside. No tax is triggered at initiation (assuming the collar is wide enough to avoid <a href="/blog/bitcoin-hedging-collar-covered-call-estate-planning">constructive sale</a> treatment). This allows you to protect the value of your vested equity without selling it.</p>
+
+<p>For Bitcoin, similar hedging structures exist through the growing Bitcoin derivatives market, though the market is less mature than equity options. CME-traded Bitcoin options provide institutional-grade hedging, but the contract sizes (5 BTC per contract at roughly $370,000 notional) may not align precisely with your position size.</p>
+
+<h3>Charitable Remainder Trusts</h3>
+
+<p>A Charitable Remainder Trust (CRT) allows you to contribute appreciated assets, receive an income stream for a term of years (or life), get an immediate charitable deduction, and — critically — the trust sells the assets tax-free internally. For a tech employee looking to diversify out of a concentrated equity position without triggering capital gains, a CRT is one of the few ways to convert a concentrated position to a diversified portfolio without paying tax on the conversion.</p>
+
+<div class="tool-cta">
+  <div class="tool-cta-icon">⛏️</div>
+  <div class="tool-cta-body">
+    <h4>Offset RSU Income with Bitcoin Mining Deductions</h4>
+    <p>When RSUs vest, the ordinary income hit can be substantial. Bitcoin mining operations generate depreciation deductions and operational expenses that can offset W-2 income from equity compensation. For senior engineers with $500K+ annual RSU vesting, the tax savings are material.</p>
+    <a href="https://abundantmines.com/tax-strategy/" class="btn" target="_blank" rel="noopener">See How It Works →</a>
+  </div>
+</div>
+
+<h2 id="key-person-risk">Key-Person Risk and Accelerated Vesting</h2>
+
+<p>What happens to your unvested equity if you die? The answer depends entirely on your company's equity plan documents, your individual grant agreements, and — in some cases — your employment contract. This is the "key-person risk" in your estate plan, and it's one of the most commonly overlooked issues.</p>
+
+<h3>Death Acceleration Provisions</h3>
+
+<p>Most public tech companies provide some form of accelerated vesting upon death. Common structures include:</p>
+
+<ul>
+  <li><strong>Full acceleration:</strong> All unvested RSUs, options, and other equity vest immediately. This is the most favorable outcome for your estate but is increasingly rare at large companies.</li>
+  <li><strong>Partial acceleration:</strong> A portion (commonly 50-100% of the next tranche) accelerates, and the remainder is forfeited.</li>
+  <li><strong>Pro-rata acceleration:</strong> Acceleration proportional to time served in the current vesting period.</li>
+  <li><strong>No acceleration:</strong> Unvested equity is simply forfeited. Your estate receives nothing. This is more common at pre-IPO companies with standard four-year vesting schedules.</li>
+</ul>
+
+<p>The estate planning implication is massive. If you hold $3.2 million in unvested RSUs and your company has a "no acceleration" provision, that $3.2 million disappears from your estate at death. Your surviving family receives zero. This makes the case for Bitcoin as an estate planning foundation even stronger — your Bitcoin cannot be forfeited, and it requires no employer cooperation to transfer to your heirs.</p>
+
+<h3>Negotiating Better Terms</h3>
+
+<p>Senior and executive-level employees often have negotiating leverage around death acceleration. If you're in a position to negotiate (typically at hiring or promotion), push for full single-trigger acceleration upon death. The company's cost is minimal (they'd hire a replacement regardless), and the benefit to your estate plan is enormous. Have your estate planning attorney review your equity agreements — not just your employment agreement, but the actual equity plan documents and individual grant notices.</p>
+
+<h3>Insurance to Replace Forfeited Equity</h3>
+
+<p>If your equity agreements provide for forfeiture at death, consider term life insurance in an amount sufficient to replace the expected value of unvested equity. The policy should be owned by an irrevocable life insurance trust (ILIT) so the proceeds remain outside your taxable estate. Size the policy to cover the pre-tax value of your unvested equity, accounting for the ordinary income tax your estate will owe on any accelerated RSUs.</p>
+
+<h2 id="liquidity-runway">Building a Liquidity Runway Without Selling BTC</h2>
+
+<p>The foundational tension for tech employees who are also long-term Bitcoin holders: you need liquidity for taxes, living expenses, and estate planning costs, but your two largest assets are either locked (equity) or precious (Bitcoin). Here's how to build a liquidity runway without touching your BTC stack.</p>
+
+<h3>10b5-1 Plan as Primary Liquidity Engine</h3>
+
+<p>Your 10b5-1 plan should be calibrated to generate sufficient cash from equity sales to cover: ordinary income taxes on RSU vesting (which can approach 50% in high-tax states), estimated tax payments, annual living expenses, trust funding contributions (if using cash rather than in-kind transfers), and insurance premiums for any ILITs.</p>
+
+<h3>Bitcoin-Collateralized Borrowing</h3>
+
+<p>For short-term liquidity needs, borrowing against your Bitcoin avoids triggering a taxable sale. Several institutional lenders offer Bitcoin-backed credit lines at reasonable LTV ratios (typically 50-60%). The interest is potentially deductible if used for investment purposes. The risk: if Bitcoin drops significantly, you face a margin call. Size your borrowing conservatively — never more than 30-40% LTV — and maintain cash reserves to meet potential margin calls without forced selling.</p>
+
+<h3>Cash Reserve Discipline</h3>
+
+<p>Maintain at least 18-24 months of living expenses in cash or Treasury bills. This buffer prevents forced selling of either Bitcoin or equity during drawdowns in either market. For a senior tech employee with $300,000+ annual expenses, this means keeping $450,000-$600,000 liquid at all times. Yes, this cash earns a modest return. The optionality it provides — the ability to avoid selling Bitcoin at the worst possible time — is worth the opportunity cost.</p>
+
+<h3>Annual Gift Exclusion Transfers</h3>
+
+<p>The 2026 annual gift tax exclusion is $19,000 per recipient. For a married couple, that's $38,000 per recipient per year — completely free of gift tax and without using any lifetime exemption. A systematic program of annual exclusion gifts (in Bitcoin) to family members, 529 plans, and Crummey trusts generates no tax liability and steadily moves value out of your estate. Over a decade, a married couple gifting to four beneficiaries can transfer $1.52 million without touching their exemptions.</p>
+
+<hr>
+
+<h2 id="case-study">Case Study: Priya Mehta — Pre-IPO Engineer with 80 BTC</h2>
+
+<div class="callout">
+  <div class="callout-label">Client Profile</div>
+  <p><strong>Priya Mehta</strong>, age 38. Senior staff engineer at a late-stage pre-IPO enterprise SaaS company in San Francisco. Unmarried with one child (age 5). Holds 80 BTC (~$5.92 million at $74,000) acquired between 2018-2022 with a blended cost basis of approximately $12,000 per BTC. Also holds $3.2 million in unvested RSUs with a 2-year cliff remaining (vesting expected Q1 2028). Annual W-2 compensation: $285,000 base plus annual RSU grants. California resident.</p>
+</div>
+
+<p>Priya came to us with a common concern among senior tech employees: her net worth had grown to over $9 million, nearly all of it concentrated in two assets she couldn't (or wouldn't) sell. Her estate plan consisted of a basic revocable trust drafted three years earlier that named her sister as trustee and her daughter as sole beneficiary. No tax planning. No trust funding. No equity analysis.</p>
+
+<h3>The Assessment</h3>
+
+<p>Priya's exposure breaks down as follows:</p>
+
+<table class="info-table">
+  <thead>
+    <tr><th>Asset</th><th>Value</th><th>% of Net Worth</th><th>Liquidity</th><th>Tax Character</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>80 BTC</td><td>$5,920,000</td><td>63%</td><td>Immediate</td><td>LTCG ($4.96M unrealized gain)</td></tr>
+    <tr><td>Unvested RSUs</td><td>$3,200,000</td><td>34%</td><td>Locked 2 years</td><td>Ordinary income at vesting</td></tr>
+    <tr><td>Cash/Brokerage</td><td>$280,000</td><td>3%</td><td>Immediate</td><td>Mixed</td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>$9,400,000</strong></td><td><strong>100%</strong></td><td></td><td></td></tr>
+  </tbody>
+</table>
+
+<p>Several immediate issues surfaced:</p>
+
+<ul>
+  <li>Her company's equity plan provides only <strong>pro-rata acceleration</strong> upon death. If Priya dies today, 100% of the $3.2M RSU position is forfeited. Her daughter receives nothing from the equity.</li>
+  <li>Her total estate (~$9.4M) is below the $15M exemption, but if Bitcoin returns to its all-time high and her RSUs vest at a higher valuation post-IPO, she could easily exceed the exemption within 2-3 years.</li>
+  <li>California's 13.3% top income tax rate means RSU vesting will generate a significant state tax liability that needs pre-funding.</li>
+  <li>Her existing revocable trust provides zero estate tax protection — everything passes through the estate at full value.</li>
+</ul>
+
+<h3>The Plan</h3>
+
+<h3>Phase 1: Bitcoin-Funded Irrevocable Dynasty Trust (Immediate)</h3>
+
+<p>Priya establishes a <a href="/blog/bitcoin-dynasty-trust-complete-guide">South Dakota dynasty trust</a> for the benefit of her daughter and future descendants. She contributes 30 BTC (~$2.22 million) to the trust immediately. At $74,000 per BTC — with Bitcoin down 42% from highs — she's using $2.22 million of her $15 million lifetime exemption to move an asset with enormous upside potential outside her estate permanently.</p>
+
+<p>The trust is structured as a grantor trust, meaning Priya continues to pay income tax on any Bitcoin activity inside the trust (she has no plans to sell, so this is essentially zero). This allows the trust assets to grow without erosion from taxes — a feature sometimes called the "tax burn" benefit of grantor trusts.</p>
+
+<p>If Bitcoin returns to its previous all-time high (~$127,000), those 30 BTC would be worth $3.81 million — a $1.59 million increase that's entirely outside her estate. If Bitcoin reaches $200,000 over the next decade, the trust holds $6 million, all estate-tax-free.</p>
+
+<h3>Phase 2: Bitcoin GRAT (Immediate)</h3>
+
+<p>Priya funds a 2-year zeroed-out GRAT with 20 BTC (~$1.48 million). The GRAT annuity payments return approximately $1.48 million plus the §7520 hurdle rate to Priya over the 2-year term. Any appreciation above the hurdle rate passes to her daughter's trust at zero gift tax cost.</p>
+
+<p>Why 2 years? The GRAT term is designed to align with her RSU cliff. When her RSUs vest in Q1 2028, she'll have equity liquidity for the first time. The GRAT matures at roughly the same time, allowing her to fund a new GRAT with the next tranche of planning assets (either more Bitcoin or newly vested shares).</p>
+
+<h3>Phase 3: Term Life Insurance in ILIT (Within 60 Days)</h3>
+
+<p>Because her RSU agreement provides only pro-rata death acceleration, Priya purchases a 10-year, $3 million term life insurance policy owned by an ILIT. The cost is modest for a healthy 38-year-old (approximately $1,200-$1,500 annually). The $3 million death benefit replaces the forfeited RSU value, ensuring her daughter is protected even if Priya dies before the cliff vests. Premium payments are funded through annual exclusion gifts to the ILIT ($19,000 per year), well within the annual exclusion.</p>
+
+<h3>Phase 4: Pre-IPO Liquidity Planning (6-12 Months)</h3>
+
+<p>Priya establishes a relationship with an institutional Bitcoin lender and secures a credit line against 15 BTC (~$1.11 million face value) at 40% LTV, providing approximately $444,000 in available credit. This serves as her liquidity runway for the next 18 months — covering living expenses, estimated tax payments, and insurance premiums without selling any Bitcoin.</p>
+
+<p>When her company eventually files its S-1 and she's subject to IPO lockup restrictions, this credit line becomes her lifeline. She won't be able to sell equity for 6+ months post-IPO, and she doesn't want to sell Bitcoin. The credit line bridges the gap.</p>
+
+<h3>Phase 5: Post-Vesting Equity Strategy (Q1 2028)</h3>
+
+<p>When her RSUs vest, Priya will implement a 10b5-1 plan to systematically sell equity over 12-18 months. Proceeds fund: California and federal income tax on RSU vesting (estimated $1.1-1.4 million), a second-generation GRAT with appreciated shares, cash reserves to repay any Bitcoin-backed borrowing, and annual exclusion gifts to her daughter's dynasty trust.</p>
+
+<p>She does not sell her equity into a trust. The vested shares have downside risk (single-company exposure) and uncertain long-term value. Bitcoin is the estate planning asset. Equity is the liquidity generation asset. Each serves a distinct purpose.</p>
+
+<h3>Results and Projections</h3>
+
+<table class="info-table">
+  <thead>
+    <tr><th>Planning Element</th><th>Value Transferred</th><th>Exemption Used</th><th>Estate Tax Savings (at 40%)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Dynasty Trust (30 BTC)</td><td>$2,220,000</td><td>$2,220,000</td><td>$888,000+</td></tr>
+    <tr><td>GRAT (20 BTC, if BTC +50%)</td><td>~$560,000</td><td>$0</td><td>~$224,000</td></tr>
+    <tr><td>ILIT Death Benefit</td><td>$3,000,000</td><td>$0</td><td>$1,200,000</td></tr>
+    <tr><td>Annual Exclusion Gifts (10 yr)</td><td>$190,000</td><td>$0</td><td>$76,000</td></tr>
+    <tr><td><strong>Total Protected</strong></td><td><strong>$5,970,000+</strong></td><td><strong>$2,220,000</strong></td><td><strong>$2,388,000+</strong></td></tr>
+  </tbody>
+</table>
+
+<p>Priya uses just $2.22 million of her $15 million exemption to protect nearly $6 million from estate taxes — and that figure grows as Bitcoin appreciates inside the dynasty trust. She retains 30 BTC in her personal holdings, all of her equity compensation, and full flexibility to adapt her plan as her company approaches its liquidity event.</p>
+
+<h2 id="action-items">Immediate Action Items for Tech Employees with Bitcoin</h2>
+
+<p>If you hold both Bitcoin and equity compensation, these steps should be on your agenda now — not when your equity vests, not when your company IPOs, not when the exemption changes.</p>
+
+<ol>
+  <li><strong>Read your equity plan documents.</strong> Not the summary. The actual plan and your individual grant notices. Understand exactly what happens to unvested equity at death, disability, and termination. Most tech employees have never read these documents.</li>
+  <li><strong>Quantify your death acceleration gap.</strong> Calculate the difference between your total unvested equity and what your estate would actually receive under your plan's death provisions. This gap is the amount you need to insure or otherwise replace.</li>
+  <li><strong>Establish an irrevocable trust funded with Bitcoin.</strong> Current prices and the $15M exemption create an optimal window. Every month you wait, you risk Bitcoin being higher (costing more exemption) or the exemption being reduced (less capacity to transfer).</li>
+  <li><strong>If you hold restricted stock (not RSUs), evaluate an 83(b) election.</strong> The 30-day clock is non-negotiable. If you recently received a restricted stock grant and haven't filed, this is urgent.</li>
+  <li><strong>Implement or review your 10b5-1 plan.</strong> Ensure it generates sufficient liquidity to cover tax obligations, trust funding, and living expenses without forcing Bitcoin sales.</li>
+  <li><strong>Build your cash reserve to 18-24 months of expenses.</strong> This is your insulation layer — the buffer that prevents forced selling of either asset class during drawdowns.</li>
+  <li><strong>Consult with counsel experienced in both equity compensation and Bitcoin estate planning.</strong> These are distinct specialties that rarely overlap. The <a href="/blog/bitcoin-estate-planning-startup-founders">startup founder estate planning</a> framework provides a useful starting point, but tech employees with existing equity grants face different constraints than founders with common stock.</li>
+</ol>
+
+<div class="callout">
+  <div class="callout-label">The Bottom Line</div>
+  <p>Your equity compensation is a wasting asset — it vests on a schedule, creates massive tax events, and can be forfeited entirely if you die at the wrong time. Your Bitcoin is a permanent asset — it's liquid, transferable, cannot be forfeited, and is currently valued at a significant discount to its highs. Build your estate plan on the permanent asset. Use the wasting asset to generate the liquidity that keeps the permanent asset intact.</p>
+</div>
+
+</article>
+
+<!-- Author Box -->
+<div class="author-box">
+  <div class="author-avatar">HF</div>
+  <div>
+    <div class="author-tag">About the Author</div>
+    <p class="author-bio">Hal Franklin covers Bitcoin estate planning, wealth preservation, and tax strategy for The Bitcoin Family Office. His analysis focuses on the intersection of digital asset custody, transfer tax planning, and the unique challenges facing high-net-worth Bitcoin holders.</p>
+  </div>
+</div>
+
+<!-- Services CTA -->
+<div class="services-cta">
+  <h3>Your Bitcoin and Equity Deserve a Coordinated Plan</h3>
+  <p>We help tech employees with significant Bitcoin holdings navigate the intersection of equity compensation, estate planning, and tax strategy. No conflicts of interest. No product sales. Just planning.</p>
+  <a href="/services/">Explore Our Services</a>
+</div>
+
+<!-- Disclaimer -->
+<div style="max-width:var(--max-w);margin:0 auto 4rem;padding:1.5rem 1.75rem;border-top:1px solid var(--border);background:var(--bg-elevated);border-radius:4px;">
+  <p style="font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.6rem;">Important Disclosure</p>
+  <p style="font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);line-height:1.75;margin:0;">This content is for <strong style="color:var(--text-secondary);">educational purposes only</strong> and does not constitute legal, tax, financial, or investment advice. It should not be relied upon as a substitute for consultation with qualified legal, tax, financial, or other professional advisers. Estate tax exemption amounts, applicable rates, and all legal and tax references are subject to change and may differ by jurisdiction. Individual circumstances vary significantly — strategies discussed herein may be appropriate for some and inappropriate for others. <strong style="color:var(--text-secondary);">Always consult with qualified legal counsel and a licensed tax professional before implementing any estate planning strategy.</strong> The Bitcoin Family Office does not provide legal, tax, or investment advisory services.</p>
+</div>
+
+<footer>
+  <div class="footer-mark">The <span>Bitcoin</span> Family Office</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/blog/">Research</a>
+    <a href="/services/">Services</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/tools/bitcoin-wealth-dashboard">Tools</a>
+    <a href="/tools/bitcoin-letter-of-instruction">Letter of Instruction</a>
+    <a href="/tools/bitcoin-estate-tax-calculator">Estate Tax Calculator</a>
+    <a href="/blog/bitcoin-estate-planning-checklist">Checklist</a>
+    <a href="/disclosures">Disclosures</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 The Bitcoin Family Office. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const btn = document.getElementById('hamburger');
+  const links = document.getElementById('navLinks');
+  btn.classList.toggle('open');
+  links.classList.toggle('open');
+  document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navLinks').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+
+<script defer src="/assets/chat-widget.js"></script>
+<div class="disclaimer" style="max-width:800px;margin:48px auto;padding:24px;background:#0d0d0d;border:1px solid #1e1e1e;border-radius:8px;">
+  <p style="color:#6b6258;font-size:13px;line-height:1.6;margin:0;"><strong style="color:#8a8070;">Disclaimer:</strong> The information on this website is for educational purposes only and does not constitute legal, tax, financial, or investment advice. Bitcoin and digital assets involve significant risk. Consult qualified legal, tax, and financial professionals before making decisions. The Bitcoin Family Office does not provide legal, tax, or investment advisory services.</p>
+</div>
+</body>
+</html>
