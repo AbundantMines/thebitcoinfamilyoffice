@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitcoin Grantor Trust Rules: §§671–679, IDGT Powers, and the Tax Burn Strategy | The Bitcoin Family Office</title>
-  <meta name="description" content="The complete guide to grantor trust rules for Bitcoin estate planning. §§671-679 powers, intentionally defective grantor trusts (IDGT), the income tax burn advantage, toggle trusts, and how grantor trust status affects Bitcoin transfers.">
-  <meta name="keywords" content="bitcoin grantor trust rules, bitcoin IDGT income tax, bitcoin intentionally defective grantor trust, bitcoin grantor trust powers, bitcoin defective grantor trust, bitcoin grantor trust toggle">
+  <meta name="description" content="The complete guide to grantor trust rules for Bitcoin estate planning. §§671-679 powers, intentionally defective grantor trusts (IDGT), the income tax burn advantage, toggle trusts, §678 beneficiary traps, §679 foreign trust rules, and practical drafting for Bitcoin families.">
+  <meta name="keywords" content="bitcoin grantor trust rules, bitcoin IDGT income tax, bitcoin intentionally defective grantor trust, bitcoin grantor trust powers, bitcoin defective grantor trust, bitcoin grantor trust toggle, IRC 671 bitcoin, IRC 675 substitution power bitcoin, grantor trust termination bitcoin">
   <link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bitcoin-grantor-trust-rules-guide.html">
   <meta property="og:title" content="Bitcoin Grantor Trust Rules: §§671–679, IDGT Powers, and the Tax Burn Strategy">
   <meta property="og:description" content="The complete guide to grantor trust rules for Bitcoin estate planning. §§671-679 powers, IDGT structure, income tax burn advantage, toggle trusts, and grantor trust status implications.">
@@ -55,6 +55,7 @@
     .callout.warning .callout-title{color:#E05252;}
     .callout.tip .callout-title{color:#52A0E0;}
     .callout p{margin:0;font-size:0.97rem;color:var(--text-muted);}
+    .callout p+p{margin-top:0.75rem;}
     .table-wrap{overflow-x:auto;margin:2rem 0;border-radius:8px;border:1px solid var(--border);}
     table{width:100%;border-collapse:collapse;font-family:'Inter',sans-serif;font-size:0.84rem;}
     thead{background:var(--bg-card2);}
@@ -75,6 +76,16 @@
     .faq-item:last-child{border-bottom:none;}
     .faq-q{font-family:'Playfair Display',serif;font-size:1.05rem;color:#fff;margin-bottom:0.75rem;}
     .faq-a{color:var(--text-muted);font-size:0.97rem;line-height:1.7;}
+    .toc{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:1.5rem 2rem;margin:2rem 0 3rem;}
+    .toc-title{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+    .toc ol{margin:0 0 0 1.25rem;color:var(--text-muted);}
+    .toc li{font-family:'Inter',sans-serif;font-size:0.88rem;margin-bottom:0.4rem;line-height:1.5;}
+    .toc a{color:var(--text-muted);text-decoration:none;border-bottom:none;}
+    .toc a:hover{color:var(--gold);}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:2rem 0;}
+    .stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.5rem;text-align:center;}
+    .stat-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);display:block;margin-bottom:0.25rem;}
+    .stat-label{font-family:'Inter',sans-serif;font-size:0.78rem;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;}
     footer{background:var(--bg-card);border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;}
     .footer-inner{max-width:780px;margin:0 auto;}
     .footer-logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.1rem;margin-bottom:1rem;}
@@ -82,10 +93,110 @@
     footer a{color:var(--text-muted);text-decoration:none;}
     .footer-links{display:flex;justify-content:center;gap:2rem;margin:1.5rem 0;flex-wrap:wrap;}
     .footer-links a{font-family:'Inter',sans-serif;font-size:0.8rem;color:var(--text-muted);text-decoration:none;}
-    @media(max-width:600px){.hero{padding:3rem 1.25rem 2rem;}.article-wrap{padding:1.5rem 1.25rem 4rem;}.article-wrap h2{font-size:1.45rem;}table{font-size:0.78rem;}}
+    @media(max-width:600px){.hero{padding:3rem 1.25rem 2rem;}.article-wrap{padding:1.5rem 1.25rem 4rem;}.article-wrap h2{font-size:1.45rem;}table{font-size:0.78rem;}.stat-grid{grid-template-columns:1fr 1fr;}}
   </style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Bitcoin Grantor Trust Rules: §§671–679, IDGT Powers, and the Tax Burn Strategy","description":"The complete guide to grantor trust rules for Bitcoin estate planning. §§671-679 powers, IDGT structure, income tax burn advantage, toggle trusts, and grantor trust status implications.","datePublished":"2026-03-13","dateModified":"2026-03-13","author":{"@type":"Organization","name":"The Bitcoin Family Office"},"publisher":{"@type":"Organization","name":"The Bitcoin Family Office","url":"https://thebitcoinfamilyoffice.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://thebitcoinfamilyoffice.com/blog/bitcoin-grantor-trust-rules-guide.html"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a grantor trust for Bitcoin estate planning purposes?","acceptedAnswer":{"@type":"Answer","text":"A grantor trust is a trust in which the grantor (the person who created and funded it) is treated as the owner of trust assets for federal income tax purposes. All income, deductions, and credits from trust assets — including Bitcoin capital gains — are reported on the grantor's personal Form 1040, not on a separate trust return. The trust may still be outside the grantor's estate for estate tax purposes, creating the core IDGT planning opportunity: outside the estate for estate tax, transparent for income tax."}},{"@type":"Question","name":"What is an Intentionally Defective Grantor Trust (IDGT)?","acceptedAnswer":{"@type":"Answer","text":"An IDGT is a trust specifically drafted to be (a) outside the grantor's estate for estate tax purposes (an irrevocable trust with complete gifts to remove assets) while simultaneously (b) a grantor trust for income tax purposes (containing one of the §§671-679 trigger powers). The 'defect' — the retained income tax power — is intentional. It causes the grantor to pay all income taxes on trust income personally, which is not a taxable gift. This 'tax burn' transfers additional wealth to trust beneficiaries each year without any gift tax cost."}},{"@type":"Question","name":"What powers trigger grantor trust status for a Bitcoin trust?","acceptedAnswer":{"@type":"Answer","text":"The most commonly used IDGT powers are: (1) Substitution power (§675(4)(C)): grantor can substitute assets of equivalent value — including exchanging personal Bitcoin for trust Bitcoin at equal FMV; (2) Loan power (§675(2)): trustee can loan trust funds to the grantor without adequate interest or security; (3) Power to add charitable beneficiaries (§674(b)(4)): grantor or non-adverse party can add charity as beneficiary; (4) Spousal income power (§677(a)): trust income may be distributed to grantor's spouse. Any one of these is sufficient to make the entire trust a grantor trust."}},{"@type":"Question","name":"What is the 'tax burn' strategy and how does it benefit Bitcoin trusts?","acceptedAnswer":{"@type": "Answer","text":"The tax burn is the economic consequence of grantor trust status in an IDGT. The grantor pays income tax on all trust income — including Bitcoin capital gains — out of their own personal funds. This payment is not treated as a gift to the trust. The economic effect: the grantor's taxable estate shrinks by the income tax paid (reducing estate size without gift tax), while the trust's assets compound without any income tax drag. For a Bitcoin trust with large recurring gains, annual tax burn payments can transfer $100,000s in value each year completely gift-tax-free."}},{"@type":"Question","name":"Can grantor trust status be turned on and off?","acceptedAnswer":{"@type":"Answer","text":"Yes, with proper drafting. A 'toggle trust' includes a mechanism allowing the grantor or trust protector to turn grantor trust status on or off — by releasing a grantor trust trigger power or adding one. Turning grantor status off converts the trust to a non-grantor trust: the trust pays its own income tax going forward (at compressed brackets), and the grantor no longer has income tax exposure. This flexibility is valuable when the grantor's income peaks or when the income tax burden becomes unmanageable. Toggling requires careful coordination with the trust's fiduciary income tax position."}},{"@type":"Question","name":"Does grantor trust status cause estate tax inclusion?","acceptedAnswer":{"@type":"Answer","text":"Not necessarily. The grantor trust rules (§§671-679) are income tax rules — they determine who pays income tax. They do not automatically cause estate tax inclusion. Estate tax inclusion is governed by separate rules: §§2036-2038 (retained interests), §2042 (life insurance), §2035 (transfers within 3 years). An IDGT is specifically designed to avoid estate tax inclusion while triggering grantor trust status for income tax. The substitution power (§675(4)(C)) is commonly used precisely because it creates grantor trust status without causing estate tax inclusion, as confirmed by Rev. Rul. 2008-22."}}]}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bitcoin Grantor Trust Rules: §§671–679, IDGT Powers, and the Tax Burn Strategy",
+    "description": "The complete guide to grantor trust rules for Bitcoin estate planning. §§671-679 powers, intentionally defective grantor trusts (IDGT), the income tax burn advantage, toggle trusts, §678 beneficiary traps, §679 foreign trust rules, and practical drafting for Bitcoin families.",
+    "datePublished": "2026-03-13",
+    "dateModified": "2026-03-23",
+    "author": {"@type": "Organization", "name": "The Bitcoin Family Office"},
+    "publisher": {"@type": "Organization", "name": "The Bitcoin Family Office", "url": "https://thebitcoinfamilyoffice.com"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://thebitcoinfamilyoffice.com/blog/bitcoin-grantor-trust-rules-guide.html"},
+    "keywords": "bitcoin grantor trust rules, IDGT, IRC 671, IRC 675 substitution power, grantor trust tax burn, intentionally defective grantor trust bitcoin, toggle trust bitcoin"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a grantor trust for Bitcoin estate planning purposes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A grantor trust is a trust in which the grantor (the person who created and funded it) is treated as the owner of trust assets for federal income tax purposes. All income, deductions, and credits from trust assets — including Bitcoin capital gains — are reported on the grantor's personal Form 1040, not on a separate trust return. The trust may still be outside the grantor's estate for estate tax purposes, creating the core IDGT planning opportunity: outside the estate for estate tax, transparent for income tax."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is an Intentionally Defective Grantor Trust (IDGT)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An IDGT is a trust specifically drafted to be (a) outside the grantor's estate for estate tax purposes — an irrevocable trust with complete gifts to remove assets — while simultaneously (b) a grantor trust for income tax purposes — containing one of the §§671-679 trigger powers. The 'defect' — the retained income tax power — is intentional. It causes the grantor to pay all income taxes on trust income personally, which is not a taxable gift. This 'tax burn' transfers additional wealth to trust beneficiaries each year without any gift tax cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What powers trigger grantor trust status for a Bitcoin trust?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The most commonly used IDGT powers are: (1) Substitution power (§675(4)(C)): grantor can substitute assets of equivalent value — including exchanging personal Bitcoin for trust Bitcoin at equal FMV; (2) Loan power (§675(2)): trustee can loan trust funds to the grantor without adequate interest or security; (3) Power to add charitable beneficiaries (§674(b)(4)): grantor or non-adverse party can add charity as beneficiary; (4) Spousal income power (§677(a)): trust income may be distributed to grantor's spouse. Any one of these is sufficient to make the entire trust a grantor trust."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the 'tax burn' strategy and how does it benefit Bitcoin trusts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tax burn is the economic consequence of grantor trust status in an IDGT. The grantor pays income tax on all trust income — including Bitcoin capital gains — out of their own personal funds. This payment is not treated as a gift to the trust under Rev. Rul. 2004-64. The economic effect: the grantor's taxable estate shrinks by the income tax paid (reducing estate size without gift tax), while the trust's assets compound without any income tax drag. For a Bitcoin trust with large recurring gains, annual tax burn payments can transfer hundreds of thousands in value each year completely gift-tax-free."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can grantor trust status be turned on and off?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, with proper drafting. A 'toggle trust' includes a mechanism allowing the grantor or trust protector to turn grantor trust status on or off — by releasing a grantor trust trigger power or adding one. Turning grantor status off converts the trust to a non-grantor trust: the trust pays its own income tax going forward (at compressed brackets), and the grantor no longer has income tax exposure. This flexibility is valuable when the grantor's income peaks or when the income tax burden becomes unmanageable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does grantor trust status cause estate tax inclusion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not necessarily. The grantor trust rules (§§671-679) are income tax rules — they determine who pays income tax. They do not automatically cause estate tax inclusion. Estate tax inclusion is governed by separate rules: §§2036-2038 (retained interests), §2042 (life insurance), §2035 (transfers within 3 years). An IDGT is specifically designed to avoid estate tax inclusion while triggering grantor trust status for income tax. The substitution power (§675(4)(C)) is commonly used precisely because it creates grantor trust status without causing estate tax inclusion, as confirmed by Rev. Rul. 2008-22."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the §678 beneficiary-as-owner trap in grantor trusts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under IRC §678, a person other than the grantor — typically a trust beneficiary — can be treated as the owner of a trust portion if they hold the power to vest trust income or corpus in themselves. The most common example is a Crummey withdrawal right: a beneficiary who has an unexercised right to withdraw a trust contribution is briefly a §678 owner of that amount. If the power lapses beyond the '5 and 5' safe harbor (the greater of $5,000 or 5% of trust value), the lapse may be treated as a taxable gift from the beneficiary back to the trust. Sophisticated Bitcoin trust design carefully structures Crummey powers to stay within the safe harbor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the §679 foreign grantor trust rules and how do they affect Bitcoin held offshore?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IRC §679 treats a US person who transfers property to a foreign trust as the owner of that trust's assets for income tax purposes if the trust has (or may have) US beneficiaries. This means all Bitcoin income inside the foreign trust is taxable to the US grantor currently — regardless of whether distributions are made. Additional reporting requirements include Form 3520 (annual report) and Form 3520-A (trust information return), with penalties for non-compliance of up to 35% of the gross reportable amount. Bitcoin held in foreign trusts for US beneficiaries must carefully navigate §679 to avoid inadvertent grantor trust status and severe penalties."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens to grantor trust status when the grantor dies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "At the grantor's death, grantor trust status automatically terminates because there is no longer a living grantor. The trust becomes a separate taxable entity — a non-grantor trust filing Form 1041. Bitcoin inside the trust retains its carryover basis (the installment sale price or gift-date FMV) rather than receiving the §1014 stepped-up basis, since the Bitcoin is not in the grantor's estate. Going forward, the trust pays income tax on Bitcoin gains at compressed trust brackets. This is the central basis trade-off in IDGT planning: accept the loss of step-up in exchange for removing Bitcoin appreciation from the estate entirely."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the One Big Beautiful Budget Act affect grantor trust and IDGT planning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The One Big Beautiful Budget Act permanently increased the federal estate and gift tax exemption to $15 million per individual ($30 million per couple). This larger exemption means more Bitcoin families can fund IDGTs up to the exemption amount without triggering estate or gift taxes. However, the IDGT structure remains valuable for estates above the exemption threshold, and the tax burn advantage continues to apply regardless of exemption size. The permanent increase (rather than a scheduled reduction) also allows for longer-horizon IDGT planning with greater certainty."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 <nav>
@@ -103,88 +214,182 @@
 </nav>
 
 <header class="hero">
-  <p class="hero-tag">Estate Planning · Trust Mechanics</p>
+  <p class="hero-tag">Estate Planning · Trust Mechanics · §§671–679</p>
   <h1>Bitcoin Grantor Trust Rules: §§671–679, IDGT Powers, and the Tax Burn Strategy</h1>
-  <p class="hero-sub">The grantor trust rules are the mechanical foundation beneath GRATs, SLATs, IDGTs, and every other trust strategy that lets Bitcoin compound outside your estate while you pay the income taxes personally. Here's how they work — and how to use them deliberately.</p>
+  <p class="hero-sub">The bitcoin grantor trust rules are the mechanical foundation beneath GRATs, SLATs, IDGTs, and every other trust strategy that lets Bitcoin compound outside your estate while you pay the income taxes personally. This is the complete framework — from what triggers grantor status to how it terminates, and everything your Bitcoin trust drafting depends on.</p>
   <div class="hero-meta">
-    <span>📅 March 13, 2026</span>
-    <span>⏱ 15 min read</span>
-    <span>🏷 Grantor Trust · IDGT · §671–679 · Tax Burn</span>
+    <span>📅 Updated March 2026</span>
+    <span>⏱ 25 min read</span>
+    <span>🏷 Grantor Trust · IDGT · §671–679 · Tax Burn · Toggle Trust · §678 · §679</span>
   </div>
 </header>
 
 <article class="article-wrap">
 
-  <p>Estate planning attorneys talk about GRATs, SLATs, and IDGTs as if they were distinct structures. They are — but they all share a common technical foundation: the <strong>grantor trust rules</strong> of IRC §§671–679. Understanding these rules is the difference between following a blueprint and understanding the engineering. For Bitcoin families deploying any of these strategies, the grantor trust rules determine income tax treatment, planning flexibility, and the magnitude of the "tax burn" wealth transfer advantage.</p>
+  <p>Estate planning attorneys talk about GRATs, SLATs, and IDGTs as if they were distinct structures. They are — but every one of them is built on a common technical foundation: the <strong>bitcoin grantor trust rules</strong> of IRC §§671–679. Understanding these rules is the difference between following a blueprint and understanding the engineering underneath it. For Bitcoin families deploying any of these strategies, grantor trust status determines income tax treatment, planning flexibility, basis implications at death, and the magnitude of the wealth transfer advantage that makes these structures worth the legal cost.</p>
 
-  <p>This guide covers the complete grantor trust framework: what grantor trust status means, which powers trigger it, how the IDGT is built to be intentionally defective for income tax while being outside the estate, the tax burn mechanics, toggle trusts, and the §678 non-grantor power that extends these rules to trust beneficiaries.</p>
+  <p>This is the complete guide: what grantor trust status means, which powers trigger it, how an IDGT exploits the income-tax/estate-tax divergence, the mechanics of the tax burn, toggle trust design, what happens when grantor status is inadvertent, how §678 can make a beneficiary a taxable owner, the §679 foreign trust trap, and the practical drafting considerations for Bitcoin estate plans in 2026 and beyond — including planning under the One Big Beautiful Budget Act's permanent $15 million per individual / $30 million per couple exemption.</p>
 
-  <h2>1. What Grantor Trust Status Means</h2>
+  <div class="toc">
+    <p class="toc-title">In This Guide</p>
+    <ol>
+      <li><a href="#what-is-grantor-trust">What Grantor Trust Status Means</a></li>
+      <li><a href="#triggers">§§671–679: The Complete Trigger Framework</a></li>
+      <li><a href="#substitution-power">§675(4)(C): The Substitution Power</a></li>
+      <li><a href="#other-powers">Other Powers That Trigger Grantor Status</a></li>
+      <li><a href="#idgt">The Intentionally Defective Grantor Trust (IDGT)</a></li>
+      <li><a href="#tax-burn">The Tax Burn: Mechanics and Magnitude</a></li>
+      <li><a href="#bitcoin-idgt-structures">Bitcoin IDGT Structures: Installment Sales, GRATs, SLATs</a></li>
+      <li><a href="#estate-freeze">The Estate-Freezing Power of an IDGT</a></li>
+      <li><a href="#inadvertent">Inadvertent Grantor Trust Status and How to Avoid It</a></li>
+      <li><a href="#toggle">Grantor Trust Termination and the Toggle Trust</a></li>
+      <li><a href="#section-678">§678: The Beneficiary-as-Owner Trap</a></li>
+      <li><a href="#section-679">§679: Foreign Grantor Trust Rules</a></li>
+      <li><a href="#drafting">Practical Drafting Considerations for Bitcoin Trusts</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
 
-  <p>Under IRC §671, if a grantor (or a non-grantor person holding a power under §678) is treated as the owner of any portion of a trust, the grantor includes the items of income, deduction, and credit attributable to that portion in computing their own taxable income.</p>
+  <h2 id="what-is-grantor-trust">1. What Grantor Trust Status Means</h2>
 
-  <p>Practically, this means:</p>
+  <p>The grantor trust rules begin with a deceptively simple premise in IRC §671: if a person is treated as the owner of any portion of a trust, that person includes the items of income, deduction, and credit attributable to that portion in their own taxable income. The trust disappears, for income tax purposes, and the grantor appears in its place.</p>
+
+  <p>In practice, this means a grantor trust:</p>
   <ul>
-    <li>The trust does not file a separate income tax return (or files a simplified grantor trust return)</li>
-    <li>All Bitcoin capital gains inside the trust flow to the grantor's Form 1040</li>
-    <li>The grantor pays income tax on trust income — including Bitcoin gains — at their individual rates</li>
-    <li>The trust's Bitcoin compounds without any income tax drag (the tax is paid by the grantor from outside assets)</li>
+    <li>Does not file a separate income tax return as a taxable entity (or files only a simplified informational return)</li>
+    <li>Reports all income, gains, losses, deductions, and credits directly on the grantor's Form 1040</li>
+    <li>Treats all Bitcoin capital gains inside the trust as if the grantor personally realized them</li>
+    <li>Allows the grantor to pay income taxes on trust gains from outside funds — effectively transferring additional value to the trust each year at no gift tax cost</li>
+    <li>Allows transactions between the grantor and the trust to be disregarded for income tax purposes — including installment sales of Bitcoin at zero gain recognition</li>
   </ul>
 
-  <p>Grantor trust status is an <em>income tax</em> classification. It has nothing to do — directly — with estate tax inclusion. A trust can be a grantor trust for income tax purposes while being completely outside the grantor's taxable estate for estate tax purposes. This divergence is the core of IDGT planning.</p>
+  <p>Grantor trust status is an <em>income tax classification only</em>. It has no automatic effect on estate tax inclusion. This divergence — a trust can be a grantor trust for income tax while being completely outside the taxable estate for estate tax — is the engineering that makes the IDGT strategy work.</p>
 
-  <h2>2. The §§671–679 Framework: What Triggers Grantor Trust Status</h2>
+  <div class="stat-grid">
+    <div class="stat-card">
+      <span class="stat-num">§671</span>
+      <span class="stat-label">The Core Rule: Grantor Includes Trust Income</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">§675</span>
+      <span class="stat-label">Administrative Powers (Incl. Substitution)</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">§677</span>
+      <span class="stat-label">Income for Benefit of Grantor or Spouse</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">§678</span>
+      <span class="stat-label">Power Held by Non-Grantor Beneficiary</span>
+    </div>
+  </div>
 
-  <p>Grantor trust status is triggered when the trust contains one or more of the powers enumerated in §§671–677. The most important for Bitcoin planning:</p>
+  <p>The framework runs from §671 (the operative rule) through §679 (foreign trust rules). Sections 672 through 677 define the specific conditions that trigger grantor treatment. Section 678 extends similar rules to persons other than the grantor. Section 679 imposes grantor treatment on US persons who transfer assets to foreign trusts with US beneficiaries.</p>
+
+  <h2 id="triggers">2. §§671–679: The Complete Trigger Framework</h2>
+
+  <p>Before looking at specific powers, it helps to understand the governing terminology. Under §672:</p>
+  <ul>
+    <li><strong>Adverse party:</strong> Any person who has a substantial beneficial interest in the trust that would be adversely affected by the exercise or nonexercise of a power. A beneficiary whose share would be reduced by a power is an adverse party with respect to that power.</li>
+    <li><strong>Non-adverse party:</strong> Anyone who is not an adverse party. This includes the grantor acting in a non-beneficiary capacity, and trustees who are not also beneficiaries.</li>
+    <li><strong>Independent trustee:</strong> A trustee who is not the grantor, grantor's spouse, or a related or subordinate party within the meaning of §672(c) — a key concept for avoiding inadvertent grantor trust status.</li>
+  </ul>
+
+  <p>Many of the trigger rules in §§673–677 require that a power be exercisable <em>by or with the consent of</em> a non-adverse party. If a power can only be exercised with the consent of all adverse parties, it generally does not trigger grantor trust status. This is why having the right trustee structure matters enormously — the grantor trust result depends not just on what powers exist in the document, but who holds them and in what capacity.</p>
+
+  <h3>§673 — Reversionary Interests</h3>
+  <p>If the grantor holds a reversionary interest worth more than 5% of the trust's value at the time of transfer, grantor trust status results. This catches transfers that retain too large an economic backstop. For Bitcoin trust design, reversions are generally avoided by ensuring no assets return to the grantor — the Bitcoin flows forward to beneficiaries, not back.</p>
+
+  <h3>§674 — Power to Control Beneficial Enjoyment</h3>
+  <p>§674(a) creates grantor trust status when a non-adverse party holds the power to change who benefits from the trust — i.e., the power to change the beneficial enjoyment of income or corpus — without the consent of an adverse party. This is a broad net: virtually any discretionary distribution power held by the grantor (or a person the grantor controls) can trigger §674.</p>
+
+  <p>The exceptions in §674(b)-(d) are extensive and important:</p>
+  <ul>
+    <li><strong>§674(b)(3):</strong> Power to allocate corpus among charitable beneficiaries does not trigger grantor status</li>
+    <li><strong>§674(b)(4):</strong> Power to add a charitable beneficiary does not trigger grantor status — and can be used as an intentional trigger in IDGTs by making this power exercisable without restriction, then contrasting it with the safe harbor</li>
+    <li><strong>§674(b)(5):</strong> Powers over income limited by an ascertainable standard (health, education, maintenance, support) do not trigger §674 grantor status</li>
+    <li><strong>§674(b)(6):</strong> Power to allocate between income and principal in a reasonable and impartial manner does not trigger §674</li>
+    <li><strong>§674(c)-(d):</strong> Broader distribution powers held solely by an <em>independent trustee</em> (not the grantor, not the grantor's spouse, not a related/subordinate party) also escape grantor status under §674</li>
+  </ul>
+
+  <p>The §674(c) exception is crucial for Bitcoin trust design: if you want a trust that is <em>not</em> a grantor trust under §674 while still allowing broad discretionary distributions, use an independent trustee. If you want a grantor trust for the tax burn advantage, have the grantor or a non-adverse party hold the distribution power — or, more elegantly, use a §675(4)(C) substitution power and leave the distribution architecture to an independent trustee.</p>
 
   <h3>§675 — Administrative Powers</h3>
-  <p>§675 creates grantor trust status when the grantor or a non-adverse party has any of several administrative powers inconsistent with independent trust administration:</p>
+  <p>§675 creates grantor trust status when the grantor or a non-adverse party has any of several administrative powers inconsistent with independent trust administration. The full list under §675:</p>
   <ul>
-    <li><strong>§675(1):</strong> Power to deal with trust property for less than adequate consideration</li>
-    <li><strong>§675(2):</strong> Power to borrow from the trust without adequate interest or security</li>
-    <li><strong>§675(3):</strong> Grantor has actually borrowed trust funds without adequate interest or security and hasn't repaid</li>
-    <li><strong>§675(4)(A):</strong> Power to vote stock of a controlled corporation</li>
-    <li><strong>§675(4)(B):</strong> Power to control investment of trust assets for the grantor's benefit</li>
+    <li><strong>§675(1):</strong> Power to deal with trust property for less than adequate and full consideration in money or money's worth</li>
+    <li><strong>§675(2):</strong> Power to borrow from the trust without adequate interest or security — or where the grantor has already borrowed and not repaid with adequate interest</li>
+    <li><strong>§675(3):</strong> Actual past borrowing without adequate interest or security that remains outstanding</li>
+    <li><strong>§675(4)(A):</strong> Power to vote stock of a controlled corporation (where grantor and trust own more than 50%)</li>
+    <li><strong>§675(4)(B):</strong> Power to control trust investment for the benefit of the grantor</li>
     <li><strong>§675(4)(C):</strong> Power to reacquire trust assets by substituting assets of equivalent value</li>
   </ul>
 
-  <p>The <strong>substitution power under §675(4)(C)</strong> is the workhorse of Bitcoin IDGT design. The grantor retains the right to exchange personal assets for trust assets of equivalent value. This is enough to make the entire trust a grantor trust — without causing estate tax inclusion, as confirmed by Rev. Rul. 2008-22 (the IRS ruled that a substitution power exercisable in a non-fiduciary capacity does not cause estate tax inclusion under §§2036 or 2038).</p>
-
-  <div class="callout">
-    <p class="callout-title">💡 The Substitution Power in Practice</p>
-    <p>A Bitcoin IDGT grantor might exercise the substitution power by exchanging a portfolio of lower-basis Bitcoin (with large embedded capital gains) for equivalent FMV cash or Treasury bonds from personal funds. The trust ends up holding lower-gain assets; the grantor holds the high-gain Bitcoin personally — potentially to hold until death for the §1014 step-up. The trust's lower-gain assets compound tax-free (to the trust); the grantor takes the step-up. This is a sophisticated basis optimization strategy built on the substitution power.</p>
-  </div>
+  <h3>§676 — Power to Revoke</h3>
+  <p>§676 creates grantor trust status whenever the grantor has the power to revest trust assets in themselves — i.e., the power to revoke the trust. A revocable living trust is the most common §676 grantor trust. The grantor reports all trust income on Form 1040 as if the trust doesn't exist. But because the trust is revocable, the assets are fully included in the grantor's estate under §2038. There is no IDGT opportunity here — the tax treatment and estate treatment are aligned (both include the grantor).</p>
 
   <h3>§677 — Income for Benefit of Grantor</h3>
-  <p>§677(a) creates grantor trust status when trust income may, in the discretion of the grantor or a non-adverse party, be:</p>
+  <p>§677(a) creates grantor trust status when trust income may, in the discretion of the grantor or a non-adverse party, be distributed to the grantor or grantor's spouse, accumulated for later distribution to them, or applied to pay life insurance premiums on their lives. A Spousal Lifetime Access Trust (SLAT) typically triggers §677(a) because income may be distributed to the grantor's spouse. The grantor pays tax on SLAT income personally — creating the tax burn — while the SLAT is outside the grantor's estate as a completed gift.</p>
+
+  <h2 id="substitution-power">3. §675(4)(C): The Substitution Power — The IDGT Workhorse</h2>
+
+  <p>Of all the grantor trust triggers, the substitution power under §675(4)(C) is the most widely used in intentional IDGT design. Understanding why requires looking at it from both the income tax and estate tax angles simultaneously.</p>
+
+  <h3>What the Substitution Power Is</h3>
+  <p>The substitution power gives the grantor the right to reacquire trust property by substituting other property of <em>equivalent value</em>. In plain language: the grantor can reach into the trust and swap out assets — as long as the swap is fair market value for fair market value.</p>
+
+  <p>For Bitcoin trusts, this creates a powerful toolkit:</p>
   <ul>
-    <li>Distributed to the grantor or the grantor's spouse</li>
-    <li>Held or accumulated for future distribution to the grantor or grantor's spouse</li>
-    <li>Applied to pay premiums on life insurance on the grantor's or grantor's spouse's life</li>
+    <li>Grantor swaps high-basis cash (or Treasury bonds) for low-basis Bitcoin inside the trust — the trust ends up with clean assets; the grantor holds the low-basis Bitcoin personally for a potential §1014 step-up at death</li>
+    <li>Grantor swaps low-basis Bitcoin from a personally held wallet into the trust — moving high-appreciation potential into the trust environment</li>
+    <li>Grantor substitutes one generation of Bitcoin UTXO for another — useful for privacy management without triggering trust-level gain</li>
   </ul>
 
-  <p>A SLAT (Spousal Lifetime Access Trust) triggers §677(a) because trust income may be distributed to the grantor's spouse. This makes the SLAT a grantor trust — the grantor pays income tax on SLAT income — and creates the "tax burn" benefit while the trust is outside the grantor's estate.</p>
+  <h3>Why It Doesn't Cause Estate Tax Inclusion</h3>
+  <p>Revenue Ruling 2008-22 is the definitive IRS guidance on this question. The IRS ruled that a substitution power exercisable in a <em>non-fiduciary capacity</em> does not cause estate tax inclusion under §2036(a)(1) (retained right to income) or §2038(a)(1) (retained power to alter, amend, revoke, or terminate).</p>
 
-  <h3>§674 — Power to Control Beneficial Enjoyment</h3>
-  <p>§674(a) creates grantor trust status when the grantor or a non-adverse party has the power to change the beneficial enjoyment of trust income or corpus without the consent of an adverse party. Many broad discretionary distribution powers held by the grantor as trustee can trigger §674.</p>
+  <p>The "non-fiduciary capacity" requirement is critical. If the grantor holds the substitution power as trustee and in a fiduciary capacity, the power might be characterized as a power to alter beneficial interests — triggering §2038 inclusion. The correct drafting makes the substitution power personal to the grantor, exercisable without trustee consent, and explicitly non-fiduciary. The grantor has no duty to exercise it in anyone's benefit — it's simply a personal right retained at trust formation.</p>
 
-  <p>The exceptions in §674(b) and (c) are important: certain powers held by an independent trustee, limited to an ascertainable standard (health, education, maintenance, support), or subject to other restrictions do not trigger §674. This is why using an independent trustee for Bitcoin trusts designed to be grantor trusts is often unnecessary — the grantor trust status can be achieved through a specific §675 power without needing the grantor to serve as trustee at all.</p>
+  <p>The independent trustee typically has a co-monitoring role: verifying that any substitution is at equivalent value. This safeguard ensures the power cannot be used to extract wealth from the trust (which would make it a retained economic interest under §2036), but does not convert the grantor's exercise into a fiduciary act.</p>
 
-  <h3>§676 — Power to Revoke</h3>
-  <p>§676 creates grantor trust status when the grantor has the power to revoke the trust and return the assets to themselves. A revocable living trust is a grantor trust under §676. The grantor reports all income on their Form 1040; the trust itself is completely ignored for income tax purposes.</p>
+  <div class="callout">
+    <p class="callout-title">💡 The Substitution Power in Bitcoin Practice</p>
+    <p>Consider a Bitcoin IDGT holding 10 BTC purchased at $30,000 per coin (basis: $300,000) when Bitcoin is now trading at $150,000 (FMV: $1,500,000). The grantor exercises the substitution power, exchanging $1,500,000 of personal cash or Treasury bonds for the trust's 10 BTC. The trust now holds $1,500,000 in liquid assets. The grantor holds the 10 BTC personally — with $1,200,000 in embedded capital gains that will be eliminated entirely by the §1014 step-up at death. Meanwhile the trust has exchanged Bitcoin (no step-up ever) for cash (no gain to step up). This basis optimization — only possible through the substitution power — illustrates why §675(4)(C) is the preferred IDGT trigger.</p>
+  </div>
 
-  <h3>§678 — Power Held by a Person Other Than the Grantor</h3>
-  <p>§678 extends grantor trust rules to <em>beneficiaries</em>. A person who holds a power to vest trust income or corpus in themselves is treated as the owner of that portion of the trust — and pays income tax on it. This is the Crummey withdrawal power mechanism: if a beneficiary has a lapsing right to withdraw trust contributions (a "Crummey power"), that beneficiary is technically a §678 grantor trust owner for income tax purposes during the lapse period, though the practical implications are usually minimal for small annual exclusion gifts.</p>
+  <h2 id="other-powers">4. Other Powers That Trigger Grantor Status</h2>
 
-  <h2>3. The Intentionally Defective Grantor Trust (IDGT)</h2>
+  <h3>The Loan Power: §675(2)</h3>
+  <p>When the trustee can loan trust funds to the grantor without adequate interest or without adequate security, the trust becomes a grantor trust. This is used in some IDGT designs as the primary trigger — typically by including a provision allowing the grantor to borrow from the trust at below-market rates. However, loans to the grantor from the trust can complicate the installment sale structure and create ambiguity about whether the note represents a true arm's-length transaction. Most Bitcoin IDGT designs prefer the substitution power for its cleaner separation.</p>
 
-  <p>The IDGT exploits the divergence between the income tax grantor trust rules and the estate tax inclusion rules. A properly designed IDGT is:</p>
-  <ul>
-    <li><strong>Outside the estate for estate tax:</strong> Funded with completed gifts (removing the Bitcoin from the taxable estate) and containing no powers that trigger §§2036–2038 estate tax inclusion</li>
-    <li><strong>Inside the grantor's income tax return:</strong> Containing one or more §§671–677 trigger powers so that all trust income is taxable to the grantor personally</li>
-  </ul>
+  <h3>Spousal Income Power: §677(a) — The SLAT Trigger</h3>
+  <p>The Spousal Lifetime Access Trust (SLAT) is the standard vehicle for married Bitcoin holders who want grantor trust treatment while providing the grantor's spouse indirect access to the trust assets. Because trust income may be distributed to the grantor's spouse, §677(a) is triggered and the grantor pays income tax on all SLAT income. The SLAT is outside the grantor's estate (completed gift), so the tax burn flows entirely to beneficiaries — typically children and grandchildren — while the grantor's spouse can receive distributions for their own benefit.</p>
 
-  <p>The "defect" is the income tax grantor trust status — intentionally retained because it creates the tax burn advantage.</p>
+  <p>The SLAT structure requires careful attention to the reciprocal trust doctrine: if Spouse A creates a SLAT for Spouse B, and Spouse B simultaneously creates an equivalent SLAT for Spouse A, the IRS may collapse both trusts under the reciprocal trust doctrine, treating each as if the grantor retained the benefit — causing estate inclusion for both. The solution is to create SLATs at different times, with different trustees, different terms, different asset classes, and different distribution standards.</p>
+
+  <h3>Power to Add Charitable Beneficiaries: §674(b)(4)</h3>
+  <p>If the grantor or a non-adverse party has the power to add charitable organizations as trust beneficiaries, §674(b)(4) creates a safe harbor from §674 grantor trust status — but only when the power is limited to charities. When this power is broader (adding any beneficiary), it's a §674 trigger. Some IDGT designs use a carefully drafted "add beneficiary" power — retaining the right to add charitable beneficiaries without restriction — as the grantor trust trigger, while keeping all other distribution powers within the §674(b)-(d) safe harbors. This approach works but is considered more aggressive than the substitution power.</p>
+
+  <h3>Power Over Insurance: §677(a)(3)</h3>
+  <p>If trust income may be applied to pay premiums on life insurance on the grantor's or grantor's spouse's life, §677(a)(3) triggers grantor trust status. Irrevocable Life Insurance Trusts (ILITs) that hold policies on the grantor's life often become grantor trusts under this provision when they receive income-producing assets to fund premium payments. For Bitcoin ILITs — where Bitcoin inside the trust generates income to pay insurance premiums — §677(a)(3) is the likely grantor trust trigger. The grantor pays income tax on Bitcoin gains inside the ILIT that are used to fund premiums.</p>
+
+  <!-- LEAD MAGNET #1 -->
+  <div class="lead-magnet">
+    <h3>⛏️ Bitcoin Mining: The Most Powerful Tax Strategy for IDGT Funding</h3>
+    <p>Bitcoin mining income flowing into an IDGT is taxed to the grantor personally — dramatically accelerating the tax burn advantage. Mining generates ordinary income that reduces the grantor's estate in real time while building Bitcoin for beneficiaries. Explore how mining strategy combined with grantor trust planning maximizes the amount of Bitcoin that compounds inside the trust, tax-free, for the next generation.</p>
+    <a href="https://abundantmines.com/tax-strategy/" class="btn" target="_blank" rel="noopener">Explore the Mining Tax Strategy →</a>
+  </div>
+
+  <h2 id="idgt">5. The Intentionally Defective Grantor Trust (IDGT): Structure and Mechanics</h2>
+
+  <p>The IDGT is not a specific trust type in the tax code — it's a planning result. Any irrevocable trust that (a) removes assets from the grantor's taxable estate while (b) retaining a grantor trust trigger power is, functionally, an IDGT. The word "defective" refers to the income tax defect deliberately built into an otherwise estate-tax-efficient irrevocable trust. The defect is the §§671-677 trigger. The intent is the tax burn.</p>
+
+  <h3>The Two-Layer Structure</h3>
+  <p>An IDGT operates on two separate tax systems simultaneously:</p>
+
+  <p><strong>Layer 1 — Estate Tax (§§2036-2038):</strong> The trust must be structured so that none of the estate-tax inclusion triggers are present. This means: no retained right to income (§2036(a)(1)), no retained ability to designate who gets trust property (§2036(a)(2)), no retained power to alter, amend, revoke, or terminate (§2038(a)(1)), and no transfer with retention of an annuity, unitrust, or other interest under §2039. If the IDGT is funded with a completed gift, the gift date FMV leaves the estate and future appreciation is excluded. If funded with an installment sale, the note value stays in the estate but Bitcoin appreciation does not.</p>
+
+  <p><strong>Layer 2 — Income Tax (§§671-677):</strong> The trust must contain at least one §§671-677 trigger that causes the grantor to be treated as the owner for income tax purposes. The §675(4)(C) substitution power is the preferred trigger because Rev. Rul. 2008-22 confirmed it doesn't cause estate inclusion. One trigger is sufficient — the grantor is treated as owner of the entire trust, not just the portion attributable to the trigger power.</p>
 
   <div class="table-wrap">
     <table>
@@ -199,135 +404,269 @@
       </thead>
       <tbody>
         <tr>
-          <td>Substitution power</td>
+          <td>Substitution power (non-fiduciary)</td>
           <td>§675(4)(C)</td>
           <td class="good">Yes</td>
           <td class="good">No (Rev. Rul. 2008-22)</td>
-          <td class="good">✓ Ideal</td>
+          <td class="good">✓ Preferred</td>
         </tr>
         <tr>
-          <td>Loan without interest</td>
+          <td>Loan without adequate interest/security</td>
           <td>§675(2)</td>
           <td class="good">Yes</td>
-          <td class="neutral">Possibly (if loan = retained interest)</td>
+          <td class="neutral">Possibly (loan = retained interest?)</td>
           <td class="neutral">Use with care</td>
         </tr>
         <tr>
-          <td>Spousal income</td>
+          <td>Spousal income power</td>
           <td>§677(a)</td>
           <td class="good">Yes</td>
-          <td class="neutral">No (SLAT structure)</td>
-          <td class="good">✓ SLAT standard</td>
+          <td class="good">No (completed SLAT gift)</td>
+          <td class="good">✓ Standard for SLATs</td>
         </tr>
         <tr>
           <td>Add charitable beneficiary</td>
-          <td>§674(b)(4)</td>
+          <td>§674(b)(4) (aggressive read)</td>
           <td class="good">Yes</td>
           <td class="good">No</td>
-          <td class="good">✓ Common</td>
+          <td class="neutral">Less common</td>
         </tr>
         <tr>
           <td>Power to revoke</td>
           <td>§676</td>
           <td class="good">Yes</td>
-          <td class="bad">Yes — §2038 inclusion</td>
-          <td class="bad">✗ Causes estate inclusion</td>
+          <td class="bad">Yes — §2038 full inclusion</td>
+          <td class="bad">✗ Never use in IDGT</td>
         </tr>
         <tr>
-          <td>Retained income right</td>
-          <td>§677</td>
+          <td>Retained income right for life</td>
+          <td>§677(a)</td>
           <td class="good">Yes</td>
-          <td class="bad">Yes — §2036(a)(1) if retained for life</td>
-          <td class="bad">✗ Causes estate inclusion</td>
+          <td class="bad">Yes — §2036(a)(1)</td>
+          <td class="bad">✗ Never use in IDGT</td>
+        </tr>
+        <tr>
+          <td>Power over investment for grantor benefit</td>
+          <td>§675(4)(B)</td>
+          <td class="good">Yes</td>
+          <td class="bad">Likely §2036(a)(2) risk</td>
+          <td class="bad">✗ Avoid</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- LEAD MAGNET #1 -->
-  <div class="lead-magnet">
-    <h3>⛏️ Bitcoin Mining: The Most Powerful Tax Strategy Available</h3>
-    <p>Bitcoin mining income flowing into an IDGT is taxed to the grantor personally — further accelerating the tax burn advantage. Explore how mining strategy combined with grantor trust planning maximizes the amount of Bitcoin that compounds inside the trust, tax-free, for beneficiaries.</p>
-    <a href="https://abundantmines.com/tax-strategy/" class="btn" target="_blank" rel="noopener">Explore the Mining Tax Strategy →</a>
-  </div>
+  <h3>Funding the IDGT: Gift vs. Installment Sale</h3>
+  <p>An IDGT can be funded two ways, and the method has significant implications:</p>
 
-  <h2>4. The Tax Burn: Mechanics and Magnitude</h2>
+  <p><strong>Outright Gift:</strong> The grantor gifts Bitcoin to the IDGT. The gift uses gift tax exemption (up to $15 million per individual under the OBBBA permanent increase). The gifted Bitcoin leaves the estate permanently. No gain recognition on the gift (no income tax event). The trust's basis in the Bitcoin is the grantor's basis at time of gift — carryover basis. No note, no ongoing payments.</p>
 
-  <p>The tax burn is the central economic advantage of the IDGT structure for Bitcoin families. Here's how it works mechanically:</p>
+  <p><strong>Installment Sale:</strong> The grantor sells Bitcoin to the IDGT in exchange for a promissory note bearing interest at the applicable federal rate (AFR). Because the IDGT is ignored for income tax purposes (grantor trust), the grantor is selling to themselves — no gain recognized on the sale. The note's principal is included in the grantor's estate (it's a receivable), but future Bitcoin appreciation above the AFR stays in the trust, outside the estate. Interest payments from the IDGT to the grantor are also ignored (grantor paying interest to themselves). This allows significantly larger transfers than the gift exemption permits — limited only by the grantor's ability to service the note payments and the trust's asset base.</p>
+
+  <h2 id="tax-burn">6. The Tax Burn: Mechanics and Magnitude</h2>
+
+  <p>The tax burn is the central economic advantage of grantor trust status for Bitcoin families. It operates through a legal arbitrage between the income tax system and the gift tax system:</p>
 
   <ol>
-    <li>Grantor creates an IDGT, funds it with Bitcoin (a completed gift — removes Bitcoin from the estate)</li>
-    <li>Bitcoin appreciates inside the trust, or the trust receives installment sale payments that include interest income</li>
-    <li>The grantor pays income tax on all trust income from personal (non-trust) funds</li>
-    <li>The IRS ruled in Rev. Rul. 2004-64 that the grantor's income tax payment on behalf of a grantor trust is <strong>not a taxable gift</strong></li>
-    <li>The trust's assets compound without income tax drag</li>
-    <li>The grantor's taxable estate shrinks each year by the income tax paid on trust income</li>
+    <li>The grantor creates an IDGT, funds it with Bitcoin (gifted or sold — removing assets from the estate)</li>
+    <li>Bitcoin appreciates inside the trust; the trust may also receive interest income on an installment note</li>
+    <li>The grantor pays income tax on all trust income from personal (non-trust) funds — this is mandatory under §671</li>
+    <li>Revenue Ruling 2004-64: the grantor's income tax payment on behalf of a grantor trust is <strong>not a taxable gift</strong> to the trust or its beneficiaries</li>
+    <li>The trust's Bitcoin compounds without income tax drag — the tax is paid by the grantor from outside</li>
+    <li>The grantor's estate shrinks each year by the income tax paid on trust income — a permanent, gift-tax-free reduction</li>
   </ol>
 
   <div class="callout">
-    <p class="callout-title">💡 Tax Burn Magnitude Example</p>
-    <p>A Bitcoin IDGT with $5M of Bitcoin generates $500,000 of capital gains in Year 1 (Bitcoin appreciated 10%). The grantor pays $119,000 in income tax (23.8% LTCG + NIIT) on trust gains from personal funds. This payment: (a) reduces the grantor's taxable estate by $119,000 with no gift tax — effectively a tax-free wealth transfer; (b) leaves the trust's $5M Bitcoin intact, compounding without any income tax drag. Over 20 years with consistent appreciation and tax burn payments, the cumulative tax-free transfers can substantially exceed the original trust funding amount. The IDGT is a perpetual wealth transfer machine powered entirely by the grantor trust rules.</p>
+    <p class="callout-title">💡 Tax Burn Magnitude: A 10-Year Projection</p>
+    <p>Assume a Bitcoin IDGT funded with $3,000,000 of Bitcoin at the start. Bitcoin compounds at 20% annually inside the trust. The grantor is subject to a blended federal rate of approximately 28% on trust income (a mix of long-term capital gains, short-term gains, and ordinary income on interest payments).</p>
+    <p>Year 1: Trust value $3,600,000. Gain: $600,000. Tax burn: ~$168,000. Year 5: Trust value ~$7,460,000. Gain: ~$1,243,000. Annual tax burn: ~$348,000. Year 10: Trust value ~$18,580,000. Annual tax burn: ~$870,000. Cumulative 10-year tax burn (approximate): $4,800,000 — all transferred gift-tax-free to trust beneficiaries. The IDGT tax burn is not a gimmick — it's a mechanically reliable wealth transfer engine that compounds alongside Bitcoin itself.</p>
   </div>
 
-  <h3>Rev. Rul. 2004-64: The Legal Basis</h3>
-  <p>Rev. Rul. 2004-64 is the foundational IRS guidance confirming that a grantor's payment of income tax on behalf of a grantor trust is not a taxable gift. The IRS reasoned that the grantor is simply satisfying a legal obligation — the income tax is the grantor's liability under §671, not the trust's. Paying one's own legal obligations is not a gift.</p>
+  <h3>Rev. Rul. 2004-64: The Legal Foundation</h3>
+  <p>Rev. Rul. 2004-64 answers the central question: when a grantor pays income tax on trust income, is that payment a gift to the trust? The IRS said no. The grantor is simply satisfying their own legal tax liability — the income is the grantor's income under §671, and paying your own tax is not a gift. The ruling also addresses the estate tax dimension: if the trust <em>requires</em> reimbursement (mandatory reimbursement of taxes paid), the reimbursement right could cause §2036 inclusion. If the trustee has <em>discretionary</em> reimbursement power, the ruling treats it as unlikely to cause estate inclusion under current guidance — but the safer approach is to prohibit reimbursement entirely in the trust document, ensuring the tax burn is permanent and the estate tax analysis is clean.</p>
 
-  <p>The ruling also addresses estate tax: if the grantor has a <em>right to be reimbursed</em> by the trust for income taxes paid, the reimbursement right (or the trust's obligation to reimburse) could cause estate tax inclusion under §§2036 or 2038. Properly drafted IDGTs either (a) give the trustee <em>discretionary</em> reimbursement power (not mandatory) or (b) prohibit reimbursement entirely, ensuring the tax burn is permanent and no estate tax inclusion risk is created.</p>
+  <h2 id="bitcoin-idgt-structures">7. Bitcoin IDGT Structures: Installment Sales, GRATs, and SLATs</h2>
 
-  <h2>5. Grantor Trust and Installment Sales: The IDGT Combination</h2>
-
-  <p>The most powerful Bitcoin planning structure combines the IDGT with an installment sale. The grantor sells Bitcoin to the IDGT in exchange for a promissory note bearing interest at the applicable federal rate (AFR). The sale is recognized as a sale — but because buyer and seller are the same person for income tax purposes (grantor trust = ignored), no gain is recognized on the sale.</p>
-
-  <p>The result:</p>
+  <h3>The Installment Sale to an IDGT</h3>
+  <p>The installment sale to an IDGT is the most flexible and powerful structure in the Bitcoin estate planning toolkit. The mechanics:</p>
   <ul>
-    <li>Bitcoin moves to the trust (outside the estate) with no gift tax and no capital gains tax on the sale</li>
-    <li>The trust holds Bitcoin; the grantor holds the note (the note's FMV is included in the estate, but future Bitcoin appreciation is not)</li>
-    <li>Interest payments from the IDGT to the grantor are also ignored (grantor paying interest to themselves)</li>
-    <li>If Bitcoin appreciates at a rate exceeding the AFR, the excess appreciation passes to trust beneficiaries tax-free</li>
-    <li>The tax burn continues for as long as the trust is a grantor trust</li>
+    <li>Grantor funds the IDGT with a "seed gift" of roughly 10% of the intended sale price (to give the trust economic substance before the sale)</li>
+    <li>Grantor sells additional Bitcoin to the trust at current FMV in exchange for a promissory note at the current AFR</li>
+    <li>Sale is disregarded for income tax (grantor selling to herself) — no capital gains recognition, regardless of how much Bitcoin has appreciated</li>
+    <li>Trust holds Bitcoin and makes note payments (principal + AFR interest) to grantor over the term</li>
+    <li>Interest payments flow back to grantor — ignored for income tax (grantor receiving from herself)</li>
+    <li>If Bitcoin grows faster than the AFR, all excess appreciation passes to trust beneficiaries outside the estate</li>
   </ul>
 
-  <p>See our detailed guide on <a href="bitcoin-idgt-installment-sale.html">installment sales to IDGTs</a> for the complete mechanics and planning examples.</p>
+  <p>The AFR hurdle is extraordinarily low relative to Bitcoin's historical compound growth rate. In a rising rate environment, longer-term notes (at lower long-term AFR) should be considered where possible. The entire value of an installment sale is: (Bitcoin growth rate − AFR) × trust value × years. For Bitcoin, this spread has historically been enormous.</p>
 
-  <h2>6. Toggle Trusts: Turning Grantor Status On and Off</h2>
+  <h3>GRATs with Bitcoin</h3>
+  <p>A Grantor Retained Annuity Trust (GRAT) is a §677 grantor trust because the grantor retains an annuity payment — a right to receive income from the trust. GRATs are designed to transfer appreciation above the §7520 hurdle rate (roughly 120% of the AFR for mid-term obligations). Bitcoin's volatility makes GRATs particularly attractive when funded during price corrections: if Bitcoin recovers and appreciates substantially above the hurdle rate during the GRAT term, the excess passes to the remainder beneficiaries gift-tax-free.</p>
 
-  <p>A <strong>toggle trust</strong> is drafted to allow grantor trust status to be switched on or off, typically by the trust protector or grantor:</p>
+  <p>For Bitcoin GRATs, the grantor pays income tax on all trust income during the GRAT term — the tax burn operates during those years. The GRAT terminates when the annuity term ends: the grantor receives back the actuarial value (principal + §7520 growth), and whatever excess remains passes to beneficiaries. If Bitcoin does not grow above the hurdle, the trust "zeroes out" — the grantor simply receives back approximately what they put in. The downside is bounded; the upside is the full above-hurdle appreciation.</p>
 
-  <h3>Turning Grantor Status Off</h3>
-  <p>If the grantor's income becomes burdensome (retirement, large passive income, health limitations), the trust protector can release the grantor trust trigger power. The trust becomes a non-grantor trust going forward — the trust pays its own income tax (at compressed trust brackets), and the grantor is no longer responsible for trust income taxes.</p>
+  <h3>SLATs with Bitcoin</h3>
+  <p>A Spousal Lifetime Access Trust allows married Bitcoin holders to use their full gift exemption ($15 million per individual / $30 million per couple under the OBBBA permanent increase) while preserving indirect access to trust assets through the non-grantor spouse. The grantor pays income tax on all SLAT income under §677(a) — the tax burn applies fully. The spouse-beneficiary can receive distributions for health, education, maintenance, and support, and any other standard the trust document specifies. Critically, because the grantor spouse pays income tax on SLAT income, the grantor must be financially comfortable sustaining those tax payments from outside assets over the trust's term — a cash flow planning consideration for Bitcoin families with concentrated positions.</p>
 
-  <h3>Turning Grantor Status On</h3>
-  <p>Conversely, if the trust has accumulated significant Bitcoin that is about to be sold (generating large capital gains), the grantor may want to reestablish grantor trust status — especially if the grantor is in a lower effective rate bracket than the trust's compressed brackets at that point. The trust protector adds a new grantor trust trigger power, and the grantor absorbs the tax at their individual rate.</p>
+  <p>For a deeper dive into the structures covered here, see our <a href="/blog/bitcoin-estate-planning-guide.html">Complete Bitcoin Estate Planning Guide</a>.</p>
 
-  <div class="callout warning">
-    <p class="callout-title">⚠️ Toggle Trust Complexity</p>
-    <p>Toggle trusts are sophisticated instruments that require careful drafting to ensure the on/off mechanism doesn't inadvertently create estate tax inclusion, gift tax events, or other unintended consequences. The grantor trust toggle must be a power held in a non-fiduciary capacity. Changes to grantor trust status mid-trust may require tax counsel to analyze whether the change is a taxable event. Do not attempt toggle trust drafting without experienced estate planning counsel.</p>
+  <h2 id="estate-freeze">8. The Estate-Freezing Power of an IDGT</h2>
+
+  <p>The most underappreciated aspect of IDGT planning is the compounding estate freeze. When a Bitcoin family funds an IDGT today, they do two things simultaneously:</p>
+
+  <p><strong>First:</strong> They remove the current FMV of Bitcoin from the estate (via a gift or the note value of an installment sale). Every dollar of future appreciation occurs inside the trust — outside the estate. For an asset with Bitcoin's growth trajectory, freezing the estate value at today's price is enormously powerful over multi-decade horizons.</p>
+
+  <p><strong>Second:</strong> Through the tax burn, they continue to reduce the estate annually by the income tax paid on trust gains — without using any gift tax exemption. The tax burn is an estate reduction mechanism that has no dollar limit, requires no exemption allocation, and is confirmed as non-taxable by Rev. Rul. 2004-64.</p>
+
+  <p>Together, these two mechanisms create a compounding estate freeze: the estate's Bitcoin exposure is capped at the note value (installment sale) or zero (gift), and shrinks further each year as the tax burn removes wealth. For families with estates above the $15 million / $30 million OBBBA threshold, this dual mechanism is the primary tool for bringing the taxable estate below the threshold over time — without spending capital or triggering taxes.</p>
+
+  <div class="callout tip">
+    <p class="callout-title">📐 The IDGT Arithmetic</p>
+    <p>Start with a $10,000,000 Bitcoin estate. Fund a $10,000,000 IDGT via installment sale (the note replaces Bitcoin in the estate — same starting point). Over 10 years, Bitcoin grows 5× to $50,000,000 inside the trust — none of that appreciation is in the grantor's estate. The estate holds a $10,000,000 note that amortizes down as the trust makes payments. Meanwhile, $4,800,000+ in cumulative tax burns permanently exits the estate. Net taxable estate after 10 years: approximately $5,200,000 (the remaining note balance) — well below the $15,000,000 individual threshold. The $50,000,000 trust belongs to the beneficiaries, completely outside the estate tax system.</p>
   </div>
 
-  <h2>7. Grantor Trust Termination: What Happens at the Grantor's Death</h2>
+  <h2 id="inadvertent">9. Inadvertent Grantor Trust Status: When It Happens and How to Avoid It</h2>
 
-  <p>At the grantor's death, grantor trust status automatically terminates (there is no longer a living grantor). The trust converts to a non-grantor trust — it becomes a separate taxpayer filing Form 1041. For Bitcoin in the trust, this means:</p>
+  <p>Not every grantor trust is intentional. Inadvertent grantor trust status creates unexpected income tax consequences — typically when a family establishes what they think is a non-grantor trust but inadvertently includes a §§671-677 trigger power. Common sources of inadvertent grantor trust status:</p>
 
+  <h3>The Grantor-as-Trustee Problem</h3>
+  <p>When the grantor serves as sole trustee of an irrevocable trust they created, the grantor often holds distribution powers that trigger §674 grantor status. Unless the distribution standard is limited to an ascertainable standard (HEMS) or the trustee powers are otherwise within the §674(b)-(c) exceptions, the entire trust becomes a grantor trust. For large non-grantor dynasty trusts, this is a design defect — the grantor should not serve as trustee.</p>
+
+  <h3>Loan Provisions Without Adequate Safeguards</h3>
+  <p>Many trust documents contain provisions allowing loans to beneficiaries. If the grantor is also a beneficiary, a trustee loan provision — even one with adequate interest — can trigger §675(3) if the grantor actually borrows without full repayment. Verify that any trust containing loan provisions to beneficiaries does not also have the grantor as a beneficiary class member in a way that triggers §675.</p>
+
+  <h3>Substitution Power Added by Amendment</h3>
+  <p>Some trust protectors are given extremely broad amendment powers. If a trust protector adds a substitution power by amendment — thinking they're providing planning flexibility — they may inadvertently convert a non-grantor trust to a grantor trust. Trust protector powers should be carefully defined to specify whether they include the ability to add grantor trust trigger powers.</p>
+
+  <h3>§677 and Life Insurance Premiums</h3>
+  <p>If an irrevocable trust (intended as a non-grantor trust) starts receiving interest income or Bitcoin gains and uses those funds to pay premiums on the grantor's life insurance, §677(a)(3) is triggered retroactively to the point that income was so applied. Trustees of irrevocable life insurance trusts should carefully monitor whether trust income flows to premium payments when the grantor is insured — or structure the trust to receive only gift funds for premiums, not investment income.</p>
+
+  <h3>How to Cure Inadvertent Grantor Status</h3>
+  <p>If inadvertent grantor trust status is discovered, the primary cure is to eliminate the triggering power:</p>
   <ul>
-    <li>Post-death Bitcoin gains are taxed to the trust at the compressed trust brackets (not the grantor's individual rates)</li>
-    <li>The trust must begin filing Form 1041</li>
-    <li>If the trust is not in the grantor's estate (standard IDGT design), there is <strong>no §1014 step-up</strong> at the grantor's death — the trust's Bitcoin retains its carryover basis from when the grantor sold it to the trust</li>
-    <li>The basis is the installment sale price (if sold to the IDGT) or the gift date FMV (if gifted) — not the date-of-death FMV</li>
+    <li>For §675(4)(C) substitution powers: grantor releases the power by written declaration</li>
+    <li>For §675(2) loan provisions: the grantor repays outstanding loans with adequate interest; the trustee amends loan terms to require adequate security going forward</li>
+    <li>For §674 distribution powers: the grantor resigns as trustee and an independent trustee takes over</li>
+    <li>For §677 spousal income provisions: the trust is amended (where permitted) to eliminate the possibility of income distribution to the grantor or grantor's spouse</li>
+  </ul>
+  <p>Releasing a grantor trust power is effective prospectively — it converts the trust to a non-grantor trust for future income. The release does not eliminate grantor trust status for prior years or retroactively change the tax treatment of past transactions.</p>
+
+  <div class="callout warning">
+    <p class="callout-title">⚠️ Inadvertent Grantor Trusts and Non-Grantor Trust Strategies</p>
+    <p>A family that deliberately establishes a non-grantor dynasty trust for Bitcoin — accepting the compressed trust bracket cost to maintain multi-generational compounding — must review the trust document for all §§671-677 triggers. Inadvertent grantor status converts the anticipated non-grantor trust economics into a grantor trust tax burn, which can either be welcome (tax savings for the grantor) or problematic (unexpected large income tax liabilities on trust Bitcoin gains). Annual review by a qualified tax attorney is advisable for any irrevocable trust holding significant Bitcoin.</p>
+  </div>
+
+  <h2 id="toggle">10. Grantor Trust Termination and the Toggle Trust</h2>
+
+  <p>Grantor trust status is not permanent. It terminates automatically at the grantor's death, and it can be deliberately terminated (or reestablished) during the grantor's life through what practitioners call the "toggle" mechanism.</p>
+
+  <h3>Automatic Termination at Death</h3>
+  <p>When the grantor dies, grantor trust status ends immediately — there is no longer a living grantor. The trust becomes a separate taxable entity (a non-grantor trust) and must begin filing Form 1041. The transition has several important consequences for Bitcoin trusts:</p>
+  <ul>
+    <li><strong>No §1014 step-up:</strong> Bitcoin inside an IDGT is not in the grantor's estate, so it does not receive a stepped-up basis at death. The trust retains carryover basis — the installment sale price (if sold to the trust) or the gift-date FMV (if gifted). All subsequent appreciation is recognized as taxable gain when beneficiaries sell.</li>
+    <li><strong>Compressed trust brackets:</strong> Post-death Bitcoin gains are taxed to the trust at compressed brackets — in 2026, the highest trust income tax bracket applies at approximately $15,650 of undistributed income. Trusts holding appreciated Bitcoin that will be sold shortly after the grantor's death face compressed bracket taxation. Planning for this transition — possibly through distributions to beneficiaries in lower individual brackets — is essential.</li>
+    <li><strong>Final grantor trust return:</strong> The trust files a final grantor trust return for the portion of the year the grantor was alive, and a regular Form 1041 for the remainder.</li>
+  </ul>
+
+  <h3>The Toggle Trust: Deliberate On/Off</h3>
+  <p>A toggle trust includes explicit mechanisms to enable or disable grantor trust status during the grantor's lifetime. This is accomplished by giving the grantor (or trust protector) the power to:</p>
+  <ul>
+    <li><strong>Toggle off:</strong> Release the grantor trust trigger power — typically the substitution power — by written notice. The trust converts to a non-grantor trust prospectively. The trust begins filing Form 1041 and pays its own taxes going forward.</li>
+    <li><strong>Toggle on:</strong> Add a new grantor trust trigger power — typically by the trust protector exercising a reserved power to grant the grantor a substitution power. The trust reverts to grantor trust status prospectively.</li>
+  </ul>
+
+  <p>The toggle mechanism is valuable when the grantor's circumstances change. Common toggle-off scenarios for Bitcoin trusts:</p>
+  <ul>
+    <li>Grantor retires; income drops substantially; the tax burn becomes disproportionate relative to remaining estate</li>
+    <li>Grantor's health deteriorates; income tax planning shifts to maximizing §1014 step-up on personally held Bitcoin</li>
+    <li>Trust grows so large that the income tax burden on the grantor is financially unsustainable</li>
+    <li>Bitcoin's price has dropped; the annual income tax burden has become de minimis; the grantor prefers the trust to simply file its own return</li>
+  </ul>
+
+  <p>Common toggle-on scenarios:</p>
+  <ul>
+    <li>Trust is about to liquidate a large Bitcoin position (triggering large capital gains); the grantor's individual rate is lower than the trust's compressed bracket</li>
+    <li>Grantor's income from other sources has dropped, making it advantageous to absorb additional trust income</li>
+    <li>Planning strategy shifts to maximize the tax burn in anticipation of a large estate</li>
   </ul>
 
   <div class="callout warning">
-    <p class="callout-title">⚠️ No Step-Up for IDGT Bitcoin at Grantor's Death</p>
-    <p>This is the most important trade-off in IDGT planning. Bitcoin inside the IDGT does not receive a §1014 step-up when the grantor dies because it is not in the grantor's estate. The trust holds Bitcoin at the original installment sale price — which may be far below the date-of-death FMV if Bitcoin has appreciated significantly over the trust's life. Beneficiaries who sell IDGT Bitcoin pay capital gains on the full appreciation from the purchase price. The estate tax savings typically far exceed the forgone step-up for large, fast-appreciating positions — but this trade-off must be modeled for each family's specific situation.</p>
+    <p class="callout-title">⚠️ Toggle Trust Complexity and Risks</p>
+    <p>Toggle trusts are sophisticated instruments. The toggle mechanism must be carefully drafted so that: (1) the release of the grantor trust power does not constitute a taxable gift to trust beneficiaries; (2) the addition of a new grantor trust power does not trigger gift tax consequences or cause the trust to be treated as a new trust for tax purposes; (3) the non-fiduciary nature of the substitution power is preserved through the toggle; (4) state law permits modification of the trust in the manner contemplated. Engage experienced estate planning counsel for any toggle trust design. Do not attempt this on a form document.</p>
   </div>
 
   <!-- LEAD MAGNET #2 -->
   <div class="lead-magnet">
     <h3>📋 36 Questions to Ask Your Bitcoin Mining Host Before Signing</h3>
-    <p>A Bitcoin mining operation held inside an IDGT generates income that the grantor pays tax on personally — accelerating the tax burn and building Bitcoin for beneficiaries. Before routing mining operations through trust structures, ensure your hosting partner meets institutional standards for reliability, security, and documentation.</p>
-    <a href="http://44134802.hs-sites.com/abundant-mines-36-questions" class="btn" target="_blank" rel="noopener">Download the Checklist →</a>
+    <p>A Bitcoin mining operation inside an IDGT generates ordinary income taxed to the grantor personally — accelerating the tax burn on both fronts. Before routing mining through any trust structure, ensure your hosting partner meets institutional standards for reliability, uptime documentation, security, and reporting. Use this due diligence checklist before you sign.</p>
+    <a href="http://44134802.hs-sites.com/abundant-mines-36-questions" class="btn" target="_blank" rel="noopener">Download the Mining Host Checklist →</a>
   </div>
 
-  <h2>8. Grantor Trust Planning Matrix for Bitcoin Families</h2>
+  <h2 id="section-678">11. §678: The Beneficiary-as-Owner Trap</h2>
+
+  <p>Section 678 extends the grantor trust rules to persons who are not the grantor. Under §678(a), a person other than the grantor is treated as the owner of a trust portion if that person holds a power to vest the income or corpus of that portion in themselves — exercisable solely by that person.</p>
+
+  <h3>The Crummey Power Mechanism</h3>
+  <p>The most common §678 scenario arises from Crummey withdrawal rights — the lapsing right that trust beneficiaries receive to withdraw trust contributions, which converts otherwise future-interest gifts into present-interest gifts qualifying for the annual gift tax exclusion. Under §678, a beneficiary who holds an unexercised Crummey right is technically the owner of that trust portion for income tax purposes during the lapse period.</p>
+
+  <p>In practice, because Crummey rights are typically sized at the annual gift tax exclusion ($19,000 per beneficiary in 2026) and last for only 30-60 days, the §678 income tax exposure is minimal. The trust generates minimal income attributable to that small portion during the brief window. Most practitioners treat the §678 consequence of Crummey powers as a non-event for income tax purposes in standard annual exclusion gifting programs.</p>
+
+  <h3>When §678 Becomes a Problem: Large Withdrawal Rights</h3>
+  <p>The §678 trap becomes real when withdrawal rights are large relative to trust income. If a trust beneficiary has the right to withdraw a substantial portion of the trust — say, a power to withdraw all income — that beneficiary is a §678 owner of the income portion and must pay income tax on it, even if they never actually withdraw. For Bitcoin trusts with substantial income, this creates phantom income taxation: the beneficiary pays tax on Bitcoin gains inside the trust even though no distribution occurred and no Bitcoin was received.</p>
+
+  <h3>The "5 and 5" Safe Harbor</h3>
+  <p>Under §2514(e) (for gift tax) and corresponding estate tax provisions, the lapse of a power to withdraw the greater of $5,000 or 5% of trust value is not treated as a taxable event — the "5 and 5" safe harbor. For Crummey powers that exceed this safe harbor, the lapse of the excess may be treated as a taxable gift from the beneficiary back to the trust. Bitcoin trusts with large annual funding programs must structure Crummey powers to stay within the 5 and 5 safe harbor, or consider alternative annual exclusion strategies.</p>
+
+  <h3>The Hanging Crummey Power</h3>
+  <p>One design solution is the "hanging" Crummey power: rather than lapsing the withdrawal right on a fixed date, the right lapses only to the extent of the 5 and 5 safe harbor each year. The excess "hangs" — remains exercisable — until enough future annual lapse amounts have consumed it. This prevents the excess from being a taxable gift but keeps the beneficiary as a §678 owner of the hanging portion until it lapses. For large Bitcoin trust funding programs, hanging powers require careful tracking of each beneficiary's cumulative withdrawal right.</p>
+
+  <h2 id="section-679">12. §679: Foreign Grantor Trust Rules and Bitcoin Offshore</h2>
+
+  <p>IRC §679 imposes grantor trust treatment on US persons who transfer property to foreign trusts with US beneficiaries. The provision exists to prevent US taxpayers from sheltering income by routing assets through offshore trust structures. For Bitcoin families with any international dimension — foreign trusts, offshore custody, international family members — §679 is a critical compliance consideration.</p>
+
+  <h3>The Basic §679 Rule</h3>
+  <p>Under §679(a), a US person who transfers property to a foreign trust is treated as the owner of the trust's assets for income tax purposes if the trust has (or could have) one or more US beneficiaries. "Foreign trust" is broadly defined: a trust that is not a US trust (i.e., a court within the US does not have primary jurisdiction over trust administration, or a US person does not control all substantial decisions of the trust). A trust administered offshore with a foreign trustee is almost certainly a foreign trust.</p>
+
+  <p>The result: all Bitcoin income inside the foreign trust — capital gains, mining income, staking rewards — is currently taxable to the US grantor on their Form 1040, whether or not any distributions occur. The §679 grantor trust imposition is not elective and cannot be avoided by non-distribution. If you put Bitcoin in a foreign trust with US beneficiaries, you owe US tax on all trust income annually.</p>
+
+  <h3>Reporting Requirements: Forms 3520 and 3520-A</h3>
+  <p>A US person who transfers assets to a foreign trust must file Form 3520 (Annual Return to Report Transactions With Foreign Trusts and Receipt of Certain Foreign Gifts) in the year of transfer and in each subsequent year. Form 3520-A (Annual Information Return of Foreign Trust With a US Owner) must be filed by the trust itself (or by the US owner if the trustee doesn't file). Penalties for non-compliance are severe:</p>
+  <ul>
+    <li>Failure to file Form 3520: 35% of the gross reportable amount (with a minimum $10,000 penalty)</li>
+    <li>Failure to file Form 3520-A: 5% of the gross reportable amount (with minimum $10,000 penalty)</li>
+    <li>FBAR requirements may also apply if the grantor has signatory authority over foreign trust accounts exceeding $10,000</li>
+    <li>FATCA reporting (Form 8938) may apply for high-value foreign financial accounts and assets</li>
+  </ul>
+
+  <h3>When Foreign Trusts Make Sense for Bitcoin</h3>
+  <p>Despite §679's reach, there are legitimate reasons a US Bitcoin family might use a foreign trust structure — typically involving non-US family members as beneficiaries. If all beneficiaries are non-US persons (no US beneficiaries), §679 does not apply. A family with US and non-US beneficiaries must carefully segregate trust structures: a US trust for US beneficiaries; a foreign trust for non-US beneficiaries — and ensure no inadvertent US beneficiary status arises through discretionary distribution language that could theoretically benefit a US person.</p>
+
+  <p>The §679 analysis becomes particularly complex when trust distributions are made to US beneficiaries out of accumulated income — the "throwback rules" of §§665-668 may impose interest charges on the accumulated income allocated to those distributions. Foreign trust structures for Bitcoin should be designed and reviewed by international tax counsel with specific expertise in §679 and the throwback rules, not general estate planning attorneys.</p>
+
+  <h2 id="drafting">13. Practical Drafting Considerations for Bitcoin Trusts</h2>
+
+  <p>The grantor trust rules translate into concrete drafting requirements. A well-drafted Bitcoin IDGT should address each of the following:</p>
+
+  <h3>1. The Grantor Trust Trigger Clause</h3>
+  <p>The substitution power should be drafted as a personal, non-fiduciary power of the grantor — exercisable without trustee consent and explicitly noted as not creating a fiduciary duty. The trustee should be given an independent verification role: confirming that any substituted assets are of equivalent fair market value, using an agreed valuation methodology. For Bitcoin, equivalent value is determined by the spot price at time of substitution using a designated reference exchange. This prevents disputes about whether a substitution was at true equivalent value.</p>
+
+  <h3>2. The Tax Reimbursement Provision</h3>
+  <p>Following Rev. Rul. 2004-64, the trust document should explicitly address reimbursement of income taxes paid by the grantor. Best practice for Bitcoin IDGTs: prohibit mandatory reimbursement entirely. Consider whether the trustee should have discretionary reimbursement power at all — given the estate tax risk flagged in the ruling, many practitioners omit any reimbursement power to achieve a clean result. The grantor should independently model whether they can sustain the tax burn for the projected trust term without any expectation of reimbursement.</p>
+
+  <h3>3. The Toggle Mechanism</h3>
+  <p>If toggle capability is desired, the trust protector (not the grantor, not the trustee) should hold the power to grant or release the grantor trust trigger. The power should be defined as exercisable by written notice to the trustee, effective on the date of notice for prospective income only. The trust document should state explicitly that the exercise or non-exercise of the toggle does not constitute a taxable gift, is not a modification that creates a new trust, and does not affect the trust's character as irrevocable for estate tax purposes.</p>
+
+  <h3>4. Bitcoin Custody and Trustee Authority</h3>
+  <p>The trust document should address Bitcoin custody specifically: the trustee's authority to hold Bitcoin in self-custody (hardware wallet or multisig) or with a qualified custodian, the procedure for key management and succession (what happens to private keys when a trustee resigns), and the trustee's investment authority over Bitcoin — including the ability to hold concentrated Bitcoin without diversification (overriding any duty to diversify that state law would otherwise impose).</p>
+
+  <h3>5. Crummey and §678 Provisions</h3>
+  <p>If the IDGT will receive ongoing annual gifts in addition to the initial funding, structure Crummey powers within the 5 and 5 safe harbor. For multiple beneficiaries, consider whether hanging Crummey powers are appropriate or whether the administrative complexity argues for limiting annual additions to the exclusion amount per beneficiary without hanging provisions. Document each beneficiary's Crummey notice separately and maintain compliance records — the IRS has challenged Crummey rights where notice was deficient.</p>
+
+  <h3>6. Jurisdiction Selection</h3>
+  <p>The trust should be governed by the law of a state with favorable dynasty trust provisions (no rule against perpetuities, strong spendthrift protections, directed trust statutes). Leading states for Bitcoin IDGT siting include Nevada, South Dakota, Delaware, and Alaska. Each has specific advantages: Nevada offers strong asset protection with no state income tax; South Dakota has the most favorable directed trust framework; Delaware has century-old trust case law with predictable outcomes; Alaska allows self-settled asset protection trusts where other states won't. State law selection is a material drafting decision that affects both the grantor trust analysis and the long-term trust administration framework.</p>
+
+  <h3>7. The Investment Policy Statement</h3>
+  <p>A Bitcoin IDGT holding a concentrated Bitcoin position should include or reference an Investment Policy Statement (IPS) that documents: the rationale for holding concentrated Bitcoin, the trustee's fiduciary analysis of why concentration is in the best interest of beneficiaries (hardcoded scarcity, asymmetric return profile, portfolio diversification role for a multi-asset family), the custody architecture and security protocols, and the distribution framework that governs when and why Bitcoin will be sold or distributed in kind. The IPS protects the trustee from prudent investor act liability and aligns the trust administration with the grantor's original intent.</p>
 
   <div class="table-wrap">
     <table>
@@ -338,7 +677,7 @@
           <th>Estate Inclusion?</th>
           <th>Tax Burn?</th>
           <th>§1014 Step-Up at Death?</th>
-          <th>Best Use</th>
+          <th>Best Bitcoin Use Case</th>
         </tr>
       </thead>
       <tbody>
@@ -348,15 +687,15 @@
           <td class="bad">Yes — fully included</td>
           <td class="neutral">N/A (in estate)</td>
           <td class="good">Yes</td>
-          <td>Probate avoidance; full step-up</td>
+          <td>Probate avoidance; step-up preservation; simple estates</td>
         </tr>
         <tr>
           <td>IDGT (installment sale)</td>
           <td class="good">Yes (§675(4)(C))</td>
-          <td class="good">No (completed gift/sale)</td>
+          <td class="good">No (note in estate; BTC out)</td>
           <td class="good">Yes</td>
           <td class="bad">No — carryover basis</td>
-          <td>Large Bitcoin transfer; estate tax savings &gt; forgone step-up</td>
+          <td>Large Bitcoin transfer; estate tax savings exceed forgone step-up</td>
         </tr>
         <tr>
           <td>SLAT</td>
@@ -364,15 +703,15 @@
           <td class="good">No (completed gift)</td>
           <td class="good">Yes</td>
           <td class="bad">No</td>
-          <td>Funded by one spouse; spouse benefits</td>
+          <td>Married couples using $30M OBBBA exemption; spouse access</td>
         </tr>
         <tr>
           <td>GRAT</td>
           <td class="good">Yes (§677 — retained annuity)</td>
-          <td class="neutral">Partial (annuity value if survives)</td>
-          <td class="good">Yes (on trust income)</td>
           <td class="neutral">Partial (annuity value portion)</td>
-          <td>Transfer appreciation above §7520 hurdle</td>
+          <td class="good">Yes (on trust income)</td>
+          <td class="neutral">Partial</td>
+          <td>Transfer Bitcoin appreciation above §7520 hurdle tax-free</td>
         </tr>
         <tr>
           <td>Non-grantor dynasty trust</td>
@@ -388,7 +727,7 @@
           <td class="good">No</td>
           <td class="good">Yes</td>
           <td class="bad">No</td>
-          <td>IDGT with ability to switch off tax burn</td>
+          <td>IDGT with ability to switch off when tax burn unsustainable</td>
         </tr>
         <tr>
           <td>Toggle trust (off)</td>
@@ -396,49 +735,78 @@
           <td class="good">No</td>
           <td class="bad">No</td>
           <td class="bad">No</td>
-          <td>After grantor's income peaked; preserve capital</td>
+          <td>Post-toggle; trust self-funds tax; grantor relief</td>
+        </tr>
+        <tr>
+          <td>Foreign trust (§679)</td>
+          <td class="neutral">Forced — §679</td>
+          <td class="good">No (if structured correctly)</td>
+          <td class="bad">Forced — not beneficial</td>
+          <td class="bad">No</td>
+          <td>Non-US beneficiaries only; requires specialist counsel</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <h2>Frequently Asked Questions</h2>
+  <h2 id="faq">Frequently Asked Questions</h2>
 
   <div class="faq-item">
     <p class="faq-q">What is a grantor trust for Bitcoin estate planning purposes?</p>
-    <p class="faq-a">A grantor trust is a trust in which the grantor is treated as owner for federal income tax purposes. All income, deductions, and credits — including Bitcoin capital gains — are reported on the grantor's Form 1040. The trust may still be outside the grantor's estate for estate tax purposes, creating the core IDGT opportunity: outside the estate for estate tax, transparent for income tax, with the grantor paying income taxes on trust gains as a free additional wealth transfer.</p>
+    <p class="faq-a">A grantor trust is a trust in which the grantor is treated as owner for federal income tax purposes. All income, deductions, and credits — including Bitcoin capital gains — are reported on the grantor's Form 1040. The trust may still be outside the grantor's estate for estate tax purposes, creating the core IDGT opportunity: outside the estate for estate tax, transparent for income tax, with the grantor paying income taxes on trust gains as a free additional wealth transfer under Rev. Rul. 2004-64.</p>
   </div>
 
   <div class="faq-item">
     <p class="faq-q">What is an Intentionally Defective Grantor Trust (IDGT)?</p>
-    <p class="faq-a">An IDGT is a trust designed to be (a) outside the estate for estate tax — an irrevocable trust with a completed gift or installment sale — while (b) a grantor trust for income tax — containing one §§671-679 trigger power. The "defect" (grantor trust status) is intentional because it causes the grantor to pay income taxes on trust income personally, which is a tax-free additional wealth transfer under Rev. Rul. 2004-64.</p>
+    <p class="faq-a">An IDGT is a trust designed to be (a) outside the estate for estate tax — an irrevocable trust with a completed gift or installment sale — while (b) a grantor trust for income tax — containing one §§671-679 trigger power. The "defect" (grantor trust status) is intentional because it causes the grantor to pay income taxes on trust income personally, which is a tax-free additional wealth transfer. The IDGT is the most powerful Bitcoin estate planning structure because it eliminates estate tax on Bitcoin appreciation while delivering an ongoing tax burn gift to beneficiaries.</p>
   </div>
 
   <div class="faq-item">
     <p class="faq-q">What powers trigger grantor trust status for a Bitcoin trust?</p>
-    <p class="faq-a">The most commonly used IDGT trigger is the substitution power under §675(4)(C) — the grantor can exchange personal assets for trust assets of equivalent value. This creates grantor trust status without causing estate tax inclusion (Rev. Rul. 2008-22). Other common triggers: loan power (§675(2)), spousal income power (§677(a) — used in SLATs), and power to add charitable beneficiaries (§674(b)(4)). Any one trigger is sufficient to make the entire trust a grantor trust.</p>
+    <p class="faq-a">The most commonly used IDGT trigger is the substitution power under §675(4)(C) — the grantor can exchange personal assets for trust assets of equivalent value. This creates grantor trust status without causing estate tax inclusion (Rev. Rul. 2008-22). Other triggers: loan power (§675(2)), spousal income power (§677(a) — SLATs), power to add charitable beneficiaries (§674(b)(4)), and insurance premium application (§677(a)(3)). Any one trigger is sufficient to make the entire trust a grantor trust.</p>
   </div>
 
   <div class="faq-item">
     <p class="faq-q">What is the tax burn and how does it benefit Bitcoin trusts?</p>
-    <p class="faq-a">The tax burn is the grantor's payment of income tax on trust income from personal funds. Under Rev. Rul. 2004-64, this payment is not a taxable gift. Economically: the grantor's estate shrinks by the tax paid, the trust's assets compound without tax drag, and additional wealth transfers to beneficiaries each year at no gift tax cost. For a Bitcoin trust generating $500K of capital gains per year, the annual tax burn transfers ~$119K in value gift-tax-free.</p>
+    <p class="faq-a">The tax burn is the grantor's payment of income tax on trust income from personal funds. Under Rev. Rul. 2004-64, this payment is not a taxable gift. The grantor's estate shrinks by the tax paid; the trust's Bitcoin compounds without tax drag; additional wealth transfers to beneficiaries each year at no gift tax cost. For a Bitcoin trust generating $500K of capital gains annually, the tax burn transfers approximately $119K–$190K in value gift-tax-free each year, depending on the grantor's tax rate. Over 10–20 years, cumulative tax burn transfers can rival the original trust funding in magnitude.</p>
   </div>
 
   <div class="faq-item">
     <p class="faq-q">Can grantor trust status be turned on and off?</p>
-    <p class="faq-a">Yes — a toggle trust includes a mechanism for the trust protector or grantor to enable or disable grantor trust status by releasing or adding a trigger power. Turning grantor status off shifts income tax to the trust (compressed brackets, 37% at ~$15,650). Turning it on shifts tax back to the grantor (individual rates). Toggle trusts require careful drafting to avoid estate tax, gift tax, or other unintended consequences from the switch.</p>
+    <p class="faq-a">Yes — a toggle trust includes a mechanism for the trust protector to enable or disable grantor trust status by releasing or adding a trigger power. Turning grantor status off converts the trust to a non-grantor trust prospectively; the trust pays its own income tax at compressed brackets. Turning it on restores the tax burn. Common toggle-off triggers: grantor's income peaks; tax burden unsustainable; strategic basis planning. Toggle trusts require specialized drafting to avoid estate tax, gift tax, or inadvertent trust termination consequences from the switch.</p>
   </div>
 
   <div class="faq-item">
     <p class="faq-q">Does grantor trust status cause estate tax inclusion?</p>
-    <p class="faq-a">Not necessarily. The grantor trust rules are income tax rules, not estate tax rules. An IDGT uses §675(4)(C) substitution power — which Rev. Rul. 2008-22 confirmed does not cause estate tax inclusion under §§2036 or 2038. Powers that do cause estate tax inclusion (§676 revocation power, §677 retained income) are not used in IDGTs designed to be outside the estate. The substitution power is the cleanest trigger: grantor trust for income tax, no estate inclusion for estate tax.</p>
+    <p class="faq-a">Not by itself. The grantor trust rules (§§671-679) are income tax rules only. Estate tax inclusion is governed by §§2036-2038. An IDGT uses §675(4)(C) — which Rev. Rul. 2008-22 confirmed does not cause estate tax inclusion when exercised in a non-fiduciary capacity. Powers that do cause estate inclusion — §676 revocation power, §677 retained lifetime income — are deliberately excluded from IDGT design. The substitution power is the ideal trigger: grantor trust for income tax, no estate inclusion for estate tax.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What is the §678 beneficiary-as-owner trap?</p>
+    <p class="faq-a">Under §678, a beneficiary who holds the power to vest trust income or corpus in themselves is treated as the tax owner of that portion. The most common example: a Crummey withdrawal right. A beneficiary with an unexercised Crummey right is briefly a §678 owner. If withdrawal rights exceed the "5 and 5" safe harbor — the greater of $5,000 or 5% of trust value — the lapse of the excess may be a taxable gift from the beneficiary back to the trust. Sophisticated Bitcoin trust design keeps Crummey powers within the safe harbor or uses hanging power structures to manage the lapse.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What are the §679 foreign grantor trust rules and how do they apply to Bitcoin held offshore?</p>
+    <p class="faq-a">§679 treats any US person who transfers property to a foreign trust with US beneficiaries as the grantor trust owner — taxed currently on all trust income, including Bitcoin gains, whether or not distributed. This is not elective. Additional reporting is mandatory: Form 3520 (annual return) and Form 3520-A (trust information return), with penalties up to 35% of the gross reportable amount for failures. Bitcoin families holding assets in offshore trusts must confirm beneficiary citizenship/residency status and file all required forms. If all beneficiaries are non-US, §679 does not apply — but the analysis must be redone whenever family circumstances change.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What happens to grantor trust status and Bitcoin basis when the grantor dies?</p>
+    <p class="faq-a">At death, grantor trust status automatically terminates. The trust becomes a non-grantor trust filing Form 1041. Bitcoin inside the IDGT retains its carryover basis — no §1014 step-up, because the Bitcoin is not in the grantor's estate. The compressed trust tax brackets (37% at ~$15,650 of undistributed income) apply to post-death gains. Beneficiaries who receive in-kind Bitcoin distributions take the trust's carryover basis and recognize gain only when they sell. The no-step-up consequence is the central IDGT trade-off: accept carryover basis in exchange for removing all Bitcoin appreciation from the estate tax system entirely.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">How does the One Big Beautiful Budget Act affect grantor trust and IDGT planning?</p>
+    <p class="faq-a">The One Big Beautiful Budget Act permanently increased the federal estate and gift tax exemption to $15 million per individual / $30 million per couple. This expands the amount that can be gifted into IDGTs or used as seed capital for installment sales without triggering gift tax. Families below the threshold can use the full exemption in IDGTs to maximize the tax burn over decades. Families above the threshold now have a higher bar to clear — but the IDGT installment sale structure operates independently of the exemption for amounts above the gift threshold. The permanence of the increase (rather than a scheduled reversal) allows longer-horizon planning with greater confidence.</p>
   </div>
 
   <hr style="border:none;border-top:1px solid var(--border);margin:3rem 0;">
-  <p style="font-size:0.87rem;color:var(--text-dim);line-height:1.65;"><em>This article is for informational purposes only and does not constitute legal, tax, or financial advice. Grantor trust rules are complex and interact with estate tax, gift tax, and income tax in ways that are highly fact-specific. Consult qualified estate planning attorneys and CPAs for your specific situation.</em></p>
+  <p style="font-size:0.87rem;color:var(--text-dim);line-height:1.65;"><em>This article is for informational purposes only and does not constitute legal, tax, or financial advice. Grantor trust rules are complex and interact with estate tax, gift tax, and income tax in ways that are highly fact-specific. IRC §§671-679 analysis requires consideration of specific trust terms, trustee capacities, beneficiary identities, and applicable state law. Consult qualified estate planning attorneys and CPAs before implementing any of the strategies described here.</em></p>
 
   <h2>Related Reading</h2>
   <ul>
+    <li><a href="/blog/bitcoin-estate-planning-guide.html">The Complete Bitcoin Estate Planning Guide</a></li>
     <li><a href="bitcoin-idgt-installment-sale.html">Installment Sales to IDGTs: The Complete Guide</a></li>
     <li><a href="bitcoin-slat-spousal-lifetime-access-trust-estate-planning.html">Bitcoin SLATs: Spousal Lifetime Access Trusts</a></li>
     <li><a href="bitcoin-grat-grantor-retained-annuity-trust.html">Bitcoin GRATs: Transfer Appreciation Tax-Free</a></li>
@@ -446,7 +814,6 @@
     <li><a href="bitcoin-trust-fiduciary-income-tax-1041.html">Bitcoin Trust Fiduciary Income Tax and Form 1041</a></li>
     <li><a href="bitcoin-section-2036-retained-interest-estate-planning.html">Bitcoin &amp; §2036: The Retained Interest Trap</a></li>
     <li><a href="bitcoin-stepped-up-basis-estate-planning-guide.html">The §1014 Step-Up: How Death Eliminates Bitcoin Capital Gains</a></li>
-    <li><a href="bitcoin-estate-planning-guide.html">The Complete Bitcoin Estate Planning Guide</a></li>
   </ul>
 </article>
 
