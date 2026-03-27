@@ -85,6 +85,62 @@
         "@type": "Answer",
         "text": "Legacy P2SH multisig transactions are identifiable on the Bitcoin blockchain — any observer can see that funds are held in a multisig arrangement. Taproot-based multisig (using MuSig2 or similar Schnorr aggregation) produces transactions that are indistinguishable from standard single-signature transactions on-chain. This privacy improvement makes Taproot multisig preferable for families concerned about chain analysis and targeted surveillance."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "How much Bitcoin should I have before using multisig?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under $50,000: a single hardware wallet with secure seed backup is acceptable. $50,000–$250,000: a hardware wallet is mandatory and multisig is strongly recommended. Above $250,000: multisig is non-negotiable — the cost of losing a single key at this scale is catastrophic. Above $1 million: multisig with geographic key distribution across multiple locations and jurisdictions is the institutional standard."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which hardware wallets support multisig?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most widely used hardware wallets for multisig are: Coldcard (air-gapped, PSBT-native, considered the gold standard for multisig), Passport by Foundation (open source, air-gapped), Jade by Blockstream (open source, affordable, Bluetooth or USB), and Trezor Model T (popular, USB-connected, good software support). Using different brands for each key in your multisig — such as Coldcard + Passport + Jade — adds hardware diversity and reduces supply-chain risk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What software do I use for multisig Bitcoin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The main coordinator software options for multisig are: Sparrow Wallet (open source desktop app, best for technical users, full PSBT support), Specter Desktop (self-hosted, privacy-focused), Nunchuk (mobile-friendly, good UX for non-technical users), Unchained Caravan (browser-based, from collaborative custody provider), and Casa app (managed multisig, lowest complexity). All of these support the standard PSBT format for coordinating signatures across multiple hardware devices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I lose Bitcoin with multisig if I lose one key?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — in a 2-of-3 multisig, losing one key does not cause loss of funds. The remaining two keys can still sign any transaction. However, losing one key reduces your redundancy and should be addressed immediately (reconstruct the wallet with a new key set). Losing two keys in a 2-of-3 means you cannot sign — funds become permanently inaccessible. This is why geographic distribution of keys is essential."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is PSBT in Bitcoin multisig?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PSBT stands for Partially Signed Bitcoin Transaction (BIP 174). It is a standardized format that allows an unsigned or partially-signed Bitcoin transaction to be passed between multiple devices for signing. In multisig, the coordinator software creates a PSBT, each hardware wallet adds its signature, and once the threshold is met (e.g., 2 of 3), the fully-signed transaction is broadcast to the network. PSBT is what makes air-gapped multisig signing workflows possible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is single-sig Bitcoin safe with a hardware wallet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Single-sig with a hardware wallet is far more secure than software wallets or exchange custody. The private key never leaves the device; transactions are signed in hardware. For holdings under $50,000–$100,000 with proper seed backup in multiple secure locations, this is a reasonable setup. The fundamental limitation remains: it is a single point of failure. If both the device and the seed backup are lost or compromised, funds are permanently gone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between multisig and collaborative custody?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multisig is a Bitcoin protocol feature — it requires M-of-N cryptographic keys to authorize a transaction. Collaborative custody is a service model built on top of multisig: the family holds most of the keys (e.g., 2 of 3) and a professional provider holds one key for co-signing and recovery. DIY multisig means the family controls all keys themselves. Collaborative custody adds a professional partner who can assist with recovery and inheritance but cannot unilaterally move funds. Providers include Unchained Capital, Casa, and Theya."
+      }
     }
   ]
 }
@@ -230,6 +286,12 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
       <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#operations" style="color:var(--text-secondary);">Operational Requirements and Practical Tradeoffs</a></li>
       <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#taproot" style="color:var(--text-secondary);">Taproot and On-Chain Privacy</a></li>
       <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#key-management" style="color:var(--text-secondary);">Key Management Protocol: What to Document</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#value-threshold" style="color:var(--text-secondary);">The Bitcoin Value Threshold Guide</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#hardware-wallets" style="color:var(--text-secondary);">Hardware Wallets for Multisig</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#coordinator-software" style="color:var(--text-secondary);">Coordinator Software: How to Actually Run Multisig</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#setup-guide" style="color:var(--text-secondary);">Step-by-Step: Setting Up 2-of-3 Multisig</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#cost-comparison" style="color:var(--text-secondary);">Cost Comparison: Every Custody Option</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#legal-documentation" style="color:var(--text-secondary);">Legal Documentation for Multisig</a></li>
       <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
     </ol>
   </div>
@@ -389,6 +451,489 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
 
   <hr>
 
+  <h2 id="value-threshold">The Bitcoin Value Threshold Guide: When Does Security Architecture Actually Matter?</h2>
+
+  <p>One of the most common questions from families approaching Bitcoin for the first time is deceptively simple: <em>when do I need to take custody security seriously?</em> The honest answer is that every satoshi deserves to be protected correctly — but the practical answer is that the right custody architecture scales with the value at risk, the complexity you can manage, and the consequences of failure. Here is the framework The Bitcoin Family Office uses when consulting with clients at different stages of accumulation.</p>
+
+  <h3>Under $50,000: Single-Sig Hardware Wallet Is Acceptable</h3>
+
+  <p>Below the $50,000 threshold, a properly configured single-signature hardware wallet with secure seed backup is a reasonable setup. This tier typically includes families who are beginning to accumulate Bitcoin, testing their custody workflows, or holding a small allocation alongside larger traditional assets. The threat model at this level is real but manageable: the consequences of a single failure are serious but not catastrophic to a high-net-worth household's overall balance sheet.</p>
+
+  <p>At this tier, the most important action is not choosing multisig — it is getting off exchanges entirely. Bitcoin held on an exchange is not Bitcoin you own; it is a claim on an exchange that may or may not honor it when you need access. Even a basic hardware wallet — a Ledger Nano X, a Trezor Model One, a Coldcard Mk4 — represents a dramatic improvement over exchange custody. The seed phrase should be engraved on stainless steel (not written on paper), stored in at least two physically separate secure locations, and known to at least one trusted family member.</p>
+
+  <p>What's at stake under $50K: While no single loss is "small," at this level the family has the financial capacity to absorb a worst-case scenario and rebuild. The psychological and financial cost of a loss is significant but survivable. The operational complexity of multisig at this scale may also create its own risks if the family is not yet comfortable with the basic hardware wallet workflow.</p>
+
+  <h3>$50,000–$250,000: Hardware Wallet Mandatory, Multisig Strongly Recommended</h3>
+
+  <p>In this range, the calculus changes. A hardware wallet is no longer a recommendation — it is an absolute requirement. A Bitcoin position of $50,000 to $250,000 is a meaningful fraction of most high-net-worth families' liquid assets, and its loss would be consequential. Exchange custody at this scale is indefensible from a risk management perspective.</p>
+
+  <p>Multisig becomes strongly recommended, not just advisable, at this tier. Here is why: the operational benefit of single-sig simplicity is increasingly outweighed by the catastrophic downside of a single point of failure. Consider what can go wrong with a single hardware wallet setup: the device is physically damaged or lost; the seed backup is discovered by a housekeeper, contractor, or family member; a house fire destroys both device and seed simultaneously; a targeted social engineering attack tricks the holder into moving funds. Any one of these scenarios is a total loss event with single-sig.</p>
+
+  <p>A 2-of-3 multisig eliminates all of these as total loss scenarios. Two of three independent events must occur simultaneously for funds to be at risk. At $50K–$250K, setting up multisig for the first time is the right moment — the holding is large enough to justify the setup investment, but you're not yet managing a $5M vault where errors compound at scale. Use this tier to build and test your multisig workflow before the stakes become higher.</p>
+
+  <p>What's at stake in this range: Losing $100,000–$250,000 in Bitcoin is a life-altering financial event for most families. It represents years of savings, a significant portion of a retirement fund, or a meaningful inheritance. The emotional cost is as significant as the financial cost. This is the tier where "I'll deal with security later" becomes genuinely dangerous.</p>
+
+  <h3>$250,000+: Multisig Is Non-Negotiable</h3>
+
+  <p>Above $250,000 in Bitcoin, single-signature custody is no longer a defensible position. At this threshold, the Bitcoin Family Office treats multisig as non-negotiable for primary vault holdings. The reasoning is straightforward: the potential loss from a single-point-of-failure event is now large enough that it justifies any level of operational complexity required to eliminate that risk.</p>
+
+  <p>More importantly, at this threshold the <em>attack surface increases</em>. Sophisticated adversaries — from targeted physical theft rings to social engineering specialists to corrupt insiders — operate cost-benefit analyses on potential targets. A $300,000 Bitcoin holding in a single-sig wallet that could be swept in one transaction is far more attractive to a motivated attacker than a $300,000 multisig vault that requires coordinating a simultaneous compromise of two independent hardware devices in different locations. Multisig doesn't just reduce accident risk; it actively degrades the return on investment for attackers.</p>
+
+  <p>At this tier, families should also begin thinking about custody in layers: a primary multisig cold vault for the bulk of holdings, and a smaller single-sig or managed wallet for operational spending. The vault architecture is optimized for security; the operational wallet is optimized for convenience. Never force a 2-of-3 signing ceremony every time you need to buy a coffee or pay a service provider in Bitcoin.</p>
+
+  <p>What's at stake above $250K: This is the threshold at which Bitcoin custody failure becomes the kind of event that changes a family's financial trajectory — affects retirement plans, educational funding, real estate capacity, and multigenerational wealth transfer. The probability of a specific attack is not high. The consequence of that attack is permanent.</p>
+
+  <h3>$1 Million+: Multisig with Geographic Key Distribution Is Mandatory</h3>
+
+  <p>Above $1 million in Bitcoin, custody architecture must be designed with the sophistication of an institutional treasury. Multisig alone is necessary but not sufficient — the <em>geographic distribution</em> of keys becomes equally important. Three hardware wallets all stored in the same city, same state, or same country expose the family to coordinated risks: natural disaster (a California fire or Florida hurricane affecting all three simultaneously), regulatory risk (a government seizure or legal action that affects all domestic storage), and targeted physical attack (coercion to reveal the locations of all three).</p>
+
+  <p>The institutional standard at $1M+ is geographic key separation: at minimum, one key in the primary residence, one key in an off-site safe deposit box or home safe in a different metro area, and one key with a professional co-signer or in a jurisdiction with strong property rights protections. For holdings above $5M, many families distribute keys across three countries — often the United States, Switzerland or Liechtenstein, and Singapore or El Salvador — providing both legal protection and disaster redundancy.</p>
+
+  <p>At this scale, professional custody guidance is not optional. The documentation requirements alone — key management records, wallet descriptor backups, succession planning, power of attorney provisions, and annual drill protocols — are beyond what most families can design correctly without specialized expertise. The cost of professional guidance ($5,000–$25,000 for a comprehensive setup engagement) is trivially small against the asset value at risk.</p>
+
+  <p>What's at stake above $1M: At this threshold, Bitcoin custody failure is a generational wealth event. It is not just about the loss itself — it is about what that loss represents for the family's long-term financial plan, for the inheritance their children expected, and for the trust structures and philanthropic goals that depended on those assets. Geographic distribution is the difference between a catastrophic failure and a recoverable operational setback.</p>
+
+  <div class="pull-quote">The families that lose Bitcoin across generations are not those who set up multisig. They are the families who kept everything on a single hardware wallet because they planned to "deal with security later."</div>
+
+  <hr>
+
+  <h2 id="hardware-wallets">Hardware Wallets for Multisig: Which Devices Actually Work</h2>
+
+  <p>Not every hardware wallet is created equal for multisig use. The features that matter most in a multisig context — air-gap capability, PSBT support, open-source firmware, and coordinator software compatibility — vary significantly across devices. Here is an honest assessment of the primary hardware options as of 2026.</p>
+
+  <h3>Coldcard Mk4 — The Gold Standard for Multisig</h3>
+
+  <p>Coldcard, manufactured by Coinkite, is widely considered the best hardware wallet for multisig deployments. Its advantages are numerous and specific to the multisig use case:</p>
+
+  <ul>
+    <li><strong>Air-gapped by design:</strong> Coldcard has no Bluetooth, no WiFi, and no USB data transfer requirement. Transactions are passed to and from the device via microSD card or QR code, meaning the signing device never connects to a network-facing machine during the signing process.</li>
+    <li><strong>Native PSBT support:</strong> Coldcard was built from the ground up with PSBT (Partially Signed Bitcoin Transaction) workflows in mind. It imports multisig wallet descriptors directly and produces PSBT outputs compatible with every major coordinator software.</li>
+    <li><strong>Open-source firmware:</strong> Coldcard's firmware is fully open source and subject to community audit. This matters for a device that will protect millions of dollars — you want the ability to verify that the code does what it claims.</li>
+    <li><strong>Duress PIN and anti-tamper features:</strong> Coldcard supports a duress wallet (a separate seed accessible under a different PIN that reveals a small balance to a coercer), physical tamper-evident packaging, and secure element protection against physical key extraction.</li>
+    <li><strong>Multisig wallet display:</strong> When verifying a multisig transaction, Coldcard can display the full multisig quorum structure so you can confirm the correct keys are participating before signing.</li>
+  </ul>
+
+  <p>Price as of 2026: approximately $150–$180 USD. Recommended firmware: always update to the latest stable release before a new multisig setup.</p>
+
+  <h3>Passport by Foundation — Open Source, Air-Gapped, Family-Friendly</h3>
+
+  <p>Passport, manufactured by Foundation Devices, is the most user-friendly air-gapped hardware wallet available. Its design philosophy is accessibility: it looks like a premium consumer device (not a circuit board in a plastic case), uses AA batteries for completely wireless operation, and has a color display with a camera for QR code scanning.</p>
+
+  <ul>
+    <li><strong>Fully air-gapped via QR:</strong> Like Coldcard, Passport communicates with coordinator software exclusively via QR codes — no USB connection required for normal operation. This makes it genuinely portable and suitable for off-site key storage where you can't guarantee a clean computer.</li>
+    <li><strong>Fully open source:</strong> Both the firmware and hardware design are open source. Foundation publishes all design files publicly — something no other major hardware wallet manufacturer does at this level of completeness.</li>
+    <li><strong>Multisig-native:</strong> Passport handles multisig wallet imports and PSBT signing with an unusually smooth user experience. The QR-based PSBT workflow is particularly clean compared to competing devices.</li>
+    <li><strong>Community and support:</strong> Foundation has strong community relationships in the Bitcoin multisig ecosystem. Their documentation for multisig setup with Sparrow Wallet, Nunchuk, and Unchained is consistently excellent.</li>
+  </ul>
+
+  <p>Price as of 2026: approximately $200–$260 USD. Recommended for: any position in a multisig quorum, particularly for family members who are less technical — the UX is the most approachable of any air-gapped device.</p>
+
+  <h3>Jade by Blockstream — Open Source and Affordable</h3>
+
+  <p>Jade, manufactured by Blockstream, is the most affordable capable hardware wallet for multisig use. At approximately $65–$80, it offers full open-source firmware, Bluetooth and USB connectivity, and a surprisingly capable feature set for its price point.</p>
+
+  <ul>
+    <li><strong>Open-source firmware:</strong> Like Passport, Jade's firmware is fully open source. Blockstream is one of the oldest and most technically credible Bitcoin companies; their commitment to open development is well-established.</li>
+    <li><strong>Air-gapped mode via QR:</strong> Jade supports a "stateless" mode where it communicates exclusively via QR codes, enabling air-gapped operation. This is a relatively recent feature addition and works well with Sparrow Wallet.</li>
+    <li><strong>Full multisig support:</strong> Jade handles P2WSH and Taproot multisig, supports PSBT, and integrates cleanly with Sparrow Wallet, Nunchuk, and Green (Blockstream's own wallet).</li>
+    <li><strong>Pin-only security model:</strong> Unlike Coldcard or Passport, Jade does not use a secure element chip — instead, it uses a PIN-encrypted blind oracle for key protection. This is a different security architecture that has been subject to academic scrutiny; understand the tradeoffs before selecting Jade as your primary vault key.</li>
+  </ul>
+
+  <p>Price as of 2026: approximately $65–$80 USD. Recommended for: third key in a 2-of-3 where budget is a consideration, or as an accessible entry into air-gapped multisig for families new to the space.</p>
+
+  <h3>Trezor Model T — Widely Supported, USB-Connected</h3>
+
+  <p>Trezor Model T is one of the most widely supported hardware wallets in the ecosystem, with compatibility across virtually every major coordinator software and Bitcoin application. Its primary limitation in a multisig context is connectivity: the Model T communicates via USB and does not support air-gapped operation.</p>
+
+  <ul>
+    <li><strong>Open-source firmware:</strong> Trezor was the original open-source hardware wallet; its firmware has been audited more times than any other device on the market.</li>
+    <li><strong>Broad software compatibility:</strong> Model T is compatible with Sparrow Wallet, Specter, Nunchuk, and virtually every other coordinator software — useful in mixed-software environments.</li>
+    <li><strong>USB-connected only:</strong> The requirement to plug the device into a computer for signing means it cannot participate in fully air-gapped workflows. This is a meaningful security limitation for conservative multisig deployments. The Trezor Safe 3 (a newer model) offers similar capabilities with an improved secure element.</li>
+    <li><strong>No secure element in Model T:</strong> The original Trezor Model T does not use a secure element chip — making it more vulnerable to physical extraction attacks than Coldcard or Passport. The Trezor Safe 3 addresses this with an added secure element, though with proprietary firmware for that chip.</li>
+  </ul>
+
+  <p>Price as of 2026: approximately $170–$215 USD for Model T; $79–$89 for Safe 3. Recommended for: participants who are comfortable with USB-connected workflows and prioritize software ecosystem compatibility over air-gap security.</p>
+
+  <h3>Why Mixing Hardware Wallet Brands Adds Critical Security</h3>
+
+  <p>A multisig setup where all three keys use the same hardware wallet brand has a hidden vulnerability: a firmware exploit, supply chain compromise, or manufacturer vulnerability could simultaneously affect all three devices. If all three keys in your 2-of-3 are Coldcards, and a critical vulnerability in Coldcard's firmware is discovered, your entire quorum is potentially at risk.</p>
+
+  <p>The solution is hardware diversity: use different brands for each key position in your multisig. A recommended combination for 2-of-3:</p>
+  <ul>
+    <li><strong>Key 1:</strong> Coldcard Mk4 (maximum security, best multisig features)</li>
+    <li><strong>Key 2:</strong> Passport by Foundation (air-gapped, open source, accessible UX)</li>
+    <li><strong>Key 3:</strong> Jade by Blockstream (open source, affordable, different architecture)</li>
+  </ul>
+
+  <p>This combination uses three different hardware architectures, three different secure element implementations (or lack thereof), three different firmware codebases, and three different manufacturers. A supply chain attack against any one manufacturer — including a state-level adversary compromising a single hardware company — cannot simultaneously compromise all three keys. This is not paranoia; it is institutional-grade risk management.</p>
+
+  <h3>What Is PSBT (Partially Signed Bitcoin Transaction) and Why Does It Matter?</h3>
+
+  <p>PSBT, defined in Bitcoin BIP 174, is the technical standard that makes multisig signing workflows practical. Understanding it conceptually is essential before setting up your first multisig vault.</p>
+
+  <p>When you want to send Bitcoin from a multisig wallet, the process has multiple steps that must happen in a specific order:</p>
+
+  <ol>
+    <li>The coordinator software (e.g., Sparrow Wallet) constructs an unsigned transaction — it specifies where the Bitcoin is coming from, where it is going, and the fee. This is the PSBT in its initial form: a complete transaction proposal with no signatures attached yet.</li>
+    <li>The PSBT is passed to the first hardware wallet (typically via USB, microSD, or QR code depending on the device). The hardware wallet verifies the transaction details — destination address, amount, fee — and the user approves it on the device. The device adds its partial signature to the PSBT and returns the updated PSBT to the coordinator software.</li>
+    <li>The PSBT is then passed to the second hardware wallet for the same process. That device adds its partial signature. The PSBT now has two signatures — enough to meet the 2-of-3 quorum.</li>
+    <li>The coordinator software has a fully-signed PSBT. It finalizes the transaction and broadcasts it to the Bitcoin network.</li>
+  </ol>
+
+  <p>The elegant property of PSBT is that each step is independent: the hardware wallets don't need to communicate with each other, they don't need to be online simultaneously, and the coordinator software never holds any private keys. The process can happen sequentially over hours or days — useful when two signers are in different geographic locations.</p>
+
+  <p>For air-gapped multisig, PSBT enables the following secure workflow: the coordinator software (on a network-connected computer) creates the PSBT and saves it to a microSD card or displays it as a QR code. The microSD is carried to an air-gapped hardware device in a secure room. The device signs it and returns the microSD. The signed PSBT is then broadcast from the network-connected computer — which never had access to the private keys. This separation of signing from broadcasting is the security foundation of air-gapped multisig.</p>
+
+  <hr>
+
+  <h2 id="coordinator-software">Coordinator Software: How to Actually Run Bitcoin Multisig</h2>
+
+  <p>A hardware wallet alone cannot run multisig. You need a coordinator — software that understands the multisig wallet structure, creates PSBT transactions, coordinates the signing process across multiple devices, and broadcasts finalized transactions. Choosing the right coordinator is as important as choosing the right hardware. Here is an honest comparison of the main options.</p>
+
+  <h3>Sparrow Wallet — Best for Technical Users</h3>
+
+  <p>Sparrow Wallet is the community consensus recommendation for serious Bitcoin multisig. It is a free, open-source desktop application available for Windows, macOS, and Linux, and it provides the most comprehensive multisig feature set of any coordinator software.</p>
+
+  <ul>
+    <li><strong>Full multisig support:</strong> Sparrow handles all major multisig script types — P2SH, P2WSH, P2SH-P2WSH, and Taproot multisig. You can configure any M-of-N quorum and import xpubs from virtually any hardware wallet.</li>
+    <li><strong>PSBT-native:</strong> All transaction signing flows through PSBT. Sparrow supports USB, microSD (via file import), and animated QR code workflows for interacting with hardware devices.</li>
+    <li><strong>Transaction visualization:</strong> Sparrow provides unusually detailed transaction views — fee breakdown, UTxO analysis, change address verification — that make it easy to audit exactly what you are signing before approving on hardware.</li>
+    <li><strong>Privacy features:</strong> Sparrow connects to your own full Bitcoin node (or Electrum server) for maximum transaction privacy. It does not send your transaction data to third-party servers unless you explicitly choose a public Electrum endpoint.</li>
+    <li><strong>Coin control:</strong> Advanced UTXO management lets you specify exactly which coins are spent in each transaction — important for privacy and fee optimization in multisig vaults with multiple incoming deposits.</li>
+    <li><strong>Open source:</strong> Sparrow's code is fully public and actively maintained. The developer (Craig Raw) has a long track record of responsive updates and community engagement.</li>
+  </ul>
+
+  <p>Recommended for: technical users who want full control and transparency over their multisig setup. The learning curve is real — expect to spend 3–5 hours getting comfortable with the interface before your first live multisig setup.</p>
+
+  <h3>Specter Desktop — Self-Hosted, Privacy-Focused</h3>
+
+  <p>Specter Desktop is an open-source multisig coordinator designed around privacy and self-sovereignty. Unlike Sparrow (which is a standalone desktop app), Specter runs as a local web server — you access it via your browser at a local address (e.g., 127.0.0.1:25441), which enables flexible deployment including on a dedicated Raspberry Pi or home server running 24/7.</p>
+
+  <ul>
+    <li><strong>Bitcoin Core integration:</strong> Specter connects directly to Bitcoin Core (the reference full-node implementation), giving it direct access to the full blockchain without any third-party data providers. This is the gold standard for transaction privacy.</li>
+    <li><strong>Multi-wallet management:</strong> Specter handles multiple wallets simultaneously — useful for families with separate vault wallets, operational wallets, and test wallets.</li>
+    <li><strong>Device management:</strong> Specter has a built-in device library for all major hardware wallets, with specific PSBT export/import workflows for each.</li>
+    <li><strong>Self-hosted capability:</strong> Running Specter on a dedicated home server means your wallet coordinator is always available without running it on your main laptop — and the server can be isolated from general internet traffic.</li>
+  </ul>
+
+  <p>Recommended for: families who run their own Bitcoin node, are comfortable with server administration, and prioritize privacy above all else. Specter has a steeper initial setup than Sparrow but offers superior isolation for high-security deployments.</p>
+
+  <h3>Nunchuk — Mobile-Friendly, Best UX</h3>
+
+  <p>Nunchuk is the most accessible full-featured multisig coordinator available. It runs on iOS, Android, macOS, Windows, and Linux, and its user interface is designed for non-technical users who want multisig security without learning the underlying technical infrastructure.</p>
+
+  <ul>
+    <li><strong>Multi-platform:</strong> The same wallet is accessible across your phone and desktop simultaneously, with encrypted cloud sync for the wallet descriptor and metadata (though never for private keys).</li>
+    <li><strong>Hardware wallet support:</strong> Nunchuk supports Coldcard, Passport, Jade, Trezor, and others — the mobile app uses NFC or QR codes for air-gapped signing on supported devices.</li>
+    <li><strong>Collaborative signing UX:</strong> Nunchuk has built-in tools for coordinating signatures between multiple people — each signer receives a signing request notification and can approve on their device from wherever they are. This is useful for multisig setups with geographically dispersed signers.</li>
+    <li><strong>Inheritance protocol:</strong> Nunchuk has a built-in inheritance protocol that allows pre-configured time-locked recovery for beneficiaries — a significant differentiator for estate planning use cases.</li>
+  </ul>
+
+  <p>Recommended for: families who want the security of multisig without the technical complexity of Sparrow; setups with geographically distributed signers who need to coordinate remotely; anyone who wants the primary interface on mobile.</p>
+
+  <h3>Unchained Caravan — Browser-Based, No Installation</h3>
+
+  <p>Unchained Caravan is an open-source, browser-based multisig coordinator developed by Unchained Capital. It runs entirely in your local browser — no installation, no server, no cloud dependency — making it highly portable and transparent.</p>
+
+  <ul>
+    <li><strong>Zero installation:</strong> Load the page locally or directly from the Unchained GitHub repository. Useful for signing sessions on dedicated secure machines where you don't want to install software.</li>
+    <li><strong>Fully auditable:</strong> Since it's a browser application with no backend, the entire execution is in the browser's JavaScript engine. Technical users can inspect every function call.</li>
+    <li><strong>Limited functionality vs. Sparrow:</strong> Caravan lacks the UTXO management, privacy features, and node connectivity of Sparrow. It is best used as a secondary or emergency signing tool rather than the primary coordinator for active vault management.</li>
+  </ul>
+
+  <p>Recommended for: emergency recovery signing sessions; technical users who want a browser-based tool for a specific signing ceremony; supplementary use alongside a primary Sparrow or Nunchuk setup.</p>
+
+  <h3>Casa App — Managed Multisig, Lowest Complexity</h3>
+
+  <p>Casa is a managed multisig product — a subscription service that handles much of the coordination complexity for you. Casa provides a polished mobile and desktop app, professional key support, and dedicated recovery assistance as part of their service tiers.</p>
+
+  <ul>
+    <li><strong>Key storage options:</strong> Depending on the plan tier, Casa holds one of your three keys in their secure infrastructure. This provides a professional recovery path — if you lose access to your other keys, Casa can help reconstruct the quorum.</li>
+    <li><strong>Managed setup:</strong> Casa guides users through hardware wallet setup, multisig creation, and test transactions — significantly reducing the risk of setup errors for non-technical users.</li>
+    <li><strong>Health check system:</strong> Casa has an annual key health check system that prompts you to verify all keys are functioning — reducing the silent failure risk in long-term multisig holdings.</li>
+    <li><strong>Cost:</strong> Casa Diamond (their top tier with 5-key multisig and gold key) runs approximately $1,800/year. Casa Gold (3-key multisig, no physical gold key) runs approximately $250/year. This is a meaningful ongoing cost but represents professional managed custody for the non-technically-inclined.</li>
+  </ul>
+
+  <p>Recommended for: non-technical Bitcoin holders with $250K+ who want the security of multisig without a 20-hour technical learning curve; families where operational simplicity is the paramount concern.</p>
+
+  <h3>What Is a Watch-Only Wallet and Why You Need One</h3>
+
+  <p>A watch-only wallet is a wallet configuration that contains only the public keys (xpubs) of your multisig setup — not the private keys that can sign transactions. It allows you to monitor your Bitcoin balance, view incoming and outgoing transactions, and generate new receive addresses without ever touching the private keys.</p>
+
+  <p>Watch-only wallets are essential in multisig custody for several reasons:</p>
+
+  <ul>
+    <li><strong>Safe balance monitoring:</strong> You can check your multisig vault balance from your everyday laptop or phone without the signing hardware being present or at risk. The watch-only configuration has zero ability to initiate transactions — even if your monitoring device is completely compromised, an attacker gains no ability to move funds.</li>
+    <li><strong>Receiving funds safely:</strong> You can generate fresh receive addresses for your multisig vault on a network-connected device without bringing the hardware wallets out of storage. The watch-only wallet verifies that generated addresses belong to your multisig quorum.</li>
+    <li><strong>Transaction construction:</strong> For spending, the watch-only wallet creates the unsigned PSBT — which is then taken to the hardware wallets for signing. The watch-only wallet manages the first and last steps of the PSBT flow.</li>
+    <li><strong>Inheritance visibility:</strong> A watch-only wallet can be given to a trusted family member, attorney, or trustee — they can monitor the vault balance and prepare signing coordination without any ability to move funds unilaterally.</li>
+  </ul>
+
+  <p>In Sparrow Wallet, a watch-only wallet is created automatically when you set up a multisig wallet — it stores the xpubs and wallet descriptor but not the seeds. In Casa and Nunchuk, the same concept is built into the app architecture. The bottom line: every multisig vault should have a corresponding watch-only wallet on a daily-use device so monitoring is routine, not a special occasion requiring hardware wallet retrieval.</p>
+
+  <hr>
+
+  <h2 id="setup-guide">Step-by-Step: Setting Up Your First 2-of-3 Bitcoin Multisig</h2>
+
+  <p>This guide walks through setting up a DIY 2-of-3 multisig using Sparrow Wallet as the coordinator. This is the path for technically capable families who want maximum sovereignty and zero ongoing subscription costs. If you prefer a managed approach, Casa's onboarding documentation is similarly thorough — the hardware setup steps are the same; the coordinator workflow differs.</p>
+
+  <p><strong>Time required:</strong> 3–6 hours for initial setup; 1–2 additional hours for recovery testing. Budget a full day the first time you do this — do not rush.</p>
+
+  <p><strong>What you will need:</strong></p>
+  <ul>
+    <li>Three hardware wallets (two different brands recommended — e.g., Coldcard + Passport + Jade)</li>
+    <li>A dedicated laptop (ideally one that has never been used for other purposes; an older laptop wiped and running a fresh OS is ideal)</li>
+    <li>Stainless steel seed backup plates — one per hardware wallet (e.g., Cryptosteel, Blockplate, or similar)</li>
+    <li>Three secure storage locations identified in advance (primary residence, off-site location, and a third distinct location)</li>
+    <li>A USB stick for moving PSBTs between the laptop and air-gapped devices (if not using QR code workflow)</li>
+    <li>The Sparrow Wallet download from sparrowwallet.com (verify GPG signature before installing)</li>
+  </ul>
+
+  <h3>Step 1: Acquire Three Hardware Wallets (Two Different Brands Recommended)</h3>
+
+  <p>Purchase hardware wallets directly from the manufacturer — not from Amazon, eBay, or any third-party seller. Supply chain tampering is a real attack vector; a hardware wallet purchased from an unofficial channel may have been modified to extract your seed phrase.</p>
+
+  <p>When the devices arrive, inspect the tamper-evident packaging carefully. If anything looks opened or compromised, do not use the device — contact the manufacturer. Initialize each device fresh: generate a new seed phrase on the device itself (never use a seed phrase provided in the box — this is a scam). Write down the 24-word seed phrase on paper temporarily, then engrave it on your stainless steel backup plate. Verify the engraved plate against the screen word by word before committing to it as your permanent backup.</p>
+
+  <p>Assign each device a role in your mental model: Device 1 (primary location), Device 2 (secondary location), Device 3 (off-site or custodian key). Do not assign Device 3 a role until after you have tested the full multisig workflow — it may need to be accessible for the setup and testing phase before going to its permanent off-site location.</p>
+
+  <h3>Step 2: Install Sparrow Wallet on a Dedicated Laptop</h3>
+
+  <p>Download Sparrow Wallet from sparrowwallet.com. Before installing, verify the GPG signature against the published public key — this confirms you are installing legitimate, unmodified software. Sparrow's documentation has a step-by-step verification guide. Skip this step only if you are comfortable accepting the risk that you may be installing compromised software.</p>
+
+  <p>If you are using an air-gapped setup: install Sparrow on a laptop that has never been connected to the internet after installation, or use a Tails OS live USB to run Sparrow in a clean, amnesiac environment. This is the gold standard for setup security — but also the most technically demanding path. For most families, Sparrow on a dedicated (but not air-gapped) laptop is a reasonable starting point.</p>
+
+  <p>Connect Sparrow to your Bitcoin node if you have one, or configure it to use a trusted Electrum server. Connecting Sparrow to a public server reduces privacy but works correctly. For vault management with millions at stake, running your own node is strongly recommended.</p>
+
+  <h3>Step 3: Generate the xpub from Each Device and Import into Sparrow</h3>
+
+  <p>Each hardware wallet needs to export its extended public key (xpub) for the multisig derivation path. This is not your private key — the xpub is a public identifier that allows the coordinator to generate receiving addresses and verify the wallet structure without any signing capability.</p>
+
+  <p>The correct derivation path for native SegWit multisig (P2WSH) is: <code style="font-family:monospace;font-size:0.85em;background:var(--bg-card);padding:0.1em 0.4em;border-radius:2px;">m/48'/0'/0'/2'</code>. For Taproot multisig, the path differs — follow the hardware wallet's documentation for Taproot P2TR multisig specifically. Do not mix derivation paths across devices in the same quorum.</p>
+
+  <p>In Sparrow, go to File → New Wallet → Multi Signature. Select 2-of-3. For each key, select the appropriate hardware wallet type and connect the device when prompted (or import via file or QR code for air-gapped devices). Sparrow will import the xpub and display a key fingerprint for verification.</p>
+
+  <p>For Coldcard (air-gapped): export the xpub to a microSD card from the Coldcard menu, import the file into Sparrow. For Passport and Jade (QR code workflow): Sparrow will display a QR code to scan with the device, and the device responds with a QR code containing the xpub for Sparrow to import. Verify the key fingerprint shown in Sparrow matches what the hardware device displays.</p>
+
+  <h3>Step 4: Create the Multisig Wallet Descriptor — Back This Up Immediately</h3>
+
+  <p>Once all three xpubs are imported, Sparrow will generate the multisig wallet descriptor — the cryptographic string that defines the complete wallet structure. It looks something like:</p>
+
+  <p><code style="font-family:monospace;font-size:0.82em;background:var(--bg-elevated);border:1px solid var(--border);padding:0.5rem 0.75rem;display:block;margin:1rem 0;overflow-wrap:break-word;border-radius:2px;">wsh(sortedmulti(2,[a1b2c3d4/48'/0'/0'/2']xpub6...,[e5f6a7b8/48'/0'/0'/2']xpub6...,[c9d0e1f2/48'/0'/0'/2']xpub6...))</code></p>
+
+  <p><strong>This descriptor is as critical as the seeds themselves.</strong> Without it, even possessing all three seed phrases may not be sufficient to reconstruct the wallet — you would need to know the quorum (2-of-3), the script type (P2WSH), the derivation paths, and the xpubs in the correct order. The descriptor encodes all of this information in one string.</p>
+
+  <p>Back up the descriptor in at least three ways:</p>
+  <ol>
+    <li>Export it from Sparrow to a file and store on an encrypted USB drive in a secure location</li>
+    <li>Print it and store with your key management document</li>
+    <li>Store a copy with each hardware wallet's seed backup (some families engrave the descriptor or its hash alongside the seed plate)</li>
+  </ol>
+
+  <p>Some hardware wallets (particularly Coldcard and Passport) can store the wallet descriptor directly on the device's secure storage — use this feature if available. It means each device carries a record of the quorum it participates in, which simplifies recovery if the coordinator software record is lost.</p>
+
+  <h3>Step 5: Verify a Receive Address on All Three Devices Before Funding</h3>
+
+  <p>Before sending any real Bitcoin to the multisig wallet, verify that all three hardware devices can independently confirm the same receive address. In Sparrow, click "Receive" to generate a deposit address. Then, on each hardware wallet, navigate to the address verification menu and confirm the same address is displayed on the device's screen.</p>
+
+  <p>This verification step is non-negotiable. It proves that each device has correctly imported the wallet descriptor and agrees on the multisig structure. If any device shows a different address, stop and diagnose the discrepancy before proceeding — mismatched wallet descriptors could mean you are about to send Bitcoin to an address you cannot recover.</p>
+
+  <p>Address verification on hardware is also a protection against malware on the coordinator computer. If an attacker has compromised Sparrow to substitute a different receive address, the hardware wallet — which independently derives addresses from the stored xpubs — will show the correct address and the discrepancy will be visible. Always verify on hardware before funding.</p>
+
+  <h3>Step 6: Send a Small Test Amount First</h3>
+
+  <p>Send a small, meaningful-but-affordable amount as your first transaction — not $1,000, and not your entire holding. $50–$200 is appropriate: real enough that you care about it, small enough that a mistake is not catastrophic.</p>
+
+  <p>Confirm the transaction appears in Sparrow correctly (with the correct txid and block confirmation). Then proceed to the test withdrawal: construct a PSBT to send a portion of the test amount back to an external address you control. Work through the full signing ceremony: create the PSBT in Sparrow, carry it to Device 1, sign it, return it to Sparrow, carry the partially-signed PSBT to Device 2, sign it, return it to Sparrow, broadcast. Confirm the test withdrawal appears on-chain correctly.</p>
+
+  <p>If anything breaks during this test — if a device refuses to sign, if Sparrow shows an error, if the broadcast fails — you have identified a problem before it costs you real money. Common issues at this stage: wrong derivation path on one device, firmware version mismatch, incorrect PSBT workflow for air-gapped signing. All are diagnosable and fixable.</p>
+
+  <h3>Step 7: Practice the Full PSBT Signing Workflow Until It Is Muscle Memory</h3>
+
+  <p>Multisig signing under pressure — when you urgently need to move funds, when one device is not functioning as expected, when you are coordinating with a family member in another state — is dramatically harder than multisig signing when you are calm, prepared, and practicing. Do not let the first time you sign under pressure be when it actually matters.</p>
+
+  <p>After your test transaction succeeds, practice the full workflow at least three more times before considering the setup complete. Specifically, practice:</p>
+  <ul>
+    <li>Signing with Device 1 and Device 2 (normal primary workflow)</li>
+    <li>Signing with Device 1 and Device 3 (simulating Device 2 unavailability)</li>
+    <li>Signing with Device 2 and Device 3 (simulating Device 1 unavailability — this validates that your off-site or co-signer key works correctly)</li>
+  </ul>
+
+  <p>The third practice scenario — using the "backup" key combination — is the most important and most often skipped. Families who have never tested signing with their off-site key discover, at the worst possible moment, that the off-site device has a dead battery, outdated firmware, or a forgotten PIN. Test every key combination before locking the setup.</p>
+
+  <h3>Step 8: Run a Recovery Test with a Family Member or Attorney</h3>
+
+  <p>The final step before considering your multisig setup production-ready is a recovery test: have a trusted person who was not present for the original setup attempt to construct a signing ceremony using only the written documentation.</p>
+
+  <p>Give your trusted contact the Key Management Document (described in detail in Section F below), a copy of the wallet descriptor, and access to Device 3 (if they are your designated co-signer). Do not coach them through the process — have them work from the documentation alone. Identify any gaps: steps that seemed obvious to you but are ambiguous to someone reading the document cold. Fix the documentation. Repeat until the recovery test succeeds without coaching.</p>
+
+  <p>This may feel excessive. Consider: the entire purpose of multisig inheritance design is that someone else can recover your Bitcoin after you are gone. A recovery test is the only way to verify that the documentation actually works. Every family office should run this test annually — not just once at setup.</p>
+
+  <hr>
+
+  <h2 id="cost-comparison">Cost Comparison: Every Bitcoin Custody Option</h2>
+
+  <p>One of the most common objections to multisig is cost — the perception that institutional-grade custody requires institutional-grade budgets. The reality is more nuanced. Here is a complete cost comparison across every meaningful custody option, from the cheapest to the most expensive.</p>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Custody Setup</th>
+        <th>Hardware Cost</th>
+        <th>Annual Cost</th>
+        <th>Complexity</th>
+        <th>Security Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Software wallet (single-sig)</td>
+        <td>$0</td>
+        <td>$0</td>
+        <td>Low</td>
+        <td>Low — private key on networked device; malware risk</td>
+      </tr>
+      <tr>
+        <td>Hardware wallet (single-sig)</td>
+        <td>$80–$150</td>
+        <td>$0</td>
+        <td>Low</td>
+        <td>Medium — single point of failure; physical theft risk</td>
+      </tr>
+      <tr>
+        <td>DIY 2-of-3 multisig</td>
+        <td>$240–$450</td>
+        <td>$0</td>
+        <td>High — technical setup; ongoing documentation discipline</td>
+        <td>High — no single point of failure; geographic redundancy possible</td>
+      </tr>
+      <tr>
+        <td>Collaborative custody (Unchained)</td>
+        <td>$150–$300</td>
+        <td>$250–$500</td>
+        <td>Medium — professional onboarding; Unchained holds one key</td>
+        <td>High — multisig with professional key; recovery assistance</td>
+      </tr>
+      <tr>
+        <td>Managed multisig (Casa Diamond)</td>
+        <td>$300</td>
+        <td>$1,800</td>
+        <td>Low — Casa manages coordinator; 5-key multisig option</td>
+        <td>Very High — professional key management; dedicated recovery support</td>
+      </tr>
+      <tr>
+        <td>Institutional (Fidelity / Coinbase)</td>
+        <td>$0</td>
+        <td>0.25–0.50% AUM</td>
+        <td>Low — exchange-style interface; no hardware required</td>
+        <td>High — institutional custody; counterparty risk remains</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Reading this table correctly requires understanding what each cost structure implies at different holding sizes:</p>
+
+  <p>For a $100,000 Bitcoin position, DIY 2-of-3 multisig costs approximately $300–$450 in hardware (one-time) and $0/year in ongoing fees. Unchained collaborative custody costs the same hardware plus $250–$500/year. Casa Diamond costs $1,800/year. Institutional custody at 0.35% AUM costs $350/year. The DIY path is clearly cheapest at this scale — but only if you can execute the technical setup correctly and maintain the documentation discipline over years.</p>
+
+  <p>For a $1,000,000 Bitcoin position, the cost calculus shifts. Institutional custody at 0.35% costs $3,500/year. Casa Diamond at $1,800/year is cheaper than institutional. DIY multisig at $0/year has the lowest ongoing cost — but at $1M, the cost of a documentation failure is $1,000,000. The "cost" of getting DIY wrong at this scale is not the hardware cost; it is the entire position. Professional guidance at setup ($5,000–$15,000 for a comprehensive consultation) becomes trivially small insurance against that risk.</p>
+
+  <p>For a $10,000,000 Bitcoin position, institutional custody at 0.35% costs $35,000/year. DIY multisig at $0/year plus $15,000 for professional setup guidance still comes out significantly cheaper over five years. Collaborative custody at $500/year is clearly the cost winner at this scale — the economic argument for paying AUM-based institutional fees becomes very difficult to justify when the alternatives deliver comparable security at dramatically lower cost.</p>
+
+  <p>The key insight: custody cost should be evaluated as a percentage of position value, not as an absolute dollar amount. A family that spends $15,000 setting up DIY multisig correctly for a $2,000,000 position has paid a 0.75% one-time fee. Institutional custody at 0.35%/year costs $7,000 per year — the DIY setup pays for itself in the second year and is free every year after.</p>
+
+  <hr>
+
+  <h2 id="legal-documentation">Legal Documentation for Bitcoin Multisig: What Your Attorney Must Know</h2>
+
+  <p>The most sophisticated multisig setup in the world provides zero estate planning benefit if your attorney, trustee, and heirs cannot execute the signing ceremony when you are gone. Legal documentation for Bitcoin multisig is a distinct discipline from both traditional estate planning and Bitcoin technical setup — it sits at the intersection of both. Here is what every multisig family must have in place.</p>
+
+  <h3>The Technical Access Document: Structure, Not Secrets</h3>
+
+  <p>A Technical Access Document (TAD) is the primary operational guide for your Bitcoin custody setup. Critically, it does <em>not</em> contain private keys or seed phrases — those are stored separately in their respective physical locations. The TAD contains everything needed to understand the custody structure without enabling anyone who reads it to steal the funds.</p>
+
+  <p>A well-constructed Technical Access Document includes:</p>
+
+  <ul>
+    <li><strong>Wallet structure overview:</strong> "We use a 2-of-3 multisig wallet. Any 2 of 3 keys can authorize a transaction. The three keys are held at: (Location A), (Location B), and (Location C)."</li>
+    <li><strong>Device specifications:</strong> Hardware wallet model and firmware version for each key position. "Key 1: Coldcard Mk4, firmware 6.2.1. Key 2: Passport Batch 2, firmware 2.3.0. Key 3: held by [Custodian Name], contact: [phone/email]."</li>
+    <li><strong>Access instructions:</strong> Step-by-step process for retrieving each key from its physical storage location. Location A key: "In the home safe at [address]. Safe combination is in the estate attorney's sealed envelope."</li>
+    <li><strong>Coordinator software:</strong> "We use Sparrow Wallet version 1.X for transaction coordination. Download from sparrowwallet.com. The watch-only wallet file is stored at [location]."</li>
+    <li><strong>Recovery workflow:</strong> Step-by-step signing ceremony instructions written for someone who has never used multisig — or a contact number for a Bitcoin technical specialist who can guide the process.</li>
+    <li><strong>Wallet descriptor location:</strong> "The wallet descriptor is stored at [Location X]. This is required to reconstruct the multisig wallet in Sparrow."</li>
+  </ul>
+
+  <p>Store at least three copies of the TAD: with the primary estate attorney, with the primary trustee, and in a sealed envelope in the home safe. Review and update annually or whenever the custody setup changes.</p>
+
+  <h3>The Wallet Descriptor Backup: As Critical as the Seeds</h3>
+
+  <p>This point deserves repetition and emphasis: the wallet descriptor is as important as the seed phrases. Many Bitcoin multisig horror stories involve families who had all three seeds but could not recover the wallet because they had not preserved the descriptor. Let this not be your family's story.</p>
+
+  <p>The wallet descriptor is typically a single line of text that encodes: the quorum threshold (2-of-3), the script type (P2WSH, P2TR, etc.), the derivation path for each key, and the xpub for each key. Without this information, reconstructing a multisig wallet from seeds alone requires cryptographic guesswork — the correct key ordering within the multisig script, the correct derivation path, and the correct script type must all be guessed correctly. This is technically possible but requires advanced expertise and is not reliably executable by most estate attorneys or family trustees.</p>
+
+  <p>Where to store the wallet descriptor:</p>
+  <ul>
+    <li>Exported from Sparrow Wallet as an output descriptor file — store on encrypted USB drive</li>
+    <li>Printed and placed in each of the three physical key storage locations alongside (not with) the seed backup</li>
+    <li>Stored in the estate attorney's file alongside the will and trust documents</li>
+    <li>If supported by the hardware devices, stored on each device's internal memory</li>
+  </ul>
+
+  <p>Consider using a QR code generator to encode the descriptor as a QR code — this makes it faster and more error-resistant to import into Sparrow during a recovery scenario than manually retyping a 300-character string.</p>
+
+  <h3>Briefing Your Attorney: The Quorum Structure Conversation</h3>
+
+  <p>Most estate attorneys have no experience with Bitcoin multisig. The briefing conversation is necessary and should happen before you need it — not after you have passed away and your trustee is calling the attorney in a panic. The key concepts your attorney must understand:</p>
+
+  <p><strong>Quorum structure:</strong> "This is a 2-of-3 multisig. Any 2 of the 3 designated key holders can authorize a transaction without the third. No single party can move funds alone. This is by design."</p>
+
+  <p><strong>No private keys in legal documents:</strong> The will, trust, or any court-filed document should reference the existence of a Bitcoin custody setup and direct the trustee to the Technical Access Document — but should never contain private keys, seed phrases, or wallet descriptors. Legal documents are discoverable and may become part of public court records; any sensitive custody information in them is effectively public.</p>
+
+  <p><strong>Trustee vs. key holder distinction:</strong> Being the trustee of a Bitcoin trust and being a key holder in the multisig are different roles. The trustee has legal authority over the assets; the key holder has technical signing authority. These roles can be the same person or different people — both roles need to be clearly defined and documented.</p>
+
+  <p><strong>Timing of distributions:</strong> Multisig transactions are not instantaneous — a signing ceremony may take hours if keys are geographically dispersed or if the signing parties need to coordinate remotely. The estate attorney should understand that "distribute the Bitcoin" is a multi-day process, not a single button press.</p>
+
+  <h3>Power of Attorney for Bitcoin Custody Access</h3>
+
+  <p>A durable power of attorney (POA) for financial matters can be drafted to include specific provisions for Bitcoin custody. The POA should:</p>
+
+  <ul>
+    <li>Explicitly reference digital assets and cryptocurrency custody as within the agent's authority</li>
+    <li>Grant the agent authority to access secured storage locations where hardware wallets and seed backups are held</li>
+    <li>Authorize the agent to use coordinator software and execute Bitcoin transactions on behalf of the principal</li>
+    <li>Reference the Technical Access Document as the operational guide for exercising this authority</li>
+  </ul>
+
+  <p>Several states have adopted the Revised Uniform Fiduciary Access to Digital Assets Act (RUFADAA), which provides a legal framework for fiduciaries (including POA agents and trustees) to access digital assets. Verify that your state has adopted this framework and that your POA language is compliant with the applicable state version. Without this, a bank or institution may refuse to honor a POA for digital assets even if they would honor it for traditional financial accounts.</p>
+
+  <p>For multisig specifically, the POA should make clear that the agent's role is as a key holder or signing party in a multi-party authorization scheme — not as the sole controller of the funds. This distinction matters for liability: an agent who co-signs a multisig transaction with another authorized party is not acting unilaterally but executing the established custody structure.</p>
+
+  <h3>The Dry-Run Inheritance Test: Before You Die</h3>
+
+  <p>The most important action in Bitcoin inheritance planning is one that most families never take: a dry-run inheritance test. This means having a trusted person — your trustee, your spouse, your oldest child, your estate attorney — attempt a simulated Bitcoin recovery from your documentation before you die.</p>
+
+  <p>The dry run should simulate the realistic scenario as closely as possible:</p>
+  <ol>
+    <li>The test executor has access to the Technical Access Document and the wallet descriptor</li>
+    <li>The test executor has access to two of the three key locations (simulating the primary holder being unavailable)</li>
+    <li>The test executor attempts to load the multisig wallet in Sparrow using the descriptor</li>
+    <li>The test executor constructs a test PSBT and walks through signing with the two available devices</li>
+    <li>The test executor broadcasts a small test transaction to verify end-to-end functionality</li>
+  </ol>
+
+  <p>What the dry run reveals: documentation gaps that seemed obvious to you but are impenetrable to a fresh reader; hardware that is malfunctioning or has updated firmware that breaks compatibility; seed phrases that have been damaged or are unreadable; coordinator software versions that have changed since setup; and the emotional reality of executing a technical process under the stress of a bereavement situation.</p>
+
+  <p>Families that run a dry-run test before the primary holder's death almost always find at least one problem that would have caused serious delays or permanent loss under real conditions. Families that skip the dry run because "the documentation is clear and everything is set up correctly" are the ones whose heirs end up in Bitcoin recovery forums posting about irretrievable funds.</p>
+
+  <p>Conduct a dry-run inheritance test annually. Update the documentation after each test. Treat it like a fire drill: the value is in identifying what does not work before it matters, not in verifying what you already know works.</p>
+
+  <div style="background:var(--bg-elevated);border:1px solid var(--accent-border);border-radius:4px;padding:1.75rem 2rem;margin:2.5rem 0;">
+    <p style="font-family:var(--display);font-size:1.05rem;color:var(--text);margin-bottom:0.6rem;font-weight:400;">Bitcoin &amp; Tax: The Strategy Most Family Offices Miss</p>
+    <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">Custody architecture is only half the wealth protection equation. The other half is tax strategy — and for high-net-worth Bitcoin holders, Bitcoin mining remains the most powerful legal tax offset available. Equipment depreciation, bonus depreciation, and operating expense deductions can dramatically reduce taxable income in the same year you accumulate more Bitcoin. Abundant Mines has compiled every major Bitcoin mining tax strategy in one place.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-border);padding:0.5rem 1.2rem;border-radius:2px;display:inline-block;text-decoration:none;">Bitcoin Mining Tax Strategy →</a>
+  </div>
+
+  <hr>
+
   <h2 id="faq">Frequently Asked Questions</h2>
 
   <div style="margin: 2rem 0;">
@@ -408,9 +953,37 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: fle
       <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Does multisig Bitcoin custody work for estate planning?</h3>
       <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Yes — multisig is superior to single-signature for estate planning. One key held by the primary owner, one by a family trustee, one by an estate attorney: after death, trustee and attorney co-sign to transfer funds to heirs. No single party has unilateral access. This aligns custody architecture with legal governance structures at the protocol level.</p>
     </div>
-    <div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
       <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the difference between Taproot multisig and legacy multisig?</h3>
       <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Legacy P2SH multisig transactions are identifiable on the Bitcoin blockchain. Taproot-based multisig (using Schnorr/MuSig2) produces transactions indistinguishable from standard single-signature on-chain — providing meaningful privacy for large holdings. Taproot also reduces transaction fees via signature aggregation. New multisig setups should use Taproot; existing setups remain secure but visible on-chain.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">How much Bitcoin should I have before using multisig?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">The threshold framework: under $50,000, a single hardware wallet with secure seed backup is acceptable; $50K–$250K, a hardware wallet is mandatory and multisig is strongly recommended; above $250K, multisig is non-negotiable; above $1M, multisig with geographic key distribution across multiple locations and ideally multiple jurisdictions is the institutional standard. At each threshold, the consequence of single-point-of-failure failure scales proportionally. The cost of setting up DIY multisig ($240–$450 in hardware) is trivially small against any holding above $50K.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Which hardware wallets support multisig?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">All major hardware wallets support multisig, but with different capabilities. Coldcard Mk4 (by Coinkite) is considered the gold standard — air-gapped, PSBT-native, open-source firmware, purpose-built for multisig. Passport by Foundation Devices is air-gapped, fully open-source (hardware and firmware), and has an excellent user experience. Jade by Blockstream is open-source and affordable, with air-gapped QR mode. Trezor Model T and Safe 3 support multisig via USB connection. Using two or three different brands in your multisig quorum is strongly recommended — hardware diversity prevents a single manufacturer's vulnerability from compromising all keys simultaneously.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What software do I use for multisig Bitcoin?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">You need coordinator software to manage the multisig wallet and signing process. The main options: Sparrow Wallet (open-source desktop app, best for technical users, full PSBT support, connects to your own node), Specter Desktop (self-hosted, privacy-focused, runs as a local server), Nunchuk (mobile-friendly, best UX for non-technical users, built-in inheritance protocol), Unchained Caravan (browser-based, no installation, from a collaborative custody provider), and Casa app (managed multisig service, lowest complexity, subscription model). Sparrow is the community-consensus recommendation for DIY self-custody; Casa is recommended for families who want professional management.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Can I lose Bitcoin with multisig if I lose one key?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">No — in a properly configured 2-of-3 multisig, losing one key does not cause loss of funds. The remaining two keys can still authorize any transaction. However, losing one key eliminates your redundancy and increases risk: if you then lose a second key, the Bitcoin is permanently inaccessible. When you discover a key is lost, immediately reconstruct the multisig wallet using the two remaining keys and a new third key — move all funds to the new 3-key wallet before the second key can be lost. Never leave a multisig operating with only two known keys for longer than necessary.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is PSBT in Bitcoin multisig?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">PSBT (Partially Signed Bitcoin Transaction, defined in BIP 174) is the standardized format that makes multisig signing practical. The coordinator software creates an unsigned transaction as a PSBT file. Each hardware wallet adds its signature to the PSBT — without communicating with the other devices. Once the threshold number of signatures is collected (e.g., 2 of 3), the coordinator finalizes and broadcasts the transaction. PSBT enables air-gapped signing: the signing device never needs a network connection, and the coordinator (which does have network access) never holds private keys. This separation of signing from broadcasting is a core security property of serious multisig deployments.</p>
+    </div>
+    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">Is single-sig Bitcoin safe with a hardware wallet?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Single-sig with a hardware wallet is significantly safer than software wallets or exchange custody. The private key is generated and stored entirely on the hardware device and never exposed to the internet. For holdings under $50,000–$100,000 with a properly engraved seed backup stored in two separate secure locations, this is a legitimate custody approach. The fundamental limitation: it remains a single point of failure. One lost or destroyed seed backup with a non-recoverable device means permanent loss. One stolen seed backup means permanent loss with no possibility of intervention. For holdings above $100K, the risk profile of single-sig becomes increasingly difficult to defend.</p>
+    </div>
+    <div>
+      <h3 style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--text);text-transform:none;letter-spacing:0;margin-bottom:0.75rem;">What is the difference between multisig and collaborative custody?</h3>
+      <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:0;">Multisig is a Bitcoin protocol feature — it requires M-of-N cryptographic keys to sign any transaction, enforced by the network itself. Collaborative custody is a service model built on top of multisig: the family retains most of the signing power (typically 2 keys in a 2-of-3) while a professional provider holds one key for co-signing and recovery assistance. In DIY multisig, the family controls all three keys independently. In collaborative custody, the professional partner can assist with recovery if the family loses access — but cannot unilaterally move funds. Collaborative custody providers include Unchained Capital (which pioneered the model), Casa, and Theya. The distinction matters for estate planning: a collaborative custody partner can serve as a professional co-signer in the succession plan.</p>
     </div>
   </div>
 
