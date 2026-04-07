@@ -211,7 +211,7 @@
       margin-top: 5px;
     }
 
-    input[type=text], input[type=email], select, textarea {
+    input[type=text], input[type=email], input[type=tel], select, textarea {
       width: 100%;
       background: var(--bg-card);
       border: 1px solid var(--border2);
@@ -224,7 +224,7 @@
       transition: border-color 0.2s;
       -webkit-appearance: none;
     }
-    input[type=text]:focus, input[type=email]:focus,
+    input[type=text]:focus, input[type=email]:focus, input[type=tel]:focus,
     select:focus, textarea:focus {
       border-color: var(--accent);
     }
@@ -420,15 +420,62 @@
     </div>
 
     <div class="steps-indicator">
-      <div class="step-tab active" id="tab-1">Your Assets</div>
-      <div class="step-tab" id="tab-2">Your Needs</div>
-      <div class="step-tab" id="tab-3">Contact</div>
+      <div class="step-tab active" id="tab-1">Contact</div>
+      <div class="step-tab" id="tab-2">Profile</div>
+      <div class="step-tab" id="tab-3">Services</div>
     </div>
 
     <form id="qualify-form" novalidate>
 
-      <!-- STEP 1: Assets -->
+      <!-- STEP 1: Contact Info (Lead Capture) -->
       <div class="step-panel active" id="step-1">
+
+        <div class="field-group">
+          <label>Full name<span class="req">*</span></label>
+          <input type="text" name="name" placeholder="Your name" required />
+        </div>
+
+        <div class="field-group">
+          <label>Email address<span class="req">*</span></label>
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="field-group">
+          <label>Phone number<span class="req">*</span></label>
+          <input type="tel" name="phone" placeholder="(555) 123-4567" required />
+        </div>
+
+        <div class="field-group">
+          <label>How did you hear about us?</label>
+          <select name="referral_source">
+            <option value="">Select one…</option>
+            <option>Google / search</option>
+            <option>Abundant Mines / Beau Turner</option>
+            <option>Basilic / Wyatt O'Rourke</option>
+            <option>Bitment / Jordan Guess</option>
+            <option>Bitcoin Well / Chantel</option>
+            <option>FRB Law / Kyle Lawrence</option>
+            <option>Bitcoin Conference 2026</option>
+            <option>LinkedIn</option>
+            <option>Friend or colleague</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:16px 18px; margin-bottom:24px; font-size:13px; color:var(--text-secondary); line-height:1.6;">
+          🔒 Your information is private. It's shared only with the BFO team members relevant to your situation. We never sell or share data with third parties.
+        </div>
+
+        <div class="form-nav">
+          <div></div>
+          <button type="button" class="btn-next" onclick="goToStep(2)">
+            Continue <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Financial Profile + Current Team -->
+      <div class="step-panel" id="step-2">
 
         <div class="field-group">
           <label>Approximate total assets<span class="req">*</span></label>
@@ -502,16 +549,122 @@
           </select>
         </div>
 
+        <div class="field-group">
+          <label>Are you married or do you have dependents?</label>
+          <div class="radio-group" style="flex-direction:row; flex-wrap:wrap; gap:8px;">
+            <label class="radio-option" style="flex:1; min-width:140px;">
+              <input type="radio" name="family_status" value="Married with kids" />
+              <div class="ro-text">Married with kids</div>
+            </label>
+            <label class="radio-option" style="flex:1; min-width:140px;">
+              <input type="radio" name="family_status" value="Married, no kids" />
+              <div class="ro-text">Married, no kids</div>
+            </label>
+            <label class="radio-option" style="flex:1; min-width:140px;">
+              <input type="radio" name="family_status" value="Single with dependents" />
+              <div class="ro-text">Single with dependents</div>
+            </label>
+            <label class="radio-option" style="flex:1; min-width:140px;">
+              <input type="radio" name="family_status" value="Single" />
+              <div class="ro-text">Single</div>
+            </label>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Which of these do you already have? <span style="font-weight:400;color:var(--text-secondary)">(select all that apply)</span></label>
+          <div class="checkbox-grid">
+            <label class="checkbox-card">
+              <input type="checkbox" name="existing_advisors" value="CPA / Accountant" />
+              <div class="cb-text">
+                <span class="cb-label">CPA / Accountant</span>
+              </div>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="existing_advisors" value="Attorney / Estate Lawyer" />
+              <div class="cb-text">
+                <span class="cb-label">Attorney / Estate Lawyer</span>
+              </div>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="existing_advisors" value="Financial Advisor / Wealth Manager" />
+              <div class="cb-text">
+                <span class="cb-label">Financial Advisor / Wealth Manager</span>
+              </div>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="existing_advisors" value="Insurance / Risk Advisor" />
+              <div class="cb-text">
+                <span class="cb-label">Insurance / Risk Advisor</span>
+              </div>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="existing_advisors" value="None of the above" />
+              <div class="cb-text">
+                <span class="cb-label">None of the above</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Do your current advisors specialize in Bitcoin or digital assets?</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="advisor_bitcoin_exp" value="Yes, they're Bitcoin-native" />
+              <div class="ro-text">Yes, they're Bitcoin-native</div>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="advisor_bitcoin_exp" value="Somewhat — they've handled some crypto" />
+              <div class="ro-text">Somewhat — they've handled some crypto</div>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="advisor_bitcoin_exp" value="No — traditional advisors only" />
+              <div class="ro-text">No — traditional advisors only</div>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="advisor_bitcoin_exp" value="Not sure" />
+              <div class="ro-text">Not sure</div>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="advisor_bitcoin_exp" value="N/A — I don't have advisors yet" />
+              <div class="ro-text">N/A — I don't have advisors yet</div>
+            </label>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Have you sold or do you plan to sell Bitcoin in 2026?</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="btc_sell_plans" value="Yes, I've already sold this year" />
+              <div class="ro-text">Yes, I've already sold this year</div>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="btc_sell_plans" value="Yes, planning to sell" />
+              <div class="ro-text">Yes, planning to sell</div>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="btc_sell_plans" value="No plans to sell" />
+              <div class="ro-text">No plans to sell</div>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="btc_sell_plans" value="Not sure yet" />
+              <div class="ro-text">Not sure yet</div>
+            </label>
+          </div>
+        </div>
+
         <div class="form-nav">
-          <div></div>
-          <button type="button" class="btn-next" onclick="goToStep(2)">
+          <button type="button" class="btn-back" onclick="goToStep(1)">← Back</button>
+          <button type="button" class="btn-next" onclick="goToStep(3)">
             Continue <span>→</span>
           </button>
         </div>
       </div>
 
-      <!-- STEP 2: Needs -->
-      <div class="step-panel" id="step-2">
+      <!-- STEP 3: Needs + Context -->
+      <div class="step-panel" id="step-3">
 
         <div class="field-group">
           <label>Which services are you looking for? <span style="font-weight:400;color:var(--text-secondary)">(select all that apply)</span></label>
@@ -540,7 +693,7 @@
             <label class="checkbox-card">
               <input type="checkbox" name="services" value="Bitcoin acquisition & custody" />
               <div class="cb-text">
-                <span class="cb-label">Bitcoin Acquisition</span>
+                <span class="cb-label">Bitcoin Acquisition & Custody</span>
                 <span class="cb-sub">OTC purchasing, custody solutions</span>
               </div>
             </label>
@@ -589,67 +742,26 @@
           <div class="hint">This helps us understand who to connect you with first.</div>
         </div>
 
-        <div class="form-nav">
-          <button type="button" class="btn-back" onclick="goToStep(1)">← Back</button>
-          <button type="button" class="btn-next" onclick="goToStep(3)">
-            Continue <span>→</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- STEP 3: Contact -->
-      <div class="step-panel" id="step-3">
-
         <div class="field-group">
-          <label>Full name<span class="req">*</span></label>
-          <input type="text" name="name" placeholder="Your name" required />
-        </div>
-
-        <div class="field-group">
-          <label>Email address<span class="req">*</span></label>
-          <input type="email" name="email" placeholder="you@example.com" required />
-        </div>
-
-        <div class="field-group">
-          <label>How did you hear about The Bitcoin Family Office?</label>
-          <select name="referral_source">
-            <option value="">Select one…</option>
-            <option>Google / search</option>
-            <option>Abundant Mines</option>
-            <option>Referral from Wyatt O'Rourke</option>
-            <option>Referral from Jordan Guess / Bitment</option>
-            <option>Referral from FRB Law</option>
-            <option>Bitcoin conference or event</option>
-            <option>LinkedIn</option>
-            <option>Friend or colleague</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="field-group">
-          <label>Are you married or do you have dependents?</label>
-          <div class="radio-group" style="flex-direction:row; flex-wrap:wrap; gap:8px;">
-            <label class="radio-option" style="flex:1; min-width:140px;">
-              <input type="radio" name="family_status" value="Married with kids" />
-              <div class="ro-text">Married with kids</div>
+          <label>Preferred timeline to get started</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="timeline" value="Immediately — I need help now" />
+              <div class="ro-text">Immediately — I need help now</div>
             </label>
-            <label class="radio-option" style="flex:1; min-width:140px;">
-              <input type="radio" name="family_status" value="Married, no kids" />
-              <div class="ro-text">Married, no kids</div>
+            <label class="radio-option">
+              <input type="radio" name="timeline" value="This quarter" />
+              <div class="ro-text">This quarter</div>
             </label>
-            <label class="radio-option" style="flex:1; min-width:140px;">
-              <input type="radio" name="family_status" value="Single with dependents" />
-              <div class="ro-text">Single with dependents</div>
+            <label class="radio-option">
+              <input type="radio" name="timeline" value="Within 6 months" />
+              <div class="ro-text">Within 6 months</div>
             </label>
-            <label class="radio-option" style="flex:1; min-width:140px;">
-              <input type="radio" name="family_status" value="Single" />
-              <div class="ro-text">Single</div>
+            <label class="radio-option">
+              <input type="radio" name="timeline" value="Just exploring options" />
+              <div class="ro-text">Just exploring options</div>
             </label>
           </div>
-        </div>
-
-        <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:16px 18px; margin-bottom:24px; font-size:13px; color:var(--text-secondary); line-height:1.6;">
-          🔒 Your information is private. It's shared only with the BFO team members relevant to your situation. We never sell or share data with third parties.
         </div>
 
         <div class="form-nav">
@@ -666,7 +778,7 @@
     <div class="thankyou" id="thankyou">
       <div class="ty-icon">✅</div>
       <h2>We've received your application.</h2>
-      <p>Someone from our team will follow up personally within 24 hours to learn more about your situation.</p>
+      <p>A member of our team will reach out within 24 hours to schedule an introductory call.</p>
       <div class="ty-note">
         In the meantime, explore our <a href="/blog/" style="color:var(--accent)">research library</a> — 275+ articles on Bitcoin estate planning, tax strategy, and wealth structuring.
       </div>
@@ -684,14 +796,11 @@
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw5rfL8oGxOP0WmJXjc8ax-FmpLWiRVrOJcdKuazdXkThe2-mKVpgogWx2Lkjj-ZCPn/exec';
 let currentStep = 1;
 const totalSteps = 3;
+let partialSaved = false;
 
 // Radio/checkbox visual state
 document.querySelectorAll('.radio-option input[type=radio]').forEach(input => {
   input.addEventListener('change', function() {
-    this.closest('.radio-group, .form-nav, form').querySelectorAll('.radio-option').forEach(opt => {
-      opt.classList.toggle('checked', opt.querySelector('input[type=radio]') === this);
-    });
-    // Handle radio groups correctly
     const name = this.name;
     document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
       r.closest('.radio-option').classList.toggle('checked', r === this);
@@ -701,6 +810,17 @@ document.querySelectorAll('.radio-option input[type=radio]').forEach(input => {
 
 document.querySelectorAll('.checkbox-card input[type=checkbox]').forEach(input => {
   input.addEventListener('change', function() {
+    // "None of the above" logic for existing_advisors
+    if (this.name === 'existing_advisors') {
+      if (this.value === 'None of the above' && this.checked) {
+        document.querySelectorAll('input[name="existing_advisors"]').forEach(cb => {
+          if (cb !== this) { cb.checked = false; cb.closest('.checkbox-card').classList.remove('checked'); }
+        });
+      } else if (this.value !== 'None of the above' && this.checked) {
+        const noneBox = document.querySelector('input[name="existing_advisors"][value="None of the above"]');
+        if (noneBox) { noneBox.checked = false; noneBox.closest('.checkbox-card').classList.remove('checked'); }
+      }
+    }
     this.closest('.checkbox-card').classList.toggle('checked', this.checked);
   });
 });
@@ -716,80 +836,49 @@ function updateProgress(step) {
   }
 }
 
-function goToStep(n) {
-  // Validate step 1
-  if (n > 1 && currentStep === 1) {
-    const assets = document.querySelector('input[name="total_assets"]:checked');
-    const btcPct = document.querySelector('input[name="btc_pct"]:checked');
-    const state = document.querySelector('select[name="state"]').value;
-    if (!assets || !btcPct || !state) {
-      alert('Please answer all required questions before continuing.');
-      return;
-    }
-  }
-  // Validate step 3 name/email
-  if (n > 3 && currentStep === 3) {
-    const name = document.querySelector('input[name="name"]').value.trim();
-    const email = document.querySelector('input[name="email"]').value.trim();
-    if (!name || !email) {
-      alert('Please enter your name and email.');
-      return;
-    }
-  }
-  document.getElementById('step-' + currentStep).classList.remove('active');
-  document.getElementById('step-' + n).classList.add('active');
-  currentStep = n;
-  updateProgress(n);
-  window.scrollTo({top: document.querySelector('.form-card').offsetTop - 80, behavior: 'smooth'});
-}
-
 // Collect all form data
-function collectFormData() {
+function collectFormData(partial) {
   const form = document.getElementById('qualify-form');
-  const data = { form_type: 'qualification', timestamp: new Date().toISOString() };
+  const data = {
+    form_type: 'qualification',
+    timestamp: new Date().toISOString(),
+    partial: !!partial
+  };
 
-  // Radio fields
-  ['total_assets','btc_pct','existing_entities','family_status','referral_source'].forEach(name => {
-    const el = form.querySelector(`[name="${name}"]:checked`) || form.querySelector(`[name="${name}"]`);
-    data[name] = el ? (el.value || el.options[el.selectedIndex]?.value || '') : '';
-  });
+  // Text / email / tel fields
+  data.name = (form.querySelector('input[name="name"]') || {}).value || '';
+  data.email = (form.querySelector('input[name="email"]') || {}).value || '';
+  data.phone = (form.querySelector('input[name="phone"]') || {}).value || '';
 
-  // Select
-  const stateEl = form.querySelector('select[name="state"]');
-  data.state = stateEl ? stateEl.value : '';
-
+  // Select fields
   const refEl = form.querySelector('select[name="referral_source"]');
   data.referral_source = refEl ? refEl.value : '';
 
-  // Checkboxes
-  const checked = [...form.querySelectorAll('input[name="services"]:checked')].map(c => c.value);
-  data.services = checked.join(', ');
+  const stateEl = form.querySelector('select[name="state"]');
+  data.state = stateEl ? stateEl.value : '';
 
-  // Text fields
+  // Radio fields
+  ['total_assets','btc_pct','family_status','existing_entities','advisor_bitcoin_exp','btc_sell_plans','timeline'].forEach(name => {
+    const el = form.querySelector(`input[name="${name}"]:checked`);
+    data[name] = el ? el.value : '';
+  });
+
+  // Checkbox: services
+  const services = [...form.querySelectorAll('input[name="services"]:checked')].map(c => c.value);
+  data.services = services.join(', ');
+
+  // Checkbox: existing_advisors
+  const advisors = [...form.querySelectorAll('input[name="existing_advisors"]:checked')].map(c => c.value);
+  data.existing_advisors = advisors.join(', ');
+
+  // Textarea
   data.urgent_need = (form.querySelector('textarea[name="urgent_need"]') || {}).value || '';
-  data.name = (form.querySelector('input[name="name"]') || {}).value || '';
-  data.email = (form.querySelector('input[name="email"]') || {}).value || '';
 
   return data;
 }
 
-// Form submission
-document.getElementById('qualify-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-
-  const name = document.querySelector('input[name="name"]').value.trim();
-  const email = document.querySelector('input[name="email"]').value.trim();
-  if (!name || !email) {
-    alert('Please enter your name and email address.');
-    return;
-  }
-
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Submitting…';
-
-  const data = collectFormData();
-
+// Send data to Apps Script
+async function sendToAppsScript(data) {
   try {
     await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
@@ -800,6 +889,65 @@ document.getElementById('qualify-form').addEventListener('submit', async functio
   } catch (err) {
     console.warn('Submission fetch error (non-critical):', err);
   }
+}
+
+function goToStep(n) {
+  // Validate step 1 (contact info)
+  if (n > 1 && currentStep === 1) {
+    const name = document.querySelector('input[name="name"]').value.trim();
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const phone = document.querySelector('input[name="phone"]').value.trim();
+    if (!name || !email || !phone) {
+      alert('Please enter your name, email, and phone number before continuing.');
+      return;
+    }
+    // Basic email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    // Progressive save: send partial submission
+    if (!partialSaved) {
+      const partialData = collectFormData(true);
+      sendToAppsScript(partialData);
+      partialSaved = true;
+      // Track partial submission
+      if (typeof gtag === 'function') {
+        gtag('event', 'qualify_step1_complete', {
+          referral_source: partialData.referral_source
+        });
+      }
+    }
+  }
+  // Validate step 2 (financial profile)
+  if (n > 2 && currentStep === 2) {
+    const assets = document.querySelector('input[name="total_assets"]:checked');
+    const btcPct = document.querySelector('input[name="btc_pct"]:checked');
+    const state = document.querySelector('select[name="state"]').value;
+    if (!assets || !btcPct || !state) {
+      alert('Please answer all required questions before continuing.');
+      return;
+    }
+  }
+
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  document.getElementById('step-' + n).classList.add('active');
+  currentStep = n;
+  updateProgress(n);
+  window.scrollTo({top: document.querySelector('.form-card').offsetTop - 80, behavior: 'smooth'});
+}
+
+// Form submission
+document.getElementById('qualify-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+
+  const data = collectFormData(false);
+
+  await sendToAppsScript(data);
 
   // Track conversion
   if (typeof gtag === 'function') {
@@ -807,7 +955,9 @@ document.getElementById('qualify-form').addEventListener('submit', async functio
       total_assets: data.total_assets,
       btc_pct: data.btc_pct,
       state: data.state,
-      services_count: data.services.split(',').filter(Boolean).length
+      services_count: data.services.split(',').filter(Boolean).length,
+      timeline: data.timeline,
+      referral_source: data.referral_source
     });
   }
 
