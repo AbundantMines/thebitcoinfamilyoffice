@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>BFO Team Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0a;--surface:#141414;--surface2:#1c1c1c;--border:#2a2a2a;--gold:#c9a84c;--gold-dim:#a8893e;--text:#e8e8e8;--text-muted:#888;--green:#34d399;--yellow:#fbbf24;--red:#f87171;--blue:#60a5fa}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600}
+a{color:var(--gold);text-decoration:none;transition:color .2s}
+a:hover{color:#e0c064}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 1.5rem;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);white-space:nowrap}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{color:var(--text-muted);font-size:.85rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.hamburger{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:56px;left:0;right:0;background:var(--surface);flex-direction:column;padding:1rem 1.5rem;gap:.75rem;border-bottom:1px solid var(--border)}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+}
+
+/* LAYOUT */
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+section{padding:4rem 0}
+section:first-of-type{padding-top:5rem}
+.section-title{font-size:1.75rem;color:var(--gold);margin-bottom:.5rem}
+.section-subtitle{color:var(--text-muted);font-size:.95rem;margin-bottom:2rem}
+
+/* HERO */
+.hero{text-align:center;padding:7rem 0 3rem}
+.hero h1{font-size:2.25rem;color:var(--gold);margin-bottom:.5rem}
+@media(min-width:768px){.hero h1{font-size:3rem}}
+.hero p{color:var(--text-muted);font-size:1.05rem;margin-bottom:.75rem}
+.hero .updated{color:var(--text-muted);font-size:.8rem;opacity:.7}
+
+/* CARDS */
+.card-grid{display:grid;gap:1.5rem;grid-template-columns:1fr}
+@media(min-width:640px){.card-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.card-grid{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--gold-dim);transform:translateY(-2px)}
+.card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem;gap:.75rem}
+.card-title{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--text)}
+.badge{font-size:.7rem;font-weight:600;padding:.25rem .6rem;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.badge-live{background:rgba(52,211,153,.15);color:var(--green)}
+.badge-review{background:rgba(251,191,36,.15);color:var(--yellow)}
+.badge-blocked{background:rgba(248,113,113,.15);color:var(--red)}
+.badge-pending{background:rgba(96,165,250,.15);color:var(--blue)}
+.badge-complete{background:rgba(52,211,153,.15);color:var(--green)}
+.card-desc{color:var(--text-muted);font-size:.875rem;flex:1;margin-bottom:.75rem}
+.card-features{list-style:none;margin-bottom:.75rem}
+.card-features li{font-size:.8rem;color:var(--text-muted);padding:.15rem 0;padding-left:1.1rem;position:relative}
+.card-features li::before{content:'›';position:absolute;left:0;color:var(--gold)}
+.card-note{font-size:.8rem;color:var(--yellow);font-style:italic;margin-bottom:.75rem}
+.card-link{display:inline-flex;align-items:center;gap:.35rem;font-size:.85rem;font-weight:500;margin-bottom:1rem}
+.card-link svg{width:14px;height:14px}
+
+/* FEEDBACK TOGGLE */
+.fb-toggle{background:none;border:1px solid var(--border);color:var(--text-muted);font-size:.8rem;padding:.4rem .8rem;border-radius:6px;cursor:pointer;transition:all .2s;width:100%}
+.fb-toggle:hover{border-color:var(--gold);color:var(--gold)}
+.fb-form{display:none;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border)}
+.fb-form.open{display:block}
+.fb-form label{display:block;font-size:.75rem;color:var(--text-muted);margin-bottom:.25rem;margin-top:.6rem}
+.fb-form select,.fb-form textarea{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:.5rem;font-size:.85rem;font-family:'Inter',sans-serif}
+.fb-form textarea{min-height:70px;resize:vertical}
+.fb-form select:focus,.fb-form textarea:focus{outline:none;border-color:var(--gold)}
+.rating-group{display:flex;gap:.5rem;margin-top:.25rem;flex-wrap:wrap}
+.rating-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text-muted);padding:.35rem .65rem;border-radius:6px;font-size:.8rem;cursor:pointer;transition:all .2s}
+.rating-btn:hover,.rating-btn.selected{border-color:var(--gold);color:var(--gold)}
+.fb-submit{margin-top:.75rem;background:var(--gold);color:#0a0a0a;border:none;padding:.5rem 1.25rem;border-radius:6px;font-size:.85rem;font-weight:600;cursor:pointer;transition:opacity .2s;width:100%}
+.fb-submit:hover{opacity:.85}
+.fb-submit:disabled{opacity:.5;cursor:not-allowed}
+.fb-success{color:var(--green);font-size:.85rem;margin-top:.5rem;display:none}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1rem}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{text-align:left;color:var(--gold);font-weight:600;padding:.75rem;border-bottom:2px solid var(--border);white-space:nowrap}
+td{padding:.75rem;border-bottom:1px solid var(--border);color:var(--text-muted);vertical-align:top}
+tr:hover td{background:rgba(201,168,76,.03)}
+.status-pill{display:inline-block;font-size:.75rem;padding:.2rem .5rem;border-radius:12px;font-weight:500}
+.s-todo{background:rgba(96,165,250,.12);color:var(--blue)}
+.s-progress{background:rgba(251,191,36,.12);color:var(--yellow)}
+.s-done{background:rgba(52,211,153,.12);color:var(--green)}
+.s-blocked{background:rgba(248,113,113,.12);color:var(--red)}
+.s-open{background:rgba(251,191,36,.12);color:var(--yellow)}
+.s-deferred{background:rgba(96,165,250,.12);color:var(--blue)}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:.5rem;top:.5rem;bottom:.5rem;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:1.25rem;padding-left:1rem}
+.tl-item::before{content:'';position:absolute;left:-1.55rem;top:.45rem;width:10px;height:10px;border-radius:50%;border:2px solid var(--border);background:var(--bg)}
+.tl-item.done::before{background:var(--green);border-color:var(--green)}
+.tl-item.progress::before{background:var(--yellow);border-color:var(--yellow)}
+.tl-item.pending::before{background:var(--surface);border-color:var(--border)}
+.tl-text{font-size:.9rem;color:var(--text-muted)}
+.tl-item.done .tl-text{color:var(--text)}
+
+/* FLOATING BTN */
+.float-btn{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--gold);color:#0a0a0a;border:none;padding:.7rem 1.25rem;border-radius:30px;font-size:.85rem;font-weight:600;cursor:pointer;box-shadow:0 4px 20px rgba(201,168,76,.3);transition:transform .2s,box-shadow .2s;z-index:90;display:flex;align-items:center;gap:.4rem}
+.float-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(201,168,76,.4)}
+.float-btn svg{width:16px;height:16px}
+
+/* FOOTER */
+footer{text-align:center;padding:3rem 0;color:var(--text-muted);font-size:.8rem;border-top:1px solid var(--border)}
+footer a{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">BFO Team Dashboard</div>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+  <ul class="nav-links">
+    <li><a href="#resources" onclick="closeNav()">Resources</a></li>
+    <li><a href="#decisions" onclick="closeNav()">Decisions</a></li>
+    <li><a href="#actions" onclick="closeNav()">Action Items</a></li>
+    <li><a href="#timeline" onclick="closeNav()">Timeline</a></li>
+    <li><a href="#feedback" onclick="closeNav()">Feedback</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>The Bitcoin Family Office</h1>
+    <p>Team Dashboard — Review resources, leave feedback, track decisions</p>
+    <div class="updated">Last updated: <span id="last-updated">April 7, 2026</span></div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources">
+  <div class="container">
+    <h2 class="section-title">Resources Built</h2>
+    <p class="section-subtitle">Everything we've shipped so far. Click any card to review, or expand the feedback form to leave notes.</p>
+
+    <div class="card-grid">
+
+      <!-- Pre-Qualification Form -->
+      <div class="card" data-resource="Pre-Qualification Form">
+        <div class="card-header">
+          <h3 class="card-title">Pre-Qualification Form</h3>
+          <span class="badge badge-live">✅ Live</span>
+        </div>
+        <p class="card-desc">3-step progressive form. Captures contact info first (name, email, phone), then financial profile + current advisor team, then services needed. Progressive save ensures lead capture even on abandonment.</p>
+        <ul class="card-features">
+          <li>Contact-first design</li>
+          <li>"Which advisors do you already have?" gap question</li>
+          <li>Bitcoin-native specialization question</li>
+          <li>Referral source tracking for all 5 team members</li>
+        </ul>
+        <a href="/qualify/" target="_blank" class="card-link">View Live <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <button class="fb-toggle" onclick="toggleFeedback(this)">💬 Leave Feedback</button>
+        <div class="fb-form"></div>
+      </div>
+
+      <!-- Conference One-Pager -->
+      <div class="card" data-resource="Conference One-Pager">
+        <div class="card-header">
+          <h3 class="card-title">Conference One-Pager</h3>
+          <span class="badge badge-review">✅ Live (Needs Review)</span>
+        </div>
+        <p class="card-desc">Print-ready one-pager for Bitcoin Conference. All 5 service verticals, QR code to /qualify. Print via browser → PDF or direct print.</p>
+        <p class="card-note">⚠️ Needs QR code image generated. Currently has placeholder text.</p>
+        <a href="/bfo-one-pager.html" target="_blank" class="card-link">View Live <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <button class="fb-toggle" onclick="toggleFeedback(this)">💬 Leave Feedback</button>
+        <div class="fb-form"></div>
+      </div>
+
+      <!-- Brand Assets -->
+      <div class="card" data-resource="Brand Assets">
+        <div class="card-header">
+          <h3 class="card-title">Brand Assets</h3>
+          <span class="badge badge-complete">✅ Complete</span>
+        </div>
+        <p class="card-desc">Fonts (Playfair Display, EB Garamond, Inter), color palette, brand voice guidelines. Everything Wyatt needs for conference materials.</p>
+        <a href="https://github.com/hal-abundant/thebitcoinfamilyoffice/blob/main/brand-assets.md" target="_blank" class="card-link">View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <button class="fb-toggle" onclick="toggleFeedback(this)">💬 Leave Feedback</button>
+        <div class="fb-form"></div>
+      </div>
+
+      <!-- Website -->
+      <div class="card" data-resource="Website">
+        <div class="card-header">
+          <h3 class="card-title">Website</h3>
+          <span class="badge badge-live">✅ Live</span>
+        </div>
+        <p class="card-desc">~330 pages. Homepage, 272+ blog articles, 50 state pages, 8 interactive tools, services directory, FAQ with schema markup.</p>
+        <a href="https://thebitcoinfamilyoffice.com" target="_blank" class="card-link">View Live <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <button class="fb-toggle" onclick="toggleFeedback(this)">💬 Leave Feedback</button>
+        <div class="fb-form"></div>
+      </div>
+
+      <!-- CRM -->
+      <div class="card" data-resource="Client Pipeline CRM">
+        <div class="card-header">
+          <h3 class="card-title">Client Pipeline CRM</h3>
+          <span class="badge badge-blocked">⏳ Blocked</span>
+        </div>
+        <p class="card-desc">Shared Google Sheet with Pipeline tab (20 columns tracking full client journey) and Team Contacts tab. Will auto-populate from /qualify form submissions.</p>
+        <p class="card-note">Coming soon — pending Google re-auth</p>
+        <button class="fb-toggle" onclick="toggleFeedback(this)">💬 Leave Feedback</button>
+        <div class="fb-form"></div>
+      </div>
+
+      <!-- Data Sharing Consent -->
+      <div class="card" data-resource="Data Sharing Consent">
+        <div class="card-header">
+          <h3 class="card-title">Data Sharing Consent</h3>
+          <span class="badge badge-pending">🔲 Pending (Kyle)</span>
+        </div>
+        <p class="card-desc">Simple data-sharing agreement for trial clients. Kyle to draft so all 5 members can share client info during pilot phase.</p>
+        <button class="fb-toggle" onclick="toggleFeedback(this)">💬 Leave Feedback</button>
+        <div class="fb-form"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DECISIONS -->
+<section id="decisions">
+  <div class="container">
+    <h2 class="section-title">Decision Points</h2>
+    <p class="section-subtitle">Open decisions the team needs to resolve. Owners are accountable for driving each to closure.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Decision</th><th>Owner</th><th>Status</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--text)">Entity structure for umbrella company</td>
+            <td>Kyle</td>
+            <td><span class="status-pill s-deferred">Deferred</span></td>
+            <td>Ham and egg first, formalize after 5-10 clients</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text)">Fee splitting model</td>
+            <td>All</td>
+            <td><span class="status-pill s-open">Open</span></td>
+            <td>Pari-passu based on work done per client? Overhead/mgmt fees?</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text)">Account manager hire timing</td>
+            <td>Wyatt</td>
+            <td><span class="status-pill s-deferred">After Pilot</span></td>
+            <td>Wyatt runs point for first 5-10, then evaluate</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text)">DocuSign / contract workflow</td>
+            <td>Wyatt</td>
+            <td><span class="status-pill s-open">Open</span></td>
+            <td>Individual contracts for now, unified signing later</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text)">Conference materials — print quantity</td>
+            <td>Jordan + Beau</td>
+            <td><span class="status-pill s-open">Open</span></td>
+            <td>How many cards/flyers for booths?</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text)">CRM tool selection (post-pilot)</td>
+            <td>All</td>
+            <td><span class="status-pill s-deferred">Deferred</span></td>
+            <td>Google Sheet for now, evaluate after 5-10 clients</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ACTION ITEMS -->
+<section id="actions">
+  <div class="container">
+    <h2 class="section-title">Action Items</h2>
+    <p class="section-subtitle">What needs to happen and who's on it.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Task</th><th>Owner</th><th>Due</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--text)">Draft data-sharing consent</td>
+            <td>Kyle</td>
+            <td>Before conference</td>
+            <td><span class="status-pill s-todo">To Do</span></td>
+          </tr>
+          <tr>
+            <td style="color:var(--text)">Set up Google Drive folder + client folders</td>
+            <td>Wyatt</td>
+            <td>This week</td>
+            <td><span class="status-pill s-todo">To Do</span></td>
+          </tr>
+          <tr>
+            <td style="color:var(--text)">Get brand assets → produce conference materials</td>
+            <td>Wyatt + Beau</td>
+            <td>Before conference</td>
+            <td><span class="status-pill s-progress">In Progress</span></td>
+          </tr>
+          <tr>
+            <td style="color:var(--text)">Start pitching trusted clients</td>
+            <td>Chantel (Infinite team)</td>
+            <td>Ongoing</td>
+            <td><span class="status-pill s-todo">To Do</span></td>
+          </tr>
+          <tr>
+            <td style="color:var(--text)">Warm lead trial run (Riley referral)</td>
+            <td>Jordan</td>
+            <td>This month</td>
+            <td><span class="status-pill s-todo">To Do</span></td>
+          </tr>
+          <tr>
+            <td style="color:var(--text)">Generate QR code for one-pager</td>
+            <td>Hal</td>
+            <td>This week</td>
+            <td><span class="status-pill s-todo">To Do</span></td>
+          </tr>
+          <tr>
+            <td style="color:var(--text)">Re-auth Google for CRM sheet creation</td>
+            <td>Beau</td>
+            <td>When back at Mac</td>
+            <td><span class="status-pill s-blocked">Blocked</span></td>
+          </tr>
+          <tr>
+            <td style="color:var(--text)">Print conference cards/flyers</td>
+            <td>TBD</td>
+            <td>Before conference</td>
+            <td><span class="status-pill s-todo">To Do</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="container">
+    <h2 class="section-title">Timeline &amp; Milestones</h2>
+    <p class="section-subtitle">Where we've been and where we're heading.</p>
+    <div class="timeline">
+      <div class="tl-item done"><div class="tl-text">✅ Website launched <span style="color:var(--text-muted)">(Feb 2026)</span></div></div>
+      <div class="tl-item done"><div class="tl-text">✅ 330+ pages of content published</div></div>
+      <div class="tl-item done"><div class="tl-text">✅ Pre-qualification form built</div></div>
+      <div class="tl-item done"><div class="tl-text">✅ Conference one-pager created</div></div>
+      <div class="tl-item done"><div class="tl-text">✅ Brand assets packaged</div></div>
+      <div class="tl-item progress"><div class="tl-text">⏳ CRM Google Sheet <span style="color:var(--text-muted)">(blocked on auth)</span></div></div>
+      <div class="tl-item pending"><div class="tl-text">🔲 Conference materials printed</div></div>
+      <div class="tl-item pending"><div class="tl-text">🔲 First 5 trial clients</div></div>
+      <div class="tl-item pending"><div class="tl-text">🔲 Data sharing agreement signed</div></div>
+      <div class="tl-item pending"><div class="tl-text">🔲 Evaluate and formalize entity structure</div></div>
+      <div class="tl-item pending"><div class="tl-text">🔲 Hire account manager</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEEDBACK ANCHOR -->
+<section id="feedback">
+  <div class="container">
+    <h2 class="section-title">Leave Feedback</h2>
+    <p class="section-subtitle">Use the 💬 button on any resource card above to leave your review. Feedback goes straight to Hal for follow-up.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    Built by Hal &bull; Last updated April 7, 2026 &bull; Questions? <a href="mailto:hal@thebitcoinfamilyoffice.com">hal@thebitcoinfamilyoffice.com</a>
+  </div>
+</footer>
+
+<!-- FLOATING FEEDBACK BTN -->
+<button class="float-btn" onclick="document.getElementById('resources').scrollIntoView({behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  Give Feedback
+</button>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+<script>
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw5rfL8oGxOP0WmJXjc8ax-FmpLWiRVrOJcdKuazdXkThe2-mKVpgogWx2Lkjj-ZCPn/exec';
+const TEAM = ['Beau','Wyatt','Kyle','Jordan','Chantel'];
+const RATINGS = [
+  {value:'looks-good',label:'👍 Looks good'},
+  {value:'needs-changes',label:'🔧 Needs changes'},
+  {value:'major-issues',label:'❌ Major issues'}
+];
+
+function closeNav(){document.querySelector('.nav-links').classList.remove('open')}
+
+function toggleFeedback(btn){
+  const formDiv = btn.nextElementSibling;
+  if(formDiv.classList.contains('open')){
+    formDiv.classList.remove('open');
+    btn.textContent = '💬 Leave Feedback';
+    return;
+  }
+  // Build form if empty
+  if(!formDiv.innerHTML){
+    const resource = btn.closest('.card').dataset.resource;
+    formDiv.innerHTML = `
+      <label>Reviewer</label>
+      <select class="fb-reviewer">
+        <option value="">Select your name...</option>
+        ${TEAM.map(n=>`<option value="${n}">${n}</option>`).join('')}
+      </select>
+      <label>Rating</label>
+      <div class="rating-group">
+        ${RATINGS.map(r=>`<button type="button" class="rating-btn" data-value="${r.value}">${r.label}</button>`).join('')}
+      </div>
+      <label>Comments</label>
+      <textarea class="fb-comments" placeholder="What's on your mind?"></textarea>
+      <button class="fb-submit" onclick="submitFeedback(this,'${resource.replace(/'/g,"\\'")}')">Submit Feedback</button>
+      <div class="fb-success">✅ Feedback submitted — Hal will follow up</div>
+    `;
+    // Rating button selection
+    formDiv.querySelectorAll('.rating-btn').forEach(b=>{
+      b.addEventListener('click',()=>{
+        formDiv.querySelectorAll('.rating-btn').forEach(x=>x.classList.remove('selected'));
+        b.classList.add('selected');
+      });
+    });
+  }
+  formDiv.classList.add('open');
+  btn.textContent = '✕ Close Feedback';
+}
+
+async function submitFeedback(btn, resource){
+  const form = btn.closest('.fb-form');
+  const reviewer = form.querySelector('.fb-reviewer').value;
+  const ratingBtn = form.querySelector('.rating-btn.selected');
+  const comments = form.querySelector('.fb-comments').value;
+
+  if(!reviewer){alert('Please select your name.');return;}
+  if(!ratingBtn){alert('Please select a rating.');return;}
+
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  const payload = {
+    form_type: 'team_feedback',
+    reviewer: reviewer,
+    resource: resource,
+    rating: ratingBtn.dataset.value,
+    comments: comments,
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    });
+    // no-cors means we can't read the response, but the request fires
+    form.querySelector('.fb-success').style.display = 'block';
+    btn.textContent = 'Submitted ✓';
+    btn.disabled = true;
+  } catch(e) {
+    btn.textContent = 'Error — try again';
+    btn.disabled = false;
+    console.error('Feedback submit error:', e);
+  }
+}
+</script>
+</body>
+</html>
