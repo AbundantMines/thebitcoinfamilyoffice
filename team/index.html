@@ -24,7 +24,7 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0a0a0a;--surface:#141414;--surface2:#1c1c1c;--border:#2a2a2a;--gold:#c9a84c;--gold-dim:#a8893e;--text:#e8e8e8;--text-muted:#888;--green:#34d399;--yellow:#fbbf24;--red:#f87171;--blue:#60a5fa}
+:root{--bg:#0a0a0a;--surface:#141414;--surface2:#1c1c1c;--border:#2a2a2a;--gold:#c9a84c;--gold-dim:#a8893e;--text:#e8e8e8;--text-muted:#888;--green:#34d399;--yellow:#fbbf24;--red:#f87171;--blue:#60a5fa;--orange:#fb923c;--purple:#c084fc}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
 h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600}
@@ -80,22 +80,63 @@ section:first-of-type{padding-top:5rem}
 .card-link{display:inline-flex;align-items:center;gap:.35rem;font-size:.85rem;font-weight:500;margin-bottom:1rem}
 .card-link svg{width:14px;height:14px}
 
-/* FEEDBACK TOGGLE */
-.fb-toggle{background:none;border:1px solid var(--border);color:var(--text-muted);font-size:.8rem;padding:.4rem .8rem;border-radius:6px;cursor:pointer;transition:all .2s;width:100%}
-.fb-toggle:hover{border-color:var(--gold);color:var(--gold)}
-.fb-form{display:none;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border)}
-.fb-form.open{display:block}
-.fb-form label{display:block;font-size:.75rem;color:var(--text-muted);margin-bottom:.25rem;margin-top:.6rem}
-.fb-form select,.fb-form textarea{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:.5rem;font-size:.85rem;font-family:'Inter',sans-serif}
-.fb-form textarea{min-height:70px;resize:vertical}
-.fb-form select:focus,.fb-form textarea:focus{outline:none;border-color:var(--gold)}
+/* COMMENT THREADS */
+.comment-section{margin-top:1rem;border-top:1px solid var(--border);padding-top:.75rem}
+.comment-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;cursor:pointer;user-select:none}
+.comment-header:hover .comment-count{color:var(--gold)}
+.comment-count{font-size:.85rem;color:var(--text-muted);font-weight:500;transition:color .2s}
+.comment-toggle-icon{font-size:.75rem;color:var(--text-muted);transition:transform .3s}
+.comment-header.open .comment-toggle-icon{transform:rotate(180deg)}
+
+.comment-thread{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.comment-thread.open{max-height:2000px;overflow-y:auto}
+
+.comment-item{padding:.75rem;background:var(--surface2);border-radius:8px;margin-bottom:.5rem;border-left:3px solid var(--border)}
+.comment-item[data-reviewer="Beau"]{border-left-color:var(--blue)}
+.comment-item[data-reviewer="Wyatt"]{border-left-color:var(--yellow)}
+.comment-item[data-reviewer="Kyle"]{border-left-color:var(--green)}
+.comment-item[data-reviewer="Jordan"]{border-left-color:var(--orange)}
+.comment-item[data-reviewer="Chantel"]{border-left-color:var(--purple)}
+.comment-item[data-reviewer="Hal"]{border-left-color:#999}
+.comment-meta{display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem;flex-wrap:wrap}
+.comment-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-Beau{background:var(--blue)}
+.dot-Wyatt{background:var(--yellow)}
+.dot-Kyle{background:var(--green)}
+.dot-Jordan{background:var(--orange)}
+.dot-Chantel{background:var(--purple)}
+.dot-Hal{background:#999}
+.comment-name{font-size:.8rem;font-weight:600;color:var(--text)}
+.comment-date{font-size:.75rem;color:var(--text-muted)}
+.comment-rating{font-size:.75rem;padding:.15rem .45rem;border-radius:10px;font-weight:500}
+.rating-looks-good{background:rgba(52,211,153,.15);color:var(--green)}
+.rating-needs-changes{background:rgba(251,191,36,.15);color:var(--yellow)}
+.rating-major-issues{background:rgba(248,113,113,.15);color:var(--red)}
+.comment-text{font-size:.85rem;color:var(--text-muted);line-height:1.5;white-space:pre-wrap}
+
+.comment-empty{font-size:.8rem;color:var(--text-muted);font-style:italic;padding:.5rem 0}
+
+/* ADD COMMENT FORM */
+.add-comment-toggle{background:none;border:1px solid var(--border);color:var(--text-muted);font-size:.8rem;padding:.4rem .8rem;border-radius:6px;cursor:pointer;transition:all .2s;width:100%;margin-top:.5rem}
+.add-comment-toggle:hover{border-color:var(--gold);color:var(--gold)}
+.comment-form{display:none;margin-top:.75rem;padding:.75rem;background:var(--surface2);border-radius:8px}
+.comment-form.open{display:block}
+.comment-form label{display:block;font-size:.75rem;color:var(--text-muted);margin-bottom:.25rem;margin-top:.6rem}
+.comment-form label:first-child{margin-top:0}
+.comment-form select,.comment-form textarea{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:.5rem;font-size:.85rem;font-family:'Inter',sans-serif}
+.comment-form textarea{min-height:70px;resize:vertical}
+.comment-form select:focus,.comment-form textarea:focus{outline:none;border-color:var(--gold)}
 .rating-group{display:flex;gap:.5rem;margin-top:.25rem;flex-wrap:wrap}
-.rating-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text-muted);padding:.35rem .65rem;border-radius:6px;font-size:.8rem;cursor:pointer;transition:all .2s}
+.rating-btn{background:var(--bg);border:1px solid var(--border);color:var(--text-muted);padding:.35rem .65rem;border-radius:6px;font-size:.8rem;cursor:pointer;transition:all .2s}
 .rating-btn:hover,.rating-btn.selected{border-color:var(--gold);color:var(--gold)}
-.fb-submit{margin-top:.75rem;background:var(--gold);color:#0a0a0a;border:none;padding:.5rem 1.25rem;border-radius:6px;font-size:.85rem;font-weight:600;cursor:pointer;transition:opacity .2s;width:100%}
-.fb-submit:hover{opacity:.85}
-.fb-submit:disabled{opacity:.5;cursor:not-allowed}
-.fb-success{color:var(--green);font-size:.85rem;margin-top:.5rem;display:none}
+.comment-submit{margin-top:.75rem;background:var(--gold);color:#0a0a0a;border:none;padding:.5rem 1.25rem;border-radius:6px;font-size:.85rem;font-weight:600;cursor:pointer;transition:opacity .2s;width:100%}
+.comment-submit:hover{opacity:.85}
+.comment-submit:disabled{opacity:.5;cursor:not-allowed}
+
+/* LOADING INDICATOR */
+.comments-loading{font-size:.75rem;color:var(--text-muted);text-align:center;padding:.5rem}
+.comments-loading .spinner{display:inline-block;width:12px;height:12px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin-right:.4rem;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* TABLES */
 .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1rem}
@@ -143,7 +184,6 @@ footer a{color:var(--gold)}
     <li><a href="#decisions" onclick="closeNav()">Decisions</a></li>
     <li><a href="#actions" onclick="closeNav()">Action Items</a></li>
     <li><a href="#timeline" onclick="closeNav()">Timeline</a></li>
-    <li><a href="#feedback" onclick="closeNav()">Feedback</a></li>
   </ul>
 </nav>
 
@@ -152,7 +192,7 @@ footer a{color:var(--gold)}
   <div class="container">
     <h1>The Bitcoin Family Office</h1>
     <p>Team Dashboard — Review resources, leave feedback, track decisions</p>
-    <div class="updated">Last updated: <span id="last-updated">April 7, 2026</span></div>
+    <div class="updated">Last updated: <span id="last-updated">April 8, 2026</span></div>
   </div>
 </section>
 
@@ -160,7 +200,7 @@ footer a{color:var(--gold)}
 <section id="resources">
   <div class="container">
     <h2 class="section-title">Resources Built</h2>
-    <p class="section-subtitle">Everything we've shipped so far. Click any card to review, or expand the feedback form to leave notes.</p>
+    <p class="section-subtitle">Everything we've shipped so far. Expand any card to see team comments or leave your own.</p>
 
     <div class="card-grid">
 
@@ -178,8 +218,7 @@ footer a{color:var(--gold)}
           <li>Referral source tracking for all 5 team members</li>
         </ul>
         <a href="/qualify/" target="_blank" class="card-link">View Live <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
-        <button class="fb-toggle" onclick="toggleFeedback(this)">💬 Leave Feedback</button>
-        <div class="fb-form"></div>
+        <div class="comment-section"></div>
       </div>
 
       <!-- Conference One-Pager -->
@@ -191,8 +230,7 @@ footer a{color:var(--gold)}
         <p class="card-desc">Print-ready one-pager for Bitcoin Conference. All 5 service verticals, QR code to /qualify. Print via browser → PDF or direct print.</p>
         <p class="card-note">⚠️ Needs QR code image generated. Currently has placeholder text.</p>
         <a href="/bfo-one-pager.html" target="_blank" class="card-link">View Live <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
-        <button class="fb-toggle" onclick="toggleFeedback(this)">💬 Leave Feedback</button>
-        <div class="fb-form"></div>
+        <div class="comment-section"></div>
       </div>
 
       <!-- Brand Assets -->
@@ -203,8 +241,7 @@ footer a{color:var(--gold)}
         </div>
         <p class="card-desc">Fonts (Playfair Display, EB Garamond, Inter), color palette, brand voice guidelines. Everything Wyatt needs for conference materials.</p>
         <a href="https://github.com/hal-abundant/thebitcoinfamilyoffice/blob/main/brand-assets.md" target="_blank" class="card-link">View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
-        <button class="fb-toggle" onclick="toggleFeedback(this)">💬 Leave Feedback</button>
-        <div class="fb-form"></div>
+        <div class="comment-section"></div>
       </div>
 
       <!-- Website -->
@@ -215,20 +252,18 @@ footer a{color:var(--gold)}
         </div>
         <p class="card-desc">~330 pages. Homepage, 272+ blog articles, 50 state pages, 8 interactive tools, services directory, FAQ with schema markup.</p>
         <a href="https://thebitcoinfamilyoffice.com" target="_blank" class="card-link">View Live <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
-        <button class="fb-toggle" onclick="toggleFeedback(this)">💬 Leave Feedback</button>
-        <div class="fb-form"></div>
+        <div class="comment-section"></div>
       </div>
 
       <!-- CRM -->
       <div class="card" data-resource="Client Pipeline CRM">
         <div class="card-header">
           <h3 class="card-title">Client Pipeline CRM</h3>
-          <span class="badge badge-blocked">⏳ Blocked</span>
+          <span class="badge badge-live">✅ Live</span>
         </div>
         <p class="card-desc">Shared Google Sheet with Pipeline tab (20 columns tracking full client journey) and Team Contacts tab. Will auto-populate from /qualify form submissions.</p>
-        <p class="card-note">Coming soon — pending Google re-auth</p>
-        <button class="fb-toggle" onclick="toggleFeedback(this)">💬 Leave Feedback</button>
-        <div class="fb-form"></div>
+        <p class="card-note"><a href="https://docs.google.com/spreadsheets/d/1xLxEr6z3sxgZtDMj1g2Qwp8c2-GAshtmuRWUuPwD9aA/edit" target="_blank" style="color:var(--gold)">Open Pipeline Sheet ↗</a></p>
+        <div class="comment-section"></div>
       </div>
 
       <!-- Data Sharing Consent -->
@@ -238,8 +273,7 @@ footer a{color:var(--gold)}
           <span class="badge badge-pending">🔲 Pending (Kyle)</span>
         </div>
         <p class="card-desc">Simple data-sharing agreement for trial clients. Kyle to draft so all 5 members can share client info during pilot phase.</p>
-        <button class="fb-toggle" onclick="toggleFeedback(this)">💬 Leave Feedback</button>
-        <div class="fb-form"></div>
+        <div class="comment-section"></div>
       </div>
 
     </div>
@@ -375,7 +409,7 @@ footer a{color:var(--gold)}
       <div class="tl-item done"><div class="tl-text">✅ Pre-qualification form built</div></div>
       <div class="tl-item done"><div class="tl-text">✅ Conference one-pager created</div></div>
       <div class="tl-item done"><div class="tl-text">✅ Brand assets packaged</div></div>
-      <div class="tl-item progress"><div class="tl-text">⏳ CRM Google Sheet <span style="color:var(--text-muted)">(blocked on auth)</span></div></div>
+      <div class="tl-item done"><div class="tl-text">✅ CRM Google Sheet</div></div>
       <div class="tl-item pending"><div class="tl-text">🔲 Conference materials printed</div></div>
       <div class="tl-item pending"><div class="tl-text">🔲 First 5 trial clients</div></div>
       <div class="tl-item pending"><div class="tl-text">🔲 Data sharing agreement signed</div></div>
@@ -385,99 +419,198 @@ footer a{color:var(--gold)}
   </div>
 </section>
 
-<!-- FEEDBACK ANCHOR -->
-<section id="feedback">
-  <div class="container">
-    <h2 class="section-title">Leave Feedback</h2>
-    <p class="section-subtitle">Use the 💬 button on any resource card above to leave your review. Feedback goes straight to Hal for follow-up.</p>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    Built by Hal &bull; Last updated April 7, 2026 &bull; Questions? <a href="mailto:hal@thebitcoinfamilyoffice.com">hal@thebitcoinfamilyoffice.com</a>
+    Built by Hal &bull; Last updated April 8, 2026 &bull; Questions? <a href="mailto:hal@thebitcoinfamilyoffice.com">hal@thebitcoinfamilyoffice.com</a>
   </div>
 </footer>
 
 <!-- FLOATING FEEDBACK BTN -->
 <button class="float-btn" onclick="document.getElementById('resources').scrollIntoView({behavior:'smooth'})">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-  Give Feedback
+  Comment
 </button>
 
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token":"3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
 
 <script>
+// ============================================================
+// BFO Team Live Comment Board
+// Backend: Google Sheet (read) + Apps Script (write) + localStorage (cache)
+// ============================================================
+
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw5rfL8oGxOP0WmJXjc8ax-FmpLWiRVrOJcdKuazdXkThe2-mKVpgogWx2Lkjj-ZCPn/exec';
-const TEAM = ['Beau','Wyatt','Kyle','Jordan','Chantel'];
+const SHEET_ID = '1ijFt4DFlr-nmI11u_khYs3-StX3Hljy4-ImUtQT5qgk';
+const SHEET_JSON_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&headers=1`;
+const CACHE_KEY = 'bfo_team_comments_v1';
+const POLL_INTERVAL = 60000; // 60 seconds
+
+const TEAM = ['Beau','Wyatt','Kyle','Jordan','Chantel','Hal'];
 const RATINGS = [
-  {value:'looks-good',label:'👍 Looks good'},
-  {value:'needs-changes',label:'🔧 Needs changes'},
-  {value:'major-issues',label:'❌ Major issues'}
+  {value:'looks-good', label:'👍 Looks good', emoji:'👍'},
+  {value:'needs-changes', label:'🔧 Needs changes', emoji:'🔧'},
+  {value:'major-issues', label:'❌ Major issues', emoji:'❌'}
 ];
+const RATING_LABELS = {
+  'looks-good': '👍 Looks good',
+  'needs-changes': '🔧 Needs changes',
+  'major-issues': '❌ Major issues'
+};
+const TEAM_COLORS = {
+  'Beau': {dot:'dot-Beau', emoji:'🔵'},
+  'Wyatt': {dot:'dot-Wyatt', emoji:'🟡'},
+  'Kyle': {dot:'dot-Kyle', emoji:'🟢'},
+  'Jordan': {dot:'dot-Jordan', emoji:'🟠'},
+  'Chantel': {dot:'dot-Chantel', emoji:'🟣'},
+  'Hal': {dot:'dot-Hal', emoji:'⚪'}
+};
+
+// All comments keyed by resource name
+let allComments = {};
+let lastReviewer = localStorage.getItem('bfo_last_reviewer') || '';
 
 function closeNav(){document.querySelector('.nav-links').classList.remove('open')}
 
-function toggleFeedback(btn){
-  const formDiv = btn.nextElementSibling;
-  if(formDiv.classList.contains('open')){
-    formDiv.classList.remove('open');
-    btn.textContent = '💬 Leave Feedback';
-    return;
-  }
-  // Build form if empty
-  if(!formDiv.innerHTML){
-    const resource = btn.closest('.card').dataset.resource;
-    formDiv.innerHTML = `
-      <label>Reviewer</label>
-      <select class="fb-reviewer">
-        <option value="">Select your name...</option>
-        ${TEAM.map(n=>`<option value="${n}">${n}</option>`).join('')}
-      </select>
-      <label>Rating</label>
-      <div class="rating-group">
-        ${RATINGS.map(r=>`<button type="button" class="rating-btn" data-value="${r.value}">${r.label}</button>`).join('')}
-      </div>
-      <label>Comments</label>
-      <textarea class="fb-comments" placeholder="What's on your mind?"></textarea>
-      <button class="fb-submit" onclick="submitFeedback(this,'${resource.replace(/'/g,"\\'")}')">Submit Feedback</button>
-      <div class="fb-success">✅ Feedback submitted — Hal will follow up</div>
-    `;
-    // Rating button selection
-    formDiv.querySelectorAll('.rating-btn').forEach(b=>{
-      b.addEventListener('click',()=>{
-        formDiv.querySelectorAll('.rating-btn').forEach(x=>x.classList.remove('selected'));
-        b.classList.add('selected');
-      });
-    });
-  }
-  formDiv.classList.add('open');
-  btn.textContent = '✕ Close Feedback';
+// ---- Comment rendering ----
+
+function formatDate(ts) {
+  try {
+    const d = new Date(ts);
+    if (isNaN(d.getTime())) return ts;
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${months[d.getMonth()]} ${d.getDate()}`;
+  } catch(e) { return ts; }
 }
 
-async function submitFeedback(btn, resource){
-  const form = btn.closest('.fb-form');
-  const reviewer = form.querySelector('.fb-reviewer').value;
-  const ratingBtn = form.querySelector('.rating-btn.selected');
-  const comments = form.querySelector('.fb-comments').value;
+function renderCommentItem(c) {
+  const tc = TEAM_COLORS[c.reviewer] || {dot:'', emoji:'⚫'};
+  const ratingClass = c.rating ? `rating-${c.rating}` : '';
+  const ratingLabel = RATING_LABELS[c.rating] || '';
+  return `<div class="comment-item" data-reviewer="${c.reviewer||''}">
+    <div class="comment-meta">
+      <span class="comment-dot ${tc.dot}"></span>
+      <span class="comment-name">${c.reviewer||'Unknown'}</span>
+      <span class="comment-date">${formatDate(c.timestamp)}</span>
+      ${ratingLabel ? `<span class="comment-rating ${ratingClass}">${ratingLabel}</span>` : ''}
+    </div>
+    <div class="comment-text">${escapeHtml(c.comment||'')}</div>
+  </div>`;
+}
 
-  if(!reviewer){alert('Please select your name.');return;}
-  if(!ratingBtn){alert('Please select a rating.');return;}
+function escapeHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function renderCommentsForCard(card) {
+  const resource = card.dataset.resource;
+  const section = card.querySelector('.comment-section');
+  const comments = (allComments[resource] || []).slice().sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
+  const count = comments.length;
+  const isOpen = section.dataset.open === '1';
+
+  section.innerHTML = `
+    <div class="comment-header ${isOpen ? 'open' : ''}" onclick="toggleComments(this)">
+      <span class="comment-count">💬 ${count === 0 ? 'No comments yet' : count === 1 ? '1 comment' : count + ' comments'}</span>
+      <span class="comment-toggle-icon">▼</span>
+    </div>
+    <div class="comment-thread ${isOpen ? 'open' : ''}">
+      ${comments.length === 0 ? '<div class="comment-empty">Be the first to leave feedback on this resource.</div>' : comments.map(renderCommentItem).join('')}
+      <button class="add-comment-toggle" onclick="toggleCommentForm(this)">＋ Add Comment</button>
+      <div class="comment-form">
+        <label>Name</label>
+        <select class="cf-reviewer">
+          <option value="">Select your name…</option>
+          ${TEAM.map(n=>`<option value="${n}" ${n===lastReviewer?'selected':''}>${n}</option>`).join('')}
+        </select>
+        <label>Rating</label>
+        <div class="rating-group">
+          ${RATINGS.map(r=>`<button type="button" class="rating-btn" data-value="${r.value}">${r.label}</button>`).join('')}
+        </div>
+        <label>Comment</label>
+        <textarea class="cf-comment" placeholder="What's on your mind?"></textarea>
+        <button class="comment-submit" onclick="postComment(this,'${resource.replace(/'/g,"\\'")}')">Post Comment</button>
+      </div>
+    </div>`;
+
+  // Attach rating button handlers
+  section.querySelectorAll('.rating-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      section.querySelectorAll('.rating-btn').forEach(x=>x.classList.remove('selected'));
+      b.classList.add('selected');
+    });
+  });
+}
+
+function renderAllComments() {
+  document.querySelectorAll('.card[data-resource]').forEach(renderCommentsForCard);
+}
+
+// ---- Toggle handlers ----
+
+function toggleComments(header) {
+  const section = header.closest('.comment-section');
+  const thread = section.querySelector('.comment-thread');
+  const isOpen = thread.classList.contains('open');
+  header.classList.toggle('open');
+  thread.classList.toggle('open');
+  section.dataset.open = isOpen ? '0' : '1';
+}
+
+function toggleCommentForm(btn) {
+  const form = btn.nextElementSibling;
+  const isOpen = form.classList.contains('open');
+  form.classList.toggle('open');
+  btn.textContent = isOpen ? '＋ Add Comment' : '✕ Cancel';
+}
+
+// ---- Post comment ----
+
+async function postComment(btn, resource) {
+  const form = btn.closest('.comment-form');
+  const reviewer = form.querySelector('.cf-reviewer').value;
+  const ratingBtn = form.querySelector('.rating-btn.selected');
+  const comment = form.querySelector('.cf-comment').value.trim();
+
+  if (!reviewer) { alert('Please select your name.'); return; }
+  if (!ratingBtn) { alert('Please select a rating.'); return; }
+  if (!comment) { alert('Please write a comment.'); return; }
 
   btn.disabled = true;
-  btn.textContent = 'Submitting...';
+  btn.textContent = 'Posting…';
+
+  const timestamp = new Date().toISOString();
+  const rating = ratingBtn.dataset.value;
+
+  // Save last reviewer preference
+  localStorage.setItem('bfo_last_reviewer', reviewer);
+  lastReviewer = reviewer;
 
   const payload = {
-    form_type: 'team_feedback',
-    reviewer: reviewer,
-    resource: resource,
-    rating: ratingBtn.dataset.value,
-    comments: comments,
-    timestamp: new Date().toISOString()
+    form_type: 'team_comment',
+    resource,
+    reviewer,
+    rating,
+    comment,
+    timestamp
   };
 
+  // Optimistic UI: add comment locally immediately
+  if (!allComments[resource]) allComments[resource] = [];
+  allComments[resource].push({ timestamp, resource, reviewer, rating, comment });
+  saveCache();
+
+  // Re-render this card's comments (keep thread open)
+  const card = document.querySelector(`.card[data-resource="${resource}"]`);
+  if (card) {
+    card.querySelector('.comment-section').dataset.open = '1';
+    renderCommentsForCard(card);
+  }
+
+  // POST to Apps Script (fire-and-forget, no-cors)
   try {
     await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
@@ -485,15 +618,100 @@ async function submitFeedback(btn, resource){
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(payload)
     });
-    // no-cors means we can't read the response, but the request fires
-    form.querySelector('.fb-success').style.display = 'block';
-    btn.textContent = 'Submitted ✓';
-    btn.disabled = true;
   } catch(e) {
-    btn.textContent = 'Error — try again';
-    btn.disabled = false;
-    console.error('Feedback submit error:', e);
+    console.error('Comment POST error:', e);
   }
+
+  // Also append to Google Sheet directly via Apps Script
+  // (The Apps Script handler will write to the sheet)
+}
+
+// ---- localStorage cache ----
+
+function loadCache() {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY);
+    if (raw) allComments = JSON.parse(raw);
+  } catch(e) { allComments = {}; }
+}
+
+function saveCache() {
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify(allComments));
+  } catch(e) {}
+}
+
+// ---- Fetch from Google Sheet ----
+
+async function fetchSheetComments() {
+  try {
+    const resp = await fetch(SHEET_JSON_URL);
+    const text = await resp.text();
+    // Strip JSONP wrapper: /*O_o*/ google.visualization.Query.setResponse({...});
+    const jsonStr = text.replace(/^[^(]*\(/, '').replace(/\);?\s*$/, '');
+    const data = JSON.parse(jsonStr);
+
+    if (!data.table || !data.table.rows) return;
+
+    const sheetComments = {};
+    for (const row of data.table.rows) {
+      const cells = row.c || [];
+      const timestamp = cells[0] ? (cells[0].v || '') : '';
+      const resource = cells[1] ? (cells[1].v || '') : '';
+      const reviewer = cells[2] ? (cells[2].v || '') : '';
+      const rating = cells[3] ? (cells[3].v || '') : '';
+      const comment = cells[4] ? (cells[4].v || '') : '';
+
+      if (!resource || !reviewer) continue;
+
+      if (!sheetComments[resource]) sheetComments[resource] = [];
+      sheetComments[resource].push({ timestamp, resource, reviewer, rating, comment });
+    }
+
+    // Merge: sheet is canonical, but preserve local-only (optimistic) comments
+    const merged = {};
+    const allResources = new Set([...Object.keys(allComments), ...Object.keys(sheetComments)]);
+
+    for (const res of allResources) {
+      const sheetList = sheetComments[res] || [];
+      const localList = allComments[res] || [];
+      // Dedupe by timestamp+reviewer+resource
+      const seen = new Set();
+      const combined = [];
+      for (const c of [...sheetList, ...localList]) {
+        const key = `${c.timestamp}|${c.reviewer}|${c.resource}`;
+        if (!seen.has(key)) {
+          seen.add(key);
+          combined.push(c);
+        }
+      }
+      merged[res] = combined;
+    }
+
+    allComments = merged;
+    saveCache();
+    renderAllComments();
+  } catch(e) {
+    console.error('Sheet fetch error:', e);
+  }
+}
+
+// ---- Init ----
+
+function init() {
+  loadCache();
+  renderAllComments();
+  // Fetch fresh data from sheet
+  fetchSheetComments();
+  // Poll every 60s
+  setInterval(fetchSheetComments, POLL_INTERVAL);
+}
+
+// Run after DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
 }
 </script>
 </body>
