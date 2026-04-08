@@ -183,6 +183,7 @@ footer a{color:var(--gold)}
     <li><a href="#resources" onclick="closeNav()">Resources</a></li>
     <li><a href="#decisions" onclick="closeNav()">Decisions</a></li>
     <li><a href="#actions" onclick="closeNav()">Action Items</a></li>
+    <li><a href="#discussion" onclick="closeNav()" style="color:var(--gold)">💬 Discussion</a></li>
     <li><a href="#timeline" onclick="closeNav()">Timeline</a></li>
   </ul>
 </nav>
@@ -415,6 +416,24 @@ footer a{color:var(--gold)}
       <div class="tl-item pending"><div class="tl-text">🔲 Data sharing agreement signed</div></div>
       <div class="tl-item pending"><div class="tl-text">🔲 Evaluate and formalize entity structure</div></div>
       <div class="tl-item pending"><div class="tl-text">🔲 Hire account manager</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="discussion">
+  <div class="container">
+    <h2 class="section-title">💬 General Discussion</h2>
+    <p class="section-subtitle">Ideas, suggestions, questions — anything that doesn't fit under a specific resource. Everyone can see and respond.</p>
+    <div class="discussion-thread" id="general-thread"></div>
+    <div class="discussion-form" style="margin-top:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+      <div style="display:flex;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap;">
+        <select id="gen-reviewer" style="flex:1;min-width:120px;padding:.5rem .75rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.85rem;">
+          <option value="">Your name...</option>
+          <option>Beau</option><option>Wyatt</option><option>Kyle</option><option>Jordan</option><option>Chantel</option><option>Hal</option>
+        </select>
+      </div>
+      <textarea id="gen-comment" rows="3" placeholder="Share an idea, suggestion, or question..." style="width:100%;padding:.75rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.9rem;resize:vertical;font-family:inherit;"></textarea>
+      <button onclick="submitGeneralComment()" style="margin-top:.75rem;padding:.6rem 1.5rem;background:var(--gold);color:#000;border:none;border-radius:8px;font-weight:600;font-size:.85rem;cursor:pointer;">Post Comment</button>
     </div>
   </div>
 </section>
@@ -689,6 +708,95 @@ function init() {
   // Poll every 60s
   setInterval(fetchSheetComments, POLL_INTERVAL);
 }
+
+// ---- General Discussion Thread ----
+let generalComments = JSON.parse(localStorage.getItem('bfo_general_comments') || '[]');
+
+function renderGeneralThread() {
+  const thread = document.getElementById('general-thread');
+  if (!thread) return;
+  const sorted = [...generalComments].sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
+  if (sorted.length === 0) {
+    thread.innerHTML = '<p style="color:var(--text-muted);font-size:.9rem;padding:1rem 0;">No comments yet. Be the first to start the conversation.</p>';
+    return;
+  }
+  thread.innerHTML = sorted.map(c => {
+    const colors = {Beau:'#60a5fa',Wyatt:'#fbbf24',Kyle:'#34d399',Jordan:'#fb923c',Chantel:'#c084fc',Hal:'#e8e8e8'};
+    const dot = `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${colors[c.reviewer]||'#888'};margin-right:6px;"></span>`;
+    const ago = timeAgo(c.timestamp);
+    return `<div style="padding:1rem;border-bottom:1px solid var(--border);">
+      <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem;">
+        ${dot}<strong style="font-size:.85rem;">${c.reviewer}</strong>
+        <span style="color:var(--text-muted);font-size:.75rem;">${ago}</span>
+      </div>
+      <p style="font-size:.9rem;line-height:1.5;color:var(--text);margin:0;">${escapeHtml(c.comment)}</p>
+    </div>`;
+  }).join('');
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function timeAgo(ts) {
+  const diff = Date.now() - new Date(ts).getTime();
+  const mins = Math.floor(diff/60000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return mins + 'm ago';
+  const hrs = Math.floor(mins/60);
+  if (hrs < 24) return hrs + 'h ago';
+  const days = Math.floor(hrs/24);
+  return days + 'd ago';
+}
+
+async function submitGeneralComment() {
+  const reviewer = document.getElementById('gen-reviewer').value;
+  const comment = document.getElementById('gen-comment').value.trim();
+  if (!reviewer) { alert('Please select your name'); return; }
+  if (!comment) { alert('Please enter a comment'); return; }
+  const timestamp = new Date().toISOString();
+  const entry = { resource: '__general__', reviewer, rating: '', comment, timestamp };
+  generalComments.push(entry);
+  localStorage.setItem('bfo_general_comments', JSON.stringify(generalComments));
+  renderGeneralThread();
+  document.getElementById('gen-comment').value = '';
+  localStorage.setItem('bfo_last_reviewer', reviewer);
+  try {
+    await fetch(COMMENTS_API, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(entry)
+    });
+  } catch(e) { console.error('General comment POST error:', e); }
+}
+
+async function fetchGeneralComments() {
+  try {
+    const resp = await fetch(COMMENTS_API);
+    const data = await resp.json();
+    if (!data.comments) return;
+    const serverGeneral = data.comments.filter(c => c.resource === '__general__');
+    const seen = new Set();
+    const merged = [];
+    for (const c of [...serverGeneral, ...generalComments]) {
+      const key = `${c.timestamp}|${c.reviewer}`;
+      if (!seen.has(key)) { seen.add(key); merged.push(c); }
+    }
+    generalComments = merged;
+    localStorage.setItem('bfo_general_comments', JSON.stringify(generalComments));
+    renderGeneralThread();
+  } catch(e) { console.error('Fetch general comments error:', e); }
+}
+
+const origInit = init;
+init = function() {
+  origInit();
+  const saved = localStorage.getItem('bfo_last_reviewer');
+  if (saved) document.getElementById('gen-reviewer').value = saved;
+  renderGeneralThread();
+  fetchGeneralComments();
+  setInterval(fetchGeneralComments, POLL_INTERVAL);
+};
 
 // Run after DOM ready
 if (document.readyState === 'loading') {
