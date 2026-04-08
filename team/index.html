@@ -438,12 +438,10 @@ footer a{color:var(--gold)}
 <script>
 // ============================================================
 // BFO Team Live Comment Board
-// Backend: Google Sheet (read) + Apps Script (write) + localStorage (cache)
+// Backend: Cloudflare D1 via Pages Function
 // ============================================================
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw5rfL8oGxOP0WmJXjc8ax-FmpLWiRVrOJcdKuazdXkThe2-mKVpgogWx2Lkjj-ZCPn/exec';
-const SHEET_ID = '1ijFt4DFlr-nmI11u_khYs3-StX3Hljy4-ImUtQT5qgk';
-const SHEET_JSON_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&headers=1`;
+const COMMENTS_API = '/api/team-comment';
 const CACHE_KEY = 'bfo_team_comments_v1';
 const POLL_INTERVAL = 60000; // 60 seconds
 
@@ -610,20 +608,16 @@ async function postComment(btn, resource) {
     renderCommentsForCard(card);
   }
 
-  // POST to Apps Script (fire-and-forget, no-cors)
+  // POST to D1 via Pages Function
   try {
-    await fetch(APPS_SCRIPT_URL, {
+    await fetch(COMMENTS_API, {
       method: 'POST',
-      mode: 'no-cors',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(payload)
+      body: JSON.stringify({ resource, reviewer, rating, comment, timestamp })
     });
   } catch(e) {
     console.error('Comment POST error:', e);
   }
-
-  // Also append to Google Sheet directly via Apps Script
-  // (The Apps Script handler will write to the sheet)
 }
 
 // ---- localStorage cache ----
@@ -645,40 +639,29 @@ function saveCache() {
 
 async function fetchSheetComments() {
   try {
-    const resp = await fetch(SHEET_JSON_URL);
-    const text = await resp.text();
-    // Strip JSONP wrapper: /*O_o*/ google.visualization.Query.setResponse({...});
-    const jsonStr = text.replace(/^[^(]*\(/, '').replace(/\);?\s*$/, '');
-    const data = JSON.parse(jsonStr);
+    const resp = await fetch(COMMENTS_API);
+    const data = await resp.json();
 
-    if (!data.table || !data.table.rows) return;
+    if (!data.comments) return;
 
-    const sheetComments = {};
-    for (const row of data.table.rows) {
-      const cells = row.c || [];
-      const timestamp = cells[0] ? (cells[0].v || '') : '';
-      const resource = cells[1] ? (cells[1].v || '') : '';
-      const reviewer = cells[2] ? (cells[2].v || '') : '';
-      const rating = cells[3] ? (cells[3].v || '') : '';
-      const comment = cells[4] ? (cells[4].v || '') : '';
-
-      if (!resource || !reviewer) continue;
-
-      if (!sheetComments[resource]) sheetComments[resource] = [];
-      sheetComments[resource].push({ timestamp, resource, reviewer, rating, comment });
+    const serverComments = {};
+    for (const c of data.comments) {
+      if (!c.resource || !c.reviewer) continue;
+      if (!serverComments[c.resource]) serverComments[c.resource] = [];
+      serverComments[c.resource].push(c);
     }
 
-    // Merge: sheet is canonical, but preserve local-only (optimistic) comments
+    // Merge: server is canonical, but preserve local-only (optimistic) comments
     const merged = {};
-    const allResources = new Set([...Object.keys(allComments), ...Object.keys(sheetComments)]);
+    const allResources = new Set([...Object.keys(allComments), ...Object.keys(serverComments)]);
 
     for (const res of allResources) {
-      const sheetList = sheetComments[res] || [];
+      const serverList = serverComments[res] || [];
       const localList = allComments[res] || [];
       // Dedupe by timestamp+reviewer+resource
       const seen = new Set();
       const combined = [];
-      for (const c of [...sheetList, ...localList]) {
+      for (const c of [...serverList, ...localList]) {
         const key = `${c.timestamp}|${c.reviewer}|${c.resource}`;
         if (!seen.has(key)) {
           seen.add(key);
