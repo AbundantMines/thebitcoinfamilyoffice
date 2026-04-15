@@ -878,6 +878,7 @@ function collectFormData(partial) {
 
 // Send data to Apps Script
 async function sendToAppsScript(data) {
+  // 1. Send to Google Sheet via Apps Script
   try {
     await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
@@ -886,7 +887,17 @@ async function sendToAppsScript(data) {
       body: JSON.stringify(data)
     });
   } catch (err) {
-    console.warn('Submission fetch error (non-critical):', err);
+    console.warn('Apps Script error (non-critical):', err);
+  }
+  // 2. Send email notification to Wyatt
+  try {
+    await fetch('https://thebitcoinfamilyoffice.pages.dev/api/notify-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch (err) {
+    console.warn('Notification error (non-critical):', err);
   }
 }
 
