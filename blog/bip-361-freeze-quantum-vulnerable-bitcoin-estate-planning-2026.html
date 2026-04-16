@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Developers Just Proposed Freezing 1.7 Million BTC. If Your Family Inherited Pre-2012 Coins, Read This Immediately. | The Bitcoin Family Office</title>
+<meta name="description" content="BIP-361 is a draft Bitcoin Improvement Proposal that would freeze approximately 1.7 million BTC sitting in quantum-vulnerable P2PK (Pay-to-Public-Key) addresses — including most of Satoshi Nakamoto's holdings and an unknown quantity of forgotten family Bitcoin from pre-2012 inheritances. Here is the freeze mechanism, the P2PK detection playbook, trust document migration authority clauses, the dormant-coin inheritance problem, and a 7-step emergency action plan for Bitcoin families.">
+<meta property="og:title" content="Bitcoin Developers Just Proposed Freezing 1.7 Million BTC. If Your Family Inherited Pre-2012 Coins, Read This Immediately.">
+<meta property="og:description" content="BIP-361 would freeze 1.7M BTC in quantum-vulnerable P2PK addresses. If your family inherited BTC from 2010–2012, some of it may be in addresses that will be permanently locked. Detection playbook, trust migration authority, and 7-step action plan.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thebitcoinfamilyoffice.com/blog/bip-361-freeze-quantum-vulnerable-bitcoin-estate-planning-2026.html">
+<meta property="og:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://thebitcoinfamilyoffice.com/assets/og-image.png">
+<link rel="canonical" href="https://thebitcoinfamilyoffice.com/blog/bip-361-freeze-quantum-vulnerable-bitcoin-estate-planning-2026.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+
+<!-- Article Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bitcoin Developers Just Proposed Freezing 1.7 Million BTC. If Your Family Inherited Pre-2012 Coins, Read This Immediately.",
+  "description": "BIP-361 is a draft Bitcoin Improvement Proposal that would freeze approximately 1.7 million BTC sitting in quantum-vulnerable P2PK (Pay-to-Public-Key) addresses — including most of Satoshi Nakamoto's holdings and an unknown quantity of forgotten family Bitcoin from pre-2012 inheritances. This analysis examines the freeze mechanism, the 1.7M BTC at risk, the P2PK detection playbook, trust document migration authority clauses, the dormant-coin inheritance problem, and a 7-step emergency action plan for Bitcoin families.",
+  "author": {"@type": "Person", "name": "Hal Franklin", "jobTitle": "Bitcoin Wealth Strategist"},
+  "url": "https://thebitcoinfamilyoffice.com/blog/bip-361-freeze-quantum-vulnerable-bitcoin-estate-planning-2026.html",
+  "datePublished": "2026-04-16",
+  "dateModified": "2026-04-16",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Bitcoin Family Office",
+    "url": "https://thebitcoinfamilyoffice.com"
+  },
+  "keywords": ["BIP-361 quantum bitcoin freeze estate planning", "P2PK address freeze", "pre-2012 bitcoin inheritance", "quantum vulnerable bitcoin migration", "Satoshi coins freeze", "dormant bitcoin estate planning", "dynasty trust quantum migration authority"]
+}
+</script>
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebitcoinfamilyoffice.com"},
+    {"@type": "ListItem", "position": 2, "name": "Research", "item": "https://thebitcoinfamilyoffice.com/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "BIP-361 Freeze, Quantum-Vulnerable Bitcoin & Estate Planning", "item": "https://thebitcoinfamilyoffice.com/blog/bip-361-freeze-quantum-vulnerable-bitcoin-estate-planning-2026.html"}
+  ]
+}
+</script>
+
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is BIP-361 and what would it actually do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BIP-361 is a draft Bitcoin Improvement Proposal posted in mid-April 2026 that proposes freezing — via a consensus soft fork — all Bitcoin held in quantum-vulnerable address types where the public key is directly exposed on the blockchain. The primary target is Pay-to-Public-Key (P2PK) addresses, which were the dominant output type from 2009 to approximately mid-2011. The proposal specifies a pre-announced trigger block height at which any remaining funds in covered address types would become permanently unspendable unless holders migrate them to quantum-resistant addresses (enabled by BIP-360) before that block is mined. BIP-361 is currently a draft and has not been activated."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much Bitcoin would BIP-361 actually freeze?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Public on-chain analyses place approximately 1.7 million BTC in P2PK outputs, with most of it dating from 2009 to 2011. This includes roughly 750,000–1,100,000 BTC attributed to addresses consistent with Satoshi Nakamoto's early mining pattern, a large volume of coins from other early miners, and an unknown quantity of coins that were purchased or acquired by private individuals during Bitcoin's first two years and never moved. Some portion of that 1.7M BTC is presumed permanently lost (keys discarded before Bitcoin had value). An unknown remainder is held by living individuals, estates, and trusts — and it is this last category that is directly affected by BIP-361."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are pre-2012 Bitcoin inheritances especially vulnerable to BIP-361?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "From Bitcoin's launch in January 2009 through approximately mid-2011, the default output type generated by the reference client for mining rewards and many send transactions was Pay-to-Public-Key (P2PK). P2PKH (Pay-to-Public-Key-Hash, address-based) did not become the default until later. Any family that mined, purchased, received, or was gifted Bitcoin in 2009–2011 and has not moved those specific UTXOs since is likely holding at least some P2PK coins. Many of these holdings were later inherited — by widows, children, or trusts — often with only partial documentation of the original wallet structure. Because P2PK exposes the public key permanently and directly on-chain, every single one of those coins is in the crosshairs of BIP-361."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "If my family's inherited coins are in P2PK, what happens if the seed phrase is lost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If BIP-361 is activated and the trigger block is mined without those specific UTXOs being migrated to a quantum-resistant address, the coins become permanently unspendable. A lost seed phrase means the coins cannot be moved before the freeze — and after the freeze, no amount of future recovery effort will restore access. This is the dormant-coin inheritance problem: a trust or estate may legally own Bitcoin (reflected on balance sheets, subject to estate tax) that is about to become forever inaccessible. Estate attorneys and trustees must audit dormant wallets now, while migration is still possible. Any P2PK holding without a recoverable key is effectively a use-it-or-lose-it asset with a hard deadline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What trust document changes does BIP-361 make urgent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Five changes that were important in the wake of Google's April 7 quantum research become urgent in the wake of BIP-361: (1) explicit trustee authority to migrate any address type to any successor address type without court approval, (2) an affirmative fiduciary duty — not merely discretionary power — to execute migration before any announced freeze block, (3) custodian selection criteria requiring Day 1 support for BIP-360 quantum-resistant addresses and rapid migration capability, (4) a dormant-asset audit requirement that forces the trustee to identify and document every UTXO held by the trust and its exposure status, and (5) a quantum evolution clause that pre-authorizes the trustee to act on future protocol changes without returning to court or beneficiaries for consent."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8PP20VBTV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N8PP20VBTV');</script>
+<script>
+(function(){
+  if(typeof gtag!=='function') return;
+  document.addEventListener('click',function(e){
+    var el=e.target;
+    var tag=el.tagName+(el.id?'#'+el.id:el.className?' .'+String(el.className).trim().split(' ')[0]:'');
+    gtag('event','hm_click',{
+      'page':location.pathname,
+      'cx':Math.round(e.clientX/window.innerWidth*100),
+      'cy':Math.round((e.clientY+window.scrollY)/Math.max(document.body.scrollHeight,1)*100),
+      'el':tag.substring(0,40)
+    });
+  });
+  var _sd=0;
+  window.addEventListener('scroll',function(){
+    var pct=Math.round((window.scrollY+window.innerHeight)/Math.max(document.body.scrollHeight,1)*100);
+    var milestone=Math.floor(pct/25)*25;
+    if(milestone>_sd&&milestone<=100){_sd=milestone;gtag('event','hm_scroll',{'page':location.pathname,'depth':_sd});}
+  },{passive:true});
+})();
+</script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c8ee81a6842447bb64ffc1b8fb36b19"}'></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0a; --bg-elevated: #111; --accent: #c9a84c;
+  --accent-dim: rgba(201,168,76,0.10); --accent-border: rgba(201,168,76,0.25);
+  --text: #e8e4de; --text-secondary: #9a958d; --text-muted: #6b6660;
+  --border: rgba(255,255,255,0.06);
+  --serif: 'EB Garamond', Georgia, serif;
+  --display: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --max-w: 720px;
+}
+html { font-size: 18px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { opacity: 0.8; }
+::selection { background: var(--accent-dim); color: var(--accent); }
+
+nav { position: sticky; top: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-mark { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); }
+.nav-mark span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); opacity: 1; }
+.nav-links .nav-cta { color: var(--accent) !important; border: 1px solid var(--accent-border); padding: 0.35rem 0.8rem; border-radius: 2px; }
+
+.article-header { padding: 7rem 2rem 4rem; border-bottom: 1px solid var(--border); text-align: center; position: relative; }
+.article-header::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 5rem; background: linear-gradient(to bottom, transparent, var(--accent-border)); }
+.article-tag { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: block; }
+.article-header h1 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.25; color: var(--text); max-width: 800px; margin: 0 auto 1.5rem; }
+.article-meta { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+
+.article-body { max-width: var(--max-w); margin: 0 auto; padding: 4rem 2rem 6rem; }
+.article-body h2 { font-family: var(--display); font-weight: 400; font-size: 1.6rem; line-height: 1.3; color: var(--text); margin: 3rem 0 1.25rem; }
+.article-body h3 { font-family: var(--sans); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); margin: 2rem 0 0.75rem; }
+.article-body p { margin-bottom: 1.5rem; font-size: 1.05rem; color: var(--text); }
+.article-body ul, .article-body ol { margin: 0 0 1.5rem 1.5rem; }
+.article-body li { margin-bottom: 0.6rem; font-size: 1.05rem; }
+.pull-quote { font-family: var(--display); font-style: italic; font-size: 1.3rem; line-height: 1.5; color: var(--text-secondary); border-left: 2px solid var(--accent); padding: 1.5rem 2rem; margin: 2.5rem 0; }
+.article-body strong { color: var(--text); font-weight: 500; }
+.article-body em { font-style: italic; color: var(--text-secondary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+.news-callout { background: rgba(201,168,76,0.05); border: 1px solid var(--accent-border); border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0; padding: 1.25rem 1.5rem; margin: 0 0 2.5rem; }
+.news-callout-label { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+.news-callout p { font-family: var(--sans); font-size: 0.82rem; color: var(--text-secondary); line-height: 1.65; margin: 0; }
+
+.compare-table { width: 100%; border-collapse: collapse; margin: 2rem 0 2.5rem; font-family: var(--sans); font-size: 0.8rem; }
+.compare-table th { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
+.compare-table td { padding: 0.75rem; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; line-height: 1.5; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { color: var(--text); font-weight: 500; }
+.compare-table .good { color: #4caf50; }
+.compare-table .bad { color: #e57373; }
+.compare-table .neutral { color: var(--text-secondary); }
+
+.services-cta { background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 4px; padding: 2.5rem; max-width: var(--max-w); margin: 0 auto 4rem; text-align: center; }
+.services-cta h3 { font-family: var(--display); font-weight: 400; font-size: 1.4rem; color: var(--text); margin-bottom: 0.75rem; }
+.services-cta p { font-family: var(--sans); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6; }
+.services-cta a { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-border); padding: 0.6rem 1.4rem; border-radius: 2px; display: inline-block; transition: background 0.2s; }
+.services-cta a:hover { background: var(--accent-dim); opacity: 1; }
+
+.am-cta { background: var(--bg-elevated); border: 1px solid var(--accent-border); border-radius: 4px; padding: 1.75rem 2rem; margin: 2.5rem 0; }
+.am-cta h4 { font-family: var(--display); font-size: 1.05rem; color: var(--text); margin-bottom: 0.6rem; font-weight: 400; }
+.am-cta p { font-family: var(--sans); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem; }
+.am-cta a.btn { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-border); padding: 0.5rem 1.2rem; border-radius: 2px; display: inline-block; text-decoration: none; margin-right: 0.75rem; margin-bottom: 0.5rem; }
+.am-cta a.btn:hover { background: var(--accent-dim); opacity: 1; }
+
+.related { border-top: 1px solid var(--border); padding: 3rem 2rem; max-width: var(--max-w); margin: 0 auto; }
+.related-label { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.5rem; }
+.related-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.related-links a { font-family: var(--serif); font-size: 1rem; color: var(--text-secondary); border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; transition: color 0.2s; }
+.related-links a:hover { color: var(--accent); opacity: 1; }
+
+footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-mark { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); }
+.footer-mark span { color: var(--accent); }
+.footer-copy { font-family: var(--sans); font-size: 0.63rem; color: var(--text-muted); }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 1px; background: var(--text-secondary); transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+@media (max-width: 640px) {
+  html { font-size: 16px; }
+  nav { padding: 1rem 1.25rem; }
+  .hamburger { display: flex; }
+  .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.97); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; z-index: 150; }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1rem; }
+  .article-body { padding: 3rem 1.25rem 5rem; }
+  .compare-table { font-size: 0.72rem; }
+  footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-mark">The Bitcoin <span>Family Office</span></a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="/" onclick="closeMenu()">Home</a>
+    <a href="/services/" onclick="closeMenu()">Services</a>
+    <a href="/blog/" onclick="closeMenu()">Research</a>
+    <a href="/news/" onclick="closeMenu()">News</a>
+    <a href="/monitor/" onclick="closeMenu()">Estate Watch</a>
+    <a href="/faq/" onclick="closeMenu()">FAQ</a>
+    <a href="/qualify/" class="nav-cta" onclick="closeMenu()">Get Started</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <span class="article-tag">Quantum Security &times; Estate Planning</span>
+  <h1>Bitcoin Developers Just Proposed Freezing 1.7 Million BTC. If Your Family Inherited Pre-2012 Coins, Read This Immediately.</h1>
+  <div class="article-meta">Hal Franklin &nbsp;·&nbsp; The Bitcoin Family Office &nbsp;·&nbsp; April 16, 2026 &nbsp;·&nbsp; 41 min read</div>
+</header>
+
+<article class="article-body">
+
+  <p class="article-breadcrumb" style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
+    <a href="/" style="color:var(--text-muted);text-decoration:none;">Home</a> <span style="margin:0 0.5rem;">&#x203A;</span>
+    <a href="/blog/" style="color:var(--text-muted);text-decoration:none;">Research</a> <span style="margin:0 0.5rem;">&#x203A;</span>
+    <span style="color:var(--text-secondary);">BIP-361 Freeze, Quantum-Vulnerable Bitcoin &amp; Estate Planning</span>
+  </p>
+
+  <div class="news-callout">
+    <div class="news-callout-label">📌 Breaking — April 15–16, 2026</div>
+    <p>Bitcoin developers have posted BIP-361, a draft Bitcoin Improvement Proposal that would freeze — at a pre-announced block height — all Bitcoin sitting in quantum-vulnerable address types where the public key is directly exposed on-chain. The primary target is Pay-to-Public-Key (P2PK) outputs: the default output type from 2009 through mid-2011, containing an estimated 1.7 million BTC including the majority of Satoshi Nakamoto's presumed holdings. BIP-361 is the direct sequel to BIP-360 (quantum-resistant addresses) and arrives nine days after <a href="/blog/google-quantum-bitcoin-keys-dynasty-trust-estate-planning-2026.html" style="color:var(--accent);">Google's 1,200-qubit research</a> collapsed the quantum timeline by an order of magnitude. The proposal is a draft, not an activated soft fork — but the estate planning implications for pre-2012 Bitcoin holders are immediate. Sources: Bitcoin-dev mailing list BIP-361 draft (April 15), reference client review threads (April 16).</p>
+  </div>
+
+  <!-- Table of Contents -->
+  <div style="background:var(--bg-elevated);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.75rem 2rem;margin:0 0 2.5rem;">
+    <div style="font-family:var(--sans);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;">In This Guide</div>
+    <ol style="margin:0 0 0 1.25rem;">
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#what-bip-361-proposes" style="color:var(--text-secondary);">What BIP-361 Actually Proposes — Freeze Mechanism &amp; Trigger Block</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#the-1-7-million" style="color:var(--text-secondary);">The 1.7 Million BTC at Risk — Satoshi, Early Miners, and Forgotten Family Coins</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#why-families" style="color:var(--text-secondary);">Why This Hits Bitcoin Families Specifically</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#detection-playbook" style="color:var(--text-secondary);">The Pre-2012 Bitcoin Detection Playbook</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#ethical-debate" style="color:var(--text-secondary);">The Ethical Debate — Protect the Network vs. Respect Immutability</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#migration-window" style="color:var(--text-secondary);">If Your Family's BTC Is in P2PK — The Migration Window</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#trust-documents" style="color:var(--text-secondary);">Trust Document Implications — Pre-2020 Wallets &amp; Migration Authority</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#dormant-coin-problem" style="color:var(--text-secondary);">The Dormant Coin Inheritance Problem</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#seven-step-plan" style="color:var(--text-secondary);">7-Step Emergency Action Plan</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#defining-moment" style="color:var(--text-secondary);">Why This Is the Defining Moment for Pre-2012 Bitcoin Families</a></li>
+      <li style="font-family:var(--sans);font-size:0.82rem;line-height:1.5;margin-bottom:0.35rem;"><a href="#faq" style="color:var(--text-secondary);">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <p>Nine days ago, Google collapsed the quantum timeline. Yesterday, Bitcoin developers proposed doing something about it — and the something they proposed will, if activated, permanently freeze approximately 1.7 million BTC, roughly 8.1% of all Bitcoin that will ever exist.</p>
+
+  <p>The BIP-361 draft posted to the Bitcoin-dev mailing list on April 15 is not a hand-wave proposal by a lone developer. It is a careful, technically detailed, mathematically grounded specification for a consensus soft fork that would — at a pre-announced block height — make it impossible to spend any Bitcoin remaining in quantum-vulnerable Pay-to-Public-Key (P2PK) outputs. Coins that are moved before the trigger block are safe. Coins that are not moved become unspendable forever. No recovery. No appeal. No court order that can unfreeze them.</p>
+
+  <p>For the vast majority of Bitcoin holders — anyone who bought in 2013 or later, anyone whose coins have gone through an exchange, anyone whose Bitcoin lives in a modern P2WPKH or P2TR address — BIP-361 is a sensible network-level defense against a mass-theft event that would otherwise occur the moment a cryptographically relevant quantum computer appears. But for a very specific subset of Bitcoin holders — families who mined, purchased, or inherited Bitcoin between January 2009 and approximately mid-2011, and who still hold the original UTXOs without having moved them — BIP-361 is a countdown clock. The families that hold the original P2PK-era coins are often the same families who have the least documentation about their wallets, the most complicated inheritance chains, and the highest probability of missing a migration deadline.</p>
+
+  <p>This article is the migration playbook. It is the sequel to our <a href="/blog/google-quantum-bitcoin-keys-dynasty-trust-estate-planning-2026.html">April 7 analysis of Google's 1,200-qubit research</a> and our <a href="/blog/bitcoin-quantum-resistance-bip-360-estate-planning-2026.html">March 14 BIP-360 coverage</a>. Where BIP-360 <em>enables</em> quantum-resistant addresses, BIP-361 <em>forces</em> migration away from quantum-vulnerable ones. If your family's Bitcoin dates back to the Bitcoin Pizza Guy era, this is not a theoretical conversation anymore.</p>
+
+
+  <h2 id="what-bip-361-proposes">What BIP-361 Actually Proposes: Freeze Mechanism, Trigger Block, and Covered Address Types</h2>
+
+  <p>Let us be precise. BIP-361 is a draft — it has not been activated, and its final technical parameters may shift during peer review. But the core proposal is specific enough to analyze directly.</p>
+
+  <h3>The Covered Address Types</h3>
+
+  <p>BIP-361 explicitly targets Bitcoin outputs where the full public key is published on the blockchain as part of the output itself — meaning the coins can be stolen by a quantum attacker running Shor's algorithm against the exposed public key, without needing to wait for a transaction to expose it. The primary covered types are:</p>
+
+  <ul>
+    <li><strong>P2PK (Pay-to-Public-Key)</strong> — the original output type used by Satoshi Nakamoto's reference client from 2009 through approximately mid-2011. The public key is the output. There is no hash layer. The private key can be derived by any entity capable of solving the elliptic curve discrete logarithm problem on secp256k1 — which is exactly what a sufficiently large quantum computer does.</li>
+    <li><strong>Bare multisig outputs</strong> (uncommon but present in the UTXO set) that expose all constituent public keys directly.</li>
+    <li><strong>Any hash-based output type (P2PKH, P2WPKH, P2TR) where the public key has already been revealed</strong> via a prior spending transaction — but only in the narrower "exposed-already" sense, and the current draft leans toward treating these differently from P2PK. The strictest version of BIP-361 would freeze all reused addresses; the less aggressive version freezes only permanently-exposed types like P2PK.</li>
+  </ul>
+
+  <h3>The Freeze Mechanism</h3>
+
+  <p>Mechanically, BIP-361 is a consensus rule change: after a pre-announced block height (call it block <em>N</em>), Bitcoin nodes will reject any transaction that attempts to spend a UTXO in a covered address type. The UTXO still exists in the database. The owner's private key, if they have it, still mathematically corresponds to the public key. But the network will no longer accept a signature from that key as authorization to move the coins. The funds are, in every practical sense, frozen — permanently.</p>
+
+  <p>Before block <em>N</em>, however, everything is normal. Holders can spend their P2PK coins exactly as they always could — authorizing a transaction with their private key, broadcasting it, and having it mined into a block. The standard migration pattern under BIP-361 is: spend the P2PK UTXO in a transaction whose output is a new quantum-resistant address (a P2QRH output as defined by BIP-360), thereby moving the coin to safety before the freeze activates.</p>
+
+  <h3>The Trigger Block: A Timeline Drafted With Care</h3>
+
+  <p>The draft specifies that the trigger block height should be set far enough in the future to allow a meaningful migration window — the current working proposal suggests a delay of approximately two to three years between BIP-361 activation and the freeze trigger. This is deliberate. It gives:</p>
+
+  <ul>
+    <li>Wallet software time to implement one-click migration from P2PK to P2QRH (or an interim P2TR address).</li>
+    <li>Custodians time to audit their holdings and migrate any institutional P2PK exposure.</li>
+    <li>Estate attorneys and trustees time to locate dormant family wallets, recover keys if possible, and execute migration transactions.</li>
+    <li>Individual holders time to hear about the proposal, understand it, and act.</li>
+  </ul>
+
+  <p>Crucially, the trigger block will be announced as a <em>block height</em>, not a calendar date. Bitcoin block times average ten minutes but vary — a two-year window at the draft-stage activation date translates to roughly block 990,000–1,020,000 depending on network hashrate. The draft includes a built-in review checkpoint: the freeze can be postponed by a follow-up soft fork if the community concludes the quantum threat has been overestimated. But postponement is non-trivial and requires the same supermajority consensus that activated the rule. The default path is forward.</p>
+
+  <h3>The Dependency on BIP-360</h3>
+
+  <p>BIP-361 only makes sense if BIP-360 (quantum-resistant addresses) is activated first — because migration requires a destination address type that is not itself quantum-vulnerable. The two proposals are explicitly coupled in the draft. BIP-361 activation is conditional on BIP-360 having been live on mainnet for at least twelve months prior, giving holders a full year with quantum-resistant addresses available before any freeze deadline begins its countdown.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Proposal</th>
+        <th>What It Does</th>
+        <th>Target Effect</th>
+        <th>Status (April 16, 2026)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>BIP-360 (P2QRH)</td>
+        <td class="neutral">Enables quantum-resistant address types using post-quantum signatures (Dilithium, SPHINCS+, FALCON).</td>
+        <td class="good">Creates a safe destination for migration. Voluntary opt-in for holders.</td>
+        <td class="neutral">Draft, active specification review. Expected mainnet activation 2028–2029.</td>
+      </tr>
+      <tr>
+        <td>BIP-361 (Freeze)</td>
+        <td class="neutral">Freezes all remaining P2PK and other publicly-exposed-key UTXOs at pre-announced block height.</td>
+        <td class="bad">Forces migration. Coins not migrated become permanently unspendable.</td>
+        <td class="bad">Draft, April 15, 2026. Earliest plausible activation ~2030; freeze trigger ~2032–2033.</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h2 id="the-1-7-million">The 1.7 Million BTC at Risk: Satoshi, Early Miners, and Forgotten Family Coins</h2>
+
+  <p>The number that will lead every headline about BIP-361 is 1.7 million BTC. That figure deserves unpacking, because its composition is not uniform — and the estate planning implications differ dramatically across its sub-populations.</p>
+
+  <h3>The Provenance Breakdown</h3>
+
+  <p>Based on on-chain analyses published over the past several years by Chainalysis, Glassnode, and independent researchers, the approximately 1.7 million BTC currently sitting in P2PK outputs breaks down roughly as follows:</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Cohort</th>
+        <th>Approximate BTC</th>
+        <th>Status</th>
+        <th>Affected by BIP-361?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Satoshi-attributed mining</td>
+        <td class="neutral">~750,000 – 1,100,000</td>
+        <td class="neutral">Dormant since 2010–2011. Attributed via "Patoshi" mining pattern analysis.</td>
+        <td class="bad">Yes — would be frozen unless moved, which would itself be a historic on-chain event.</td>
+      </tr>
+      <tr>
+        <td>Other early miners (2009–2011)</td>
+        <td class="neutral">~400,000 – 600,000</td>
+        <td class="neutral">Mix of dormant and occasionally-moved coins; many known to be permanently lost.</td>
+        <td class="bad">Yes — every P2PK UTXO here is either migrated before trigger or frozen.</td>
+      </tr>
+      <tr>
+        <td>Early purchases &amp; received gifts (2010–2011)</td>
+        <td class="neutral">~100,000 – 250,000</td>
+        <td class="neutral">Private individuals who bought BTC from MtGox, BitcoinMarket, or peer-to-peer.</td>
+        <td class="bad">Yes — this cohort includes the forgotten family-office and inheritance holdings most relevant to BFO readers.</td>
+      </tr>
+      <tr>
+        <td>Identified P2PK with known live owners</td>
+        <td class="neutral">Small fraction (&lt;50,000 est.)</td>
+        <td class="neutral">Owners occasionally move or refresh these coins and are likely to migrate.</td>
+        <td class="good">Technically affected but practically will migrate in time.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>The Satoshi Question</h3>
+
+  <p>The single largest cohort — the Satoshi-attributed ~750,000 to 1,100,000 BTC — will either stay frozen (because Satoshi is presumed unreachable or deceased) or it will move in advance of the trigger block, which would itself be a market-moving on-chain event of unprecedented magnitude. Neither outcome is the focus of this article. We are not writing estate plans for Satoshi. We are writing for families who might hold some of the other 600,000 to 850,000 BTC in the non-Satoshi P2PK set.</p>
+
+  <h3>The Forgotten Family Coin Cohort</h3>
+
+  <p>The cohort that matters for BFO readers is the 100,000 to 250,000 BTC in early private purchases and received gifts. At April 2026 prices of roughly $68,500 per BTC, that cohort is worth somewhere between $6.85 billion and $17.1 billion. It is not Satoshi's. It is not early miners'. It is ordinary — if unusually prescient — early adopters who bought Bitcoin for pennies or low dollars and, in many cases, never touched it again. Some of them are still alive and paying attention. Many are not. A meaningful fraction has been inherited, transferred into trusts, or consolidated into estate balance sheets that describe the coins at market value without understanding the technical form in which they are held.</p>
+
+  <p>If your family's origin story with Bitcoin begins with a sentence like "Grandfather bought a few thousand dollars of Bitcoin back in 2010," and the answer to "where is it now?" is some variant of "we have the laptop / we have the paper wallet / it is on a hard drive in a safe deposit box" — the probability that some or all of those UTXOs are P2PK is non-trivial. The default output type for the reference client in that era was P2PK. Unless someone on the family's side actively understood address types and converted the coins, they are likely still sitting as P2PK outputs — and BIP-361 has those coins in its sights.</p>
+
+  <div class="pull-quote">"Somewhere between $6.85 billion and $17.1 billion of early-adopter Bitcoin sits in non-Satoshi, non-miner P2PK addresses. A meaningful slice of that is in family hands — inherited, trusted, forgotten, or lightly managed. BIP-361, if activated on the draft's timeline, gives those families a single-digit-year window to act."</div>
+
+
+  <h2 id="why-families">Why This Hits Bitcoin Families Specifically</h2>
+
+  <p>BIP-361 is calibrated to protect Bitcoin's monetary integrity. Its incidental effect, however, is to impose a hard deadline on a category of holders that the Bitcoin network has no way to contact directly: private families holding early P2PK coins through inheritance, trusts, or long-dormant personal custody.</p>
+
+  <h3>The 2010–2012 Acquisition Window Problem</h3>
+
+  <p>From Bitcoin's launch in January 2009 through approximately mid-to-late 2011, the reference Bitcoin client (what we now call Bitcoin Core, then called simply Bitcoin) generated P2PK outputs for many types of transactions — particularly mining rewards, but also a large fraction of ordinary payments. The shift to P2PKH (address-based, hash-protected outputs) happened incrementally and was not uniformly adopted across all clients or use cases until late 2011 at the earliest. Bitcoin addresses in the familiar "1..." format existed from very early on, but the <em>output type</em> of many transactions during this window was still P2PK.</p>
+
+  <p>A family that acquired Bitcoin during this window — whether by mining on a home GPU, buying from MtGox or BitcoinMarket, receiving a gift, or accepting BTC as payment — had a reasonable probability of ending up with at least some P2PK UTXOs. If those UTXOs were not spent in the intervening 15 years, they are still P2PK today. Every subsequent address type (P2SH in 2012, P2WPKH in 2017, P2TR in 2021) is irrelevant to coins that have not moved.</p>
+
+  <h3>The Inheritance Compounding Effect</h3>
+
+  <p>Now layer in a decade and a half of life events. A family who bought Bitcoin in 2010 has, by 2026, experienced some combination of: marriage, divorce, death, disability, moves between custody providers, trust creation, and generational handoffs. Each of these events tends to reduce — not improve — the family's technical understanding of what they hold. The grandfather who understood P2PK vs. P2PKH is often not the grandson who currently has custody of the seed phrase.</p>
+
+  <p>Families that inherited Bitcoin typically did so through one of three paths:</p>
+
+  <ul>
+    <li><strong>Direct key transfer.</strong> Heirs were given the original private keys, paper wallet, or hardware wallet. The UTXOs remain in whatever address type the original purchase generated — often P2PK for pre-2012 coins.</li>
+    <li><strong>Consolidation by a new custodian.</strong> The estate moved coins to a modern custodian (Coinbase, Fidelity, BitGo) at some point post-acquisition. This path actually <em>helps</em> — the consolidation transaction itself would have moved the coins out of P2PK into modern address types. Coins that went through this path are safe from BIP-361.</li>
+    <li><strong>Paper balance sheet only.</strong> Heirs know the coins exist, the trust document lists them, the estate valuation includes them — but no one has executed a migration transaction. The coins are exactly where the grantor left them, in whatever era's address type. This is the highest-risk path for BIP-361 exposure.</li>
+  </ul>
+
+  <h3>The Trustee Knowledge Gap</h3>
+
+  <p>Most corporate trustees — even those marketing "digital asset trust services" — cannot distinguish a P2PK UTXO from a P2WPKH UTXO on their own. Their custody providers maintain these details in their internal systems, but trustees managing Bitcoin holdings rarely see address-type breakdowns in their quarterly reports. A trustee who believes their family office trust holds "100 BTC in cold storage" may not know that 40 of those BTC are in P2PK outputs dating from 2011 — and may not discover that fact until an estate attorney asks the right question in response to BIP-361 coverage.</p>
+
+  <p>This is the structural problem: the information required to protect against BIP-361 freeze lives in the custodian's database, but the authority to act on it lives with the trustee — and the trigger to ask lives with the estate attorney who reads a headline. All three parties must connect, and connect quickly, for the migration to happen before the trigger block.</p>
+
+
+  <h2 id="detection-playbook">The Pre-2012 Bitcoin Detection Playbook</h2>
+
+  <p>Before you can migrate, you must identify. Here is the concrete technical playbook for determining whether your family's Bitcoin is in P2PK outputs — performable today, on free public tools, without any custody change.</p>
+
+  <h3>Step 1: Enumerate Every Wallet, Address, and UTXO</h3>
+
+  <p>For each distinct Bitcoin holding in the family (personal wallets, trust holdings, LLC holdings, paper wallets, hardware wallets, inherited accounts):</p>
+
+  <ul>
+    <li>Export or compile the complete list of Bitcoin addresses that have ever received coins into that wallet.</li>
+    <li>For each address, note the current balance and the date and block height of the first received transaction.</li>
+    <li>Flag any address whose first-received transaction is dated before July 2012 — these are in the high-suspicion window for P2PK.</li>
+  </ul>
+
+  <p>For institutional custody, request a full UTXO export with address-type classification. Coinbase, Fidelity, BitGo, and Anchorage can all produce this — but you may need to ask explicitly.</p>
+
+  <h3>Step 2: Check Each UTXO's Script Type on a Public Explorer</h3>
+
+  <p>Every Bitcoin block explorer displays the output script type. For each suspicious UTXO:</p>
+
+  <ul>
+    <li>Go to a blockchain explorer (mempool.space, blockstream.info, or blockchair.com).</li>
+    <li>Search for the transaction ID that created the UTXO.</li>
+    <li>Look at the output's script type field. Common values: <code>pubkey</code> (P2PK — covered by BIP-361), <code>pubkeyhash</code> (P2PKH — safe), <code>scripthash</code> (P2SH — usually safe), <code>witness_v0_keyhash</code> (P2WPKH — safe), <code>witness_v1_taproot</code> (P2TR — safe).</li>
+  </ul>
+
+  <p>Any UTXO whose output script type is <code>pubkey</code> is a P2PK output. Those are the coins in BIP-361's crosshairs.</p>
+
+  <h3>Step 3: Use P2PK-Specific Filters and Tools</h3>
+
+  <p>Several tools exist specifically for auditing P2PK exposure:</p>
+
+  <ul>
+    <li><strong>Blockchair's advanced filters</strong> allow you to query outputs by script type. Filter for <code>is_spent = false</code> and <code>type = pubkey</code> across the addresses of interest.</li>
+    <li><strong>BTC RPC Explorer</strong> (self-hosted) can run custom queries against a local node's UTXO set, isolating P2PK UTXOs controlled by a specific public key.</li>
+    <li><strong>Glassnode's on-chain data platform</strong> (institutional/paid) publishes P2PK supply metrics by cohort and provides APIs for address-level enrichment.</li>
+  </ul>
+
+  <p>For a family office trust, the right engagement is a one-time P2PK audit performed by a qualified on-chain analytics firm against the trust's full address set. The output is a report: "Of the trust's 47 distinct addresses, 3 hold P2PK UTXOs totaling X BTC." That report becomes the input to the migration plan.</p>
+
+  <h3>Step 4: Verify Custodian Address-Type Visibility</h3>
+
+  <p>If the trust holds coins with an institutional custodian, ask the custodian directly:</p>
+
+  <ul>
+    <li>"Please provide a UTXO-level report for all addresses holding our trust's Bitcoin, including the script type of each UTXO."</li>
+    <li>"Do any of our UTXOs sit in P2PK outputs?"</li>
+    <li>"What is your migration process for moving coins out of P2PK outputs to a quantum-resistant address type when BIP-360 is activated?"</li>
+  </ul>
+
+  <p>A custodian that cannot answer these questions quickly is a custodian that is not prepared for BIP-361 migration — and that alone is a reason to reconsider the custody relationship under the <a href="/blog/google-quantum-bitcoin-keys-dynasty-trust-estate-planning-2026.html">quantum preparedness framework</a> we laid out last week.</p>
+
+  <h3>Step 5: Document Your P2PK Inventory</h3>
+
+  <p>The output of detection should be a written inventory filed with the trust records:</p>
+
+  <ul>
+    <li>Every address holding trust Bitcoin, cross-referenced to its custody location.</li>
+    <li>Each UTXO's script type, value in BTC, and date of first receipt.</li>
+    <li>A clearly labeled sub-total for "P2PK (BIP-361 at risk)" UTXOs.</li>
+    <li>A plan and timeline for each P2PK UTXO: whether migration will be executed immediately to P2TR (safe today, migrates to P2QRH later), or held until BIP-360 activates and then migrated directly to P2QRH.</li>
+  </ul>
+
+  <p>This inventory is the document an estate attorney, a successor trustee, or a beneficiary can read five years from now and understand exactly where the family stood in April 2026 and what was done about it.</p>
+
+
+  <h2 id="ethical-debate">The Ethical Debate: Protect the Network vs. Respect Immutability</h2>
+
+  <p>We would be doing the reader a disservice if we presented BIP-361 as a purely technical proposal that will sail through consensus. It will not. BIP-361 is the most philosophically contested Bitcoin proposal since the 2017 block size wars, and for a deeper reason than most soft fork debates: it asks the network to choose between two of Bitcoin's foundational values.</p>
+
+  <h3>The Case For BIP-361</h3>
+
+  <p>The pro-freeze argument is straightforward network security. If a quantum computer capable of breaking ECDSA arrives, and 1.7 million BTC are sitting in P2PK outputs, the quantum attacker will drain all 1.7 million coins — producing a sudden, unearned supply inflation of approximately 8.1%, devastating the price, destabilizing the network, and transferring enormous wealth from long-term holders to whoever operates the quantum attack. BIP-361 prevents this by forcing the migration on a pre-announced schedule, ensuring that by the time a quantum computer exists, there is nothing left in P2PK outputs for it to steal. The "theft" that BIP-361 "commits" against forgetful holders is the same theft that the quantum attacker would commit — but distributed as a scheduled protocol event rather than a catastrophic attack.</p>
+
+  <p>This framing, endorsed by many Bitcoin Core developers and the quantum-security-focused researchers who authored BIP-361, treats the freeze as a kind of constructive notice: we are telling you, years in advance, that your coins are in an address type that cannot survive the quantum transition. Move them or lose them. The network is not harming you — physics is harming you, and the network is giving you a schedule.</p>
+
+  <h3>The Case Against BIP-361</h3>
+
+  <p>The anti-freeze argument is also foundational — and in some readings, more Bitcoin-native than the pro-freeze view. Bitcoin's core social contract, as many view it, is immutability: what is yours on-chain stays yours on-chain until you choose to move it. The protocol does not decide to freeze your coins. The protocol does not decide that you have been away too long. The protocol does not second-guess your choices. If you mined Bitcoin in 2010 and left it in a P2PK UTXO because you believed P2PK was fine, that was your sovereign decision. If you died, or lost the key, or simply forgot — the coins sit there. They are not "lost to the network." They are lost to <em>you</em>, which is a different philosophical statement. The supply is still 21 million. The UTXO still exists. The network has no opinion.</p>
+
+  <p>Under this view, BIP-361 is a precedent-setting violation: it is the first time Bitcoin's consensus rules would be changed to make someone's coins unspendable without their consent. Today the target is P2PK holders, who are hard to sympathize with because many are presumed lost. Tomorrow the target could be anyone the network majority finds inconvenient — dormant holders, holders in sanctioned jurisdictions, holders in disfavored address types for any reason. The slippery slope argument is not hypothetical; it is structural.</p>
+
+  <h3>The Middle Ground</h3>
+
+  <p>The intellectually honest middle ground, which is where several prominent commentators have landed in the first 24 hours of BIP-361 discussion, is this: the quantum threat is real enough that <em>some</em> protocol-level response is warranted, but BIP-361's specific mechanism — a hard freeze with no grandfather clause — may be the wrong response. Alternatives being floated include:</p>
+
+  <ul>
+    <li>A "migration premium" rather than a freeze: P2PK UTXOs remain spendable but require a higher-than-standard transaction fee after a certain block, economically discouraging delay without imposing an absolute deadline.</li>
+    <li>A post-quantum-proof-required rule: after the trigger block, P2PK spends must include a proof that the spender also knows a quantum-resistant key derived from the same seed, effectively forcing holders with seeds to migrate while not freezing holders without seeds.</li>
+    <li>A longer migration window combined with a trustee/executor recovery window for verifiably inherited coins (legally complex, politically difficult, but more respectful of the inheritance use case).</li>
+  </ul>
+
+  <p>None of these alternatives is in the current BIP-361 draft. But the draft is not final. Family offices and estate attorneys have a short window — probably six to twelve months — to meaningfully influence the final specification if they engage directly with the Bitcoin developer community and BIP-361 review process.</p>
+
+  <div class="pull-quote">"BIP-361 is the first Bitcoin soft fork in history that would render specific holders' coins unspendable without their consent. The case for it is network security. The case against it is immutability. For pre-2012 Bitcoin families, the outcome of that debate is not academic — it is a deadline."</div>
+
+
+  <h2 id="migration-window">If Your Family's BTC Is in P2PK: The Migration Window</h2>
+
+  <p>Assume BIP-361 activates roughly on the draft's intended timeline — soft fork activation around 2029–2030, trigger block around 2032–2033. That gives a practical migration window of three to seven years from today. Here is what happens inside that window for a family holding P2PK Bitcoin.</p>
+
+  <h3>The Migration Transaction</h3>
+
+  <p>Mechanically, migrating a P2PK UTXO is not exotic. It is a standard Bitcoin transaction:</p>
+
+  <ul>
+    <li>The UTXO is spent as an input (authorizing the move with the private key, which broadcasts the public key — but the public key is already on-chain in a P2PK UTXO, so this changes nothing).</li>
+    <li>The output is sent to a new address of your choice: today, ideally P2TR (Taproot, which offers the strongest pre-quantum protection); after BIP-360 activates, ideally directly to a P2QRH (quantum-resistant) address.</li>
+    <li>A fee is paid to the miner. For a single-input, single-output transaction, this is generally 1–5 sat/vB depending on congestion — a few dollars to a few hundred dollars depending on fee market conditions.</li>
+  </ul>
+
+  <p>If BIP-360 is active when you migrate, you can go straight from P2PK to P2QRH in one transaction. If BIP-360 is not yet active, you have two options: migrate to P2TR now (safe today, requires a second migration to P2QRH later when BIP-360 activates) or wait for BIP-360 and migrate once. The best option depends on your read of the relative probabilities of a quantum-capable computer arriving before BIP-360 activates (currently judged low) versus a longer delay (more likely).</p>
+
+  <h3>The Two-Hop Strategy</h3>
+
+  <p>For most family offices, the right strategy is the two-hop approach:</p>
+
+  <ol>
+    <li><strong>Migrate P2PK → P2TR in 2026.</strong> This removes you from the BIP-361 crosshairs immediately and gets you into the most modern pre-quantum address type available. It costs a transaction fee and can be done today by any custodian or self-custody setup.</li>
+    <li><strong>Migrate P2TR → P2QRH when BIP-360 activates (2028–2029 est.).</strong> This is the quantum-resistant final destination. By that point, wallet software will have one-click migration support.</li>
+  </ol>
+
+  <p>The two-hop strategy is slightly more expensive than waiting for BIP-360 (you pay two transaction fees instead of one) and slightly less private (you create additional on-chain footprint). But it removes the BIP-361 risk immediately and hedges against either proposal arriving earlier or later than expected. For a trust with $10M+ in P2PK Bitcoin, the extra $20–$200 in fees is irrelevant. Insurance against a missed deadline is not.</p>
+
+  <h3>The Self-Custody vs. Custodian Migration Decision</h3>
+
+  <p>For self-custodied P2PK Bitcoin — coins the family holds keys to directly — migration is executed whenever the family chooses, using whatever wallet software supports the source and destination address types. Sparrow Wallet, Electrum, and Bitcoin Core all support creating spends from P2PK inputs and outputs to P2TR; support for P2QRH will come with BIP-360 activation.</p>
+
+  <p>For custodied P2PK Bitcoin, migration depends on the custodian. Most institutional custodians can execute a migration on instruction from the trustee, but the execution is subject to the custodian's schedule and internal processes. The trustee should issue written migration instructions well in advance of any BIP-361 deadline and should document custodian acknowledgment. A custodian that cannot execute P2PK → P2TR migration within 30 days of instruction is a custodian that is not ready for BIP-361 migration generally, and the trust should consider the implications.</p>
+
+
+  <h2 id="trust-documents">Trust Document Implications: Pre-2020 Wallets and Migration Authority</h2>
+
+  <p>We covered the quantum trust document framework in detail in our <a href="/blog/google-quantum-bitcoin-keys-dynasty-trust-estate-planning-2026.html">April 7 analysis</a>. BIP-361 adds specific urgency and specific clause requirements to that framework.</p>
+
+  <h3>The Pre-2020 Trust Document Problem</h3>
+
+  <p>Most irrevocable trusts that hold Bitcoin were drafted before 2020, in an era when "Bitcoin" was treated in trust documents as either an exotic asset class requiring boilerplate language ("the trustee may hold digital assets in the trust") or, worse, as a commodity-like holding with custody procedures spelled out in specific technical detail. Neither approach contemplates BIP-361.</p>
+
+  <p>Common defects in pre-2020 Bitcoin trust documents that BIP-361 exposes:</p>
+
+  <ul>
+    <li><strong>References to specific wallet addresses or seed phrases.</strong> Some trust instruments or related schedules actually list the Bitcoin addresses the trust owns — and those addresses are P2PK. Amending the trust to move those coins may require judicial modification unless the trust document grants broad authority to change addresses.</li>
+    <li><strong>Specific custody procedure language.</strong> Documents that specify "cold storage on an air-gapped hardware device" or similar procedures may inadvertently preclude migration that requires different tools — particularly when P2QRH support may initially exist only in certain wallet types.</li>
+    <li><strong>No explicit migration authority.</strong> The trustee has no clear permission to change the address type in which trust Bitcoin is held. A cautious trustee, facing unclear authority, may refuse to migrate without court approval — and by the time court approval arrives, the window may have narrowed dangerously.</li>
+    <li><strong>No fiduciary duty language around cryptographic evolution.</strong> The trustee is not affirmatively required to monitor protocol changes and act on them. Absent this, a trustee who misses the BIP-361 deadline has a defense: "I was not aware of BIP-361." For beneficiaries who just lost their inheritance, that defense will not be satisfying, but it may be legally sufficient.</li>
+  </ul>
+
+  <h3>The Trustee Migration Authority Clause (Required Amendment)</h3>
+
+  <p>Every Bitcoin trust drafted before 2026 should be amended to include a migration authority clause. The minimum language should grant the trustee:</p>
+
+  <ul>
+    <li>Express authority to move trust Bitcoin between address types without beneficiary consent and without court approval, for any reason the trustee determines is in the trust's best interest — explicitly including quantum preparedness and compliance with Bitcoin protocol changes.</li>
+    <li>An affirmative fiduciary duty to monitor Bitcoin protocol changes that materially affect the trust's holdings, including the obligation to take timely migration action when such changes require it.</li>
+    <li>Authority to engage technical consultants, at trust expense, to advise on migration strategy and execution.</li>
+    <li>Authority to select and replace custodians based on the custodian's demonstrated ability to support migration — including replacement of custodians that cannot support BIP-360 or BIP-361 migration within commercially reasonable timeframes.</li>
+    <li>A specific safe harbor: a trustee who executes migration in good faith, on the recommendation of a qualified technical advisor and a Bitcoin-literate estate attorney, is not liable to beneficiaries for the migration decision even if the migrated coins subsequently perform worse than the un-migrated alternative would have.</li>
+  </ul>
+
+  <h3>The Nonjudicial Settlement Agreement Path</h3>
+
+  <p>In most jurisdictions — particularly the friendly trust states (South Dakota, Nevada, Wyoming, Tennessee, Alaska) — an irrevocable trust can be modified by a nonjudicial settlement agreement (NJSA) signed by the trustee and all beneficiaries. An NJSA adding migration authority is generally well within the scope of changes courts will respect. For a trust with adult, cooperative beneficiaries, this path is fast and inexpensive — typically 30–60 days, $5,000–$15,000 in legal fees.</p>
+
+  <p>For trusts with minor beneficiaries, unknown beneficiaries (contingent future beneficiaries), or hostile beneficiaries, judicial modification may be required — a slower, more expensive, and more uncertain process. Families in this situation should begin the modification process immediately rather than waiting for BIP-361 activation.</p>
+
+  <p>The 2026 federal estate tax exemption is approximately $15 million per individual and $30 million per couple under the current legislative framework. This provides substantial planning room for gifting, trust funding, and restructuring — but it does not change the urgency of the BIP-361 migration question. A trust-held P2PK UTXO that becomes frozen is still a trust asset on the balance sheet, still valued for estate tax purposes until some administrative cleanup is possible — and the beneficiaries still do not have access to it.</p>
+
+
+  <h2 id="dormant-coin-problem">The Dormant Coin Inheritance Problem: Estate Attorney Action Required</h2>
+
+  <p>The single most important action item in this article — the one that cannot wait, cannot be delegated, and cannot be addressed after BIP-361 activates — is the dormant wallet audit.</p>
+
+  <h3>The Scenario</h3>
+
+  <p>A family member — grandfather, uncle, a prescient aunt — acquired Bitcoin in 2010 or 2011. They mentioned it a few times. Maybe they showed someone a laptop. Maybe there is a paper wallet in a safe deposit box. That family member has since either passed away, become incapacitated, or simply failed to transfer operational knowledge before the technology moved past them.</p>
+
+  <p>The estate now includes Bitcoin — either listed explicitly in the estate inventory, referenced in the trust schedule, or known to family members but undocumented. The coins have not been moved since acquisition. No one currently active in the family has logged into the wallet.</p>
+
+  <p>Two possibilities exist:</p>
+
+  <ul>
+    <li><strong>The key (or seed phrase, paper wallet, hardware wallet) is recoverable</strong> — it is in the safe deposit box, in the filing cabinet, in the grandchildren's memory, or with the family attorney. In this case, migration is possible. The family must execute it.</li>
+    <li><strong>The key is not recoverable</strong> — it was on a hard drive that was discarded, a laptop that was sold, a piece of paper that was lost, or a password that only the now-deceased family member knew. In this case, migration is impossible. The coins are already functionally lost to the family, and BIP-361 will freeze them permanently at the trigger block — after which they will also be legally removed from the active UTXO set, with whatever tax consequences that entails.</li>
+  </ul>
+
+  <h3>The Audit Protocol</h3>
+
+  <p>Every estate attorney with Bitcoin-holding clients should, in the next 90 days, conduct a dormant wallet audit for each such client. The protocol:</p>
+
+  <ol>
+    <li><strong>Inventory every known Bitcoin holding in the estate or trust.</strong> Include holdings referenced in the trust schedule, the estate inventory, the grantor's personal records, family oral history, and any documented transactions back to the original acquisition.</li>
+    <li><strong>For each holding, classify the custody status:</strong> (a) actively managed with known keys and a current custody plan; (b) dormant with known key location (e.g., "paper wallet in safe deposit box #X at [bank]"); (c) dormant with unknown key location; (d) presumed lost.</li>
+    <li><strong>For classifications (b), (c), and (d): execute key recovery before BIP-361 activation.</strong> For (b), this is straightforward — retrieve the wallet, verify the balance on-chain, and migrate the coins. For (c) and (d), engage a professional digital asset recovery service to attempt key recovery from hardware that may exist (old drives, backup tapes, safety deposit boxes, encrypted files).</li>
+    <li><strong>For each UTXO where key recovery succeeds, execute immediate migration</strong> to P2TR or (if available) P2QRH. The migration does not have to wait for BIP-361; doing it now on the two-hop strategy is the right call.</li>
+    <li><strong>For UTXOs where key recovery fails, document the attempt</strong> for estate tax and fiduciary purposes. This creates a paper trail showing that the trustee or executor made diligent efforts to preserve the asset, which may affect the estate's tax treatment and shield the fiduciary from beneficiary claims.</li>
+  </ol>
+
+  <h3>The Valuation and Tax Implication</h3>
+
+  <p>A subtle but important point: if BIP-361 activates and freezes coins that a trust holds, the coins remain legally owned by the trust until some future administrative action removes them from the estate. For estate tax purposes, a frozen coin is not the same as a destroyed coin — its valuation depends on whether the IRS treats the freeze as a taxable event (disposition at zero), a continued holding at market value (with an ongoing basis), or something else entirely. There is no current guidance on this. Families with meaningful P2PK exposure should consult with estate tax counsel specifically on this question as part of the migration planning.</p>
+
+  <p>The safer path — dramatically safer — is to avoid the question entirely by migrating before the freeze. If the coins never get frozen, no tax question about frozen coins ever arises.</p>
+
+
+  <h2 id="seven-step-plan">7-Step Emergency Action Plan</h2>
+
+  <p>If you are a BFO reader, you are holding more than $1M in Bitcoin inside some trust, entity, or estate structure. Here is your BIP-361 playbook. Every family in this category should be deep into step 3 within 30 days.</p>
+
+  <h3>Step 1: Identify All P2PK Coins in Family Holdings</h3>
+
+  <p><strong>Action:</strong> Audit every wallet, every address, every UTXO across every family entity. Request UTXO-level reports with script-type classification from every custodian. For self-custody, run the UTXO set through a blockchain explorer and flag every output with script type <code>pubkey</code>.</p>
+
+  <p><strong>Output:</strong> Written P2PK inventory, filed with trust records. Sub-total of BIP-361 at-risk BTC across all family holdings.</p>
+
+  <p><strong>Timeline:</strong> 1–2 weeks.</p>
+
+  <h3>Step 2: Check All Inherited Wallets and Dormant Accounts</h3>
+
+  <p><strong>Action:</strong> For every Bitcoin holding that was inherited, gifted, or has been dormant since before 2015, locate the key material and verify it is recoverable. Search safe deposit boxes, filing cabinets, old hardware, encrypted password managers, and family documentation. For estates where key location is unknown, engage a professional digital asset recovery service.</p>
+
+  <p><strong>Output:</strong> Classification of every dormant holding: (a) recoverable, (b) recoverable with effort, (c) presumed lost. For (a) and (b), specific key location documented.</p>
+
+  <p><strong>Timeline:</strong> 30–60 days.</p>
+
+  <h3>Step 3: Engage Custodian for Migration</h3>
+
+  <p><strong>Action:</strong> Issue written migration instructions to every custodian holding trust Bitcoin. Instruction should specify: migrate all P2PK UTXOs to fresh P2TR addresses (two-hop strategy) immediately, and plan to migrate all holdings to P2QRH when BIP-360 activates. Require written custodian acknowledgment. If the custodian cannot execute within 60 days, begin evaluation of replacement custodians.</p>
+
+  <p><strong>Output:</strong> Signed custodian migration instruction letter with acknowledgment. Migration completion confirmation for all P2PK UTXOs.</p>
+
+  <p><strong>Timeline:</strong> 30–90 days.</p>
+
+  <h3>Step 4: Update Trust Documents With Migration Authority</h3>
+
+  <p><strong>Action:</strong> Work with estate counsel to amend (by nonjudicial settlement agreement where available) every irrevocable trust holding Bitcoin to include: explicit migration authority, affirmative fiduciary monitoring duty, custodian selection criteria requiring BIP-360/BIP-361 readiness, and a safe harbor for good-faith migration decisions. For revocable trusts, a simple trust amendment is sufficient.</p>
+
+  <p><strong>Output:</strong> Executed trust amendment or NJSA filed with trust records.</p>
+
+  <p><strong>Timeline:</strong> 30–90 days.</p>
+
+  <h3>Step 5: Use P2TR (Taproot) Addresses Going Forward</h3>
+
+  <p><strong>Action:</strong> For every new Bitcoin received by the family (mining output, purchase, transfer), ensure the receiving address is P2TR. Configure every wallet, every exchange, every custodian default to generate P2TR receiving addresses. Stop using legacy P2PKH and SegWit P2WPKH addresses for new receipts — not because they are at risk under BIP-361 (they are not), but because P2TR is the address type most likely to have a direct one-hop migration to P2QRH when BIP-360 activates.</p>
+
+  <p><strong>Output:</strong> All new receipts flow into P2TR addresses. Legacy address types deprecated in family operations.</p>
+
+  <p><strong>Timeline:</strong> 2–4 weeks to reconfigure all wallets and custodian defaults.</p>
+
+  <h3>Step 6: Document the Custody Architecture</h3>
+
+  <p><strong>Action:</strong> Produce a written custody architecture document covering every Bitcoin holding in the family: where the keys live, who has access, what address types are in use, what migration plans are in place for BIP-360 and BIP-361, and what the monitoring and review cadence is. This document is the successor-trustee and heir-onboarding handbook.</p>
+
+  <p><strong>Output:</strong> Custody architecture document, versioned and filed with trust records. Reviewed and updated quarterly.</p>
+
+  <p><strong>Timeline:</strong> 60–90 days for initial document; quarterly review thereafter.</p>
+
+  <h3>Step 7: Establish Heir Access Before Freeze</h3>
+
+  <p><strong>Action:</strong> Ensure that at least one technically capable heir or successor trustee per trust has the knowledge, access credentials, and authority to execute a migration if the primary trustee becomes unavailable. This is a structural defense against the scenario where the trustee dies, resigns, or becomes incapacitated during the BIP-361 migration window and no successor is technically prepared to act.</p>
+
+  <p><strong>Output:</strong> Documented succession plan for migration execution. At minimum one alternate trustee or designated agent with full capability to execute migration independently.</p>
+
+  <p><strong>Timeline:</strong> 60–90 days.</p>
+
+  <div class="am-cta">
+    <h4>Bitcoin Mining: The Most Tax-Advantaged Path to Fresh P2TR Bitcoin</h4>
+    <p>The families most exposed to BIP-361 are the ones who acquired coins in the pre-2012 era. The families best-positioned for the post-quantum era are the ones acquiring new BTC today in address types that will migrate cleanly to P2QRH. Bitcoin mining inside a trust or PFTC structure produces Bitcoin in whatever address type the mining operation specifies — universally P2TR or P2WPKH in 2026 — and does so with equipment depreciation, operational expense deductions, and Section 179 elections that can reduce the effective cost basis well below market price. For families rebalancing away from legacy P2PK exposure, mining is the most tax-advantaged replacement.</p>
+    <a href="https://abundantmines.com/tax-strategy/" target="_blank" rel="noopener" class="btn">Bitcoin Mining Tax Strategies →</a>
+  </div>
+
+
+  <h2 id="defining-moment">Why This Is the Defining Moment for Pre-2012 Bitcoin Families</h2>
+
+  <p>Most Bitcoin holders will never think about BIP-361. Their coins are in modern address types. Their custody providers will migrate them to P2QRH by default. They will wake up one morning years from now, notice that their addresses start with a new prefix, and move on with their lives.</p>
+
+  <p>Pre-2012 Bitcoin families are different. They are the ones holding the coins BIP-361 was written to address. They are the ones whose trust documents were drafted before anyone considered quantum computing. They are the ones whose grandmother's paper wallet has been in a safe deposit box since 2011. They are, in a real sense, the descendants of Bitcoin's founding users — families whose wealth was built by people who believed in Bitcoin when believing was unusual. That wealth, now, is structurally at risk in a way that more recent Bitcoin wealth is not.</p>
+
+  <h3>The Narrowing Window</h3>
+
+  <p>Today, in April 2026, the window is wide. BIP-361 is a draft. BIP-360 has not activated. There is no quantum computer on the horizon that can actually execute Shor's algorithm against Bitcoin keys. The family that audits its P2PK exposure in May 2026, executes migration in June 2026, and amends its trust documents in July 2026 will look back in a decade and wonder what the urgency was. That family's Bitcoin will be intact, fully quantum-resistant, and perfectly positioned for the generational handoff the trust was designed to execute.</p>
+
+  <p>The family that puts this off, by contrast, will face a narrowing window. Each passing year brings BIP-360 closer to activation, brings BIP-361 closer to final form, brings quantum hardware roadmaps closer to the threshold Google identified nine days ago. By 2029 or 2030, when BIP-360 activates and the BIP-361 countdown clock begins running, the families still holding P2PK will be competing with every other late-arriving P2PK holder for the attention of custodians, estate attorneys, and technical consultants. The ones who started in 2026 will have been done for years.</p>
+
+  <h3>The Asymmetry</h3>
+
+  <p>The cost of acting now is extraordinarily low. A trust amendment: $5,000 to $15,000. Custodian migration instructions: free. Migration transaction fees: a few hundred dollars for most families, a few thousand for families with many UTXOs. Professional key recovery for dormant wallets: $5,000 to $50,000 depending on complexity. On-chain analytics audit: $2,500 to $25,000. All in, a comprehensive BIP-361 preparation for a family with $10M–$50M in exposed P2PK Bitcoin is in the $20,000 to $100,000 range — well under 1% of the at-risk amount.</p>
+
+  <p>The cost of not acting, if BIP-361 activates on the draft timeline and the family's coins are still in P2PK when the trigger block is mined, is 100% of the at-risk amount. A family holding 50 BTC in P2PK addresses that becomes frozen at the trigger block has permanently lost $3.4M at today's prices — and that calculation assumes Bitcoin stays at today's prices, which is not the assumption most readers of this newsletter make.</p>
+
+  <div class="pull-quote">"Families who mined, bought, or received Bitcoin before mid-2012 are the founders' families of the Bitcoin economy. Their wealth was built when believing in Bitcoin was unusual. Protecting that wealth through the quantum transition is the next generational decision — and BIP-361, if activated on its draft schedule, turns that decision into a deadline."</div>
+
+  <h3>The Defining Frame</h3>
+
+  <p>Bitcoin has had three structural moments that required families to act or be left behind: the 2017 SegWit/Bitcoin Cash split (choose the right fork), the 2024 spot ETF approval (choose custody structure), and now the BIP-360/BIP-361 quantum transition (choose address type and migration authority). In each of the prior moments, the families who acted early and decisively preserved and grew their position. The families who waited, debated, and procrastinated paid tax consequences, missed structural advantages, or — in the worst cases — lost capital.</p>
+
+  <p>BIP-361 is the third moment. It is the cleanest of the three, because it is the most clearly specified: a draft, a timeline, a mechanism, an outcome. The action required is explicit. The consequences of inaction are explicit. All that remains is the doing.</p>
+
+  <p>If your family acquired Bitcoin before mid-2012, your next 90 days matter more than the previous three years combined. Audit, migrate, amend, document. Not because BIP-361 is certain to activate. Not because quantum computers are certain to arrive on schedule. But because the cost of being wrong in the direction of preparation is trivial, and the cost of being wrong in the direction of inaction is catastrophic.</p>
+
+  <p>The founders' families of Bitcoin do not get caught off guard by protocol evolution. They are the ones who decide how the protocol evolves — by acting first, documenting their choices, and sending a signal to the rest of the ecosystem about what serious Bitcoin stewardship looks like in the quantum era.</p>
+
+  <p>Start now.</p>
+
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <h3>What is BIP-361 and what would it actually do?</h3>
+
+  <p>BIP-361 is a draft Bitcoin Improvement Proposal posted April 15, 2026 that proposes freezing — via consensus soft fork — all Bitcoin held in quantum-vulnerable address types where the public key is directly exposed on the blockchain. The primary target is Pay-to-Public-Key (P2PK) outputs, which were the dominant output type from 2009 to approximately mid-2011. The proposal specifies a pre-announced trigger block height at which any remaining funds in covered address types would become permanently unspendable unless holders migrate them to quantum-resistant addresses before that block is mined. The earliest plausible activation is approximately 2030, with the freeze trigger approximately 2032–2033 on the current draft timeline.</p>
+
+  <h3>How much Bitcoin would BIP-361 actually freeze?</h3>
+
+  <p>Public on-chain analyses place approximately 1.7 million BTC in P2PK outputs, with the majority dating from 2009 to 2011. This breaks down to roughly 750,000–1,100,000 BTC attributed to addresses consistent with Satoshi Nakamoto's early mining pattern, 400,000–600,000 BTC from other early miners, and 100,000–250,000 BTC from early private purchases and received gifts (the cohort most relevant to family-office readers). Some portion is presumed permanently lost; an unknown remainder is held by living individuals, estates, and trusts who can still migrate if they act in time.</p>
+
+  <h3>Why are pre-2012 Bitcoin inheritances especially vulnerable?</h3>
+
+  <p>From Bitcoin's launch in January 2009 through approximately mid-2011, the reference client's default output type for mining rewards and many send transactions was P2PK. Any family that acquired Bitcoin during this window and has not moved those specific UTXOs since is likely holding at least some P2PK coins. Many of these holdings were subsequently inherited — by widows, children, or trusts — often with only partial documentation of the original wallet structure. Because P2PK exposes the public key permanently and directly on-chain, every coin of that era is a direct target for BIP-361.</p>
+
+  <h3>If my family's inherited coins are in P2PK and the seed phrase is lost, what happens?</h3>
+
+  <p>If BIP-361 is activated and the trigger block is mined without those UTXOs being migrated, the coins become permanently unspendable. A lost seed phrase means no migration is possible before the freeze, and no amount of future recovery effort will restore access. This is the dormant-coin inheritance problem: a trust or estate may legally own Bitcoin — reflected on balance sheets, subject to estate tax — that is about to become forever inaccessible. Estate attorneys and trustees must audit dormant wallets now, while migration is still possible.</p>
+
+  <h3>What trust document changes does BIP-361 make urgent?</h3>
+
+  <p>Five changes: (1) explicit trustee authority to migrate any address type to any successor address type without court approval, (2) an affirmative fiduciary duty to execute migration before any announced freeze block, (3) custodian selection criteria requiring Day 1 support for BIP-360 quantum-resistant addresses and rapid migration capability, (4) a dormant-asset audit requirement forcing the trustee to identify and document every UTXO and its exposure status, and (5) a quantum evolution clause pre-authorizing the trustee to act on future protocol changes without returning to court or beneficiaries for consent. See our <a href="/blog/google-quantum-bitcoin-keys-dynasty-trust-estate-planning-2026.html">April 7 Google quantum analysis</a> for the full framework.</p>
+
+  <h3>Does BIP-361 apply to P2PKH, P2WPKH, or P2TR addresses that have been used to send transactions?</h3>
+
+  <p>Under the strictest reading of the BIP-361 draft, reused addresses where the public key has been exposed via a prior spending transaction are also candidates for freezing, because they share the same quantum vulnerability as P2PK. The current draft leans toward focusing initially on P2PK only, with the reused-address case deferred for potential future action. This means migrating exposed but non-P2PK UTXOs is still important (they remain quantum-vulnerable), but the deadline pressure under the current BIP-361 draft applies primarily to P2PK. This could change as the draft evolves through review.</p>
+
+  <h3>What does BIP-361 have to do with BIP-360?</h3>
+
+  <p>BIP-360 enables quantum-resistant Bitcoin addresses by specifying new output types using post-quantum signature schemes (Dilithium, SPHINCS+, FALCON). BIP-361 uses those quantum-resistant addresses as the migration destination and forces coins out of quantum-vulnerable address types into them. BIP-361 is conditional on BIP-360 having been active on mainnet for at least twelve months prior. The two proposals are a matched pair: BIP-360 creates the safe harbor, BIP-361 requires the move to it. See our <a href="/blog/bitcoin-quantum-resistance-bip-360-estate-planning-2026.html">full BIP-360 analysis</a>.</p>
+
+  <h3>Is migrating P2PK to P2TR a taxable event?</h3>
+
+  <p>Under current IRS guidance, moving Bitcoin between addresses controlled by the same taxpayer or the same trust is not a disposition and does not trigger a taxable event. However, the specific circumstances of your trust — grantor vs. non-grantor, accumulation vs. distribution, the existence of any deemed-disposition events tied to the move — may create nuances. Estate tax treatment of any coins that are frozen by BIP-361 without being migrated is an open question with no current guidance. Confirm with your tax advisor before executing any migration or making any balance sheet decisions about dormant P2PK holdings.</p>
+
+  <h3>Should I oppose BIP-361 or support it?</h3>
+
+  <p>This is a question about your values and your specific holdings, not a question with an objectively correct answer. The pro-freeze argument is network security: preventing a mass-theft event when quantum computers arrive. The anti-freeze argument is immutability: the first-ever Bitcoin soft fork that would render specific holders' coins unspendable without consent. Both are substantive. Family offices with meaningful P2PK exposure should engage with the BIP-361 review process directly — either to advocate for alternative mechanisms (migration premiums, inheritance-specific grace periods) or to support the draft as-is. The review window is likely six to twelve months; serious engagement now can shape the final specification.</p>
+
+  <h3>What is the current estate tax exemption and does BIP-361 affect estate planning strategy?</h3>
+
+  <p>The 2026 federal estate tax exemption is approximately $15 million per individual and $30 million per couple under current law. Future legislative changes could adjust this; the exemption level is subject to ongoing political negotiation. BIP-361 does not change estate tax fundamentals, but it introduces a specific technical risk that belongs in the estate planning conversation for any family with pre-2012 Bitcoin holdings: the possibility that a portion of the estate's Bitcoin becomes permanently inaccessible unless migration is executed before a pre-announced block height. This belongs alongside traditional estate planning concerns — liquidity, basis, step-up, gift strategies — as a fiduciary duty for the trustee.</p>
+
+  <hr>
+
+
+  <h2>The Bottom Line</h2>
+
+  <p>BIP-361 is a draft. It has not been activated. It may change significantly during peer review. Its timeline may slip. Its mechanism may be softened. Its scope may be narrowed.</p>
+
+  <p>None of that matters for the action you should take today.</p>
+
+  <p>If your family holds Bitcoin acquired before mid-2012 — through mining, direct purchase, gift, or inheritance — the probability that some of those coins sit in P2PK outputs is non-trivial and the cost of verifying is trivial. You can audit your exposure in a weekend. You can migrate to P2TR in a single transaction. You can amend your trust document in sixty days. You can do all of this years before BIP-361 could plausibly activate — and by doing it now, you eliminate the risk entirely, insulate your heirs from a deadline they would not otherwise understand, and put your family in the smallest cohort of Bitcoin stewards who treated the quantum transition with the seriousness it deserves.</p>
+
+  <p>Bitcoin will survive quantum computing. BIP-360 will enable safe addresses. BIP-361 — in whatever final form emerges — will force migration away from unsafe ones. The network will adapt. The question, as always, is whether your trust structure will adapt in time.</p>
+
+  <p>The families that were early to Bitcoin are the same families that now face the sharpest edge of its first existential protocol transition. That is not a coincidence. It is a consequence of having been early. The response is not regret. The response is migration.</p>
+
+  <p>Audit every wallet. Identify every P2PK UTXO. Engage every custodian. Amend every trust document. Document every custody architecture. Establish every successor trustee's technical capability. Do it now, while the work is routine and the cost is trivial. Do it before BIP-361 activates, before the wallet-software migration queue fills up, before the custodian engineering teams become oversubscribed with late-arriving families all trying to do the same thing at the same time.</p>
+
+  <p>The quantum transition is the generational stewardship test for Bitcoin families. BIP-361 turned that test from an essay question into a multiple choice with a deadline. There is only one correct answer, and the deadline to submit it is a block height that has not yet been chosen — but will be, sooner than most families expect.</p>
+
+  <p>Start now.</p>
+
+</article>
+
+<!-- Author Bio -->
+<div style="display:flex;gap:1.25rem;align-items:flex-start;max-width:var(--max-w);margin:0 auto;padding:0 2rem 3rem;">
+  <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:1rem;color:var(--accent);">&#x20BF;</div>
+  <div>
+    <p style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;">Hal Franklin &mdash; Bitcoin Wealth Strategist</p>
+    <p style="font-family:var(--serif);font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin:0;">Hal Franklin focuses on Bitcoin estate planning, trust structuring, and multigenerational wealth strategy for high-net-worth Bitcoin families. He does not advise on altcoins or traditional financial products. <a href="/about/" style="color:var(--accent);text-decoration:none;">About &rarr;</a></p>
+  </div>
+</div>
+
+<!-- Services CTA -->
+<div class="services-cta">
+  <h3>Pre-2012 Bitcoin Family? The Migration Window Is Open Now.</h3>
+  <p>BIP-361 turns a latent quantum exposure into a deadline for families who acquired Bitcoin in the P2PK era. Whether you need a P2PK exposure audit, trust document migration authority amendments, dormant wallet recovery coordination, or custodian BIP-360/BIP-361 readiness evaluation — BFO coordinates Bitcoin-literate estate attorneys, on-chain analysts, qualified custody specialists, and professional digital asset recovery services for families ready to act before the deadline forms.</p>
+  <a href="/qualify/">See If You Qualify</a>
+</div>
+
+<section class="related">
+  <div class="related-label">Continue Reading</div>
+  <div class="related-links">
+    <a href="/blog/google-quantum-bitcoin-keys-dynasty-trust-estate-planning-2026.html">Google Says 1,200 Qubits Could Crack Your Bitcoin Keys in 9 Minutes &mdash; What Your Dynasty Trust Must Do Now</a>
+    <a href="/blog/bitcoin-quantum-resistance-bip-360-estate-planning-2026.html">Bitcoin Quantum Resistance &amp; BIP-360: What Your Estate Plan Needs Now</a>
+    <a href="/blog/coinbase-occ-national-trust-charter-bitcoin-estate-planning-2026.html">Coinbase Just Became a Federally Regulated Trust Company: What It Means for Bitcoin in Your Estate Plan</a>
+    <a href="/blog/bitcoin-dynasty-trust-complete-guide.html">Bitcoin Dynasty Trusts: Multi-Generational Wealth Preservation</a>
+    <a href="/blog/bitcoin-private-trust-company.html">Bitcoin Private Trust Companies: The Wyoming PFTC Guide for Families</a>
+  </div>
+</section>
+
+<!-- Disclaimer -->
+<div style="margin-top:3rem;padding:1.5rem 1.75rem;border-top:1px solid var(--border);background:var(--bg-elevated);border-radius:0 0 4px 4px;">
+  <p style="font-family:var(--sans);font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.6rem;">Important Disclosure</p>
+  <p style="font-family:var(--sans);font-size:0.72rem;color:var(--text-muted);line-height:1.75;margin:0;">This content is for <strong style="color:var(--text-secondary);">educational purposes only</strong> and does not constitute legal, tax, financial, or investment advice. It should not be relied upon as a substitute for consultation with qualified legal, tax, financial, or other professional advisers. References to BIP-361, BIP-360, Google's quantum computing research, qubit estimates, and P2PK supply figures are based on publicly available reports and draft specifications as of April 2026 and may not reflect subsequent findings, corrections, specification changes, or developments. BIP-361 is a draft proposal and may be modified, withdrawn, or rejected during peer review. Quantum computing timelines and Bitcoin protocol activation timelines are inherently uncertain and actual development may differ significantly from projections. Tax laws and estate planning rules &mdash; including federal estate tax exemptions, digital asset treatment, and the tax consequences of address migration or frozen coins &mdash; are subject to legislative and regulatory change and vary by jurisdiction. Individual circumstances vary; no strategy discussed herein is appropriate for all persons. <strong style="color:var(--text-secondary);">Always consult with qualified legal counsel, a licensed tax professional, and a registered financial adviser before implementing any estate planning strategy, custody structure, migration plan, or investment decision.</strong> The Bitcoin Family Office does not provide legal, tax, or investment advisory services.</p>
+</div>
+
+<!-- Secondary disclaimer -->
+<div class="disclaimer" style="max-width:800px;margin:48px auto;padding:24px;background:#0d0d0d;border:1px solid #1e1e1e;border-radius:8px;">
+  <p style="color:#6b6258;font-size:13px;line-height:1.6;margin:0;"><strong style="color:#8a8070;">Disclaimer:</strong> The information on this website is for educational purposes only and does not constitute legal, tax, financial, or investment advice. Bitcoin and digital assets involve significant risk. Consult qualified legal, tax, and financial professionals before making decisions. The Bitcoin Family Office does not provide legal, tax, or investment advisory services.</p>
+</div>
+
+<footer>
+  <div class="footer-mark">The <span>Bitcoin</span> Family Office</div>
+  <p class="footer-copy">&copy; 2026 The Bitcoin Family Office. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  const btn = document.getElementById('hamburger');
+  const links = document.getElementById('navLinks');
+  btn.classList.toggle('open');
+  links.classList.toggle('open');
+  document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navLinks').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+<script defer src="/assets/chat-widget.js"></script>
+</body>
+</html>
