@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitcoin Estate Planning Resource Center | The Bitcoin Family Office</title>
   <meta name="description" content="The most comprehensive collection of Bitcoin estate planning guides, tools, calculators, and state-specific resources. Everything a Bitcoin holder needs to protect generational wealth.">
@@ -201,17 +202,6 @@
     .tool-card:hover { border-color: rgba(201,168,76,0.4); }
     .tool-card:hover .rc-title { color: var(--accent); }
 
-    /* ESTATE WATCH CARD */
-    .watch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .watch-card { background: linear-gradient(135deg, #0f1a0f 0%, var(--bg-card) 100%); border: 1px solid rgba(74,222,128,0.2); border-radius: 8px; padding: 32px; }
-    .watch-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
-    .watch-card p { font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; }
-    .btn-watch { background: #22c55e; color: #000; padding: 12px 24px; border-radius: 4px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.875rem; display: inline-block; }
-    .btn-watch:hover { background: #16a34a; text-decoration: none; color: #000; }
-    .btn-watch-outline { border: 1px solid rgba(74,222,128,0.4); color: #4ade80; padding: 12px 24px; border-radius: 4px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.875rem; display: inline-block; }
-    .btn-watch-outline:hover { background: rgba(74,222,128,0.1); text-decoration: none; color: #4ade80; }
-    @media (max-width: 700px) { .watch-grid { grid-template-columns: 1fr; } }
-
     /* STATE GRID */
     .state-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
     .state-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 16px 20px; display: flex; align-items: center; gap: 12px; transition: border-color 0.2s; }
@@ -344,7 +334,7 @@
     <a href="#family-office">Family Office</a>
     <a href="#state-guides">State Guides</a>
     <a href="#tools">Tools & Calculators</a>
-    <a href="#estate-watch">Estate Watch</a>
+    
     <a href="#faq">FAQ</a>
   </div>
 
@@ -737,91 +727,7 @@
     </div>
   </div>
 
-  <!-- ===== ESTATE WATCH ===== -->
-  <div class="category-section" id="estate-watch">
-    <div class="category-header">
-      <span class="category-icon">👁️</span>
-      <div class="category-header-text">
-        <h2>Estate Watch Platform</h2>
-        <p>Ongoing monitoring and alerts for your Bitcoin estate — because your plan is a living document that needs to adapt as prices, laws, and family circumstances change.</p>
-      </div>
-    </div>
-
-    <div class="watch-grid">
-      <div class="watch-card">
-        <div class="rc-badge rc-badge-new" style="background:#22c55e; color:#000;">Platform Launch</div>
-        <h3>Estate Watch: Join the Waitlist</h3>
-        <p>Estate Watch is the first ongoing Bitcoin estate monitoring platform — alerting you when Bitcoin's price crosses estate tax thresholds, when laws change that affect your plan, when annual gift opportunities are approaching, and when trust maintenance actions are required. Never miss a planning window again.</p>
-        <p style="margin-top:8px;">Currently in limited early access. Join the waitlist to be first when we open enrollment.</p>
-        <a href="/monitor/signup.html" class="btn-watch">Join the Waitlist →</a>
-      </div>
-      <div class="watch-card">
-        <h3>How Estate Watch Works</h3>
-        <p>Estate Watch connects to your Bitcoin estate plan and provides continuous monitoring across four dimensions: portfolio thresholds (alerts when your Bitcoin crosses into new estate tax territory), legislative monitoring (law changes that affect your documents), calendar management (annual gift deadlines, trust maintenance), and family alerts (milestone events that trigger planning reviews).</p>
-        <p style="margin-top:8px; color:var(--text-secondary);">Features include dashboard access, email and SMS alerts, annual estate plan review reminders, and direct connection to your estate attorney for urgent updates.</p>
-        <a href="/monitor/" class="btn-watch-outline">Learn How It Works →</a>
-      </div>
-    </div>
-
-    <div style="margin-top:24px; background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:32px;">
-      <h3 style="font-size:1.3rem; margin-bottom:12px;">Why Bitcoin Estate Plans Need Ongoing Monitoring</h3>
-      <p style="color:var(--text-secondary); font-size:1rem; line-height:1.8; margin-bottom:16px;">Bitcoin's price volatility creates a unique estate planning maintenance challenge. A Bitcoin position worth $1 million today might be worth $5 million in 12 months — crossing into estate tax territory without the holder having changed anything in their plan. A trust funded at one price level may need to be restructured at a dramatically different price level to remain optimal.</p>
-      <p style="color:var(--text-secondary); font-size:1rem; line-height:1.8; margin-bottom:16px;">Meanwhile, the legal environment is also moving. Estate tax exemption changes, new state digital asset legislation, IRS guidance on Bitcoin in trust, and court decisions affecting estate planning structures all require plan review. Most Bitcoin holders sign their estate documents and forget about them — a dangerous approach with an asset that can multiply in value and in a legal environment that continues to evolve.</p>
-      <p style="color:var(--text-secondary); font-size:1rem; line-height:1.8;">Estate Watch solves this by providing continuous, automated monitoring — so you're always one decision ahead of the next planning requirement rather than reacting after the fact.</p>
-    </div>
-  </div>
-
-  <!-- NEWSLETTER SECTION -->
-  <div class="newsletter-section">
-    <h2>Bitcoin Estate Planning Intelligence, Delivered Weekly</h2>
-    <p>Join 4,000+ Bitcoin holders receiving weekly estate planning updates: new guides, legislative alerts, tax strategy updates, and exclusive tool announcements. No spam. Unsubscribe anytime.</p>
-    <form class="newsletter-form" action="/monitor/signup.html" method="get" onsubmit="event.preventDefault(); window.location='/monitor/signup.html?email='+document.getElementById('nl-email').value;">
-      <input type="email" id="nl-email" placeholder="your@email.com" required>
-      <button type="submit">Join Waitlist →</button>
-    </form>
-    <p class="newsletter-note">By subscribing you agree to receive estate planning updates from The Bitcoin Family Office. Your email is never shared.</p>
-  </div>
-
-  <!-- SERVICES CTA -->
-  <div class="services-cta">
-    <h2>Ready to Implement Your Bitcoin Estate Plan?</h2>
-    <p>The Bitcoin Family Office works directly with high-net-worth Bitcoin holders on trust design, custody architecture, tax strategy, and multi-generational transfer planning. We connect you with vetted attorneys, tax advisors, and custody specialists who understand Bitcoin at a technical level — not just as an asset class.</p>
-    <div class="cta-btns">
-      <a href="/services/" class="btn-primary">Explore Our Services</a>
-      <a href="/tools/bitcoin-wealth-assessment.html" class="btn-outline">Take the Wealth Assessment</a>
-    </div>
-  </div>
-
-  <!-- FAQ -->
-  <div style="margin-bottom:72px;" id="faq">
-    <h2 style="font-size:1.9rem; margin-bottom:8px; text-align:center;">Frequently Asked Questions</h2>
-    <p style="color:var(--text-secondary); margin-bottom:36px; text-align:center;">Common questions about Bitcoin estate planning resources and where to start.</p>
-    <div class="faq-section">
-      <div class="faq-item">
-        <div class="faq-q">Where should I start with Bitcoin estate planning?</div>
-        <div class="faq-a">Start with our <a href="/blog/bitcoin-estate-planning-guide">Bitcoin Estate Planning Complete Guide</a> if you want the full picture, or the <a href="/blog/bitcoin-estate-planning-beginners">Beginner's Guide</a> if you're completely new to estate planning. Then take the <a href="/tools/bitcoin-wealth-assessment.html">Bitcoin Wealth Assessment Quiz</a> to identify your specific gaps and priorities. Most Bitcoin holders find that two or three specific guides are immediately actionable for their situation — the quiz helps identify which ones.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Do I need an attorney to implement these strategies?</div>
-        <div class="faq-a">For trust formation, gift documentation, and advanced tax strategies, yes — you need an attorney licensed in your jurisdiction. The guides, tools, and resources on this site are educational and help you understand your options and prepare for that conversation. An hour with a prepared client who understands the strategies is worth far more than three hours of attorney education time. Use these resources to get informed; work with a qualified attorney to implement. Our <a href="/services/">Services page</a> can connect you with vetted Bitcoin estate planning attorneys.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">How much Bitcoin do I need to justify estate planning?</div>
-        <div class="faq-a">A revocable living trust is valuable for any Bitcoin holder — even $5,000 of Bitcoin is worth planning for to avoid probate and ensure key access for heirs. The cost of a basic revocable trust ($1,500–$3,000) is justified at any meaningful Bitcoin holding. Advanced irrevocable trust structures (dynasty trusts, GRATs, SLATs) become cost-effective at $250,000+ and are essential at $1M+. Tax strategies like the step-up in basis, GRAT, and SLAT provide maximum benefit at $1M+ positions. Our <a href="/tools/bitcoin-wealth-assessment.html">Wealth Assessment Quiz</a> calibrates recommendations to your actual holding level.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">What are the most important Bitcoin estate planning documents?</div>
-        <div class="faq-a">The core documents for most Bitcoin holders: (1) Revocable Living Trust naming successors and specifying Bitcoin access protocols, (2) Pour-Over Will directing any assets outside the trust into it, (3) Durable Power of Attorney for incapacity management, (4) Healthcare Directive, (5) Letter of Instruction with specific technical details for accessing Bitcoin (this is the document most attorneys don't know to include). For larger estates, add: (6) Gift documentation for annual exclusion gifts, (7) Trust certification for any irrevocable structures, (8) Partnership or LLC operating agreements if using entity structures.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Is this site's content current with 2026 tax law?</div>
-        <div class="faq-a">All content on The Bitcoin Family Office is reviewed and updated to reflect current law and IRS guidance. All pages display a publication and last-updated date. However, tax law changes — particularly around estate tax exemptions and Bitcoin regulation — can move quickly. We recommend subscribing to our newsletter for real-time legislative updates. Our <a href="/blog/bitcoin-estate-tax-exemption-2026">2026 Estate Tax Exemption Guide</a> is updated whenever there are material congressional developments. Always confirm with a qualified attorney before implementing any strategy based on specific tax law provisions.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Can I use these resources if I'm an advisor working with Bitcoin clients?</div>
-        <div class="faq-a">Absolutely. The Bitcoin Family Office resources are used by estate attorneys, CPAs, financial planners, and family office staff who are building Bitcoin expertise. Our technical guides go deeper than most advisor-facing materials — covering custody architecture, multisig trustee protocols, and digital asset trust provisions that general estate planning CPE doesn't address. We also offer <a href="/services/">professional consultation services</a> for advisors building Bitcoin-specific estate planning practices.</div>
-      </div>
-    </div>
+  
   </div>
 
   <!-- DISCLAIMER -->

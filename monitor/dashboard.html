@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="robots" content="noindex, nofollow">
+<script>
+(function(){
+  if(sessionStorage.getItem("bfo_auth")==="1") return;
+  var p=prompt("🔒 Enter password:");
+  if(!p||p.toLowerCase().replace(/[^a-z0-9]/g,"")!=="stacksats"){
+    document.documentElement.innerHTML="<body style=\"background:#0a0a0a;color:#888;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif\"><h1>Access Denied</h1></body>";
+    return;
+  }
+  sessionStorage.setItem("bfo_auth","1");
+})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Dashboard — Bitcoin Estate Watch</title>
